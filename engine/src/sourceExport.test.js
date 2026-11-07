@@ -37,6 +37,15 @@ test('formatting inserted inside an imported text leaf becomes its own correctly
   const n=await note(docxImportFixture());n.content=n.content.replace('Kaynak metin','Kaynak <strong data-fmt-pt="24">yeni</strong> metin');
   const x=await output(n),runs=nodes(x.root,'r');const styled=runs.find(r=>r.textContent==='yeni');assert.ok(styled);assert.equal(nodes(styled,'sz')[0].getAttributeNS(W,'val'),'48');assert.equal(nodes(styled,'b')[0].getAttributeNS(W,'val'),'1');
 });
+test('explicit normal weight and style survive source DOCX export',async()=>{
+  const n=await note(docxImportFixture());
+  n.content=n.content.replace('Kaynak metin','<span class="fmt-not-bold fmt-not-italic">Normal metin</span>');
+  const x=await output(n);
+  const run=nodes(x.root,'r').find(r=>nodes(r,'t').some(t=>t.textContent==='Normal metin'));
+  assert.ok(run);
+  assert.equal(nodes(run,'b')[0]?.getAttributeNS(W,'val'),'0');
+  assert.equal(nodes(run,'i')[0]?.getAttributeNS(W,'val'),'0');
+});
 test('a valid TOC/PAGEREF field stream survives a source section boundary',async()=>{
   const body='<w:p><w:pPr><w:sectPr><w:pgSz w:w="11906" w:h="16838"/></w:sectPr></w:pPr><w:r><w:fldChar w:fldCharType="begin"/><w:instrText> TOC \\o "1-3" </w:instrText><w:fldChar w:fldCharType="separate"/><w:t>Row one</w:t></w:r></w:p><w:p><w:r><w:t>Row two</w:t><w:fldChar w:fldCharType="end"/></w:r></w:p>';
   const x=await output(await note(docxImportFixture({body})));assert.equal(x.m.nativeDocument.sections.length,2);assert.equal(nodes(x.root,'instrText')[0].textContent,' TOC \\o "1-3" ');assert.equal(nodes(x.root,'fldChar').length,3);assert.equal(nodes(x.root,'sectPr').length,2);

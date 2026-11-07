@@ -34,10 +34,10 @@ describe("Task 10B.2 final details", () => {
     assert.match(tocInstruction, /\\x(?:\s|$)/);
     assert.match(xml, /<w:p><w:pPr><w:keepNext w:val="0"\/><w:spacing w:after="0" w:before="0" w:line="1" w:lineRule="exact"\/><\/w:pPr><w:r><w:fldChar w:fldCharType="end"\/><\/w:r><\/w:p>/, "TOC terminal paragraph must not inherit row spacing on Word refresh");
   });
-  it("old metadata without English department opens with an advisory warning and neutral placeholder", () => {
+  it("old metadata without English department opens for editing but reports the missing export information", () => {
     const legacy = { ...values }; delete legacy.DEPARTMENT_NAME_EN;
     const model = compile(mcbuMaster, thesis({ values: legacy }));
-    assert.deepEqual(model.validation.warnings.map((w) => w.field), ["DEPARTMENT_NAME_EN"]);
+    assert.deepEqual(model.validation.errors.filter((w) => w.field === "DEPARTMENT_NAME_EN").map((w) => w.field), ["DEPARTMENT_NAME_EN"]);
     assert.ok(texts(section(model, "abstract-en-header").layout).includes("Department of [English department required]"));
     assert.ok(texts(section(model, "abstract-header").layout).includes("Eğitim Bilimleri Anabilim Dalı"));
     assert.ok(!section(compile(demoUniversityA), "cover").html.includes("thesis-layout-image"));
@@ -76,7 +76,7 @@ describe("Task 10B: Manisa Celal Bayar Üniversitesi, Lisansüstü Eğitim Ensti
       assert.equal(resolved.fallback, false); assert.equal(resolved.template.degreeType, degreeType);
     }
     // Existing templates keep their ids and still resolve.
-    for (const entry of THESIS_TEMPLATE_REGISTRY) assert.equal((await resolveThesisTemplate({ templateId: entry.id })).fallback, false, entry.id);
+    for (const entry of THESIS_TEMPLATE_REGISTRY.filter(entry => /^(?:mcbu|cbu)-/.test(entry.id))) assert.equal((await resolveThesisTemplate({ templateId: entry.id })).fallback, false, entry.id);
   });
 
   it("B/C/D: A4, 40/25/25/25 mm, TNR 12 / 1.5 / justify, 12.5 mm first line, 6 pt after", () => {
@@ -121,7 +121,7 @@ describe("Task 10B: Manisa Celal Bayar Üniversitesi, Lisansüstü Eğitim Ensti
     assert.equal(page.rules.page.numbering.enabled, false);
   });
 
-  it("G: ÖZET/ABSTRACT pages: header, editable text and keywords share one page; min 5 keywords is advisory", () => {
+  it("G: ÖZET/ABSTRACT pages: header, editable text and keywords share one page; min 5 keywords is checked before export", () => {
     const model = compile();
     const groups = groupThesisSections(model.sections).map((group) => group.sections.map((item) => item.id));
     assert.ok(groups.some((ids) => ids.join() === "abstract-header,abstract,abstract-footer"));
@@ -132,18 +132,19 @@ describe("Task 10B: Manisa Celal Bayar Üniversitesi, Lisansüstü Eğitim Ensti
     assert.deepEqual(texts(section(model, "abstract-footer").layout), ["Anahtar Kelimeler: a, b, c, d, e", `2026, ${groupCount} sayfa`]);
     assert.deepEqual(texts(section(model, "abstract-en-header").layout).slice(0, 6), ["ABSTRACT", "PhD Thesis", "Çağrı ÖZDOĞAN", "Manisa Celal Bayar University", "Graduate School of Education", "Department of Educational Sciences"]);
     assert.equal(section(model, "abstract").editable, true); assert.equal(section(model, "abstract-en").editable, true);
-    assert.deepEqual(model.validation, { errors: [], warnings: [] });
+    assert.deepEqual(model.validation.warnings, []);
+    assert.ok(model.validation.errors.every(issue => ["main", "abstract", "abstract-en", "bibliography"].includes(issue.field)), "unfinished fixture content is reported");
     const few = compile(mcbuPhd, thesis({ values: { ...values, KEYWORDS: "bir, iki; üç", KEYWORDS_EN: "" } }));
-    assert.deepEqual(few.validation.warnings.map((w) => [w.field, w.expected, w.actual]), [["KEYWORDS", 5, 2], ["KEYWORDS_EN", 5, 0]]);
-    assert.deepEqual(few.validation.errors, []);
+    assert.deepEqual(few.validation.errors.filter(w => ["KEYWORDS", "KEYWORDS_EN"].includes(w.field)).map((w) => [w.field, w.expected, w.actual]), [["KEYWORDS", 5, 2], ["KEYWORDS_EN", 5, 0]]);
+    assert.equal(few.validation.errors.some(issue => issue.field === "main"), false);
   });
 
   it("H: cover and Taahhütname unnumbered, front matter Roman from ÖZET = I, GİRİŞ restarts Arabic 1", () => {
     const model = compile();
     const groups = groupThesisSections(model.sections);
     const labels = buildThesisPageModel(groups, {}).flatMap((group) => group.pages.map((page) => [group.groupId, page.label]));
-    assert.deepEqual(labels.slice(0, 10), [["inner-cover", ""], ["declaration", ""], ["abstract-header", "I"], ["abstract-en-header", "II"], ["preface", "III"], ["symbols", "IV"], ["index-figures", "V"], ["index-tables", "VI"], ["toc", "VII"], ["introduction", "1"]]);
-    assert.equal(labels[10][1], "2");
+    assert.deepEqual(labels.slice(0, 11), [["inner-cover", ""], ["spine", ""], ["declaration", ""], ["abstract-header", "I"], ["abstract-en-header", "II"], ["preface", "III"], ["symbols", "IV"], ["index-figures", "V"], ["index-tables", "VI"], ["toc", "VII"], ["introduction", "1"]]);
+    assert.equal(labels[11][1], "2");
   });
 
   it("I/K: H1–H4 numbering, chapter headings uppercase on a new page; TOC and indexes are derived", () => {
@@ -158,7 +159,7 @@ describe("Task 10B: Manisa Celal Bayar Üniversitesi, Lisansüstü Eğitim Ensti
     assert.deepEqual(section(resolved, "index-figures").indexRows.map((row) => row.text), ["Şekil 1. Bir şekil", "Şekil 2. İkinci şekil"]);
     assert.deepEqual(section(resolved, "index-tables").indexRows.map((row) => row.text), ["Tablo 1. Bir tablo"]);
     assert.match(section(resolved, "index-figures").html, /<div class="thesis-index-page-heading"[^>]*>Sayfa<\/div>/);
-    assert.equal(section(resolved, "toc").generatedIndex.leader, "none");
+    assert.equal(section(resolved, "toc").generatedIndex.leader, "dots");
   });
 
   it("J: figure caption below, table caption above, auto alignment; numbering is a document-wide choice", () => {
@@ -300,5 +301,42 @@ describe("Task 10B.1: MCBÜ final polish", () => {
     const xml = await docxXml(resolved);
     assert.ok(xml.includes(`2026, ${total} sayfa`)); assert.ok(xml.includes(`2026, ${total} pages`));
     assert.ok(!xml.includes("48 sayfa"));
+  });
+});
+
+describe("MCBÜ LEE tez sırtı (guide 'Tez Sırtı Örneği')", () => {
+  const spineModel = (enabled) => compile(mcbuMaster, thesis({ enabledSections: enabled ? ["spine"] : [] }));
+  it("is included by default after the inner cover in both degrees, outside optional choices and the TOC", () => {
+    for (const template of [mcbuMaster, mcbuPhd]) {
+      assert.equal(template.sections.find(item => item.id === "spine").status, "required");
+      assert.ok(!template.sections.filter(item => item.status === "optional").some(item => item.id === "spine"));
+      for (const enabledSections of [undefined, [], ["spine"]]) {
+        const model = compile(template, thesis({ enabledSections }));
+        assert.deepEqual(model.sections.slice(0, 3).map((item) => item.id), ["inner-cover", "spine", "declaration"]);
+        assert.equal(model.sections.filter(item => item.id === "spine").length, 1);
+        assert.equal(section(model, "spine").rules.page.numbering.enabled, false);
+        assert.ok(!model.indexSources.some(item => item.sectionId === "spine"));
+        assert.doesNotMatch(section(model, "toc")?.html || "", /Tez Sırtı/);
+      }
+    }
+  });
+  it("renders the guide's table: 1305 tw wide, rows 1749 / 9892 / 1017 tw, outer frame only, vertical title", async () => {
+    const model = spineModel(true);
+    const frame = section(model, "spine").layout[0];
+    assert.deepEqual([frame.table, frame.align, frame.widthMm, frame.blocks.map((row) => row.minHeightMm)], [true, "center", 23.019, [30.85, 174.484, 17.939]]);
+    assert.deepEqual(texts(frame.blocks), ["Çağrı ÖZDOĞAN", "Çevrimiçi öğrenme", "2026"]);
+    assert.equal(flat(frame.blocks)[1].style.writingMode, "vertical-rl");
+    const css = buildThesisCss(model);
+    assert.match(css, /writing-mode:vertical-rl;/);
+    assert.match(css, /\[data-thesis-frame="0"\]\{width:23\.019mm;margin-left:auto;margin-right:auto;\}/);
+    const xml = strFromU8(unzipSync(new Uint8Array(await (await buildThesisDocx(model)).arrayBuffer()))["word/document.xml"]);
+    const vertical = xml.indexOf("tbRl");
+    const table = xml.slice(xml.lastIndexOf("<w:tbl>", vertical), xml.indexOf("</w:tbl>", vertical));
+    assert.match(table, /ÇAĞRI ÖZDOĞAN[\s\S]*ÇEVRİMİÇİ ÖĞRENME[\s\S]*2026/, "upper case as in the guide example (AD SOYAD / TEZ ADI)");
+    assert.match(table, /<w:tblW w:type="dxa" w:w="1305"\/>|<w:tblW w:w="1305" w:type="dxa"\/>/);
+    assert.match(table, /<w:jc w:val="center"\/>/);
+    assert.deepEqual([...table.matchAll(/<w:trHeight w:val="(\d+)" w:hRule="atLeast"\/>|<w:trHeight w:hRule="atLeast" w:val="(\d+)"\/>/g)].map((m) => Number(m[1] || m[2])), [1749, 9892, 1017]);
+    assert.match(table, /<w:textDirection w:val="tbRl"\/>/);
+    assert.match(table, /<w:insideH w:val="nil"|<w:insideH w:val="none"/);
   });
 });

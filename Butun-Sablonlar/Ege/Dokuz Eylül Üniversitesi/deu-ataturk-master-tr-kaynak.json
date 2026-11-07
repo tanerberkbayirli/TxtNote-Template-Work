@@ -1,0 +1,475 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "deu-ataturk-master-tr-kaynak",
+ "universityId": "deu",
+ "universityName": "Dokuz Eylül Üniversitesi",
+ "instituteId": "ataturk",
+ "instituteName": "Atatürk İlkeleri ve İnkılap Tarihi Enstitüsü",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
+  ],
+  "guideDocumentName": "DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Ataturk_Ilkeleri_Enstitusu_Tez/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "0c238677fd7fcc74c7ca2bbf0c93b960476a60dcdf805976d5a9a77f5d7cc116",
+  "evidence": {
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Ataturk_Ilkeleri_Enstitusu_Tez/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 1",
+      "sentence": "SAYFA DÜZENİ Tezde, sayfanın sol kenarından 4 cm, diğer kenarlarından 2.5 cm boşluk bırakılır."
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Ataturk_Ilkeleri_Enstitusu_Tez/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 1",
+      "sentence": "SAYFA DÜZENİ Tezde, sayfanın sol kenarından 4 cm, diğer kenarlarından 2.5 cm boşluk bırakılır."
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Ataturk_Ilkeleri_Enstitusu_Tez/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": 40,
+      "location": "sayfa 1",
+      "sentence": "SAYFA DÜZENİ Tezde, sayfanın sol kenarından 4 cm, diğer kenarlarından 2.5 cm boşluk bırakılır."
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Ataturk_Ilkeleri_Enstitusu_Tez/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 1",
+      "sentence": "SAYFA DÜZENİ Tezde, sayfanın sol kenarından 4 cm, diğer kenarlarından 2.5 cm boşluk bırakılır."
+     }
+    ]
+   },
+   "typography.body.lineHeight": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Ataturk_Ilkeleri_Enstitusu_Tez/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": 1.5,
+      "location": "sayfa 2",
+      "sentence": "SATIR ARALIKLARI Tez metni 1,5 satır aralığıyla yazılır."
+     }
+    ]
+   },
+   "typography.body.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "justify",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Ataturk_Ilkeleri_Enstitusu_Tez/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": "justify",
+      "location": "sayfa 1",
+      "sentence": "Satırlar “iki yana yasla” biçiminde yazılır."
+     }
+    ]
+   },
+   "typography.footnotes.lineHeight": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 1,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Ataturk_Ilkeleri_Enstitusu_Tez/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": 1,
+      "location": "sayfa 2",
+      "sentence": "Dipnotlar tek satır aralığıyla yazılır."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Ataturk_Ilkeleri_Enstitusu_Tez/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "sayfa 1",
+      "sentence": "NUMARALAMA Sayfa numaraları sayfa altında sağ kısma yazılır, iç kapak dışında tüm sayfalar numaralandırılır."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "right",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Ataturk_Ilkeleri_Enstitusu_Tez/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": "right",
+      "location": "sayfa 1",
+      "sentence": "NUMARALAMA Sayfa numaraları sayfa altında sağ kısma yazılır, iç kapak dışında tüm sayfalar numaralandırılır."
+     }
+    ]
+   },
+   "typography.body.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Ataturk_Ilkeleri_Enstitusu_Tez/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+    "location": "sayfa 1",
+    "passage": "DOKUZ EYLÜL ÜNİVERSİTESİ ATATÜRK İLKELERİ VE İNKILÂP TARİHİ ENSTİTÜSÜ ATATÜRK İLKELERİ VE İNKILÂP TARİHİ ANA BİLİM DALI TEZ YAZIM KILAVUZU 1. AMAÇ Bu kılavuzun amacı; Dokuz Eylül Üniversitesi Atatürk İlkeleri ve İnkılâp Tarihi Enstitüsü’nde hazırlanan yüksek lisans ve doktora tezlerinin yazımında uyulacak kuralların tanıtılması ve bilimsel sunuş standartlarına uygunluğun sağlanmasıdır. Yüksek lisans veya doktora tezi hazırlayan öğrencilerin, bu kılavuzda verilen biçim ve içerik ile ilgili kurallara uymaları zorunludur. Dokuz Eylül Üniversitesi Atatürk İlkeleri ve İnkılâp Tarihi Enstitüsü’nde bünyesinde yer alan lisansüstü programlarda Dokuz Eylül Üniversitesi Lisansüstü Eğitim ve Öğretim Yönetmeliği uygulanmaktadır. 2. KÂĞIT CİNSİ Tez, A4 boyutunda birinci hamur kâğıdın tek yüzüne yazılır. Ancak, tezde çeşitli tablo, grafik, şekil vb. için, gerekirse ciltlemede uygun şekilde katlanacak şekilde A4 boyutundan farklı kâğıt kullanılabilir. Tez kapağı ve sırtı beyaz renkli karton olmalıdır. 3. SAYFA DÜZENİ Tezde, sayfanın sol kenarından 4 cm, diğer kenarlarından 2.5 cm boşluk bırakılır. Dipnotlar da bu sınırlar içinde kalır. Tüm ilk sayfalarda (içindekiler, kısaltmalar, tablo, şekil ve sembol listeleri, önsöz, özetler, bölümler, kaynaklar, ekler vb. gibi) başlık için sayfa üst kenarından 5 cm aşağıdan başlanır. Tez metninde cümle sonunda yer alan kelime tire ile ayrılmaz; metin sol ve sağ sınırlara göre hizalanır. Satırlar “iki yana yasla” biçiminde yazılır. Alt başlıklar sayfanın son satırı olarak yazılamaz, en azından 2 satır daha sığdırılamıyorsa başlık da sonraki sayfada yer alır. Metin içinde yer alacak olan uzun alıntı paragraflar sağdan soldan birer cm. daraltılır ve metnin normal puntosundan bir küçük puntoyla, tek aralık şeklinde yazılır. 4. NUMARALAMA Sayfa numaraları sayfa altında sağ kısma yazılır, iç kapak dışında tüm sayfalar numaralandırılır. Özet, Abstract, Önsöz (ve/veya Teşekkür), İçindekiler, ve Kısaltmalar gibi tez ön sayfaları, “I, II, III, IV, V, VI” şeklinde Romen rakamları ile; giriş bölümü ile başlayan tez metni ise “1, 2, 3,...” şeklinde numaralandırılır. Tezde kullanılan tablo, şekil, grafik, resim, plan, harita ve benzerlerin numaralanmasında “1, 2, 3 …” rakamları kullanılır. 5. YAZI BİÇİMİ VE PUNTO Tez metnindeki yazı biçimi Times New Roman olup, 12 puntoyla; dipnotlar için yazı biçimi Times New Roman olup 10 punto ile yazılır.",
+    "decision": "Tez metni 12 punto, dipnot 10 punto."
+   },
+   "typography.body.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Ataturk_Ilkeleri_Enstitusu_Tez/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+    "location": "sayfa 1",
+    "passage": "DOKUZ EYLÜL ÜNİVERSİTESİ ATATÜRK İLKELERİ VE İNKILÂP TARİHİ ENSTİTÜSÜ ATATÜRK İLKELERİ VE İNKILÂP TARİHİ ANA BİLİM DALI TEZ YAZIM KILAVUZU 1. AMAÇ Bu kılavuzun amacı; Dokuz Eylül Üniversitesi Atatürk İlkeleri ve İnkılâp Tarihi Enstitüsü’nde hazırlanan yüksek lisans ve doktora tezlerinin yazımında uyulacak kuralların tanıtılması ve bilimsel sunuş standartlarına uygunluğun sağlanmasıdır. Yüksek lisans veya doktora tezi hazırlayan öğrencilerin, bu kılavuzda verilen biçim ve içerik ile ilgili kurallara uymaları zorunludur. Dokuz Eylül Üniversitesi Atatürk İlkeleri ve İnkılâp Tarihi Enstitüsü’nde bünyesinde yer alan lisansüstü programlarda Dokuz Eylül Üniversitesi Lisansüstü Eğitim ve Öğretim Yönetmeliği uygulanmaktadır. 2. KÂĞIT CİNSİ Tez, A4 boyutunda birinci hamur kâğıdın tek yüzüne yazılır. Ancak, tezde çeşitli tablo, grafik, şekil vb. için, gerekirse ciltlemede uygun şekilde katlanacak şekilde A4 boyutundan farklı kâğıt kullanılabilir. Tez kapağı ve sırtı beyaz renkli karton olmalıdır. 3. SAYFA DÜZENİ Tezde, sayfanın sol kenarından 4 cm, diğer kenarlarından 2.5 cm boşluk bırakılır. Dipnotlar da bu sınırlar içinde kalır. Tüm ilk sayfalarda (içindekiler, kısaltmalar, tablo, şekil ve sembol listeleri, önsöz, özetler, bölümler, kaynaklar, ekler vb. gibi) başlık için sayfa üst kenarından 5 cm aşağıdan başlanır. Tez metninde cümle sonunda yer alan kelime tire ile ayrılmaz; metin sol ve sağ sınırlara göre hizalanır. Satırlar “iki yana yasla” biçiminde yazılır. Alt başlıklar sayfanın son satırı olarak yazılamaz, en azından 2 satır daha sığdırılamıyorsa başlık da sonraki sayfada yer alır. Metin içinde yer alacak olan uzun alıntı paragraflar sağdan soldan birer cm. daraltılır ve metnin normal puntosundan bir küçük puntoyla, tek aralık şeklinde yazılır. 4. NUMARALAMA Sayfa numaraları sayfa altında sağ kısma yazılır, iç kapak dışında tüm sayfalar numaralandırılır. Özet, Abstract, Önsöz (ve/veya Teşekkür), İçindekiler, ve Kısaltmalar gibi tez ön sayfaları, “I, II, III, IV, V, VI” şeklinde Romen rakamları ile; giriş bölümü ile başlayan tez metni ise “1, 2, 3,...” şeklinde numaralandırılır. Tezde kullanılan tablo, şekil, grafik, resim, plan, harita ve benzerlerin numaralanmasında “1, 2, 3 …” rakamları kullanılır. 5. YAZI BİÇİMİ VE PUNTO Tez metnindeki yazı biçimi Times New Roman olup, 12 puntoyla; dipnotlar için yazı biçimi Times New Roman olup 10 punto ile yazılır.",
+    "decision": "Tez metni 12 punto, dipnot 10 punto."
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Ataturk_Ilkeleri_Enstitusu_Tez/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+    "sha256": "0c238677fd7fcc74c7ca2bbf0c93b960476a60dcdf805976d5a9a77f5d7cc116"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.body.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.lineHeight",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
+    },
+    {
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
+    }
+   ],
+   "conflicts": [],
+   "guide": "DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "margins": {
+   "topMm": 25,
+   "bottomMm": 25,
+   "leftMm": 40,
+   "rightMm": 25
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "right",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "lineHeight": 1.5,
+   "align": "justify",
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12
+  },
+  "footnotes": {
+   "lineHeight": 1
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖNSÖZ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "curriculum-vitae",
+   "type": "curriculumVitae",
+   "title": "ÖZGEÇMİŞ",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

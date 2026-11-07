@@ -1,0 +1,16 @@
+> Tarihsel hedef kaydı: aşağıdaki durumlar, komutlar ve kararlar kendi tarihlerine aittir; güncel görev veya kaynak önceliği talimatı değildir. Önce [BASLA.md](../BASLA.md), [rapor dizini](../raporlar/README.md) ve hedefin güncel kaynak kaydı değerlendirilir. Eksik tarihsel kanıt yolu güncel doğrulama sayılmaz.
+
+# adu-sagbil — official-source Phase 4 pilot
+- Scope: 2026 official master/TR example. Phase 4 pilot Tier 1 PASS; university-wide variants and independent completion queue remain separate.
+- Source: `Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx`; SHA256 `82b87cfd7047e257b6a955374031f10e5ef9d20bd28f4d4f3b527b590da683d7`.
+- Source cache: `orchestration/artifacts/adu-sagbil/source/reference/render-manifest.json`; owned Word 16.0.20430, original/cache hashes equal; 29 rendered source pages. 3 sections / 96 styles / 12 tables / 1 PAGE.
+- Extraction: `adu-sagbil.extracted.json` retains XML trees/locators and Word line/word geometry. Its pending list describes downstream review at extraction time; completed review is recorded separately here and in the canonical spec.
+- Canonical spec: `adu-sagbil.json`; reviewed role selectors: `adu-sagbil.generation.json`; 153 mapped facts / 109 preserved unmapped property groups: `adu-sagbil.mapping.json`.
+- Reviewed body: TNR 12 pt, 1.5 lines, first indent 10 mm, after 6 pt; margins top/bottom 25, left 30, right 20 mm (exact twips-derived values retained). H1 14 pt; H2-H4 12 pt. PAGE right aligned; source baseline measured.
+- Guide conflict review: `adu-sagbil.source-review.json`, 17 selected prose paragraphs from read-only cached DOC conversion. Subheading justify, bibliography 1.5/6 pt, and one cover before approval follow the 2026 official example/XML. No full prose audit claimed.
+- Template: `engine/src/templates/adu-sagbil.js`, registry `adu-sagbil-master-tr-v1`; 15 sections, three editable positioned fixed pages. Fixed blocks opt into `wordBaseline`; table cells preserve reviewed first indent.
+- Validation: 298 explicit source-backed Tier 1 assertions plus five automatic export/layout gates; final actual PDF/DOCX/Word 303 PASS. Reproduction: `node engine/tools/check.mjs --target adu-sagbil --word --out <directory>`.
+- Engine gaps: all 109 groups retain example XML locators. Unused/theme/conditional styles are review inventory, not asserted requirements or silently satisfied engine features. Read selected facts, not the entire extracted tree into a prompt.
+- Tier 2 UNKNOWN: long replacement titles/jury text, PhD/English/second-advisor/alternate inner cover, footnotes and multi-page tables not exercised. Positioned words are editable but automatic metadata/reflow for these cases is not claimed.
+- Family inventory: ADU Sagbil, AKU FBE, AFSU LEE; two structural candidates. Shared Word/font-flow semantics only, never shared numeric university values.
+- Closure/evidence/cost: `orchestration/reports/MOTOR_PHASE4_CLOSE_2026-10-07.md`; `orchestration/validation/phase4-close/acceptance.json`. Token telemetry unavailable: no verified <=100k claim.

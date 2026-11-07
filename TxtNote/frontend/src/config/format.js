@@ -44,8 +44,8 @@ export const FORMAT_POINTS = FORMAT_POINT_VALUES.map((pt) => ({
 
 /** Independent toggles — they never ride along with size or colour. */
 export const FORMAT_STYLES = [
-  { id: "bold", label: "Kalın", className: "fmt-bold" },
-  { id: "italic", label: "İtalik", className: "fmt-italic" },
+  { id: "bold", label: "Kalın", className: "fmt-bold", resetClass: "fmt-not-bold" },
+  { id: "italic", label: "İtalik", className: "fmt-italic", resetClass: "fmt-not-italic" },
   { id: "underline", label: "Altı çizili", className: "fmt-underline" },
   { id: "overline", label: "Üstünden çiz", className: "fmt-overline" },
   { id: "strike", label: "Üstü çizili", className: "fmt-strike" },
@@ -182,6 +182,7 @@ export function parsePartialFormat(className) {
   }
   for (const style of FORMAT_STYLES) {
     if (tokens.has(style.className)) partial[style.id] = true;
+    if (style.resetClass && tokens.has(style.resetClass)) partial[style.id] = false;
   }
   return partial;
 }
@@ -208,8 +209,9 @@ export function mergeFormatClassName(className, patch) {
   }
   for (const style of FORMAT_STYLES) {
     if (patch[style.id] === undefined) continue;
-    next = next.filter((token) => token !== style.className);
+    next = next.filter((token) => token !== style.className && token !== style.resetClass);
     if (patch[style.id]) next.push(style.className);
+    else if (style.resetClass) next.push(style.resetClass);
   }
 
   return [...new Set(next)].join(" ");

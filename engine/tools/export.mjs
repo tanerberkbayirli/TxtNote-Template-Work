@@ -76,10 +76,11 @@ async function settle() {
     const targets = JSON.parse(root?.getAttribute("data-thesis-pagination-targets") || "[]");
     const missingTargets = targets.filter((target) => !Object.hasOwn(pageMap, target));
     const mismatchedLabels = [...document.querySelectorAll("[data-thesis-generated] li[data-index-target]")].flatMap((row) => {
-      const pageNode = row.querySelector(".thesis-index-page");
+      // A row's page cell may hold the list's "Sayfa" heading (pageHeadingPlacement "row"): that is not a page label.
+      const pageNode = row.querySelector(".thesis-index-page:not([data-index-page-heading])");
       if (!pageNode) return [];
       const target = row.dataset.indexTarget;
-      const expected = pageMap[target]?.indexLabel ?? pageMap[target]?.label ?? "";
+      const expected = row.dataset.indexManualPage ?? pageMap[target]?.indexLabel ?? pageMap[target]?.label ?? "";
       const actual = pageNode.textContent.trim();
       return actual === expected ? [] : [{ target, expected, actual }];
     });

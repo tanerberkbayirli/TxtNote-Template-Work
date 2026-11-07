@@ -959,6 +959,9 @@ export default function App() {
 
   const handleCreateThesis = useCallback(async (selection) => {
     const resolved = await resolveThesisTemplate(selection);
+    if (resolved.fallback) {
+      throw new Error(`Seçtiğiniz şablon açılamadı. ${resolved.reason}`);
+    }
     const template = resolved.template;
     const created = stampCreated({
       id: createId("itm"), workspaceId: currentWorkspaceId, title: UNTITLED_NOTE,

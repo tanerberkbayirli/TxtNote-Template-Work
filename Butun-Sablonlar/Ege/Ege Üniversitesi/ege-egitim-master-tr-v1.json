@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "templateVersion": "1.0.0",
+ "templateVersion": "0.2.0-source-rebuild",
  "id": "ege-egitim-master-tr-v1",
  "universityId": "ege",
  "universityName": "Ege Üniversitesi",
@@ -12,28 +12,317 @@
  "source": {
   "type": "official",
   "documentName": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx",
+  "verifiedAt": "2026-10-23",
   "notes": [
-   "Source-derived Phase 4 pilot. XML/example structure has precedence; unresolved source properties are retained in the mapping inventory. Fixed-page text nodes remain editable in layout and Word; long replacement text needs layout review."
-  ]
+   "Taslak docx-spec-to-template.py ile üretildi; SHA-256 9d63104584bb2f61458ad6d1a0d61e7b19df7fc07dc131e37b7ad64e40b4a200",
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
+   "Şablon yönergesi (Dış Kapak): Yüksek Lisans Tezi",
+   "Şablon yönergesi (Dış Kapak): [TEZ BAŞLIĞININ TERS PİRAMİT ŞEKLİNDE VE 14 PUNTO BÜYÜKLÜĞÜNDE YAZILMASINA ÖZEN GÖSTERİLMELİDİR]",
+   "Şablon yönergesi (Dış Kapak): [Öğrencinin Adı SOYADI]",
+   "Şablon yönergesi (Dış Kapak): […….] ANABİLİM DALI",
+   "Şablon yönergesi (Dış Kapak): İzmir [Ay, Yıl]"
+  ],
+  "archivePath": "Butun-Sablonlar/Ege/Ege Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx",
+  "rebuildKind": "docx-template",
+  "archiveSha256": "9d63104584bb2f61458ad6d1a0d61e7b19df7fc07dc131e37b7ad64e40b4a200",
+  "evidence": {
+   "page.margins": {
+    "value": {
+     "topMm": 24.89,
+     "bottomMm": 24.89,
+     "leftMm": 24.89,
+     "rightMm": 24.89
+    },
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › sectPr#0 (gövde bölümü, 65 paragraf) › w:pgMar",
+    "status": "MEASURED"
+   },
+   "page.size": {
+    "value": [
+     210,
+     297
+    ],
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › sectPr#0 (gövde bölümü, 65 paragraf) › w:pgSz",
+    "status": "MEASURED"
+   },
+   "page.numbering": {
+    "value": {
+     "enabled": true,
+     "position": "bottom",
+     "align": "right",
+     "format": "arabic",
+     "startAt": 1,
+     "restart": false
+    },
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › sectPr#0 (gövde bölümü, 65 paragraf) › footer PAGE alanı, w:pgNumType",
+    "status": "MEASURED"
+   },
+   "page.footer.distanceMm": {
+    "value": 12.45,
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › sectPr#0 (gövde bölümü, 65 paragraf) › w:pgMar/@w:footer",
+    "status": "MEASURED"
+   },
+   "typography.body": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "justify",
+     "lineHeight": 1.5
+    },
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › gövde profili: 29/30 paragraf (≥200 karakter), 2 farklı biçim",
+    "status": "MEASURED"
+   },
+   "typography.headings.1.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}."
+    },
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.1": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "center",
+     "lineHeight": 1.5,
+     "spaceAfterPt": 0,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}."
+     },
+     "keepWithNext": true
+    },
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › 11/17 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.2.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}.{2}"
+    },
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.2": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "center",
+     "lineHeight": 1,
+     "spaceBeforePt": 5,
+     "spaceAfterPt": 5,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}"
+     },
+     "keepWithNext": true
+    },
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › 19/19 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.3.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}"
+    },
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.3": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1,
+     "spaceBeforePt": 12,
+     "spaceAfterPt": 3,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}"
+     },
+     "keepWithNext": true
+    },
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › 4/7 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "tables.position": {
+    "value": "above",
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › 2 üstte / 0 altta",
+    "status": "MEASURED"
+   },
+   "tables": {
+    "value": {
+     "label": "Tablo",
+     "position": "above",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 10,
+      "fontWeight": 400,
+      "align": "center",
+      "lineHeight": 1
+     },
+     "numbering": {
+      "scope": "chapter",
+      "format": "{chapter}.{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › 2/2 yazı; etiket sayımı {'Tablo': 2}",
+    "status": "MEASURED"
+   },
+   "figures": {
+    "value": {
+     "label": "Şekil",
+     "position": "below",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 10,
+      "fontWeight": 400,
+      "align": "center",
+      "lineHeight": 1
+     },
+     "numbering": {
+      "scope": "chapter",
+      "format": "{chapter}.{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › 2/2 yazı; etiket sayımı {'Şekil': 2}",
+    "status": "MEASURED"
+   },
+   "sections.cover": {
+    "value": "1 blok, outerCover",
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › ön sayfa #0: ",
+    "status": "MEASURED"
+   },
+   "sections.inner-cover": {
+    "value": "2 blok, innerCover",
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › ön sayfa #1: HUZURLU ÜNİVERSİTE, KALİTELİ EĞİTİM, AYDINLIK GELECEK…",
+    "status": "MEASURED"
+   },
+   "sections.declaration": {
+    "value": "5 blok, declaration",
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › ön sayfa #2: EGE ÜNİVERSİTESİ EĞİTİM BİLİMLERİ ENSTİTÜSÜ / ETİK KURALLARA UYGUNLUK BEYANI / E",
+    "status": "MEASURED"
+   },
+   "sections.approval": {
+    "value": "2 blok, approval",
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › ön sayfa #3: Tez savunma tutanağı / Bu sayfaya tez savunma tutanağı jüri üyelerinin imzası ka",
+    "status": "MEASURED"
+   },
+   "sections": {
+    "value": [
+     "outerCover",
+     "innerCover",
+     "declaration",
+     "approval",
+     "acknowledgements",
+     "tableOfContents",
+     "listOfTables",
+     "listOfFigures",
+     "abstract",
+     "englishAbstract",
+     "listOfAbbreviations",
+     "mainContent",
+     "bibliography",
+     "appendices"
+    ],
+    "source": "Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx › 11 birinci düzey başlık, 10 fiziksel bölüm",
+    "status": "MEASURED"
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Ege Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/Ege_Egitim_Bilimleri_APA7_Kaynak_Gosterme_Kilavuzu.pdf",
+    "sha256": "f6bc165e8246c14f9165e4a44adfb8a18d75c919cd479f9aa1c27001a6c3674e"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Ege Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/Ege_Egitim_Bilimleri_Tez_Sablonu_Doktora.docx",
+    "sha256": "f815c84416e2ff40fa60a1f0667da9034fc730fae19765e86f0c0aaa885b2a28"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Ege Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx",
+    "sha256": "9d63104584bb2f61458ad6d1a0d61e7b19df7fc07dc131e37b7ad64e40b4a200"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "typography.headings.4",
+     "reason": "Balk4 stili var ama kullanılmamış; Word varsayılanı üniversite kuralı sayılmadı, kılavuzdan doğrulanmalı"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (29/30 paragraf (≥200 karakter)); diğer 1 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.2.numbering.format",
+     "value": "{1}.{2}",
+     "reasoning": "Ölçülen biçim '{1}.' 2. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "typography.headings.3.numbering.format",
+     "value": "{1}.{2}.{3}",
+     "reasoning": "Ölçülen biçim '{1}.' 3. düzey için sayaç sayısı tutmuyor; düzeltildi"
+    },
+    {
+     "field": "page.numbering.restart",
+     "value": "[1]",
+     "reasoning": "DOCX bölümleri [1] önceki bölümle aynı biçimdeyken yeniden başlatıyor (Word'de elle girilmiş başlangıç); sayfa numarası dizinin ilk bölümünden kesintisiz sürüyor"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
+    }
+   ],
+   "conflicts": [],
+   "guide": null,
+   "gate": null
+  }
  },
  "page": {
   "size": "A4",
-  "widthMm": 210.008611,
-  "heightMm": 297.003611,
+  "widthMm": 210,
+  "heightMm": 297,
   "orientation": "portrait",
   "margins": {
-   "topMm": 24.888472,
-   "bottomMm": 24.888472,
-   "leftMm": 24.888472,
-   "rightMm": 24.888472
+   "topMm": 24.89,
+   "bottomMm": 24.89,
+   "leftMm": 24.89,
+   "rightMm": 24.89
   },
   "header": {
    "heightMm": 0,
-   "distanceMm": 12.453056
+   "distanceMm": 12.45,
+   "content": "",
+   "firstPage": "omit"
   },
   "footer": {
-   "heightMm": 0,
-   "distanceMm": 12.453056
+   "heightMm": 4.87,
+   "distanceMm": 12.45,
+   "content": "",
+   "firstPage": "omit"
   },
   "numbering": {
    "enabled": true,
@@ -41,12 +330,7 @@
    "align": "right",
    "format": "arabic",
    "startAt": 1,
-   "restart": true,
-   "style": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 12
-   },
-   "baselineFromTopMm": 278.799
+   "restart": false
   }
  },
  "typography": {
@@ -54,27 +338,12 @@
    "fontFamily": "Times New Roman",
    "fontSizePt": 12,
    "align": "justify",
-   "spaceBeforePt": 5,
-   "spaceAfterPt": 0,
-   "lineSpacing": {
-    "rule": "auto",
-    "value": 1.5
-   },
-   "lineHeight": 1.5,
-   "firstLineIndentMm": 12.453055555555554
+   "lineHeight": 1.5
   },
   "paragraph": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 12,
-   "align": "justify",
+   "firstLineIndentMm": 12.45,
    "spaceBeforePt": 5,
-   "spaceAfterPt": 0,
-   "lineSpacing": {
-    "rule": "auto",
-    "value": 1.5
-   },
-   "lineHeight": 1.5,
-   "firstLineIndentMm": 12.453055555555554
+   "spaceAfterPt": 0
   },
   "headings": {
    "1": {
@@ -82,5378 +351,387 @@
     "fontSizePt": 12,
     "fontWeight": 700,
     "align": "center",
-    "spaceBeforePt": 5,
-    "spaceAfterPt": 5,
-    "lineSpacing": {
-     "rule": "auto",
-     "value": 1
-    },
-    "lineHeight": 1,
-    "keepWithNext": true,
+    "lineHeight": 1.5,
+    "spaceAfterPt": 0,
     "numbering": {
      "enabled": true,
      "format": "{1}."
     },
-    "pageBreakBefore": true
+    "keepWithNext": true
    },
    "2": {
     "fontFamily": "Times New Roman",
     "fontSizePt": 12,
     "fontWeight": 700,
-    "italic": false,
     "align": "center",
+    "lineHeight": 1,
     "spaceBeforePt": 5,
     "spaceAfterPt": 5,
-    "lineSpacing": {
-     "rule": "auto",
-     "value": 1
-    },
-    "lineHeight": 1,
-    "keepWithNext": true,
     "numbering": {
      "enabled": true,
-     "format": "{1}.{2}."
-    }
+     "format": "{1}.{2}"
+    },
+    "keepWithNext": true
    },
    "3": {
     "fontFamily": "Times New Roman",
     "fontSizePt": 12,
     "fontWeight": 700,
-    "italic": true,
     "align": "left",
+    "lineHeight": 1,
     "spaceBeforePt": 12,
     "spaceAfterPt": 3,
-    "lineSpacing": {
-     "rule": "auto",
-     "value": 1
-    },
-    "lineHeight": 1,
-    "firstLineIndentMm": 0,
-    "leftIndentMm": 0,
-    "keepWithNext": true,
     "numbering": {
      "enabled": true,
-     "format": "{1}.{2}.{3}."
-    }
-   },
-   "4": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 12,
-    "fontWeight": 400,
-    "italic": true,
-    "align": "left",
-    "spaceBeforePt": 12,
-    "spaceAfterPt": 3,
-    "lineSpacing": {
-     "rule": "auto",
-     "value": 1
+     "format": "{1}.{2}.{3}"
     },
-    "lineHeight": 1,
-    "firstLineIndentMm": 0,
-    "leftIndentMm": 0,
-    "keepWithNext": true,
-    "numbering": {
-     "enabled": true,
-     "format": "{1}.{2}.{3}.{4}."
-    }
-   }
-  },
-  "paragraphStyles": {
-   "sourceTable": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 9,
-    "fontWeight": 400,
-    "italic": true,
-    "align": "center",
-    "spaceBeforePt": 0,
-    "spaceAfterPt": 0,
-    "lineSpacing": {
-     "rule": "auto",
-     "value": 1
-    },
-    "lineHeight": 1,
-    "leftIndentMm": 5.08,
-    "hangingIndentMm": 5.08,
-    "widowControl": false
+    "keepWithNext": true
    }
   },
   "lineSpacing": {
    "mode": "word",
-   "singleLineEm": 1.14990234375,
-   "baseline": "word",
-   "paragraphSpacing": "additive"
+   "singleLineEm": 1.15,
+   "baseline": "word"
   }
  },
- "placeholders": {},
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  }
+ },
  "sections": [
   {
    "id": "cover",
    "type": "outerCover",
-   "title": "KAPAK",
+   "title": "Dış Kapak",
    "status": "required",
    "group": "cover",
    "mode": "static",
    "tocEntry": "none",
-   "blocks": [
-    {
-     "id": "cover-l1-w1",
-     "type": "text",
-     "value": "T.C.",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 100.8979756673177,
-     "yMm": 24.878757052951386,
-     "widthMm": 11.635698784722223,
-     "heightMm": 7.490559895833333,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 16,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l2-w1",
-     "type": "text",
-     "value": "EGE",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 79.35030297173394,
-     "yMm": 31.355773417154943,
-     "widthMm": 12.89126383463541,
-     "heightMm": 7.490559895833333,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 16,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l2-w2",
-     "type": "text",
-     "value": "ÜNİVERSİTESİ",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 92.6491466946072,
-     "yMm": 31.355773417154943,
-     "widthMm": 41.470850118001295,
-     "heightMm": 7.490559895833333,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 16,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l3-w1",
-     "type": "text",
-     "value": "Eğitim",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 74.56663716634114,
-     "yMm": 37.875099860297304,
-     "widthMm": 17.294181993272574,
-     "heightMm": 7.490559895833333,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 16,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l3-w2",
-     "type": "text",
-     "value": "Bilimleri",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 92.26839904785156,
-     "yMm": 37.875099860297304,
-     "widthMm": 22.27141910129123,
-     "heightMm": 7.490559895833333,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 16,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l3-w3",
-     "type": "text",
-     "value": "Enstitüsü",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 114.98681208292642,
-     "yMm": 37.875099860297304,
-     "widthMm": 23.842242685953764,
-     "heightMm": 7.490559895833333,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 16,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l4-w1",
-     "type": "text",
-     "value": "[TEZ",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 51.14572071499294,
-     "yMm": 73.6704601711697,
-     "widthMm": 12.56196115281847,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l4-w2",
-     "type": "text",
-     "value": "BAŞLIĞININ",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 63.93107295566134,
-     "yMm": 73.6704601711697,
-     "widthMm": 30.64865862528483,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l4-w3",
-     "type": "text",
-     "value": "TERS",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 94.79817572699652,
-     "yMm": 73.6704601711697,
-     "widthMm": 13.937237887912332,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l4-w4",
-     "type": "text",
-     "value": "PİRAMİT",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 108.92908537122938,
-     "yMm": 73.6704601711697,
-     "widthMm": 22.996256425645612,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l4-w5",
-     "type": "text",
-     "value": "ŞEKLİNDE",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 132.16359524197048,
-     "yMm": 73.6704601711697,
-     "widthMm": 26.5129022386339,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l5-w1",
-     "type": "text",
-     "value": "VE",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 88.66363953484428,
-     "yMm": 79.34313286675346,
-     "widthMm": 7.894578086005325,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l5-w2",
-     "type": "text",
-     "value": "14",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 96.79647106594508,
-     "yMm": 79.34313286675346,
-     "widthMm": 5.918325975206159,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l5-w3",
-     "type": "text",
-     "value": "PUNTO",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 102.91342112223306,
-     "yMm": 79.34313286675346,
-     "widthMm": 18.300817362467455,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l6-w1",
-     "type": "text",
-     "value": "BÜYÜKLÜĞÜNDE",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 64.69239061143662,
-     "yMm": 85.01580556233722,
-     "widthMm": 43.66859495374892,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l6-w2",
-     "type": "text",
-     "value": "YAZILMASINA",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 108.56165517171223,
-     "yMm": 85.01580556233722,
-     "widthMm": 36.76222279866536,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l7-w1",
-     "type": "text",
-     "value": "ÖZEN",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 71.98430663214789,
-     "yMm": 90.699050394694,
-     "widthMm": 15.036810090806739,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l7-w2",
-     "type": "text",
-     "value": "GÖSTERİLMELİDİR]",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 87.27422175937228,
-     "yMm": 90.699050394694,
-     "widthMm": 50.654823345608165,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l8-w1",
-     "type": "text",
-     "value": "Yüksek",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 87.22430555555555,
-     "yMm": 150.48076960245768,
-     "widthMm": 16.948649681939017,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l8-w2",
-     "type": "text",
-     "value": "Lisans",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 104.41120868259006,
-     "yMm": 150.48076960245768,
-     "widthMm": 14.724754418267139,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l8-w3",
-     "type": "text",
-     "value": "Tezi",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 119.40469487508138,
-     "yMm": 150.48076960245768,
-     "widthMm": 10.03426767985026,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l9-w1",
-     "type": "text",
-     "value": "[Öğrencinin",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 77.82630577087401,
-     "yMm": 185.87142808702257,
-     "widthMm": 24.87840360005697,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l9-w2",
-     "type": "text",
-     "value": "Adı",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 102.90333345201279,
-     "yMm": 185.87142808702257,
-     "widthMm": 8.42453604804146,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l9-w3",
-     "type": "text",
-     "value": "SOYADI]",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 111.58097991943359,
-     "yMm": 185.87142808702257,
-     "widthMm": 21.252801259358705,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l10-w1",
-     "type": "text",
-     "value": "[…….]",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 77.31830490960014,
-     "yMm": 211.31375969780814,
-     "widthMm": 15.447788450453018,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l10-w2",
-     "type": "text",
-     "value": "ANABİLİM",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 92.98165223863388,
-     "yMm": 211.31375969780814,
-     "widthMm": 26.82939885457357,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l10-w3",
-     "type": "text",
-     "value": "DALI",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 119.98195292154946,
-     "yMm": 211.31375969780814,
-     "widthMm": 13.388778686523438,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l11-w1",
-     "type": "text",
-     "value": "İzmir",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 100.22063759697808,
-     "yMm": 258.6753175523546,
-     "widthMm": 10.15246675279404,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l12-w1",
-     "type": "text",
-     "value": "[Ay,",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 97.04563759697807,
-     "yMm": 263.5436465793186,
-     "widthMm": 8.620002153184686,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "cover-l12-w2",
-     "type": "text",
-     "value": "Yıl]",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 105.72397308349609,
-     "yMm": 263.5436465793186,
-     "widthMm": 7.819900258382148,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    }
-   ],
    "overrides": {
     "page": {
      "numbering": {
       "enabled": false
      }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
     }
-   }
+   },
+   "blocks": [
+    {
+     "type": "group",
+     "direction": "row",
+     "blocks": [
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 22.3
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "T.C.",
+         "style": {
+          "align": "center",
+          "fontSizePt": 16,
+          "fontWeight": 700
+         }
+        },
+        {
+         "type": "text",
+         "value": "EGE ÜNİVERSİTESİ",
+         "style": {
+          "align": "center",
+          "fontSizePt": 16,
+          "fontWeight": 700
+         }
+        },
+        {
+         "type": "text",
+         "value": "Eğitim Bilimleri Enstitüsü",
+         "style": {
+          "align": "center",
+          "fontSizePt": 16,
+          "fontWeight": 700
+         }
+        }
+       ],
+       "widthPercent": 57.1
+      },
+      {
+       "type": "group",
+       "blocks": [
+        {
+         "type": "text",
+         "value": ""
+        }
+       ],
+       "widthPercent": 20.6
+      }
+     ]
+    }
+   ]
   },
   {
    "id": "inner-cover",
    "type": "innerCover",
-   "title": "İÇ KAPAK",
+   "title": "İç Kapak",
    "status": "required",
    "group": "cover",
    "mode": "static",
    "tocEntry": "none",
-   "blocks": [
-    {
-     "id": "inner-cover-l1-w1",
-     "type": "text",
-     "value": "T.C.",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 103.86130684746635,
-     "yMm": 30.575136311848958,
-     "widthMm": 9.821296183268231,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l2-w1",
-     "type": "text",
-     "value": "EGE",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 86.08130361768934,
-     "yMm": 36.24780900743272,
-     "widthMm": 10.623675070868586,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l2-w2",
-     "type": "text",
-     "value": "ÜNİVERSİTESİ",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 96.90360276963975,
-     "yMm": 36.24780900743272,
-     "widthMm": 34.46244930691188,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l3-w1",
-     "type": "text",
-     "value": "Eğitim",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 82.14430770874023,
-     "yMm": 41.9204601711697,
-     "widthMm": 14.491962856716583,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l3-w2",
-     "type": "text",
-     "value": "Bilimleri",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 96.87452401055229,
-     "yMm": 41.9204601711697,
-     "widthMm": 18.77628360324435,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l3-w3",
-     "type": "text",
-     "value": "Enstitüsü",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 115.90391803317598,
-     "yMm": 41.9204601711697,
-     "widthMm": 19.375601026746978,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l4-w1",
-     "type": "text",
-     "value": "[TEZ",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 53.685719638400606,
-     "yMm": 68.12480383978948,
-     "widthMm": 11.723247273763015,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l4-w2",
-     "type": "text",
-     "value": "BAŞLIĞININ",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 65.66207194858127,
-     "yMm": 68.12480383978948,
-     "widthMm": 29.177624384562165,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l4-w3",
-     "type": "text",
-     "value": "15",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 95.09280675252278,
-     "yMm": 68.12480383978948,
-     "widthMm": 5.952992248535153,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l4-w4",
-     "type": "text",
-     "value": "SÖZCÜĞÜ",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 101.30881406995984,
-     "yMm": 68.12480383978948,
-     "widthMm": 24.27908079359267,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l4-w5",
-     "type": "text",
-     "value": "GEÇMEMESİNE,",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 125.78651894463432,
-     "yMm": 68.12480383978948,
-     "widthMm": 37.894873301188156,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l5-w1",
-     "type": "text",
-     "value": "TERS",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 62.872055986192485,
-     "yMm": 73.79747653537325,
-     "widthMm": 13.134859000311955,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l5-w2",
-     "type": "text",
-     "value": "PİRAMİT",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 76.24516304863823,
-     "yMm": 73.79747653537325,
-     "widthMm": 21.332070753309452,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l5-w3",
-     "type": "text",
-     "value": "ŞEKLİNDE",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 97.8402488708496,
-     "yMm": 73.79747653537325,
-     "widthMm": 25.155760701497385,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l5-w4",
-     "type": "text",
-     "value": "VE",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 123.2590246412489,
-     "yMm": 73.79747653537325,
-     "widthMm": 7.582533179389102,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l5-w5",
-     "type": "text",
-     "value": "14",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 131.0500865512424,
-     "yMm": 73.79747653537325,
-     "widthMm": 5.977753872341566,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l5-w6",
-     "type": "text",
-     "value": "PUNTO",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 137.2908554924859,
-     "yMm": 73.79747653537325,
-     "widthMm": 17.47861302693684,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l6-w1",
-     "type": "text",
-     "value": "BÜYÜKLÜĞÜNDE",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 69.74063975016276,
-     "yMm": 79.47012769911024,
-     "widthMm": 42.44669494628906,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l6-w2",
-     "type": "text",
-     "value": "YAZILMASINA",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 112.38595877753363,
-     "yMm": 79.47012769911024,
-     "widthMm": 35.27967978583442,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l7-w1",
-     "type": "text",
-     "value": "ÖZEN",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 77.99563759697807,
-     "yMm": 85.14280039469399,
-     "widthMm": 14.187588670518664,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l7-w2",
-     "type": "text",
-     "value": "GÖSTERİLMELİDİR]",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 92.37894354926215,
-     "yMm": 85.14280039469399,
-     "widthMm": 47.116877153184674,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l8-w1",
-     "type": "text",
-     "value": "[TEZİN",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 37.89538824293348,
-     "yMm": 109.45270758734807,
-     "widthMm": 16.92389882405599,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l8-w2",
-     "type": "text",
-     "value": "İNGİLİZCE",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 55.07239210340711,
-     "yMm": 109.45270758734807,
-     "widthMm": 25.383626853095166,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l8-w3",
-     "type": "text",
-     "value": "BAŞLIĞININ",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 80.65464303758408,
-     "yMm": 109.45270758734807,
-     "widthMm": 29.27170778910319,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l8-w4",
-     "type": "text",
-     "value": "15",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 110.12992723253038,
-     "yMm": 109.45270758734807,
-     "widthMm": 5.933182949490018,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l8-w5",
-     "type": "text",
-     "value": "SÖZCÜĞÜ",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 116.31622060139973,
-     "yMm": 109.45270758734807,
-     "widthMm": 24.318710157606333,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l8-w6",
-     "type": "text",
-     "value": "GEÇMEMESİNE,",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 140.83355484008788,
-     "yMm": 109.45270758734807,
-     "widthMm": 37.9047887166341,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l9-w1",
-     "type": "text",
-     "value": "TERS",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 62.49105534023708,
-     "yMm": 115.12538028293184,
-     "widthMm": 13.134859000311963,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l9-w2",
-     "type": "text",
-     "value": "PİRAMİT",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 75.86416240268282,
-     "yMm": 115.12538028293184,
-     "widthMm": 21.332076136271155,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l9-w3",
-     "type": "text",
-     "value": "ŞEKLİNDE",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 97.4592536078559,
-     "yMm": 115.12538028293184,
-     "widthMm": 25.155760701497385,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l9-w4",
-     "type": "text",
-     "value": "VE",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 122.87802937825519,
-     "yMm": 115.12538028293184,
-     "widthMm": 7.582533179389102,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l9-w5",
-     "type": "text",
-     "value": "14",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 130.6690912882487,
-     "yMm": 115.12538028293184,
-     "widthMm": 5.977753872341566,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l9-w6",
-     "type": "text",
-     "value": "PUNTO",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 136.90986022949218,
-     "yMm": 115.12538028293184,
-     "widthMm": 17.47861302693684,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l10-w1",
-     "type": "text",
-     "value": "BÜYÜKLÜĞÜNDE",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 69.35963910420735,
-     "yMm": 120.79805297851561,
-     "widthMm": 42.44668956332737,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l10-w2",
-     "type": "text",
-     "value": "YAZILMASINA",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 112.00495274861653,
-     "yMm": 120.79805297851561,
-     "widthMm": 35.279679785834404,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l11-w1",
-     "type": "text",
-     "value": "ÖZEN",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 77.61463695102267,
-     "yMm": 126.47071490817599,
-     "widthMm": 14.179928716023753,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l11-w2",
-     "type": "text",
-     "value": "GÖSTERİLMELİDİR]",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 91.99318974812824,
-     "yMm": 126.47071490817599,
-     "widthMm": 47.102483113606766,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l12-w1",
-     "type": "text",
-     "value": "Yüksek",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 88.24030727810329,
-     "yMm": 158.3547721862793,
-     "widthMm": 16.081863657633463,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l12-w2",
-     "type": "text",
-     "value": "Lisans",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 104.57528135511609,
-     "yMm": 158.3547721862793,
-     "widthMm": 13.872825368245444,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l12-w3",
-     "type": "text",
-     "value": "Tezi",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 118.72735680474175,
-     "yMm": 158.3547721862793,
-     "widthMm": 9.781666819254554,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l13-w1",
-     "type": "text",
-     "value": "Tez",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 93.19331029256185,
-     "yMm": 178.0821102566189,
-     "widthMm": 8.439403788248697,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l13-w2",
-     "type": "text",
-     "value": "Danışmanı",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 101.82143351236978,
-     "yMm": 178.0821102566189,
-     "widthMm": 22.42168986002605,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l14-w1",
-     "type": "text",
-     "value": "[Ad",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 94.46330167982312,
-     "yMm": 183.7547614203559,
-     "widthMm": 8.682099999321835,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l14-w2",
-     "type": "text",
-     "value": "SOYAD]",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 103.3985120985243,
-     "yMm": 183.7547614203559,
-     "widthMm": 19.64804348415798,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l15-w1",
-     "type": "text",
-     "value": "Jüri",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 96.49530512491862,
-     "yMm": 189.42743411593966,
-     "widthMm": 8.419572957356763,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l15-w2",
-     "type": "text",
-     "value": "Üyeleri",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 105.1135021633572,
-     "yMm": 189.42743411593966,
-     "widthMm": 15.819347381591797,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l16-w1",
-     "type": "text",
-     "value": "[Ad",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 94.46330167982312,
-     "yMm": 195.10010681152343,
-     "widthMm": 8.682099999321835,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l16-w2",
-     "type": "text",
-     "value": "SOYAD]",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 103.3985120985243,
-     "yMm": 195.10010681152343,
-     "widthMm": 19.64804348415798,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l17-w1",
-     "type": "text",
-     "value": "[….]",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 89.08697179158528,
-     "yMm": 222.83902520073784,
-     "widthMm": 10.48995691935221,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l17-w2",
-     "type": "text",
-     "value": "Anabilim",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 99.79537285698784,
-     "yMm": 222.83902520073784,
-     "widthMm": 19.657926601833765,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l17-w3",
-     "type": "text",
-     "value": "Dalı",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 119.69155290391708,
-     "yMm": 222.83902520073784,
-     "widthMm": 9.47953194512263,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l18-w1",
-     "type": "text",
-     "value": "[……………………]",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 87.22430555555555,
-     "yMm": 228.51167636447482,
-     "widthMm": 43.83851352267796,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l19-w1",
-     "type": "text",
-     "value": "Tezli",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 78.54597006903754,
-     "yMm": 234.1843490600586,
-     "widthMm": 11.168511539035364,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l19-w2",
-     "type": "text",
-     "value": "Yüksek",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 89.91310568915472,
-     "yMm": 234.1843490600586,
-     "widthMm": 16.081863657633463,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l19-w3",
-     "type": "text",
-     "value": "Lisans",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 106.24807976616752,
-     "yMm": 234.1843490600586,
-     "widthMm": 13.877788458930127,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l19-w4",
-     "type": "text",
-     "value": "Programı",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 120.37836498684352,
-     "yMm": 234.1843490600586,
-     "widthMm": 19.390479532877592,
-     "heightMm": 6.679239908854167,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l20-w1",
-     "type": "text",
-     "value": "İzmir",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 103.2686427646213,
-     "yMm": 260.326314968533,
-     "widthMm": 10.152466752794055,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l21-w1",
-     "type": "text",
-     "value": "[Ay,",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 100.09364276462131,
-     "yMm": 265.19464399549696,
-     "widthMm": 8.620002153184672,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "inner-cover-l21-w2",
-     "type": "text",
-     "value": "Yıl]",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 108.77197825113932,
-     "yMm": 265.19464399549696,
-     "widthMm": 7.819900258382162,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    }
-   ],
    "overrides": {
     "page": {
      "numbering": {
       "enabled": false
      }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
     }
-   }
+   },
+   "blocks": [
+    {
+     "type": "spacer",
+     "heightMm": 64.6
+    },
+    {
+     "type": "text",
+     "value": "HUZURLU ÜNİVERSİTE, KALİTELİ EĞİTİM, AYDINLIK GELECEK…",
+     "style": {
+      "align": "center",
+      "fontSizePt": 16,
+      "fontWeight": 700,
+      "italic": true,
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    }
+   ]
   },
   {
-   "id": "ethics",
-   "type": "ethicsDeclaration",
-   "title": "ETİK KURALLARA UYGUNLUK BEYANI",
+   "id": "declaration",
+   "type": "declaration",
+   "title": "Etik Beyan",
    "status": "required",
    "group": "front",
    "mode": "static",
-   "tocEntry": "title",
-   "blocks": [
-    {
-     "id": "ethics-l1-w1",
-     "type": "text",
-     "value": "EGE",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 51.484389750162755,
-     "yMm": 24.876776123046874,
-     "widthMm": 9.949265331692168,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l1-w2",
-     "type": "text",
-     "value": "ÜNİVERSİTESİ",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 61.50892321268717,
-     "yMm": 24.876776123046874,
-     "widthMm": 31.336062833997936,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l1-w3",
-     "type": "text",
-     "value": "EĞİTİM",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 92.86521877712673,
-     "yMm": 24.876776123046874,
-     "widthMm": 17.260226270887586,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l1-w4",
-     "type": "text",
-     "value": "BİLİMLERİ",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 110.21835852728948,
-     "yMm": 24.876776123046874,
-     "widthMm": 24.274849785698777,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l1-w5",
-     "type": "text",
-     "value": "ENSTİTÜSÜ",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 134.56002519395616,
-     "yMm": 24.876776123046874,
-     "widthMm": 25.032630835639083,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l2-w1",
-     "type": "text",
-     "value": "ETİK",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 63.88805770874023,
-     "yMm": 29.752167595757378,
-     "widthMm": 11.604499138726133,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l2-w2",
-     "type": "text",
-     "value": "KURALLARA",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 75.55089018079968,
-     "yMm": 29.752167595757378,
-     "widthMm": 28.27537002563477,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l2-w3",
-     "type": "text",
-     "value": "UYGUNLUK",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 103.88459353976779,
-     "yMm": 29.752167595757378,
-     "widthMm": 25.66762652926974,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l2-w4",
-     "type": "text",
-     "value": "BEYANI",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 129.61055340237087,
-     "yMm": 29.752167595757378,
-     "widthMm": 17.463422309027777,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l3-w1",
-     "type": "text",
-     "value": "Ege",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 37.34505577087402,
-     "yMm": 39.5735104031033,
-     "widthMm": 7.582834625244139,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l3-w2",
-     "type": "text",
-     "value": "Üniversitesi",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 46.527155727810324,
-     "yMm": 39.5735104031033,
-     "widthMm": 21.442765977647568,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l3-w3",
-     "type": "text",
-     "value": "Lisansüstü",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 69.59458923339844,
-     "yMm": 39.5735104031033,
-     "widthMm": 19.152531094021256,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l3-w4",
-     "type": "text",
-     "value": "Eğitim",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 90.36755684746636,
-     "yMm": 39.5735104031033,
-     "widthMm": 12.544299655490448,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l3-w5",
-     "type": "text",
-     "value": "ve",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 104.54075503879122,
-     "yMm": 39.5735104031033,
-     "widthMm": 4.996267700195318,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l3-w6",
-     "type": "text",
-     "value": "Öğretim",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 111.14052446153428,
-     "yMm": 39.5735104031033,
-     "widthMm": 15.084303961859803,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l3-w7",
-     "type": "text",
-     "value": "Yönetmeliğinin",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 127.85372695922851,
-     "yMm": 39.5735104031033,
-     "widthMm": 27.572645907931843,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l3-w8",
-     "type": "text",
-     "value": "ilgili",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 157.04680938720702,
-     "yMm": 39.5735104031033,
-     "widthMm": 9.026404995388447,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l3-w9",
-     "type": "text",
-     "value": "hükümleri",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 167.6597813076443,
-     "yMm": 39.5735104031033,
-     "widthMm": 18.398991817898235,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l4-w1",
-     "type": "text",
-     "value": "uyarınca",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 24.900466537475584,
-     "yMm": 46.85482737223307,
-     "widthMm": 15.5372721142239,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l4-w2",
-     "type": "text",
-     "value": "Yüksek",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 41.493723191155325,
-     "yMm": 46.85482737223307,
-     "widthMm": 13.911666128370491,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l4-w3",
-     "type": "text",
-     "value": "Lisans",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 56.471256976657436,
-     "yMm": 46.85482737223307,
-     "widthMm": 12.05323359171549,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l4-w4",
-     "type": "text",
-     "value": "Tezi",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 69.61363953484428,
-     "yMm": 46.85482737223307,
-     "widthMm": 8.484534539116751,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l4-w5",
-     "type": "text",
-     "value": "olarak",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 79.17250912984211,
-     "yMm": 46.85482737223307,
-     "widthMm": 11.541001722547747,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l4-w6",
-     "type": "text",
-     "value": "sunduğum",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 91.77936774359809,
-     "yMm": 46.85482737223307,
-     "widthMm": 18.640299224853507,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l4-w7",
-     "type": "text",
-     "value": "“",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 111.49823303222655,
-     "yMm": 46.85482737223307,
-     "widthMm": 2.879601033528644,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l4-w8",
-     "type": "text",
-     "value": "…….”",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 113.3933585272895,
-     "yMm": 46.85482737223307,
-     "widthMm": 11.93893178304036,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": true,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l4-w9",
-     "type": "text",
-     "value": "başlıklı",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 126.38969056871201,
-     "yMm": 46.85482737223307,
-     "widthMm": 13.467165374755865,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l4-w10",
-     "type": "text",
-     "value": "bu",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 140.89732140435112,
-     "yMm": 46.85482737223307,
-     "widthMm": 5.23333333333332,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l4-w11",
-     "type": "text",
-     "value": "tezin",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 147.15841640896267,
-     "yMm": 46.85482737223307,
-     "widthMm": 9.280405426025396,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l4-w12",
-     "type": "text",
-     "value": "kendi",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 157.47505628797742,
-     "yMm": 46.85482737223307,
-     "widthMm": 10.389532385932057,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l4-w13",
-     "type": "text",
-     "value": "çalışmam",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 168.90082312689884,
-     "yMm": 46.85482737223307,
-     "widthMm": 17.243302239312072,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l5-w1",
-     "type": "text",
-     "value": "olduğunu,",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 24.900466537475584,
-     "yMm": 54.17849748399522,
-     "widthMm": 18.05186614990234,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l5-w2",
-     "type": "text",
-     "value": "sunduğum",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 44.07323305341932,
-     "yMm": 54.17849748399522,
-     "widthMm": 18.64030191633436,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l5-w3",
-     "type": "text",
-     "value": "tüm",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 63.83443802727593,
-     "yMm": 54.17849748399522,
-     "widthMm": 7.5870656331380175,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l5-w4",
-     "type": "text",
-     "value": "sonuç,",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 72.54663772583007,
-     "yMm": 54.17849748399522,
-     "widthMm": 11.922002368503144,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l5-w5",
-     "type": "text",
-     "value": "doküman,",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 85.581075753106,
-     "yMm": 54.17849748399522,
-     "widthMm": 17.81480589972601,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l5-w6",
-     "type": "text",
-     "value": "bilgi",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 104.53795589870876,
-     "yMm": 54.17849748399522,
-     "widthMm": 8.776635572645404,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l5-w7",
-     "type": "text",
-     "value": "ve",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 114.4354891459147,
-     "yMm": 54.17849748399522,
-     "widthMm": 4.996267700195318,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l5-w8",
-     "type": "text",
-     "value": "belgeleri",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 120.52725770738388,
-     "yMm": 54.17849748399522,
-     "widthMm": 15.803962877061622,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l5-w9",
-     "type": "text",
-     "value": "bizzat",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 137.45211825900606,
-     "yMm": 54.17849748399522,
-     "widthMm": 11.104971059163432,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l5-w10",
-     "type": "text",
-     "value": "ve",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 149.67798699273,
-     "yMm": 54.17849748399522,
-     "widthMm": 5.034368303087035,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l5-w11",
-     "type": "text",
-     "value": "bu",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 155.80785615709092,
-     "yMm": 54.17849748399522,
-     "widthMm": 5.23333333333332,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l5-w12",
-     "type": "text",
-     "value": "tez",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 162.15362514919704,
-     "yMm": 54.17849748399522,
-     "widthMm": 5.965706804063586,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l5-w13",
-     "type": "text",
-     "value": "çalışması",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 169.25716442532007,
-     "yMm": 54.17849748399522,
-     "widthMm": 16.735312143961607,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l6-w1",
-     "type": "text",
-     "value": "kapsamında",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 24.900466537475584,
-     "yMm": 61.45983598497179,
-     "widthMm": 21.205703035990393,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l6-w2",
-     "type": "text",
-     "value": "elde",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 46.69367226494683,
-     "yMm": 61.45983598497179,
-     "widthMm": 8.082368087768558,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l6-w3",
-     "type": "text",
-     "value": "ettiğimi,",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 55.36354035271538,
-     "yMm": 61.45983598497179,
-     "widthMm": 15.253625022040474,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l6-w4",
-     "type": "text",
-     "value": "bu",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 71.22160017225477,
-     "yMm": 61.45983598497179,
-     "widthMm": 5.233333333333334,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l6-w5",
-     "type": "text",
-     "value": "tez",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 77.05936830308701,
-     "yMm": 61.45983598497179,
-     "widthMm": 5.93606821695964,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l6-w6",
-     "type": "text",
-     "value": "çalışmasıyla",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 83.6125697241889,
-     "yMm": 61.45983598497179,
-     "widthMm": 21.92113363477918,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l6-w7",
-     "type": "text",
-     "value": "elde",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 106.16353496975368,
-     "yMm": 61.45983598497179,
-     "widthMm": 8.082362704806854,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l6-w8",
-     "type": "text",
-     "value": "edilmeyen",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 114.83339767456053,
-     "yMm": 61.45983598497179,
-     "widthMm": 18.60644039577909,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l6-w9",
-     "type": "text",
-     "value": "bütün",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 134.08237347073023,
-     "yMm": 61.45983598497179,
-     "widthMm": 10.643532816569007,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l6-w10",
-     "type": "text",
-     "value": "bilgi",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 145.33880310058592,
-     "yMm": 61.45983598497179,
-     "widthMm": 8.81473617553712,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l6-w11",
-     "type": "text",
-     "value": "ve",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 154.7664360894097,
-     "yMm": 61.45983598497179,
-     "widthMm": 4.996267700195318,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l6-w12",
-     "type": "text",
-     "value": "yorumlara",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 160.35020378960502,
-     "yMm": 61.45983598497179,
-     "widthMm": 18.42439939710829,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l6-w13",
-     "type": "text",
-     "value": "atıf",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 179.39173100789387,
-     "yMm": 61.45983598497179,
-     "widthMm": 6.638792334662526,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l7-w1",
-     "type": "text",
-     "value": "yaptığımı",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 24.900466537475584,
-     "yMm": 68.78350609673393,
-     "widthMm": 17.23906853993734,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l7-w2",
-     "type": "text",
-     "value": "ve",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 42.83710049523247,
-     "yMm": 68.78350609673393,
-     "widthMm": 4.996265008714467,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l7-w3",
-     "type": "text",
-     "value": "bunları",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 48.50552872551812,
-     "yMm": 68.78350609673393,
-     "widthMm": 12.971868303087021,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l7-w4",
-     "type": "text",
-     "value": "kaynaklar",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 62.17496244642469,
-     "yMm": 68.78350609673393,
-     "widthMm": 17.734368303087017,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l7-w5",
-     "type": "text",
-     "value": "listesinde",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 80.57726296318901,
-     "yMm": 68.78350609673393,
-     "widthMm": 17.006236606174042,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l7-w6",
-     "type": "text",
-     "value": "usulüne",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 98.26413557264539,
-     "yMm": 68.78350609673393,
-     "widthMm": 14.272208828396273,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l7-w7",
-     "type": "text",
-     "value": "uygun",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 113.20850762261284,
-     "yMm": 68.78350609673393,
-     "widthMm": 11.583333333333329,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l7-w8",
-     "type": "text",
-     "value": "olarak",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 125.48093897501626,
-     "yMm": 68.78350609673393,
-     "widthMm": 11.57910232543945,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l7-w9",
-     "type": "text",
-     "value": "verdiğimi,",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 137.74913931952582,
-     "yMm": 68.78350609673393,
-     "widthMm": 18.597967614067926,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l7-w10",
-     "type": "text",
-     "value": "tez",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 157.03620495266384,
-     "yMm": 68.78350609673393,
-     "widthMm": 5.936068216959626,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l7-w11",
-     "type": "text",
-     "value": "çalışması",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 163.63597437540687,
-     "yMm": 68.78350609673393,
-     "widthMm": 16.77340198092992,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l7-w12",
-     "type": "text",
-     "value": "ve",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 181.10694715711804,
-     "yMm": 68.78350609673393,
-     "widthMm": 4.996267700195318,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l8-w1",
-     "type": "text",
-     "value": "yazımı",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 24.900466537475584,
-     "yMm": 76.0648445977105,
-     "widthMm": 12.501970736185708,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l8-w2",
-     "type": "text",
-     "value": "sırasında",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 38.31167151133219,
-     "yMm": 76.0648445977105,
-     "widthMm": 16.03256918589274,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l8-w3",
-     "type": "text",
-     "value": "patent",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 55.24077652825249,
-     "yMm": 76.0648445977105,
-     "widthMm": 11.367433505588103,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l8-w4",
-     "type": "text",
-     "value": "ve",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 67.55130848354763,
-     "yMm": 76.0648445977105,
-     "widthMm": 4.996267700195318,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l8-w5",
-     "type": "text",
-     "value": "telif",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 73.43140822516547,
-     "yMm": 76.0648445977105,
-     "widthMm": 7.819900258382162,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l8-w6",
-     "type": "text",
-     "value": "haklarını",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 82.14784431457518,
-     "yMm": 76.0648445977105,
-     "widthMm": 16.049495908949112,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l8-w7",
-     "type": "text",
-     "value": "ihlal",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 99.11081085205078,
-     "yMm": 76.0648445977105,
-     "widthMm": 8.522635142008454,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l8-w8",
-     "type": "text",
-     "value": "edici",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 108.54267484876844,
-     "yMm": 76.0648445977105,
-     "widthMm": 9.250766838921436,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l8-w9",
-     "type": "text",
-     "value": "bir",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 118.69420852661132,
-     "yMm": 76.0648445977105,
-     "widthMm": 5.703233591715488,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l8-w10",
-     "type": "text",
-     "value": "davranışımın",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 125.29397794935437,
-     "yMm": 76.0648445977105,
-     "widthMm": 23.12763298882379,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l8-w11",
-     "type": "text",
-     "value": "olmadığını,",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 149.3223777770996,
-     "yMm": 76.0648445977105,
-     "widthMm": 20.414071231418177,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l8-w12",
-     "type": "text",
-     "value": "bu",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 170.64567786322698,
-     "yMm": 76.0648445977105,
-     "widthMm": 5.2333333333333485,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l8-w13",
-     "type": "text",
-     "value": "tezin",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 176.77977803548177,
-     "yMm": 76.0648445977105,
-     "widthMm": 9.204193454318556,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l9-w1",
-     "type": "text",
-     "value": "herhangi",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 24.900466537475584,
-     "yMm": 83.34616156684027,
-     "widthMm": 15.765870348612463,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l9-w2",
-     "type": "text",
-     "value": "bir",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 40.52147148980034,
-     "yMm": 83.34616156684027,
-     "widthMm": 5.703233591715495,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l9-w3",
-     "type": "text",
-     "value": "bölümünü",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 46.10523380703396,
-     "yMm": 83.34616156684027,
-     "widthMm": 18.183097373114684,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l9-w4",
-     "type": "text",
-     "value": "bu",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 64.13499569363064,
-     "yMm": 83.34616156684027,
-     "widthMm": 5.23333333333332,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l9-w5",
-     "type": "text",
-     "value": "üniversitede",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 69.21499354044596,
-     "yMm": 83.34616156684027,
-     "widthMm": 21.671369594997827,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l9-w6",
-     "type": "text",
-     "value": "veya",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 90.71609285142686,
-     "yMm": 83.34616156684027,
-     "widthMm": 9.01370120578342,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l9-w7",
-     "type": "text",
-     "value": "diğer",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 99.55952377319335,
-     "yMm": 83.34616156684027,
-     "widthMm": 9.72912911309136,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l9-w8",
-     "type": "text",
-     "value": "bir",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 109.16495598687065,
-     "yMm": 83.34616156684027,
-     "widthMm": 5.703233591715488,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l9-w9",
-     "type": "text",
-     "value": "üniversitede",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 114.71062308417426,
-     "yMm": 83.34616156684027,
-     "widthMm": 21.671369594997813,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l9-w10",
-     "type": "text",
-     "value": "başka",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 136.21172239515516,
-     "yMm": 83.34616156684027,
-     "widthMm": 10.660467614067926,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l9-w11",
-     "type": "text",
-     "value": "bir",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 146.70615073310003,
-     "yMm": 83.34616156684027,
-     "widthMm": 5.749796210394976,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l9-w12",
-     "type": "text",
-     "value": "tez",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 152.33225004408092,
-     "yMm": 83.34616156684027,
-     "widthMm": 5.936068216959654,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l9-w13",
-     "type": "text",
-     "value": "çalışması",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 158.08958596123588,
-     "yMm": 83.34616156684027,
-     "widthMm": 16.77340198092989,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l9-w14",
-     "type": "text",
-     "value": "içinde",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 174.71812523735892,
-     "yMm": 83.34616156684027,
-     "widthMm": 11.346267700195312,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l10-w1",
-     "type": "text",
-     "value": "sunmadığımı,",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 24.900466537475584,
-     "yMm": 90.68042534722221,
-     "widthMm": 24.185966322157118,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l10-w2",
-     "type": "text",
-     "value": "bu",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 50.74920099046495,
-     "yMm": 90.68042534722221,
-     "widthMm": 5.233333333333334,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l10-w3",
-     "type": "text",
-     "value": "tezin",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 57.64530245463053,
-     "yMm": 90.68042534722221,
-     "widthMm": 9.204198837280266,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l10-w4",
-     "type": "text",
-     "value": "planlanmasından",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 68.55530620151096,
-     "yMm": 90.68042534722221,
-     "widthMm": 29.659668604532868,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l10-w5",
-     "type": "text",
-     "value": "yazımına",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 99.87774293687607,
-     "yMm": 90.68042534722221,
-     "widthMm": 16.544798363579645,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l10-w6",
-     "type": "text",
-     "value": "kadar",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 118.06837463378905,
-     "yMm": 90.68042534722221,
-     "widthMm": 10.368366580539288,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l10-w7",
-     "type": "text",
-     "value": "bütün",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 130.08680555555554,
-     "yMm": 90.68042534722221,
-     "widthMm": 10.643532816569007,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l10-w8",
-     "type": "text",
-     "value": "safhalarda",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 142.40156851874457,
-     "yMm": 90.68042534722221,
-     "widthMm": 18.369363996717652,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l10-w9",
-     "type": "text",
-     "value": "bilimsel",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 162.41676584879556,
-     "yMm": 90.68042534722221,
-     "widthMm": 14.656735314263244,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l10-w10",
-     "type": "text",
-     "value": "etik",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 178.7447313096788,
-     "yMm": 90.68042534722221,
-     "widthMm": 7.345779758029522,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l11-w1",
-     "type": "text",
-     "value": "kurallarına",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 24.900466537475584,
-     "yMm": 97.96174231635199,
-     "widthMm": 19.304938888549803,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l11-w2",
-     "type": "text",
-     "value": "uygun",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 44.57700559828016,
-     "yMm": 97.96174231635199,
-     "widthMm": 11.583333333333336,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l11-w3",
-     "type": "text",
-     "value": "davrandığımı",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 56.553104909261066,
-     "yMm": 97.96174231635199,
-     "widthMm": 23.618699052598743,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l11-w4",
-     "type": "text",
-     "value": "ve",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 80.5772683461507,
-     "yMm": 97.96174231635199,
-     "widthMm": 4.996267700195318,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l11-w5",
-     "type": "text",
-     "value": "aksinin",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 85.94936722649467,
-     "yMm": 97.96174231635199,
-     "widthMm": 13.230105124579538,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l11-w6",
-     "type": "text",
-     "value": "ortaya",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 99.57223832872178,
-     "yMm": 97.96174231635199,
-     "widthMm": 11.557936520046653,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l11-w7",
-     "type": "text",
-     "value": "çıkması",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 111.5441066318088,
-     "yMm": 97.96174231635199,
-     "widthMm": 14.148734452989359,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l11-w8",
-     "type": "text",
-     "value": "durumunda",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 126.09831085205077,
-     "yMm": 97.96174231635199,
-     "widthMm": 20.28283462524415,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l11-w9",
-     "type": "text",
-     "value": "her",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 146.7527456495497,
-     "yMm": 97.96174231635199,
-     "widthMm": 6.3890336778428605,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l11-w10",
-     "type": "text",
-     "value": "türlü",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 153.5599421183268,
-     "yMm": 97.96174231635199,
-     "widthMm": 8.996766408284515,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l11-w11",
-     "type": "text",
-     "value": "yasal",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 162.95370551215277,
-     "yMm": 97.96174231635199,
-     "widthMm": 9.66986270480686,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l11-w12",
-     "type": "text",
-     "value": "sonucu",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 173.02479621039495,
-     "yMm": 97.96174231635199,
-     "widthMm": 12.980319552951386,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l12-w1",
-     "type": "text",
-     "value": "kabul",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 24.900466537475584,
-     "yMm": 105.28541242811414,
-     "widthMm": 10.38953507741292,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l12-w2",
-     "type": "text",
-     "value": "edeceğimi",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 35.34833494822184,
-     "yMm": 105.28541242811414,
-     "widthMm": 18.390537876553005,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l12-w3",
-     "type": "text",
-     "value": "beyan",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 53.797206158108175,
-     "yMm": 105.28541242811414,
-     "widthMm": 11.083799870808917,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l12-w4",
-     "type": "text",
-     "value": "ederim.",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 64.93933936225042,
-     "yMm": 105.28541242811414,
-     "widthMm": 13.818532816569018,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l13-w1",
-     "type": "text",
-     "value": "[Ad",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 161.53694229125975,
-     "yMm": 129.79641630384654,
-     "widthMm": 7.561668819851349,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "ethics-l13-w2",
-     "type": "text",
-     "value": "SOYAD]",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 169.15694444444443,
-     "yMm": 129.79641630384654,
-     "widthMm": 16.968125237358947,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    }
-   ],
+   "tocEntry": "none",
    "overrides": {
     "page": {
      "numbering": {
-      "enabled": true,
-      "format": "roman-lower",
-      "restart": false
+      "enabled": false
      }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
     }
-   }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "EGE ÜNİVERSİTESİ EĞİTİM BİLİMLERİ ENSTİTÜSÜ",
+     "style": {
+      "align": "center",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "text",
+     "value": "ETİK KURALLARA UYGUNLUK BEYANI",
+     "style": {
+      "align": "center",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "text",
+     "value": "Ege Üniversitesi Lisansüstü Eğitim ve Öğretim Yönetmeliğinin ilgili hükümleri uyarınca Yüksek Lisans Tezi olarak sunduğum {{THESIS_TITLE}} başlıklı bu tezin kendi çalışmam olduğunu, sunduğum tüm sonuç, doküman, bilgi ve belgeleri bizzat ve bu tez çalışması kapsamında elde ettiğimi, bu tez çalışmasıyla elde edilmeyen bütün bilgi ve yorumlara atıf yaptığımı ve bunları kaynaklar listesinde usulüne uygun olarak verdiğimi, tez çalışması ve yazımı sırasında patent ve telif haklarını ihlal edici bir davranışımın olmadığını, bu tezin herhangi bir bölümünü bu üniversitede veya diğer bir üniversitede başka bir tez çalışması içinde sunmadığımı, bu tezin planlanmasından yazımına kadar bütün safhalarda bilimsel etik kurallarına uygun davrandığımı ve aksinin ortaya çıkması durumunda her türlü yasal sonucu kabul edeceğimi beyan ederim.",
+     "style": {
+      "align": "justify",
+      "spaceBeforePt": 5,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 9.07
+    },
+    {
+     "type": "metadata",
+     "style": {
+      "align": "right",
+      "spaceBeforePt": 5,
+      "lineHeight": 1.5
+     },
+     "field": "STUDENT_NAME",
+     "fallback": "Öğrenci adı soyadı"
+    }
+   ]
   },
   {
    "id": "approval",
    "type": "approval",
-   "title": "TEZ SAVUNMA TUTANAĞI",
+   "title": "Onay Sayfası",
    "status": "required",
    "group": "front",
    "mode": "static",
-   "tocEntry": "title",
-   "blocks": [
-    {
-     "id": "approval-l1-w1",
-     "type": "text",
-     "value": "TEZ",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 77.4876367357042,
-     "yMm": 24.876776123046874,
-     "widthMm": 9.487832472059466,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "approval-l1-w2",
-     "type": "text",
-     "value": "SAVUNMA",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 87.04226993984645,
-     "yMm": 24.876776123046874,
-     "widthMm": 22.59422993130154,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "approval-l1-w3",
-     "type": "text",
-     "value": "TUTANAĞI",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 109.69483320448133,
-     "yMm": 24.876776123046874,
-     "widthMm": 23.796498277452244,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "approval-l2-w1",
-     "type": "text",
-     "value": "Bu",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 37.34505577087402,
-     "yMm": 37.11816931830512,
-     "widthMm": 5.948766623602971,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "approval-l2-w2",
-     "type": "text",
-     "value": "sayfaya",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 43.35215572781033,
-     "yMm": 37.11816931830512,
-     "widthMm": 13.886272006564667,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "approval-l2-w3",
-     "type": "text",
-     "value": "tez",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 57.27982627020941,
-     "yMm": 37.11816931830512,
-     "widthMm": 5.96570142110189,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "approval-l2-w4",
-     "type": "text",
-     "value": "savunma",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 63.28692622714572,
-     "yMm": 37.11816931830512,
-     "widthMm": 16.03680288526747,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "approval-l2-w5",
-     "type": "text",
-     "value": "tutanağı",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 79.38206244574653,
-     "yMm": 37.11816931830512,
-     "widthMm": 14.652504306369352,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "approval-l2-w6",
-     "type": "text",
-     "value": "jüri",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 94.09290008544922,
-     "yMm": 37.11816931830512,
-     "widthMm": 6.892803531222867,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "approval-l2-w7",
-     "type": "text",
-     "value": "üyelerinin",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 101.04403695000542,
-     "yMm": 37.11816931830512,
-     "widthMm": 18.136540137396906,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "approval-l2-w8",
-     "type": "text",
-     "value": "imzası",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 119.23891042073566,
-     "yMm": 37.11816931830512,
-     "widthMm": 12.032067786322699,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "approval-l2-w9",
-     "type": "text",
-     "value": "kaldırılarak",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 131.3293115403917,
-     "yMm": 37.11816931830512,
-     "widthMm": 20.481788889567042,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    },
-    {
-     "id": "approval-l2-w10",
-     "type": "text",
-     "value": "eklenmelidir.",
-     "layoutMode": "absolute",
-     "wordBaseline": true,
-     "xMm": 151.9075343661838,
-     "yMm": 37.11816931830512,
-     "widthMm": 23.474769422743066,
-     "heightMm": 5.867919921875,
-     "flowHeightMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "italic": false,
-      "align": "left",
-      "firstLineIndentMm": 0,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     }
-    }
-   ],
+   "tocEntry": "none",
    "overrides": {
     "page": {
      "numbering": {
-      "enabled": true,
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "Tez savunma tutanağı",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Bu sayfaya tez savunma tutanağı jüri üyelerinin imzası kaldırılarak eklenmelidir.",
+     "style": {
+      "align": "justify",
+      "spaceBeforePt": 5,
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
       "format": "roman-lower",
       "startAt": 1,
       "restart": true
@@ -5462,233 +740,69 @@
    }
   },
   {
-   "id": "thanks",
-   "type": "acknowledgements",
-   "title": "TEŞEKKÜR",
-   "status": "required",
-   "group": "front",
-   "mode": "editable",
-   "showTitle": true,
-   "tocEntry": "title",
-   "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": true,
-      "format": "roman-lower",
-      "restart": false
-     }
-    },
-    "headings": {
-     "1": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "spaceAfterPt": 0,
-      "lineSpacing": {
-       "rule": "auto",
-       "value": 1.5
-      },
-      "lineHeight": 1.5,
-      "keepWithNext": true,
-      "numbering": {
-       "enabled": false
-      },
-      "firstLineIndentMm": 0,
-      "pageBreakBefore": false
-     }
-    }
-   }
-  },
-  {
-   "id": "toc",
+   "id": "table-of-contents",
    "type": "tableOfContents",
    "title": "İÇİNDEKİLER",
    "status": "required",
    "group": "front",
    "mode": "generated",
-   "showTitle": true,
-   "tocEntry": "none",
    "generatedIndex": {
     "kind": "toc",
     "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots",
     "levels": [
      1,
      2,
-     3,
-     4
-    ],
-    "includePageNumbers": true,
-    "leader": "dots",
-    "style": {
-     "fontFamily": "Times New Roman",
-     "fontSizePt": 12,
-     "fontWeight": 700,
-     "align": "justify",
-     "spaceAfterPt": 5,
-     "lineSpacing": {
-      "rule": "auto",
-      "value": 1
-     },
-     "lineHeight": 1
-    }
+     3
+    ]
    },
    "overrides": {
     "page": {
      "numbering": {
-      "enabled": true,
-      "format": "roman-lower",
-      "restart": false
-     }
-    },
-    "headings": {
-     "1": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "spaceAfterPt": 0,
-      "lineSpacing": {
-       "rule": "auto",
-       "value": 1.5
-      },
-      "lineHeight": 1.5,
-      "keepWithNext": true,
-      "numbering": {
-       "enabled": false
-      },
-      "firstLineIndentMm": 0,
-      "pageBreakBefore": false
+      "format": "roman-lower"
      }
     }
    }
   },
   {
-   "id": "tables",
+   "id": "list-of-tables",
    "type": "listOfTables",
    "title": "TABLO LİSTESİ",
    "status": "required",
    "group": "front",
    "mode": "generated",
-   "showTitle": true,
-   "tocEntry": "none",
    "generatedIndex": {
     "kind": "tables",
     "title": "TABLO LİSTESİ",
-    "levels": [
-     1,
-     2,
-     3,
-     4
-    ],
     "includePageNumbers": true,
-    "leader": "dots",
-    "style": {
-     "fontFamily": "Times New Roman",
-     "fontSizePt": 12,
-     "align": "justify",
-     "spaceBeforePt": 5,
-     "spaceAfterPt": 0,
-     "lineSpacing": {
-      "rule": "auto",
-      "value": 1.5
-     },
-     "lineHeight": 1.5,
-     "firstLineIndentMm": 12.453055555555554
-    }
+    "leader": "dots"
    },
    "overrides": {
     "page": {
      "numbering": {
-      "enabled": true,
-      "format": "roman-lower",
-      "restart": false
-     }
-    },
-    "headings": {
-     "1": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "spaceBeforePt": 5,
-      "spaceAfterPt": 5,
-      "lineSpacing": {
-       "rule": "auto",
-       "value": 1
-      },
-      "lineHeight": 1,
-      "keepWithNext": true,
-      "numbering": {
-       "enabled": false
-      },
-      "pageBreakBefore": false,
-      "firstLineIndentMm": 0
+      "format": "roman-lower"
      }
     }
    }
   },
   {
-   "id": "figures",
+   "id": "list-of-figures",
    "type": "listOfFigures",
    "title": "ŞEKİL LİSTESİ",
    "status": "required",
    "group": "front",
    "mode": "generated",
-   "showTitle": true,
-   "tocEntry": "none",
    "generatedIndex": {
     "kind": "figures",
     "title": "ŞEKİL LİSTESİ",
-    "levels": [
-     1,
-     2,
-     3,
-     4
-    ],
     "includePageNumbers": true,
-    "leader": "dots",
-    "style": {
-     "fontFamily": "Times New Roman",
-     "fontSizePt": 12,
-     "align": "justify",
-     "spaceBeforePt": 5,
-     "spaceAfterPt": 0,
-     "lineSpacing": {
-      "rule": "auto",
-      "value": 1.5
-     },
-     "lineHeight": 1.5,
-     "firstLineIndentMm": 12.453055555555554
-    }
+    "leader": "dots"
    },
    "overrides": {
     "page": {
      "numbering": {
-      "enabled": true,
-      "format": "roman-lower",
-      "restart": false
-     }
-    },
-    "headings": {
-     "1": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "spaceBeforePt": 5,
-      "spaceAfterPt": 5,
-      "lineSpacing": {
-       "rule": "auto",
-       "value": 1
-      },
-      "lineHeight": 1,
-      "keepWithNext": true,
-      "numbering": {
-       "enabled": false
-      },
-      "pageBreakBefore": false,
-      "firstLineIndentMm": 0
+      "format": "roman-lower"
      }
     }
    }
@@ -5701,33 +815,10 @@
    "group": "front",
    "mode": "editable",
    "showTitle": true,
-   "tocEntry": "title",
    "overrides": {
     "page": {
      "numbering": {
-      "enabled": true,
-      "format": "roman-lower",
-      "restart": false
-     }
-    },
-    "headings": {
-     "1": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "spaceAfterPt": 0,
-      "lineSpacing": {
-       "rule": "auto",
-       "value": 1.5
-      },
-      "lineHeight": 1.5,
-      "keepWithNext": true,
-      "numbering": {
-       "enabled": false
-      },
-      "firstLineIndentMm": 0,
-      "pageBreakBefore": false
+      "format": "roman-lower"
      }
     }
    }
@@ -5740,80 +831,34 @@
    "group": "front",
    "mode": "editable",
    "showTitle": true,
-   "tocEntry": "title",
    "overrides": {
     "page": {
      "numbering": {
-      "enabled": true,
-      "format": "roman-lower",
-      "restart": false
-     }
-    },
-    "headings": {
-     "1": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "spaceAfterPt": 0,
-      "lineSpacing": {
-       "rule": "auto",
-       "value": 1.5
-      },
-      "lineHeight": 1.5,
-      "keepWithNext": true,
-      "numbering": {
-       "enabled": false
-      },
-      "firstLineIndentMm": 0,
-      "pageBreakBefore": false
+      "format": "roman-lower"
      }
     }
    }
   },
   {
-   "id": "symbols",
+   "id": "list-of-abbreviations",
    "type": "listOfAbbreviations",
    "title": "SİMGELER VE KISALTMALAR DİZİNİ",
    "status": "required",
    "group": "front",
    "mode": "editable",
    "showTitle": true,
-   "tocEntry": "title",
    "overrides": {
     "page": {
      "numbering": {
-      "enabled": true,
-      "format": "roman-lower",
-      "restart": false
-     }
-    },
-    "headings": {
-     "1": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "spaceAfterPt": 0,
-      "lineSpacing": {
-       "rule": "auto",
-       "value": 1.5
-      },
-      "lineHeight": 1.5,
-      "keepWithNext": true,
-      "numbering": {
-       "enabled": false
-      },
-      "firstLineIndentMm": 0,
-      "pageBreakBefore": false
+      "format": "roman-lower"
      }
     }
    }
   },
   {
-   "id": "main",
+   "id": "main-content",
    "type": "mainContent",
-   "title": "ANA METİN",
+   "title": "GİRİŞ",
    "status": "required",
    "group": "body",
    "mode": "editable",
@@ -5821,7 +866,6 @@
    "overrides": {
     "page": {
      "numbering": {
-      "enabled": true,
       "format": "arabic",
       "startAt": 1,
       "restart": true
@@ -5836,74 +880,20 @@
    "status": "required",
    "group": "back",
    "mode": "editable",
-   "showTitle": true,
-   "tocEntry": "title",
-   "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": true,
-      "format": "arabic",
-      "restart": false
-     }
-    },
-    "headings": {
-     "1": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "spaceBeforePt": 5,
-      "spaceAfterPt": 5,
-      "lineSpacing": {
-       "rule": "auto",
-       "value": 1
-      },
-      "lineHeight": 1,
-      "keepWithNext": true,
-      "numbering": {
-       "enabled": false
-      },
-      "firstLineIndentMm": 0,
-      "pageBreakBefore": false
-     }
-    }
-   }
+   "showTitle": true
   },
   {
    "id": "appendices",
    "type": "appendices",
    "title": "EKLER DİZİNİ",
-   "status": "required",
+   "status": "optional",
    "group": "back",
    "mode": "editable",
    "showTitle": true,
-   "tocEntry": "title",
    "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": true,
-      "format": "arabic",
-      "restart": false
-     }
-    },
     "headings": {
      "1": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 16,
-      "fontWeight": 700,
-      "align": "center",
-      "spaceBeforePt": 5,
-      "spaceAfterPt": 0,
-      "lineSpacing": {
-       "rule": "auto",
-       "value": 1.5
-      },
-      "lineHeight": 1.5,
-      "firstLineIndentMm": 0,
-      "numbering": {
-       "enabled": false
-      },
-      "pageBreakBefore": false
+      "fontSizePt": 16
      }
     }
    }
@@ -5915,42 +905,14 @@
   "style": {
    "fontFamily": "Times New Roman",
    "fontSizePt": 10,
-   "italic": true,
+   "fontWeight": 400,
    "align": "center",
-   "spaceAfterPt": 10,
-   "lineSpacing": {
-    "rule": "auto",
-    "value": 1
-   },
    "lineHeight": 1
   },
   "numbering": {
-   "scope": "document",
-   "format": "{n}",
+   "scope": "chapter",
+   "format": "{chapter}.{n}",
    "sequence": "arabic"
-  },
-  "cellPadding": {
-   "topMm": 0,
-   "bottomMm": 0,
-   "leftMm": 1.9049999999999998,
-   "rightMm": 1.9049999999999998
-  },
-  "cellStyle": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 9,
-   "fontWeight": 400,
-   "italic": true,
-   "align": "center",
-   "spaceBeforePt": 0,
-   "spaceAfterPt": 0,
-   "lineSpacing": {
-    "rule": "auto",
-    "value": 1
-   },
-   "lineHeight": 1,
-   "leftIndentMm": 5.08,
-   "hangingIndentMm": 5.08,
-   "widowControl": false
   }
  },
  "figures": {
@@ -5959,58 +921,23 @@
   "style": {
    "fontFamily": "Times New Roman",
    "fontSizePt": 10,
-   "italic": true,
+   "fontWeight": 400,
    "align": "center",
-   "spaceAfterPt": 10,
-   "lineSpacing": {
-    "rule": "auto",
-    "value": 1
-   },
    "lineHeight": 1
   },
   "numbering": {
-   "scope": "document",
-   "format": "{n}",
+   "scope": "chapter",
+   "format": "{chapter}.{n}",
    "sequence": "arabic"
   }
  },
- "captionKinds": {
-  "photo": {
-   "label": "Resim",
-   "position": "below",
-   "style": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 10,
-    "italic": true,
-    "align": "center",
-    "spaceAfterPt": 10,
-    "lineSpacing": {
-     "rule": "auto",
-     "value": 1
-    },
-    "lineHeight": 1
-   },
-   "numbering": {
-    "scope": "document",
-    "format": "{n}",
-    "sequence": "arabic"
-   }
-  }
- },
  "bibliography": {
-  "heading": "KAYNAKLAR",
+  "heading": "Kaynakça",
   "style": {
    "fontFamily": "Times New Roman",
    "fontSizePt": 12,
-   "align": "center",
-   "spaceBeforePt": 5,
-   "spaceAfterPt": 0,
-   "lineSpacing": {
-    "rule": "auto",
-    "value": 1.5
-   },
-   "lineHeight": 1.5,
-   "firstLineIndentMm": 12.453055555555554
+   "align": "left",
+   "lineHeight": 1.5
   }
  },
  "toc": {
@@ -6018,8 +945,7 @@
   "levels": [
    1,
    2,
-   3,
-   4
+   3
   ],
   "showPageNumbers": true
  }

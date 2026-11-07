@@ -39,3 +39,8 @@ __pycache__/
 /orchestration/validation/*/run/
 /orchestration/validation/**/run/
 /orchestration/validation/**/*.layout.json
+
+# Template pipeline intermediate output (engine/tools/kaynak, engine/tools/taslak)
+/engine/output/
+
+/orchestration/arsiv/yerel/

@@ -20,7 +20,7 @@ const compile = (template = akuSbeMaster, html = main, extra = {}) => compileThe
 const section = (model, id) => model.sections.find((item) => item.id === id);
 
 describe("AKÜ SBE template (aku-sbe-master-tr-v1, aku-sbe-phd-tr-v1)", () => {
-  it("is valid, registered and differs between the degrees only in its degree strings", async () => {
+  it("is valid and registered, with shared rules and the doctorate-only bursary field", async () => {
     for (const template of [akuSbeMaster, akuSbePhd]) {
       assert.deepEqual(validateThesisTemplate(template), []);
       const { fallback, template: resolved } = await resolveThesisTemplate({ templateId: template.id });
@@ -35,7 +35,13 @@ describe("AKÜ SBE template (aku-sbe-master-tr-v1, aku-sbe-phd-tr-v1)", () => {
     assert.deepEqual(THESIS_TEMPLATE_REGISTRY.filter((entry) => entry.id.startsWith("aku-sbe")).map((entry) => entry.id), [
       "aku-sbe-master-tr-v1", "aku-sbe-phd-tr-v1", "aku-sbe-sanatta-yeterlik-tr-v1", "aku-sbe-master-en-v1", "aku-sbe-phd-en-v1",
     ]);
-    const normalise = (template, [cover, tanitim, ethics]) => JSON.stringify({ ...template, id: "x", degreeType: "x", displayName: "x" }).replaceAll(cover, "C").replaceAll(tanitim, "T").replaceAll(ethics, "E");
+    const normalise = (template, [cover, tanitim, ethics]) => {
+      const copy = structuredClone(template);
+      delete copy.placeholders.YOK_100_2000_THEME;
+      const inner = copy.sections.find(section => section.id === "inner-cover");
+      inner.blocks = inner.blocks.filter(block => !block.visibleWhen?.anyFilled?.includes("YOK_100_2000_THEME"));
+      return JSON.stringify({ ...copy, id: "x", degreeType: "x", displayName: "x" }).replaceAll(cover, "C").replaceAll(tanitim, "T").replaceAll(ethics, "E");
+    };
     assert.equal(normalise(akuSbeMaster, ["YÜKSEK LİSANS TEZİ", "Yüksek Lisans Tezi", "Yüksek Lisans tezi"]), normalise(akuSbePhd, ["DOKTORA TEZİ", "Doktora Tezi", "Doktora tezi"]));
     assert.deepEqual(templateFontFamilies(akuSbeMaster), ["Times New Roman"]);
     assert.deepEqual(compile().systemFonts, ["Times New Roman"], "the genuine installed Times New Roman is embedded by the export");

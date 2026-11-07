@@ -182,7 +182,126 @@
    "İçindekiler (Ek-3): başlık 12 pt koyu ortalı, satırlar 12 pt; ÖNSÖZ/GİRİŞ/liste/SONUÇ/KAYNAKÇA/EKLER satırları koyu; bölüm satırları ('BİRİNCİ BÖLÜM', bölüm adı) koyu ortalı sayfa numarasız; ORTA/YAN BAŞLIK normal, Alt Başlık koyu; örnekte alt düzeyler 4,3 mm basamakla boşlukla kaydırılmıştır (ölçüm). Örnek sayfa satır aralığı (koyu üst satırlar 1,15 satır + 10 nk, numaralı satırlar tek satır 0 nk) uygulandı. Örnekteki sayfa numaraları hatalıdır (şekiller 'vi', kısaltmalar 'v'): kural değil, görsel örnek.",
    "UNKNOWN (missing evidence): page-number font/size (12 pt INFERRED from general text-size rule) and bottom distance; thesis header/footer geometry; footnote style; preface layout; caption position, typography, alignment and style (Ek-4/Ek-5 show list rows only); table rules; equations; block-quote first-line indent and spacing; bibliography-specific indent/spacing beyond the general paragraph rule; appendices; abstract (absent). Caption labels and document-wide Arabic number pattern are INFERRED from the official index rows 'Tablo 1.' / 'Şekil 1.'; no caption paragraphs were found. General paragraph rule applies to reference entries only as an INFERRED fallback. The guide's page/source-count and writing-format examples are not document rules.",
    "Kılavuz belgesinin kendi paragrafları (1,15 satır, ilk satır 1,0 cm, 10 nk sonra, iki yana yaslı) kendi metin kuralına (1,5 satır, 1,25 cm, 6/6 nk) uymaz: ÇELİŞKİ kaydı; metin kuralı uygulandı (örnek sayfa değil, kılavuz belgesinin kendi gövdesi)."
-  ]
+  ],
+  "regionalAudit": {
+   "checkedAt": "2026-10-23",
+   "status": "CORE_RECHECKED",
+   "layoutRebuilt": false,
+   "visualConformanceRechecked": false,
+   "documents": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "sha256": "95bc988c5bf3f62d2d1ca0a5fdd0d9bfd405251b718e500371392e6171d8ddd3"
+    }
+   ],
+   "checkedFields": [
+    {
+     "field": "typography.body.fontFamily",
+     "template": "Times New Roman",
+     "sourceValue": "Times New Roman",
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "evidence": [
+      {
+       "value": "Times New Roman",
+       "location": "paragraf 31",
+       "sentence": "Times New Roman fontunda,"
+      }
+     ]
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "template": 12,
+     "sourceValue": 12.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "evidence": [
+      {
+       "value": 12.0,
+       "location": "paragraf 32",
+       "sentence": "12 puntoda,"
+      }
+     ]
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "template": 1.5,
+     "sourceValue": 1.5,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "evidence": [
+      {
+       "value": 1.5,
+       "location": "paragraf 33",
+       "sentence": "1,5 satır aralığında,"
+      }
+     ]
+    },
+    {
+     "field": "typography.body.firstLineIndentMm",
+     "template": 12.5,
+     "sourceValue": 12.5,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "evidence": [
+      {
+       "value": 12.5,
+       "location": "paragraf 34",
+       "sentence": "1,25 cm içeriden başlayan paragraf başı,"
+      }
+     ]
+    },
+    {
+     "field": "page.margins.topMm",
+     "template": 45,
+     "sourceValue": 45.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "evidence": [
+      {
+       "value": 45.0,
+       "location": "paragraf 37",
+       "sentence": "Sayfa kenar boşluğu: üst: 4.5 cm, alt: 4.5 cm, sol: 4.5 cm, sağ: 3 cm boşluk"
+      }
+     ]
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "template": 45,
+     "sourceValue": 45.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "evidence": [
+      {
+       "value": 45.0,
+       "location": "paragraf 37",
+       "sentence": "Sayfa kenar boşluğu: üst: 4.5 cm, alt: 4.5 cm, sol: 4.5 cm, sağ: 3 cm boşluk"
+      }
+     ]
+    },
+    {
+     "field": "page.margins.leftMm",
+     "template": 45,
+     "sourceValue": 45.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "evidence": [
+      {
+       "value": 45.0,
+       "location": "paragraf 37",
+       "sentence": "Sayfa kenar boşluğu: üst: 4.5 cm, alt: 4.5 cm, sol: 4.5 cm, sağ: 3 cm boşluk"
+      }
+     ]
+    },
+    {
+     "field": "page.margins.rightMm",
+     "template": 30,
+     "sourceValue": 30.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyoloji_Bolumu_Bitirme_Tezi/AKU_Sosyoloji_Lisans_Tez_Yazim_Kilavuzu_2022.docx",
+     "evidence": [
+      {
+       "value": 30.0,
+       "location": "paragraf 37",
+       "sentence": "Sayfa kenar boşluğu: üst: 4.5 cm, alt: 4.5 cm, sol: 4.5 cm, sağ: 3 cm boşluk"
+      }
+     ]
+    }
+   ],
+   "conflicts": []
+  }
  },
  "placeholders": {
   "THESIS_TITLE": {

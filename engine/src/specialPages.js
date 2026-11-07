@@ -19,8 +19,10 @@
  * Page geometry and numbering stay in the section's existing `overrides.page`.
  */
 import { resolvePlaceholders } from "./engine.js";
+import { formatPlaceholderValue } from './templateConformance.js';
 import { convertLength } from "./units.js";
 import { staticFormatOpenTag } from "./staticFormat.js";
+import { runHtml } from "./layoutRuns.js";
 import { normalizeHex } from "../../TxtNote/frontend/src/config/format.js";
 
 // A metadata suffix is skipped when the value already ends the way the suffix would ("Yazılım Programı" + " PROGRAMI"): block.skipSuffixIfMatches is a case-insensitive (tr) RegExp source tested on the value.
@@ -56,7 +58,7 @@ export function isSpecialPageSection(section) {
 function formatMetadataValue(value, definition, language) {
   const text = String(value ?? "");
   const iso = definition?.type === "date" && text.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  if (!iso) return text;
+  if (!iso) return formatPlaceholderValue(text, definition, language);
   const date = new Date(Date.UTC(Number(iso[1]), Number(iso[2]) - 1, Number(iso[3])));
   try {
     return new Intl.DateTimeFormat(language || "tr", { day: "2-digit", month: "2-digit", year: "numeric", timeZone: "UTC" }).format(date);
@@ -108,7 +110,7 @@ export function resolveSpecialPage(blocks, { definitions = {}, values = {}, base
     if (block.type === "group") {
       const style = { ...inherited, ...block.style };
       const direction = block.direction === "row" ? "row" : "column";
-      return { ...box, type: "group", direction, gapMm: finite(block.gapMm), ...(Number.isFinite(block.minHeightMm) ? { minHeightMm: block.minHeightMm } : {}), ...(["top", "center", "bottom"].includes(block.verticalAlign) ? { verticalAlign: block.verticalAlign } : {}), ...(block.border ? { border: resolveBorder(block.border) } : {}), blocks: resolveList(block.blocks, style, path, direction === "row") };
+      return { ...box, type: "group", direction, gapMm: finite(block.gapMm), ...(Number.isFinite(block.minHeightMm) ? { minHeightMm: block.minHeightMm } : {}), ...(["top", "center", "bottom"].includes(block.verticalAlign) ? { verticalAlign: block.verticalAlign } : {}), ...(block.table === true ? { table: true } : {}), ...(["left", "center", "right"].includes(block.align) ? { align: block.align } : {}), ...(block.border ? { border: resolveBorder(block.border) } : {}), blocks: resolveList(block.blocks, style, path, direction === "row") };
     }
     const style = textStyle(inherited, block);
     if (block.type === "metadata") {
@@ -164,7 +166,7 @@ export function* walkSpecialPage(nodes) {
 /** Static HTML only; every visual rule lives in the scoped stylesheet (CSP: no style attributes). */
 export function specialPageHtml(nodes) {
   return (nodes || []).map((node) => {
-    const attrs = `data-thesis-block="${escapeHtml(node.path)}"${node.id ? ` data-layout-id="${escapeHtml(node.id)}" data-layout-section="${escapeHtml(node.sectionId)}" data-layout-type="${node.type}" data-layout-locked="${Boolean(node.locked)}" data-layout-aspect="${Boolean(node.lockAspectRatio)}"` : ""}`;
+    const attrs = `data-thesis-block="${escapeHtml(node.path)}"${node.id ? ` data-layout-id="${escapeHtml(node.id)}" data-layout-section="${escapeHtml(node.sectionId)}" data-layout-type="${node.type}" data-layout-locked="${Boolean(node.locked)}" data-layout-aspect="${Boolean(node.lockAspectRatio)}"${["absolute", "anchored"].includes(node.layoutMode) ? ` data-layout-mode="${node.layoutMode}"` : ""}` : ""}`;
     if (node.type === "image") return `<img class="thesis-layout-image" ${attrs} src="${escapeHtml(node.source)}" alt="">`;
     if (node.type === "spacer") return `<div class="thesis-layout-spacer" ${attrs} aria-hidden="true"></div>`;
     if (node.type === "separator") return `<div class="thesis-layout-separator" ${attrs} role="presentation"></div>`;
@@ -174,14 +176,11 @@ export function specialPageHtml(nodes) {
       return node.border ? `<div class="thesis-layout-frame" data-thesis-frame="${node.path}"${node.border.collapse ? ` data-thesis-rule-pt="${node.border.outerPt}"` : ""}>${node.border.innerPt > 0 ? `<div class="thesis-layout-frame-inner" data-thesis-frame-inner="${node.path}">${group}</div>` : group}</div>` : group;
     }
     const marginSpacer = node.marginTopMm > 0 ? `<div class="thesis-layout-spacer" data-thesis-block="${escapeHtml(node.path)}${SPECIAL_PAGE_MARGIN_SUFFIX}" data-thesis-margin="true" aria-hidden="true"></div>` : "";
-    const content = node.runs ? node.runs.map((run) => {
-      const text = escapeHtml(run.text);
-      const formatted = run.bold ? `<b class="thesis-layout-strong">${text}</b>` : text;
-      return run.fontFamily ? `<span style="font-family:${escapeHtml(JSON.stringify(run.fontFamily))}">${formatted}</span>` : formatted;
-    }).join("").replace(/\n/g, "<br>") : escapeHtml(node.text).replace(/\n/g, "<br>");
+    let content = node.runs ? node.runs.map((run) => runHtml(run, escapeHtml(run.text), { bold: Number(node.style?.fontWeight) >= 600, italic: Boolean(node.style?.italic), underline: /underline/.test(node.style?.decoration || ""), strike: /line-through/.test(node.style?.decoration || "") })).join("").replace(/\n/g, "<br>") : escapeHtml(node.text).replace(/\n/g, "<br>");
+    if (["ul", "ol"].includes(node.list)) content = `<${node.list} class="thesis-frame-list">${content.split("<br>").map(line => `<li data-layout-frame-line="">${line || "&nbsp;"}</li>`).join("")}</${node.list}>`;
     const formatOpen = node.style?.highlight ? staticFormatOpenTag({ highlight: node.style.highlight }) : "";
     const formatted = formatOpen ? `${formatOpen}${content || "&nbsp;"}</span>` : (content || "&nbsp;");
-    return `${marginSpacer}<div class="thesis-layout-text" ${attrs}${node.field ? ` data-thesis-field="${escapeHtml(node.field)}"` : ""}>${formatted}</div>`;
+    return `${marginSpacer}<div class="thesis-layout-text" ${attrs}${node.headingLevel ? ` role="heading" aria-level="${node.headingLevel}"` : ""}${node.field ? ` data-thesis-field="${escapeHtml(node.field)}"` : ""}>${formatted}</div>`;
   }).join("");
 }
 
@@ -266,7 +265,13 @@ export function specialPageBoxCss(node, parent, inElasticFlow = !parent) {
     rules.push(`position:absolute;left:${finite(node.xMm)}mm;top:${finite(node.yMm)}mm;margin:0;max-width:none;box-sizing:border-box;`);
   }
   if (Number.isFinite(node.widthMm) && node.type !== "image") rules.push(`width:${node.widthMm}mm;max-width:none;overflow-wrap:break-word;`);
+  // A fixed-width group may sit centred or on the right of its column (a framed group's frame carries width and alignment).
+  if (node.type === "group" && Number.isFinite(node.widthMm) && node.align && node.align !== "left" && !node.border) rules.push(`margin-left:auto;margin-right:${node.align === "center" ? "auto" : "0"};`);
+  if (node.type === "group" && node.verticalAlign && !node.border) rules.push(`justify-content:${{ top: "flex-start", center: "center", bottom: "flex-end" }[node.verticalAlign]};`);
   if (Number.isFinite(node.heightMm) && node.type === "text") rules.push(`min-height:${node.heightMm}mm;`);
+  // Vertical text in a horizontal page is an orthogonal flow: without a definite height its line runs the whole viewport.
+  // Its line length is the height of the row it sits in (a group's minHeightMm), as in Word's tbRl cell; longer text wraps.
+  if (node.type === "text" && node.style?.writingMode === "vertical-rl" && Number.isFinite(parent?.minHeightMm)) rules.push(`max-height:${parent.minHeightMm}mm;`);
   if (Number.isFinite(node.minHeightMm) && node.type !== "spacer") rules.push(`min-height:${node.minHeightMm}mm;`);
   if (node.style?.color) rules.push(`color:${node.style.color};`);
   return rules.join("");
@@ -285,6 +290,7 @@ export function specialPageCss(scope, nodes, styleCss) {
         const flexShare = parent?.direction === "row" ? (node.widthPercent !== null ? `flex:${node.border.collapse ? 1 : 0} 1 ${node.widthPercent}%;` : "flex:1 1 0;") : "";
         rules.push(`${scope} [data-thesis-frame="${node.path}"]{border:${outerPt}pt solid ${color};padding:${innerPt > 0 ? `${gapPt}pt` : `${node.border.paddingYMm ?? paddingMm}mm ${node.border.paddingXMm ?? paddingMm}mm`};margin:${node.border.collapse ? `calc(${node.marginTopMm}mm - ${rule}pt) 0 ${node.marginBottomMm}mm -${rule}pt` : `${node.marginTopMm}mm 0 ${node.marginBottomMm}mm`};${flexShare}min-width:0;box-sizing:border-box;${parent?.direction === "row" ? "align-self:stretch;" : ""}${node.verticalAlign ? `display:flex;flex-direction:column;justify-content:${{ top: "flex-start", center: "center", bottom: "flex-end" }[node.verticalAlign]};` : ""}}`);
         if (node.verticalAlign) rules.push(`${scope} [data-thesis-frame="${node.path}"]>[data-thesis-block]{width:100%;}`);
+        if (Number.isFinite(node.widthMm) && node.align) rules.push(`${scope} [data-thesis-frame="${node.path}"]{width:${node.widthMm}mm;margin-left:${node.align === "left" ? "0" : "auto"};margin-right:${node.align === "right" ? "0" : "auto"};}`);
         if (innerPt > 0) rules.push(`${scope} [data-thesis-frame-inner="${node.path}"]{border:${innerPt}pt solid ${color};padding:${paddingMm}mm;}`);
       }
       let textRules = node.type === "text" ? styleCss(node.style) : "";
@@ -293,7 +299,7 @@ export function specialPageCss(scope, nodes, styleCss) {
       if (node.wordBaseline === true && ["absolute", "anchored"].includes(node.layoutMode)) {
         textRules = textRules.replace(/top:(calc\(-1 \* var\(--thesis-wb-[^;]+);/g, "transform:translateY($1);");
       }
-      rules.push(`${scope} [data-thesis-block="${node.path}"]{${textRules}${specialPageBoxCss(node, parent, elastic)}${elastic && parent && node.type !== "spacer" && !specialPageGroupDissolves(node) ? "flex:none;" : ""}${node.border ? "margin:0;" : ""}}`);
+      rules.push(`${scope} [data-thesis-block="${node.path}"]{${textRules}${specialPageBoxCss(node, parent, elastic)}${elastic && parent && node.type !== "spacer" && !specialPageGroupDissolves(node) ? "flex:none;" : ""}${node.border ? `margin:0;${Number.isFinite(node.widthMm) && node.align ? "width:auto;" : ""}` : ""}}`);
       // Special pages have no rich-text editor to register custom inline colors.
       // Emit the highlight with the block stylesheet, including in print/export.
       const highlight = normalizeHex(node.style?.highlight);
@@ -398,6 +404,9 @@ export function validateSpecialPageBlocks(blocks, { path, placeholders = {}, bas
       if (block.minHeightMm !== undefined && !nonnegative(block.minHeightMm)) errors.push(`${at}.minHeightMm geçersiz`);
       if (block.verticalAlign !== undefined && !["top", "center", "bottom"].includes(block.verticalAlign)) errors.push(`${at}.verticalAlign geçersiz`);
       if (block.border?.collapse !== undefined && typeof block.border.collapse !== "boolean") errors.push(`${at}.border.collapse geçersiz`);
+      if (block.table !== undefined && (typeof block.table !== "boolean" || (block.table && !block.border))) errors.push(`${at}.table yalnız çerçeveli (border) grupta kullanılır`);
+      if (block.align !== undefined && !["left", "center", "right"].includes(block.align)) errors.push(`${at}.align geçersiz`);
+      if (block.widthMm !== undefined && !nonnegative(block.widthMm)) errors.push(`${at}.widthMm geçersiz`);
       errors.push(...validateSpecialPageBlocks(block.blocks, { path: `${at}.blocks`, placeholders, baseStyle: style, validateStyle }, depth + 1));
     }
   }

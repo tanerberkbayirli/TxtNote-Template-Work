@@ -14,6 +14,8 @@ export interface TextStyle {
   lineHeight?: number;
   lineSpacing?: CanonicalLineSpacing;
   contextualSpacing?: boolean;
+  /** Drop redundant empty paragraphs between prose paragraphs in template mode. */
+  emptyParagraphs?: "omit";
   indent?: { firstLineMm?: Length; hangingMm?: Length; leftMm?: Length; rightMm?: Length; mirror?: boolean };
   mirrorIndents?: boolean;
   tabStops?: { positionMm: Length; align: "left" | "center" | "right" | "decimal"; leader?: "none" | "dots" | "hyphen" | "underscore"; decimalCharacter?: string }[];
@@ -141,6 +143,11 @@ export interface ThesisLayoutElementOverride {
   content?: string;
   /** Accepted compatibility alias for callers that already use a `text` field. */
   text?: string;
+  headingLevel?: number;
+  /** Include this text box as a positional link in the writing plan. */
+  inWritingPlan?: boolean;
+  paragraphStyle?: string;
+  list?: "" | "ul" | "ol";
 }
 export type ThesisLayoutAddition = ThesisLayoutElementOverride & (
   | { id: string; sectionId: string; type: "text"; content?: string; text?: string }
@@ -403,6 +410,8 @@ export interface ThesisSection {
    */
   blocks?: SpecialPageBlock[];
   overrides?: {
+    /** Section-specific line breaking; omitted inherits typography.justify. */
+    justify?: "word" | "browser";
     page?: Partial<Omit<PageRule, "margins" | "numbering">> & { margins?: Partial<PageRule["margins"]>; numbering?: Partial<NumberingRule> };
     body?: Partial<TextStyle>;
     paragraph?: Partial<TextStyle>;
@@ -446,6 +455,8 @@ export interface PlaceholderDefinition {
   type: "text" | "date" | "number" | "multiline" | (string & {});
   required?: boolean;
   defaultValue?: string;
+  /** Display the final name token in capitals without changing stored metadata. */
+  nameFormat?: "surnameUpper";
   /** Taken from the laid-out document at render/export time (never an input, never stored). */
   /** totalPages: all physical pages; frontLastLabel: label of the last numbered page before the Arabic restart ("ix"); mainPageCount: pages from the Arabic restart to the end. */
   derived?: "totalPages" | "frontLastLabel" | "mainPageCount";
@@ -482,6 +493,8 @@ export interface ThesisTemplate {
   language: string;
   selectors?: Record<string, string>;
   status: "demo" | "generic" | "official";
+  /** Keep drafts editable; require complete metadata/content before UI exports. */
+  exportValidation?: "strict";
   /** Official sources need `url` or `documentName` (a distributed file) plus `verifiedAt`. */
   source: { type: "official" | "manual" | "imported"; url?: string; documentName?: string; revisionDate?: string; verifiedAt?: string; notes?: string[] };
   page: PageRule;
@@ -515,9 +528,14 @@ export interface ThesisTemplate {
    * The equation number is presentation (data-thesis-eq, never stored); Word: centre + right tab stops.
    */
   equations?: { /** Browser-only extra space (pt) before/after the block, compensating the formula renderer's baseline placement; Word ignores it. */ layoutAdjust?: { beforePt?: number; afterPt?: number }; numbering: { scope: "chapter" | "document"; format: string }; numberAlign?: "left" | "right"; /** fontSizePt, fontFamily/Weight/Italic of the number; lineHeight (Word lines) and spaceBeforePt/spaceAfterPt make the block one paragraph-like line. */ style?: Partial<TextStyle> };
+  /**
+   * citationStyle sets the default citation mode of linked citations (citations.js): "numeric"/"Vancouver" -> numbered (1),
+   * a note style ("footnote", "Chicago notes", "İSNAD") -> page-bottom footnotes, anything else -> parenthetical (Yazar, Yıl).
+   * The author may switch with one click (thesis.citationMode); the bibliography is derived from the cited pool sources.
+   */
   bibliography: { heading: string; style: TextStyle; hangingIndentMm?: Length; citationStyle?: string; numbered?: boolean };
   toc: { heading: string; levels: number[]; showPageNumbers: boolean };
-  validation?: Record<string, { minItems?: number; separator?: string; severity?: "error" | "warning"; message?: string; headingSequence?: Array<string | string[]>; headingLevel?: number; numericCitations?: boolean; numberedEntries?: boolean }>;
+  validation?: Record<string, { minItems?: number; separator?: string; severity?: "error" | "warning"; message?: string; headingSequence?: Array<string | string[]>; headingLevel?: number; minWords?: number; minHeadings?: number; pattern?: string; numericCitations?: boolean; numberedEntries?: boolean }>;
   /**
    * Figure/table numbering methods the author may choose for the whole document (stored as
    * thesis.captionNumbering = id). The first entry should equal the template's default numbering.

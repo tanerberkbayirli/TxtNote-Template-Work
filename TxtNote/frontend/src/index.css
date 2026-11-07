@@ -160,6 +160,9 @@ textarea::selection,
     font-style: italic;
   }
 
+  .fmt-not-bold { font-weight: 400; }
+  .fmt-not-italic { font-style: normal; }
+
   .fmt-strike {
     text-decoration: line-through;
   }

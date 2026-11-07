@@ -30,7 +30,7 @@ function textRun(text, style, context, inline = {}) {
     ...(inline.fontSizePt ? { size: halfPointSize(inline.fontSizePt) } : {}),
     ...(inline.fontFamily ? { font: inline.fontFamily } : {}),
     ...(inline.valign === "superscript" ? { superScript: true } : inline.valign === "subscript" ? { subScript: true } : {}),
-    ...(inline.bold ? { bold: true } : {}), ...(inline.italic ? { italics: true } : {}),
+    ...(inline.bold ? { bold: true } : inline.bold === false ? { bold: false } : {}), ...(inline.italic ? { italics: true } : inline.italic === false ? { italics: false } : {}),
     ...(inlineColor ? { color: inlineColor } : {}),
     ...(highlightFill ? { shading: { fill: highlightFill, type: "clear" } } : {}),
     underline: inline.underline || style.decoration === "underline" ? {} : undefined, strike: Boolean(inline.strike),
@@ -54,7 +54,7 @@ function docxRuns(runs, style, context, nested = false) {
       else out.push(textRun("[empty equation]", style, context));
     }
     // TOC/list page labels are real PAGEREF fields (cached result = the editor's label): Word/LibreOffice re-read the page of the bookmark.
-    else if (item.type === "pageref") out.push(...complexFieldRuns(`PAGEREF ${item.bookmark} \\h`, item.text || "", runProps(style, context.language)));
+    else if (item.type === "pageref") out.push(...complexFieldRuns(`PAGEREF ${item.bookmark} \\h`, item.text || "", runProps(item.style ? { ...style, ...item.style } : style, context.language)));
     else if (item.type === "numpages") out.push(...complexFieldRuns("NUMPAGES", context.totalPages || "", runProps(style, context.language)));
     else if (item.type === "page") out.push(...complexFieldRuns("PAGE", "", runProps(style, context.language)));
     else if (item.type === "fieldStart") out.push(complexFieldMarker(item.instruction, "begin", runProps(style, context.language)));

@@ -65,7 +65,7 @@ export default function HomeTab({
 
   return (
     <>
-      {off ? <p className="thesis-ribbon-hint" role="status">{textUnavailable}</p> : actions.isLayoutTextTarget ? <p className="thesis-ribbon-hint">Seçili metin kutusunu biçimlendiriyorsunuz. Liste ve paragraf stilleri gövde metninde kullanılabilir.</p> : null}
+      {off ? <p className="thesis-ribbon-hint" role="status">{textUnavailable}</p> : actions.isLayoutTextTarget ? <p className="thesis-ribbon-hint">Seçili metin kutusunu biçimlendiriyorsunuz.</p> : null}
       <Group label="Yazı tipi" className="thesis-home-group">
         <div className="thesis-home-rows">
           <div className="thesis-home-row">
@@ -99,17 +99,17 @@ export default function HomeTab({
       <Group label="Paragraf" className="thesis-home-group">
         <div className="thesis-home-rows">
           <div className="thesis-home-row">
-            <Tool label="Madde işaretli liste" disabled={blockOff || actions.isLayoutTextTarget} disabledReason={paragraphUnavailable} pressed={!blockOff && !actions.isLayoutTextTarget && format?.list === 'ul'} onMouseDown={keep} onClick={() => invoke("toggleList", false)}>
+            <Tool label="Madde işaretli liste" disabled={blockOff} disabledReason={paragraphUnavailable} pressed={!blockOff && format?.list === 'ul'} onMouseDown={keep} onClick={() => invoke("toggleList", false)}>
               <List size={16} aria-hidden="true" />
             </Tool>
-            <Tool label="Numaralı liste" disabled={blockOff || actions.isLayoutTextTarget} disabledReason={paragraphUnavailable} pressed={!blockOff && !actions.isLayoutTextTarget && format?.list === 'ol'} onMouseDown={keep} onClick={() => invoke("toggleList", true)}>
+            <Tool label="Numaralı liste" disabled={blockOff} disabledReason={paragraphUnavailable} pressed={!blockOff && format?.list === 'ol'} onMouseDown={keep} onClick={() => invoke("toggleList", true)}>
               <ListOrdered size={16} aria-hidden="true" />
             </Tool>
             <span className="thesis-home-sep" aria-hidden="true" />
-            <Tool label="Girintiyi azalt" disabled={blockOff || actions.isLayoutTextTarget} disabledReason={paragraphUnavailable} onMouseDown={keep} onClick={() => invoke("changeIndent", "decrease")}>
+            <Tool label="Girintiyi azalt" disabled={blockOff} disabledReason={paragraphUnavailable} onMouseDown={keep} onClick={() => invoke("changeIndent", "decrease")}>
               <IndentDecrease size={16} aria-hidden="true" />
             </Tool>
-            <Tool label="Girintiyi artır" disabled={blockOff || actions.isLayoutTextTarget} disabledReason={paragraphUnavailable} onMouseDown={keep} onClick={() => invoke("changeIndent", "increase")}>
+            <Tool label="Girintiyi artır" disabled={blockOff} disabledReason={paragraphUnavailable} onMouseDown={keep} onClick={() => invoke("changeIndent", "increase")}>
               <IndentIncrease size={16} aria-hidden="true" />
             </Tool>
           </div>
@@ -125,10 +125,11 @@ export default function HomeTab({
               <option value="page">Sayfa kenarları</option>
               <option value="content">Sayfa yazı alanı</option>
               <option value="box">Metin kutusu</option>
-            </select> : <select
+            </select> : null}
+            <select
               className={`${control} thesis-block-select`}
               aria-label="Paragraf biçimi"
-              disabled={blockOff || actions.isLayoutTextTarget}
+              disabled={blockOff}
               value={format?.block ?? ""}
               onMouseDown={remember}
               onChange={(event) => {
@@ -149,23 +150,23 @@ export default function HomeTab({
                   {id}
                 </option>
               ))}
-            </select>}
+            </select>
           </div>
         </div>
       </Group>
       <Group label="Stiller" className="thesis-home-group thesis-home-styles">
         <div className="thesis-style-gallery" role="listbox" aria-label="Stil galerisi">
           {styles.map((style) => {
-            const isActive = !blockOff && !actions.isLayoutTextTarget && (style.style ? format?.block === `style:${style.style}` : format?.block === String(style.level));
+            const isActive = !blockOff && (style.style ? format?.block === `style:${style.style}` : format?.block === String(style.level));
             return (
               <button
                 key={style.id}
                 type="button"
                 role="option"
                 aria-selected={isActive}
-                title={actions.isLayoutTextTarget ? "Paragraf stilleri gövde metninde kullanılabilir" : `${style.label} stilini uygula`}
+                title={`${style.label} stilini uygula`}
                 className={`thesis-style-card ${style.level ? `is-heading-${style.level}` : ""} ${isActive ? "is-active" : ""}`}
-                disabled={blockOff || actions.isLayoutTextTarget}
+                disabled={blockOff}
                 onMouseDown={keep}
                 onClick={() => setStyle(style)}
               >

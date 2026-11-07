@@ -1,0 +1,400 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "ege-hit-undergraduate-tr-kaynak",
+ "universityId": "ege",
+ "universityName": "Ege Üniversitesi",
+ "instituteId": "hit",
+ "instituteName": "İletişim Fakültesi · Halkla İlişkiler ve Tanıtım Bitirme Tezi",
+ "degreeType": "undergraduate",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "HIT_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
+  ],
+  "guideDocumentName": "HIT_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_HIT_Bitirme_Tezi/HIT_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "0971fbf5dad1c8f06849526770b7b773e83cdbec1a31d35ff43bf5baf46e9191",
+  "evidence": {
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_HIT_Bitirme_Tezi/HIT_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+    "locations": [
+     {
+      "value": 30,
+      "location": "sayfa 5",
+      "sentence": "Kenar boşlukları üst 3 cm, alt 2,5 cm, sol 3 cm, sağ 2 cm olarak belirlenmiştir."
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_HIT_Bitirme_Tezi/HIT_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 5",
+      "sentence": "Kenar boşlukları üst 3 cm, alt 2,5 cm, sol 3 cm, sağ 2 cm olarak belirlenmiştir."
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_HIT_Bitirme_Tezi/HIT_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+    "locations": [
+     {
+      "value": 30,
+      "location": "sayfa 5",
+      "sentence": "Kenar boşlukları üst 3 cm, alt 2,5 cm, sol 3 cm, sağ 2 cm olarak belirlenmiştir."
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 20,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_HIT_Bitirme_Tezi/HIT_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+    "locations": [
+     {
+      "value": 20,
+      "location": "sayfa 5",
+      "sentence": "Kenar boşlukları üst 3 cm, alt 2,5 cm, sol 3 cm, sağ 2 cm olarak belirlenmiştir."
+     }
+    ]
+   },
+   "typography.body.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Calibri",
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_HIT_Bitirme_Tezi/HIT_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+    "location": "sayfa 5",
+    "passage": "4.2. Sayfa Düzeni Tez yazımında kullanılacak sayfa niteliği A4 standardında ve beyaz kâğıt olmalıdır. Tez Yazımı bilgisayar kullanılarak dijital formatta yazılmalıdır. Yazı tipi olarak Calibri seçilmeli; belirtilen formatlar hariç tezin tümünde harf büyüklüğü on iki (12) punto olmalıdır. Sadece şekillerde, tablolarda ve dipnotlarda on (10) veya dokuz (9) punto harfler kullanılabilir. Yazımda noktalama işaretlerinden (. , ; ? vb.) sonra bir karakter boşluk bırakılmalıdır. Kenar boşlukları üst 3 cm, alt 2,5 cm, sol 3 cm, sağ 2 cm olarak belirlenmiştir. Her yeni paragraf için girintileme 1,25 cm olmalıdır. Tezin sayfaları numaralandırmalı ve dış kapak sayfası numaralandırmadan ayrı tutulmalıdır. 4.3. Çoğaltma Teslim edilen tezlerin kopyasında silinti olmamalı; el yazısıyla veya başka biçimde düzeltme, ekleme, çıkarma, yapıştırma yapılmamalıdır. Dosya; dijital ve çıktı olarak teslim edilmelidir. 5. BAŞLIKLANDIRMA Sayfa sonlarında yeni bir başlıklandırma olmamalı, her sayfa sonundaki yeni başlık için yeni sayfaya geçilmelidir. Her yeni başlıktan önce bir satır boşluk olmalı, yeni bir başlık altındaki ilk paragraf satır boşluğu olmaksızın yazılmalıdır. Başlıklar kalın (bold) olmalı, ana başlıklar BÜYÜK HARFLE, alt başlıklar İlk Harfleri Büyük Harf Olacak Şekilde hazırlanmalıdır. Alt başlıklar, ilgili başlığın alt maddesi olacak şekilde numaralandırılmalıdır. Gereksiz numaralandırma yapılmamalı ve başlıklandırma genelden özele, alfabetik ya da kronolojik gibi bir amaçsallık gözeterek sıralandırılmalıdır. Numaralı bölüm ve alt bölüm başlıkları arasında, numarasız ara başlıklar, vurgulanmak istenen kelimeler, cümleler veya tanımlamalar öne çıkarılmalıdır. Bunlar, altı çizili, italik veya italik altı çizili olarak verilebilir. 6. ÖNSÖZ (Tercihe bağlı) Önsöz, tezin teknik ve bilimsel içeriğinden bağımsızdır ve yazarın görüşlerini yazdığı başlıktır. Bu başlığın altında, tez çalışması sırasında bilgi, kaynak vb. yardımı alınan kişi ve kuruluşlara teşekkür edilmelidir. Önsöz bölümü, çalışmanın dış ve iç kapaktan sonra gelen ilk bölümüdür. Yazar bu bölüm için tek bir sayfa ayırmalıdır.",
+    "decision": "HİT metni Calibri 12; şekil, tablo ve dipnot 9/10 puntosu gövde değildir."
+   },
+   "typography.paragraph.firstLineIndentMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 12.5,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_HIT_Bitirme_Tezi/HIT_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+    "locations": [
+     {
+      "value": 12.5,
+      "location": "sayfa 5",
+      "sentence": "Her yeni paragraf için girintileme 1,25 cm olmalıdır."
+     }
+    ]
+   },
+   "typography.body.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_HIT_Bitirme_Tezi/HIT_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+    "location": "sayfa 5",
+    "passage": "4.2. Sayfa Düzeni Tez yazımında kullanılacak sayfa niteliği A4 standardında ve beyaz kâğıt olmalıdır. Tez Yazımı bilgisayar kullanılarak dijital formatta yazılmalıdır. Yazı tipi olarak Calibri seçilmeli; belirtilen formatlar hariç tezin tümünde harf büyüklüğü on iki (12) punto olmalıdır. Sadece şekillerde, tablolarda ve dipnotlarda on (10) veya dokuz (9) punto harfler kullanılabilir. Yazımda noktalama işaretlerinden (. , ; ? vb.) sonra bir karakter boşluk bırakılmalıdır. Kenar boşlukları üst 3 cm, alt 2,5 cm, sol 3 cm, sağ 2 cm olarak belirlenmiştir. Her yeni paragraf için girintileme 1,25 cm olmalıdır. Tezin sayfaları numaralandırmalı ve dış kapak sayfası numaralandırmadan ayrı tutulmalıdır. 4.3. Çoğaltma Teslim edilen tezlerin kopyasında silinti olmamalı; el yazısıyla veya başka biçimde düzeltme, ekleme, çıkarma, yapıştırma yapılmamalıdır. Dosya; dijital ve çıktı olarak teslim edilmelidir. 5. BAŞLIKLANDIRMA Sayfa sonlarında yeni bir başlıklandırma olmamalı, her sayfa sonundaki yeni başlık için yeni sayfaya geçilmelidir. Her yeni başlıktan önce bir satır boşluk olmalı, yeni bir başlık altındaki ilk paragraf satır boşluğu olmaksızın yazılmalıdır. Başlıklar kalın (bold) olmalı, ana başlıklar BÜYÜK HARFLE, alt başlıklar İlk Harfleri Büyük Harf Olacak Şekilde hazırlanmalıdır. Alt başlıklar, ilgili başlığın alt maddesi olacak şekilde numaralandırılmalıdır. Gereksiz numaralandırma yapılmamalı ve başlıklandırma genelden özele, alfabetik ya da kronolojik gibi bir amaçsallık gözeterek sıralandırılmalıdır. Numaralı bölüm ve alt bölüm başlıkları arasında, numarasız ara başlıklar, vurgulanmak istenen kelimeler, cümleler veya tanımlamalar öne çıkarılmalıdır. Bunlar, altı çizili, italik veya italik altı çizili olarak verilebilir. 6. ÖNSÖZ (Tercihe bağlı) Önsöz, tezin teknik ve bilimsel içeriğinden bağımsızdır ve yazarın görüşlerini yazdığı başlıktır. Bu başlığın altında, tez çalışması sırasında bilgi, kaynak vb. yardımı alınan kişi ve kuruluşlara teşekkür edilmelidir. Önsöz bölümü, çalışmanın dış ve iç kapaktan sonra gelen ilk bölümüdür. Yazar bu bölüm için tek bir sayfa ayırmalıdır.",
+    "decision": "HİT metni Calibri 12; şekil, tablo ve dipnot 9/10 puntosu gövde değildir."
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_HIT_Bitirme_Tezi/HIT_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+    "sha256": "0971fbf5dad1c8f06849526770b7b773e83cdbec1a31d35ff43bf5baf46e9191"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.paragraph.firstLineIndentMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
+    },
+    {
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
+    }
+   ],
+   "conflicts": [],
+   "guide": "HIT_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "margins": {
+   "topMm": 30,
+   "bottomMm": 25,
+   "leftMm": 30,
+   "rightMm": 20
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "right",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Calibri",
+   "fontSizePt": 12
+  },
+  "paragraph": {
+   "firstLineIndentMm": 12.5
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖNSÖZ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "curriculum-vitae",
+   "type": "curriculumVitae",
+   "title": "ÖZGEÇMİŞ",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

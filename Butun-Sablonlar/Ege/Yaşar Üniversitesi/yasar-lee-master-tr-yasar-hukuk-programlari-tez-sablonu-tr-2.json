@@ -1,27 +1,241 @@
 {
  "schemaVersion": 1,
- "templateVersion": "0.1.0-draft",
+ "templateVersion": "0.2.0-source-rebuild",
  "id": "yasar-lee-master-tr-yasar-hukuk-programlari-tez-sablonu-tr-2",
  "universityId": "yasar",
  "universityName": "Yaşar Üniversitesi",
- "instituteId": "lee",
- "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "instituteId": "lee-hukuk",
+ "instituteName": "Lisansüstü Eğitim Enstitüsü · Hukuk Programları",
  "degreeType": "master",
  "language": "tr",
  "status": "generic",
  "source": {
   "type": "official",
   "documentName": "Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx",
-  "verifiedAt": "2026-10-07",
+  "verifiedAt": "2026-10-23",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 1c3d3117f694b84ec064285de60b928e4d3f9445183e77771010aca6be86ba5c",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
-   "Kılavuz paragraf girintisi belirtmiyor; girinti yok (0 mm) kabul edildi",
-   "Kılavuz kuralları birleştirildi: Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf (7 alan, 2 çelişki)"
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
   ],
   "guideDocumentName": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx",
+  "rebuildKind": "docx-template",
+  "archiveSha256": "1c3d3117f694b84ec064285de60b928e4d3f9445183e77771010aca6be86ba5c",
+  "evidence": {
+   "page.margins": {
+    "value": {
+     "topMm": 25.01,
+     "bottomMm": 25.01,
+     "leftMm": 40,
+     "rightMm": 25.01
+    },
+    "source": "Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx › sectPr#4 (gövde bölümü, 147 paragraf) › w:pgMar",
+    "status": "MEASURED"
+   },
+   "page.size": {
+    "value": [
+     210,
+     297
+    ],
+    "source": "Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx › sectPr#4 (gövde bölümü, 147 paragraf) › w:pgSz",
+    "status": "MEASURED"
+   },
+   "page.numbering": {
+    "value": {
+     "enabled": true,
+     "position": "bottom",
+     "align": "center",
+     "format": "roman-lower",
+     "startAt": 1,
+     "restart": false
+    },
+    "source": "Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx › sectPr#4 (gövde bölümü, 147 paragraf) › footer PAGE alanı, w:pgNumType",
+    "status": "MEASURED"
+   },
+   "page.footer.distanceMm": {
+    "value": 12.51,
+    "source": "Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx › sectPr#4 (gövde bölümü, 147 paragraf) › w:pgMar/@w:footer",
+    "status": "MEASURED"
+   },
+   "typography.body": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "justify",
+     "lineHeight": 1.15
+    },
+    "source": "Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx › gövde profili: 8/17 paragraf (≥200 karakter), 5 farklı biçim",
+    "status": "MEASURED"
+   },
+   "typography.headings.1": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 13,
+     "fontWeight": 700,
+     "align": "center",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 18,
+     "spaceAfterPt": 12,
+     "textTransform": "uppercase",
+     "keepWithNext": true
+    },
+    "source": "Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx › 3/8 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.footnotes": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 10,
+     "lineHeight": 1,
+     "placement": "pageBottom"
+    },
+    "source": "Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx › stil DipnotMetni + settings.xml footnotePr",
+    "status": "MEASURED"
+   },
+   "sections.cover": {
+    "value": "10 blok, outerCover",
+    "source": "Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx › ön sayfa #0: YAŞAR ÜNİVERSİTESİ / LİSANSÜSTÜ EĞİTİM ENSTİTÜSÜ / TEZ BAŞLIĞI / TEZ BAŞLIĞI İKİ",
+    "status": "MEASURED"
+   },
+   "sections.approval": {
+    "value": "19 blok, approval",
+    "source": "Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx › ön sayfa #1: JÜRİ ONAY SAYFASI / Jüri üyeleri olarak bu tezi okuduğumuzu ve kapsam ve kalite ",
+    "status": "MEASURED"
+   },
+   "sections.front-page-2": {
+    "value": "14 blok, custom",
+    "source": "Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx › ön sayfa #2: ÖZ / TEZ BAŞLIĞI / Soyad, İsim / Yüksek Lisans / Doktora Tezi, Program Adı",
+    "status": "MEASURED"
+   },
+   "sections": {
+    "value": [
+     "outerCover",
+     "approval",
+     "custom",
+     "englishAbstract",
+     "acknowledgements",
+     "tableOfContents",
+     "bibliography",
+     "appendices",
+     "listOfFigures",
+     "listOfTables",
+     "listOfAbbreviations",
+     "mainContent"
+    ],
+    "source": "Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx › 10 birinci düzey başlık, 11 fiziksel bölüm",
+    "status": "MEASURED"
+   },
+   "typography.footnotes.fontSizePt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 10,
+    "source": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+    "locations": [
+     {
+      "value": 10,
+      "location": "sayfa 26",
+      "sentence": "Dipnotlarda yazı tipi Times New Roman, boyutu ise 10 puntodur."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "sayfa 9",
+      "sentence": "Sayfa numaraları sayfanın orta alt bölmesinde yer almalıdır."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "center",
+    "source": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+    "locations": [
+     {
+      "value": "center",
+      "location": "sayfa 9",
+      "sentence": "Sayfa numaraları sayfanın orta alt bölmesinde yer almalıdır."
+     },
+     {
+      "value": "center",
+      "location": "sayfa 15",
+      "sentence": "Alternatifler için Sözel Değişkenler ve Değerleri Çok Kötü (CK) (0, 0, 1) Kötü (K) (0, 1, 3) Orta Kötü (OK) (1, 3, 5) Orta (O) (3, 5, 7) Orta İyi (Oİ) (5, 7, 9) İyi (İ) (7, 9, 10) Çok İyi (Cİ) (9,10,10) Kaynak: Yazar Tablo veya şeklin dikey veya yatay yerleştirilmesi, sayfa numarasının yerinde herha"
+     }
+    ]
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx",
+    "sha256": "1c3d3117f694b84ec064285de60b928e4d3f9445183e77771010aca6be86ba5c"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx",
+    "sha256": "f4d763b85dab95ba3287e3e24b17e585c2d3468b257a4882eab1c58e7d962e6e"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx",
+    "sha256": "a96608c4acfed017e94af51630662fadf5f77f604b3c045f7dc2b21f0aa4262b"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_EN_2024-11.pdf",
+    "sha256": "1d34350ba78b82f202e4199415b4475493d4706ffe0a56fc1b3aaf149c67dcb9"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+    "sha256": "0e49ceb57f431169c9756c6aef17519c1540596f35fc43d58d941a0bb68a4336"
+   }
+  ],
   "review": {
-   "unknown": [],
+   "unknown": [
+    {
+     "field": "typography.headings.2",
+     "reason": "Belgede 2. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.3",
+     "reason": "Belgede 3. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.4",
+     "reason": "Belgede 4. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "tables",
+     "reason": "Belgede örnek çizelge/tablo yazısı yok"
+    },
+    {
+     "field": "figures",
+     "reason": "Belgede örnek şekil yazısı yok"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
    "inferred": [
     {
      "field": "page.footer.heightMm",
@@ -69,55 +283,19 @@
      "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
     },
     {
-     "field": "figures.style.fontSizePt",
-     "value": "12",
-     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+     "field": "sections.sourceInstructions",
+     "value": "3",
+     "reasoning": "Şablonun kullanım yönergeleri ve örnek önsöz açıklamaları yeni tezin içeriği olarak basılmaması için çıkarıldı; özgün dosya korundu."
     },
     {
-     "field": "figures.numbering",
-     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
-     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
-    },
-    {
-     "field": "tables.style.fontSizePt",
-     "value": "12",
-     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
-    },
-    {
-     "field": "tables.numbering",
-     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
-     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
-    },
-    {
-     "field": "typography.paragraph.firstLineIndentMm",
-     "value": "0",
-     "reasoning": "Kılavuz paragraf girintisi belirtmiyor; girinti yok (0 mm) kabul edildi — kılavuzdan teyit edilmeli"
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
     }
    ],
-   "conflicts": [
-    {
-     "field": "typography.body.lineHeight",
-     "measured": "1.15",
-     "guide": "1",
-     "guideSource": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf › sayfa 34: “Sayfa altlığı (Bornova/ İzmir AY 20XX): Times New Roman, 11 punto, Normal kalınlık, ortalanmış, tek satır aralığı”"
-    },
-    {
-     "field": "typography.paragraph.spaceAfterPt",
-     "measured": "0",
-     "guide": "6",
-     "guideSource": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf › sayfa 10: “• Paragraf aralıkları: Önce 6 nk sonra 6 nk”"
-    }
-   ],
+   "conflicts": [],
    "guide": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
-   "gate": {
-    "overall": "CONFLICT",
-    "results": {
-     "PASS": 34,
-     "CONFLICT": 1
-    },
-    "checkedAt": "2026-10-22",
-    "exportTool": "engine/tools/export.mjs"
-   }
+   "gate": null
   }
  },
  "page": {
@@ -160,9 +338,7 @@
    "lineHeight": 1.15
   },
   "paragraph": {
-   "spaceAfterPt": 0,
-   "spaceBeforePt": 6,
-   "firstLineIndentMm": 0
+   "spaceAfterPt": 0
   },
   "headings": {
    "1": {
@@ -174,27 +350,6 @@
     "spaceBeforePt": 18,
     "spaceAfterPt": 12,
     "textTransform": "uppercase",
-    "keepWithNext": true
-   },
-   "2": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 12,
-    "fontWeight": 400,
-    "align": "left",
-    "keepWithNext": true
-   },
-   "3": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 12,
-    "fontWeight": 400,
-    "align": "left",
-    "keepWithNext": true
-   },
-   "4": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 12,
-    "fontWeight": 400,
-    "align": "left",
     "keepWithNext": true
    }
   },
@@ -286,6 +441,82 @@
   "PROJECT_SUPPORT": {
    "label": "Proje desteği (varsa)",
    "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_NAME": {
+   "label": "Jury Member 1 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_NAME": {
+   "label": "Jury Member 2 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_NAME": {
+   "label": "Jury Member 3 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_NAME": {
+   "label": "Jury Member 4 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_NAME": {
+   "label": "Jury Member 5 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_INSTITUTION": {
+   "label": "Jury Member 1 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_INSTITUTION": {
+   "label": "Jury Member 2 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_INSTITUTION": {
+   "label": "Jury Member 3 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_INSTITUTION": {
+   "label": "Jury Member 4 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_INSTITUTION": {
+   "label": "Jury Member 5 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_NAME": {
+   "label": "Jury Member 6 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_NAME": {
+   "label": "Jury Member 7 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_INSTITUTION": {
+   "label": "Jury Member 6 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_INSTITUTION": {
+   "label": "Jury Member 7 Institution",
+   "type": "text"
   }
  },
  "sections": [
@@ -340,7 +571,7 @@
     {
      "type": "metadata",
      "field": "THESIS_TITLE",
-     "fallback": "TEZ BAŞLIĞI",
+     "fallback": "Tez başlığı",
      "style": {
       "align": "center",
       "fontSizePt": 16,
@@ -351,35 +582,13 @@
      }
     },
     {
-     "type": "text",
-     "value": "TEZ BAŞLIĞI İKİNCİ SATIR",
-     "style": {
-      "align": "center",
-      "fontSizePt": 16,
-      "fontWeight": 700,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 18
-     }
-    },
-    {
-     "type": "text",
-     "value": "TEZ BAŞLIĞI ÜÇÜNCÜ SATIR",
-     "style": {
-      "align": "center",
-      "fontSizePt": 16,
-      "fontWeight": 700,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 18
-     }
-    },
-    {
      "type": "spacer",
      "heightMm": 19.19
     },
     {
      "type": "metadata",
      "field": "STUDENT_NAME",
-     "fallback": "ÖĞRENCİNİN ADI SOYADI",
+     "fallback": "Öğrenci adı soyadı",
      "style": {
       "align": "center",
       "fontSizePt": 13,
@@ -393,18 +602,7 @@
      "type": "metadata",
      "field": "ADVISOR_NAME",
      "prefix": "TEZ DANIŞMANI: ",
-     "fallback": "TEZ DANIŞMANI: Dr. Öğr. üyesi/DOÇ./prof. DR xxx yyyEŞ DANIŞMAN: Dr. Öğr. üyesi /DOÇ./prof. DR xxx yyy",
-     "style": {
-      "align": "center",
-      "fontSizePt": 13,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 7.2,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "(VARSA)",
+     "fallback": "Danışman adı soyadı",
      "style": {
       "align": "center",
       "fontSizePt": 13,
@@ -891,14 +1089,15 @@
      }
     },
     {
-     "type": "text",
-     "value": "Prof. Dr. Yücel Öztürkoğlu",
+     "type": "metadata",
      "style": {
       "align": "right",
       "spaceBeforePt": 18,
       "spaceAfterPt": 7.2,
       "lineHeight": 1.5
-     }
+     },
+     "field": "INSTITUTE_DIRECTOR_NAME",
+     "fallback": "INSTITUTE_DIRECTOR_NAME"
     },
     {
      "type": "text",
@@ -914,18 +1113,14 @@
   },
   {
    "id": "front-page-2",
-   "type": "custom",
-   "title": "Ön sayfa 3",
+   "type": "abstract",
+   "title": "ÖZET",
    "status": "required",
    "group": "front",
-   "mode": "static",
+   "mode": "editable",
    "tocEntry": "none",
    "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": false
-     }
-    },
+    "page": {},
     "body": {
      "firstLineIndentMm": 0,
      "spaceBeforePt": 0,
@@ -933,117 +1128,7 @@
      "lineHeight": 1
     }
    },
-   "blocks": [
-    {
-     "type": "text",
-     "value": "ÖZ",
-     "style": {
-      "align": "center",
-      "fontWeight": 700,
-      "spaceAfterPt": 7.2,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "THESIS_TITLE",
-     "fallback": "TEZ BAŞLIĞI",
-     "style": {
-      "align": "center",
-      "lineHeight": 1.5,
-      "textTransform": "uppercase"
-     }
-    },
-    {
-     "type": "text",
-     "value": "Soyad, İsim",
-     "style": {
-      "align": "center",
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Yüksek Lisans / Doktora Tezi, Program Adı",
-     "style": {
-      "align": "center",
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Danışman: Dr. Öğrt. Üyesi/Doç./Prof. Dr. Xxx YYY",
-     "style": {
-      "align": "center",
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Eş Danışman: Dr. Öğr. Üyesi/Doç. Dr./Prof. Dr. Xxx YYY",
-     "style": {
-      "align": "center",
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Ay 20XX",
-     "style": {
-      "align": "center",
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "spacer",
-     "heightMm": 7.3
-    },
-    {
-     "type": "text",
-     "value": "İşkenceyi etkili biçimde soruşturma yükümlülüğü açık bir biçimde AİHS metninde yer almayan, Sözleşme’nin birinci, üçüncü ve on üçüncü maddeleri doğrultusunda AİHM’nin yapmış olduğu incelemeler sonucu ortaya çıkmış bir yükümlülüktür. AİHM’ne bu yükümlülüğün ihlal edildiği iddiasıyla yapılmış oldukça fazla sayıda başvuru bulunmakta olup, ne yazık ki Mahkeme’nin bu yükümlülüğün ihlali yönünde vermiş olduğu kararların büyük çoğunluğu Türkiye aleyhinedir.",
-     "style": {
-      "align": "justify",
-      "lineHeight": 1.15
-     }
-    },
-    {
-     "type": "text",
-     "value": "Çalışmamızın ilk bölümünde, işkence yasağı kavramına, Türk hukukunda bu yasak kapsamında yapılmış olan düzenlemelere ve özellikle işkence suçu ile işkence yasağına ilişkin düzenlemelere yer verilen ve işkence görmeme hakkını koruma altına alınan sözleşmelere yer verilmiş, bu kapsamda yasağın sağladığı koruma alanı tespit edilmiştir.",
-     "style": {
-      "align": "justify",
-      "lineHeight": 1.15
-     }
-    },
-    {
-     "type": "text",
-     "value": "Çalışmamızın ikinci bölümünde ise AİHS ile oluşturulan koruma mekanizması ve bu koruma mekanizmasının Türk hukukuna etkisi değerlendirilmiş ardından da ayrıntılı biçimde işkence yasağı ile yasaklanmış olan aşağılayıcı ve insanlık dışı muamele ve ceza ile işkence kavramları AİHM kararları ışığında ele alınmış, bu yükümlülük ile birlikte devletlerin yerine getirmeyi taahhüt ettikleri yükümlülükler açıklanmıştır.",
-     "style": {
-      "align": "justify",
-      "lineHeight": 1.15
-     }
-    },
-    {
-     "type": "text",
-     "value": "Çalışmamızın esas konusunun değerlendirildiği son bölümümüzde ise, işkence yasağı kapsamında devletlerin yüklenmiş oldukları usuli yükümlülük yani işkenceyi etkili biçimde soruşturma yükümlülüğü ele alınmış, bu yükümlülük kapsamında devletlerin yükümlülükleri tespit edilmiş ve ardından da bu yükümlülükler doğrultusunda AİHM kararları değerlendirilerek uygulamamızdaki aksak noktalar tespit edilerek bu aksaklıklara çözüm önerilerinde bulunulmuştur.",
-     "style": {
-      "align": "justify",
-      "lineHeight": 1.15
-     }
-    },
-    {
-     "type": "spacer",
-     "heightMm": 11.2
-    },
-    {
-     "type": "text",
-     "value": "Anahtar sözcükler: işkence, AİHS, işkenceyi etkili soruşturma yükümlülüğü, usuli yükümlük, işkence suçu, işkence yasağı",
-     "style": {
-      "align": "justify",
-      "fontWeight": 700,
-      "lineHeight": 1.15
-     }
-    }
-   ]
+   "showTitle": true
   },
   {
    "id": "english-abstract",
@@ -1106,50 +1191,6 @@
     },
     "headings": {
      "1": {
-      "fontSizePt": 12
-     }
-    }
-   }
-  },
-  {
-   "id": "bibliography",
-   "type": "bibliography",
-   "title": "KAYNAKÇA95",
-   "status": "required",
-   "group": "back",
-   "mode": "editable",
-   "showTitle": true,
-   "overrides": {
-    "page": {
-     "numbering": {
-      "format": "roman-lower"
-     }
-    },
-    "headings": {
-     "1": {
-      "align": "left",
-      "fontSizePt": 12
-     }
-    }
-   }
-  },
-  {
-   "id": "appendices",
-   "type": "appendices",
-   "title": "EKLER 102",
-   "status": "optional",
-   "group": "back",
-   "mode": "editable",
-   "showTitle": true,
-   "overrides": {
-    "page": {
-     "numbering": {
-      "format": "roman-lower"
-     }
-    },
-    "headings": {
-     "1": {
-      "align": "left",
       "fontSizePt": 12
      }
     }
@@ -1235,36 +1276,52 @@
      }
     }
    }
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKÇA95",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "left",
+      "fontSizePt": 12
+     }
+    }
+   }
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER 102",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "left",
+      "fontSizePt": 12
+     }
+    }
+   }
   }
  ],
- "tables": {
-  "label": "Tablo",
-  "position": "above",
-  "style": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 12,
-   "align": "center"
-  },
-  "numbering": {
-   "scope": "chapter",
-   "format": "{chapter}.{n}",
-   "sequence": "arabic"
-  }
- },
- "figures": {
-  "label": "Şekil",
-  "position": "below",
-  "style": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 12,
-   "align": "center"
-  },
-  "numbering": {
-   "scope": "chapter",
-   "format": "{chapter}.{n}",
-   "sequence": "arabic"
-  }
- },
  "bibliography": {
   "heading": "KAYNAKÇA95",
   "style": {
@@ -1272,8 +1329,7 @@
    "fontSizePt": 12,
    "align": "left",
    "lineHeight": 1.15
-  },
-  "hangingIndentMm": 8
+  }
  },
  "toc": {
   "heading": "İÇİNDEKİLER",

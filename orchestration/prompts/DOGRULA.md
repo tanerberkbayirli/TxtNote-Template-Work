@@ -1,11 +1,10 @@
-# Prompt: bağımsız doğrulama (çürütmeye çalış)
+# Çıktıyı doğrulama
 
-Önce [../BASLA.md](../BASLA.md). Siz uygulamayı yazmadınız ve ona güvenmezsiniz; amaç çıktının resmî kaynağı karşılamadığını **çürütmeye çalışmak**. Hedef/iş: `<kimlik>`.
+Önce [BASLA.md](../BASLA.md) ve [AGENTS-RAPOR.md](../AGENTS-RAPOR.md). Amaç kaynakla gerçek çıktı arasındaki farkı ölçmektir. Kendi uygulama kontrolünüzü bağımsız inceleme diye sunmayın; bu yöntem başka ajan başlatma talimatı değildir.
 
-- Üretim kodunu (`engine/src/`, `TxtNote/frontend/`), `Butun-Sablonlar/` ve spec'leri değiştirmeyin. Yalnız `.test-tmp/validation/<iş>-<tarih>/` altına yazın; başarısızlık varsa `failures/<hedef>/`.
-- Ölçümü ortak araçlar yapar: `node engine/tools/check.mjs --target <kimlik> [--word]` ([../tools/CHECKER.md](../motor/CHECKER.md)). Yeni tek seferlik ölçüm betiği yazmak yerine ortak aracı genişletin. Resmî referans önbellekten gelir (`engine/references/<hedef>/source/`), yeniden render edilmez.
-- Çıktı **gerçek arayüzden** alınan PDF ve DOCX olmalı; sayfa sayısı + açılış sayfaları + kapsam ayrı ayrı bakılır; yalnız toplam sayı kabul değildir.
-- Şüpheli/başarısız satırlarda kaynak konumunu kendiniz açın (spec yanlış olabilir → "SPEC bulgusu" yazın). Görsel QA: sorunlu sayfalara gerçekten bakın.
-- Dışa aktarılan gerçek fontu, tarayıcı hatalarını (0 beklenir) ve Word açılışını doğrulayın.
-- Sonuç etiketleri: `PASS` · `FAIL` · `BLOCKED` (gerçek engel kanıtıyla) · `UNKNOWN`. Kendi PASS'ınızı değil, ölçümü yazın: beklenen / gözlenen / fark / kanıt yolu.
-- Bulguları [../GOREVLER.md](../GOREVLER.md)'ye ekleyin. Son yanıt ≤15 satır.
+- Salt doğrulamada üretim kodunu, şablonu veya beklenen değerleri değiştirmeyin. Düzeltme de yetkiliyse değişiklik sonrası kontrolü ayrıca kaydedin.
+- Gerçek arayüzden PDF/DOCX alın; kaynak hash'i ve araç sürümü eşleşmeyen önbelleği güncel kanıt saymayın. Araç: [CHECKER.md](../motor/CHECKER.md).
+- Beklenen/gözlenen değer, kaynak sayfası veya XML konumu, fark ve kanıt yolunu yazın. Spec yanlışsa çıktı hatası yerine spec bulgusu kaydedin.
+- Sayfa sayısı, açılışlar, dizin hedefleri, font ve kapsam ayrı denetlenir. XML veya aynı sayfa sayısı tek başına Word görsel uygunluğu değildir. Sorunlu sayfaları gerçekten açın.
+- Sonuç `PASS`, `FAIL`, `BLOCKED` veya `UNKNOWN` olabilir. Çalıştırılmayan kontrol geçmez; gerçek engel ve sınır açıklanır. Etiketler kurum kabulü değildir.
+- Ham kanıt `.test-tmp/validation/<iş>-<tarih>/`, kısa rapor `raporlar/`, açık iş [GOREVLER.md](../GOREVLER.md) içindedir. Panel değişiyorsa ilgili [uygulama belgesini](../uygulama/README.md) okuyun.

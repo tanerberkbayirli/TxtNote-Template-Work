@@ -179,7 +179,60 @@
    "Gövde (MEASURED, tek gerçek örnek paragraf): Times New Roman 12, iki yana yaslı, 1,5 satır, önce/sonra 0, ilk satır girintisi yok. Özet örnek satırlarında 12,5 mm girinti vardır (özet/abstract paragraflarında uygulandı); GİRİŞ örnek satırlarında da 12,5 mm girinti vardır ama gerçek metin paragrafında yoktur (ÇELİŞKİ, bkz. rapor).",
    "Başlıklar (gerçek gövde sayfaları): H1 kalın, büyük harf, tek satır, 6/6 nk ('toc 1' biçimi; yalnız GİRİŞ 'heading 1' biçimindedir: 1,5 satır, önce 12 nk: ÇELİŞKİ); H2 kalın 1,5 satır önce 12; H3 kalın 1,5 satır 6/6; H4 gövdede yok, yönerge planında normal ağırlık. Numaralandırma 1. / 2.1. / 2.1.1. (bölüm numarası dahil, yazılı). Şablonun 'ÖRNEK (GEÇİCİ TASLAK) PLAN' metni 'BİRİNCİ BÖLÜM' ortalı başlıkları ve bölüm başına yeniden başlayan numaralar gösterir; gerçek sayfalarla çeliştiği için uygulanmadı (ÇELİŞKİ).",
    "UNKNOWN / zorlanan alanlar: caption position/style/numbering (there are no caption paragraphs; 'Çizelgeler/Şekiller Dizini' only supports labels Çizelge/Şekil as INFERRED), footnote style, block quote, equations, appendix/CV layouts, index-row formatting, table borders, footer height. Header/footer distance is directly measured from sectPr; the page-number baseline model includes the empty trailing footer paragraph."
-  ]
+  ],
+  "regionalAudit": {
+   "checkedAt": "2026-10-23",
+   "status": "CORE_RECHECKED",
+   "layoutRebuilt": false,
+   "visualConformanceRechecked": false,
+   "documents": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Is_Guvenligi_Tezsiz_Proje/AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+     "sha256": "19d9d19154ad57dc88e9004fb37dfa391a434c9bed5abe633b33e6b2a5a480ed"
+    }
+   ],
+   "checkedFields": [
+    {
+     "field": "typography.body.fontSizePt",
+     "template": 12,
+     "sourceValue": 12.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Is_Guvenligi_Tezsiz_Proje/AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc",
+     "evidence": [
+      {
+       "value": 12.0,
+       "location": "eski Word ana metin paragraf 59",
+       "sentence": "BİRİNCİ BÖLÜM BAŞLIĞI: HEPSİ BÜYÜK 12 PUNTO - ORTALI"
+      },
+      {
+       "value": 12.0,
+       "location": "eski Word ana metin paragraf 61",
+       "sentence": "HEPSİ BÜYÜK HARF VE KOYU (İki Yana Yaslanmış- Sola Dayalı, 12 punto, paragraf girintisi yok)"
+      },
+      {
+       "value": 12.0,
+       "location": "eski Word ana metin paragraf 63",
+       "sentence": "HEPSİ BÜYÜK HARF VE KOYU DEĞİL (İki Yana Yaslanmış- Sola Dayalı, 12 punto, paragraf girintisi yok)"
+      },
+      {
+       "value": 12.0,
+       "location": "eski Word ana metin paragraf 67",
+       "sentence": "Sadece İlk Harfleri Büyük ve Koyu (İki Yana Yaslanmış- Sola Dayalı, 12 punto, paragraf girintisi yok)"
+      },
+      {
+       "value": 12.0,
+       "location": "eski Word ana metin paragraf 68",
+       "sentence": "Sadece İlk Harfleri Büyük ve Koyu Değil (İki Yana Yaslanmış- Sola Dayalı, 12 punto, paragraf girintisi yok)"
+      },
+      {
+       "value": 12.0,
+       "location": "eski Word ana metin paragraf 69",
+       "sentence": "İKİNCİ BÖLÜM BAŞLIĞI: HEPSİ BÜYÜK 12 PUNTO - ORTALI"
+      }
+     ]
+    }
+   ],
+   "conflicts": []
+  }
  },
  "sections": [
   {

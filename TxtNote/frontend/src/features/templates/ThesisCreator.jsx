@@ -14,8 +14,8 @@ export function ThesisCreator({ onCreate }) {
   const institutes = THESIS_TEMPLATE_REGISTRY.filter((item) => item.universityId === universityId);
   const degrees = institutes.filter((item) => item.instituteId === instituteId);
   const languages = degrees.filter((item) => item.degreeType === degreeType);
-  const selection = { universityId, instituteId, degreeType, language };
   const selectedTemplate = languages.find(item => item.language === language);
+  const selection = { templateId: selectedTemplate?.id, universityId, instituteId, degreeType, language };
 
   const chooseUniversity = (id) => {
     const next = THESIS_TEMPLATE_REGISTRY.find((item) => item.universityId === id);
@@ -30,6 +30,7 @@ export function ThesisCreator({ onCreate }) {
     setDegreeType(degree); setLanguage(next.language);
   };
   const create = async () => {
+    if (!selectedTemplate || !onCreate || busy) return;
     setBusy(true); setError("");
     try { await onCreate?.(selection); }
     catch (cause) { setError(cause?.message || "Tez oluşturulamadı."); }

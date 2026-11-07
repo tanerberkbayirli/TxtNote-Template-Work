@@ -1,0 +1,1384 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "ieu-lee-es-danisman-master-tr-kaynak-946d09",
+ "universityId": "ieu",
+ "universityName": "İzmir Ekonomi Üniversitesi",
+ "instituteId": "lee-es-danisman",
+ "instituteName": "Lisansüstü Eğitim Enstitüsü · İkinci danışmanlı",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Taslak docx-spec-to-template.py ile üretildi; SHA-256 23801be007e035a1b4e33088e0d274253134d9292bf283d82cf7498aa80ffef6",
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
+  ],
+  "guideDocumentName": "IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx",
+  "rebuildKind": "docx-template",
+  "archiveSha256": "23801be007e035a1b4e33088e0d274253134d9292bf283d82cf7498aa80ffef6",
+  "evidence": {
+   "page.margins": {
+    "value": {
+     "topMm": 25,
+     "bottomMm": 25,
+     "leftMm": 40,
+     "rightMm": 25
+    },
+    "source": "IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx › sectPr#1 (gövde bölümü, 32 paragraf) › w:pgMar",
+    "status": "MEASURED"
+   },
+   "page.size": {
+    "value": [
+     210,
+     297
+    ],
+    "source": "IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx › sectPr#1 (gövde bölümü, 32 paragraf) › w:pgSz",
+    "status": "MEASURED"
+   },
+   "typography.body": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "justify",
+     "lineHeight": 1.5
+    },
+    "source": "IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx › gövde profili: 1/1 paragraf (≥200 karakter), 1 farklı biçim",
+    "status": "MEASURED"
+   },
+   "sections.cover": {
+    "value": "8 blok, outerCover",
+    "source": "IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx › ön sayfa #0: [TEZ ADI] / [AD SOYAD] / [Program Adı] Yüksek Lisans Programı Tezi",
+    "status": "MEASURED"
+   },
+   "sections.approval": {
+    "value": "14 blok, approval",
+    "source": "IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx › ön sayfa #1: TEZ DANIŞMANI: [TEZ DANIŞMANI ÜNVANI, ADI VE SOYADI] / TEZ İKİNCİ DANIŞMANI: [TE",
+    "status": "MEASURED"
+   },
+   "sections.approval-2": {
+    "value": "27 blok, approval",
+    "source": "IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx › ön sayfa #2: Lisansüstü Eğitim Enstitüsü Onayı / _____________________ / Prof. Dr. Muhittin H",
+    "status": "MEASURED"
+   },
+   "sections.declaration": {
+    "value": "9 blok, declaration",
+    "source": "IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx › ön sayfa #3: ETİK BEYAN / Bu tezin tek yazarı olduğumu ve tezin planlanmasından savunulmasına",
+    "status": "MEASURED"
+   },
+   "sections": {
+    "value": [
+     "outerCover",
+     "approval",
+     "approval",
+     "declaration",
+     "abstract",
+     "englishAbstract",
+     "mainContent"
+    ],
+    "source": "IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx › 3 birinci düzey başlık, 5 fiziksel bölüm",
+    "status": "MEASURED"
+   },
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 7",
+      "sentence": "Kenar Boşlukları Sol kenar (cilt kenarı) için 4 cm, diğer üç kenar için ise 2,5 cm olacak şekilde kenar boşlukları belirlenmelidir."
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 7",
+      "sentence": "Kenar Boşlukları Sol kenar (cilt kenarı) için 4 cm, diğer üç kenar için ise 2,5 cm olacak şekilde kenar boşlukları belirlenmelidir."
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "locations": [
+     {
+      "value": 40,
+      "location": "sayfa 7",
+      "sentence": "Kenar Boşlukları Sol kenar (cilt kenarı) için 4 cm, diğer üç kenar için ise 2,5 cm olacak şekilde kenar boşlukları belirlenmelidir."
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 7",
+      "sentence": "Kenar Boşlukları Sol kenar (cilt kenarı) için 4 cm, diğer üç kenar için ise 2,5 cm olacak şekilde kenar boşlukları belirlenmelidir."
+     }
+    ]
+   },
+   "typography.footnotes.lineHeight": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 1,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "locations": [
+     {
+      "value": 1,
+      "location": "sayfa 15",
+      "sentence": "Dipnotlar tek satır aralığında yazılmalıdır (Bkz."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "REVIEWED_SOURCE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 9",
+    "passage": "5 Şekil 4. Metin boşluk seçenek ayarlarının gösterimi. 2.4. Hizalama Metin, sağa ve sola yaslanarak hizalanmalıdır. 2.5. Metin Bölünmeleri Sayfa sonuna gelen başlık veya alt başlıklardan sonra en az iki satır metin bulunmalıdır. Bu koşul sağlanamadığında, ilgili başlık veya alt başlık bir sonraki sayfanın başında yer almalıdır. 2.6. Sayfa Numaralandırılması Bütün sayfa numaraları, her sayfanın alt orta bölgesinde bulunmalıdır. Sayfa numaraları aynı font ve büyüklükte olmalıdır ve 12 punto Times New Roman kullanılmalıdır. Aşağıda tarif edilen biçimde bir sayfa numarası düzeni kullanılmalıdır: a) Öncül Sayfalar: Öncül sayfalar için küçük Romen rakamları (i, ii, iii, iv gibi) kullanılır. Başlık, Onay Sayfası ve Etik Beyan sayfalarına sayfa numarası yazılmaz, ancak bu sayfalar sırasıyla i. ii. ve iii. sayfa olarak kabul edilir ve bunları takip eden sayfa (Özet sayfası) numarası iv'ten başlar. b) Tez Ana Metni: Metnin ilk sayfası \"1\" sayısı ile numaralandırılır ve tez boyunca bütün sayfalar kaynakça, ekler (varsa) ve özgeçmişi (yalnızca doktora tezlerinde) de kapsayacak şekilde ardışık olarak Arap rakamları ile numaralandırılır. Bu numaralandırmaya bölüm başlıklarının bulunduğu sayfalar, tablo veya şekillerin ve resimlerin bulunduğu sayfalar da dahil edilmelidir.",
+    "decision": "İzmir Ekonomi bütün sayfa numaraları."
+   },
+   "typography.headings.1.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.1.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 14,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.1.fontWeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 700,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.1.lineHeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.1.italic": {
+    "status": "REVIEWED_SOURCE",
+    "value": false,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.2.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.2.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.2.fontWeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 700,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.2.lineHeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.2.italic": {
+    "status": "REVIEWED_SOURCE",
+    "value": true,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.3.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.3.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.3.fontWeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 700,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.3.lineHeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.3.italic": {
+    "status": "REVIEWED_SOURCE",
+    "value": true,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.4.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.4.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.4.fontWeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 700,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.4.lineHeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "typography.headings.4.italic": {
+    "status": "REVIEWED_SOURCE",
+    "value": true,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 6",
+    "passage": "2 BÖLÜM 2: FORMAT VE GÖRÜNÜM 2.1. Kağıt Standartları ve Çoğaltma Tezlerin kalıcılığı, sağlamlığı ve temiz görünümü sağlamak amacıyla, tüm tez kopyaları A4 boyutunda (21x29,7 cm) beyaz kağıda basılmalı ve sadece tek yüze yazdırılmalıdır. 2.2. Yazı Tipi ve Boyutu Tezlerde kullanılacak yazı karakteri, 12 punto büyüklüğünde Times New Roman olmalıdır. Yazı tipi ve boyutu, tez boyunca tutarlılık göstermelidir. Eğer belirli kelimeler veya cümleler vurgulanmak istenirse veya yabancı kelimeler kullanılacaksa, kalın harfler, semboller veya italik (eğik) harfler kullanılabilir. Bölüm başlıkları, alt bölüm başlıkları, dipnotlar, son notlar, örnekler, alıntılar, tablolar ve şemalar gibi unsurların birbirinden ayrılması için farklı yazı boyutları kullanılabilir. Tez ana metninde 1,5 satır aralığı kullanılmalıdır. Yeni bir paragraftan önce 1 satır boşluk bırakılabilir veya bütün metinde tutarlı bir şekilde belirlenmiş paragraf aralığı veya girinti kullanılabilir. Görsel materyaller (tablo, şekil, resim vb.) ile başlık yazıları arasında 1,5 satır aralığı bulunmalıdır. Bölüm başlıkları, alt bölüm başlıkları ve özel sayfa başlıkları arasında da 1,5 satır aralığı kullanılmalıdır. Etik Kurul Onayı, Özet, Abstract (İngilizce Özet), Teşekkür, İçindekiler, birinci derece bölüm başlıkları ve kaynaklar gibi farklı bölümler yeni bir sayfada başlamalıdır, gerektiğinde yeni sayfa başlatılmalıdır. Tezin farklı kısımlarında kullanılacak metin özellikleri Tablo 1'de belirtilmiştir. Tablo 1. Tezlerde uygulanacak karakter büyüklükleri, satır aralıkları ve boşluklar Metin Türü Karakter Büyüklüğü Satır Aralığı Yazı Tipi Stili Tez Adı 16 1,5 Koyu Bölüm Başlıkları 14 1,5 Koyu Alt bölüm Başlıkları 12 1,5 Koyu ve Eğik",
+    "decision": "Tablo 1: kullanılmamış Word Calibri başlık stili yerine kılavuzdaki başlık ölçüleri."
+   },
+   "page.numbering.align": {
+    "status": "REVIEWED_SOURCE",
+    "value": "center",
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 9",
+    "passage": "5 Şekil 4. Metin boşluk seçenek ayarlarının gösterimi. 2.4. Hizalama Metin, sağa ve sola yaslanarak hizalanmalıdır. 2.5. Metin Bölünmeleri Sayfa sonuna gelen başlık veya alt başlıklardan sonra en az iki satır metin bulunmalıdır. Bu koşul sağlanamadığında, ilgili başlık veya alt başlık bir sonraki sayfanın başında yer almalıdır. 2.6. Sayfa Numaralandırılması Bütün sayfa numaraları, her sayfanın alt orta bölgesinde bulunmalıdır. Sayfa numaraları aynı font ve büyüklükte olmalıdır ve 12 punto Times New Roman kullanılmalıdır. Aşağıda tarif edilen biçimde bir sayfa numarası düzeni kullanılmalıdır: a) Öncül Sayfalar: Öncül sayfalar için küçük Romen rakamları (i, ii, iii, iv gibi) kullanılır. Başlık, Onay Sayfası ve Etik Beyan sayfalarına sayfa numarası yazılmaz, ancak bu sayfalar sırasıyla i. ii. ve iii. sayfa olarak kabul edilir ve bunları takip eden sayfa (Özet sayfası) numarası iv'ten başlar. b) Tez Ana Metni: Metnin ilk sayfası \"1\" sayısı ile numaralandırılır ve tez boyunca bütün sayfalar kaynakça, ekler (varsa) ve özgeçmişi (yalnızca doktora tezlerinde) de kapsayacak şekilde ardışık olarak Arap rakamları ile numaralandırılır. Bu numaralandırmaya bölüm başlıklarının bulunduğu sayfalar, tablo veya şekillerin ve resimlerin bulunduğu sayfalar da dahil edilmelidir.",
+    "decision": "İzmir Ekonomi bütün sayfa numaraları."
+   },
+   "page.numbering.style.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 9",
+    "passage": "5 Şekil 4. Metin boşluk seçenek ayarlarının gösterimi. 2.4. Hizalama Metin, sağa ve sola yaslanarak hizalanmalıdır. 2.5. Metin Bölünmeleri Sayfa sonuna gelen başlık veya alt başlıklardan sonra en az iki satır metin bulunmalıdır. Bu koşul sağlanamadığında, ilgili başlık veya alt başlık bir sonraki sayfanın başında yer almalıdır. 2.6. Sayfa Numaralandırılması Bütün sayfa numaraları, her sayfanın alt orta bölgesinde bulunmalıdır. Sayfa numaraları aynı font ve büyüklükte olmalıdır ve 12 punto Times New Roman kullanılmalıdır. Aşağıda tarif edilen biçimde bir sayfa numarası düzeni kullanılmalıdır: a) Öncül Sayfalar: Öncül sayfalar için küçük Romen rakamları (i, ii, iii, iv gibi) kullanılır. Başlık, Onay Sayfası ve Etik Beyan sayfalarına sayfa numarası yazılmaz, ancak bu sayfalar sırasıyla i. ii. ve iii. sayfa olarak kabul edilir ve bunları takip eden sayfa (Özet sayfası) numarası iv'ten başlar. b) Tez Ana Metni: Metnin ilk sayfası \"1\" sayısı ile numaralandırılır ve tez boyunca bütün sayfalar kaynakça, ekler (varsa) ve özgeçmişi (yalnızca doktora tezlerinde) de kapsayacak şekilde ardışık olarak Arap rakamları ile numaralandırılır. Bu numaralandırmaya bölüm başlıklarının bulunduğu sayfalar, tablo veya şekillerin ve resimlerin bulunduğu sayfalar da dahil edilmelidir.",
+    "decision": "İzmir Ekonomi bütün sayfa numaraları."
+   },
+   "page.numbering.style.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "location": "sayfa 9",
+    "passage": "5 Şekil 4. Metin boşluk seçenek ayarlarının gösterimi. 2.4. Hizalama Metin, sağa ve sola yaslanarak hizalanmalıdır. 2.5. Metin Bölünmeleri Sayfa sonuna gelen başlık veya alt başlıklardan sonra en az iki satır metin bulunmalıdır. Bu koşul sağlanamadığında, ilgili başlık veya alt başlık bir sonraki sayfanın başında yer almalıdır. 2.6. Sayfa Numaralandırılması Bütün sayfa numaraları, her sayfanın alt orta bölgesinde bulunmalıdır. Sayfa numaraları aynı font ve büyüklükte olmalıdır ve 12 punto Times New Roman kullanılmalıdır. Aşağıda tarif edilen biçimde bir sayfa numarası düzeni kullanılmalıdır: a) Öncül Sayfalar: Öncül sayfalar için küçük Romen rakamları (i, ii, iii, iv gibi) kullanılır. Başlık, Onay Sayfası ve Etik Beyan sayfalarına sayfa numarası yazılmaz, ancak bu sayfalar sırasıyla i. ii. ve iii. sayfa olarak kabul edilir ve bunları takip eden sayfa (Özet sayfası) numarası iv'ten başlar. b) Tez Ana Metni: Metnin ilk sayfası \"1\" sayısı ile numaralandırılır ve tez boyunca bütün sayfalar kaynakça, ekler (varsa) ve özgeçmişi (yalnızca doktora tezlerinde) de kapsayacak şekilde ardışık olarak Arap rakamları ile numaralandırılır. Bu numaralandırmaya bölüm başlıklarının bulunduğu sayfalar, tablo veya şekillerin ve resimlerin bulunduğu sayfalar da dahil edilmelidir.",
+    "decision": "İzmir Ekonomi bütün sayfa numaraları."
+   },
+   "sections.cover.textBox2": {
+    "status": "MEASURED",
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx",
+    "location": "word/document.xml //wp:anchor[2]",
+    "value": {
+     "xMm": 81.91416666666666,
+     "yMm": 232.98277777777778,
+     "widthMm": 61.17166666666667,
+     "heightMm": 39.01722222222222
+    }
+   },
+   "sections.cover.textBox3": {
+    "status": "MEASURED",
+    "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx",
+    "location": "word/document.xml //wp:anchor[3]",
+    "value": {
+     "xMm": 79.7975,
+     "yMm": 254.9961111111111,
+     "widthMm": 65.405,
+     "heightMm": 17.003888888888888
+    }
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Doktora_Tez_Oncul_Sayfalar_EN.docx",
+    "sha256": "48055686f6c7e44c30158f725a53947f16101ed6347a234c9dcdbefec0486835"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Doktora_Tez_Oncul_Sayfalar_EN_Ikinci_Danisman.docx",
+    "sha256": "534f5ede86533605c07d18a37096b081d705629b63034ab219f9f15a54554e8a"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Hukuk_Tezleri_Ek_Aciklamalar.pdf",
+    "sha256": "ce9af6a640943d913f97af7defab73a487c4784285e2db6e5e6e06db8b4c1d54"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_EN.pdf",
+    "sha256": "efc759dbd512c651401a4a71b69af4340bd23270c6f2c980f404fd8d1ebb7c8e"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+    "sha256": "2c7e7db7695417b8a2921f6cf5709f722461393dd1773a3915750f9e475106e5"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_YL_Tez_Oncul_Sayfalar_EN.docx",
+    "sha256": "3a0aad66e7e4fc66aa538546fa50da8ae4d3d461ae3c2780bbb842a6b9a30e4b"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_YL_Tez_Oncul_Sayfalar_EN_Ikinci_Danisman.docx",
+    "sha256": "47f8849a5185d879fac2d2ba22269461e36991780b6ea7654cd94326e68dac3e"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_YL_Tez_Oncul_Sayfalar_TR.docx",
+    "sha256": "9aff063d606294381457fb35ff6a1dd4d63173669de73c3490602779661c2dc6"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx",
+    "sha256": "23801be007e035a1b4e33088e0d274253134d9292bf283d82cf7498aa80ffef6"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "page.numbering",
+     "reason": "Gövde bölümünün üstbilgi/altbilgisinde PAGE alanı bulunamadı"
+    },
+    {
+     "field": "typography.headings.1",
+     "reason": "Heading1 stili var ama kullanılmamış; Word varsayılanı üniversite kuralı sayılmadı, kılavuzdan doğrulanmalı"
+    },
+    {
+     "field": "typography.headings.2",
+     "reason": "Belgede 2. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.3",
+     "reason": "Belgede 3. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.4",
+     "reason": "Belgede 4. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "tables",
+     "reason": "Belgede örnek çizelge/tablo yazısı yok"
+    },
+    {
+     "field": "figures",
+     "reason": "Belgede örnek şekil yazısı yok"
+    },
+    {
+     "field": "sections.mainContent",
+     "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "bibliography.heading",
+     "reason": "Kaynakça başlığı belgede bulunamadı; 'KAYNAKLAR' yer tutucu"
+    },
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.lineHeight",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.numbering.restart",
+     "value": "[1,3,4]",
+     "reasoning": "DOCX bölümleri [1, 3, 4] önceki bölümle aynı biçimdeyken yeniden başlatıyor (Word'de elle girilmiş başlangıç); sayfa numarası dizinin ilk bölümünden kesintisiz sürüyor"
+    },
+    {
+     "field": "sections.approval.ADVISOR_NAME",
+     "value": "[TEZ DANIŞMANI ÜNVANI, ADI VE SOYADI]",
+     "reasoning": "Satır içi etiket: approval › “TEZ DANIŞMANI: [TEZ DANIŞMANI ÜNVANI, AD”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
+    }
+   ],
+   "conflicts": [],
+   "guide": "IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 25,
+   "bottomMm": 25,
+   "leftMm": 40,
+   "rightMm": 25
+  },
+  "header": {
+   "heightMm": 0,
+   "distanceMm": 12.49,
+   "content": "",
+   "firstPage": "omit"
+  },
+  "footer": {
+   "heightMm": 0,
+   "distanceMm": 12.49,
+   "content": "",
+   "firstPage": "omit"
+  },
+  "numbering": {
+   "enabled": false,
+   "position": "bottom",
+   "align": "center",
+   "format": "arabic",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12
+   }
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "lineHeight": 1.5
+  },
+  "paragraph": {
+   "spaceAfterPt": 8
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 14,
+    "fontWeight": 700,
+    "lineHeight": 1.5,
+    "italic": false
+   },
+   "2": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "lineHeight": 1.5,
+    "italic": true
+   },
+   "3": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "lineHeight": 1.5,
+    "italic": true
+   },
+   "4": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "lineHeight": 1.5,
+    "italic": true
+   }
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.15,
+   "baseline": "word"
+  },
+  "footnotes": {
+   "lineHeight": 1
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_NAME": {
+   "label": "Jury Member 1 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_NAME": {
+   "label": "Jury Member 2 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_NAME": {
+   "label": "Jury Member 3 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_NAME": {
+   "label": "Jury Member 4 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_NAME": {
+   "label": "Jury Member 5 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_INSTITUTION": {
+   "label": "Jury Member 1 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_INSTITUTION": {
+   "label": "Jury Member 2 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_INSTITUTION": {
+   "label": "Jury Member 3 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_INSTITUTION": {
+   "label": "Jury Member 4 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_INSTITUTION": {
+   "label": "Jury Member 5 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_NAME": {
+   "label": "Jury Member 6 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_NAME": {
+   "label": "Jury Member 7 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_INSTITUTION": {
+   "label": "Jury Member 6 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_INSTITUTION": {
+   "label": "Jury Member 7 Institution",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "cover",
+   "type": "outerCover",
+   "title": "Dış Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "spacer",
+     "heightMm": 14.2
+    },
+    {
+     "type": "image",
+     "source": "data:image/png;base64,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",
+     "widthMm": 51.21,
+     "heightMm": 49.99,
+     "align": "left"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 63.91
+    },
+    {
+     "type": "metadata",
+     "style": {
+      "align": "center",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     },
+     "field": "THESIS_TITLE",
+     "fallback": "Tez başlığı"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 21.3
+    },
+    {
+     "type": "metadata",
+     "style": {
+      "align": "center",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     },
+     "field": "STUDENT_NAME",
+     "fallback": "Öğrenci adı soyadı"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 21.3
+    },
+    {
+     "type": "text",
+     "value": "{{PROGRAM_NAME}} Yüksek Lisans Programı Tezi",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Lisansüstü Eğitim Enstitüsü",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     },
+     "layoutMode": "absolute",
+     "xMm": 84.454,
+     "yMm": 234.253,
+     "widthMm": 56.092,
+     "flowHeightMm": 0,
+     "wordBaseline": true
+    },
+    {
+     "type": "text",
+     "value": "İzmir Ekonomi Üniversitesi",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     },
+     "layoutMode": "absolute",
+     "xMm": 84.454,
+     "yMm": 241.555,
+     "widthMm": 56.092,
+     "flowHeightMm": 0,
+     "wordBaseline": true
+    },
+    {
+     "type": "text",
+     "value": "İzmir",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     },
+     "layoutMode": "absolute",
+     "xMm": 84.454,
+     "yMm": 248.858,
+     "widthMm": 56.092,
+     "flowHeightMm": 0,
+     "wordBaseline": true
+    },
+    {
+     "type": "metadata",
+     "field": "YEAR",
+     "fallback": "Yıl",
+     "style": {
+      "align": "center",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     },
+     "layoutMode": "absolute",
+     "xMm": 84.454,
+     "yMm": 256.16,
+     "widthMm": 56.092,
+     "flowHeightMm": 0,
+     "wordBaseline": true
+    },
+    {
+     "type": "text",
+     "value": "İzmir",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     },
+     "layoutMode": "absolute",
+     "xMm": 82.338,
+     "yMm": 256.266,
+     "widthMm": 60.325,
+     "flowHeightMm": 0,
+     "wordBaseline": true
+    },
+    {
+     "type": "metadata",
+     "field": "YEAR",
+     "fallback": "Yıl",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     },
+     "layoutMode": "absolute",
+     "xMm": 82.338,
+     "yMm": 263.569,
+     "widthMm": 60.325,
+     "flowHeightMm": 0,
+     "wordBaseline": true
+    }
+   ]
+  },
+  {
+   "id": "approval",
+   "type": "approval",
+   "title": "Onay Sayfası",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "spacer",
+     "heightMm": 63.91
+    },
+    {
+     "type": "metadata",
+     "field": "ADVISOR_NAME",
+     "prefix": "TEZ DANIŞMANI: ",
+     "fallback": "Danışman adı soyadı",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "TEZ İKİNCİ DANIŞMANI: {{CO_ADVISOR_NAME}}",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.1
+    },
+    {
+     "type": "text",
+     "value": "Yüksek Lisans Jüri Üyeleri{{JURY_MEMBER_1_NAME}}",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{JURY_MEMBER_2_NAME}}",
+     "style": {
+      "align": "center",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{JURY_MEMBER_3_NAME}}",
+     "style": {
+      "align": "center",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{JURY_MEMBER_4_NAME}}",
+     "style": {
+      "align": "center",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{JURY_MEMBER_5_NAME}}",
+     "style": {
+      "align": "center",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.1
+    },
+    {
+     "type": "text",
+     "value": "İzmir Ekonomi Üniversitesi Lisansüstü Eğitim Enstitüsü",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{PROGRAM_NAME}} Anabilim Dalı’na",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Yüksek Lisans tezi",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "olarak sunulmuştur.",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "approval-2",
+   "type": "approval",
+   "title": "Onay Sayfası",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "Lisansüstü Eğitim Enstitüsü Onayı",
+     "style": {
+      "align": "left",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "_____________________",
+     "style": {
+      "align": "right",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "metadata",
+     "style": {
+      "align": "right",
+      "lineHeight": 1.5
+     },
+     "field": "INSTITUTE_DIRECTOR_NAME",
+     "fallback": "INSTITUTE_DIRECTOR_NAME"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.1
+    },
+    {
+     "type": "text",
+     "value": "Bu tezin Yüksek Lisans derecesi için gerekli şartları sağladığını onaylarım.",
+     "style": {
+      "align": "justify",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.1
+    },
+    {
+     "type": "text",
+     "value": "_____________________",
+     "style": {
+      "align": "right",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.1
+    },
+    {
+     "type": "text",
+     "value": "Tez tarafımızdan okunmuş, Yüksek Lisans derecesi için kapsam ve kalite yönünden uygun olduğu kabul edilmiştir.",
+     "style": {
+      "align": "justify",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.1
+    },
+    {
+     "type": "text",
+     "value": "_____________________",
+     "style": {
+      "align": "right",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.1
+    },
+    {
+     "type": "text",
+     "value": "Yüksek Lisans Jüri Üyeleri",
+     "style": {
+      "align": "left",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{JURY_MEMBER_1_NAME}}",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{JURY_MEMBER_1_INSTITUTION}}",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.1
+    },
+    {
+     "type": "text",
+     "value": "{{JURY_MEMBER_2_NAME}}",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{JURY_MEMBER_2_INSTITUTION}}",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.1
+    },
+    {
+     "type": "text",
+     "value": "{{JURY_MEMBER_3_NAME}}",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{JURY_MEMBER_3_INSTITUTION}}",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.1
+    },
+    {
+     "type": "text",
+     "value": "{{JURY_MEMBER_4_NAME}}",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{JURY_MEMBER_4_INSTITUTION}}",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.3
+    },
+    {
+     "type": "text",
+     "value": "{{JURY_MEMBER_5_NAME}}",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 11,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{JURY_MEMBER_5_INSTITUTION}}",
+     "style": {
+      "align": "justify",
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "declaration",
+   "type": "declaration",
+   "title": "Etik Beyan",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "ETİK BEYAN",
+     "style": {
+      "align": "justify",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "spaceAfterPt": 8,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 19.85
+    },
+    {
+     "type": "text",
+     "value": "Bu tezin tek yazarı olduğumu ve tezin planlanmasından savunulmasına kadar her aşamasında akademik kurallara ve etik davranışlara uygun olarak çalışmamı yürüttüğümü beyan ederim. Çalışmama özgü olmayan tüm fikir, bilgi ve bulgulara etik davranış kurallarının gerektirdiği şekilde atıf yaptığımı ve atıf yapılmayan her ifadenin bana ait olduğunu teyit ederim.",
+     "style": {
+      "align": "justify",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 9.92
+    },
+    {
+     "type": "text",
+     "value": "Ad, Soyad:",
+     "style": {
+      "align": "right",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 9.92
+    },
+    {
+     "type": "text",
+     "value": "Tarih:",
+     "style": {
+      "align": "right",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 9.92
+    },
+    {
+     "type": "text",
+     "value": "İmza:",
+     "style": {
+      "align": "right",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  }
+ ],
+ "bibliography": {
+  "heading": "KAYNAKLAR",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "left",
+   "lineHeight": 1.5
+  }
+ },
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [],
+  "showPageNumbers": true
+ }
+}

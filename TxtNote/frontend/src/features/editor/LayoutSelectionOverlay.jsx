@@ -24,7 +24,7 @@ export function selectionClipPath(element) {
 }
 
 /** Visual-only selection chrome; fixed client coordinates keep it aligned through zoom and scroll. */
-export default function LayoutSelectionOverlay({ selectedElements = [], selectedIds = [], overlayRef, editingId, onResizeStart, onAction, onPatch, onOpenInspector, contextMenu, setContextMenu }) {
+export default function LayoutSelectionOverlay({ selectedElements = [], selectedIds = [], overlayRef, editingId, onResizeStart, onAction, onPatch, onOpenInspector, onToggleWritingPlan, contextMenu, setContextMenu }) {
   const locked = selectedElements.length > 0 && selectedElements.every((item) => item.locked || !item.editableLayout);
   const clipPath = selectionClipPath(selectedElements[0]?.element) || undefined;
   return <div ref={overlayRef} data-thesis-editor-only data-export-ignore="" aria-label="Layout selection" style={{ position: "fixed", inset: 0, zIndex: 10000, pointerEvents: "none" }}>
@@ -39,6 +39,6 @@ export default function LayoutSelectionOverlay({ selectedElements = [], selected
       </div>;
     })}
     </div>
-    <LayoutContextMenu contextMenu={contextMenu} selectedElements={selectedElements} onAction={onAction} onPatch={onPatch} onOpenInspector={onOpenInspector} onClose={() => setContextMenu?.(null)} />
+    <LayoutContextMenu contextMenu={contextMenu} selectedElements={selectedElements} onAction={onAction} onOpenInspector={onOpenInspector} onToggleWritingPlan={onToggleWritingPlan} onClose={() => setContextMenu?.(null)} />
   </div>;
 }

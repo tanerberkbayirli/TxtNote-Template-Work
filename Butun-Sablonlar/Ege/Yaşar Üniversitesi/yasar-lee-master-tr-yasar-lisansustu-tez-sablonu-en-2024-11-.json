@@ -1,30 +1,369 @@
 {
  "schemaVersion": 1,
- "templateVersion": "0.1.0-draft",
+ "templateVersion": "0.2.0-source-rebuild",
  "id": "yasar-lee-master-tr-yasar-lisansustu-tez-sablonu-en-2024-11-",
  "universityId": "yasar",
  "universityName": "Yaşar Üniversitesi",
  "instituteId": "lee",
  "instituteName": "Lisansüstü Eğitim Enstitüsü",
  "degreeType": "master",
- "language": "tr",
+ "language": "en",
  "status": "generic",
  "source": {
   "type": "official",
   "documentName": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx",
-  "verifiedAt": "2026-10-07",
+  "verifiedAt": "2026-10-23",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 f4d763b85dab95ba3287e3e24b17e585c2d3468b257a4882eab1c58e7d962e6e",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
-   "Kılavuz paragraf girintisi belirtmiyor; girinti yok (0 mm) kabul edildi",
-   "Kılavuz kuralları birleştirildi: Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf (2 alan, 1 çelişki)"
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
   ],
-  "guideDocumentName": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+  "guideDocumentName": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_EN_2024-11.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx",
+  "rebuildKind": "docx-template",
+  "archiveSha256": "f4d763b85dab95ba3287e3e24b17e585c2d3468b257a4882eab1c58e7d962e6e",
+  "evidence": {
+   "page.margins": {
+    "value": {
+     "topMm": 25,
+     "bottomMm": 25,
+     "leftMm": 40,
+     "rightMm": 25.01
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › sectPr#11 (gövde bölümü, 9 paragraf) › w:pgMar",
+    "status": "MEASURED"
+   },
+   "page.size": {
+    "value": [
+     210,
+     297
+    ],
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › sectPr#11 (gövde bölümü, 9 paragraf) › w:pgSz",
+    "status": "MEASURED"
+   },
+   "page.numbering": {
+    "value": {
+     "enabled": true,
+     "position": "bottom",
+     "align": "center",
+     "format": "arabic",
+     "startAt": 1,
+     "restart": false
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › sectPr#11 (gövde bölümü, 9 paragraf) › footer PAGE alanı, w:pgNumType",
+    "status": "MEASURED"
+   },
+   "page.footer.distanceMm": {
+    "value": 15.01,
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › sectPr#11 (gövde bölümü, 9 paragraf) › w:pgMar/@w:footer",
+    "status": "MEASURED"
+   },
+   "typography.body": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "justify",
+     "lineHeight": 1.5
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › gövde profili: 125/186 paragraf (≥200 karakter), 5 farklı biçim",
+    "status": "MEASURED"
+   },
+   "typography.headings.1.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}"
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.1": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 13,
+     "fontWeight": 700,
+     "align": "center",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 18,
+     "spaceAfterPt": 12,
+     "textTransform": "uppercase",
+     "numbering": {
+      "enabled": true,
+      "format": "{1}"
+     },
+     "keepWithNext": true
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › 9/18 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.2.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}.{2}."
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.2": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 13,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 12,
+     "spaceAfterPt": 8,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}."
+     },
+     "keepWithNext": true
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › 14/14 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.3.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}"
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.3": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 12,
+     "spaceAfterPt": 8,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}"
+     },
+     "keepWithNext": true
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › 12/12 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "tables.position": {
+    "value": "above",
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › 11 üstte / 1 altta",
+    "status": "MEASURED"
+   },
+   "tables": {
+    "value": {
+     "label": "Table",
+     "position": "above",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1
+     },
+     "numbering": {
+      "scope": "chapter",
+      "format": "{chapter}.{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › 11/11 yazı; etiket sayımı {'Table': 11}",
+    "status": "MEASURED"
+   },
+   "typography.footnotes": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 10,
+     "lineHeight": 1,
+     "align": "justify",
+     "placement": "pageBottom"
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › stil FootnoteText + settings.xml footnotePr",
+    "status": "MEASURED"
+   },
+   "sections.cover": {
+    "value": "10 blok, outerCover",
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › ön sayfa #0: YAŞAR UNIVERSITY / GRADUATE SCHOOL / TITLE OF THE THESIS / SECOND LINE OF THE TI",
+    "status": "MEASURED"
+   },
+   "sections.approval": {
+    "value": "13 blok, approval",
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › ön sayfa #1: JURY APPROVAL PAGE / We certify that, as the jury, we have read this thesis and ",
+    "status": "MEASURED"
+   },
+   "sections": {
+    "value": [
+     "outerCover",
+     "approval",
+     "englishAbstract",
+     "acknowledgements",
+     "tableOfContents",
+     "listOfFigures",
+     "listOfTables",
+     "listOfAbbreviations",
+     "bibliography",
+     "appendices",
+     "mainContent"
+    ],
+    "source": "Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx › 8 birinci düzey başlık, 20 fiziksel bölüm",
+    "status": "MEASURED"
+   },
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_EN_2024-11.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 8",
+      "sentence": "The margins for the front pages should be as follows: ⁻ Left space: 4 cm ⁻ Right space: 2.5 cm ⁻ Bottom space: 2.5 cm ⁻ Top space: 2.5 cm"
+     },
+     {
+      "value": 25,
+      "location": "sayfa 8",
+      "sentence": "Margins for research sections should be as follows: Right Page: ⁻ Left space: 4 cm ⁻ Right space: 2.5 cm ⁻ Bottom space: 2.5 cm ⁻ Top space: 2.5 cm"
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_EN_2024-11.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 8",
+      "sentence": "The margins for the front pages should be as follows: ⁻ Left space: 4 cm ⁻ Right space: 2.5 cm ⁻ Bottom space: 2.5 cm ⁻ Top space: 2.5 cm"
+     },
+     {
+      "value": 25,
+      "location": "sayfa 8",
+      "sentence": "Margins for research sections should be as follows: Right Page: ⁻ Left space: 4 cm ⁻ Right space: 2.5 cm ⁻ Bottom space: 2.5 cm ⁻ Top space: 2.5 cm"
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_EN_2024-11.pdf",
+    "locations": [
+     {
+      "value": 40,
+      "location": "sayfa 8",
+      "sentence": "The margins for the front pages should be as follows: ⁻ Left space: 4 cm ⁻ Right space: 2.5 cm ⁻ Bottom space: 2.5 cm ⁻ Top space: 2.5 cm"
+     },
+     {
+      "value": 40,
+      "location": "sayfa 8",
+      "sentence": "Margins for research sections should be as follows: Right Page: ⁻ Left space: 4 cm ⁻ Right space: 2.5 cm ⁻ Bottom space: 2.5 cm ⁻ Top space: 2.5 cm"
+     }
+    ]
+   },
+   "typography.footnotes.fontSizePt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 10,
+    "source": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_EN_2024-11.pdf",
+    "locations": [
+     {
+      "value": 10,
+      "location": "sayfa 24",
+      "sentence": "The font for the footnotes is Times New Roman and the size is 10 points."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_EN_2024-11.pdf",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "sayfa 8",
+      "sentence": "Page numbers should be located in the bottom center of the page."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "center",
+    "source": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_EN_2024-11.pdf",
+    "locations": [
+     {
+      "value": "center",
+      "location": "sayfa 8",
+      "sentence": "Page numbers should be located in the bottom center of the page."
+     }
+    ]
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx",
+    "sha256": "1c3d3117f694b84ec064285de60b928e4d3f9445183e77771010aca6be86ba5c"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx",
+    "sha256": "f4d763b85dab95ba3287e3e24b17e585c2d3468b257a4882eab1c58e7d962e6e"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx",
+    "sha256": "a96608c4acfed017e94af51630662fadf5f77f604b3c045f7dc2b21f0aa4262b"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_EN_2024-11.pdf",
+    "sha256": "1d34350ba78b82f202e4199415b4475493d4706ffe0a56fc1b3aaf149c67dcb9"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+    "sha256": "0e49ceb57f431169c9756c6aef17519c1540596f35fc43d58d941a0bb68a4336"
+   }
+  ],
   "review": {
    "unknown": [
     {
+     "field": "typography.headings.4",
+     "reason": "Heading4 stili var ama kullanılmamış; Word varsayılanı üniversite kuralı sayılmadı, kılavuzdan doğrulanmalı"
+    },
+    {
+     "field": "figures",
+     "reason": "Belgede örnek şekil yazısı yok"
+    },
+    {
      "field": "sections.mainContent",
      "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
     }
    ],
    "inferred": [
@@ -69,44 +408,19 @@
      "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
     },
     {
-     "field": "figures.style.fontSizePt",
-     "value": "12",
-     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
+     "field": "sections.sourceInstructions",
+     "value": "2",
+     "reasoning": "Şablonun kullanım yönergeleri ve örnek önsöz açıklamaları yeni tezin içeriği olarak basılmaması için çıkarıldı; özgün dosya korundu."
     },
     {
-     "field": "figures.numbering",
-     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
-     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
-    },
-    {
-     "field": "typography.paragraph.firstLineIndentMm",
-     "value": "0",
-     "reasoning": "Kılavuz paragraf girintisi belirtmiyor; girinti yok (0 mm) kabul edildi — kılavuzdan teyit edilmeli"
-    },
-    {
-     "field": "typography.headings.4.numbering",
-     "value": "numarasız",
-     "reasoning": "Kaynak bu başlık düzeyi için numara biçimi belirtmiyor (Word'de numaralandırması olmayan başlık stili numarasızdır); motor yedeği yalnız düzeyin kendi sayacını yazıp numaraları tekrar ettireceği için numarasız kaydedildi."
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
     }
    ],
-   "conflicts": [
-    {
-     "field": "typography.body.lineHeight",
-     "measured": "1.5",
-     "guide": "1",
-     "guideSource": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf › sayfa 34: “Sayfa altlığı (Bornova/ İzmir AY 20XX): Times New Roman, 11 punto, Normal kalınlık, ortalanmış, tek satır aralığı”"
-    }
-   ],
-   "guide": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
-   "gate": {
-    "overall": "CONFLICT",
-    "results": {
-     "PASS": 34,
-     "CONFLICT": 1
-    },
-    "checkedAt": "2026-10-22",
-    "exportTool": "engine/tools/export.mjs"
-   }
+   "conflicts": [],
+   "guide": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_EN_2024-11.pdf",
+   "gate": null
   }
  },
  "page": {
@@ -115,8 +429,8 @@
   "heightMm": 297,
   "orientation": "portrait",
   "margins": {
-   "topMm": 25.01,
-   "bottomMm": 25.01,
+   "topMm": 25,
+   "bottomMm": 25,
    "leftMm": 40,
    "rightMm": 25.01
   },
@@ -150,8 +464,7 @@
   },
   "paragraph": {
    "spaceBeforePt": 6,
-   "spaceAfterPt": 6,
-   "firstLineIndentMm": 0
+   "spaceAfterPt": 6
   },
   "headings": {
    "1": {
@@ -196,21 +509,6 @@
      "format": "{1}.{2}.{3}"
     },
     "keepWithNext": true
-   },
-   "4": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 12,
-    "fontWeight": 700,
-    "align": "left",
-    "lineHeight": 1,
-    "spaceBeforePt": 8,
-    "spaceAfterPt": 0,
-    "keepWithNext": true,
-    "numbering": {
-     "enabled": false,
-     "format": "{1}.{2}.{3}.{4}",
-     "sequence": "arabic"
-    }
    }
   },
   "footnotes": {
@@ -302,6 +600,82 @@
   "PROJECT_SUPPORT": {
    "label": "Proje desteği (varsa)",
    "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_NAME": {
+   "label": "Jury Member 1 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_NAME": {
+   "label": "Jury Member 2 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_NAME": {
+   "label": "Jury Member 3 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_NAME": {
+   "label": "Jury Member 4 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_NAME": {
+   "label": "Jury Member 5 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_INSTITUTION": {
+   "label": "Jury Member 1 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_INSTITUTION": {
+   "label": "Jury Member 2 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_INSTITUTION": {
+   "label": "Jury Member 3 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_INSTITUTION": {
+   "label": "Jury Member 4 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_INSTITUTION": {
+   "label": "Jury Member 5 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_NAME": {
+   "label": "Jury Member 6 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_NAME": {
+   "label": "Jury Member 7 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_INSTITUTION": {
+   "label": "Jury Member 6 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_INSTITUTION": {
+   "label": "Jury Member 7 Institution",
+   "type": "text"
   }
  },
  "sections": [
@@ -356,7 +730,7 @@
     {
      "type": "metadata",
      "field": "THESIS_TITLE",
-     "fallback": "TITLE OF THE THESIS",
+     "fallback": "Thesis title",
      "style": {
       "align": "center",
       "fontSizePt": 16,
@@ -368,49 +742,26 @@
      }
     },
     {
-     "type": "text",
-     "value": "SECOND LINE OF THE TITLE",
-     "style": {
-      "align": "center",
-      "fontSizePt": 16,
-      "fontWeight": 700,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 18,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "THIRD LINE OF THE TITLE",
-     "style": {
-      "align": "center",
-      "fontSizePt": 16,
-      "fontWeight": 700,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 18,
-      "lineHeight": 1.5
-     }
-    },
-    {
      "type": "spacer",
      "heightMm": 19.19
     },
     {
-     "type": "text",
-     "value": "FULL NAME",
+     "type": "metadata",
      "style": {
       "align": "center",
       "fontSizePt": 13,
       "spaceBeforePt": 18,
       "spaceAfterPt": 12,
       "lineHeight": 1.5
-     }
+     },
+     "field": "STUDENT_NAME",
+     "fallback": "Student name"
     },
     {
      "type": "metadata",
      "field": "ADVISOR_NAME",
      "prefix": "THESIS ADVISOR: ",
-     "fallback": "THESIS ADVISOR: AssISt./ASSOC./PROF.(PHD) XXX YYY",
+     "fallback": "Advisor name",
      "style": {
       "align": "center",
       "fontSizePt": 13,
@@ -431,7 +782,7 @@
        "type": "metadata",
        "field": "CO_ADVISOR_NAME",
        "prefix": "CO-ADVISOR: ",
-       "fallback": "CO-ADVISOR: AssISt./ASSOC./PROF.(PHD) XXX YYY (IF EXISTS)",
+       "fallback": "Co-advisor",
        "style": {
         "align": "center",
         "fontSizePt": 13,
@@ -798,14 +1149,15 @@
      }
     },
     {
-     "type": "text",
-     "value": "Prof. (PhD) Yücel Öztürkoğlu",
+     "type": "metadata",
      "style": {
       "align": "right",
       "spaceBeforePt": 18,
       "spaceAfterPt": 7.2,
       "lineHeight": 1.5
-     }
+     },
+     "field": "INSTITUTE_DIRECTOR_NAME",
+     "fallback": "INSTITUTE_DIRECTOR_NAME"
     },
     {
      "type": "text",
@@ -866,8 +1218,7 @@
     "levels": [
      1,
      2,
-     3,
-     4
+     3
     ]
    },
    "overrides": {
@@ -937,6 +1288,15 @@
    }
   },
   {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
    "id": "bibliography",
    "type": "bibliography",
    "title": "REFERENCES",
@@ -967,15 +1327,6 @@
      }
     }
    }
-  },
-  {
-   "id": "main-content",
-   "type": "mainContent",
-   "title": "Ana metin",
-   "status": "required",
-   "group": "body",
-   "mode": "editable",
-   "showTitle": false
   }
  ],
  "tables": {
@@ -994,20 +1345,6 @@
    "sequence": "arabic"
   }
  },
- "figures": {
-  "label": "Şekil",
-  "position": "below",
-  "style": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 12,
-   "align": "center"
-  },
-  "numbering": {
-   "scope": "chapter",
-   "format": "{chapter}.{n}",
-   "sequence": "arabic"
-  }
- },
  "bibliography": {
   "heading": "REFERENCES",
   "style": {
@@ -1015,16 +1352,14 @@
    "fontSizePt": 12,
    "align": "left",
    "lineHeight": 1.5
-  },
-  "hangingIndentMm": 8
+  }
  },
  "toc": {
   "heading": "TABLE OF CONTENTS",
   "levels": [
    1,
    2,
-   3,
-   4
+   3
   ],
   "showPageNumbers": true
  }

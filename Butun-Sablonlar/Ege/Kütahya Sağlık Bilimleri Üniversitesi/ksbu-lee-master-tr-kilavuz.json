@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "templateVersion": "0.1.0-draft",
+ "templateVersion": "0.2.0-source-rebuild",
  "id": "ksbu-lee-master-tr-kilavuz",
  "universityId": "ksbu",
  "universityName": "Kütahya Sağlık Bilimleri Üniversitesi",
@@ -11,150 +11,293 @@
  "status": "generic",
  "source": {
   "type": "official",
-  "documentName": "KSBÜ_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
-  "verifiedAt": "2026-10-07",
+  "documentName": "KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+  "verifiedAt": "2026-10-23",
   "notes": [
-   "Yalnız kılavuz metninden üretilen taslak (resmî DOCX şablonu yok); kapak düzeni genel, kılavuzdan değil",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
-   "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi",
-   "Kılavuz kuralları birleştirildi: KSBÜ_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx (19 alan, 0 çelişki)"
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
   ],
-  "guideDocumentName": "KSBÜ_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+  "guideDocumentName": "KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+  "archivePath": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "f3a031784ab13aa0a4f662a1fd141ce820e6fbedcda5291a7f96e8d33fc6c194",
+  "evidence": {
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": 30,
+      "location": "paragraf 288",
+      "sentence": "Her sayfanın sol kenarında 3 cm, sağ kenarında 2,5 cm, alt ve üst kenarlarında 3 cm; boşluk bulunmalıdır."
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": 30,
+      "location": "paragraf 288",
+      "sentence": "Her sayfanın sol kenarında 3 cm, sağ kenarında 2,5 cm, alt ve üst kenarlarında 3 cm; boşluk bulunmalıdır."
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": 30,
+      "location": "paragraf 288",
+      "sentence": "Her sayfanın sol kenarında 3 cm, sağ kenarında 2,5 cm, alt ve üst kenarlarında 3 cm; boşluk bulunmalıdır."
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": 25,
+      "location": "paragraf 288",
+      "sentence": "Her sayfanın sol kenarında 3 cm, sağ kenarında 2,5 cm, alt ve üst kenarlarında 3 cm; boşluk bulunmalıdır."
+     }
+    ]
+   },
+   "typography.body.fontFamily": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": "Times New Roman",
+      "location": "paragraf 176",
+      "sentence": "Kullanılacak harf karakteri, “Times New Roman” karakterinde olmalıdır."
+     }
+    ]
+   },
+   "typography.body.fontSizePt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": 12,
+      "location": "paragraf 288",
+      "sentence": "Paragraflar arasında da satır aralığı 1,5 satır olmalı ancak, her yeni paragraf 1,25 cm içeriden başlamalıdır ve her paragraftan sonra 12 puntoluk aralık bırakılmalıdır."
+     }
+    ]
+   },
+   "typography.body.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "justify",
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": "justify",
+      "location": "paragraf 179",
+      "sentence": "Paragraflar iki yana yaslı biçimde yazılmalıdır."
+     },
+     {
+      "value": "justify",
+      "location": "paragraf 640",
+      "sentence": "Özellikler: Büyük harf/ 12 punto/ iki yana yaslı"
+     }
+    ]
+   },
+   "typography.paragraph.firstLineIndentMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 12.5,
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": 12.5,
+      "location": "paragraf 288",
+      "sentence": "Paragraflar arasında da satır aralığı 1,5 satır olmalı ancak, her yeni paragraf 1,25 cm içeriden başlamalıdır ve her paragraftan sonra 12 puntoluk aralık bırakılmalıdır."
+     }
+    ]
+   },
+   "typography.paragraph.spaceAfterPt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": 12,
+      "location": "paragraf 288",
+      "sentence": "Paragraflar arasında da satır aralığı 1,5 satır olmalı ancak, her yeni paragraf 1,25 cm içeriden başlamalıdır ve her paragraftan sonra 12 puntoluk aralık bırakılmalıdır."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "paragraf 173",
+      "sentence": "Sayfa numaraları; 10 punto ile sayfanın alt kısmında ve ortalı olacak şekilde yer alacaktır."
+     },
+     {
+      "value": "bottom",
+      "location": "paragraf 381",
+      "sentence": "İçindekiler bölümünde, bölümlendirmeye uygun bir biçimde, Özet bölümünden başlayarak, tezin tüm kısımları ve Ek’ler metin içindeki düzenlendikleri sırada alt alta yazılarak ve karşılarına bulundukları sayfa numaraları belirtilerek hazırlanır."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "center",
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": "center",
+      "location": "paragraf 173",
+      "sentence": "Sayfa numaraları; 10 punto ile sayfanın alt kısmında ve ortalı olacak şekilde yer alacaktır."
+     }
+    ]
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+    "sha256": "f3a031784ab13aa0a4f662a1fd141ce820e6fbedcda5291a7f96e8d33fc6c194"
+   }
+  ],
   "review": {
    "unknown": [
     {
-     "field": "bibliography.hangingIndentMm",
-     "reason": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi"
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
     },
     {
-     "field": "figures.extraLabels",
-     "reason": "Kılavuz birden çok etiket kullanıyor: ['Şekil', 'Resim']; motor tek etiket tutuyor"
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.body.fontFamily",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.body.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.paragraph.firstLineIndentMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.paragraph.spaceAfterPt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
     }
    ],
    "inferred": [
     {
      "field": "page.size",
-     "value": "A4 210×297",
-     "reasoning": "Kılavuz A4 demiyorsa bile Türkiye'de lisansüstü tezlerde standart; teyit gerekli"
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
     },
     {
-     "field": "sections.cover.blocks",
-     "value": "genel kapak",
-     "reasoning": "Resmî kapak düzeni yok; genel düzenlenebilir kapak kullanıldı"
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
     },
     {
-     "field": "page.header/footer.distanceMm",
-     "value": "12.5",
-     "reasoning": "Word varsayılanı (1,25 cm); kılavuz belirtmiyor"
-    },
-    {
-     "field": "sections",
-     "value": "standart ön/arka bölümler",
-     "reasoning": "Bölüm listesi kılavuzdan değil, yaygın düzenden; Romen ön sayfalar, 1'den başlayan gövde"
-    },
-    {
-     "field": "figures.numbering",
-     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
-     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
-    },
-    {
-     "field": "tables.numbering",
-     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
-     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
-    },
-    {
-     "field": "bibliography.hangingIndentMm",
-     "value": "0",
-     "reasoning": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi — kılavuzdan teyit edilmeli"
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
     }
    ],
-   "conflicts": [],
-   "guide": "KSBÜ_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
-   "gate": {
-    "overall": "PASS",
-    "results": {
-     "PASS": 37
-    },
-    "checkedAt": "2026-10-22",
-    "exportTool": "engine/tools/export.mjs"
-   }
+   "conflicts": [
+    {
+     "field": "page.numbering.align",
+     "measured": "right",
+     "guide": "center",
+     "guideSource": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx paragraf 173"
+    }
+   ],
+   "guide": "KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+   "gate": null
   }
  },
  "page": {
   "size": "A4",
   "widthMm": 210,
   "heightMm": 297,
-  "orientation": "portrait",
   "margins": {
    "topMm": 30,
    "bottomMm": 30,
    "leftMm": 30,
    "rightMm": 25
   },
-  "header": {
-   "heightMm": 0,
-   "distanceMm": 12.5,
-   "content": "",
-   "firstPage": "same"
-  },
-  "footer": {
-   "heightMm": 0,
-   "distanceMm": 12.5,
-   "content": "",
-   "firstPage": "same"
-  },
   "numbering": {
    "enabled": true,
+   "position": "bottom",
+   "align": "center",
    "format": "arabic",
    "startAt": 1,
-   "restart": false,
-   "position": "bottom",
-   "align": "center"
+   "restart": false
   }
  },
  "typography": {
   "body": {
    "fontFamily": "Times New Roman",
    "fontSizePt": 12,
-   "lineHeight": 1.5,
    "align": "justify"
-  },
-  "headings": {
-   "1": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 12,
-    "fontWeight": 400,
-    "align": "left",
-    "keepWithNext": true
-   },
-   "2": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 12,
-    "fontWeight": 400,
-    "align": "left",
-    "keepWithNext": true
-   },
-   "3": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 12,
-    "fontWeight": 700,
-    "align": "left",
-    "keepWithNext": true
-   },
-   "4": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 12,
-    "fontWeight": 700,
-    "align": "left",
-    "keepWithNext": true
-   }
   },
   "paragraph": {
    "firstLineIndentMm": 12.5,
    "spaceAfterPt": 12
-  },
-  "footnotes": {
-   "fontSizePt": 10
   }
  },
  "placeholders": {
@@ -233,162 +376,111 @@
   "PROJECT_SUPPORT": {
    "label": "Proje desteği (varsa)",
    "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_NAME": {
+   "label": "Jury Member 1 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_NAME": {
+   "label": "Jury Member 2 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_NAME": {
+   "label": "Jury Member 3 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_NAME": {
+   "label": "Jury Member 4 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_NAME": {
+   "label": "Jury Member 5 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_INSTITUTION": {
+   "label": "Jury Member 1 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_INSTITUTION": {
+   "label": "Jury Member 2 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_INSTITUTION": {
+   "label": "Jury Member 3 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_INSTITUTION": {
+   "label": "Jury Member 4 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_INSTITUTION": {
+   "label": "Jury Member 5 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_NAME": {
+   "label": "Jury Member 6 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_NAME": {
+   "label": "Jury Member 7 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_INSTITUTION": {
+   "label": "Jury Member 6 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_INSTITUTION": {
+   "label": "Jury Member 7 Institution",
+   "type": "text"
   }
  },
  "sections": [
   {
-   "id": "cover",
-   "type": "outerCover",
-   "title": "Kapak",
-   "status": "required",
-   "group": "cover",
-   "mode": "static",
-   "tocEntry": "none",
-   "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": false
-     }
-    },
-    "body": {
-     "firstLineIndentMm": 0,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0,
-     "lineHeight": 1
-    }
-   },
-   "blocks": [
-    {
-     "type": "spacer",
-     "heightMm": 12
-    },
-    {
-     "type": "text",
-     "value": "{{UNIVERSITY_NAME}}",
-     "style": {
-      "fontWeight": 700,
-      "align": "center"
-     }
-    },
-    {
-     "type": "text",
-     "value": "{{INSTITUTE_NAME}}",
-     "style": {
-      "align": "center"
-     }
-    },
-    {
-     "type": "spacer",
-     "heightMm": 38
-    },
-    {
-     "type": "metadata",
-     "field": "THESIS_TITLE",
-     "style": {
-      "fontWeight": 700,
-      "align": "center",
-      "textTransform": "uppercase"
-     }
-    },
-    {
-     "type": "spacer",
-     "heightMm": 25
-    },
-    {
-     "type": "metadata",
-     "field": "STUDENT_NAME",
-     "fallback": "Ad SOYAD",
-     "style": {
-      "align": "center"
-     }
-    },
-    {
-     "type": "spacer",
-     "heightMm": 20
-    },
-    {
-     "type": "text",
-     "value": "YÜKSEK LİSANS TEZİ",
-     "style": {
-      "fontWeight": 700,
-      "align": "center"
-     }
-    },
-    {
-     "type": "spacer",
-     "heightMm": 16
-    },
-    {
-     "type": "text",
-     "value": "Danışman",
-     "style": {
-      "align": "center"
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "ADVISOR_NAME",
-     "fallback": "Unvan Ad SOYAD",
-     "style": {
-      "align": "center"
-     }
-    },
-    {
-     "type": "spacer",
-     "heightMm": 24
-    },
-    {
-     "type": "text",
-     "value": "{{CITY}} – {{YEAR}}",
-     "style": {
-      "align": "center"
-     }
-    }
-   ]
-  },
-  {
    "id": "abstract",
    "type": "abstract",
    "title": "ÖZET",
-   "status": "required",
+   "status": "optional",
    "group": "front",
    "mode": "editable",
-   "showTitle": true,
-   "overrides": {
-    "page": {
-     "numbering": {
-      "format": "roman-lower",
-      "startAt": 1,
-      "restart": true
-     }
-    },
-    "headings": {
-     "1": {
-      "align": "center"
-     }
-    }
-   }
+   "showTitle": true
   },
   {
    "id": "english-abstract",
    "type": "englishAbstract",
    "title": "ABSTRACT",
-   "status": "required",
+   "status": "optional",
    "group": "front",
    "mode": "editable",
-   "showTitle": true,
-   "overrides": {
-    "page": {
-     "numbering": {
-      "format": "roman-lower"
-     }
-    },
-    "headings": {
-     "1": {
-      "align": "center"
-     }
-    }
-   }
+   "showTitle": true
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖNSÖZ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
   },
   {
    "id": "acknowledgements",
@@ -397,87 +489,21 @@
    "status": "optional",
    "group": "front",
    "mode": "editable",
-   "showTitle": true,
-   "overrides": {
-    "page": {
-     "numbering": {
-      "format": "roman-lower"
-     }
-    },
-    "headings": {
-     "1": {
-      "align": "center"
-     }
-    }
-   }
+   "showTitle": true
   },
   {
    "id": "table-of-contents",
    "type": "tableOfContents",
    "title": "İÇİNDEKİLER",
-   "status": "required",
+   "status": "optional",
    "group": "front",
    "mode": "generated",
+   "showTitle": true,
    "generatedIndex": {
     "kind": "toc",
     "title": "İÇİNDEKİLER",
     "includePageNumbers": true,
-    "leader": "dots",
-    "levels": [
-     1,
-     2,
-     3,
-     4
-    ]
-   },
-   "overrides": {
-    "page": {
-     "numbering": {
-      "format": "roman-lower"
-     }
-    }
-   }
-  },
-  {
-   "id": "list-of-figures",
-   "type": "listOfFigures",
-   "title": "ŞEKİLLER DİZİNİ",
-   "status": "optional",
-   "group": "front",
-   "mode": "generated",
-   "generatedIndex": {
-    "kind": "figures",
-    "title": "ŞEKİLLER DİZİNİ",
-    "includePageNumbers": true,
     "leader": "dots"
-   },
-   "overrides": {
-    "page": {
-     "numbering": {
-      "format": "roman-lower"
-     }
-    }
-   }
-  },
-  {
-   "id": "list-of-tables",
-   "type": "listOfTables",
-   "title": "TABLOLAR DİZİNİ",
-   "status": "optional",
-   "group": "front",
-   "mode": "generated",
-   "generatedIndex": {
-    "kind": "tables",
-    "title": "TABLOLAR DİZİNİ",
-    "includePageNumbers": true,
-    "leader": "dots"
-   },
-   "overrides": {
-    "page": {
-     "numbering": {
-      "format": "roman-lower"
-     }
-    }
    }
   },
   {
@@ -487,19 +513,7 @@
    "status": "optional",
    "group": "front",
    "mode": "editable",
-   "showTitle": true,
-   "overrides": {
-    "page": {
-     "numbering": {
-      "format": "roman-lower"
-     }
-    },
-    "headings": {
-     "1": {
-      "align": "center"
-     }
-    }
-   }
+   "showTitle": true
   },
   {
    "id": "main-content",
@@ -508,22 +522,13 @@
    "status": "required",
    "group": "body",
    "mode": "editable",
-   "showTitle": false,
-   "overrides": {
-    "page": {
-     "numbering": {
-      "format": "arabic",
-      "startAt": 1,
-      "restart": true
-     }
-    }
-   }
+   "showTitle": false
   },
   {
    "id": "bibliography",
    "type": "bibliography",
    "title": "KAYNAKLAR",
-   "status": "required",
+   "status": "optional",
    "group": "back",
    "mode": "editable",
    "showTitle": true
@@ -547,51 +552,12 @@
    "showTitle": true
   }
  ],
- "tables": {
-  "label": "Tablo",
-  "position": "above",
-  "style": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 6,
-   "align": "center"
-  },
-  "numbering": {
-   "scope": "chapter",
-   "format": "{chapter}.{n}",
-   "sequence": "arabic"
-  }
- },
- "figures": {
-  "label": "Şekil",
-  "position": "below",
-  "style": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 6,
-   "align": "center"
-  },
-  "numbering": {
-   "scope": "chapter",
-   "format": "{chapter}.{n}",
-   "sequence": "arabic"
-  }
- },
- "bibliography": {
-  "heading": "KAYNAKLAR",
-  "style": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 12,
-   "lineHeight": 1.5,
-   "align": "left"
-  },
-  "hangingIndentMm": 0
- },
  "toc": {
   "heading": "İÇİNDEKİLER",
   "levels": [
    1,
    2,
-   3,
-   4
+   3
   ],
   "showPageNumbers": true
  }

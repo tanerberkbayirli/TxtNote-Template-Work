@@ -3,6 +3,7 @@ import { describe, it } from "node:test";
 import { resolveThesisTemplate } from "../../../../engine/src/registry.js";
 import { validateThesisTemplate } from "../../../../engine/src/validation.js";
 import { akuIsgTezsizProje as t } from "../../../../engine/src/templates/aku-isg.js";
+import { buildThesisCss, compileThesisDocument } from "../../../../engine/src/engine.js";
 
 describe("AKÜ FBE İş Güvenliği tezsiz dönem projesi template", () => {
   it("validates, is registered and carries the template values", async () => {
@@ -26,5 +27,17 @@ describe("AKÜ FBE İş Güvenliği tezsiz dönem projesi template", () => {
     assert.equal(t.sections.find((s) => s.id === "inner-cover").overrides.page.numbering.enabled, false);
     assert.equal(t.bibliography.citationStyle, "author-year");
     assert.ok(t.source.notes.length >= 6);
+  });
+});
+
+describe("AKÜ İSG inline hanging TOC clipping", () => {
+  it("reveals unlabelled first letters and keeps labelled titles clear of their numbers", () => {
+    const model = compileThesisDocument(t, { values: {} }, "Test Başlığı", "<h1>GİRİŞ</h1><p>Metin.</p>");
+    const css = buildThesisCss(model);
+    assert.match(css, /\.thesis-index-text>\.thesis-index-title\{flex:1 1 0;min-width:0;overflow:hidden;position:relative\}/);
+    assert.match(css, /\.thesis-index-text>\.thesis-index-title\{margin-left:-6\.3mm;padding-left:6\.3mm\}/);
+    const toc = model.sections.find((section) => section.id === "toc");
+    assert.match(toc.html, /<span class="thesis-index-title"><span class="thesis-index-label">1\.<\/span> GİRİŞ/);
+    assert.match(css, /\.thesis-index-title>\.thesis-index-label\{white-space:nowrap\}/);
   });
 });

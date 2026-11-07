@@ -1,0 +1,525 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "ksbu-tip-specialization-tr-kaynak",
+ "universityId": "ksbu",
+ "universityName": "Kütahya Sağlık Bilimleri Üniversitesi",
+ "instituteId": "tip",
+ "instituteName": "Tıp Fakültesi",
+ "degreeType": "specialization",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
+  ],
+  "guideDocumentName": "KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "40e88f171d9d94d2f36253611551d059ee5e99189b8437d26f1cc6fddf09bec9",
+  "evidence": {
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+    "locations": [
+     {
+      "value": 30,
+      "location": "sayfa 3",
+      "sentence": "Sayfa Düzeni: Her sayfanın sol kenarında 4 cm, alt ve üst kenarında 3 cm, sağ kenarında ise 2,5 cm boşluk bulunmalıdır (Şekil 1)."
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+    "locations": [
+     {
+      "value": 30,
+      "location": "sayfa 3",
+      "sentence": "Sayfa Düzeni: Her sayfanın sol kenarında 4 cm, alt ve üst kenarında 3 cm, sağ kenarında ise 2,5 cm boşluk bulunmalıdır (Şekil 1)."
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+    "locations": [
+     {
+      "value": 40,
+      "location": "sayfa 3",
+      "sentence": "Sayfa Düzeni: Her sayfanın sol kenarında 4 cm, alt ve üst kenarında 3 cm, sağ kenarında ise 2,5 cm boşluk bulunmalıdır (Şekil 1)."
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 3",
+      "sentence": "Sayfa Düzeni: Her sayfanın sol kenarında 4 cm, alt ve üst kenarında 3 cm, sağ kenarında ise 2,5 cm boşluk bulunmalıdır (Şekil 1)."
+     }
+    ]
+   },
+   "typography.body.lineHeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+    "location": "sayfa 4",
+    "passage": "Şekil 1: Sayfa düzeni 3. GENEL YAZIM KURALLARI 3.1. Yazı Tipi: Siyah dışında başka bir renk tercih edilmemelidir. Tüm tez metninde 11 veya 12 punto “Arial”, “Times New Roman”, “Calibri”, “Cambria” veya “Helvetica” gibi -sade olmak kaydıyla- herhangi bir font kullanılabilir. Amaç okunaklı ve konunun yapısına uygun yazı karakteri kullanılmasıdır. Yazılar düz olmalı, mikroorganizma isimleri (S. aureus), yabancı dildeki ifadeler (“International Labor Organization”) gibi zorunlu haller dışında “italik” yazım kullanılmamalıdır. 3.2. Satır Aralıkları ve Paragraf Stili: Tez 1,5 satır aralığı ile yazılmalıdır. Şekil ve tabloların öncesinde ve sonrasında 1,5 satır aralığı kadar boşluk bırakılmalıdır. Paragraflar arası 1,5 satır olmalıdır. Her yeni paragraf 1,25 cm içeriden başlamalıdır. Sayfa sonuna gelen başlıkları en az iki satır izlemeli, aksi halde yeni sayfaya geçilmelidir. 3.3. Tezde Kullanılacak Dil: Tezler yalın bilimsel dille herkes tarafından aynı şekilde anlaşılacak bir anlatımla, Türkçe imla kurallarına uygun bir şekilde yazılmalıdır. Literatür değerlendirilirken anlatım üçüncü tekil şahıs ve mümkünse edilgen (pasif) biçimde (bakılmıştır, bulunmuştur gibi) yapılmalıdır. Bulgular sunulurken bilinen (di’li) geçmiş zaman ve edilgen yapı kullanılmalıdır (bakıldı, bulundu gibi). Yazıda geçen terimler ve kimyasal madde",
+    "decision": "İzin verilen font ve boyutlardan Times New Roman 12 seçildi; tek seçenek olduğu iddia edilmez."
+   },
+   "typography.paragraph.firstLineIndentMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 12.5,
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+    "locations": [
+     {
+      "value": 12.5,
+      "location": "sayfa 4",
+      "sentence": "Her yeni paragraf 1,25 cm içeriden başlamalıdır."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "sayfa 3",
+      "sentence": "Sayfaların Numaralandırılması: Sayfa numaraları sayfanın altına, ortaya veya sağa, yerleştirilebilir."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "center",
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+    "locations": [
+     {
+      "value": "center",
+      "location": "sayfa 3",
+      "sentence": "Sayfaların Numaralandırılması: Sayfa numaraları sayfanın altına, ortaya veya sağa, yerleştirilebilir."
+     }
+    ]
+   },
+   "typography.body.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+    "location": "sayfa 4",
+    "passage": "Şekil 1: Sayfa düzeni 3. GENEL YAZIM KURALLARI 3.1. Yazı Tipi: Siyah dışında başka bir renk tercih edilmemelidir. Tüm tez metninde 11 veya 12 punto “Arial”, “Times New Roman”, “Calibri”, “Cambria” veya “Helvetica” gibi -sade olmak kaydıyla- herhangi bir font kullanılabilir. Amaç okunaklı ve konunun yapısına uygun yazı karakteri kullanılmasıdır. Yazılar düz olmalı, mikroorganizma isimleri (S. aureus), yabancı dildeki ifadeler (“International Labor Organization”) gibi zorunlu haller dışında “italik” yazım kullanılmamalıdır. 3.2. Satır Aralıkları ve Paragraf Stili: Tez 1,5 satır aralığı ile yazılmalıdır. Şekil ve tabloların öncesinde ve sonrasında 1,5 satır aralığı kadar boşluk bırakılmalıdır. Paragraflar arası 1,5 satır olmalıdır. Her yeni paragraf 1,25 cm içeriden başlamalıdır. Sayfa sonuna gelen başlıkları en az iki satır izlemeli, aksi halde yeni sayfaya geçilmelidir. 3.3. Tezde Kullanılacak Dil: Tezler yalın bilimsel dille herkes tarafından aynı şekilde anlaşılacak bir anlatımla, Türkçe imla kurallarına uygun bir şekilde yazılmalıdır. Literatür değerlendirilirken anlatım üçüncü tekil şahıs ve mümkünse edilgen (pasif) biçimde (bakılmıştır, bulunmuştur gibi) yapılmalıdır. Bulgular sunulurken bilinen (di’li) geçmiş zaman ve edilgen yapı kullanılmalıdır (bakıldı, bulundu gibi). Yazıda geçen terimler ve kimyasal madde",
+    "decision": "İzin verilen font ve boyutlardan Times New Roman 12 seçildi; tek seçenek olduğu iddia edilmez."
+   },
+   "typography.body.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+    "location": "sayfa 4",
+    "passage": "Şekil 1: Sayfa düzeni 3. GENEL YAZIM KURALLARI 3.1. Yazı Tipi: Siyah dışında başka bir renk tercih edilmemelidir. Tüm tez metninde 11 veya 12 punto “Arial”, “Times New Roman”, “Calibri”, “Cambria” veya “Helvetica” gibi -sade olmak kaydıyla- herhangi bir font kullanılabilir. Amaç okunaklı ve konunun yapısına uygun yazı karakteri kullanılmasıdır. Yazılar düz olmalı, mikroorganizma isimleri (S. aureus), yabancı dildeki ifadeler (“International Labor Organization”) gibi zorunlu haller dışında “italik” yazım kullanılmamalıdır. 3.2. Satır Aralıkları ve Paragraf Stili: Tez 1,5 satır aralığı ile yazılmalıdır. Şekil ve tabloların öncesinde ve sonrasında 1,5 satır aralığı kadar boşluk bırakılmalıdır. Paragraflar arası 1,5 satır olmalıdır. Her yeni paragraf 1,25 cm içeriden başlamalıdır. Sayfa sonuna gelen başlıkları en az iki satır izlemeli, aksi halde yeni sayfaya geçilmelidir. 3.3. Tezde Kullanılacak Dil: Tezler yalın bilimsel dille herkes tarafından aynı şekilde anlaşılacak bir anlatımla, Türkçe imla kurallarına uygun bir şekilde yazılmalıdır. Literatür değerlendirilirken anlatım üçüncü tekil şahıs ve mümkünse edilgen (pasif) biçimde (bakılmıştır, bulunmuştur gibi) yapılmalıdır. Bulgular sunulurken bilinen (di’li) geçmiş zaman ve edilgen yapı kullanılmalıdır (bakıldı, bulundu gibi). Yazıda geçen terimler ve kimyasal madde",
+    "decision": "İzin verilen font ve boyutlardan Times New Roman 12 seçildi; tek seçenek olduğu iddia edilmez."
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+    "sha256": "40e88f171d9d94d2f36253611551d059ee5e99189b8437d26f1cc6fddf09bec9"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.paragraph.firstLineIndentMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
+    },
+    {
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.numbering.align",
+     "measured": "right",
+     "guide": "center",
+     "guideSource": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf sayfa 3"
+    }
+   ],
+   "guide": "KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "margins": {
+   "topMm": 30,
+   "bottomMm": 30,
+   "leftMm": 40,
+   "rightMm": 25
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "center",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "lineHeight": 1.5,
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12
+  },
+  "paragraph": {
+   "firstLineIndentMm": 12.5
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_NAME": {
+   "label": "Jury Member 1 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_NAME": {
+   "label": "Jury Member 2 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_NAME": {
+   "label": "Jury Member 3 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_NAME": {
+   "label": "Jury Member 4 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_NAME": {
+   "label": "Jury Member 5 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_INSTITUTION": {
+   "label": "Jury Member 1 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_INSTITUTION": {
+   "label": "Jury Member 2 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_INSTITUTION": {
+   "label": "Jury Member 3 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_INSTITUTION": {
+   "label": "Jury Member 4 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_INSTITUTION": {
+   "label": "Jury Member 5 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_NAME": {
+   "label": "Jury Member 6 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_NAME": {
+   "label": "Jury Member 7 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_INSTITUTION": {
+   "label": "Jury Member 6 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_INSTITUTION": {
+   "label": "Jury Member 7 Institution",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-figures",
+   "type": "listOfFigures",
+   "title": "ŞEKİLLER DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "ŞEKİLLER DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "TABLOLAR DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

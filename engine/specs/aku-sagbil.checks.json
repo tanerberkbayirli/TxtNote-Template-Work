@@ -452,26 +452,16 @@
     "kind": "toc_labels",
     "params": {
       "fixture": "master",
-      "leader": "none",
-      "hidden_index_labels": [
-        {
-          "title_regex": "^TEZ KABUL VE ONAY SAYFASI$",
-          "label": "ii"
-        },
-        {
-          "title_regex": "^BİLİMSEL ETİK BİLDİRİMİ$",
-          "label": "iii"
-        }
-      ]
+      "leader": "none"
     },
     "expected": "all entries match printed or declared hidden index labels",
     "tolerance": 0,
     "source": {
-      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
-      "locator": "PDF p.5 (printed p.3), §2.6; p.33 (printed p.31), Example 8"
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/AKU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2022.pdf",
+      "locator": "PDF p.5 §2.6: covers, approval and ethics are unnumbered; abstract begins Roman i. Example 8 conflicting labels are not used."
     },
     "evidence": "EXPLICIT",
-    "note": "The contents example assigns hidden counted labels approval=ii and ethics=iii. Verify those ToC labels while confirming the physical pages remain unprinted; §2.6's exclusion creates a documented numbering conflict."
+      "note": "The contents example assigns approval=ii and ethics=iii, conflicting with the explicit §2.6 exclusion. The active template follows §2.6: these pages are unnumbered and uncounted, so their contents rows must not acquire physical-page numbers from Word PAGEREF fields."
   },
   {
     "id": "toc-page-labels-word",
@@ -479,26 +469,33 @@
     "params": {
       "fixture": "master",
       "source": "word",
-      "leader": "none",
-      "hidden_index_labels": [
-        {
-          "title_regex": "^TEZ KABUL VE ONAY SAYFASI$",
-          "label": "ii"
-        },
-        {
-          "title_regex": "^BİLİMSEL ETİK BİLDİRİMİ$",
-          "label": "iii"
-        }
-      ]
+      "leader": "none"
     },
     "expected": "all entries match printed or declared hidden index labels",
     "tolerance": 0,
     "source": {
-      "file": "AKU_Saglik_Bilimleri_Tez_Yazim_Klavuzu_2022.pdf",
-      "locator": "PDF p.5 (printed p.3), §2.6; p.33 (printed p.31), Example 8"
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/AKU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2022.pdf",
+      "locator": "PDF p.5 §2.6: covers, approval and ethics are unnumbered; abstract begins Roman i. Example 8 conflicting labels are not used."
     },
     "evidence": "EXPLICIT",
-    "note": "The contents example assigns hidden counted labels approval=ii and ethics=iii. Verify those ToC labels while confirming the physical pages remain unprinted; §2.6's exclusion creates a documented numbering conflict."
+    "note": "The contents example conflicts with explicit §2.6. The active template leaves approval and ethics unnumbered and uncounted; Word must not add physical-page numbers to their contents rows."
+  },
+  {
+    "id": "toc-page-labels-word-refreshed",
+    "kind": "toc_labels",
+    "params": {
+      "fixture": "master",
+      "source": "word-refreshed",
+      "leader": "none"
+    },
+    "expected": "all entries match printed or declared hidden index labels",
+    "tolerance": 0,
+    "source": {
+      "file": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/AKU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2022.pdf",
+      "locator": "PDF p.5 §2.6: covers, approval and ethics are unnumbered; abstract begins Roman i. Example 8 conflicting labels are not used."
+    },
+    "evidence": "EXPLICIT",
+    "note": "Updating Word TOC fields must preserve the selected unnumbered-page rule."
   },
   {
     "id": "t80-docx-valid",

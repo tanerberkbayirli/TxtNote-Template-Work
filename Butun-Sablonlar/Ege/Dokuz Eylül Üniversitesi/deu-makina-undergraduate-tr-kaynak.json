@@ -1,0 +1,417 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "deu-makina-undergraduate-tr-kaynak",
+ "universityId": "deu",
+ "universityName": "Dokuz Eylül Üniversitesi",
+ "instituteId": "makina",
+ "instituteName": "Makina Mühendisliği · Bitirme Projesi",
+ "degreeType": "undergraduate",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
+  ],
+  "guideDocumentName": "DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Makina_Muhendisligi_Bitirme/DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "503567cf23a5bb8d7b8481d738b67d786dbc089de67f7693c8358d443fc1445a",
+  "evidence": {
+   "typography.body.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Makina_Muhendisligi_Bitirme/DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+    "location": "sayfa 3",
+    "passage": "DOKUZ EYLÜL ÜNİVERSİTESİ MAKİNA MÜHENDİSLİĞİ BÖLÜMÜ TEZ YAZIM KURALLARI 2 2.3. Yazım Özelliği Yazıların bilgisayarda, 11 punto büyüklükte, Times New Roman yazı karakteri ile “Justify” (iki yana yaslanmış) olarak, 1.5 satır aralığı ile yazılması gerekmektedir. Sayfa sonundaki alt başlığı en az iki satır yazı izlemeli ya da alt boşluk yeni sayfada yer almalıdır. Yazımda virgül ve noktadan sonra bir karakter boşluk bırakılmalıdır. Paragrafın ilk satırı 0.5 cm (5 vuruş) içeriden başlamalıdır. Paragraflar arasında bir boş satır bırakılmalıdır. 3. Tez Yazım Düzeni Bir proje veya tezin sunuluşunda genellikle dört ana parça vardır. 1. Ön Bilgiler 2. Özet 3. Çalışma – Tez Metni 4. Kaynaklar Tez yazım düzeni aşağıdaki şemada gösterilmiştir. Ön Bölüm Kapak İç Kapak Bitirme Projesi Teklif ve Eğitim Planına Uygunluk Bildirim Formu Bitirme Projesi Bilgi Formu Tez Sonuç Formu Teşekkür Özet İçindekiler Tablo Listesi Şekil Listesi Metin Bölümü Giriş Sonuçlar Son Bölüm Kaynaklar Ekler",
+    "decision": "Ana metin 11 punto; kapak 12,14,18 punto örnekleri değildir."
+   },
+   "typography.body.lineHeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Makina_Muhendisligi_Bitirme/DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+    "location": "sayfa 3",
+    "passage": "DOKUZ EYLÜL ÜNİVERSİTESİ MAKİNA MÜHENDİSLİĞİ BÖLÜMÜ TEZ YAZIM KURALLARI 2 2.3. Yazım Özelliği Yazıların bilgisayarda, 11 punto büyüklükte, Times New Roman yazı karakteri ile “Justify” (iki yana yaslanmış) olarak, 1.5 satır aralığı ile yazılması gerekmektedir. Sayfa sonundaki alt başlığı en az iki satır yazı izlemeli ya da alt boşluk yeni sayfada yer almalıdır. Yazımda virgül ve noktadan sonra bir karakter boşluk bırakılmalıdır. Paragrafın ilk satırı 0.5 cm (5 vuruş) içeriden başlamalıdır. Paragraflar arasında bir boş satır bırakılmalıdır. 3. Tez Yazım Düzeni Bir proje veya tezin sunuluşunda genellikle dört ana parça vardır. 1. Ön Bilgiler 2. Özet 3. Çalışma – Tez Metni 4. Kaynaklar Tez yazım düzeni aşağıdaki şemada gösterilmiştir. Ön Bölüm Kapak İç Kapak Bitirme Projesi Teklif ve Eğitim Planına Uygunluk Bildirim Formu Bitirme Projesi Bilgi Formu Tez Sonuç Formu Teşekkür Özet İçindekiler Tablo Listesi Şekil Listesi Metin Bölümü Giriş Sonuçlar Son Bölüm Kaynaklar Ekler",
+    "decision": "Ana metin 11 punto; kapak 12,14,18 punto örnekleri değildir."
+   },
+   "typography.body.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "justify",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Makina_Muhendisligi_Bitirme/DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+    "locations": [
+     {
+      "value": "justify",
+      "location": "sayfa 3",
+      "sentence": "Yazım Özelliği Yazıların bilgisayarda, 11 punto büyüklükte, Times New Roman yazı karakteri ile “Justify” (iki yana yaslanmış) olarak, 1.5 satır aralığı ile yazılması gerekmektedir."
+     }
+    ]
+   },
+   "typography.paragraph.firstLineIndentMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 5,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Makina_Muhendisligi_Bitirme/DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+    "locations": [
+     {
+      "value": 5,
+      "location": "sayfa 3",
+      "sentence": "Paragrafın ilk satırı 0.5 cm (5 vuruş) içeriden başlamalıdır."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Makina_Muhendisligi_Bitirme/DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "sayfa 6",
+      "sentence": "Sayfa Numaralandırılması Tezlerde sayfa numaraları sayfanın sağ alt köşesine verilecektir."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "right",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Makina_Muhendisligi_Bitirme/DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+    "locations": [
+     {
+      "value": "right",
+      "location": "sayfa 6",
+      "sentence": "Sayfa Numaralandırılması Tezlerde sayfa numaraları sayfanın sağ alt köşesine verilecektir."
+     }
+    ]
+   },
+   "page.margins.topMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Makina_Muhendisligi_Bitirme/DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+    "location": "sayfa 2",
+    "passage": "DOKUZ EYLÜL ÜNİVERSİTESİ MAKİNA MÜHENDİSLİĞİ BÖLÜMÜ TEZ YAZIM KURALLARI 1 1. Giriş Bu kitapçıkta genel anlamda, hazırlanacak bir tez, proje ve raporda yer alması gereken bölümler ve temel prensipler verilmektedir. Bir tezin, projenin veya bir raporun yazılmasındaki ana gaye, bir çalışma ürünü olan bilgi birikiminin, aynı konuda çalışanlara veya konuyla ilgili olmayanlara aktarılmasıdır. Yapılmış olan bir çalışmanın sunuluş biçimi, değerlendirilmesinde rol oynayan faktörler arasında en ön sıralarda yer alır. Bu da yazılı metnin iyi hazırlanmış olmasını gerektirir. Ne kadar değerli bir çalışma yapılmış olursa olsun bunlar okuyucuya iyi bir şekilde aktarılmamış ise çalışmanın gerçek değeri anlaşılmayacaktır. Yazılı metnin organizasyonu ve içeriği anlaşılırlığında etkili olmaktadır. Tezin, projenin veya raporun organizasyonu genellikle problemin ortaya konulması, çözümde uygulanan yöntemin tanıtılması, sonuçların geliştirilmesi ve tartışılması, ulaşılan sonuç şeklinde olabilir. Metindeki fikirlerin ifadesinde kelime, cümle ve paragrafların yapısına özen gösterilmelidir. Kullanılan kelimelerin anlamlarında şüpheye düşülmemeli, zorunlu teknik kelimeler dışında yabancı kelimelerin kullanılmasından kaçınılmalıdır. Cümleler üçüncü şahıs dili ile yazılmalı ve uzun olmamalıdır. Bir önceki ve bir sonraki cümleler arasındaki ilişki açık olmalı ve paragrafların çok uzun olmamasına dikkat edilmelidir. Bu da ifade edilen fikrin basitçe işlenebilecek bölümlere ayrılması ile mümkün olabilecektir. Özetle, yazılı metnin üzerinde tereddüde neden olmadan kolayca anlaşabileceği açıklıkta ve uygun bir biçimde yazılmasına özen gösterilmelidir. Diploma projesi hazırlayacak olan Lisans öğrencileri bu kitapçık içinde ana hatları ile belirtilmeğe çalışılan kurallara uymak zorundadır. 2. Baskı Düzeni 2.1. Kağıt Standartları Hazırlanacak tezlerin yazım ve basımında “A4” (210x297 mm) standardı kağıt kullanılır. Ciltlenip kesim yapıldıktan sonra tezlerin son boyutları 205x290 mm olacaktır. Tercihen 80–90 gramajlı 1. Hamur beyaz kağıt kullanılmaktadır. 2.2. Kağıt Kullanım Alanı Metin, şekil ve tablolar, sol kenardan 4.0 cm, sağ kenardan 2.5 cm, üst ve alt kenardan 3.0 cm boşluk bırakılarak yerleştirilmelidir. Kağıdın arka yüzü kullanılmamalıdır.",
+    "decision": "Makina bitirme kılavuzunun kendi kenar ölçüleri."
+   },
+   "page.margins.bottomMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Makina_Muhendisligi_Bitirme/DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+    "location": "sayfa 2",
+    "passage": "DOKUZ EYLÜL ÜNİVERSİTESİ MAKİNA MÜHENDİSLİĞİ BÖLÜMÜ TEZ YAZIM KURALLARI 1 1. Giriş Bu kitapçıkta genel anlamda, hazırlanacak bir tez, proje ve raporda yer alması gereken bölümler ve temel prensipler verilmektedir. Bir tezin, projenin veya bir raporun yazılmasındaki ana gaye, bir çalışma ürünü olan bilgi birikiminin, aynı konuda çalışanlara veya konuyla ilgili olmayanlara aktarılmasıdır. Yapılmış olan bir çalışmanın sunuluş biçimi, değerlendirilmesinde rol oynayan faktörler arasında en ön sıralarda yer alır. Bu da yazılı metnin iyi hazırlanmış olmasını gerektirir. Ne kadar değerli bir çalışma yapılmış olursa olsun bunlar okuyucuya iyi bir şekilde aktarılmamış ise çalışmanın gerçek değeri anlaşılmayacaktır. Yazılı metnin organizasyonu ve içeriği anlaşılırlığında etkili olmaktadır. Tezin, projenin veya raporun organizasyonu genellikle problemin ortaya konulması, çözümde uygulanan yöntemin tanıtılması, sonuçların geliştirilmesi ve tartışılması, ulaşılan sonuç şeklinde olabilir. Metindeki fikirlerin ifadesinde kelime, cümle ve paragrafların yapısına özen gösterilmelidir. Kullanılan kelimelerin anlamlarında şüpheye düşülmemeli, zorunlu teknik kelimeler dışında yabancı kelimelerin kullanılmasından kaçınılmalıdır. Cümleler üçüncü şahıs dili ile yazılmalı ve uzun olmamalıdır. Bir önceki ve bir sonraki cümleler arasındaki ilişki açık olmalı ve paragrafların çok uzun olmamasına dikkat edilmelidir. Bu da ifade edilen fikrin basitçe işlenebilecek bölümlere ayrılması ile mümkün olabilecektir. Özetle, yazılı metnin üzerinde tereddüde neden olmadan kolayca anlaşabileceği açıklıkta ve uygun bir biçimde yazılmasına özen gösterilmelidir. Diploma projesi hazırlayacak olan Lisans öğrencileri bu kitapçık içinde ana hatları ile belirtilmeğe çalışılan kurallara uymak zorundadır. 2. Baskı Düzeni 2.1. Kağıt Standartları Hazırlanacak tezlerin yazım ve basımında “A4” (210x297 mm) standardı kağıt kullanılır. Ciltlenip kesim yapıldıktan sonra tezlerin son boyutları 205x290 mm olacaktır. Tercihen 80–90 gramajlı 1. Hamur beyaz kağıt kullanılmaktadır. 2.2. Kağıt Kullanım Alanı Metin, şekil ve tablolar, sol kenardan 4.0 cm, sağ kenardan 2.5 cm, üst ve alt kenardan 3.0 cm boşluk bırakılarak yerleştirilmelidir. Kağıdın arka yüzü kullanılmamalıdır.",
+    "decision": "Makina bitirme kılavuzunun kendi kenar ölçüleri."
+   },
+   "page.margins.leftMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Makina_Muhendisligi_Bitirme/DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+    "location": "sayfa 2",
+    "passage": "DOKUZ EYLÜL ÜNİVERSİTESİ MAKİNA MÜHENDİSLİĞİ BÖLÜMÜ TEZ YAZIM KURALLARI 1 1. Giriş Bu kitapçıkta genel anlamda, hazırlanacak bir tez, proje ve raporda yer alması gereken bölümler ve temel prensipler verilmektedir. Bir tezin, projenin veya bir raporun yazılmasındaki ana gaye, bir çalışma ürünü olan bilgi birikiminin, aynı konuda çalışanlara veya konuyla ilgili olmayanlara aktarılmasıdır. Yapılmış olan bir çalışmanın sunuluş biçimi, değerlendirilmesinde rol oynayan faktörler arasında en ön sıralarda yer alır. Bu da yazılı metnin iyi hazırlanmış olmasını gerektirir. Ne kadar değerli bir çalışma yapılmış olursa olsun bunlar okuyucuya iyi bir şekilde aktarılmamış ise çalışmanın gerçek değeri anlaşılmayacaktır. Yazılı metnin organizasyonu ve içeriği anlaşılırlığında etkili olmaktadır. Tezin, projenin veya raporun organizasyonu genellikle problemin ortaya konulması, çözümde uygulanan yöntemin tanıtılması, sonuçların geliştirilmesi ve tartışılması, ulaşılan sonuç şeklinde olabilir. Metindeki fikirlerin ifadesinde kelime, cümle ve paragrafların yapısına özen gösterilmelidir. Kullanılan kelimelerin anlamlarında şüpheye düşülmemeli, zorunlu teknik kelimeler dışında yabancı kelimelerin kullanılmasından kaçınılmalıdır. Cümleler üçüncü şahıs dili ile yazılmalı ve uzun olmamalıdır. Bir önceki ve bir sonraki cümleler arasındaki ilişki açık olmalı ve paragrafların çok uzun olmamasına dikkat edilmelidir. Bu da ifade edilen fikrin basitçe işlenebilecek bölümlere ayrılması ile mümkün olabilecektir. Özetle, yazılı metnin üzerinde tereddüde neden olmadan kolayca anlaşabileceği açıklıkta ve uygun bir biçimde yazılmasına özen gösterilmelidir. Diploma projesi hazırlayacak olan Lisans öğrencileri bu kitapçık içinde ana hatları ile belirtilmeğe çalışılan kurallara uymak zorundadır. 2. Baskı Düzeni 2.1. Kağıt Standartları Hazırlanacak tezlerin yazım ve basımında “A4” (210x297 mm) standardı kağıt kullanılır. Ciltlenip kesim yapıldıktan sonra tezlerin son boyutları 205x290 mm olacaktır. Tercihen 80–90 gramajlı 1. Hamur beyaz kağıt kullanılmaktadır. 2.2. Kağıt Kullanım Alanı Metin, şekil ve tablolar, sol kenardan 4.0 cm, sağ kenardan 2.5 cm, üst ve alt kenardan 3.0 cm boşluk bırakılarak yerleştirilmelidir. Kağıdın arka yüzü kullanılmamalıdır.",
+    "decision": "Makina bitirme kılavuzunun kendi kenar ölçüleri."
+   },
+   "page.margins.rightMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Makina_Muhendisligi_Bitirme/DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+    "location": "sayfa 2",
+    "passage": "DOKUZ EYLÜL ÜNİVERSİTESİ MAKİNA MÜHENDİSLİĞİ BÖLÜMÜ TEZ YAZIM KURALLARI 1 1. Giriş Bu kitapçıkta genel anlamda, hazırlanacak bir tez, proje ve raporda yer alması gereken bölümler ve temel prensipler verilmektedir. Bir tezin, projenin veya bir raporun yazılmasındaki ana gaye, bir çalışma ürünü olan bilgi birikiminin, aynı konuda çalışanlara veya konuyla ilgili olmayanlara aktarılmasıdır. Yapılmış olan bir çalışmanın sunuluş biçimi, değerlendirilmesinde rol oynayan faktörler arasında en ön sıralarda yer alır. Bu da yazılı metnin iyi hazırlanmış olmasını gerektirir. Ne kadar değerli bir çalışma yapılmış olursa olsun bunlar okuyucuya iyi bir şekilde aktarılmamış ise çalışmanın gerçek değeri anlaşılmayacaktır. Yazılı metnin organizasyonu ve içeriği anlaşılırlığında etkili olmaktadır. Tezin, projenin veya raporun organizasyonu genellikle problemin ortaya konulması, çözümde uygulanan yöntemin tanıtılması, sonuçların geliştirilmesi ve tartışılması, ulaşılan sonuç şeklinde olabilir. Metindeki fikirlerin ifadesinde kelime, cümle ve paragrafların yapısına özen gösterilmelidir. Kullanılan kelimelerin anlamlarında şüpheye düşülmemeli, zorunlu teknik kelimeler dışında yabancı kelimelerin kullanılmasından kaçınılmalıdır. Cümleler üçüncü şahıs dili ile yazılmalı ve uzun olmamalıdır. Bir önceki ve bir sonraki cümleler arasındaki ilişki açık olmalı ve paragrafların çok uzun olmamasına dikkat edilmelidir. Bu da ifade edilen fikrin basitçe işlenebilecek bölümlere ayrılması ile mümkün olabilecektir. Özetle, yazılı metnin üzerinde tereddüde neden olmadan kolayca anlaşabileceği açıklıkta ve uygun bir biçimde yazılmasına özen gösterilmelidir. Diploma projesi hazırlayacak olan Lisans öğrencileri bu kitapçık içinde ana hatları ile belirtilmeğe çalışılan kurallara uymak zorundadır. 2. Baskı Düzeni 2.1. Kağıt Standartları Hazırlanacak tezlerin yazım ve basımında “A4” (210x297 mm) standardı kağıt kullanılır. Ciltlenip kesim yapıldıktan sonra tezlerin son boyutları 205x290 mm olacaktır. Tercihen 80–90 gramajlı 1. Hamur beyaz kağıt kullanılmaktadır. 2.2. Kağıt Kullanım Alanı Metin, şekil ve tablolar, sol kenardan 4.0 cm, sağ kenardan 2.5 cm, üst ve alt kenardan 3.0 cm boşluk bırakılarak yerleştirilmelidir. Kağıdın arka yüzü kullanılmamalıdır.",
+    "decision": "Makina bitirme kılavuzunun kendi kenar ölçüleri."
+   },
+   "typography.body.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 11,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Makina_Muhendisligi_Bitirme/DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+    "location": "sayfa 3",
+    "passage": "DOKUZ EYLÜL ÜNİVERSİTESİ MAKİNA MÜHENDİSLİĞİ BÖLÜMÜ TEZ YAZIM KURALLARI 2 2.3. Yazım Özelliği Yazıların bilgisayarda, 11 punto büyüklükte, Times New Roman yazı karakteri ile “Justify” (iki yana yaslanmış) olarak, 1.5 satır aralığı ile yazılması gerekmektedir. Sayfa sonundaki alt başlığı en az iki satır yazı izlemeli ya da alt boşluk yeni sayfada yer almalıdır. Yazımda virgül ve noktadan sonra bir karakter boşluk bırakılmalıdır. Paragrafın ilk satırı 0.5 cm (5 vuruş) içeriden başlamalıdır. Paragraflar arasında bir boş satır bırakılmalıdır. 3. Tez Yazım Düzeni Bir proje veya tezin sunuluşunda genellikle dört ana parça vardır. 1. Ön Bilgiler 2. Özet 3. Çalışma – Tez Metni 4. Kaynaklar Tez yazım düzeni aşağıdaki şemada gösterilmiştir. Ön Bölüm Kapak İç Kapak Bitirme Projesi Teklif ve Eğitim Planına Uygunluk Bildirim Formu Bitirme Projesi Bilgi Formu Tez Sonuç Formu Teşekkür Özet İçindekiler Tablo Listesi Şekil Listesi Metin Bölümü Giriş Sonuçlar Son Bölüm Kaynaklar Ekler",
+    "decision": "Ana metin 11 punto; kapak 12,14,18 punto örnekleri değildir."
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Makina_Muhendisligi_Bitirme/DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+    "sha256": "503567cf23a5bb8d7b8481d738b67d786dbc089de67f7693c8358d443fc1445a"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.body.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.paragraph.firstLineIndentMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
+    },
+    {
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
+    }
+   ],
+   "conflicts": [],
+   "guide": "DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "margins": {
+   "topMm": 30,
+   "bottomMm": 30,
+   "leftMm": 40,
+   "rightMm": 25
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "right",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "lineHeight": 1.5,
+   "align": "justify",
+   "fontSizePt": 11
+  },
+  "paragraph": {
+   "firstLineIndentMm": 5
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖNSÖZ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

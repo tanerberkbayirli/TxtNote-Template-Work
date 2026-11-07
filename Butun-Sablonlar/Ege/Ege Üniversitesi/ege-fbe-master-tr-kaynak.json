@@ -1,0 +1,521 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "ege-fbe-master-tr-kaynak",
+ "universityId": "ege",
+ "universityName": "Ege Üniversitesi",
+ "instituteId": "fbe",
+ "instituteName": "Fen Bilimleri Enstitüsü",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
+  ],
+  "guideDocumentName": "EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+  "archivePath": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "0964a75a862a6e5ea7eee828bd03ddaa08e5279cb628c9565094e30079da8841",
+  "evidence": {
+   "page.margins.bottomMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+    "location": "paragraf 151",
+    "passage": "Tezler, sayfa düzeni dikey yönlendirilmiş olarak yazılır. Yazımda, her sayfanın sol kenarından 3 cm, alttan ve üstten 2,5 cm, sağ kenarından ise 2 cm kalacak şekilde boşluk bırakılır. Ayrıca sol kenarında 2 cm cilt payı bırakılır. Bu boyutlar cm cinsinden ekte görülmektedir.",
+    "decision": "3 cm metin kenarına 2 cm cilt payı eklendi; motor ayrı cilt payı tutmuyor. Tek yönlü eşdeğer geometri."
+   },
+   "page.margins.leftMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 50,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+    "location": "paragraf 151",
+    "passage": "Tezler, sayfa düzeni dikey yönlendirilmiş olarak yazılır. Yazımda, her sayfanın sol kenarından 3 cm, alttan ve üstten 2,5 cm, sağ kenarından ise 2 cm kalacak şekilde boşluk bırakılır. Ayrıca sol kenarında 2 cm cilt payı bırakılır. Bu boyutlar cm cinsinden ekte görülmektedir.",
+    "decision": "3 cm metin kenarına 2 cm cilt payı eklendi; motor ayrı cilt payı tutmuyor. Tek yönlü eşdeğer geometri."
+   },
+   "page.margins.rightMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 20,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+    "location": "paragraf 151",
+    "passage": "Tezler, sayfa düzeni dikey yönlendirilmiş olarak yazılır. Yazımda, her sayfanın sol kenarından 3 cm, alttan ve üstten 2,5 cm, sağ kenarından ise 2 cm kalacak şekilde boşluk bırakılır. Ayrıca sol kenarında 2 cm cilt payı bırakılır. Bu boyutlar cm cinsinden ekte görülmektedir.",
+    "decision": "3 cm metin kenarına 2 cm cilt payı eklendi; motor ayrı cilt payı tutmuyor. Tek yönlü eşdeğer geometri."
+   },
+   "typography.body.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+    "location": "paragraf 160",
+    "passage": "Tezler bilgisayarla Times New Roman yazı karakteri kullanılarak yazılır. Noktalama işaretlerinden sonra bir vuruşluk (bir boşluk) ara verilmelidir. Kullanılacak karakterler şöyle seçilir;",
+    "decision": "2.5 Kullanılacak Yazıların Niteliği."
+   },
+   "typography.body.lineHeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+    "location": "paragraf 399",
+    "passage": "Satırlar arasında 1,5 aralık (18 pt) bırakılır (Bkz. Ek)",
+    "decision": "Satır aralığı; tek satırlı özel bölümlerden ayrıldı."
+   },
+   "typography.paragraph.firstLineIndentMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 10,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+    "locations": [
+     {
+      "value": 10,
+      "location": "paragraf 176",
+      "sentence": "Paragraflara 1 cm içeriden başlanır."
+     }
+    ]
+   },
+   "page.margins.topMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+    "location": "paragraf 151",
+    "passage": "Tezler, sayfa düzeni dikey yönlendirilmiş olarak yazılır. Yazımda, her sayfanın sol kenarından 3 cm, alttan ve üstten 2,5 cm, sağ kenarından ise 2 cm kalacak şekilde boşluk bırakılır. Ayrıca sol kenarında 2 cm cilt payı bırakılır. Bu boyutlar cm cinsinden ekte görülmektedir.",
+    "decision": "3 cm metin kenarına 2 cm cilt payı eklendi; motor ayrı cilt payı tutmuyor. Tek yönlü eşdeğer geometri."
+   },
+   "typography.body.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+    "location": "paragraf 167",
+    "passage": "12 pt",
+    "decision": "Tablodaki Tez metninde satırının değeridir (paragraf 166-167)."
+   },
+   "page.numbering.position": {
+    "status": "REVIEWED_SOURCE",
+    "value": "top",
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+    "location": "paragraf 154",
+    "passage": "Sayfa numaraları sayfanın üst kenarına 1 cm olacak şekilde sayfanın ortasına yerleştirilir . İç kapak, kabul ve onay sayfası ile ek sayfalar dışındaki tüm sayfalar numaralanır.",
+    "decision": "Üst kenara 1 cm numara konumu."
+   },
+   "page.numbering.align": {
+    "status": "REVIEWED_SOURCE",
+    "value": "center",
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+    "location": "paragraf 154",
+    "passage": "Sayfa numaraları sayfanın üst kenarına 1 cm olacak şekilde sayfanın ortasına yerleştirilir . İç kapak, kabul ve onay sayfası ile ek sayfalar dışındaki tüm sayfalar numaralanır.",
+    "decision": "Üst kenara 1 cm numara konumu."
+   },
+   "sections.source-form-fc8d9a": {
+    "status": "MEASURED",
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Dis_Kapak_Ornekleri_TR.docx",
+    "sourceSha256": "c837dbee9f38a8de90155f16ad098d753d4c8fbe3a1605e8844ab2ae886ba46b",
+    "location": "ön sayfa 1",
+    "value": "outerCover"
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Danisman_Onay_Sayfasi_FRM021.doc",
+    "sha256": "4124188e04ae2c2d42a15e8412443c5055f5ce1327e68e06de04e571800c74d1"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Dis_Kapak_Ornekleri_EN.docx",
+    "sha256": "b772af3208d935e43552fdfdc73608e32b8b9441a3cc0c3c4ff7b63c03ac538f"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Dis_Kapak_Ornekleri_TR.docx",
+    "sha256": "c837dbee9f38a8de90155f16ad098d753d4c8fbe3a1605e8844ab2ae886ba46b"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Ic_Kapak_Ornekleri_EN.docx",
+    "sha256": "1ee35e05ea5f82e1488c31e420a8f38b93a8781f1fb6b6400bab0cb090e33a14"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Ic_Kapak_Ornekleri_TR.docx",
+    "sha256": "2d5c977e5690faf46cdbf3e393adc45f4660bc3578a165078e4560723bf38c2d"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_LaTeX_Klavuzu_2025.pdf",
+    "sha256": "6c0e4bb02eb585576b2f415d20627815aac5c6c917a557a0e527f21a8f9427df"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+    "sha256": "0964a75a862a6e5ea7eee828bd03ddaa08e5279cb628c9565094e30079da8841"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.paragraph.firstLineIndentMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "sections.cover.image",
+     "reason": "Gömülü görsel aktarılamadı (.gif / 48604 bayt); yalnız PNG/JPEG ≤ 2 MB desteklenir"
+    },
+    {
+     "field": "sections.inner-cover.image",
+     "reason": "Gömülü görsel aktarılamadı (.gif / 48604 bayt); yalnız PNG/JPEG ≤ 2 MB desteklenir"
+    },
+    {
+     "field": "sections.sourceForm",
+     "reason": "EGE_Fen_Bilimleri_Ic_Kapak_Ornekleri_TR.docx: ölçülebilir kapak/form sayfası bulunamadı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
+    },
+    {
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
+    },
+    {
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
+    }
+   ],
+   "conflicts": [],
+   "guide": "EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "margins": {
+   "bottomMm": 25,
+   "leftMm": 50,
+   "rightMm": 20,
+   "topMm": 25
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "top",
+   "align": "center",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "lineHeight": 1.5,
+   "fontSizePt": 12
+  },
+  "paragraph": {
+   "firstLineIndentMm": 10
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "source-form-fc8d9a",
+   "type": "outerCover",
+   "title": "Dış Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     },
+     "margins": {
+      "topMm": 25.01,
+      "bottomMm": 37.52,
+      "leftMm": 40,
+      "rightMm": 25.01
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "spacer",
+     "heightMm": 7.3
+    },
+    {
+     "type": "image",
+     "source": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzf/wAARCAB0AHIDASIAAhEBAxEB/8QAHAAAAgIDAQEAAAAAAAAAAAAAAAcFBgIECAMB/8QARhAAAQMDAgQDBgMDBwsFAAAAAQIDBAUGEQAhBxIxQRNRYRQiMnGBkRUjQhZSoRczQ2JygrE1VmOSlKKjssHC0wgkJfDx/8QAGQEAAgMBAAAAAAAAAAAAAAAAAAMBAgQF/8QALREAAQMBBQYGAwEAAAAAAAAAAQACEQMEEiExQVFhcZGx8BMigaHR4TJSwSP/2gAMAwEAAhEDEQA/AHho76NHfQhGjWnV6pBo0B2dU5LcaM0MqcWf4DzPoNzqmSqhWbjiuTZMtdrW0kZL7hCJchPnk7NJPbqo/XTGUy7HRRKstbuui0NxLM+cgSl7IitAuvLPbCEgq/hjUcLjuCeAqj2pIQ0ro7VJCY3/AAxzK+4GqFEvOmQJblL4YW0qpT1AqdmuoUSvcZUon31DJ6qKRk6odUvW+a1HelOT6giI2cOGIgtNo9CUAeY6nvrbTsZdpz+B8qpcnspV+rypx22oafIpfdP3ykaAb6zlmbbEkD9PhPo/iFK/w1zZS6fWLpqiIcJL06Y4CoBbu+B1JUo4H1OtmBaVxzPaHKbTJMj2V9TDq42FcrieoyDv1G4082NowLhy+1F5dFmu3ZBP/wAlaiZLQ+J2mTUuHHo2sJJ++tulXtQ6lKEMyVwp/eHPbMd3PkArr9Cdc+NVTiBbAU6pyuRGm8c3tLbhaHzCwU9xqxQeLEerR0wL7ocapRiMeOygBxPrynbPqkp0p9hMSADw+D8qby6D0aXFDkSmIQqNh1X8dpCMeLSZbxLzI8m1q95J/qr28jq427cNPuGKp+CtaXGlcj8Z5PI6wv8AdWnqD1/6awvpFuPfqrAqW0aNGlKUaNGjQhGtKtVWHRKZIqVRdDUaOnmWrv6ADuScADzOt3S3qFSi12tzazU3ALXtpZ5BnIlSx1Vj9QTkBI7qI8zplNl445KCVq1acwxHbvG/EKCUnNHoZ/oz2UsHq4RgknZPzwAn7uvCsXlUQue8EMc+GIqV8rTXbv381H+A21hddyTLyuL2uoPpjtLWG2UrJLcZsn0BPqSBk/YaYVVsSw6DGgQq9U6ixIkNeIiptpyw8SegwFAY2PyIOddljWUILxLjlGnBLOKqgoUnh/d9MTcrSHqdI5S8Wlq8J5s45gcY5uU4JSdjgbYOr4+uLY9+yKVKbbFqXI3kNYw00tQ5TjsBk4OP0qT5DWNZVbkHhy9TK3ckauRkf5KXGAMhtQGyfiOycgZONjjyGl6qoXTfdPplCjwTNRTUBLammfeAxgFazsNsDqAcDOTqomt5nZZHTgRvU5JjUS2F8MmLur0jCm2mfCprpIJWlRyMjseYtpPyPbX3hxGcb4TLWzHqrzkqatxX4W6G39lAcyVEj9zfz1BDhTfdVhoRVay0lsAYYkzXHeXHTYAp29Dr0a4U33So/LSq+yhKckNR5rzWT6e6BpTjTcDeqCZHsjHYvG/JUtu23YzDl8JDziG3GqwylTKhnOOcDOcgY331mnh5bdNt+n0+56n+G3JUsusuKJKGthhtf6cbjJODzZwcDeEq1Q4g2vLhvXEJr7EZ9LzaZivHYWsdMqBIzvkb5B36jUxQL1cv2t/s/ddJanRZ7yvZSwkIchHGcpV1IAGSTvsevTTbtRrJYfLmSCjBVCbBubhvX21lTkSQN2n2jzNPp/wUOmQfTIGmhb9dZvoCq0NbVKvOE3lxvP5UxsdUqH6kHbruk436HUJe6jV/YOG9qRJMtdMdJdfkrBIKQR8WcBI5zk7dgB21QqnTK9YNxs+PmLOYIdYeaVlKx0yD3B3BB9QRq10V2iYD+o3jYVGS6btW4GrggKc8JUabHWWpkNz447o6g+Y7g9x9dTWlJEuNFQhR+INGa5ZUVIj1+A3/AEjQ/WB3KfiSf3cgnYjTWiSWZkVmTFcS6w8gONrT0UkjII+muRWp3D3gUwFeujRo0lSqxxDrEikW24Kfn8SnOJhwgOviuHAI+QyfppQ8XJzNDp9KsamLzGgtJdlkHdxw5Iz9yr+8PLTMrak1LidR4bhHstHhO1F7J251HkTn1GOYaRap1KuO5anMr0h5hU+SnwHhuhhKnBzKV3wlsEAY646Y11LFTAgnTHngPbFUcVNUo2Bcjb6asXrfqLrxLK2RmO2jACU+W2MkkJySTnUjc0t6z6BKsy42261EdZTIpEttfKWckgE9SANyAM9xnB28v5HZsuZHdodXgVOkuuAKktuAKQnO5IGQdvI9ew1p3Eg37xNRTKX70GPyxGCgjCWGgeZQPz5iPmNaQWPfg6WjE7oy3hVOAXjw44dTLoxUpTSk0pteMc3KqQR1Sk9gO5+g3zh9U6kPQ4jUWnMMUuMwPy2GRkE+asdfmc6yp8GoQIjLUJuOxHYQG2og+FKQNt/P66rPES8nLUiNLlPoVUHd48JgkbfvrPZP3z27kY6lWpaHwI3JJM6HorYuNU5f5Mpxptn9Zb6qGvvstVZHgsSm1NdEqWPeSPtrmyq8Q7vrT2FVeU0FH3WYZLQ+Xu7n6k614t6XfSXvdrVSQrrySHVLB/urzposNWMxwU+G3OTPFdNKpkpLC2EyGpDToPityW+ZKs9fp6HSh4icLX6Uyuv20opLJLr0ZjKS1jfnb74HXHbt5ameG1+tXLIECfIXCrSh+W4FczcgDtg9Fd8ZPp5aZH4Wtait6e8qTj3VpPLyj5eWk36lnqQT7ZqGgjJp5pN2VcKE21CqdOZbXVqHIddqre/jS4jp/Mcz+og8pOehQDsMA7V1UZh616vT5c5pyNBaTVaBLeX762HM87WTuQDgDvlSPQag75psvhpfcWsUcp8CRzPNpKcIJ6ONkA9NwfQKGOmpeo2nePEd2NVa4uBSachrMdPNzBDagDzAAnrt8RGtJDQ4VA6GnGf519CnAkhVPhFcYoV1tR5JSYFSAjSEr+Hc+6o9ticb9lK07LC5qNPqtpvKUUU9wPwCo7qiuEkD15VcySflpC3bQ6JQkuxYFaTPnsygnnawULZLYOdshKkrCkkcx6j104oNX9sdsa6+YBU5CqZMI/UpYOPs62fvqtsaHi+3I9RiPbBS3BMvRr5o1yExLGdKUzVOJVTwMxoLMdlRHQ+Con/eUNc8a6Fq7YVSuJrQ3eCw4r+z4CCP8DpW8MWmn5teZdabcK6HLCAtIOFYBBGeh6767dlcGMc7h0CW5VKPKkRuf2Z91rnTyr8NZTzDyOOumjwChyfxCrVKIyh1xlpDACj0CyScbj9wa24TEf2eU3GZabTKsMPKDaAnmcTkEnHU5HXWX/p/lyGWK23FjeMorZJ3xjZer1qt+i6BsS34DE8k2BEqryvaVyEsvDZDY3SB3z1/665gvCsPXHdUydKeSA494aFHPKhsHlT07Y329ddPqh1R9ftK30MugYQ2NwB3z/8ATrlFqAhFbTT6k/7KhMnwH3inm8LCuVSsZGcbnSrDEuJjDYqMEaH11Tzsy4OG1pU5DEGrMLlFI8eWqM74jqu+/LsPIDp6nJ1J1q+OHNdgrh1aoxpLKhjC47uU+qTy5SfUaq44CtqAUm5VEHcEQRv/AMTX3+QRH+civ9hH/k0kiyF141DPe5aPNsSmq6ItJr7poNRMmOw6HIstAKFdinqAQodOnUa6VtdX45b9OrKZqkzZbKV8xOwUBhaQO4yD9tUP+QNH+ci/9hH/AJNMC27QaoVDi0xU9x91gENPcvJj3irZOT5+er2m0UntF12I3JNSmTpPqqlxvpMx+zRNmPtuGHIQpPKjBwr3Tvj1H20taVa983bRoi4wkSaUhPhxw9MSltISeXASVdiMdO2mvxjYls2BOMqd4iS4ylKAjHMfESd/sdKig03iC7bbUqgLqv4Vzr8NESUU75wrCEq5uue3nplmcfBkEZ65fxSwbj6qU4tUFyi0O0kyY7DMpENceR4IGCpHJuSBudzv89SlqTFq4NPSDuqkVlp1oegcaV/3q1WrwrjsuzKJRaxHqSK1AedU65NbI5kKJI3UeYn4R07anrO93gjcxO3PNCB8z4IH8TqzgRRaHft/VfVP0k50aCd9GuGmqiPQwu+bppKh/lqjNuo32PKFsn/mGkHZ9xPWlXfxBuK3IUltbS2XSQCFDBzroW/T+E1a37nGzUKSY0xXYMPe7zH0SrlP10kuJNJ/ZfiFIWY6HIrryZrLax7jiFKyU48uYKT8hrr2NwcC06jph0hLcr3SLgvi7LflvUi26KzCMZcdtZSpClpwQUN+9vj6DI1TeD1afoV4+xqSEGcgxih3Iw5nKQemDkFP97U7e1aMJD9RhNrcotbDc+lOxj4ZhTWwEnPbOx5h3+YJ1D8TaY/7NRbtXGNPm1RGZcb4FJfT/SJHUBQwfTbO50ymGkFhAAd1UOEhPpcSfJWH5UhEYo/mwg9CfPSW4w2JUok1642GkvR3zzS/BH82vusjHQ9z2OfMauvDS5I16QfAqU1z8Ujp/NjlWOcdPET5jzA6H0I1cn6fLSyWn6kBF6ErHbyP/wC6yse6z1IJy0jos4Dm+a6efVImy+LlXtyGiBNjpqcNpPKyFuFDjY7AKwcgeRH1xqWr/HKozIamKNTG4DqwQX3HfFUn+yOUAH1Oflq+VXhFaVQ/NLD8RzcrcjOhAV68pBSPoBrXpfBu0I60Pr9snI6hL0gcp/1AnP30w1rGTfLce/RaReyS44dQrvvGqgqrtXbprKsyZBmO4PfkT726j/Ab+WXoacpxwj8RUuc1hSSTsgfLXjBpTUTmhUaamOw3t7OhAwj5Aba0Ltk0q1aMupz5byXUn8vlV776z+kD/r26nSqtXxXw3DYI6rO4OePxmN/RL7j3W5KY1PoMh1lbhX7U6Gs5AAKU5+eVfbUxRZsm3YVCgtOOtMUy3H6pMZzhK1L3SlXyVz4GlxRKe7fFcqNfuWYqNSoo8WdKyTyp6JaR13OwHX6kgGaui17jNOnXFQ36iqhPRwjwpklS5CowGcqSR/N5yQM5A3I661OpsDW0ieOySnMBAXjxjq0ybDtaLUXA5MTTRKkEJCffdxtgbDHJqw2zALHDG3KfyHxK3W2lrSe6A5zE/LlaB+ullUqjVL5uaOp9LRmyi3GbS0jlSOiRt28z9dP2nwWXb2p1MiDMG16cE5/07qQlIPr4aSc/1tRX/wAqTWbJPfqVYYlXn6aNfdGuMmLSrNNj1ilS6bMTzMSWlNrx1GR1HqOo+WlBctGlXXZ71PkJK7otZRadSOslnGyh58yQlQ75Sf3tOzVSu+kzI8+PdFBaLlShILciMnb22PnKm/7Q6p9dt9taLPULHRy4/aghIWy+IFStOK9EajRpsVa/FbakgkMujotOOnr8u2pqjyKhdL86v3JDRcDKEFl+C06USYjR5VB5pvYY+XXfPXOvTiPaEWZD/bK0h41LlZclMoG8Zf6jjsM5yP0n06eFv3jBq5iR7mfdp1UjAIhV+InDjYGwS6B8Se2fv3Ous669viU2467R33KXuKjaza8iiR2rptKpLm0dK8omNHkejK6criex3Az0Oe2Rm02pxUguhEe7mZPMNhKjnKfmpHUf3c/LUZxbvBioOot+hvNKpsdXiSXmEpSmU/3V7uxAO/qST2GqRRaBVa6XRSYTknwgCvkwMZzgbncnBwBucHbbV2t8SlNXDfrCo9jXHESui6fXbYqTYTHuuMpg7+C48G1Y+SiP8NbUyoUCC2pX7URIzB3KDKSfsArJ1zKxRqrJimVHps12MM5ebjrUgY6+8BjbWMOk1Kc2XIVPlyGx1UywpYH1A0o2MT+fRV8Kns6pz3LxMtenR/CoSZFRmJ6PAltsH1JGT9B9dLNmTUuIF1QolVqiGlyF+E2t4nw2h+6keZxgDuSMnvrRplsVSpRW5bTTbUVxSkoeedSgK5fi5QTzKx35QdRHvtOd0rQfkQRrRTpMaCGnHbmpDGtMgJ1U9NDodOj2bccWUqpQJ/tDEVhP5dXUokNEnGMbpGFEAcvfBGtC+63LtyDU4k+YiRc1cGJgZWVNQYu/KynPcgnt0JPkTHTa23f9nNM1Btput0hJW5Unng234IA+LqpSlHA5QPi3yM4MFYFmSrvqK35LimKVHPNMmLOMAblIJ/Vjv2G57A5m02iX1Dln9bjsTZ2Ky8JKSxRadOvqsNq8CIhTcFvG7rh90lPqSeQeqj5acNkUmRTKQp6pYNUqDqpc0+Ti/wBI9EjCfpqCt+G1c9QhzI8fwLXo55aWxjAlOp28Yg/pTuE53JyfTV+1z7VWL3Gcz7bB8qzQjRo0ayKyNGjR30IVRq9DnUifIrVrtId9oPNUKUshLcvzWg9EufwV336rO4uHtNuZp+q2IoMyW1f+7oz48JxlfcBJ+A57H3fI9tPrUHXLXg1aQichT0GptjDc+IrkdSPInotP9VQI1qo2lzDM97+5VSJXJk6FLp0pcWfGdjvoOFNuoKVD6HW3blWNDqqKghkPONNuBsFXLyrUhSQrp+kqz9NdCVyn1VyP7NdVvRbmgpGEy4KQ3JQPPwyRv/YUPlqgzrIsOe+W4NySKHKO6olVa5Cj0wvkP+8ddRlsY9sPHLH7VLsKDti8KXTY9FNQRKdfpalFCExwRgrKwErDqMDJ35kq+o21hRbugs0unQ6q446xFdWpcT8KZeS4hThWUhxawU5ydwnIz31MHgnVn0+JTK3SZTR+FYWsZ+yVD+OhrgbcR3fqFKaSO4ccV/2DQalmMm932UQVWKXd/wCGxHorLE4M+1KfYZaqTjLSAce6pKACroN+YagarOkVmryp76E+0THlOKS0nA5lHOAPrpls8NbVpax+0l5xisHCo0Mp58+Q3Uo/6urnQqTGp5Asa0OR3p+LVpKmwPVKVfmH5AJGg2mkzzME+w90QSl1a3DN1Ub8ZvN8UajtjmIePK676AH4c+u57DfOmdTKQ5dEWPDbgLo9nR8eFDwW3qhjfKx1S2Tvg+8rqeu03As9C5qKnckxys1BB5m/FSEsRz/o2hsD/WOTtq0a51e1OeZn4HD5Vw1YNNNstIaZQlttCQlCEDASBsAB2Gs9GjWJWRo0aNCF81976NGhCNGjRoQvmvGXEjTWi1MjsyGz1Q6gLH2OjRoCFBSbEtN9XMu36ek+bbIb/wCXGsGuH9pNrChQISiP30lY+xJ0aNM8Wp+x5qICmqfSKZTARTadEiA9fZ2Et5+wGt3Ro1QknNSjRo0ahCNGjRoQvmjRo0IX/9k=",
+     "widthMm": 21.84,
+     "heightMm": 22.23,
+     "align": "right"
+    }
+   ]
+  },
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖNSÖZ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-figures",
+   "type": "listOfFigures",
+   "title": "ŞEKİLLER DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "ŞEKİLLER DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "TABLOLAR DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "curriculum-vitae",
+   "type": "curriculumVitae",
+   "title": "ÖZGEÇMİŞ",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

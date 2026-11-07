@@ -1,0 +1,2241 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "1.0.0",
+ "id": "adu-fbe-phd-en-v1",
+ "universityId": "adu",
+ "universityName": "Aydın Adnan Menderes Üniversitesi",
+ "instituteId": "fbe",
+ "instituteName": "Fen Bilimleri Enstitüsü",
+ "degreeType": "phd",
+ "language": "en",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "ADU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2023.pdf (sabit sayfa metinleri EN örnekleri; EN_2023 kılavuzu ile doğrulandı)",
+  "verifiedAt": "2026-10-25",
+  "guideDocumentName": "ADU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2023.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2023.pdf",
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2023.pdf"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_EN_2023.pdf"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Kontrol_Beyan_Listesi_2021.pdf"
+   }
+  ],
+  "rebuildKind": "guide-rules+sample-pages",
+  "notes": [
+   "Kaynak önceliği: aynı kılavuzda açık kural metni örnek sayfadan önce gelir. Kapak, kabul-onay, etik beyan ve özet sayfaları EK örnek sayfalarının ölçülen taban çizgilerinden (PDF, A4) akış yerleşimine çevrildi; Word çıktısıyla ölçülmedi.",
+   "Satır aralığı: 1,5 satır = Word modeli (Times New Roman tek satır 1,15 em). Ön sayfalar küçük Roma, ana metin Arap rakamı; konum alt-orta (2.8)."
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "page.margins.gutter",
+     "reason": "Cilt payı kılavuzda ayrı verilmemiş (sol/sağ 3,0 cm)."
+    },
+    {
+     "field": "typography.headings.5",
+     "reason": "5. düzey başlık biçimi kılavuzda yok."
+    },
+    {
+     "field": "tables/figures.style.fontSizePt",
+     "reason": "Başlık puntosu yok (yalnız aynı yazı tipi/büyüklük); gövde 12 pt alındı."
+    },
+    {
+     "field": "sections.dissertationOrderDP",
+     "reason": "Dönem projesi için ayrı bölüm sırası verilmemiş; tez sırası kullanıldı (İthaf yok)."
+    },
+    {
+     "field": "page.facingPages",
+     "reason": "GİRİŞ'ten KAYNAKLAR sonuna çift yüz ve ana bölümlerin tek sayfada başlaması (2.2, 2.4) motorda başlık düzeyinde ifade edilemiyor."
+    }
+   ],
+   "conflicts": [
+    "Kaynakça satır aralığı: 2.4 '1 satır' ile 6. bölüm '1,5 satır'; belirli bölüm (6) esas alındı.",
+    "Özet paragrafı: 4.1 'paragraf başı yapılmaksızın, 1 satır aralık'; EK 9-10 örnekleri 1 cm girintili 1,5 satır. Kural metni esas alındı.",
+    "Anahtar kelime büyük harf: 4.1 'yalnız ilk harf büyük'; örnekler her sözcük büyük. Kural metni esas alındı.",
+    "Bilimsel Etik Beyanı yeri: 3.1 listesi ve EK 6 örneği Teşekkür'den sonra (ön sayfa); 8. bölüm numarası kılavuzun kendi bölüm sırasıdır. Ön sayfa konumu esas alındı.",
+    "Yüz kullanımı: 2.2 'GİRİŞ'e kadar tek yüz'; EK 6 örnek sayfa numaraları (i, iii, v, vii) çift yüz izlenimi verir. Kural metni esas alındı (tek yüz).",
+    "EK 2.1 örnek sayfasında 'ONAY:' etiketi 'Jüri Üyeleri' üzerine binmiş; ONAY: paragrafın başına konuldu."
+   ]
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 30,
+   "bottomMm": 20,
+   "leftMm": 30,
+   "rightMm": 30
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "center",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "lineHeight": 1.5,
+   "firstLineIndentMm": 10,
+   "fontWeight": 400,
+   "spaceBeforePt": 0,
+   "spaceAfterPt": 6,
+   "color": "#000000"
+  },
+  "paragraph": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "lineHeight": 1.5,
+   "firstLineIndentMm": 10,
+   "fontWeight": 400,
+   "spaceBeforePt": 0,
+   "spaceAfterPt": 6,
+   "color": "#000000"
+  },
+  "footnotes": {
+   "placement": "pageBottom",
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "numbering": "document",
+   "lineHeight": 1
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.14990234375,
+   "baseline": "word",
+   "paragraphSpacing": "additive"
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontWeight": 700,
+    "lineHeight": 1.5,
+    "keepWithNext": true,
+    "fontSizePt": 14,
+    "align": "center",
+    "spaceAfterPt": 41.4,
+    "spaceBeforePt": 0,
+    "pageBreakBefore": true,
+    "textTransform": "uppercase",
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.",
+     "sequence": "arabic"
+    }
+   },
+   "2": {
+    "fontFamily": "Times New Roman",
+    "fontWeight": 700,
+    "lineHeight": 1.5,
+    "keepWithNext": true,
+    "fontSizePt": 12,
+    "align": "left",
+    "firstLineIndentMm": 0,
+    "spaceBeforePt": 20.7,
+    "spaceAfterPt": 20.7,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.",
+     "sequence": "arabic"
+    }
+   },
+   "3": {
+    "fontFamily": "Times New Roman",
+    "fontWeight": 700,
+    "lineHeight": 1.5,
+    "keepWithNext": true,
+    "fontSizePt": 12,
+    "align": "left",
+    "firstLineIndentMm": 0,
+    "spaceBeforePt": 20.7,
+    "spaceAfterPt": 20.7,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}.",
+     "sequence": "arabic"
+    }
+   },
+   "4": {
+    "fontFamily": "Times New Roman",
+    "fontWeight": 700,
+    "lineHeight": 1.5,
+    "keepWithNext": true,
+    "fontSizePt": 12,
+    "align": "left",
+    "firstLineIndentMm": 0,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}.{4}.",
+     "sequence": "arabic"
+    }
+   }
+  }
+ },
+ "tables": {
+  "label": "Table",
+  "position": "above",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "center"
+  },
+  "numbering": {
+   "scope": "chapter",
+   "format": "{chapter}.{n}",
+   "sequence": "arabic"
+  }
+ },
+ "figures": {
+  "label": "Figure",
+  "position": "below",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "center"
+  },
+  "numbering": {
+   "scope": "chapter",
+   "format": "{chapter}.{n}",
+   "sequence": "arabic"
+  }
+ },
+ "captionKinds": {
+  "photo": {
+   "label": "Picture",
+   "position": "below",
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "align": "center"
+   },
+   "numbering": {
+    "scope": "chapter",
+    "format": "{chapter}.{n}",
+    "sequence": "arabic"
+   }
+  }
+ },
+ "bibliography": {
+  "heading": "REFERENCES",
+  "citationStyle": "apa-7",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "lineHeight": 1.5,
+   "spaceBeforePt": 0,
+   "spaceAfterPt": 6,
+   "hangingIndentMm": 10,
+   "leftIndentMm": 10,
+   "firstLineIndentMm": 0
+  }
+ },
+ "toc": {
+  "heading": "TABLE OF CONTENTS",
+  "levels": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "showPageNumbers": true
+ },
+ "placeholders": {
+  "DEPARTMENT_NAME": {
+   "label": "Department",
+   "type": "text",
+   "required": true
+  },
+  "PROGRAM_NAME": {
+   "label": "Programme name",
+   "type": "text",
+   "required": true
+  },
+  "PROGRAM_CODE": {
+   "label": "Thesis year-programme code-number (e.g. 2023-PhD-078)",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE": {
+   "label": "Thesis title",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_TR": {
+   "label": "Tez başlığı (Türkçe, ÖZET sayfası)",
+   "type": "text"
+  },
+  "THESIS_TITLE_EN": {
+   "label": "Thesis title (English, ABSTRACT page)",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Name SURNAME",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_SURNAME_INITIAL": {
+   "label": "Abstract line: Surname A.",
+   "type": "text"
+  },
+  "DEPARTMENT_TITLE": {
+   "label": "Department (title case)",
+   "type": "text"
+  },
+  "APPROVAL_PROGRAM": {
+   "label": "Programme as written on the approval page",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Supervisor title",
+   "type": "text",
+   "required": true
+  },
+  "ADVISOR_NAME": {
+   "label": "Supervisor Name SURNAME",
+   "type": "text",
+   "required": true
+  },
+  "FUNDING_NOTE": {
+   "label": "Funding note (if any)",
+   "type": "text"
+  },
+  "CITY_YEAR": {
+   "label": "City and year (e.g. AYDIN - 2023)",
+   "type": "text",
+   "required": true
+  },
+  "YEAR": {
+   "label": "Year",
+   "type": "number"
+  },
+  "DECLARATION_DATE": {
+   "label": "Declaration date",
+   "type": "text"
+  },
+  "PUBLICATION_REFERENCES": {
+   "label": "If derived from own publications: citations (Appendix 5.3)",
+   "type": "multiline"
+  },
+  "KEYWORDS_TR": {
+   "label": "Anahtar kelimeler",
+   "type": "text"
+  },
+  "KEYWORDS_EN": {
+   "label": "Keywords",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "outer-cover",
+   "type": "outerCover",
+   "title": "OUTER COVER",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "blocks": [
+    {
+     "type": "text",
+     "value": "REPUBLIC OF TÜRKİYE",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 2.12
+    },
+    {
+     "type": "text",
+     "value": "AYDIN ADNAN MENDERES UNIVERSITY",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 2.12
+    },
+    {
+     "type": "text",
+     "value": "GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 2.12
+    },
+    {
+     "type": "metadata",
+     "field": "DEPARTMENT_NAME",
+     "fallback": "DEPARTMENT NAME",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center",
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 2.12
+    },
+    {
+     "type": "metadata",
+     "field": "PROGRAM_NAME",
+     "fallback": "PROGRAMME NAME",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center",
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 2.12
+    },
+    {
+     "type": "metadata",
+     "field": "PROGRAM_CODE",
+     "fallback": "THESIS YEAR-PROGRAMME CODE-THESIS NUMBER",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 30.32
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "fallback": "THESIS TITLE",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center",
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 20.98
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NAME",
+     "fallback": "Name SURNAME",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.59
+    },
+    {
+     "type": "text",
+     "value": "DOCTORAL DISSERTATION",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 23.35
+    },
+    {
+     "type": "text",
+     "value": "SUPERVISOR",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.55
+    },
+    {
+     "type": "text",
+     "value": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 23.42
+    },
+    {
+     "type": "metadata",
+     "field": "FUNDING_NOTE",
+     "fallback": "",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "justify"
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "CITY_YEAR",
+     "fallback": "AYDIN - YEAR",
+     "layoutMode": "absolute",
+     "xMm": 30,
+     "yMm": 261.25,
+     "widthMm": 150,
+     "heightMm": 6.35,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    }
+   ],
+   "overrides": {
+    "body": {
+     "align": "center",
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "color": "#000000"
+    },
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    }
+   }
+  },
+  {
+   "id": "inner-cover",
+   "type": "innerCover",
+   "title": "INNER COVER",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "blocks": [
+    {
+     "type": "text",
+     "value": "REPUBLIC OF TÜRKİYE",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 2.12
+    },
+    {
+     "type": "text",
+     "value": "AYDIN ADNAN MENDERES UNIVERSITY",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 2.12
+    },
+    {
+     "type": "text",
+     "value": "GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 2.12
+    },
+    {
+     "type": "metadata",
+     "field": "DEPARTMENT_NAME",
+     "fallback": "DEPARTMENT NAME",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center",
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 2.12
+    },
+    {
+     "type": "metadata",
+     "field": "PROGRAM_NAME",
+     "fallback": "PROGRAMME NAME",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center",
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 2.12
+    },
+    {
+     "type": "metadata",
+     "field": "PROGRAM_CODE",
+     "fallback": "THESIS YEAR-PROGRAMME CODE-THESIS NUMBER",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 30.32
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "fallback": "THESIS TITLE",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center",
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 20.98
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NAME",
+     "fallback": "Name SURNAME",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.59
+    },
+    {
+     "type": "text",
+     "value": "DOCTORAL DISSERTATION",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 23.35
+    },
+    {
+     "type": "text",
+     "value": "SUPERVISOR",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.55
+    },
+    {
+     "type": "text",
+     "value": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 23.42
+    },
+    {
+     "type": "metadata",
+     "field": "FUNDING_NOTE",
+     "fallback": "",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "justify"
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "CITY_YEAR",
+     "fallback": "AYDIN - YEAR",
+     "layoutMode": "absolute",
+     "xMm": 30,
+     "yMm": 261.25,
+     "widthMm": 150,
+     "heightMm": 6.35,
+     "flowHeightMm": 0,
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    }
+   ],
+   "overrides": {
+    "body": {
+     "align": "center",
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "color": "#000000"
+    },
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    }
+   }
+  },
+  {
+   "id": "approval",
+   "type": "approval",
+   "title": "ACCEPTANCE AND APPROVAL",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "title",
+   "blocks": [
+    {
+     "type": "text",
+     "value": "ACCEPTANCE AND APPROVAL",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 20.29
+    },
+    {
+     "type": "text",
+     "value": "The thesis titled “{{THESIS_TITLE}}”, prepared by {{STUDENT_NAME}}, a student of {{APPROVAL_PROGRAM}} at Republic of Türkiye Aydın Adnan Menderes University, Graduate School of Natural and Applied Sciences, was accepted as a Doctoral Dissertation by the jury below.",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "justify"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.31
+    },
+    {
+     "type": "text",
+     "value": "Date of Thesis Defence:  .../.../20...",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "right"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 2.15
+    },
+    {
+     "type": "text",
+     "value": "Jury Member",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "left"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 2.86
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "widthPercent": 100,
+     "gapMm": 0,
+     "blocks": [
+      {
+       "type": "text",
+       "value": "Chair",
+       "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 400,
+        "lineHeight": 1.5,
+        "spaceBeforePt": 0,
+        "spaceAfterPt": 0,
+        "firstLineIndentMm": 0,
+        "align": "left",
+        "leftIndentMm": 1.9
+       },
+       "widthPercent": 16
+      },
+      {
+       "type": "group",
+       "direction": "column",
+       "widthPercent": 54,
+       "gapMm": 0,
+       "blocks": [
+        {
+         "type": "text",
+         "value": ": ..…. (Title, Name SURNAME) …….",
+         "style": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 400,
+          "lineHeight": 1.5,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0,
+          "firstLineIndentMm": 0,
+          "align": "left"
+         }
+        },
+        {
+         "type": "text",
+         "value": "…… (University) ……",
+         "style": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 400,
+          "lineHeight": 1.5,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0,
+          "firstLineIndentMm": 0,
+          "align": "left",
+          "leftIndentMm": 1.9
+         }
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "value": "… (signature) …",
+       "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 400,
+        "lineHeight": 1.5,
+        "spaceBeforePt": 10.3,
+        "spaceAfterPt": 0,
+        "firstLineIndentMm": 0,
+        "align": "right"
+       },
+       "widthPercent": 30
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "widthPercent": 100,
+     "gapMm": 0,
+     "blocks": [
+      {
+       "type": "text",
+       "value": "Member",
+       "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 400,
+        "lineHeight": 1.5,
+        "spaceBeforePt": 0,
+        "spaceAfterPt": 0,
+        "firstLineIndentMm": 0,
+        "align": "left",
+        "leftIndentMm": 1.9
+       },
+       "widthPercent": 16
+      },
+      {
+       "type": "group",
+       "direction": "column",
+       "widthPercent": 54,
+       "gapMm": 0,
+       "blocks": [
+        {
+         "type": "text",
+         "value": ": ..…. (Title, Name SURNAME) …….",
+         "style": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 400,
+          "lineHeight": 1.5,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0,
+          "firstLineIndentMm": 0,
+          "align": "left"
+         }
+        },
+        {
+         "type": "text",
+         "value": "…… (University) ……",
+         "style": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 400,
+          "lineHeight": 1.5,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0,
+          "firstLineIndentMm": 0,
+          "align": "left",
+          "leftIndentMm": 1.9
+         }
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "value": "… (signature) …",
+       "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 400,
+        "lineHeight": 1.5,
+        "spaceBeforePt": 10.3,
+        "spaceAfterPt": 0,
+        "firstLineIndentMm": 0,
+        "align": "right"
+       },
+       "widthPercent": 30
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "widthPercent": 100,
+     "gapMm": 0,
+     "blocks": [
+      {
+       "type": "text",
+       "value": "Member",
+       "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 400,
+        "lineHeight": 1.5,
+        "spaceBeforePt": 0,
+        "spaceAfterPt": 0,
+        "firstLineIndentMm": 0,
+        "align": "left",
+        "leftIndentMm": 1.9
+       },
+       "widthPercent": 16
+      },
+      {
+       "type": "group",
+       "direction": "column",
+       "widthPercent": 54,
+       "gapMm": 0,
+       "blocks": [
+        {
+         "type": "text",
+         "value": ": ..…. (Title, Name SURNAME) …….",
+         "style": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 400,
+          "lineHeight": 1.5,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0,
+          "firstLineIndentMm": 0,
+          "align": "left"
+         }
+        },
+        {
+         "type": "text",
+         "value": "…… (University) ……",
+         "style": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 400,
+          "lineHeight": 1.5,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0,
+          "firstLineIndentMm": 0,
+          "align": "left",
+          "leftIndentMm": 1.9
+         }
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "value": "… (signature) …",
+       "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 400,
+        "lineHeight": 1.5,
+        "spaceBeforePt": 10.3,
+        "spaceAfterPt": 0,
+        "firstLineIndentMm": 0,
+        "align": "right"
+       },
+       "widthPercent": 30
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "widthPercent": 100,
+     "gapMm": 0,
+     "blocks": [
+      {
+       "type": "text",
+       "value": "Member",
+       "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 400,
+        "lineHeight": 1.5,
+        "spaceBeforePt": 0,
+        "spaceAfterPt": 0,
+        "firstLineIndentMm": 0,
+        "align": "left",
+        "leftIndentMm": 1.9
+       },
+       "widthPercent": 16
+      },
+      {
+       "type": "group",
+       "direction": "column",
+       "widthPercent": 54,
+       "gapMm": 0,
+       "blocks": [
+        {
+         "type": "text",
+         "value": ": ..…. (Title, Name SURNAME) …….",
+         "style": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 400,
+          "lineHeight": 1.5,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0,
+          "firstLineIndentMm": 0,
+          "align": "left"
+         }
+        },
+        {
+         "type": "text",
+         "value": "…… (University) ……",
+         "style": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 400,
+          "lineHeight": 1.5,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0,
+          "firstLineIndentMm": 0,
+          "align": "left",
+          "leftIndentMm": 1.9
+         }
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "value": "… (signature) …",
+       "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 400,
+        "lineHeight": 1.5,
+        "spaceBeforePt": 10.3,
+        "spaceAfterPt": 0,
+        "firstLineIndentMm": 0,
+        "align": "right"
+       },
+       "widthPercent": 30
+      }
+     ]
+    },
+    {
+     "type": "group",
+     "direction": "row",
+     "widthPercent": 100,
+     "gapMm": 0,
+     "blocks": [
+      {
+       "type": "text",
+       "value": "Member",
+       "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 400,
+        "lineHeight": 1.5,
+        "spaceBeforePt": 0,
+        "spaceAfterPt": 0,
+        "firstLineIndentMm": 0,
+        "align": "left",
+        "leftIndentMm": 1.9
+       },
+       "widthPercent": 16
+      },
+      {
+       "type": "group",
+       "direction": "column",
+       "widthPercent": 54,
+       "gapMm": 0,
+       "blocks": [
+        {
+         "type": "text",
+         "value": ": ..…. (Title, Name SURNAME) …….",
+         "style": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 400,
+          "lineHeight": 1.5,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0,
+          "firstLineIndentMm": 0,
+          "align": "left"
+         }
+        },
+        {
+         "type": "text",
+         "value": "…… (University) ……",
+         "style": {
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 400,
+          "lineHeight": 1.5,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0,
+          "firstLineIndentMm": 0,
+          "align": "left",
+          "leftIndentMm": 1.9
+         }
+        }
+       ]
+      },
+      {
+       "type": "text",
+       "value": "… (signature) …",
+       "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 400,
+        "lineHeight": 1.5,
+        "spaceBeforePt": 10.3,
+        "spaceAfterPt": 0,
+        "firstLineIndentMm": 0,
+        "align": "right"
+       },
+       "widthPercent": 30
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "value": "**APPROVAL:** This thesis was approved by the jury above in accordance with the relevant articles of the Aydın Adnan Menderes University Graduate Education and Examination Regulations and was approved on the ......... by from the Board of Directors of the Graduate School of Natural and Applied Sciences in the ....... numbered decision.",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "justify"
+     },
+     "markup": "inline"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 11.36
+    },
+    {
+     "type": "text",
+     "value": "……………………",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "right"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 2.12
+    },
+    {
+     "type": "text",
+     "value": "Institute Director",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "right",
+      "rightIndentMm": 5
+     }
+    }
+   ],
+   "overrides": {
+    "body": {
+     "lineHeight": 1.5,
+     "firstLineIndentMm": 0,
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "color": "#000000"
+    },
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "roman-lower",
+      "startAt": 1,
+      "restart": true
+     }
+    }
+   }
+  },
+  {
+   "id": "dedication",
+   "type": "dedication",
+   "title": "DEDICATION",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": false,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1.5,
+      "spaceAfterPt": 57.7,
+      "spaceBeforePt": 0,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    },
+    "paragraph": {
+     "firstLineIndentMm": 0,
+     "align": "center",
+     "lineHeight": 1.5
+    }
+   }
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "ACKNOWLEDGMENT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1.5,
+      "spaceAfterPt": 57.7,
+      "spaceBeforePt": 0,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    },
+    "paragraph": {
+     "firstLineIndentMm": 0,
+     "lineHeight": 1.5,
+     "align": "justify",
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 6
+    }
+   },
+   "maxPages": 1
+  },
+  {
+   "id": "ethics",
+   "type": "ethicsDeclaration",
+   "title": "SCIENTIFIC ETHICS STATEMENT",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "title",
+   "blocks": [
+    {
+     "type": "text",
+     "value": "SCIENTIFIC ETHICS STATEMENT",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 20.29
+    },
+    {
+     "type": "text",
+     "value": "I hereby declare that I composed all the information in my Doctoral thesis entitled “{{THESIS_TITLE}}” within the framework of ethical behavior and academic rules, and that due references were provided and for all kinds of statements and information that do not belong to me in this study in accordance with the guide for writing the thesis. I declare that I accept all kinds of legal consequences in case of any contrary statement of what I have stated is revealed.",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "justify"
+     }
+    },
+    {
+     "type": "group",
+     "direction": "column",
+     "visibleWhen": {
+      "anyFilled": [
+       "PUBLICATION_REFERENCES"
+      ]
+     },
+     "blocks": [
+      {
+       "type": "text",
+       "value": "This thesis is derived from the publication(s) for which I am the lead or co-author and whose citation information is given below.",
+       "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 400,
+        "lineHeight": 1.5,
+        "spaceBeforePt": 41.4,
+        "spaceAfterPt": 0,
+        "firstLineIndentMm": 0,
+        "align": "justify"
+       }
+      },
+      {
+       "type": "metadata",
+       "field": "PUBLICATION_REFERENCES",
+       "fallback": "",
+       "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 400,
+        "lineHeight": 1.5,
+        "spaceBeforePt": 41.4,
+        "spaceAfterPt": 0,
+        "firstLineIndentMm": 0,
+        "align": "left"
+       }
+      }
+     ]
+    },
+    {
+     "type": "text",
+     "value": "{{STUDENT_NAME}}",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 41.4,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "right"
+     }
+    },
+    {
+     "type": "text",
+     "value": "Student Name SURNAME",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 10,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "right"
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{DECLARATION_DATE}}",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 10,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "right"
+     }
+    }
+   ],
+   "overrides": {
+    "body": {
+     "lineHeight": 1.5,
+     "firstLineIndentMm": 0,
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "color": "#000000"
+    },
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    }
+   }
+  },
+  {
+   "id": "toc",
+   "type": "tableOfContents",
+   "title": "TABLE OF CONTENTS",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "tocEntry": "none",
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "TABLE OF CONTENTS",
+    "leader": "dots",
+    "style": {
+     "align": "left",
+     "lineHeight": 1.5,
+     "fontSizePt": 12,
+     "spaceAfterPt": 5,
+     "spaceBeforePt": 0
+    }
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1.5,
+      "spaceAfterPt": 57.7,
+      "spaceBeforePt": 0,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "symbols",
+   "type": "listOfSymbols",
+   "title": "INDEX OF SYMBOLS",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1.5,
+      "spaceAfterPt": 57.7,
+      "spaceBeforePt": 0,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    },
+    "paragraph": {
+     "firstLineIndentMm": 0,
+     "lineHeight": 1.5,
+     "align": "justify",
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 6
+    }
+   }
+  },
+  {
+   "id": "abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "INDEX OF ABBREVIATIONS",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1.5,
+      "spaceAfterPt": 57.7,
+      "spaceBeforePt": 0,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    },
+    "paragraph": {
+     "firstLineIndentMm": 0,
+     "lineHeight": 1.5,
+     "align": "justify",
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 6
+    }
+   }
+  },
+  {
+   "id": "list-figures",
+   "type": "listOfFigures",
+   "title": "LIST OF FIGURES",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "tocEntry": "title",
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "LIST OF FIGURES",
+    "leader": "dots",
+    "style": {
+     "align": "left",
+     "lineHeight": 1.5,
+     "fontSizePt": 12,
+     "spaceAfterPt": 5,
+     "spaceBeforePt": 0
+    }
+   },
+   "visibleWhen": {
+    "count": "figures",
+    "gte": 1
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1.5,
+      "spaceAfterPt": 57.7,
+      "spaceBeforePt": 0,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "list-photos",
+   "type": "listOfFigures",
+   "title": "LIST OF PICTURES",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "tocEntry": "title",
+   "generatedIndex": {
+    "kind": "photo",
+    "title": "LIST OF PICTURES",
+    "leader": "dots",
+    "style": {
+     "align": "left",
+     "lineHeight": 1.5,
+     "fontSizePt": 12,
+     "spaceAfterPt": 5,
+     "spaceBeforePt": 0
+    }
+   },
+   "visibleWhen": {
+    "count": "photo",
+    "gte": 1
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1.5,
+      "spaceAfterPt": 57.7,
+      "spaceBeforePt": 0,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "list-tables",
+   "type": "listOfTables",
+   "title": "LIST OF TABLES",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "tocEntry": "title",
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "LIST OF TABLES",
+    "leader": "dots",
+    "style": {
+     "align": "left",
+     "lineHeight": 1.5,
+     "fontSizePt": 12,
+     "spaceAfterPt": 5,
+     "spaceBeforePt": 0
+    }
+   },
+   "visibleWhen": {
+    "count": "tables",
+    "gte": 1
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1.5,
+      "spaceAfterPt": 57.7,
+      "spaceBeforePt": 0,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "abstract-tr-header",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "standalone": false,
+   "tocEntry": "title",
+   "blocks": [
+    {
+     "type": "text",
+     "value": "ÖZET",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 59.3,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE_TR",
+     "fallback": "",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 32.8,
+      "firstLineIndentMm": 0,
+      "align": "center",
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{STUDENT_SURNAME_INITIAL}} Aydın Adnan Menderes Üniversitesi, Fen Bilimleri Enstitüsü, {{DEPARTMENT_TITLE}} Anabilim Dalı, Doktora Tezi, Danışman: {{ADVISOR_TITLE}} {{ADVISOR_NAME}}, Aydın, {{YEAR}}.",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6,
+      "firstLineIndentMm": 0,
+      "align": "justify"
+     }
+    }
+   ],
+   "overrides": {
+    "body": {
+     "lineHeight": 1,
+     "firstLineIndentMm": 0
+    },
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1.5,
+      "spaceAfterPt": 57.7,
+      "spaceBeforePt": 0,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "Özet metni",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": false,
+   "pageBreakBefore": false,
+   "minWords": 200,
+   "maxPages": 2,
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "paragraph": {
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "align": "justify"
+    }
+   }
+  },
+  {
+   "id": "abstract-tr-footer",
+   "type": "abstract",
+   "title": "Anahtar kelimeler",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "standalone": false,
+   "pageBreakBefore": false,
+   "tocEntry": "none",
+   "blocks": [
+    {
+     "type": "text",
+     "value": "**Anahtar kelimeler:** {{KEYWORDS_TR}}",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1,
+      "spaceBeforePt": 20.7,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "left"
+     },
+     "markup": "inline"
+    }
+   ],
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    }
+   }
+  },
+  {
+   "id": "abstract-en-header",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "standalone": false,
+   "tocEntry": "title",
+   "blocks": [
+    {
+     "type": "text",
+     "value": "ABSTRACT",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 59.3,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE_EN",
+     "fallback": "",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 32.8,
+      "firstLineIndentMm": 0,
+      "align": "center",
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{STUDENT_SURNAME_INITIAL}} Aydın Adnan Menderes University, Graduate School of Natural and Applied Sciences, Department of {{DEPARTMENT_TITLE}}, Doctoral Thesis, Supervisor: {{ADVISOR_TITLE}} {{ADVISOR_NAME}}, Aydın, {{YEAR}}.",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6,
+      "firstLineIndentMm": 0,
+      "align": "justify"
+     }
+    }
+   ],
+   "overrides": {
+    "body": {
+     "lineHeight": 1,
+     "firstLineIndentMm": 0
+    },
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1.5,
+      "spaceAfterPt": 57.7,
+      "spaceBeforePt": 0,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "abstract-en",
+   "type": "englishAbstract",
+   "title": "Abstract text",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": false,
+   "pageBreakBefore": false,
+   "minWords": 200,
+   "maxPages": 2,
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "paragraph": {
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "align": "justify"
+    }
+   }
+  },
+  {
+   "id": "abstract-en-footer",
+   "type": "englishAbstract",
+   "title": "Keywords",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "standalone": false,
+   "pageBreakBefore": false,
+   "tocEntry": "none",
+   "blocks": [
+    {
+     "type": "text",
+     "value": "**Keywords:** {{KEYWORDS_EN}}",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1,
+      "spaceBeforePt": 20.7,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "left"
+     },
+     "markup": "inline"
+    }
+   ],
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    }
+   }
+  },
+  {
+   "id": "main",
+   "type": "mainContent",
+   "title": "INTRODUCTION",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "pageBreakBefore": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic",
+      "startAt": 1,
+      "restart": true
+     }
+    }
+   }
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "REFERENCES",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title"
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "APPENDICES",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title"
+  },
+  {
+   "id": "cv",
+   "type": "curriculumVitae",
+   "title": "CURRICULUM VITAE",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title"
+  }
+ ]
+}

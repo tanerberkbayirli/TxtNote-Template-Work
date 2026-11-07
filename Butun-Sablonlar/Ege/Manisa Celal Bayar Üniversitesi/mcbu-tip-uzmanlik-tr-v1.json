@@ -117,7 +117,8 @@
    "lineHeight": 1.5,
    "firstLineIndentMm": 5.88,
    "fontWeight": 400,
-   "spaceBeforePt": 0
+   "spaceBeforePt": 0,
+   "emptyParagraphs": "omit"
   },
   "paragraph": {
    "align": "left",
@@ -263,8 +264,63 @@
    "Kapak (§II, Ek-1): dış kapak (beyaz kuşe karton) ve iç kapak (beyaz kağıt) 'birbirinin benzeri'; aynı düzen iki bölüm olarak üretildi. Üniversite adı 15.10.2026 kullanıcı kararıyla 'MANİSA CELAL BAYAR ÜNİVERSİTESİ TIP FAKÜLTESİ' olarak güncellendi; özgün kılavuzdaki eski ad kaynak kaydıdır. Alan düzenlenebilir. Başlık punto: düzyazı 14 punto, kılavuz örneği 12 punto (kaynak çelişkisi korunur); kullanıcı izniyle incelenen Çöldür 2018 uzmanlık tezi kapağı 14,04 punto ölçüldü, düzyazıdaki 14 punto kararı desteklendi. Dikey boşluklar Ek-1 örnek ölçümüdür (satır sayıları düzyazıdakiyle yaklaşık uyumludur; 'Sayfanın en altına Manisa ve yıl' ifadesi örneğin 41 mm'lik boşluğuyla uygulandı).",
    "Tablo/Şekil (§1.5): Arap rakamlı ve ardışık ('Tablo 1', 'Şekil 1'); tablo başlığı üstte, şekil/grafik/resim numara ve adı altta. Etiket ayracı, punto dışı biçim, hücre aralığı ve kenarlık UNKNOWN (genel 12 punto/sola yaslı kuralı). Dipnot punto/aralığı UNKNOWN (kaynaklar metinde numarayla verilir; genel 12 punto kuralı).",
    "Kaynaklar (§XV, Ek-2): metinde parantez içinde ve cümle sonunda numara, geçiş sırasına göre numaralı liste (Vancouver benzeri). Örnek kaynakların ölçümü: tek satır aralığı, devam satırı 6,35 mm asılı (numara 18,46 mm, metin 24,81 mm), girişler arası ek boşluk ~6,25 mm (17,7 pt; örnekte e2-e3 arasında yok, düzensiz). Örnek iki yana yaslıdır ancak kılavuzun kendi gövdesi de kuralına aykırı iki yana yaslıdır; genel 'sola hizalanarak' kuralı izlendi.",
-   "Üretilmeyenler: Onay/jüri sayfası, bildirim, teşekkür, simgeler/kısaltmalar, şekil/tablo dizinleri (kılavuzda tanım yok). Fiziksel kurallar (tek yüz, 9 cilt, beyaz kuşe karton) belge içeriği değildir."
-  ]
+   "Üretilmeyenler: Onay/jüri sayfası, bildirim, teşekkür, simgeler/kısaltmalar, şekil/tablo dizinleri (kılavuzda tanım yok). Fiziksel kurallar (tek yüz, 9 cilt, beyaz kuşe karton) belge içeriği değildir.",
+   "İÇİNDEKİLER (kullanıcı isteği 24.10.2026, Ek-2 sunuş örneği): ÖNSÖZ ve İÇİNDEKİLER satırları kalın ve sayfa numarasız; 'Sayfa' başlığı İÇİNDEKİLER satırında; Romen rakamları 10 mm'lik sağa yaslı sütunda, başlıklar rakamdan 5,24 mm sonra (Ek-2: rakam sağ kenarı 25,7 mm, başlıklar 30,94 mm; Arial Narrow 11 pt ölçüsü Arial 12 pt'ye göre genişletildi); sayfa numaraları 12 mm'lik ayrı sütunda ortalı. Bölüm başlıkları arasında 1,5, alt başlıklar arasında 1 aralık (§V) korunur. Alt başlık satırları (2.-4. seviye) rakam sütununu kullanmaz; numaralarıyla birlikte ana başlığın yazı hizasından (15,24 mm) başlar (Ek-2'de alt başlık örneği yok)."
+  ],
+  "regionalAudit": {
+   "checkedAt": "2026-10-23",
+   "status": "CORE_RECHECKED",
+   "layoutRebuilt": false,
+   "visualConformanceRechecked": false,
+   "documents": [
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "sha256": "67f0879296a63db9f18d86e07db5212bc8bbc302d27b9a872eec34923a070883"
+    }
+   ],
+   "checkedFields": [
+    {
+     "field": "typography.body.fontFamily",
+     "template": "Arial",
+     "sourceValue": "Arial",
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "evidence": [
+      {
+       "value": "Arial",
+       "location": "sayfa 2",
+       "sentence": "Yazı karakteri Yazılar arial tiple, 12 punto büyüklüğünde, sola hizalanarak ve 1.5 satır aralığı bırakılarak yazılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "template": 12,
+     "sourceValue": 12.0,
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "evidence": [
+      {
+       "value": 12.0,
+       "location": "sayfa 2",
+       "sentence": "Yazı karakteri Yazılar arial tiple, 12 punto büyüklüğünde, sola hizalanarak ve 1.5 satır aralığı bırakılarak yazılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "template": 1.5,
+     "sourceValue": 1.5,
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+     "evidence": [
+      {
+       "value": 1.5,
+       "location": "sayfa 2",
+       "sentence": "Yazı karakteri Yazılar arial tiple, 12 punto büyüklüğünde, sola hizalanarak ve 1.5 satır aralığı bırakılarak yazılmalıdır."
+      }
+     ]
+    }
+   ],
+   "conflicts": []
+  }
  },
  "placeholders": {
   "UNIVERSITY_FACULTY_LINE": {
@@ -290,7 +346,8 @@
   "STUDENT_NAME": {
    "label": "Araştırma Görevlisinin Adı SOYADI",
    "type": "text",
-   "required": true
+   "required": true,
+   "nameFormat": "surnameUpper"
   },
   "ADVISOR_TITLE": {
    "label": "Tez danışmanının unvanı",
@@ -300,7 +357,8 @@
   "ADVISOR_NAME": {
    "label": "Tez danışmanının Adı SOYADI",
    "type": "text",
-   "required": true
+   "required": true,
+   "nameFormat": "surnameUpper"
   },
   "YEAR": {
    "label": "Tezin yapıldığı yıl (kapak)",
@@ -341,7 +399,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 41.72
+     "heightMm": 28.05
     },
     {
      "type": "metadata",
@@ -355,7 +413,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 35.04
+     "heightMm": 35.3
     },
     {
      "type": "text",
@@ -375,7 +433,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 33.482
+     "heightMm": 24.352
     },
     {
      "type": "text",
@@ -391,7 +449,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 36.622
+     "heightMm": 78.66
     },
     {
      "type": "text",
@@ -446,7 +504,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 41.72
+     "heightMm": 28.05
     },
     {
      "type": "metadata",
@@ -460,7 +518,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 35.04
+     "heightMm": 35.3
     },
     {
      "type": "text",
@@ -480,7 +538,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 33.482
+     "heightMm": 24.352
     },
     {
      "type": "text",
@@ -496,7 +554,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 36.622
+     "heightMm": 78.66
     },
     {
      "type": "text",
@@ -527,7 +585,7 @@
    "group": "front",
    "mode": "editable",
    "showTitle": true,
-   "tocEntry": "none",
+   "tocEntry": "title",
    "overrides": {
     "page": {
      "numbering": {
@@ -551,7 +609,7 @@
    "status": "required",
    "group": "front",
    "mode": "generated",
-   "tocEntry": "none",
+   "tocEntry": "title",
    "generatedIndex": {
     "kind": "toc",
     "title": "İÇİNDEKİLER",
@@ -571,12 +629,32 @@
      "lineHeight": 1
     },
     "indentMm": 0,
-    "pageNumberAlignment": "right",
+    "pageNumberAlignment": "center",
     "levelStyles": {
      "1": {
       "spaceBeforePt": 6.9
+     },
+     "unnumbered": {
+      "includePageNumber": false,
+      "fontWeight": 700
+     },
+     "2": {
+      "leftIndentMm": 15.24
+     },
+     "3": {
+      "leftIndentMm": 15.24
+     },
+     "4": {
+      "leftIndentMm": 15.24
      }
-    }
+    },
+    "pageHeadingPlacement": "row",
+    "labelColumnMm": 10,
+    "labelGapMm": 5.24,
+    "pageColumnWidthMm": 12,
+    "labelColumnLevels": [
+     1
+    ]
    },
    "overrides": {
     "page": {
@@ -652,5 +730,6 @@
    "showTitle": true,
    "titleNumbering": "continueH1"
   }
- ]
+ ],
+ "exportValidation": "strict"
 }

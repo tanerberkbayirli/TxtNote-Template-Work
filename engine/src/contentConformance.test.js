@@ -4,6 +4,15 @@ import { contentRuleIssues, validateThesisPageCounts } from "./contentConformanc
 import { compileThesisDocument } from "./engine.js";
 import { mcbuTipUzmanlik } from "./templates/mcbu-tip.js";
 
+test("word minima count visible prose, including inline formatting and paragraph boundaries", () => {
+  assert.deepEqual(contentRuleIssues("abstract", { minWords: 4 }, "<p>İlk <strong>iki</strong> kelime.</p><p>Son.</p>"), []);
+  const [issue] = contentRuleIssues("abstract", { minWords: 4 }, "<p>İki&nbsp;kelime.</p>");
+  assert.equal(issue.code, "minWords");
+  assert.equal(issue.actual, 2);
+  assert.equal(contentRuleIssues("abstract", { minWords: 4 }, "")[0].actual, 0);
+  assert.deepEqual(contentRuleIssues("abstract", {}, ""), []);
+});
+
 test("required chapter alternatives are matched in order and missing chapters are reported", () => {
   const rule = { headingSequence:["GİRİŞ",["SONUÇ VE ÖNERİLER","SONUÇLAR VE ÖNERİLER"]], headingLevel:1 };
   assert.deepEqual(contentRuleIssues("main",rule,'<h1>I. Giriş</h1><h2>Başka</h2><h1>Sonuçlar ve Öneriler</h1>'),[]);

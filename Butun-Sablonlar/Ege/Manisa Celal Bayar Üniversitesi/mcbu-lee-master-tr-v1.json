@@ -109,7 +109,8 @@
    "lineHeight": 1.5,
    "firstLineIndentMm": 12.5,
    "fontWeight": 400,
-   "spaceBeforePt": 0
+   "spaceBeforePt": 0,
+   "emptyParagraphs": "omit"
   },
   "paragraph": {
    "align": "justify",
@@ -121,7 +122,8 @@
   "lineSpacing": {
    "mode": "word",
    "singleLineEm": 1.15,
-   "baseline": "word"
+   "baseline": "word",
+   "paragraphSpacing": "collapse"
   },
   "footnotes": {
    "placement": "pageBottom",
@@ -197,20 +199,40 @@
  "validation": {
   "DEPARTMENT_NAME_EN": {
    "minItems": 1,
-   "severity": "warning",
+   "severity": "error",
    "message": "Abstract için Department (English) alanını İngilizce doldurun."
   },
   "KEYWORDS": {
    "minItems": 5,
    "separator": ",",
-   "severity": "warning",
+   "severity": "error",
    "message": "Anahtar Kelimeler en az 5 tane olmalı ve virgül ile ayrılmalıdır."
   },
   "KEYWORDS_EN": {
    "minItems": 5,
    "separator": ",",
-   "severity": "warning",
+   "severity": "error",
    "message": "Keywords en az 5 tane olmalı ve virgül ile ayrılmalıdır."
+  },
+  "introduction": {
+   "minWords": 1,
+   "severity": "error",
+   "message": "GİRİŞ bölümünü doldurun."
+  },
+  "abstract": {
+   "minWords": 1,
+   "severity": "error",
+   "message": "ÖZET metnini doldurun."
+  },
+  "abstract-en": {
+   "minWords": 1,
+   "severity": "error",
+   "message": "ABSTRACT metnini doldurun."
+  },
+  "bibliography": {
+   "minWords": 1,
+   "severity": "error",
+   "message": "KAYNAKÇA bölümünü doldurun."
   }
  },
  "templateVersion": "1.0.0",
@@ -229,8 +251,142 @@
   "notes": [
    "Depo yolu: Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx; sha256 e607f8f7405ae10eee4880e7d52f660517fb595625f065088ec5f437f08238c7 (KAYNAK.md).",
    "Danışman onayı ile çift taraflı baskı yapılabilir.",
-   "Tez sırtı (AD SOYAD, TEZ ADI, YIL) sayfa değildir; baskıda hazırlanır."
-  ]
+   "Tez Sırtı (kılavuz 'Tez Sırtı Örneği', DOCX tablo: 1305 tw genişlik, satırlar 1749/9892/1017 tw, dış çerçeve, satır arası çizgi yok, TNR 12 kalın, tez adı dikey): kullanıcı kararıyla varsayılan dahil edilir, isteğe bağlı bölümlerde gösterilmez; sayfa numarası basılmaz ve içindekilere alınmaz. Kılavuz zorunluluk veya isteğe bağlılık durumunu açıkça belirtmiyor.",
+   "Özet/Abstract satır aralığı (25.10.2026 kararı): kılavuz özet örnek sayfasında iki çelişen açık ifade var — metin 'Özet iki yana yaslı olarak tek satır aralıklı ve paragraflar arasında bir satır boşluk bırakılacak şekilde yazılmalıdır' (§Özet örneği) ile sayfa altındaki not '(Paragraf başı (1,25 cm) girintili, bir buçuk (1,5) satır aralıklı, Times New Roman 12 punto)'; örnek paragrafların DOCX XML'i de 1,5 (line=360). Kullanıcı kararıyla özet gövdesi tek satır aralıklı, paragraf arası bir satır (13,8 nk), ilk satır girintisi 1,25 cm uygulanır (Abstract Türkçe özetle aynı). Karşı taraf (1,5 satır) kayıtlıdır; kurum açıklaması gelirse yeniden değerlendirilmelidir."
+  ],
+  "regionalAudit": {
+   "checkedAt": "2026-10-23",
+   "status": "CORE_RECHECKED",
+   "layoutRebuilt": false,
+   "visualConformanceRechecked": false,
+   "documents": [
+    {
+     "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+     "sha256": "e607f8f7405ae10eee4880e7d52f660517fb595625f065088ec5f437f08238c7"
+    }
+   ],
+   "checkedFields": [
+    {
+     "field": "typography.body.fontFamily",
+     "template": "Times New Roman",
+     "sourceValue": "Times New Roman",
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+     "evidence": [
+      {
+       "value": "Times New Roman",
+       "location": "paragraf 5",
+       "sentence": "2 satır boşluk bırakılır (Times New Roman 14 punto)"
+      },
+      {
+       "value": "Times New Roman",
+       "location": "paragraf 11",
+       "sentence": "9 satır boşluk bırakılır (Times New Roman 12 punto)"
+      },
+      {
+       "value": "Times New Roman",
+       "location": "paragraf 20",
+       "sentence": "5 satır boşluk bırakılır (Times New Roman 14 punto)"
+      },
+      {
+       "value": "Times New Roman",
+       "location": "paragraf 26",
+       "sentence": "5 satır boşluk bırakılır (Times New Roman 12 punto)"
+      },
+      {
+       "value": "Times New Roman",
+       "location": "paragraf 33",
+       "sentence": "1 satır boşluk bırakılır (Times New Roman 12 punto)"
+      },
+      {
+       "value": "Times New Roman",
+       "location": "paragraf 163",
+       "sentence": "1,5 satır aralıklı, 12 punto Times New Roman1,5 satır aralıklı, 12 punto Times New Roman"
+      },
+      {
+       "value": "Times New Roman",
+       "location": "paragraf 164",
+       "sentence": "1,5 satır aralıklı, 12 punto Times New Roman"
+      },
+      {
+       "value": "Times New Roman",
+       "location": "paragraf 211",
+       "sentence": "1 satır aralıklı, 12 punto Times New Roman1 satır aralıklı, 12 punto Times New Roman"
+      },
+      {
+       "value": "Times New Roman",
+       "location": "paragraf 212",
+       "sentence": "1 satır aralıklı, 12 punto Times New Roman"
+      }
+     ]
+    },
+    {
+     "field": "page.margins.leftMm",
+     "template": 40,
+     "sourceValue": 40.0,
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+     "evidence": [
+      {
+       "value": 40.0,
+       "location": "paragraf 350",
+       "sentence": "Tez yazımında sayfa düzeni üst ve alt ile sağ kenar boşlukları için iki buçuk santimetre (2.5cm), sol kenar boşluğu için ise dört santimetre (4cm) olmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.rightMm",
+     "template": 25,
+     "sourceValue": 25.0,
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+     "evidence": [
+      {
+       "value": 25.0,
+       "location": "paragraf 350",
+       "sentence": "Tez yazımında sayfa düzeni üst ve alt ile sağ kenar boşlukları için iki buçuk santimetre (2.5cm), sol kenar boşluğu için ise dört santimetre (4cm) olmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.topMm",
+     "template": 25,
+     "sourceValue": 25.0,
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+     "evidence": [
+      {
+       "value": 25.0,
+       "location": "paragraf 350",
+       "sentence": "Tez yazımında sayfa düzeni üst ve alt ile sağ kenar boşlukları için iki buçuk santimetre (2.5cm), sol kenar boşluğu için ise dört santimetre (4cm) olmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "template": 25,
+     "sourceValue": 25.0,
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+     "evidence": [
+      {
+       "value": 25.0,
+       "location": "paragraf 350",
+       "sentence": "Tez yazımında sayfa düzeni üst ve alt ile sağ kenar boşlukları için iki buçuk santimetre (2.5cm), sol kenar boşluğu için ise dört santimetre (4cm) olmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "typography.body.firstLineIndentMm",
+     "template": 12.5,
+     "sourceValue": 12.5,
+     "source": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+     "evidence": [
+      {
+       "value": 12.5,
+       "location": "paragraf 353",
+       "sentence": "Her paragrafın ilk satırı 1,25 cm girintili olmalı ve paragraflar arasındaki boşluk 6 nk olmalıdır."
+      }
+     ]
+    }
+   ],
+   "conflicts": []
+  }
  },
  "placeholders": {
   "UNIVERSITY_NAME": {
@@ -249,7 +405,8 @@
   "STUDENT_NAME": {
    "label": "Ad SOYAD",
    "type": "text",
-   "required": true
+   "required": true,
+   "nameFormat": "surnameUpper"
   },
   "DEPARTMENT_NAME": {
    "label": "Anabilim dalı",
@@ -273,7 +430,8 @@
   "ADVISOR_NAME": {
    "label": "Danışman Ad SOYAD",
    "type": "text",
-   "required": true
+   "required": true,
+   "nameFormat": "surnameUpper"
   },
   "CO_ADVISOR_TITLE": {
    "label": "İkinci danışman unvanı",
@@ -281,7 +439,8 @@
   },
   "CO_ADVISOR_NAME": {
    "label": "İkinci danışman Ad SOYAD",
-   "type": "text"
+   "type": "text",
+   "nameFormat": "surnameUpper"
   },
   "CITY": {
    "label": "Şehir",
@@ -476,6 +635,87 @@
    }
   },
   {
+   "id": "spine",
+   "type": "custom",
+   "title": "Tez Sırtı",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "body": {
+     "align": "center",
+     "fontWeight": 700,
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "textTransform": "uppercase"
+    },
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    }
+   },
+   "blocks": [
+    {
+     "type": "group",
+     "table": true,
+     "align": "center",
+     "widthMm": 23.019,
+     "border": {
+      "outerPt": 0.5,
+      "paddingMm": 0
+     },
+     "blocks": [
+      {
+       "type": "group",
+       "minHeightMm": 30.85,
+       "verticalAlign": "center",
+       "blocks": [
+        {
+         "type": "metadata",
+         "field": "STUDENT_NAME",
+         "fallback": "AD SOYAD",
+         "style": {
+          "leftIndentMm": 1.993,
+          "rightIndentMm": 1.993
+         }
+        }
+       ]
+      },
+      {
+       "type": "group",
+       "minHeightMm": 174.484,
+       "verticalAlign": "center",
+       "blocks": [
+        {
+         "type": "metadata",
+         "field": "THESIS_TITLE",
+         "fallback": "TEZ ADI",
+         "style": {
+          "writingMode": "vertical-rl"
+         }
+        }
+       ]
+      },
+      {
+       "type": "group",
+       "minHeightMm": 17.939,
+       "verticalAlign": "center",
+       "blocks": [
+        {
+         "type": "text",
+         "value": "{{YEAR}}"
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
    "id": "declaration",
    "type": "declaration",
    "title": "Taahhütname",
@@ -667,9 +907,9 @@
    "pageBreakBefore": false,
    "overrides": {
     "body": {
-     "lineHeight": 1.5,
+     "lineHeight": 1,
      "firstLineIndentMm": 12.5,
-     "spaceAfterPt": 10,
+     "spaceAfterPt": 13.8,
      "leftIndentMm": 0
     },
     "page": {
@@ -678,11 +918,11 @@
      }
     },
     "paragraph": {
-     "lineHeight": 1.5,
+     "lineHeight": 1,
      "align": "justify",
      "firstLineIndentMm": 12.5,
      "leftIndentMm": 0,
-     "spaceAfterPt": 10
+     "spaceAfterPt": 13.8
     }
    },
    "showTitle": false
@@ -837,9 +1077,9 @@
    "pageBreakBefore": false,
    "overrides": {
     "body": {
-     "lineHeight": 1.5,
-     "firstLineIndentMm": 12.505972222222221,
-     "spaceAfterPt": 0,
+     "lineHeight": 1,
+     "firstLineIndentMm": 12.5,
+     "spaceAfterPt": 13.8,
      "leftIndentMm": 0
     },
     "page": {
@@ -848,11 +1088,11 @@
      }
     },
     "paragraph": {
-     "lineHeight": 1.5,
+     "lineHeight": 1,
      "align": "justify",
-     "firstLineIndentMm": 12.505972222222221,
+     "firstLineIndentMm": 12.5,
      "leftIndentMm": 0,
-     "spaceAfterPt": 0
+     "spaceAfterPt": 13.8
     }
    },
    "showTitle": false
@@ -983,7 +1223,8 @@
     "paragraph": {
      "firstLineIndentMm": 0,
      "align": "left",
-     "spaceAfterPt": 0
+     "spaceAfterPt": 0,
+     "lineHeight": 1.5
     },
     "page": {
      "numbering": {
@@ -1087,7 +1328,7 @@
    "tocEntry": "title",
    "generatedIndex": {
     "kind": "toc",
-    "leader": "none",
+    "leader": "dots",
     "matchHeadingTransform": true,
     "style": {
      "spaceAfterPt": 0,
@@ -1126,7 +1367,8 @@
       "spaceAfterPt": 0,
       "leftIndentMm": 0
      }
-    }
+    },
+    "pageNumberAlignment": "right"
    },
    "overrides": {
     "page": {
@@ -1247,5 +1489,6 @@
    }
   }
  ],
- "displayName": "Manisa Celal Bayar Üniversitesi · Lisansüstü Eğitim Enstitüsü · Yüksek Lisans"
+ "displayName": "Manisa Celal Bayar Üniversitesi · Lisansüstü Eğitim Enstitüsü · Yüksek Lisans",
+ "exportValidation": "strict"
 }

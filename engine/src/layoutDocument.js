@@ -6,6 +6,7 @@ import { resolveSourcePageFrame } from "./sourcePageFrame.js";
  */
 
 import { MM_PER_PT } from "./units.js";
+import { normalizeRuns } from "./layoutRuns.js";
 import { FORMAT_HIGHLIGHTS, normalizeHex } from "../../TxtNote/frontend/src/config/format.js";
 
 const LAYOUT_VERSION = 1;
@@ -124,12 +125,18 @@ function normalizeElementFields(value, { addition = false } = {}) {
   if (LAYOUT_MODES.has(value.layoutMode)) result.layoutMode = value.layoutMode;
   const style = normalizeStyle(value.style);
   if (Object.keys(style).length) result.style = style;
-  for (const key of ["editableContent", "editableLayout", "locked", "deleted", "lockAspectRatio"]) {
+  for (const key of ["editableContent", "editableLayout", "locked", "deleted", "lockAspectRatio", "inWritingPlan"]) {
     if (typeof value[key] === "boolean") result[key] = value[key];
   }
   if (Number.isSafeInteger(value.zIndex)) result.zIndex = value.zIndex;
   if (typeof value.content === "string") result.content = value.content;
   if (typeof value.text === "string") result.text = value.text;
+  const runText = typeof value.text === "string" ? value.text : typeof value.content === "string" ? value.content : undefined;
+  const runs = normalizeRuns(value.runs, runText);
+  if (runs) result.runs = runs;
+  if (Number.isInteger(value.headingLevel) && value.headingLevel >= 0 && value.headingLevel <= 6) result.headingLevel = value.headingLevel;
+  if (typeof value.paragraphStyle === "string") result.paragraphStyle = value.paragraphStyle.slice(0, 128);
+  if (["", "ul", "ol"].includes(value.list)) result.list = value.list;
 
   if (addition) {
     const id = safeId(value.id);
@@ -261,6 +268,7 @@ function applyElementOverride(base, id, override) {
     const text = typeof override.content === "string" ? override.content : override.text;
     if (typeof text === "string" && node.type === "text") node.text = text;
   }
+  if (node.type === "text" && node.runs) { const runs = normalizeRuns(node.runs, node.text); if (runs) node.runs = runs; else delete node.runs; }
   node.id = id;
   return node;
 }
@@ -300,10 +308,12 @@ function normalizeAdditionForNode(addition, baseStyle, override) {
     ...(addition.type === "image" ? { source: addition.source } : {}),
     ...(addition.type === "separator" ? { thicknessPt: addition.thicknessPt ?? 0.75, lengthPercent: addition.lengthPercent ?? 100, align: addition.align || "center" } : {}),
   };
-  if (override?.style && addition.type === "text") node.style = { ...style, ...override.style };
   if (override) Object.assign(node, override);
+  // A partial formatting patch must not replace the text frame's typography.
+  if (addition.type === "text") node.style = style;
   const text = typeof override?.content === "string" ? override.content : override?.text;
   if (typeof text === "string" && node.type === "text") node.text = text;
+  if (node.type === "text" && node.runs) { const runs = normalizeRuns(node.runs, node.text); if (runs) node.runs = runs; else delete node.runs; }
   node.id = addition.id;
   node.sectionId = addition.sectionId;
   node.layoutMode = override?.layoutMode || addition.layoutMode || "absolute";
@@ -373,13 +383,16 @@ export function updateLayoutElements(thesis, patches) {
     delete data.id;
     if (typeof data.text === "string" && typeof data.content !== "string") data.content = data.text;
     const normalized = normalizeElementFields(data);
+    // New text without runs (or runs: null) drops the old overlay: it would no longer match.
+    const clearRuns = !normalized.runs && ("runs" in data || "text" in data || "content" in data);
     const additionIndex = additions.findIndex((entry) => entry.id === id);
     if (additionIndex >= 0) {
       const prior = additions[additionIndex];
-      const merged = normalizeElementFields({ ...prior, ...normalized, style: { ...prior.style, ...normalized.style } }, { addition: true });
-      if (merged.id && merged.sectionId && ELEMENT_TYPES.has(merged.type)) additions[additionIndex] = { ...prior, ...merged };
+      const merged = normalizeElementFields({ ...prior, ...normalized, ...(clearRuns ? { runs: undefined } : {}), style: { ...prior.style, ...normalized.style } }, { addition: true });
+      if (merged.id && merged.sectionId && ELEMENT_TYPES.has(merged.type)) additions[additionIndex] = { ...prior, ...merged }; if (clearRuns && !merged.runs) delete additions[additionIndex].runs;
     } else {
       elements[id] = { ...elements[id], ...normalized, ...(normalized.style ? { style: { ...elements[id]?.style, ...normalized.style } } : {}) };
+      if (clearRuns) delete elements[id].runs;
     }
   }
   return withLayout(thesis, { ...layout, elements, additions });
@@ -433,6 +446,9 @@ export function duplicateLayoutElement(thesis, element) {
     lockAspectRatio: element.lockAspectRatio,
     zIndex: element.zIndex,
     content: element.text ?? element.content,
+    headingLevel: element.headingLevel,
+    paragraphStyle: element.paragraphStyle,
+    list: element.list,
     source: element.source,
     thicknessPt: element.thicknessPt,
     lengthPercent: element.lengthPercent,

@@ -1,0 +1,520 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "deu-gse-master-tr-kaynak",
+ "universityId": "deu",
+ "universityName": "Dokuz Eylül Üniversitesi",
+ "instituteId": "gse",
+ "instituteName": "Güzel Sanatlar Enstitüsü",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
+  ],
+  "guideDocumentName": "DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "919d52247547192473b8c73ca569b7e68abea5ae2ab5f91daaa07fcf36c19dd2",
+  "evidence": {
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 5",
+      "sentence": "1.1.2 Sayfa Yapısı Kâğıdın üst kenarından 2,5 cm, alt kenarından 2,5 cm, sağ kenarından 2,5 cm, sol kenarından 3 cm boşluk bırakılır."
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 5",
+      "sentence": "1.1.2 Sayfa Yapısı Kâğıdın üst kenarından 2,5 cm, alt kenarından 2,5 cm, sağ kenarından 2,5 cm, sol kenarından 3 cm boşluk bırakılır."
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": 30,
+      "location": "sayfa 5",
+      "sentence": "1.1.2 Sayfa Yapısı Kâğıdın üst kenarından 2,5 cm, alt kenarından 2,5 cm, sağ kenarından 2,5 cm, sol kenarından 3 cm boşluk bırakılır."
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 5",
+      "sentence": "1.1.2 Sayfa Yapısı Kâğıdın üst kenarından 2,5 cm, alt kenarından 2,5 cm, sağ kenarından 2,5 cm, sol kenarından 3 cm boşluk bırakılır."
+     }
+    ]
+   },
+   "typography.body.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+    "location": "sayfa 7",
+    "passage": "6 1.1.4 Metin “Times New Roman” karakteriyle 12 punto ve iki yana yaslı yazılmalıdır. Noktalama işaretleri öncesinde boşluk bırakılmamalıdır. Noktalama işaretlerinden sonra bir boşluk bırakılmalıdır. Metin içinde 1,5 satır aralığı kullanılmalıdır. Paragraflar arasında sonra 6 nk değeri verilmelidir. Paragrafın ilk satırı 1,25 cm girinti yapılarak başlatılmalıdır. Yazı karakteri ve punto büyüklüğü bakımından metin içinde tutarlılık olmalıdır. Paragraflar tek cümleden oluşmamalıdır. Tablolar, şekiller, görseller ve eklerin punto büyüklükleri için ilgili başlıklardaki açıklamalara bakınız.",
+    "decision": "Genel metin kuralı; görsel künye ve dipnot boyutları farklıdır."
+   },
+   "typography.body.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "justify",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": "justify",
+      "location": "sayfa 5",
+      "sentence": "Bütün satırlar sağ ve sol kenarlara ulaşacak biçimde “iki yana yasla/metni yasla” özelliği kullanılarak yazılmalıdır."
+     },
+     {
+      "value": "justify",
+      "location": "sayfa 7",
+      "sentence": "1.1.4 Metin “Times New Roman” karakteriyle 12 punto ve iki yana yaslı yazılmalıdır."
+     },
+     {
+      "value": "justify",
+      "location": "sayfa 9",
+      "sentence": "8 karakterinde, 10 punto büyüklüğünde, iki yana yaslanarak ve tek satır aralığında yazılmalıdır."
+     }
+    ]
+   },
+   "typography.paragraph.firstLineIndentMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 12.5,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": 12.5,
+      "location": "sayfa 7",
+      "sentence": "Paragrafın ilk satırı 1,25 cm girinti yapılarak başlatılmalıdır."
+     }
+    ]
+   },
+   "typography.paragraph.spaceAfterPt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 6,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": 6,
+      "location": "sayfa 7",
+      "sentence": "Paragraflar arasında sonra 6 nk değeri verilmelidir."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "top",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": "top",
+      "location": "sayfa 6",
+      "sentence": "1.1.3 Numaralandırma Sayfa numaraları metin alanının dışında sayfanın sağ üst köşesinde Times New Roman 12 punto olarak yazılmalıdır."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "right",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+    "locations": [
+     {
+      "value": "right",
+      "location": "sayfa 6",
+      "sentence": "1.1.3 Numaralandırma Sayfa numaraları metin alanının dışında sayfanın sağ üst köşesinde Times New Roman 12 punto olarak yazılmalıdır."
+     }
+    ]
+   },
+   "typography.body.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+    "location": "sayfa 7",
+    "passage": "6 1.1.4 Metin “Times New Roman” karakteriyle 12 punto ve iki yana yaslı yazılmalıdır. Noktalama işaretleri öncesinde boşluk bırakılmamalıdır. Noktalama işaretlerinden sonra bir boşluk bırakılmalıdır. Metin içinde 1,5 satır aralığı kullanılmalıdır. Paragraflar arasında sonra 6 nk değeri verilmelidir. Paragrafın ilk satırı 1,25 cm girinti yapılarak başlatılmalıdır. Yazı karakteri ve punto büyüklüğü bakımından metin içinde tutarlılık olmalıdır. Paragraflar tek cümleden oluşmamalıdır. Tablolar, şekiller, görseller ve eklerin punto büyüklükleri için ilgili başlıklardaki açıklamalara bakınız.",
+    "decision": "Genel metin kuralı; görsel künye ve dipnot boyutları farklıdır."
+   },
+   "typography.body.lineHeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+    "location": "sayfa 7",
+    "passage": "6 1.1.4 Metin “Times New Roman” karakteriyle 12 punto ve iki yana yaslı yazılmalıdır. Noktalama işaretleri öncesinde boşluk bırakılmamalıdır. Noktalama işaretlerinden sonra bir boşluk bırakılmalıdır. Metin içinde 1,5 satır aralığı kullanılmalıdır. Paragraflar arasında sonra 6 nk değeri verilmelidir. Paragrafın ilk satırı 1,25 cm girinti yapılarak başlatılmalıdır. Yazı karakteri ve punto büyüklüğü bakımından metin içinde tutarlılık olmalıdır. Paragraflar tek cümleden oluşmamalıdır. Tablolar, şekiller, görseller ve eklerin punto büyüklükleri için ilgili başlıklardaki açıklamalara bakınız.",
+    "decision": "Genel metin kuralı; görsel künye ve dipnot boyutları farklıdır."
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+    "sha256": "919d52247547192473b8c73ca569b7e68abea5ae2ab5f91daaa07fcf36c19dd2"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Sablonu_2025.doc",
+    "sha256": "817b736cbe2199818f917fa3975d76a71cfde9eac54a8ff7292aab6c63925fb7"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.body.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.paragraph.firstLineIndentMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.paragraph.spaceAfterPt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
+    },
+    {
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.numbering.position",
+     "measured": "bottom",
+     "guide": "top",
+     "guideSource": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf sayfa 6"
+    }
+   ],
+   "guide": "DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "margins": {
+   "topMm": 25,
+   "bottomMm": 25,
+   "leftMm": 30,
+   "rightMm": 25
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "top",
+   "align": "right",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "align": "justify",
+   "fontSizePt": 12,
+   "lineHeight": 1.5
+  },
+  "paragraph": {
+   "firstLineIndentMm": 12.5,
+   "spaceAfterPt": 6
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖNSÖZ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "TABLOLAR DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "curriculum-vitae",
+   "type": "curriculumVitae",
+   "title": "ÖZGEÇMİŞ",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

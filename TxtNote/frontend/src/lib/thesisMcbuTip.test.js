@@ -73,15 +73,22 @@ describe("MCBÜ Tıp Fakültesi tıpta uzmanlık tezi template (mcbu-tip-uzmanli
     for (const id of ["abstract", "abstract-en", "appendices", "bibliography"]) assert.equal(mcbuTipUzmanlik.sections.find((s) => s.id === id).titleNumbering, "continueH1", id);
     const labels = Object.fromEntries(numberThesisPages(groupThesisSections(model.sections), {}).map((n) => [n.sectionId, n.labels]));
     assert.deepEqual([labels["inner-cover"][0], labels.preface[0], labels.main[0]], ["", "", "1"]);
-    const toc = section(model, "toc").html;
+    const toc = section(model, "toc").html.replace(/<span data-layout-content="">([\s\S]*?)<\/span>(?=<\/span>)/g, "$1");
     assert.match(toc, /thesis-index-label">I\.<\/span> <span class="thesis-index-title">GİRİŞ/);
     assert.match(toc, /KAYNAKLAR/);
-    assert.doesNotMatch(toc, /ÖNSÖZ|DIŞ KAPAK|İÇ KAPAK/, "preface, contents and covers are not listed (Ek-2)");
-    assert.deepEqual([section(model, "toc").generatedIndex.leader, section(model, "toc").generatedIndex.pageHeading, section(model, "toc").generatedIndex.indentMm], ["none", "Sayfa", 0]);
+    // Ek-2 presentation (user request 24.10.2026): ÖNSÖZ and İÇİNDEKİLER open the list without page numbers, "Sayfa" sits on the
+    // İÇİNDEKİLER row, Roman labels in a right-aligned column; covers are not listed.
+    assert.doesNotMatch(toc, /DIŞ KAPAK|İÇ KAPAK/, "covers are not listed");
+    assert.match(toc, /<li [^>]*data-index-unnumbered="true"[^>]*><span class="thesis-index-text"[^>]*>ÖNSÖZ<\/span><\/li>/);
+    assert.match(toc, /<li [^>]*data-index-page-heading="true"[^>]*><span class="thesis-index-text"[^>]*>İÇİNDEKİLER<\/span><span class="thesis-index-leader"><\/span><span class="thesis-index-page" data-index-page-heading="true"[^>]*>Sayfa<\/span><\/li>/);
+    assert.doesNotMatch(toc, /<div class="thesis-index-page-heading"/, "the heading is not a separate block");
+    const index = section(model, "toc").generatedIndex;
+    assert.deepEqual([index.leader, index.pageHeading, index.pageHeadingPlacement, index.indentMm, index.labelColumnMm, index.labelGapMm], ["none", "Sayfa", "row", 0, 10, 5.24]);
+    assert.match(buildThesisCss(model), /\.thesis-index-text>\.thesis-index-label\{flex:none;width:10mm;text-align:right;margin-right:5\.24mm;/);
     assert.equal(section(compile(), "appendices"), undefined, "EKLER is optional ('Gerekiyorsa')");
   });
 
-  it("covers: outer and inner cover share the Ek-1 layout (measured gaps, 14 pt title, capitals, centred)", () => {
+  it("covers: outer and inner cover follow the §II prose (6 / 6 / 4 lines, Manisa at the bottom, 14 pt title, capitals, centred)", () => {
     const model = compile();
     for (const id of ["outer-cover", "inner-cover"]) {
       const cover = section(model, id);
@@ -90,7 +97,8 @@ describe("MCBÜ Tıp Fakültesi tıpta uzmanlık tezi template (mcbu-tip-uzmanli
       for (const part of ["MANİSA CELAL BAYAR ÜNİVERSİTESİ TIP FAKÜLTESİ", "Kulak Burun Boğaz Hastalıkları Anabilim Dalı", "Test Başlığı", "UZMANLIK TEZİ", "Ayşe DEMİR", "Tez Danışmanı", "Prof. Dr. Ali VELİ", "Manisa, 2026"]) assert.ok(text.includes(part), `${id}: ${part}`);
     }
     const gaps = mcbuTipUzmanlik.sections[0].blocks.filter((b) => b.type === "spacer").map((b) => b.heightMm);
-    assert.deepEqual(gaps, [5.372, 41.72, 35.04, 0.492, 33.482, 3.852, 36.622], "baseline-to-baseline 10.24 / 47.25 / 43.56 / 5.51 / 38.35 / 8.72 / 41.49 mm in the guide example");
+    // 1 satır = Arial 12 pt at 1.5 lines = 7.302 mm; the explicit prose wins over the Ek-1 example (BASLA kural 3b, 24.10.2026).
+    assert.deepEqual(gaps, [5.372, 28.05, 35.3, 0.492, 24.352, 3.852, 78.66], "title 6 lines below the first line, UZMANLIK 6 lines below the title, advisor 4 lines below the researcher, Manisa on the last line");
     assert.deepEqual(mcbuTipUzmanlik.sections[1].blocks, mcbuTipUzmanlik.sections[0].blocks, "dış ve iç kapak birbirinin benzeri");
     assert.equal(mcbuTipUzmanlik.sections[0].blocks.find((b) => b.field === "THESIS_TITLE").style.fontSizePt, 14);
   });

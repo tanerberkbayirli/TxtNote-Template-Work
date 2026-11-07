@@ -1194,5 +1194,167 @@
   },
   "evidence": "INFERRED",
   "required": true
+ },
+ {
+  "id": "visual-conditional-bap-pdf",
+  "kind": "line_baselines",
+  "params": {
+   "fixture": "bap",
+   "page": [
+    3
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "^AFYONKARAHİSAR SAĞLIK",
+    "FAKÜLTESİ$",
+    "Anabilim Dalı$",
+    "^ÇEVRİMİÇİ",
+    "ÖZDOĞAN$",
+    "UZMANLIK TEZİ$",
+    "^Danışman$",
+    "^Doç\\. Dr\\.",
+    "^Bu çalışma;",
+    "2026.*AFYONKARAHİSAR$"
+   ],
+   "source": "pdf"
+  },
+  "expected": [
+   52.811,
+   57.679,
+   62.547,
+   72.284,
+   111.231,
+   152.59,
+   162.327,
+   189.103,
+   193.971,
+   228.05,
+   259.694
+  ],
+  "tolerance": 0.3,
+  "source": {
+   "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "Physical p.24, EK 8 supported-thesis inner cover, each faculty's own PDF."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "visual-conditional-bap-word",
+  "kind": "line_baselines",
+  "params": {
+   "fixture": "bap",
+   "page": [
+    3
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "^AFYONKARAHİSAR SAĞLIK",
+    "FAKÜLTESİ$",
+    "Anabilim Dalı$",
+    "^ÇEVRİMİÇİ",
+    "ÖZDOĞAN$",
+    "UZMANLIK TEZİ$",
+    "^Danışman$",
+    "^Doç\\. Dr\\.",
+    "^Bu çalışma;",
+    "2026.*AFYONKARAHİSAR$"
+   ],
+   "source": "word"
+  },
+  "expected": [
+   52.811,
+   57.679,
+   62.547,
+   72.284,
+   111.231,
+   152.59,
+   162.327,
+   189.103,
+   193.971,
+   228.05,
+   259.694
+  ],
+  "tolerance": 0.3,
+  "source": {
+   "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "Physical p.24, EK 8 supported-thesis inner cover, each faculty's own PDF."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "visual-source-outer-pdf",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    1
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "^AFYONKARAHİSAR SAĞLIK",
+    "FAKÜLTESİ.*ANABİLİM DALI$",
+    "^ÇEVRİMİÇİ",
+    "^Hazırlayan$",
+    "ÖZDOĞAN$",
+    "^Danışman$",
+    "^Doç\\. Dr\\.",
+    "2026.*AFYONKARAHİSAR$"
+   ],
+   "source": "pdf"
+  },
+  "expected": [
+   52.684,
+   57.552,
+   62.42,
+   96.499,
+   135.445,
+   140.314,
+   179.26,
+   184.129,
+   257.132
+  ],
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "Physical p.22, EK 6. Geometry measured on this faculty's own copy. Point-size instructions/frame excluded from printed content."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "visual-source-outer-word",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    1
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "^AFYONKARAHİSAR SAĞLIK",
+    "FAKÜLTESİ.*ANABİLİM DALI$",
+    "^ÇEVRİMİÇİ",
+    "^Hazırlayan$",
+    "ÖZDOĞAN$",
+    "^Danışman$",
+    "^Doç\\. Dr\\.",
+    "2026.*AFYONKARAHİSAR$"
+   ],
+   "source": "word"
+  },
+  "expected": [
+   52.684,
+   57.552,
+   62.42,
+   96.499,
+   135.445,
+   140.314,
+   179.26,
+   184.129,
+   257.132
+  ],
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "Physical p.22, EK 6. Geometry measured on this faculty's own copy. Point-size instructions/frame excluded from printed content."
+  },
+  "evidence": "MEASURED"
  }
 ]

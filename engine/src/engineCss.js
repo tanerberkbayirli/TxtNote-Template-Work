@@ -73,7 +73,7 @@ export function justifyWordSpacing(style, justify = "word", resetOthers = false)
 
 function serializeStyle(style, lineSpacing, justify = "word", resetOthers = false) {
   const indent = indentMm(style);
-  return `font-family:${cssFamily(style.fontFamily)};font-size:${style.fontSizePt}pt;font-weight:${style.fontWeight || 400};font-style:${style.italic ? "italic" : "normal"};text-align:${style.align || "left"};${justifyWordSpacing(style, justify, resetOthers)}line-height:${lineHeightCss(style, lineSpacing)};letter-spacing:${style.characterSpacingPt || 0}pt;text-decoration:${style.decoration || "none"};text-transform:${style.textTransform || "none"};margin-top:${style.spaceBeforePt || 0}pt;margin-bottom:${style.spaceAfterPt || 0}pt;text-indent:${indent.first}mm;padding-left:${Math.max(0, indent.left)}mm;padding-right:${Math.max(0, indent.right || 0)}mm;${indent.left < 0 ? `margin-left:${indent.left}mm;` : ""}${indent.right < 0 ? `margin-right:${indent.right}mm;` : ""}${style.color ? `color:${style.color};` : ""}${style.tabStopMm > 0 ? `tab-size:${style.tabStopMm}mm;` : ""}`;
+  return `font-family:${cssFamily(style.fontFamily)};font-size:${style.fontSizePt}pt;font-weight:${style.fontWeight || 400};font-style:${style.italic ? "italic" : "normal"};text-align:${style.align || "left"};${justifyWordSpacing(style, justify, resetOthers)}line-height:${lineHeightCss(style, lineSpacing)};letter-spacing:${style.characterSpacingPt || 0}pt;text-decoration:${style.decoration || "none"};text-transform:${style.textTransform || "none"};margin-top:${style.spaceBeforePt || 0}pt;margin-bottom:${style.spaceAfterPt || 0}pt;text-indent:${indent.first}mm;padding-left:${Math.max(0, indent.left)}mm;padding-right:${Math.max(0, indent.right || 0)}mm;${indent.left < 0 ? `margin-left:${indent.left}mm;` : ""}${indent.right < 0 ? `margin-right:${indent.right}mm;` : ""}${style.color ? `color:${style.color};` : ""}${style.tabStopMm > 0 ? `tab-size:${style.tabStopMm}mm;` : ""}${style.writingMode === "vertical-rl" ? "writing-mode:vertical-rl;align-self:center;" : ""}`;
 }
 
 /** Typography of a caption label run (bold "Şekil 2.1"), when it differs from the caption text. */
@@ -200,6 +200,7 @@ export function thesisSectionCss(section) {
     ...Object.entries(headings).filter(([, style]) => style.numbering?.placement === "ownLine").map(([level]) => `${scope} .thesis-body h${level}[data-thesis-number]::before{content:attr(data-thesis-number);display:block}`),
     `${scope} .thesis-fixed{white-space:pre-wrap;}`,
     `${scope} .thesis-layout-text{white-space:normal;overflow-wrap:break-word;}`,
+    `${scope} .thesis-layout-text .thesis-frame-list{margin:0;padding:0 0 0 1.5em;font:inherit;color:inherit;line-height:inherit;list-style-position:outside;} ${scope} .thesis-frame-list li{margin:0;padding:0;font:inherit;text-align:inherit;} ${scope} ul.thesis-frame-list{list-style-type:disc;} ${scope} ol.thesis-frame-list{list-style-type:decimal;}`,
     `${scope} .thesis-layout-spacer{display:block;max-width:100%;}`,
     `${scope} [data-thesis-margin]{display:none;}`,
     // Block rules are keyed by index per section: scoped to the section's own fragment, never the shared page paper (a later static section of the same page would inherit this section's block heights/styles).
@@ -293,6 +294,11 @@ export function thesisSectionCss(section) {
     rules.push(`${scope} .thesis-toc li{display:flex;align-items:baseline;break-inside:avoid;margin:${rowBefore}pt 0 ${rowAfter}pt;}`);
     rules.push(`${scope} .thesis-index-text{min-width:0;white-space:normal}${scope} .thesis-index-leader{flex:1;min-width:4mm;overflow:hidden;white-space:nowrap}${scope} .thesis-index-page{flex:none;min-width:${index.pageColumnWidthMm > 0 ? `${index.pageColumnWidthMm}mm;width:${index.pageColumnWidthMm}mm` : "8mm"};text-align:${index.pageNumberAlignment};}`);
     if (index.pageHeading) rules.push(`${scope} .thesis-index-page-heading{${textCss({ ...index.style, ...index.pageHeadingStyle })}text-align:right;text-indent:0;margin:0;}`);
+    // pageHeadingPlacement "row": the heading is that row's page cell, so it takes the heading weight/colour and the row stays a flex row.
+    if (index.pageHeading && index.pageHeadingPlacement === "row") rules.push(`${scope} .thesis-toc li[data-index-page-heading]{display:flex!important}${scope} .thesis-index-page[data-index-page-heading]{${labelCss(index.pageHeadingStyle || {})}}`);
+    // labelColumnMm: the label ("VIII.") is a right-aligned column of that width and the titles start at one x; wrapped lines hang under the title.
+    // labelColumnLevels limits the column to those levels (deeper "2.1.1.1." labels would not fit a Roman-numeral column).
+    if (index.labelColumnMm > 0) for (const row of (index.labelColumnLevels || [""]).map((level) => (level === "" ? "" : ` li[data-index-level="${level}"]`))) rules.push(`${scope} .thesis-toc${row} .thesis-index-text{display:flex;align-items:baseline;min-width:0}${scope} .thesis-toc${row} .thesis-index-text>.thesis-index-label{flex:none;width:${index.labelColumnMm}mm;text-align:right;margin-right:${Number(index.labelGapMm) || 0}mm;white-space:nowrap}${scope} .thesis-toc${row} .thesis-index-text>.thesis-index-title{min-width:0}`);
     for (const level of Object.keys(headings)) rules.push(`${scope} [data-index-level="${level}"]{padding-left:${(Number(level) - 1) * index.indentMm}mm;}`);
     // Optional: label typography, wrapped lines hanging under the entry title, per-level row styles.
     if (index.labelStyle) rules.push(`${scope} .thesis-index-label{${labelCss(index.labelStyle)}}`);
@@ -320,6 +326,12 @@ export function thesisSectionCss(section) {
       // The leader is out of flow at its static position (the end of the last text line); the title box clips it and the page float covers its tail.
       `${scope} .thesis-index-title>.thesis-index-leader{position:absolute;flex:none;min-width:0;padding-left:0.25em;white-space:nowrap}`,
       `${scope} .thesis-index-title>.thesis-index-page{float:right;flex:none;min-width:0;background:#fff;padding-left:0.25em}`,
+    );
+    // Extend the title's overflow box left by the hanging amount while keeping
+    // its content origin and right edge in place; the first line stays visible.
+    if (index.leaderFlow === "inline" && index.hanging > 0) rules.push(
+      `${scope} .thesis-index-text>.thesis-index-title{margin-left:-${index.hanging}mm;padding-left:${index.hanging}mm}`,
+      `${scope} .thesis-index-title>.thesis-index-label{white-space:nowrap}`,
     );
     // Rows whose heading number is on its own line (numbering.placement "ownLine"): number line, then the title line.
     if (Object.values(headings).some((style) => style.numbering?.placement === "ownLine")) rules.push(`${scope} .thesis-toc li[data-index-label-line] .thesis-index-text{display:block}${scope} .thesis-toc li[data-index-label-line] .thesis-index-label{display:block}`);

@@ -1,14 +1,17 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { GENERATED_THESIS_TEMPLATES } from "./generated/index.js";
+import { HIDDEN_TEMPLATE_IDS } from "./hidden.js";
 import { THESIS_TEMPLATE_REGISTRY, findThesisTemplateDescriptor, resolveThesisTemplate } from "../registry.js";
 import { compileThesisDocument } from "../engine.js";
 
 const official = THESIS_TEMPLATE_REGISTRY.filter((entry) => entry.status === "official");
 
 test("every generated draft loads, validates and compiles without falling back", async () => {
-  assert.ok(GENERATED_THESIS_TEMPLATES.length > 0);
-  for (const entry of GENERATED_THESIS_TEMPLATES) {
+  // Hidden drafts are not offered by the registry, so only the visible ones resolve by id.
+  const visible = GENERATED_THESIS_TEMPLATES.filter((entry) => !HIDDEN_TEMPLATE_IDS.has(entry.id));
+  assert.ok(visible.length > 0);
+  for (const entry of visible) {
     const { template, fallback, reason } = await resolveThesisTemplate({ templateId: entry.id });
     assert.equal(fallback, false, `${entry.id}: ${reason}`);
     assert.equal(template.id, entry.id);

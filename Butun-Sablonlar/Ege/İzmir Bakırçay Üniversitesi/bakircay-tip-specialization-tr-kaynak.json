@@ -1,0 +1,467 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "bakircay-tip-specialization-tr-kaynak",
+ "universityId": "bakircay",
+ "universityName": "İzmir Bakırçay Üniversitesi",
+ "instituteId": "tip",
+ "instituteName": "Tıp Fakültesi",
+ "degreeType": "specialization",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
+  ],
+  "guideDocumentName": "Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "f323f8c4663b28a70e51f9a83a64807bc0fdd0e310566ae9233946c4445acc9a",
+  "evidence": {
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+    "locations": [
+     {
+      "value": 30,
+      "location": "sayfa 5",
+      "sentence": "2.10 Sayfa Düzeni Her sayfanın sol kenarında 4 cm, alt ve üst kenarlarında 3 cm; sağ kenarında ise 2,5 cm boşluk bulunmalıdır."
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+    "locations": [
+     {
+      "value": 30,
+      "location": "sayfa 3",
+      "sentence": "2.1.8 Sayfanın alt ortasında alt kenardan 3cm yükseklikte -10 punto ile koyu ve büyük harflerle tezin sunulduğu yer ve yıl yer almalıdır."
+     },
+     {
+      "value": 30,
+      "location": "sayfa 5",
+      "sentence": "2.10 Sayfa Düzeni Her sayfanın sol kenarında 4 cm, alt ve üst kenarlarında 3 cm; sağ kenarında ise 2,5 cm boşluk bulunmalıdır."
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+    "locations": [
+     {
+      "value": 40,
+      "location": "sayfa 5",
+      "sentence": "2.10 Sayfa Düzeni Her sayfanın sol kenarında 4 cm, alt ve üst kenarlarında 3 cm; sağ kenarında ise 2,5 cm boşluk bulunmalıdır."
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 5",
+      "sentence": "2.10 Sayfa Düzeni Her sayfanın sol kenarında 4 cm, alt ve üst kenarlarında 3 cm; sağ kenarında ise 2,5 cm boşluk bulunmalıdır."
+     }
+    ]
+   },
+   "typography.body.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+    "location": "sayfa 4",
+    "passage": "4 2.4 Sayfa Numaralama Özet, teşekkür, içindekiler, şekiller, çizelgeler, simgeler ve kısaltmaları belirten sayfalar (i, ii, iii, iv, v, ...) şeklindeki küçük Romen rakamları, diğer bölümler normal rakamlar ile (1, 2, ...) ile numaralanır. Sayfa numaralarının önüne ve arkasına çizgi vb. bir karakter konulmaz. Dış ve iç kapak dışında tezin tüm sayfaları numaralanır. Sayfa numaraları sayfanın alt ortasında olmalıdır. 2.5 Yazı Karakterleri Kullanılacak harf karakteri, “Times New Roman” karakterinde olmalıdır. Ana metnin harf büyüklüğü 12 punto, dipnotlar ve kaynaklar 10 punto olmalıdır. Tek sayfaya sığdırılan tablo ve şekillerde daha küçük karakterler kullanılabilir. Yazımda noktalama işaretlerinden sonra bir boşluk bırakılmalıdır. Noktalama işaretlerinden önce boşluk bırakılmamalıdır. Ana metinde satır araları 1,5 satır olmalıdır. Şekil altı yazıları ve tabloların açıklamaları ile alıntılar ve kaynaklar dizininin yazımında da aynı aralık kullanılmalıdır. 2.6 Simgeler ve Kısaltmalar Çok gerekli durumlarda standart kısaltmaların dışında kısaltmalara gidilebilir. Yapılan kısaltma veya kullanılan simge, ilk geçtiği yerde parantez içinde ve yalnızca bir kere açıklanmalıdır. Kısaltması yapılan terimler, Kısaltmalar ve Simgeler Listesi’nde alfabetik sıraya göre dizilmelidir. “Simgeler ve Kısaltmalar” başlığı büyük harflerle, sayfa üst kenarından 3 cm aşağıya ortalanarak, 14 punto büyük ve koyu harfler ile yazılmalıdır. Kısaltmalar alfabetik sıra düzeninde ve alt alta, kısaltma harfleri koyu olarak, kısaltmanın açık hali normal olarak yazılmalıdır. Kısaltma harfleri yabancı bir dildeki kelimelerin baş harflerinden oluşuyorsa, açık hali de yabancı dilde yazılmalıdır. Metin içinde sık kullanılacak (en az 5 kez) kelime veya kelime grupları için kısaltma kullanılmak istendiğinde, metin içinde ilgili kelime ya da kelime grubunun ilk geçtiği yerde parantez içinde kısaltması verilir. Paragraf başları, başlıklar ve tablo açıklama yazıları hariç sonraki geçişlerde artık sadece kısaltma kullanılır. Sadece tablo içinde yer alan kısaltmalar, ilgili tablonun hemen altında verilir; “Simge ve Kısaltmalar” bölümünde listeye eklenmez. Ölçü birimlerine ilişkin kısaltmalar da (Örn: cm, g) listeye alınmaz. Birimlere ilişkin kısaltmaların sonuna nokta konulmamalıdır. Birden fazla sözcüğün baş harfleri kullanılarak yapılan kısaltmalarda araya nokta konulmamalıdır (TUEK, TSH). Kısaltmalara kesme işareti ile getirilen ekler kısaltmanın okunuş biçimine uygun olarak yazılmalıdır (ör. FTR’nin) 2.7 Ölçüm Birimleri Ölçüm birimleri (boy, ağırlık vb) metrik sistemle (metre, kilogram, litre vb) ya da ondalık birimleri ile (santimetre, gram, mililitre vb) yazılmalıdır. Isı değerlerinde Celsius derecelendirmesi, kan basınçlarında milimetre civa değerleri verilmelidir. Bütün hematolojik ve biyokimyasal ölçümlerde “International System of Units” tarafından kabul edilen metrik sistem terimleri kullanılmalıdır. 2.8 Tablo ve Şekiller",
+    "decision": "Bakırçay Tıp ana metin; kapak ve dipnot boyutları farklıdır."
+   },
+   "typography.body.lineHeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+    "location": "sayfa 4",
+    "passage": "4 2.4 Sayfa Numaralama Özet, teşekkür, içindekiler, şekiller, çizelgeler, simgeler ve kısaltmaları belirten sayfalar (i, ii, iii, iv, v, ...) şeklindeki küçük Romen rakamları, diğer bölümler normal rakamlar ile (1, 2, ...) ile numaralanır. Sayfa numaralarının önüne ve arkasına çizgi vb. bir karakter konulmaz. Dış ve iç kapak dışında tezin tüm sayfaları numaralanır. Sayfa numaraları sayfanın alt ortasında olmalıdır. 2.5 Yazı Karakterleri Kullanılacak harf karakteri, “Times New Roman” karakterinde olmalıdır. Ana metnin harf büyüklüğü 12 punto, dipnotlar ve kaynaklar 10 punto olmalıdır. Tek sayfaya sığdırılan tablo ve şekillerde daha küçük karakterler kullanılabilir. Yazımda noktalama işaretlerinden sonra bir boşluk bırakılmalıdır. Noktalama işaretlerinden önce boşluk bırakılmamalıdır. Ana metinde satır araları 1,5 satır olmalıdır. Şekil altı yazıları ve tabloların açıklamaları ile alıntılar ve kaynaklar dizininin yazımında da aynı aralık kullanılmalıdır. 2.6 Simgeler ve Kısaltmalar Çok gerekli durumlarda standart kısaltmaların dışında kısaltmalara gidilebilir. Yapılan kısaltma veya kullanılan simge, ilk geçtiği yerde parantez içinde ve yalnızca bir kere açıklanmalıdır. Kısaltması yapılan terimler, Kısaltmalar ve Simgeler Listesi’nde alfabetik sıraya göre dizilmelidir. “Simgeler ve Kısaltmalar” başlığı büyük harflerle, sayfa üst kenarından 3 cm aşağıya ortalanarak, 14 punto büyük ve koyu harfler ile yazılmalıdır. Kısaltmalar alfabetik sıra düzeninde ve alt alta, kısaltma harfleri koyu olarak, kısaltmanın açık hali normal olarak yazılmalıdır. Kısaltma harfleri yabancı bir dildeki kelimelerin baş harflerinden oluşuyorsa, açık hali de yabancı dilde yazılmalıdır. Metin içinde sık kullanılacak (en az 5 kez) kelime veya kelime grupları için kısaltma kullanılmak istendiğinde, metin içinde ilgili kelime ya da kelime grubunun ilk geçtiği yerde parantez içinde kısaltması verilir. Paragraf başları, başlıklar ve tablo açıklama yazıları hariç sonraki geçişlerde artık sadece kısaltma kullanılır. Sadece tablo içinde yer alan kısaltmalar, ilgili tablonun hemen altında verilir; “Simge ve Kısaltmalar” bölümünde listeye eklenmez. Ölçü birimlerine ilişkin kısaltmalar da (Örn: cm, g) listeye alınmaz. Birimlere ilişkin kısaltmaların sonuna nokta konulmamalıdır. Birden fazla sözcüğün baş harfleri kullanılarak yapılan kısaltmalarda araya nokta konulmamalıdır (TUEK, TSH). Kısaltmalara kesme işareti ile getirilen ekler kısaltmanın okunuş biçimine uygun olarak yazılmalıdır (ör. FTR’nin) 2.7 Ölçüm Birimleri Ölçüm birimleri (boy, ağırlık vb) metrik sistemle (metre, kilogram, litre vb) ya da ondalık birimleri ile (santimetre, gram, mililitre vb) yazılmalıdır. Isı değerlerinde Celsius derecelendirmesi, kan basınçlarında milimetre civa değerleri verilmelidir. Bütün hematolojik ve biyokimyasal ölçümlerde “International System of Units” tarafından kabul edilen metrik sistem terimleri kullanılmalıdır. 2.8 Tablo ve Şekiller",
+    "decision": "Bakırçay Tıp ana metin; kapak ve dipnot boyutları farklıdır."
+   },
+   "typography.paragraph.firstLineIndentMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 12.5,
+    "source": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+    "locations": [
+     {
+      "value": 12.5,
+      "location": "sayfa 5",
+      "sentence": "Paragraflar arasında da satır aralığı 1,5 satır olmalı ancak, her yeni paragraf 1,25 cm içeriden başlamalıdır."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "sayfa 4",
+      "sentence": "Sayfa numaraları sayfanın alt ortasında olmalıdır."
+     },
+     {
+      "value": "bottom",
+      "location": "sayfa 6",
+      "sentence": "3.2.İçindekiler İçindekiler bölümünde, bölümlendirmeye uygun bir biçimde, teşekkürden başlayarak, tezin tüm kısımları ve Ek’ler metin içindeki düzenlendikleri sırada alt alta yazılarak ve karşılarına bulundukları sayfa numaraları belirtilerek hazırlanır (Bkz."
+     },
+     {
+      "value": "bottom",
+      "location": "sayfa 6",
+      "sentence": "3.2 İçindekiler İçindekiler bölümünde, bölümlendirmeye uygun bir biçimde, teşekkürden başlayarak, tezin tüm kısımları ve Ek’ler metin içindeki düzenlendikleri sırada alt alta yazılarak ve karşılarına bulundukları sayfa numaraları belirtilerek hazırlanır (Bkz."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "center",
+    "source": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+    "locations": [
+     {
+      "value": "center",
+      "location": "sayfa 4",
+      "sentence": "Sayfa numaraları sayfanın alt ortasında olmalıdır."
+     }
+    ]
+   },
+   "typography.body.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+    "location": "sayfa 4",
+    "passage": "4 2.4 Sayfa Numaralama Özet, teşekkür, içindekiler, şekiller, çizelgeler, simgeler ve kısaltmaları belirten sayfalar (i, ii, iii, iv, v, ...) şeklindeki küçük Romen rakamları, diğer bölümler normal rakamlar ile (1, 2, ...) ile numaralanır. Sayfa numaralarının önüne ve arkasına çizgi vb. bir karakter konulmaz. Dış ve iç kapak dışında tezin tüm sayfaları numaralanır. Sayfa numaraları sayfanın alt ortasında olmalıdır. 2.5 Yazı Karakterleri Kullanılacak harf karakteri, “Times New Roman” karakterinde olmalıdır. Ana metnin harf büyüklüğü 12 punto, dipnotlar ve kaynaklar 10 punto olmalıdır. Tek sayfaya sığdırılan tablo ve şekillerde daha küçük karakterler kullanılabilir. Yazımda noktalama işaretlerinden sonra bir boşluk bırakılmalıdır. Noktalama işaretlerinden önce boşluk bırakılmamalıdır. Ana metinde satır araları 1,5 satır olmalıdır. Şekil altı yazıları ve tabloların açıklamaları ile alıntılar ve kaynaklar dizininin yazımında da aynı aralık kullanılmalıdır. 2.6 Simgeler ve Kısaltmalar Çok gerekli durumlarda standart kısaltmaların dışında kısaltmalara gidilebilir. Yapılan kısaltma veya kullanılan simge, ilk geçtiği yerde parantez içinde ve yalnızca bir kere açıklanmalıdır. Kısaltması yapılan terimler, Kısaltmalar ve Simgeler Listesi’nde alfabetik sıraya göre dizilmelidir. “Simgeler ve Kısaltmalar” başlığı büyük harflerle, sayfa üst kenarından 3 cm aşağıya ortalanarak, 14 punto büyük ve koyu harfler ile yazılmalıdır. Kısaltmalar alfabetik sıra düzeninde ve alt alta, kısaltma harfleri koyu olarak, kısaltmanın açık hali normal olarak yazılmalıdır. Kısaltma harfleri yabancı bir dildeki kelimelerin baş harflerinden oluşuyorsa, açık hali de yabancı dilde yazılmalıdır. Metin içinde sık kullanılacak (en az 5 kez) kelime veya kelime grupları için kısaltma kullanılmak istendiğinde, metin içinde ilgili kelime ya da kelime grubunun ilk geçtiği yerde parantez içinde kısaltması verilir. Paragraf başları, başlıklar ve tablo açıklama yazıları hariç sonraki geçişlerde artık sadece kısaltma kullanılır. Sadece tablo içinde yer alan kısaltmalar, ilgili tablonun hemen altında verilir; “Simge ve Kısaltmalar” bölümünde listeye eklenmez. Ölçü birimlerine ilişkin kısaltmalar da (Örn: cm, g) listeye alınmaz. Birimlere ilişkin kısaltmaların sonuna nokta konulmamalıdır. Birden fazla sözcüğün baş harfleri kullanılarak yapılan kısaltmalarda araya nokta konulmamalıdır (TUEK, TSH). Kısaltmalara kesme işareti ile getirilen ekler kısaltmanın okunuş biçimine uygun olarak yazılmalıdır (ör. FTR’nin) 2.7 Ölçüm Birimleri Ölçüm birimleri (boy, ağırlık vb) metrik sistemle (metre, kilogram, litre vb) ya da ondalık birimleri ile (santimetre, gram, mililitre vb) yazılmalıdır. Isı değerlerinde Celsius derecelendirmesi, kan basınçlarında milimetre civa değerleri verilmelidir. Bütün hematolojik ve biyokimyasal ölçümlerde “International System of Units” tarafından kabul edilen metrik sistem terimleri kullanılmalıdır. 2.8 Tablo ve Şekiller",
+    "decision": "Bakırçay Tıp ana metin; kapak ve dipnot boyutları farklıdır."
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+    "sha256": "f323f8c4663b28a70e51f9a83a64807bc0fdd0e310566ae9233946c4445acc9a"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_CEAH_2026.pdf",
+    "sha256": "7bfeaf0e6e10893bb41f9dfcb6e6ba59ce68cdba20373443f5c194b16501c28b"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.paragraph.firstLineIndentMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
+    },
+    {
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.numbering.align",
+     "measured": "right",
+     "guide": "center",
+     "guideSource": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf sayfa 4"
+    }
+   ],
+   "guide": "Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "margins": {
+   "topMm": 30,
+   "bottomMm": 30,
+   "leftMm": 40,
+   "rightMm": 25
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "center",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "lineHeight": 1.5,
+   "fontSizePt": 12
+  },
+  "paragraph": {
+   "firstLineIndentMm": 12.5
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "curriculum-vitae",
+   "type": "curriculumVitae",
+   "title": "ÖZGEÇMİŞ",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

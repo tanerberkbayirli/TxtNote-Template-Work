@@ -30,6 +30,7 @@ function validCanonicalSpacing(value) { return object(value) && ["auto", "exact"
 export function validateTextStyle(style, path = "style") {
   const errors = [];
   if (!object(style)) return [`${path} nesne olmalı`];
+  if (style.emptyParagraphs !== undefined && style.emptyParagraphs !== 'omit') errors.push(`${path}.emptyParagraphs geçersiz`);
   if (!text(style.fontFamily)) errors.push(`${path}.fontFamily gerekli`);
   if (!positive(style.fontSizePt) || style.fontSizePt > 96) errors.push(`${path}.fontSizePt geçersiz`);
   if (style.fontWeight !== undefined && (!Number.isFinite(style.fontWeight) || style.fontWeight < 100 || style.fontWeight > 900)) errors.push(`${path}.fontWeight geçersiz`);
@@ -49,6 +50,7 @@ export function validateTextStyle(style, path = "style") {
   if (style.tabStopMm !== undefined && !positive(style.tabStopMm)) errors.push(`${path}.tabStopMm geçersiz`);
   if (style.textTransformExceptions !== undefined && !(Array.isArray(style.textTransformExceptions) && style.textTransformExceptions.every((word) => typeof word === "string" && /^\S+$/.test(word)))) errors.push(`${path}.textTransformExceptions tek sözcüklerden oluşan liste olmalı`);
   if (style.color !== undefined && !/^#[0-9a-f]{6}$/i.test(style.color)) errors.push(`${path}.color #rrggbb olmalı`);
+  if (style.writingMode !== undefined && !["horizontal-tb", "vertical-rl"].includes(style.writingMode)) errors.push(`${path}.writingMode geçersiz`);
   return errors;
 }
 
@@ -172,6 +174,10 @@ function validateIndex(index, body, headings, path, captionKinds = {}) {
   if (index.labelStyle !== undefined) errors.push(...(object(index.labelStyle) ? validateTextStyle({ ...body, ...index.style, ...index.labelStyle }, `${path}.labelStyle`) : [`${path}.labelStyle nesne olmalı`]));
   if (index.hanging !== undefined && index.hanging !== "label" && !positive(index.hanging)) errors.push(`${path}.hanging geçersiz`);
   if (index.unnumberedAfterNumberedSpaceBeforePt !== undefined && !nonnegative(index.unnumberedAfterNumberedSpaceBeforePt)) errors.push(`${path}.unnumberedAfterNumberedSpaceBeforePt geçersiz`);
+  if (index.labelColumnMm !== undefined && !positive(index.labelColumnMm)) errors.push(`${path}.labelColumnMm geçersiz`);
+  if (index.labelColumnLevels !== undefined && (!Array.isArray(index.labelColumnLevels) || !index.labelColumnLevels.length || index.labelColumnLevels.some((level) => !Number.isInteger(level) || level < 1 || level > 9))) errors.push(`${path}.labelColumnLevels geçersiz`);
+  if (index.labelGapMm !== undefined && !nonnegative(index.labelGapMm)) errors.push(`${path}.labelGapMm geçersiz`);
+  if (index.pageHeadingPlacement !== undefined && !["block", "row"].includes(index.pageHeadingPlacement)) errors.push(`${path}.pageHeadingPlacement geçersiz`);
   if (index.levelStyles !== undefined) {
     if (!object(index.levelStyles)) errors.push(`${path}.levelStyles nesne olmalı`);
     else for (const [level, style] of Object.entries(index.levelStyles)) {
@@ -182,7 +188,7 @@ function validateIndex(index, body, headings, path, captionKinds = {}) {
   return errors;
 }
 
-/** Advisory rules never block saving or exporting. Fields resolve from metadata or editable section text. */
+/** Content checks never block editing; strict templates require errors to be resolved before UI exports. */
 export function validateThesisContent(template, thesis, values = thesis?.values || {}, compiledSections = []) {
   const result = { errors: [], warnings: [] };
   for (const [field, rule] of Object.entries(template.validation || {})) {
@@ -191,6 +197,8 @@ export function validateThesisContent(template, thesis, values = thesis?.values 
     const raw = values[field] ?? content ?? "";
     const items = Array.isArray(raw) ? raw.filter((item) => String(item).trim()) : plainThesisText(raw).split(rule.separator || /[,;\n]/).map((item) => item.trim()).filter(Boolean);
     if (rule.minItems !== undefined && items.length < rule.minItems) result[rule.severity === "error" ? "errors" : "warnings"].push({ code: "minItems", field, expected: rule.minItems, actual: items.length, message: rule.message || `${field}: en az ${rule.minItems} öğe gerekli (${items.length}).` });
+    if (rule.maxItems !== undefined && items.length > rule.maxItems) result[rule.severity === "error" ? "errors" : "warnings"].push({ code: "maxItems", field, expected: rule.maxItems, actual: items.length, message: rule.message || `${field}: en fazla ${rule.maxItems} öğe kullanılabilir (${items.length}).` });
+    if (rule.alphabetical && items.some((item, index) => index > 0 && String(items[index - 1]).localeCompare(String(item), rule.locale || template.language, { sensitivity: "base" }) > 0)) result[rule.severity === "error" ? "errors" : "warnings"].push({ code: "alphabetical", field, message: `${template.placeholders?.[field]?.label || field}: anahtar kelimeleri alfabetik sıraya göre düzenleyin.` });
     result[rule.severity === "error" ? "errors" : "warnings"].push(...contentRuleIssues(field, rule, raw));
   }
   return result;
@@ -199,6 +207,7 @@ export function validateThesisContent(template, thesis, values = thesis?.values 
 export function validateThesisTemplate(rawTemplate) {
   const errors = [];
   if (!object(rawTemplate)) return ["Şablon nesne olmalı"];
+  if (rawTemplate.exportValidation !== undefined && rawTemplate.exportValidation !== 'strict') errors.push('exportValidation geçersiz');
   // Rules a source may not define (heading styles, caption rules, bibliography, header distance) fall back to engine defaults.
   const template = withEngineDefaults(rawTemplate);
   if (template.schemaVersion !== THESIS_SCHEMA_VERSION) errors.push(`schemaVersion ${THESIS_SCHEMA_VERSION} olmalı`);
@@ -236,6 +245,15 @@ export function validateThesisTemplate(rawTemplate) {
     if (!object(template.validation)) errors.push("validation nesne olmalı");
     else for (const [field, rule] of Object.entries(template.validation)) {
       if (!object(rule) || (rule.minItems !== undefined && (!Number.isInteger(rule.minItems) || rule.minItems < 0))) errors.push(`validation.${field}.minItems geçersiz`);
+      if (rule?.maxItems !== undefined && (!Number.isInteger(rule.maxItems) || rule.maxItems < 0 || rule.maxItems < (rule.minItems || 0))) errors.push(`validation.${field}.maxItems geçersiz`);
+      if (rule?.minWords !== undefined && (!Number.isInteger(rule.minWords) || rule.minWords < 1)) errors.push(`validation.${field}.minWords geçersiz`);
+      if (rule?.minHeadings !== undefined && (!Number.isInteger(rule.minHeadings) || rule.minHeadings < 1)) errors.push(`validation.${field}.minHeadings geçersiz`);
+      if (rule?.pattern !== undefined) {
+        try { if (!text(rule.pattern)) throw new Error(); new RegExp(rule.pattern, 'iu'); }
+        catch { errors.push(`validation.${field}.pattern geçersiz`); }
+      }
+      if (rule?.alphabetical !== undefined && typeof rule.alphabetical !== "boolean") errors.push(`validation.${field}.alphabetical geçersiz`);
+      if (rule?.locale !== undefined && !["tr", "en"].includes(rule.locale)) errors.push(`validation.${field}.locale geçersiz`);
       if (rule?.separator !== undefined && (typeof rule.separator !== "string" || !rule.separator)) errors.push(`validation.${field}.separator geçersiz`);
       if (rule?.severity !== undefined && !["error", "warning"].includes(rule.severity)) errors.push(`validation.${field}.severity geçersiz`);
       if (rule?.headingSequence !== undefined && (!Array.isArray(rule.headingSequence) || !rule.headingSequence.length || rule.headingSequence.some(group => !(Array.isArray(group) ? group.length && group.every(text) : text(group))))) errors.push(`validation.${field}.headingSequence geçersiz`);
@@ -257,6 +275,7 @@ export function validateThesisTemplate(rawTemplate) {
     if (!/^[A-Z][A-Z0-9_]*$/.test(key)) errors.push(`placeholder ${key} geçersiz`);
     if (!object(definition) || !text(definition.label) || !text(definition.type)) errors.push(`placeholder ${key} tanımı geçersiz`);
     else if (definition.derived !== undefined && !THESIS_DERIVED_VALUES.includes(definition.derived)) errors.push(`placeholder ${key}.derived geçersiz`);
+    if (definition?.nameFormat !== undefined && definition.nameFormat !== 'surnameUpper') errors.push(`placeholder ${key}.nameFormat geçersiz`);
   }
   const sections = template.sections;
   if (!Array.isArray(sections) || !sections.length) errors.push("sections gerekli");
@@ -301,6 +320,7 @@ export function validateThesisTemplate(rawTemplate) {
         errors.push(...validateSpecialPageBlocks(section.blocks, { path: `section ${section.id}.blocks`, placeholders: template.placeholders || {}, baseStyle, validateStyle: validateTextStyle }));
       }
       const overrides = section.overrides;
+      if (overrides?.justify !== undefined && !["word", "browser"].includes(overrides.justify)) errors.push(`section ${section.id}.justify geçersiz ("word" | "browser")`);
       if (overrides) {
         if (overrides.page) {
           const merged = { ...template.page, ...overrides.page, margins: { ...template.page?.margins, ...overrides.page.margins }, numbering: { ...template.page?.numbering, ...overrides.page.numbering } };

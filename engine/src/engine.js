@@ -1,4 +1,5 @@
 import { migrateThesisTemplate, validateThesisContent, validateThesisTemplate } from "./validation.js";
+import { contentsPanelUniversity } from "./manualToc.js";
 import { isThesisSectionActive, orderedThesisSections, thesisSectionContent, thesisSectionCountMet, thesisSectionMode, thesisTextFormat, thesisTextOverride } from "./document.js";
 import { customFormatCss } from "../../TxtNote/frontend/src/config/format.js";
 import { wrapStaticFormat } from "./staticFormat.js";
@@ -7,6 +8,7 @@ import { flattenSpecialPage, isSpecialPageSection, resolveSpecialPage, specialPa
 import { collectIndexSources, generatedIndexRule, resolveGeneratedIndexes, thesisPresentationHtml } from "./generatedIndex.js";
 import { plainThesisText, thesisSourceHtml } from "./sourceHtml.js";
 import { stripActiveMarkup } from "./activeMarkup.js";
+import { bibliographyEntries, bibliographyListHtml, citationContext, citationSummary, renderCitationHtml } from "./citations.js";
 import { countEndnoteRefs, countFootnoteRefs, resolveFootnoteRule } from "./footnotes.js";
 import { thesisGroupHasPageContent } from "./pageLayout.js";
 import { resolveLayoutNodes, resolveLayoutPage } from "./layoutDocument.js";
@@ -16,6 +18,7 @@ import { wordBaselineProbe, WORD_FONT_METRICS } from "./wordBaseline.js";
 import { resolveLineSpacing } from "./typography.js";
 import { exceptionSet, isExceptionToken } from "./transformExceptions.js";
 import { ENGINE_DEFAULT_HEADER_DISTANCE_MM } from "./engineDefaults.js";
+import { formatPlaceholderValue, normalizeFlowParagraphs } from './templateConformance.js';
 import { applySourceSectionRules, contentNodesToHtml, prepareThesisNote, templateContentSection } from "./contentModel.js";
 import { classKeyedNodeCss, importedContentCss, withImportedSections } from "./docx/projection.js";
 import { escapeHtml, effectiveLineHeight, thesisSectionCss, thesisFootnoteCss, sectionTextStyles } from "./engineCss.js";
@@ -54,7 +57,7 @@ export function resolvePlaceholders(source, definitions, values = {}) {
     if (!definition) { missing.add(key); return ""; }
     const value = values[key] ?? definition.defaultValue ?? "";
     if (definition.required && !String(value).trim()) missing.add(key);
-    return String(value);
+    return formatPlaceholderValue(value, definition);
   });
   return { text: result, missing: [...missing] };
 }
@@ -184,7 +187,7 @@ export function resolveSectionRules(template, section) {
     bibliography: template.bibliography,
     toc: template.toc,
     ...(template.typography.lineSpacing ? { lineSpacing: template.typography.lineSpacing } : {}),
-    ...(template.typography.justify ? { justify: template.typography.justify } : {}),
+    ...((override.justify || template.typography.justify) ? { justify: override.justify || template.typography.justify } : {}),
   };
 }
 
@@ -329,8 +332,15 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
   const derivedFields = Object.fromEntries(Object.entries(template.placeholders).filter(([, definition]) => definition.derived).map(([key, definition]) => [key, definition.derived]));
   for (const key of Object.keys(derivedFields)) values[key] = "";
   const sections = [];
+  const activeState = { ...thesis, values: { ...values, degreeType: values.degreeType ?? values.DEGREE_TYPE } };
+  // Linked citations (citations.js): one context from the source pool and the text of every editable section, so labels,
+  // numbers and the bibliography agree across the whole document.
+  const citations = citationContext(template, thesis, orderedThesisSections(template)
+    .filter((section) => isThesisSectionActive(section, activeState) && thesisSectionMode(section) === "editable")
+    .map((section) => thesisSectionContent(section, thesis, mainContent)));
+  const bibliography = citations.active ? bibliographyEntries(citations) : [];
   for (const section of orderedThesisSections(template)) {
-    if (!isThesisSectionActive(section, { ...thesis, values: { ...values, degreeType: values.degreeType ?? values.DEGREE_TYPE } })) continue;
+    if (!isThesisSectionActive(section, activeState)) continue;
     const baseRules = resolveSectionRules(template, section);
     const rules = withSourceLastLineLeading(baseRules, applySourceSectionRules(baseRules, thesis, templateContentSection(thesis, section)?.id), template, section);
     rules.page = resolveLayoutPage(rules.page, section.id, 0, thesis.layout);
@@ -338,7 +348,9 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
     const mode = thesisSectionMode(section);
     const editable = mode === "editable";
     // Stored note HTML reaches the model, print and exports without the editor's sanitizer (HE-GV-02).
-    const source = thesisSourceHtml(stripActiveMarkup(thesisSectionContent(section, thesis, mainContent)));
+    const rawStored = thesisSourceHtml(stripActiveMarkup(thesisSectionContent(section, thesis, mainContent)));
+    const stored = thesis.document?.formatMode === 'source' ? rawStored : normalizeFlowParagraphs(rawStored, rules.body.emptyParagraphs);
+    const source = citations.active ? renderCitationHtml(stored, citations) : stored;
     const fixed = resolvePlaceholders(section.content || "", template.placeholders, values);
     const fixedOverride = thesisTextOverride(thesis, section.id, "fixed");
     if (fixedOverride !== undefined && !isSpecialPageSection(section)) fixed.text = fixedOverride;
@@ -354,8 +366,11 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
     const tocEntry = ["title", "none"].includes(section.tocEntry) ? section.tocEntry : "headings";
     // titleNumbering "continueH1": the title is the next numbered chapter ("6. KAYNAKLAR") in the text and the TOC.
     const sectionHeading = !showsSectionTitle(section) ? "" : section.titleNumbering === "continueH1" ? `<h1>${wrapStaticFormat(escapeHtml(headingText), titleFormat)}</h1>` : `<h1 data-unnumbered="true"${tocEntry === "title" ? ' data-thesis-toc="title"' : ""}>${wrapStaticFormat(escapeHtml(headingText), titleFormat)}</h1>`;
-    const bibliographyHtml = section.type === "bibliography" && bibliographyItems.some((item) => String(item).trim())
-      ? `<ul class="thesis-bibliography">${bibliographyItems.filter((item) => String(item).trim()).map((item, index) => `<li>${escapeHtml(rules.bibliography?.numbered ? `${index + 1}. ${String(item).trim().replace(/^\d+\s*[.)]\s*/, "")}` : item)}</li>`).join("")}</ul>` : "";
+    // Linked entries (cited pool sources, A→Z or citation order) first; unlinked legacy lines (docBibliographyItems) after.
+    const legacyItems = bibliographyItems.map((item) => String(item).trim()).filter(Boolean);
+    const bibliographyHtml = section.type !== "bibliography" ? "" : citations.active
+      ? bibliographyListHtml(bibliography, { numbered: Boolean(rules.bibliography?.numbered) || citations.mode === "numeric", legacy: legacyItems })
+      : legacyItems.length ? `<ul class="thesis-bibliography">${legacyItems.map((item, index) => `<li>${escapeHtml(rules.bibliography?.numbered ? `${index + 1}. ${item.replace(/^\d+\s*[.)]\s*/, "")}` : item)}</li>`).join("")}</ul>` : "";
     const additions = !layout ? resolveLayoutNodes([], section.id, thesis.layout, rules.body) : [];
     const prefix = resolvePresentationHtml(layout ? specialPageHtml(layout.blocks) : `${sectionHeading}${fixedHtml}${specialPageHtml(additions)}`, { id: section.id, rules }, thesis.layout, "prefix");
     const suffix = resolvePresentationHtml(bibliographyHtml, { id: section.id, rules }, thesis.layout, "suffix");
@@ -366,7 +381,10 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
   // footnotes.numbering "document": references count on through the sections (default; "section" restarts each body at 1).
   for (const section of sections) {
     const stored = templateContentSection(thesis, section);
-    if (section.editable && stored) section.editorHtml = contentNodesToHtml(stored.nodes);
+    if (section.editable && stored) {
+      const html = contentNodesToHtml(stored.nodes);
+      section.editorHtml = thesis.document?.formatMode === 'source' ? html : normalizeFlowParagraphs(html, section.rules.body.emptyParagraphs);
+    }
   }
   let footnoteCount = 0, endnoteCount = 0;
   for (const section of sections) {
@@ -393,7 +411,7 @@ export function compileThesisDocument(templateInput, thesisInput = {}, title = "
   // Word metrics require the actual font program even for isolated/demo templates.
   const exactFontsRequired = template.status === "official" || sections.some(section => section.rules.lineSpacing?.rule || sectionTextStyles(section).some(style => style?.lineSpacing?.rule));
   for (const section of sections) section.maxPages = template.sections.find(definition => definition.id === section.id)?.maxPages;
-  return resolveGeneratedIndexes({ nativeDocument: thesis.document, templateId: template.id, templateVersion: template.templateVersion, schemaVersion: template.schemaVersion, documentLayout: thesis.layout, importedCss: classKeyedNodeCss(importedContentCss(thesis.document)), status: template.status, language: template.language, systemFonts: exactFontsRequired ? templateFontFamilies(template) : [], title, values, derivedFields, headings: indexSources.filter((entry) => entry.kind === "toc" && !entry.unnumbered), indexSources, sections, source: template.source, validation: validateThesisContent(template, thesis, values, sections) });
+  return resolveGeneratedIndexes({ exportValidation: template.exportValidation, placeholderLabels: Object.fromEntries(Object.entries(template.placeholders).map(([key, definition]) => [key, definition.label])), citations: citationSummary(citations, bibliography), nativeDocument: thesis.document, manualToc: contentsPanelUniversity(template.id) ? thesis.manualToc : undefined, templateId: template.id, templateVersion: template.templateVersion, schemaVersion: template.schemaVersion, documentLayout: thesis.layout, importedCss: classKeyedNodeCss(importedContentCss(thesis.document)), status: template.status, language: template.language, systemFonts: exactFontsRequired ? templateFontFamilies(template) : [], title, values, derivedFields, headings: indexSources.filter((entry) => entry.kind === "toc" && !entry.unnumbered), indexSources, sections, source: template.source, validation: validateThesisContent(template, thesis, values, sections) });
 }
 
 /** Probes of every text style in the document whose lines use Word baseline placement. */
@@ -411,6 +429,7 @@ export function thesisWordBaselineProbes(documentModel) {
 
 export function buildThesisCss(documentModel) {
   const inlineFormats = [
+    ".thesis-body .fmt-not-bold{font-weight:400}.thesis-body .fmt-not-italic{font-style:normal}",
     ".thesis-body .fmt-size-heading{font-size:28px;line-height:1.35}.thesis-body .fmt-size-subheading{font-size:20px;line-height:1.45}.thesis-body .fmt-size-body{font-size:15px;line-height:2}",
     ".thesis-body .fmt-color-black{color:#000000}.thesis-body .fmt-color-red{color:#be123c}.thesis-body .fmt-color-blue{color:#0369a1}.thesis-body .fmt-color-green{color:#047857}",
     ".thesis-body .fmt-highlight-yellow{background-color:#fff2a8}.thesis-body .fmt-highlight-green{background-color:#c9f2d0}.thesis-body .fmt-highlight-cyan{background-color:#bdefff}.thesis-body .fmt-highlight-magenta{background-color:#f5c8ee}",

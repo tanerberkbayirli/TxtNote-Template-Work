@@ -1339,7 +1339,7 @@
      "quote": "Bölüm ve alt bölüm başlıkları ile paragraf başları sayfanın sol çerçeve kenarından ve boşluk bırakılmadan başlamalıdır."
     }
    ],
-   "notes": "CONFLICT (see conflicts[0]): guide prose reads as 0 mm; template and the guide's own Word body (12.45 mm) use 12.5 mm. Implemented 12.5 mm (single constant PARA_INDENT_MM). Review decision: explicit §2.4 text (0) wins over the guide's own 12.45 mm self-formatting. §2.3 \"Bu kılavuz belirtilen ölçülere uygun olarak hazırlanmıştır\" covers the stated measurements (margins); the guide also violates its own heading-indent text, so its paragraph indent is not evidence of a requirement.",
+   "notes": "CONFLICT (see conflicts[0]): guide prose reads as 0 mm; template and the guide's own Word body (12.45 mm) use 12.5 mm. Implemented 12.5 mm (single constant PARA_INDENT_MM). Review decision (2026-10-24, orchestration/BASLA.md §3(c)): preserve 12.5 mm from the separate official Word template XML. The archive records both documents as CURRENT; the template was modified 2024-03-31 and the guide 2024-03-11. For a separate equally current official Word template, its XML takes precedence over guide prose. The guide prose (0 mm) remains recorded as a source conflict; the guide document's own paragraph formatting is not the basis of this ruling.",
    "needsConfirmation": false,
    "canonicalKey": "typography.paragraph.firstLineIndentMm",
    "category": "typography",

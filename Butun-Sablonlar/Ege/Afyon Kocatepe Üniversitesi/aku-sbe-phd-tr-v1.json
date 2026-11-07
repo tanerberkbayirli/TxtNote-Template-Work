@@ -286,7 +286,7 @@
   "type": "official",
   "documentName": "AKÜ Sosyal Bilimler Enstitüsü Lisansüstü Tez Hazırlama Yazım ve Basım Kılavuzu (2026) — AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
   "revisionDate": "2026-02 (dosya Last-Modified 2026-02-06; kılavuz kapağı: AFYONKARAHİSAR 2023)",
-  "verifiedAt": "2026-10-02",
+  "verifiedAt": "2026-10-24",
   "notes": [
    "Tek biçim kaynağı kılavuzdur. Öncelik: kılavuzun açık cümlesi > örnek sayfaların yapısı (boş satır sayısı, büyük/küçük harf, hizalama) > kaynak dışı seçim. Örnek sayfalar 11 punto, ~1,08 satır aralığı ve kılavuzun kendi sayfa çerçevesinde (sol 25 mm) dizilmiştir; boyut ve konum için kullanılmaz (açık kural 12 punto, 1,5 satır, 25/25/30/30 mm).",
    "Kaynak dışı uygulama seçimleri (NOT_SPECIFIED, doğrulama PASS/FAIL vermez): sayfa numarasının alt kenara uzaklığı 12,5 mm (kılavuz yalnız 'alt orta' der); H5 başlığı 6/6 nk (H2-H4'ten INFERRED); GİRİŞ/TARTIŞMA/KAYNAKÇA/EKLER başlıkları tek satır (açık, §2.6 Not) ve 12/12 nk (INFERRED); ön söz, simgeler ve liste başlıkları 6/6 nk (listeler için açık, diğerleri INFERRED); şekil/resim başlığı boşlukları 0/0 (tablo başlığı için açık); 'Kaynak:' ve blok alıntı paragraf stilleri 6/6 nk (genel paragraf kuralı) ve 11/10 punto; dipnot ayırıcı çizgisi 40 mm (kılavuz 'yaklaşık 4 cm').",
@@ -299,8 +299,115 @@
    "Listeler (Tablolar/Şekiller/Resimler Listesi) yalnız 3 veya daha fazla öğe varsa üretilir; başlık 6/6 nk, 'Sayfa' hemen altında (içindekilerdeki iki satır aralığı yalnız İÇİNDEKİLER için uygulanır; listeler için örnek sayfa 6 nk gösterir). Ekler Dizini motorda üretilmez: yazar tarafından yazılan isteğe bağlı bölümdür (sınırlama).",
    "Özet/Abstract: tek satır, iki yana yaslı, ilk satır girintisi YOK (EK 5, §2.4 normatif); Anahtar Kelimeler etiketi kalın, devam satırları etiketin sonuna asılı (etiket genişliği 12 punto Times New Roman kalın metriği); anahtar kelime sayısı en çok 5 (motor doğrulaması yok). Özetin bir sayfayı aşmaması yazar sorumluluğudur. Genişletilmiş Türkçe Özet TR sürümlerde yoktur.",
    "Dipnotlar: Times New Roman 9 punto, tek satır, girintisiz, tez boyunca ardışık numara. Ön bölüm tek yüzlü, GİRİŞ'ten itibaren çift yüzlü baskı ve son boş yaprak fiziksel üretim talimatıdır, belge içeriği değildir. Yatay sayfa desteklenmez. Sanatta Yeterlik ve yabancı dilli (İngilizce) sürümler kaynak eksikliğiyle kaydedilmemiştir.",
-   "Denklem numaralandırması kaynakta yoktur (UNKNOWN): motor varsayılanı kullanılır. Birimler SI zorunluluğu (yazar içeriği) sayfa biçiminden doğrulanamaz."
-  ]
+   "Denklem numaralandırması kaynakta yoktur (UNKNOWN): motor varsayılanı kullanılır. Birimler SI zorunluluğu (yazar içeriği) sayfa biçiminden doğrulanamaz.",
+   "24.10.2026 güncel kaynak denetimi: resmî sayfadan indirilen dosyalar SHA-256 ile doğrulandı. Çelişen örnek düzenleri yerine açık kılavuz metni esas alındı; kararlar currentVerification kaydındadır.",
+   "Güncel 100/2000 YÖK doktora iç kapak örneği: bursiyer bilgisi öğrenci adının altında, tematik alan tırnak içinde, 11 punto Times New Roman ile ve parantez içinde yazılır. Alan boşsa satır ve yuvası üretilmez. Kılavuz 2026 §4.2, ekler dizini eşiğini üç ek olarak belirler; 2023 kontrol listesindeki en az dört ifadesi daha eski olduğundan uygulanmaz."
+  ],
+  "regionalAudit": {
+   "checkedAt": "2026-10-23",
+   "status": "CORE_RECHECKED",
+   "layoutRebuilt": false,
+   "visualConformanceRechecked": false,
+   "documents": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "sha256": "55d134108bc95a83c581595f7618aba1b6ff17d53994a1e602dfba465a6c74f2"
+    }
+   ],
+   "checkedFields": [
+    {
+     "field": "typography.body.fontFamily",
+     "template": "Times New Roman",
+     "sourceValue": "Times New Roman",
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf",
+     "evidence": [
+      {
+       "value": "Times New Roman",
+       "location": "sayfa 11",
+       "sentence": "Yazımda şu ölçütler geçerlidir: Karakter ve Punto : Times New Roman ve 12 punto Satır Aralıkları :1,5 satır aralıklı olmalıdır."
+      },
+      {
+       "value": "Times New Roman",
+       "location": "sayfa 40",
+       "sentence": "Enstitü Müdürlüğü onay sayfasındaki doldurulması gereken yerlerin yazı tipi Times New Roman, yazı boyutu 12 punto ve iki yana yaslı şeklinde olmalıdır."
+      }
+     ]
+    }
+   ],
+   "conflicts": []
+  },
+  "currentVerification": {
+   "checkedAt": "2026-10-24T14:33:37.232Z",
+   "page": "https://sosbil.aku.edu.tr/tez-yazim-ve-basim-kilavuzu/",
+   "files": [
+    {
+     "label": "Lisansüstü Tez Hazırlama Yazım ve Basım Kılavuzu",
+     "url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2026/02/SBE-TEZ-YAZIM-KILAVUZU-2026.pdf",
+     "sha256": "55d134108bc95a83c581595f7618aba1b6ff17d53994a1e602dfba465a6c74f2",
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Enstitusu_Tez_Yazim_Kilavuzu_2026.pdf"
+    },
+    {
+     "label": "Örnek Bir Tez Metni",
+     "url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2026/02/SBE-ORNEK-TEZ-METNI-2026.pdf",
+     "sha256": "2224321f62c5c533988f0396a2d91b9ad1bad0b0810e3a577de51b2cbd187ec8",
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Ornek_Tez_Metni_2026.pdf"
+    },
+    {
+     "label": "Örnek Tez Kapağı ve İçindekiler-Bölümlendirmeler",
+     "url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2026/02/SBE-ORNEK-TEZ-KAPAGI-VE-ICINDEKILER-BOLUMLENDIRMELER.pdf",
+     "sha256": "5ab459d9d5ca714e3d8e8a5e491fe55846102b0d2cf90e1178e5ad34cf9c4f22",
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Ornek_Tez_Kapagi_ve_Icindekiler_2026.pdf"
+    },
+    {
+     "label": "Örnek Tez İç Kapağı (3 Jüri Üyeli)",
+     "url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2026/02/Ic-kapak-Ornegi-3-Uyeli.docx",
+     "sha256": "5bd948d60e710e784973fbb1a46ad4c3b63d6f969dbd3e3403111fc91e4593e6",
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Ic_Kapak_3_Uyeli_2026.docx"
+    },
+    {
+     "label": "Örnek Tez İç Kapağı (5 Jüri Üyeli)",
+     "url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2026/02/Ic-kapak-Ornegi-5-Uyeli.docx",
+     "sha256": "6c68649961de7641dc35da78dd2106ce35cfe628fca63f82accbdbaafec305b3",
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Ic_Kapak_5_Uyeli_2026.docx"
+    },
+    {
+     "label": "Word",
+     "url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2026/02/Ic-kapak-Ornegi-100-2000.docx",
+     "sha256": "5571e57daab6491f65401da852e18ce9a28a905384aeb7c1603caf31b15455bc",
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Ic_Kapak_100_2000_2026.docx"
+    },
+    {
+     "label": "PDF",
+     "url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2026/02/Ic-kapak-Ornegi-100-2000.pdf",
+     "sha256": "5ebc458afce90c80401320691bb21a9104645ad806d9884ef5ae3c02e6e42151",
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Ic_Kapak_100_2000_2026.pdf"
+    },
+    {
+     "label": "Tez Şekil İncelemesi Öncesi Kontrol Listesi",
+     "url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2023/11/Tez-Inceleme-Kontrol-Listesi.docx",
+     "sha256": "dbdc8b90442f9eb2c8087c2c1150d1bb1d4bfa35e6b0574a614736fb05111982",
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Tez_Kontrol_Listesi_2023.docx"
+    },
+    {
+     "label": "Tezler İçin Enstitü Müdürlüğü Onayı",
+     "url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2024/04/Tezler-Icin-Enstitu-Mudurlugu-Onayi.docx",
+     "sha256": "995b79eac5a0a8fe679e5aa5d4a07dbbd30cbdbb64bd90e0f84befcde550a1b6",
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Enstitu_Onayi_Formu_2024.docx"
+    },
+    {
+     "label": "Etik ve Bilimsel İlkeler Sorumluluk Beyanı",
+     "url": "https://sosbil.aku.edu.tr/wp-content/uploads/sites/25/2022/12/ETIK-VE-BILIMSEL-ILKELER-SORUMLULUK-BEYANI-1.docx",
+     "sha256": "8fb01dbe58d36e9a5ac490df138d691b56c2c5ff66fd9f235ee7f75e5ef927d4",
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/AKU_Sosyal_Bilimler_Etik_Beyan_Formu_2022.docx"
+    }
+   ],
+   "precedence": "Explicit official guide requirements take precedence over illustrative examples; current official forms fill gaps not specified by guide text.",
+   "decisions": [
+    "2026 guide §4.2 requires appendix index from three appendices; older 2023 checklist says four, so newer guide controls (existing threshold 3 retained).",
+    "Current 100/2000 Word/PDF form: optional thematic area below student name, Times New Roman 11 pt.",
+    "§2.4: abstract normally one page; page limit is advisory because prose permits exceptional cases."
+   ]
+  }
  },
  "placeholders": {
   "THESIS_TITLE": {
@@ -422,6 +529,11 @@
   },
   "PROJECT_NUMBER": {
    "label": "Proje numarası (varsa)",
+   "type": "text"
+  },
+  "YOK_100_2000_THEME": {
+   "label": "100/2000 YÖK doktora bursu tematik alanı (varsa)",
+   "required": false,
    "type": "text"
   }
  },
@@ -602,6 +714,27 @@
      "type": "metadata",
      "field": "STUDENT_NAME",
      "fallback": "Ad SOYAD"
+    },
+    {
+     "type": "group",
+     "visibleWhen": {
+      "anyFilled": [
+       "YOK_100_2000_THEME"
+      ]
+     },
+     "blocks": [
+      {
+       "type": "text",
+       "value": "(“{{YOK_100_2000_THEME}}” tematik alanında 100/2000 YÖK Doktora Bursiyeri)",
+       "style": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 11,
+        "fontWeight": 400,
+        "align": "center",
+        "lineHeight": 1.5
+       }
+      }
+     ]
     },
     {
      "type": "spacer",
@@ -802,7 +935,7 @@
     },
     {
      "type": "text",
-     "value": "AFYONKARAHİSAR {{YEAR}}",
+     "value": "AFYONKARAHİSAR, {{YEAR}}",
      "style": {
       "textTransform": "uppercase"
      }
@@ -1050,7 +1183,8 @@
       }
      ]
     }
-   ]
+   ],
+   "maxPages": 1
   },
   {
    "id": "abstract",
@@ -1199,7 +1333,8 @@
       }
      ]
     }
-   ]
+   ],
+   "maxPages": 1
   },
   {
    "id": "abstract-en",
@@ -1779,5 +1914,19 @@
    }
   }
  ],
- "displayName": "Afyon Kocatepe Üniversitesi · Sosyal Bilimler Enstitüsü · Doktora"
+ "displayName": "Afyon Kocatepe Üniversitesi · Sosyal Bilimler Enstitüsü · Doktora",
+ "validation": {
+  "KEYWORDS": {
+   "maxItems": 5,
+   "separator": ",",
+   "severity": "warning",
+   "message": "Anahtar Kelimeler en fazla 5 tane olabilir ve virgülle ayrılmalıdır."
+  },
+  "KEYWORDS_EN": {
+   "maxItems": 5,
+   "separator": ",",
+   "severity": "warning",
+   "message": "Keywords en fazla 5 tane olabilir ve virgülle ayrılmalıdır."
+  }
+ }
 }

@@ -249,13 +249,14 @@
       "pages": "all",
       "regex": "^(ÖNSÖZ|İÇİNDEKİLER|[IVX]+\\. [A-ZÇĞİÖŞÜ ]+)$",
       "attr": "top",
-      "agg": "all"
+      "agg": "all",
+      "firstPerPage": true
     },
     "expected": 50,
     "tolerance": 0.5,
     "source": {
       "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
-      "locator": "p.2 §1.2 (başlık sayfa üstünden 5 cm)"
+      "locator": "p.2 §1.2 (başlık sayfa üstünden 5 cm); Ek-2 list rows ÖNSÖZ / İÇİNDEKİLER (24.10.2026) are skipped: only the first match per page is its title"
     },
     "evidence": "EXPLICIT"
   },
@@ -267,13 +268,14 @@
       "regex": "^(ÖNSÖZ|İÇİNDEKİLER|[IVX]+\\. [A-ZÇĞİÖŞÜ ]+)$",
       "attr": "cx",
       "agg": "all",
-      "source": "layout"
+      "source": "layout",
+      "firstPerPage": true
     },
     "expected": 112.5,
     "tolerance": 0.5,
     "source": {
       "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
-      "locator": "p.2 §1.2 (başlık ortalanır); centre of text area 40..185 INFERRED"
+      "locator": "p.2 §1.2 (başlık ortalanır); centre of text area 40..185 INFERRED; Ek-2 list rows ÖNSÖZ / İÇİNDEKİLER (24.10.2026) are skipped: only the first match per page is its title"
     },
     "evidence": "INFERRED"
   },
@@ -483,13 +485,13 @@
       "b": "^ÇEVRİMİÇİ",
       "source": "layout"
     },
-    "expected": 47.25,
+    "expected": 33.57,
     "tolerance": 0.25,
     "source": {
       "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
-      "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+      "locator": "p.2 §II prose (BASLA kural 3b, 2026-10-24: açık kural metni Ek-1 örneğinden önce gelir); 1 satır = Arial 12 pt 1,5 aralık = 20.7 pt = 7.302 mm; 'N satır altında' = N satır taban çizgisinden taban çizgisine; 'Üst kenardan yaklaşık 6 satır aşağıdan başlamak üzere ... tezin başlığı': title baseline 6 lines below the first cover line"
     },
-    "evidence": "MEASURED"
+    "evidence": "INFERRED"
   },
   {
     "id": "cover1-gap-title-last->UZMANLIK",
@@ -502,13 +504,13 @@
       "b": "^UZMANLIK TEZİ$",
       "source": "layout"
     },
-    "expected": 43.56,
+    "expected": 43.81,
     "tolerance": 0.25,
     "source": {
       "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
-      "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+      "locator": "p.2 §II prose (BASLA kural 3b, 2026-10-24: açık kural metni Ek-1 örneğinden önce gelir); 1 satır = Arial 12 pt 1,5 aralık = 20.7 pt = 7.302 mm; 'N satır altında' = N satır taban çizgisinden taban çizgisine; 'Başlığın 6 satır altında ... UZMANLIK TEZİ'"
     },
-    "evidence": "MEASURED"
+    "evidence": "INFERRED"
   },
   {
     "id": "cover1-gap-UZMANLIK->researcher",
@@ -540,13 +542,13 @@
       "b": "^Tez Danışmanı$",
       "source": "layout"
     },
-    "expected": 38.35,
+    "expected": 29.21,
     "tolerance": 0.25,
     "source": {
       "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
-      "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+      "locator": "p.2 §II prose (BASLA kural 3b, 2026-10-24: açık kural metni Ek-1 örneğinden önce gelir); 1 satır = Arial 12 pt 1,5 aralık = 20.7 pt = 7.302 mm; 'N satır altında' = N satır taban çizgisinden taban çizgisine; 'Bu bölümün 4 satır altında tez danışmanının unvanı, Adı ve SOYADI'"
     },
-    "evidence": "MEASURED"
+    "evidence": "INFERRED"
   },
   {
     "id": "cover1-gap-Tez Danışmanı->advisor",
@@ -568,23 +570,26 @@
     "evidence": "MEASURED"
   },
   {
-    "id": "cover1-gap-advisor->Manisa",
-    "kind": "line_gap",
+    "id": "cover1-manisa-bottom-line",
+    "kind": "line_baselines",
     "params": {
       "page": {
         "page": 1
       },
-      "a": "^Prof\\. Dr\\.",
-      "b": "^Manisa, ",
+      "lines": [
+        "^Manisa, "
+      ],
       "source": "layout"
     },
-    "expected": 41.49,
-    "tolerance": 0.25,
+    "expected": [
+      265.6
+    ],
+    "tolerance": 0.5,
     "source": {
       "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
-      "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+      "locator": "p.2 §II prose 'Sayfanın en altına Manisa ve tezin yapıldığı yıl yazılmalıdır' (BASLA kural 3b): last single line of the text area, bottom margin 30 mm -> baseline 266.1 mm, 0.5 mm safety"
     },
-    "evidence": "MEASURED"
+    "evidence": "INFERRED"
   },
   {
     "id": "cover2-centred",
@@ -636,13 +641,13 @@
       "b": "^ÇEVRİMİÇİ",
       "source": "layout"
     },
-    "expected": 47.25,
+    "expected": 33.57,
     "tolerance": 0.25,
     "source": {
       "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
-      "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+      "locator": "p.2 §II prose (BASLA kural 3b, 2026-10-24: açık kural metni Ek-1 örneğinden önce gelir); 1 satır = Arial 12 pt 1,5 aralık = 20.7 pt = 7.302 mm; 'N satır altında' = N satır taban çizgisinden taban çizgisine; 'Üst kenardan yaklaşık 6 satır aşağıdan başlamak üzere ... tezin başlığı': title baseline 6 lines below the first cover line"
     },
-    "evidence": "MEASURED"
+    "evidence": "INFERRED"
   },
   {
     "id": "cover2-gap-title-last->UZMANLIK",
@@ -655,13 +660,13 @@
       "b": "^UZMANLIK TEZİ$",
       "source": "layout"
     },
-    "expected": 43.56,
+    "expected": 43.81,
     "tolerance": 0.25,
     "source": {
       "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
-      "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+      "locator": "p.2 §II prose (BASLA kural 3b, 2026-10-24: açık kural metni Ek-1 örneğinden önce gelir); 1 satır = Arial 12 pt 1,5 aralık = 20.7 pt = 7.302 mm; 'N satır altında' = N satır taban çizgisinden taban çizgisine; 'Başlığın 6 satır altında ... UZMANLIK TEZİ'"
     },
-    "evidence": "MEASURED"
+    "evidence": "INFERRED"
   },
   {
     "id": "cover2-gap-UZMANLIK->researcher",
@@ -693,13 +698,13 @@
       "b": "^Tez Danışmanı$",
       "source": "layout"
     },
-    "expected": 38.35,
+    "expected": 29.21,
     "tolerance": 0.25,
     "source": {
       "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
-      "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+      "locator": "p.2 §II prose (BASLA kural 3b, 2026-10-24: açık kural metni Ek-1 örneğinden önce gelir); 1 satır = Arial 12 pt 1,5 aralık = 20.7 pt = 7.302 mm; 'N satır altında' = N satır taban çizgisinden taban çizgisine; 'Bu bölümün 4 satır altında tez danışmanının unvanı, Adı ve SOYADI'"
     },
-    "evidence": "MEASURED"
+    "evidence": "INFERRED"
   },
   {
     "id": "cover2-gap-Tez Danışmanı->advisor",
@@ -721,23 +726,26 @@
     "evidence": "MEASURED"
   },
   {
-    "id": "cover2-gap-advisor->Manisa",
-    "kind": "line_gap",
+    "id": "cover2-manisa-bottom-line",
+    "kind": "line_baselines",
     "params": {
       "page": {
         "page": 2
       },
-      "a": "^Prof\\. Dr\\.",
-      "b": "^Manisa, ",
+      "lines": [
+        "^Manisa, "
+      ],
       "source": "layout"
     },
-    "expected": 41.49,
-    "tolerance": 0.25,
+    "expected": [
+      265.6
+    ],
+    "tolerance": 0.5,
     "source": {
       "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
-      "locator": "p.6 Ek-1 baseline gap (derived.baselineGapsMm in spec sourceGeometry; example prose 'satır' units undefined)"
+      "locator": "p.2 §II prose 'Sayfanın en altına Manisa ve tezin yapıldığı yıl yazılmalıdır' (BASLA kural 3b): last single line of the text area, bottom margin 30 mm -> baseline 266.1 mm, 0.5 mm safety"
     },
-    "evidence": "MEASURED"
+    "evidence": "INFERRED"
   },
   {
     "id": "toc-rows-left-edge",
@@ -746,7 +754,7 @@
       "pages": {
         "find": "^İÇİNDEKİLER$"
       },
-      "regex": "^(([IVX]+\\.)|(\\d+\\.)+)[^.]* \\d+$",
+      "regex": "^ÖNSÖZ\\s*$",
       "attr": "x0",
       "agg": "all",
       "source": "layout"
@@ -755,9 +763,161 @@
     "tolerance": 0.5,
     "source": {
       "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
-      "locator": "p.3 §V (soldan kenardan; indentPerLevel 0 EXPLICIT)"
+      "locator": "p.3 §V 'Listelemeye sol kenardan başlanır' + Ek-2 (user request 24.10.2026): unlabelled rows start at the left edge; Roman labels sit in a 10 mm right-aligned column (toc-label-column)"
     },
     "evidence": "EXPLICIT"
+  },
+  {
+    "id": "toc-title-giris-x0-pdf",
+    "kind": "span_attr",
+    "params": {
+      "page": {
+        "find": "Sayfa\\s*$"
+      },
+      "regex": "^GİRİŞ\\s*$",
+      "attr": "x0",
+      "source": "pdf"
+    },
+    "expected": 55.24,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+      "locator": "Ek-2 (user request 24.10.2026): Roman labels right-aligned in a 10 mm column from the left edge (40 mm), titles start 5.24 mm after it: 40 + 10 + 5.24 = 55.24 mm"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "toc-title-genel-bilgiler-x0-pdf",
+    "kind": "span_attr",
+    "params": {
+      "page": {
+        "find": "Sayfa\\s*$"
+      },
+      "regex": "^GENEL BİLGİLER\\s*$",
+      "attr": "x0",
+      "source": "pdf"
+    },
+    "expected": 55.24,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+      "locator": "Ek-2 (user request 24.10.2026): Roman labels right-aligned in a 10 mm column from the left edge (40 mm), titles start 5.24 mm after it: 40 + 10 + 5.24 = 55.24 mm"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "toc-label-iii-right-edge-pdf",
+    "kind": "span_attr",
+    "params": {
+      "page": {
+        "find": "Sayfa\\s*$"
+      },
+      "regex": "^\\s*III\\.\\s*$",
+      "attr": "x1",
+      "source": "pdf"
+    },
+    "expected": 50.0,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+      "locator": "Ek-2 (user request 24.10.2026): Roman labels right-aligned in a 10 mm column from the left edge (40 mm), titles start 5.24 mm after it: 40 + 10 + 5.24 = 55.24 mm"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "toc-title-giris-x0-word",
+    "kind": "span_attr",
+    "params": {
+      "page": {
+        "find": "Sayfa\\s*$"
+      },
+      "regex": "^GİRİŞ\\s*$",
+      "attr": "x0",
+      "source": "word"
+    },
+    "expected": 55.24,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+      "locator": "Ek-2 (user request 24.10.2026): Roman labels right-aligned in a 10 mm column from the left edge (40 mm), titles start 5.24 mm after it: 40 + 10 + 5.24 = 55.24 mm"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "toc-title-genel-bilgiler-x0-word",
+    "kind": "span_attr",
+    "params": {
+      "page": {
+        "find": "Sayfa\\s*$"
+      },
+      "regex": "^GENEL BİLGİLER\\s*$",
+      "attr": "x0",
+      "source": "word"
+    },
+    "expected": 55.24,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+      "locator": "Ek-2 (user request 24.10.2026): Roman labels right-aligned in a 10 mm column from the left edge (40 mm), titles start 5.24 mm after it: 40 + 10 + 5.24 = 55.24 mm"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "toc-label-iii-right-edge-word",
+    "kind": "span_attr",
+    "params": {
+      "page": {
+        "find": "Sayfa\\s*$"
+      },
+      "regex": "^\\s*III\\.\\s*$",
+      "attr": "x1",
+      "source": "word"
+    },
+    "expected": 50.0,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+      "locator": "Ek-2 (user request 24.10.2026): Roman labels right-aligned in a 10 mm column from the left edge (40 mm), titles start 5.24 mm after it: 40 + 10 + 5.24 = 55.24 mm"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "toc-sub-row-label-x0-pdf",
+    "kind": "span_attr",
+    "params": {
+      "page": {
+        "find": "Sayfa\\s*$"
+      },
+      "regex": "^2\\.1\\.\\s*",
+      "attr": "x0",
+      "source": "pdf"
+    },
+    "expected": 55.24,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+      "locator": "§V alt başlıklar arabik; sub rows start at the chapter title x (labelColumnLevels [1], leftIndentMm 15.24)"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "toc-sub-row-label-x0-word",
+    "kind": "span_attr",
+    "params": {
+      "page": {
+        "find": "Sayfa\\s*$"
+      },
+      "regex": "^\\s*2\\.1\\.\\s*",
+      "attr": "x0",
+      "source": "word"
+    },
+    "expected": 55.24,
+    "tolerance": 0.5,
+    "source": {
+      "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+      "locator": "§V alt başlıklar arabik; sub rows start at the chapter title x (labelColumnLevels [1], leftIndentMm 15.24)"
+    },
+    "evidence": "INFERRED"
   },
   {
     "id": "toc-sub-rows-single",
@@ -851,12 +1011,13 @@
     "params": {
       "source": "pdf",
       "start": "^ÖNSÖZ$",
-      "end": "^İÇİNDEKİLER$"
+      "end": "^İÇİNDEKİLER$",
+      "first": true
     },
     "tolerance": 0,
     "source": {
       "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
-      "locator": "p.2 IV and p.3 XII: at most one page"
+      "locator": "p.2 IV and p.3 XII: at most one page; first ÖNSÖZ / İÇİNDEKİLER titles (the contents list names them again)"
     },
     "evidence": "EXPLICIT",
     "cmp": "le"
@@ -1103,12 +1264,13 @@
     "params": {
       "source": "word",
       "start": "^ÖNSÖZ$",
-      "end": "^İÇİNDEKİLER$"
+      "end": "^İÇİNDEKİLER$",
+      "first": true
     },
     "tolerance": 0,
     "source": {
       "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
-      "locator": "p.2 IV and p.3 XII: at most one page"
+      "locator": "p.2 IV and p.3 XII: at most one page; first ÖNSÖZ / İÇİNDEKİLER titles (the contents list names them again)"
     },
     "evidence": "EXPLICIT",
     "cmp": "le"
@@ -1355,12 +1517,13 @@
     "params": {
       "source": "word-refreshed",
       "start": "^ÖNSÖZ$",
-      "end": "^İÇİNDEKİLER$"
+      "end": "^İÇİNDEKİLER$",
+      "first": true
     },
     "tolerance": 0,
     "source": {
       "file": "MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
-      "locator": "p.2 IV and p.3 XII: at most one page"
+      "locator": "p.2 IV and p.3 XII: at most one page; first ÖNSÖZ / İÇİNDEKİLER titles (the contents list names them again)"
     },
     "evidence": "EXPLICIT",
     "cmp": "le"
@@ -1607,7 +1770,7 @@
     "id": "source-currency-and-conflicts",
     "kind": "note",
     "params": {
-      "text": "RESOLVED 2026-10-15: bottom-centre numbers and 14 pt cover title per guide general prose, corroborated by Çöldür 2018 thesis. Current guide downloaded/hash verified; university name updated by user decision. See validation/mcbu-thesis-research-20261015/decisions.json. Other source-silent properties remain documented INFO."
+      "text": "RESOLVED 2026-10-15: bottom-centre numbers and 14 pt cover title per guide general prose, corroborated by Çöldür 2018 thesis. Current guide downloaded/hash verified; university name updated by user decision. See validation/mcbu-thesis-research-20261015/decisions.json. Other source-silent properties remain documented INFO. Source audit 2026-10-24 (user rule: the current official source is the reference; an older or secondary source only where the current one is silent and the value is reasonable): live official file re-hashed and identical, no newer guide published; the value above rests on the current guide alone, the published student thesis is not a reference."
     },
     "expected": null,
     "source": {

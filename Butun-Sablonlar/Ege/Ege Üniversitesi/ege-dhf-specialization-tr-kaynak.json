@@ -1,0 +1,532 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "ege-dhf-specialization-tr-kaynak",
+ "universityId": "ege",
+ "universityName": "Ege Üniversitesi",
+ "instituteId": "dhf",
+ "instituteName": "Diş Hekimliği Fakültesi",
+ "degreeType": "specialization",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
+  ],
+  "guideDocumentName": "EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "848ac5f27554627a64da825ec75d7bbec8de4b67ced18aeedd40bf39f961dc9a",
+  "evidence": {
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 20,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+    "locations": [
+     {
+      "value": 20,
+      "location": "sayfa 1",
+      "sentence": "Kullanılacak Kâğıdın Niteliği, Sayfa Boyutları ve Yazım Alanı Kullanılacak kâğıtlar A4 boyutunda olmalı ve kâğıdın sol kenarından 4 cm, diğer kenarlarından 2 cm boşluk bırakılmalıdır."
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 20,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+    "locations": [
+     {
+      "value": 20,
+      "location": "sayfa 1",
+      "sentence": "Kullanılacak Kâğıdın Niteliği, Sayfa Boyutları ve Yazım Alanı Kullanılacak kâğıtlar A4 boyutunda olmalı ve kâğıdın sol kenarından 4 cm, diğer kenarlarından 2 cm boşluk bırakılmalıdır."
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+    "locations": [
+     {
+      "value": 40,
+      "location": "sayfa 1",
+      "sentence": "Kullanılacak Kâğıdın Niteliği, Sayfa Boyutları ve Yazım Alanı Kullanılacak kâğıtlar A4 boyutunda olmalı ve kâğıdın sol kenarından 4 cm, diğer kenarlarından 2 cm boşluk bırakılmalıdır."
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 20,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+    "locations": [
+     {
+      "value": 20,
+      "location": "sayfa 1",
+      "sentence": "Kullanılacak Kâğıdın Niteliği, Sayfa Boyutları ve Yazım Alanı Kullanılacak kâğıtlar A4 boyutunda olmalı ve kâğıdın sol kenarından 4 cm, diğer kenarlarından 2 cm boşluk bırakılmalıdır."
+     }
+    ]
+   },
+   "typography.body.fontFamily": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+    "locations": [
+     {
+      "value": "Times New Roman",
+      "location": "sayfa 1",
+      "sentence": "Yazı Karakteri ve Boyutu; Satır Aralıkları ve Paragraf Düzeni Times New Roman yazı karakteri kullanılmalı;"
+     }
+    ]
+   },
+   "typography.body.fontSizePt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+    "locations": [
+     {
+      "value": 12,
+      "location": "sayfa 1",
+      "sentence": "12 punto ile yazılmalı ve satır aralığı 1,5 olmalıdır."
+     },
+     {
+      "value": 12,
+      "location": "sayfa 3",
+      "sentence": "İçindekiler listesi 12 punto ve 1,5 satır aralığı ile koyu olarak yazılmalıdır."
+     }
+    ]
+   },
+   "typography.body.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "justify",
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+    "locations": [
+     {
+      "value": "justify",
+      "location": "sayfa 1",
+      "sentence": "Paragraflar 2 cm içeriden başlamalı ve iki yana yaslı şekilde yazılmalıdır."
+     }
+    ]
+   },
+   "typography.paragraph.firstLineIndentMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 20,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+    "locations": [
+     {
+      "value": 20,
+      "location": "sayfa 1",
+      "sentence": "Paragraflar 2 cm içeriden başlamalı ve iki yana yaslı şekilde yazılmalıdır."
+     }
+    ]
+   },
+   "typography.footnotes.fontSizePt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 10,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+    "locations": [
+     {
+      "value": 10,
+      "location": "sayfa 2",
+      "sentence": "Dipnotlar 10 punto ile yazılmalı ve Kaynakça ile karıştırılmamalıdır."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "sayfa 1",
+      "sentence": "Sayfaların Numaralandırılması Sayfa numaraları sağ alt köşeye yerleştirilmelidir."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "right",
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+    "locations": [
+     {
+      "value": "right",
+      "location": "sayfa 1",
+      "sentence": "Sayfaların Numaralandırılması Sayfa numaraları sağ alt köşeye yerleştirilmelidir."
+     }
+    ]
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/EGE_Dis_Uzmanlik_Tezi_Sablonu_2024.pdf",
+    "sha256": "ff2ec8e9fbc705502e24014eecec18dbebfd4ad6fcb716d463a59c554dffeed1"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+    "sha256": "848ac5f27554627a64da825ec75d7bbec8de4b67ced18aeedd40bf39f961dc9a"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.body.fontFamily",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.body.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.paragraph.firstLineIndentMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
+    },
+    {
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
+    }
+   ],
+   "conflicts": [],
+   "guide": "EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "margins": {
+   "topMm": 20,
+   "bottomMm": 20,
+   "leftMm": 40,
+   "rightMm": 20
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "right",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify"
+  },
+  "paragraph": {
+   "firstLineIndentMm": 20
+  },
+  "footnotes": {
+   "fontSizePt": 10
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖNSÖZ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-figures",
+   "type": "listOfFigures",
+   "title": "ŞEKİLLER DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "ŞEKİLLER DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "TABLOLAR DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "curriculum-vitae",
+   "type": "curriculumVitae",
+   "title": "ÖZGEÇMİŞ",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { DEFAULT_TEXT_ALIGNMENT_SCOPE } from "../../../../../engine/src/layoutInteraction.js";
-import { AlertTriangle, PanelRightOpen, Redo2, Undo2, X } from "lucide-react";
+import { AlertTriangle, Redo2, Undo2 } from "lucide-react";
 import { tabs } from "./ribbon/shared.js";
 import HomeTab from "./ribbon/HomeTab.jsx";
 import FileTab from "./ribbon/FileTab.jsx";
@@ -12,7 +12,6 @@ import "./ribbon/home.css";
 export default function ThesisRibbon({
   tab,
   setTab,
-  panelContent,
   title,
   activeSection,
   template,
@@ -53,6 +52,9 @@ export default function ThesisRibbon({
   pickedEquation,
   onEquationNumber,
   citableItems,
+  citationMode,
+  citationModes,
+  onCitationModeChange,
   onInsertCitation,
   onAddFrame,
   rulersVisible,
@@ -64,37 +66,17 @@ export default function ThesisRibbon({
   canNavigate,
   fontFamily,
   page,
-  workspacePanel,
-  onOpenWorkspace,
+  onOpenSources,
   onCheckDocument,
   sourceCount,
 }) {
   const ribbonTabs = tabs;
-  const sidePanels = ["Yazım planı", "Kaynaklar", "Rehber", "Sayfa ayarları", "Öğe", "Tez bilgileri"];
+  // "Öğe" is not listed (empty without a selection); a selected element's "Ayrıntıları aç" still opens its inspector.
   const extendedPanel = !tabs.includes(tab);
-  // Side panels open in a drawer; the ribbon keeps showing the last regular tab.
+  // The ribbon keeps showing the last regular tab while an extra tab such as "Öğe" is active.
   const lastMainTab = useRef("Giriş");
   if (!extendedPanel) lastMainTab.current = tab;
   const shownTab = extendedPanel ? lastMainTab.current : tab;
-  const lastSidePanel = useRef(sidePanels[0]);
-  if (extendedPanel) lastSidePanel.current = tab;
-  const closeDrawer = () => setTab(lastMainTab.current);
-  const drawerRef = useRef(null);
-  const panelToggleRef = useRef(null);
-  const returnFocusRef = useRef(null);
-  useEffect(() => {
-    if (!extendedPanel) return;
-    returnFocusRef.current = document.activeElement === document.body ? panelToggleRef.current : document.activeElement;
-    drawerRef.current?.querySelector('button')?.focus({ preventScroll: true });
-    return () => {
-      // Keep deliberate focus moves to the ribbon or document; only restore
-      // focus when closing would otherwise leave it inside the hidden drawer.
-      if (document.activeElement !== document.body && !drawerRef.current?.contains(document.activeElement)) return;
-      const target = returnFocusRef.current;
-      const destination = target?.isConnected && !target.closest('[hidden]') ? target : panelToggleRef.current;
-      destination?.focus({ preventScroll: true });
-    };
-  }, [extendedPanel]);
   // Alignment changes the paragraph inside its existing template frame unless
   // the writer explicitly chooses the page or writing area.
   const [alignmentScope, setAlignmentScope] = useState(DEFAULT_TEXT_ALIGNMENT_SCOPE);
@@ -298,9 +280,11 @@ export default function ThesisRibbon({
             setFootnoteText={setFootnoteText}
             remember={remember}
             keep={keep}
-            onManageSources={() => onOpenWorkspace('sources')}
+            onManageSources={() => onOpenSources()}
             onCheckDocument={onCheckDocument}
-            numeric={template.bibliography?.citationStyle === 'numeric'}
+            citationMode={citationMode}
+            citationModes={citationModes}
+            onCitationModeChange={onCitationModeChange}
           />
         )}
         {shownTab === "Görünüm" && (
@@ -330,28 +314,6 @@ export default function ThesisRibbon({
           <span>{message}</span>
         </div>
       ) : null}
-      <button ref={panelToggleRef} type="button" className={`thesis-side-fab ${extendedPanel ? "is-open" : ""}`} aria-expanded={extendedPanel} aria-controls={`${ids}-side-drawer`} title="Yan panelleri aç/kapat" onMouseDown={keep} onClick={() => (extendedPanel ? closeDrawer() : setTab(lastSidePanel.current))}>
-        <PanelRightOpen size={18} aria-hidden="true" />
-        <span>Paneller</span>
-      </button>
-      <aside ref={drawerRef} id={`${ids}-side-drawer`} className="thesis-side-drawer" hidden={!extendedPanel} aria-label="Yan paneller" data-ribbon-tab={extendedPanel ? tab : undefined} onKeyDown={(event) => {
-        if (event.key === "Escape" && !event.defaultPrevented) {
-          event.preventDefault();
-          event.stopPropagation();
-          closeDrawer();
-        }
-      }}>
-        <div className="thesis-side-drawer-head">
-          <strong>{extendedPanel ? tab : lastSidePanel.current}</strong>
-          <button type="button" aria-label="Paneli kapat" title="Paneli kapat" onClick={closeDrawer}><X size={16} aria-hidden="true" /></button>
-        </div>
-        <nav className="thesis-side-drawer-nav" aria-label="Panel seç">
-          {sidePanels.map((item) => (
-            <button key={item} type="button" className={tab === item ? "is-active" : ""} aria-current={tab === item ? "page" : undefined} onMouseDown={keep} onClick={() => setTab(item)}>{item}</button>
-          ))}
-        </nav>
-        <div className="thesis-side-drawer-body thesis-ribbon-workspace-body">{panelContent}</div>
-      </aside>
     </header>
   );
 }

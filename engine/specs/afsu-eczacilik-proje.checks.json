@@ -373,7 +373,7 @@
   "id": "note-unknowns",
   "kind": "note",
   "params": {
-   "text": "UNKNOWN in source: page-number font/size and baseline/footer distance; cover page-number display; before/after split of the 12 pt paragraph gap; body alignment (left/justified); cover field font sizes other than 14 pt outer cover; signatory typesetting. Source cover coordinates are the example inside the guide PDF page, not required page-relative geometry. Roman start value on the first numbered front page (whether covers count) is UNKNOWN, so only Arabic start/sequence is checked."
+   "text": "Cover layout follows the official rendered examples on physical pp.8-9. CONFLICT: prose says 14 pt outer/title, examples use 12 pt bold. Remaining UNKNOWN: page-number font/size and baseline/footer distance; cover page-number display; before/after split of 12 pt paragraph gap; body alignment; signatory typesetting; Roman start value when covers count."
   },
   "expected": null,
   "tolerance": 0.5,
@@ -382,5 +382,573 @@
    "locator": "conflictsAndUnknowns"
   },
   "evidence": "UNKNOWN"
+ },
+ {
+  "id": "official-cover-1-pdf-baselines",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    1
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "ÜNİVERSİTESİ$",
+    "^ECZACILIK FAKÜLTESİ$",
+    "ANABİLİM DALI$",
+    "^RAPOR DÜZENİ",
+    "^Deniz Örnek$",
+    "^LİSANS ARAŞTIRMA PROJESİ$",
+    "^Danışman$",
+    "^Dr\\. Öğr\\. Üyesi Ada Deneme$",
+    "^AFYONKARAHİSAR$",
+    "^2026$"
+   ],
+   "source": "pdf"
+  },
+  "expected": [
+   71.47,
+   76.33,
+   81.2,
+   86.08,
+   119.23,
+   145.69,
+   174.9,
+   204.12,
+   208.99,
+   238.2,
+   243.07
+  ],
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "Physical pp.8-9, rendered official cover examples (SHA-256 ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4). Inner cover visible replacement layer; prose/sample 14/12 pt conflict recorded in template.source.coverVisualVerification."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "official-cover-1-pdf-cx",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    1
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "ÜNİVERSİTESİ$",
+    "^ECZACILIK FAKÜLTESİ$",
+    "^LİSANS ARAŞTIRMA PROJESİ$",
+    "^Danışman$",
+    "^AFYONKARAHİSAR$"
+   ],
+   "attr": "cx",
+   "source": "pdf"
+  },
+  "expected": [
+   106.5,
+   106.5,
+   106.5,
+   106.5,
+   106.5,
+   106.5
+  ],
+  "tolerance": 0.3,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "Physical pp.8-9, rendered official cover examples (SHA-256 ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4). Inner cover visible replacement layer; prose/sample 14/12 pt conflict recorded in template.source.coverVisualVerification."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "official-cover-1-pdf-size",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    1
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "ÜNİVERSİTESİ$",
+    "^ECZACILIK FAKÜLTESİ$",
+    "^LİSANS ARAŞTIRMA PROJESİ$",
+    "^Danışman$",
+    "^AFYONKARAHİSAR$"
+   ],
+   "attr": "size",
+   "source": "pdf"
+  },
+  "expected": [
+   12,
+   12,
+   12,
+   12,
+   12,
+   12
+  ],
+  "tolerance": 0.1,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "Physical pp.8-9, rendered official cover examples (SHA-256 ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4). Inner cover visible replacement layer; prose/sample 14/12 pt conflict recorded in template.source.coverVisualVerification."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "official-cover-1-pdf-bold",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    1
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "ÜNİVERSİTESİ$",
+    "^ECZACILIK FAKÜLTESİ$",
+    "^LİSANS ARAŞTIRMA PROJESİ$",
+    "^Danışman$",
+    "^AFYONKARAHİSAR$"
+   ],
+   "attr": "bold",
+   "source": "pdf"
+  },
+  "expected": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "tolerance": 0,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "Physical pp.8-9, rendered official cover examples (SHA-256 ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4). Inner cover visible replacement layer; prose/sample 14/12 pt conflict recorded in template.source.coverVisualVerification."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "official-cover-1-word-baselines",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    1
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "ÜNİVERSİTESİ$",
+    "^ECZACILIK FAKÜLTESİ$",
+    "ANABİLİM DALI$",
+    "^RAPOR DÜZENİ",
+    "^Deniz Örnek$",
+    "^LİSANS ARAŞTIRMA PROJESİ$",
+    "^Danışman$",
+    "^Dr\\. Öğr\\. Üyesi Ada Deneme$",
+    "^AFYONKARAHİSAR$",
+    "^2026$"
+   ],
+   "source": "word"
+  },
+  "expected": [
+   71.47,
+   76.33,
+   81.2,
+   86.08,
+   119.23,
+   145.69,
+   174.9,
+   204.12,
+   208.99,
+   238.2,
+   243.07
+  ],
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "Physical pp.8-9, rendered official cover examples (SHA-256 ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4). Inner cover visible replacement layer; prose/sample 14/12 pt conflict recorded in template.source.coverVisualVerification."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "official-cover-1-word-cx",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    1
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "ÜNİVERSİTESİ$",
+    "^ECZACILIK FAKÜLTESİ$",
+    "^LİSANS ARAŞTIRMA PROJESİ$",
+    "^Danışman$",
+    "^AFYONKARAHİSAR$"
+   ],
+   "attr": "cx",
+   "source": "word"
+  },
+  "expected": [
+   106.5,
+   106.5,
+   106.5,
+   106.5,
+   106.5,
+   106.5
+  ],
+  "tolerance": 0.3,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "Physical pp.8-9, rendered official cover examples (SHA-256 ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4). Inner cover visible replacement layer; prose/sample 14/12 pt conflict recorded in template.source.coverVisualVerification."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "official-cover-1-word-size",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    1
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "ÜNİVERSİTESİ$",
+    "^ECZACILIK FAKÜLTESİ$",
+    "^LİSANS ARAŞTIRMA PROJESİ$",
+    "^Danışman$",
+    "^AFYONKARAHİSAR$"
+   ],
+   "attr": "size",
+   "source": "word"
+  },
+  "expected": [
+   12,
+   12,
+   12,
+   12,
+   12,
+   12
+  ],
+  "tolerance": 0.1,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "Physical pp.8-9, rendered official cover examples (SHA-256 ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4). Inner cover visible replacement layer; prose/sample 14/12 pt conflict recorded in template.source.coverVisualVerification."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "official-cover-1-word-bold",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    1
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "ÜNİVERSİTESİ$",
+    "^ECZACILIK FAKÜLTESİ$",
+    "^LİSANS ARAŞTIRMA PROJESİ$",
+    "^Danışman$",
+    "^AFYONKARAHİSAR$"
+   ],
+   "attr": "bold",
+   "source": "word"
+  },
+  "expected": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "tolerance": 0,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "Physical pp.8-9, rendered official cover examples (SHA-256 ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4). Inner cover visible replacement layer; prose/sample 14/12 pt conflict recorded in template.source.coverVisualVerification."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "official-cover-2-pdf-baselines",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    2
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "ÜNİVERSİTESİ$",
+    "^ECZACILIK FAKÜLTESİ$",
+    "ANABİLİM DALI$",
+    "^RAPOR DÜZENİ",
+    "^Hazırlayan$",
+    "^Deniz Örnek$",
+    "^LİSANS ARAŞTIRMA PROJESİ$",
+    "^Danışman$",
+    "^Dr\\. Öğr\\. Üyesi Ada Deneme$",
+    "^AFYONKARAHİSAR$",
+    "^2026$"
+   ],
+   "source": "pdf"
+  },
+  "expected": [
+   51.82,
+   56.69,
+   61.56,
+   66.43,
+   92.26,
+   118.72,
+   123.59,
+   157.67,
+   188.32,
+   193.19,
+   246.75,
+   251.62
+  ],
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "Physical pp.8-9, rendered official cover examples (SHA-256 ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4). Inner cover visible replacement layer; prose/sample 14/12 pt conflict recorded in template.source.coverVisualVerification."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "official-cover-2-pdf-cx",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    2
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "ÜNİVERSİTESİ$",
+    "^ECZACILIK FAKÜLTESİ$",
+    "^LİSANS ARAŞTIRMA PROJESİ$",
+    "^Danışman$",
+    "^AFYONKARAHİSAR$"
+   ],
+   "attr": "cx",
+   "source": "pdf"
+  },
+  "expected": [
+   106.5,
+   106.5,
+   106.5,
+   106.5,
+   106.5,
+   106.5
+  ],
+  "tolerance": 0.3,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "Physical pp.8-9, rendered official cover examples (SHA-256 ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4). Inner cover visible replacement layer; prose/sample 14/12 pt conflict recorded in template.source.coverVisualVerification."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "official-cover-2-pdf-size",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    2
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "ÜNİVERSİTESİ$",
+    "^ECZACILIK FAKÜLTESİ$",
+    "^LİSANS ARAŞTIRMA PROJESİ$",
+    "^Danışman$",
+    "^AFYONKARAHİSAR$"
+   ],
+   "attr": "size",
+   "source": "pdf"
+  },
+  "expected": [
+   12,
+   12,
+   12,
+   12,
+   12,
+   12
+  ],
+  "tolerance": 0.1,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "Physical pp.8-9, rendered official cover examples (SHA-256 ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4). Inner cover visible replacement layer; prose/sample 14/12 pt conflict recorded in template.source.coverVisualVerification."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "official-cover-2-pdf-bold",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    2
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "ÜNİVERSİTESİ$",
+    "^ECZACILIK FAKÜLTESİ$",
+    "^LİSANS ARAŞTIRMA PROJESİ$",
+    "^Danışman$",
+    "^AFYONKARAHİSAR$"
+   ],
+   "attr": "bold",
+   "source": "pdf"
+  },
+  "expected": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "tolerance": 0,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "Physical pp.8-9, rendered official cover examples (SHA-256 ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4). Inner cover visible replacement layer; prose/sample 14/12 pt conflict recorded in template.source.coverVisualVerification."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "official-cover-2-word-baselines",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    2
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "ÜNİVERSİTESİ$",
+    "^ECZACILIK FAKÜLTESİ$",
+    "ANABİLİM DALI$",
+    "^RAPOR DÜZENİ",
+    "^Hazırlayan$",
+    "^Deniz Örnek$",
+    "^LİSANS ARAŞTIRMA PROJESİ$",
+    "^Danışman$",
+    "^Dr\\. Öğr\\. Üyesi Ada Deneme$",
+    "^AFYONKARAHİSAR$",
+    "^2026$"
+   ],
+   "source": "word"
+  },
+  "expected": [
+   51.82,
+   56.69,
+   61.56,
+   66.43,
+   92.26,
+   118.72,
+   123.59,
+   157.67,
+   188.32,
+   193.19,
+   246.75,
+   251.62
+  ],
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "Physical pp.8-9, rendered official cover examples (SHA-256 ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4). Inner cover visible replacement layer; prose/sample 14/12 pt conflict recorded in template.source.coverVisualVerification."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "official-cover-2-word-cx",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    2
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "ÜNİVERSİTESİ$",
+    "^ECZACILIK FAKÜLTESİ$",
+    "^LİSANS ARAŞTIRMA PROJESİ$",
+    "^Danışman$",
+    "^AFYONKARAHİSAR$"
+   ],
+   "attr": "cx",
+   "source": "word"
+  },
+  "expected": [
+   106.5,
+   106.5,
+   106.5,
+   106.5,
+   106.5,
+   106.5
+  ],
+  "tolerance": 0.3,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "Physical pp.8-9, rendered official cover examples (SHA-256 ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4). Inner cover visible replacement layer; prose/sample 14/12 pt conflict recorded in template.source.coverVisualVerification."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "official-cover-2-word-size",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    2
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "ÜNİVERSİTESİ$",
+    "^ECZACILIK FAKÜLTESİ$",
+    "^LİSANS ARAŞTIRMA PROJESİ$",
+    "^Danışman$",
+    "^AFYONKARAHİSAR$"
+   ],
+   "attr": "size",
+   "source": "word"
+  },
+  "expected": [
+   12,
+   12,
+   12,
+   12,
+   12,
+   12
+  ],
+  "tolerance": 0.1,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "Physical pp.8-9, rendered official cover examples (SHA-256 ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4). Inner cover visible replacement layer; prose/sample 14/12 pt conflict recorded in template.source.coverVisualVerification."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "official-cover-2-word-bold",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    2
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "ÜNİVERSİTESİ$",
+    "^ECZACILIK FAKÜLTESİ$",
+    "^LİSANS ARAŞTIRMA PROJESİ$",
+    "^Danışman$",
+    "^AFYONKARAHİSAR$"
+   ],
+   "attr": "bold",
+   "source": "word"
+  },
+  "expected": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "tolerance": 0,
+  "source": {
+   "file": "AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf",
+   "locator": "Physical pp.8-9, rendered official cover examples (SHA-256 ec76ed61e1bcd3528c4652d6158d81f8c9aad982ddc7426c86b221cb2fc621b4). Inner cover visible replacement layer; prose/sample 14/12 pt conflict recorded in template.source.coverVisualVerification."
+  },
+  "evidence": "MEASURED"
  }
 ]

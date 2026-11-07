@@ -1,55 +1,32 @@
-# GOREVLER — açık görevler, hatalar ve notlar (tek yer)
+# Açık işler
 
-Son derleme: 21.10.2026. Kurallar [BASLA.md](BASLA.md)'dedir. Burada yalnız **hâlâ açık olanlar** durur; kapanan madde silinir, kanıtı `orchestration/raporlar/` altına yazılır.
+Düzenleme: 26 Ekim 2026. Yalnız kalan kapsam tutulur; bu dosya yeni iş başlatma talimatı değildir. Bir madde somut sorun, kanıt ve kapanış ölçütüyle güncellenir. Tarihli sayılar güncel test sonucu değildir. Değerlendirme dersleri [AGENTS-RAPOR.md](AGENTS-RAPOR.md), geçmiş sonuçlar [rapor dizinindedir](raporlar/README.md).
 
-## Durum
-- 20.10.2026: 1130/1130 birim testi ve üretim derlemesi geçti (klasör yeniden düzenlemesinden sonra). E2E tarayıcı testleri ve gerçek Word kontrolleri bu turda çalıştırılmadı.
-- 21.10.2026: şablona özel görevler (tek tek şablon farkları, üniversite hedef durumları, MCBÜ SDK şema incelemesi) kullanıcı kararıyla kaldırıldı; ölçümleri (eski rapor silindi) içinde duruyor.
-- 22.10.2026: depo üç commit'e düzenlendi; şablonlar düz veri (taban/varyant geri alındı); motor varsayılanları (`page.orientation`, `numbering.sequence`) ve dipnot varsayılanı belgesi düzeltildi; 1133/1133 birim testi ve derleme geçti. `golden`, `parity`, `check --word` ve tarayıcı uçtan uca testleri bu turda çalıştırılmadı.
-- 22.10.2026 (çıktı kalitesi): 7 referans şablon editör = Word sayfa sayısı; MCBÜ YL kaymasız (8 yerleşim), düzeltme sonrası hiçbir şablonda kayan sayfa artmadı (AFSÜ 8→2, Tıp 12→2, İYTE 10→8). Birim testleri 1137/1137. Bu turdaki motor değişiklikleri (`pageLayout.js`, `parity.mjs --pad`, `thesisTablePageEnd.test.js`) commit edilmedi. Ayrıntı bölüm 3.
-- Kullanıcı kararı (20.10.2026): uygulamada şimdilik dışarıdan `.docx` içe aktarma özelliği olmayacak. İçe aktarmaya bağlı işler aşağıda "Askıda".
-- Kullanıcı kararı (22.10.2026, HE-UI-05): tez düzenleyicinin **Dosya** sekmesindeki "Word içe aktar" ve "PDF içe aktar" düğmeleri arayüzde **kalır**. Bu karar yalnız düğmelerin görünürlüğü içindir; "Askıda" bölümündeki içe aktarma uyum işleri ayrıca açılmadıkça askıda kalır.
+## Yeniden doğrulanacaklar
 
-## Açık hatalar
-**Bilinen hataların tamamı tek dosyada: [raporlar/HATA_ENVANTERI_2026-10-22.md](raporlar/HATA_ENVANTERI_2026-10-22.md)** (51 kayıt, `HE-<alan>-<no>`; yeniden üretme, kanıt, kabul ölçütü; düzeltmeyi başkası yapacak). Yeni hata bulunursa o dosyaya aynı biçimde eklenir; burada yalnız bu işaretçi durur. (Önceki "doğrulanmış açık ürün hatası yok" ifadesi geçersizdir: bkz. HE-VB-01…05 veri kaybı.)
+- **Genel test sağlığı ve kayıt defteri:** 25 Ekim kaydındaki 15 lib testi başarısızlığı ve beş sürüm uyuşmazlığı bugünkü sayı olarak kullanılmaz. 26 Ekim CBÜ grubunda 141 test geçti; ortak AFSÜ özel sayfa testinde Symbol beklentisi başarısızlığı ayrıca kaydedildi. Kalanları güncel kodla yeniden üretip kapsamı belirleyin. [CBÜ raporu](raporlar/MCBU_SABLON_DUZELTMELERI_2026-10-26.md), [AKÜ raporu](raporlar/AKU_DOGRULAMA_2026-10-24.md).
+- **Eski hata envanteri:** veri bütünlüğü, performans, masaüstü ve araç sorunlarının tarihli kimlikleri [22 Ekim özetinde](raporlar/HATA_ENVANTERI_2026-10-22.md). Sonradan kapatılanlar dahil hepsini açık varsaymayın. Güncel inceleme yapılmadan toplu düzeltme başlatmayın.
+- **Editör uçtan uca kontrolü:** içindekilerden gövde başlığı ekleme/taşıma ve olmayan sayfaya yer açmanın gerçek Word/PDF çıktısı; çift taraflı baskı numarası; okuma konumu kök nedeni; eski `general-editor-workflow` ve `thesis-ribbon-panels` testlerinin sağ sütuna uyarlanması. 25 Ekim [panel kaydı](uygulama/ICINDEKILER_PANELI.md) kapsamından ayrılmalıdır.
+- **Metin kutusunda kısmi biçim:** kalın/italik/altı çizili editörde denendi; renk/vurgu/boyut ve gerçek Word/PDF kısmi biçim çıktısı aynı kapsamda doğrulanmadı. [Mimari](uygulama/ARCHITECTURE.md).
+- **Rehber kapsamı:** `templateRuleOverlays.js` kaynak taraması AKÜ/AFSÜ/MCBÜ ile sınırlı; diğer Ege kuralları, AFSÜ öneri ve AKÜ İSG/Matematik kalanları yeniden belirlenmeli. Tauri'de kaynak bağlantılarının açılışı denenmedi. [Rehber raporu](raporlar/REHBER_PANELI_2026-10-25.md).
+- **Kaynak çelişkileri:** İKÇÜ FBE başlık fontu, MSKÜ FBE paragraf aralığı ve kayıtsız DEÜ FBE artığının son kaynak/registry durumunu doğrulayın; eski dosya sayısını veya eski öncelik kararını esas almayın.
 
-## Açık görevler
+## Motor ve çıktı
 
-### 0. Şablon altyapısı (öncelik)
-Kullanıcı kararı (21.10.2026): şablona özel denetim ve düzeltme görevleri kaldırıldı; iş **tek altyapı**: şablon = yalnız veri, bütün yerleşim davranışı motorda tek yerde, yeni şablon kod ve elle denetim olmadan eklenir. **Kullanıcı kararı (22.10.2026): varyant yok, motor esas** — şablon tek resmî kaynağın söylediği değerleri taşıyan düz veridir (`extends` yok, ortak taban yok, başka üniversiteden sayı ödünç yok); ortak olan yalnız motor davranışı ve nötr motor varsayılanlarıdır (`engineDefaults.js`). **Kullanıcı kararı (22.10.2026): motorun amacı** binlerce şablonu eklemeyi kolaylaştırmak, çıktıyı tutarlı yapmak ve işleri otomatize etmektir; üniversite adının kodda geçmesi yasak da zorunlu da değildir, hangisi daha iyiyse o seçilir. Mimari, ölçümler ve geçiş sırası: [orchestration/motor/ALTYAPI.md](motor/ALTYAPI.md). Kapılar (her adımda, tüm şablonlarda aynı): `node engine/tools/golden.mjs` (davranış değişmemeli: editör + DOCX birebir), `node engine/tools/parity.mjs` (eski taban dosyası silindi) (Word), `check.mjs --all --word`, birim testleri.
-1. ~~Şablonları JSON veriye çevir~~ **tamam (21.10):** 34 şablon `Butun-Sablonlar/Ege/<üniversite>/<kimlik>.json` düz veri (2,7 MB); modüller yalnız veriyi yeniden dışa veren sarmalayıcılar; eski JS kaynakları atıflarıyla `Butun-Sablonlar/Ege/<üniversite>/eski-js/` (yüklenmez). Sıradaki iyileştirme: gömülü base64 logolar (verinin %64'ü) ikili varlık dosyasına.
-   ~~Ortak taban ve varyantlar~~ **geri alındı (22.10):** 21.10'daki `thesis-base.json` + `extends` motorun ilkesiyle çelişiyordu (oyla çıkan taban başka üniversitenin sayısını kaynak doğrulaması olmadan taşıyordu). Şablonlar düzleştirildi, `compose.js`/`base/`/`templates-factor.mjs`/`template-encode.mjs`/`templates-to-json.mjs` silindi. Kayıpsız: 34/34 şablon çıktısı bayt bayt aynı, 1131/1131 test, derleme geçti; `test_template_add.mjs` `extends` ve tabanın geri gelmesini sınar. Ayrıntı ALTYAPI.md.
-2. **Motor varsayılanları:** ölçüm tamam, ilk dilim uygulandı (22.10, (eski rapor silindi), araç `engine/tools/templates-defaults.mjs`): `engineDefaults.js` artık eksik `page.orientation` (`portrait`) ve tablo/şekil `numbering.sequence` (`arabic`) doldurur; 34 şablon çıktısı 34/34 aynı, 1133/1133 test. %34 değer silinse çıktı değişmez ama toptan silme yapılmaz. Dipnot numaralandırma çelişkisi çözüldü (22.10): varsayılan `"document"`, çok bölümlü ölçümle kanıtlandı, `schema.d.ts` ve iki belge düzeltildi, kod değişmedi. Kalan: kalan dört doğrulama zorunluluğu için varsayılan önerilmez (kaynağın söylediği ya da görünür davranış). Her adım altın + Word kapısıyla. Üniversite gereksinimi olan sayı motora taşınmaz.
-3. Tek şema: aynı kavramın yazımlarını teke indir (satır aralığı, boşluk); şemayı kapat.
-4. Kaçış kapılarını kaldır (396 nadir ayar yolu): genel kurala ya da değere dönüştür.
-5. Boşluk politikalarını tek Word modelinde birleştir; eski DOCX/CSS dallarını sil (A/B aşaması yapıldı, bkz. ALTYAPI.md).
-6. Kalan çift kodlu kuralları (sayfa başı, dipnot, sekme/asılı girinti, tablo, özel sayfa) tek modele taşı.
-7. Üretim hattı: **ilk dilim tamam (22.10)**, `engine/tools/template-add.mjs`: kaynaktan düz şablon + menşei (`MEASURED/GEOMETRY/GENERATED`, motor varsayılanı ayrı) + veri kapısı; ADÜ ile 0 farklı yeniden üretim. Profil önerisi tamam (22.10, `engine/tools/profile-suggest.mjs`, ADÜ referansına karşı 11/11 rol ve 298/298 kontrol aynı) ve iki ADÜ dışı kaynakla (Dokuz Eylül FBE YL, Ege Eğitim YL) uçtan uca denendi: (eski rapor silindi); şablonlar `Butun-Sablonlar/Ege/<üniversite>/{deu-fbe,ege-egitim}-master-tr-v1.json`, **kayıt defterine eklenmedi, Tier 1 kontrolleri çalıştırılmadı**. Kalan: bu iki şablonun Tier 1 kontrolleri (kayıt + geliştirme sunucusu + Word) ve kayıt kararı; üçüncü kaynakla yakınsama ölçümü; 66 kaynak gerçeği şablon yoluna yerleşsin (üretici `sections[i].overrides…` yolunu kaydetsin); kılavuz-yalnız / PDF-yalnız kaynaklar için ayrı yol; `check.mjs --word` kapısını komuta bağlama; sabit sayfaları anlamlı alanlara dönüştürme kararı (kullanıcı); görseller ikili varlığa; kayıt defteri indeksi şablon üst verisinden üretilsin.
+- Şema tekrarları, boşluk politikaları ve özel sayfa davranışlarının ortak modele taşınmasında kalan kapsam: [ALTYAPI.md](motor/ALTYAPI.md). Kaynak izi, anlamlı alanlar, ikili görseller ve registry üretiminin eksikleri kodla belirlenmeli.
+- Editör ↔ Word/PDF: uzun tablo/denklem/resim, dipnota ayrılan alan ve otomatik dizin kırılımları farklı içerik uzunluklarında ölçülmeli; tek örnek genel kabul değildir.
+- Gerçek Tauri'den MCBÜ PDF/Word çıktısı ve 80–120 sayfalık tezde yazma gecikmesi ölçülmedi. Performans bütçesi önceden belirlenmeli; en az 20 örnekle medyan/p95 kaydedilmeli.
+- Özgün `testtez.docx` editörden alındı ve XML/metin denetimleri geçti; aynı belgenin ek PDF denemesi tamamlanmadı, Word yeniden sayfalama görsel kontrolü yapılmadı. Neden varsayılmamalı. [CBÜ raporu](raporlar/MCBU_SABLON_DUZELTMELERI_2026-10-26.md).
+- `spec2template.mjs` bağlam dosyasını spec çıktı dizinine üretebiliyor. Bilgilendirme çıktısı `orchestration/hedefler/` altına yönlendirilmeli; ham araç verisiyle karıştırılmamalı.
 
-### 1. Gerçek Tauri uygulamasından PDF alma
-Gerçek masaüstü uygulamasından PDF hiç alınmadı; Liberation Serif yalnız Rust izin listesi birim testiyle (`cargo test system_fonts`) doğrulandı. Kapanış: uygulamadan MCBÜ şablonuyla PDF alınır, gömülü fontlar ve sayfa sayısı doğrulanır.
+## Açık sanılmaması gereken kapanışlar
 
-### 2. Normal boyutlu tezde yazarken gecikme
-Şu ana kadarki ölçümler içe aktarılmış 180 sayfalık belgeye aitti (yükleme ~33 sn) ve sayısal hedef yoktu. Gerçek soru: 80–120 sayfalık MCBÜ tezinde yazarken/biçimlendirirken takılma var mı? Kapanış: sabit makine/font/kod sürümüyle, kullanıcıyla onaylanmış bir bütçe (uydurulmaz), ≥20 gerçek yaz/geri al örneği, medyan/p95; doğruluk ve font beklemesi devre dışı bırakılmaz.
+- AFSÜ etik sayfası kayması ve ilgili kapak bulguları, 25 Ekim [son görsel raporunda](raporlar/AFSU_DIGER_SABLONLAR_GORSEL_2026-10-25.md) giderilmiş olarak kayıtlıdır; önceki rapora dayanarak yeniden açık yazılmaz. Symbol ile ilgili genel test beklentisi ayrı konudur.
+- 24 Ekim editör keşfindeki dört doğrulanmış hata düzeltildi; yalnız iki doğrulanmamış gözlem için sonuç yoktur. [Keşif ve düzeltme kaydı](raporlar/editor-test-notlari-2026-10-24.md).
+- CBÜ'de “Akademisyen”, kullanıcının kısa bölüm yapısı, içindekilerde ortalı/numarasız ana bölüm ve simgelerde 1,5 satır hata değildir. Bunlar açık iş listesine geri eklenmez.
 
-### 3. Çıktı kalitesi: editörde görünen Word'e / PDF'e aynen geçiyor mu?
-Ölçüm, düzeltmeler ve kalan işler: orchestration/raporlar/CIKTI_KALITESI_2026-10-22.md (rapor silindi). Araç: `node engine/tools/parity.mjs [--pad N]` (gerçek editör dışa aktarımı + tek Word örneği). Kullanıcı kararı (22.10.2026): önce ölçülür; kalite iyiyse bu kapı motora, yeni şablon ekleme hattına alınır ("engine ile Word/PDF çıktı yapısı bir olacak").
-Durum: tablo satırı sığması ve tablo başlık/başlık satırı kuralları düzeltildi; MCBÜ YL duyarlılık taramasında (dolgu 0–7) 3/8 → 0/8 kayan yerleşim; ADÜ 3/8, MCBÜ Tıp 8/8 yerleşimde hâlâ kayıyor (varsayılan metindeki "0 kayma" şans eseriydi).
-Açık, önerilen sırayla:
-1. **Dipnot:** ADÜ dolgu 2'de Word sayfa altındaki dipnota yer açmak için gövdenin son 2 satırını sonraki sayfaya itiyor, editör itmiyor (28–47 sayfalık kayma, sayfa sayısı bile farklı). Neden bulunmadı.
-2. **Otomatik listeler** (içindekiler, şekil/tablo dizini): ~1 pt kayma ve uzun girdinin sayfa numarasının ilk/son satırda olması (`generatedIndex.pageNumberAlignment`).
-3. Tıp'ta yatay kayan satır 5 → 7 (düzeltmelerin yan etkisi olabilir); ADÜ dolgu 4 tablo devam sayfası; Tıp dolgu 6 (12 sayfa); İYTE alt başlık + sonraki paragraf; AFSÜ numaralı denklem. Hepsi düzeltme sonrası yeniden doğrulanmalı.
-4. `parity.py` `captions.figure` eşleştirme hatası (özet metrikler doğru, ayrıntı bölümü güvenilmez).
-5. Kabul eşiği (kaç kayan sayfa kabul): **kullanıcı kararı**, uydurulmaz.
-6. Kapıyı `template-add` hattına bağla: şablon üret → geçici kaydet → dışa aktar → Word ile karşılaştır → rapor. Dokuz Eylül ve Ege kayıt defterinde olmadığı için henüz ölçülemedi.
-7. Sınırlar kapatılsın: gerçek bir tezle (MCBÜ YL) ölçüm; editör ekranı ↔ PDF bağımsız doğrulaması (`check.mjs`); sabit sayfalar (`check.mjs`); denklem/uzun tablo/metin içi resim içeren gövde.
+## Askıdaki kapsam
 
-### 5. Uygulama (TxtNote)
-1. **Araştırma turu (MCBÜ Yüksek Lisans tezini yazma simülasyonu):** plan [ARASTIRMA_PLANI.md](ARASTIRMA_PLANI.md) (P1–P18, W1–W10, S0–S16, D1–D8; genel hata taraması da bunun içindedir). **Kullanıcı komut verene kadar başlatılmaz** (örn. `W2'yi yap`).
-2. Gerçek uzak arka uç ve cihaz senkronizasyonu (şu an yalnız yerel: Tauri'de SQLite, tarayıcıda IndexedDB; `TxtNote/backend/` boş yer tutucu). *İstek doğrulanmadı.*
-3. Hesap/şifreleme (`orchestration/uygulama/AUTH_AND_ENCRYPTION.md`): yalnız belge var, kod yok. *İstek doğrulanmadı.*
-4. Faz 5: bileşenlerin kademeli TypeScript'e geçişi (şu an `frontend/src` içinde 1 `.ts`, 328 `.js/.jsx`). *İstek doğrulanmadı.*
-5. Yeniden başlatılmayacak (kullanıcı kararı, 8 Ekim): kenar çubuğu ve kabuk kancası çıkarma görevleri.
-
-## Askıda (içe aktarma özelliği olmadığı için)
-SRC09/SRC10 uzun Word belgesi içe aktarma uyumu: şekil/grafik eşliği, kaynak koruma, uzun belge performansı, nihai seri kabul. Eski ölçümler (eski rapor silindi) ve `SRC10_S57_S75_2026-10-19.md`. İçe aktarma özelliği geri gelirse yeniden açılır; içe aktarma kodu `engine/src/` içinde duruyor.
+- [Araştırma senaryoları](prompts/ARASTIRMA.md) ancak kullanıcı ilgili işi verdiğinde yürütülür; tamamlanmış bulgu değildir.
+- İçe aktarma kabulü/SRC09/SRC10 işleri askıdadır; düğmeler görünür kalır. Eski içe aktarma raporu yeniden başlatma yetkisi değildir.
+- Uzak arka uç ve cihazlar arası senkronizasyon tamamlanmış sayılmaz. Haricî hesap hizmeti, TypeScript geçişi ve kaldırılmış kabuk görevleri kendiliğinden başlatılmaz.

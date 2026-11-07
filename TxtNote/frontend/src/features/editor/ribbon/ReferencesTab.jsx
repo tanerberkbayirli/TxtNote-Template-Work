@@ -2,6 +2,7 @@ import { BookOpen, ListTree, ClipboardCheck, Sparkles } from "lucide-react";
 import Tool from "./Tool.jsx";
 import Group from "./Group.jsx";
 import { control } from "./shared.js";
+import { CITATION_MODE_LABELS } from "../../../../../../engine/src/citations.js";
 
 export default function ReferencesTab({
   activeSection,
@@ -17,14 +18,25 @@ export default function ReferencesTab({
   keep,
   onManageSources,
   onCheckDocument,
-  numeric,
+  citationMode = "parenthetical",
+  citationModes = ["footnote", "parenthetical"],
+  onCitationModeChange,
 }) {
   return (
     <>
       <Group label="Kaynakça ve atıflar" className="thesis-home-group">
         <div className="thesis-home-rows">
-          <div className="thesis-reference-summary"><BookOpen size={22} aria-hidden="true"/><div><strong>{citableItems.length} kaynak</strong><span>{numeric ? 'Metin içi sayısal atıf: (1), (2)…' : 'Metin içi atıf ve dipnot seçenekleri'}</span></div></div>
-          <Tool label="Kaynakları ve atıfları yönet" onMouseDown={keep} onClick={onManageSources}>Kaynak ekle / Atıf yap</Tool>
+          <div className="thesis-reference-summary"><BookOpen size={22} aria-hidden="true"/><div><strong>{citableItems.length} kaynak</strong><span>Kaynakça atıflardan otomatik oluşur</span></div></div>
+          <div className="thesis-home-row">
+            <div className="thesis-home-row is-boxed" role="group" aria-label="Atıf biçimi">
+              {citationModes.map((mode) => (
+                <Tool key={mode} label={`Atıf biçimi: ${CITATION_MODE_LABELS[mode]}`} pressed={citationMode === mode} onMouseDown={keep} onClick={() => onCitationModeChange?.(mode)}>
+                  {mode === "footnote" ? "Dipnotlu" : mode === "numeric" ? "Numaralı" : "Parantezli"}
+                </Tool>
+              ))}
+            </div>
+            <Tool label="Kaynakları ve atıfları yönet" onMouseDown={keep} onClick={onManageSources}>Kaynak ekle / Atıf yap</Tool>
+          </div>
         </div>
       </Group>
       <Group label="Dipnotlar" className="thesis-home-group">

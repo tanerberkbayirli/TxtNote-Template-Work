@@ -1,0 +1,1306 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "deu-sbe-master-tr-kaynak-2f1422",
+ "universityId": "deu",
+ "universityName": "Dokuz Eylül Üniversitesi",
+ "instituteId": "sbe",
+ "instituteName": "Sosyal Bilimler Enstitüsü",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Taslak docx-spec-to-template.py ile üretildi; SHA-256 3be9d9bf880329a2af4d504dac72a998b3755de47c4d79ee18ed7fef2c365d57",
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
+  ],
+  "guideDocumentName": "DEU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_TR.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx",
+  "rebuildKind": "docx-template",
+  "archiveSha256": "3be9d9bf880329a2af4d504dac72a998b3755de47c4d79ee18ed7fef2c365d57",
+  "evidence": {
+   "page.margins": {
+    "value": {
+     "topMm": 30,
+     "bottomMm": 30,
+     "leftMm": 40,
+     "rightMm": 25
+    },
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › sectPr#5 (gövde bölümü, 271 paragraf) › w:pgMar",
+    "status": "MEASURED"
+   },
+   "page.size": {
+    "value": [
+     210,
+     297
+    ],
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › sectPr#5 (gövde bölümü, 271 paragraf) › w:pgSz",
+    "status": "MEASURED"
+   },
+   "page.numbering": {
+    "value": {
+     "enabled": true,
+     "position": "bottom",
+     "align": "right",
+     "format": "arabic",
+     "startAt": 1,
+     "restart": false
+    },
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › sectPr#5 (gövde bölümü, 271 paragraf) › footer PAGE alanı, w:pgNumType",
+    "status": "MEASURED"
+   },
+   "page.footer.distanceMm": {
+    "value": 12.51,
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › sectPr#5 (gövde bölümü, 271 paragraf) › w:pgMar/@w:footer",
+    "status": "MEASURED"
+   },
+   "typography.body": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "justify",
+     "lineHeight": 1.5
+    },
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › gövde profili: 23/39 paragraf (≥200 karakter), 6 farklı biçim",
+    "status": "MEASURED"
+   },
+   "typography.headings.1": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "center",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "keepWithNext": true
+    },
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › 8/19 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.2.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}.{2}."
+    },
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.2": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "justify",
+     "lineHeight": 1.5,
+     "spaceAfterPt": 0,
+     "textTransform": "uppercase",
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}."
+     },
+     "keepWithNext": true
+    },
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › 10/10 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.3": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "justify",
+     "lineHeight": 1.5,
+     "spaceAfterPt": 0,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}",
+      "suffix": "."
+     },
+     "keepWithNext": true
+    },
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › 9/9 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.4": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "justify",
+     "lineHeight": 1.5,
+     "spaceAfterPt": 0,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}.{4}",
+      "suffix": "."
+     },
+     "keepWithNext": true
+    },
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › 2/2 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "tables.position": {
+    "value": "above",
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › 2 üstte / 0 altta",
+    "status": "MEASURED"
+   },
+   "tables": {
+    "value": {
+     "label": "Tablo",
+     "position": "above",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "left",
+      "lineHeight": 1.5
+     },
+     "numbering": {
+      "scope": "document",
+      "format": "{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › 2/2 yazı; etiket sayımı {'Tablo': 2}",
+    "status": "MEASURED"
+   },
+   "figures": {
+    "value": {
+     "label": "Şekil",
+     "position": "below",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "left",
+      "lineHeight": 1.5
+     },
+     "numbering": {
+      "scope": "document",
+      "format": "{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › 5/5 yazı; etiket sayımı {'Şekil': 5}",
+    "status": "MEASURED"
+   },
+   "typography.footnotes": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 10,
+     "lineHeight": 1,
+     "align": "justify",
+     "placement": "pageBottom"
+    },
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › stil DipnotMetni + settings.xml footnotePr",
+    "status": "MEASURED"
+   },
+   "sections.cover": {
+    "value": "15 blok, outerCover",
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › ön sayfa #0: T.C. / DOKUZ EYLÜL ÜNİVERSİTESİ / SOSYAL BİLİMLER ENSTİTÜSÜ / Anabilim Dalını Se",
+    "status": "MEASURED"
+   },
+   "sections.inner-cover": {
+    "value": "15 blok, innerCover",
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › ön sayfa #1: T.C. / DOKUZ EYLÜL ÜNİVERSİTESİ / SOSYAL BİLİMLER ENSTİTÜSÜ / Anabilim Dalını Se",
+    "status": "MEASURED"
+   },
+   "sections.approval": {
+    "value": "3 blok, approval",
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › ön sayfa #2: TEZ ONAY SAYFASI / (Tezli Yüksek Lisans ve Doktora tezleri için Jüri Üyelerinin ",
+    "status": "MEASURED"
+   },
+   "sections.declaration": {
+    "value": "6 blok, declaration",
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › ön sayfa #3: YEMİN METNİ / Tez/Proje türü olarak sunduğum “Tez Başlığınızı İlk Harfleri Büyük",
+    "status": "MEASURED"
+   },
+   "sections": {
+    "value": [
+     "outerCover",
+     "innerCover",
+     "approval",
+     "declaration",
+     "abstract",
+     "englishAbstract",
+     "tableOfContents",
+     "listOfAbbreviations",
+     "listOfTables",
+     "listOfFigures",
+     "appendices",
+     "mainContent",
+     "bibliography"
+    ],
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › 10 birinci düzey başlık, 8 fiziksel bölüm",
+    "status": "MEASURED"
+   },
+   "bibliography.hangingIndentMm": {
+    "value": 12.7,
+    "source": "DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx › stil Kaynaka",
+    "status": "MEASURED"
+   },
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/DEU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_TR.pdf",
+    "locations": [
+     {
+      "value": 30,
+      "location": "sayfa 6",
+      "sentence": "Yazımda şu ölçütler geçerlidir: Kelime İşlem Yazılımı: Word for Windows Kenar Boşlukları : Üst boşluk (top) : 3 cm Alt boşluk (bottom) : 3 cm Sol (left) : 4 cm Sağ (right) : 2,5 cm Karakter : Arial veya Times New Roman Punto : Arial karakterinde 11 punto, Times New Roman karakterinde 12 punto Satır "
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/DEU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_TR.pdf",
+    "locations": [
+     {
+      "value": 30,
+      "location": "sayfa 6",
+      "sentence": "Yazımda şu ölçütler geçerlidir: Kelime İşlem Yazılımı: Word for Windows Kenar Boşlukları : Üst boşluk (top) : 3 cm Alt boşluk (bottom) : 3 cm Sol (left) : 4 cm Sağ (right) : 2,5 cm Karakter : Arial veya Times New Roman Punto : Arial karakterinde 11 punto, Times New Roman karakterinde 12 punto Satır "
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/DEU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_TR.pdf",
+    "locations": [
+     {
+      "value": 40,
+      "location": "sayfa 6",
+      "sentence": "Yazımda şu ölçütler geçerlidir: Kelime İşlem Yazılımı: Word for Windows Kenar Boşlukları : Üst boşluk (top) : 3 cm Alt boşluk (bottom) : 3 cm Sol (left) : 4 cm Sağ (right) : 2,5 cm Karakter : Arial veya Times New Roman Punto : Arial karakterinde 11 punto, Times New Roman karakterinde 12 punto Satır "
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/DEU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_TR.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 6",
+      "sentence": "Yazımda şu ölçütler geçerlidir: Kelime İşlem Yazılımı: Word for Windows Kenar Boşlukları : Üst boşluk (top) : 3 cm Alt boşluk (bottom) : 3 cm Sol (left) : 4 cm Sağ (right) : 2,5 cm Karakter : Arial veya Times New Roman Punto : Arial karakterinde 11 punto, Times New Roman karakterinde 12 punto Satır "
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/DEU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_TR.pdf",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "sayfa 6",
+      "sentence": "Paragraf Girintisi : 1,25 cm Paragraf Düzeni : İki yana yaslanmış (Justified) Sayfa Numarası : Sağ alt köşe (Altbilgi (footer): 1,25 cm) Yazı Rengi : Siyah"
+     },
+     {
+      "value": "bottom",
+      "location": "sayfa 14",
+      "sentence": "Tüm sayfa numaraları sayfanın sağ alt köşesine metinde kullanılan punto ile yazılmalıdır."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "right",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/DEU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_TR.pdf",
+    "locations": [
+     {
+      "value": "right",
+      "location": "sayfa 6",
+      "sentence": "Paragraf Girintisi : 1,25 cm Paragraf Düzeni : İki yana yaslanmış (Justified) Sayfa Numarası : Sağ alt köşe (Altbilgi (footer): 1,25 cm) Yazı Rengi : Siyah"
+     },
+     {
+      "value": "right",
+      "location": "sayfa 14",
+      "sentence": "Tüm sayfa numaraları sayfanın sağ alt köşesine metinde kullanılan punto ile yazılmalıdır."
+     }
+    ]
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/DEU_Sosyal_Bilimler_Tez_Kapagi_Ornegi.pdf",
+    "sha256": "35273fa92cc21b4df45dbcb6e16a046cc23d9d2e6f9ec117b8aa2084ef5ea584"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx",
+    "sha256": "3be9d9bf880329a2af4d504dac72a998b3755de47c4d79ee18ed7fef2c365d57"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/DEU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_EN_2025.pdf",
+    "sha256": "1c2b4d6412855d1637d21020612571c53516501caa940ae981998a6b7233c5c7"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/DEU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_TR.pdf",
+    "sha256": "7ca257e513c2ffde8344803a9877cfb75f96d7f610d9b10ef20eb4cff0b675b0"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.87",
+     "reasoning": "Sayfa numarası yazısı 12.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (23/39 paragraf (≥200 karakter)); diğer 5 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.2.textTransform",
+     "value": "uppercase",
+     "reasoning": "10 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "typography.headings.3.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “1.4.1. Yapay Genel Z”)"
+    },
+    {
+     "field": "typography.headings.4.numbering",
+     "value": "{\"enabled\":true,\"format\":\"{1}.{2}.{3}.{4}\",\"suffix\":\".\"}",
+     "reasoning": "Başlık metinleri elle numaralanmış (ör. “3.3.6.1. Erken Sürüm”)"
+    },
+    {
+     "field": "page.numbering.restart",
+     "value": "[3,4,6,7]",
+     "reasoning": "DOCX bölümleri [3, 4, 6, 7] önceki bölümle aynı biçimdeyken yeniden başlatıyor (Word'de elle girilmiş başlangıç); sayfa numarası dizinin ilk bölümünden kesintisiz sürüyor"
+    },
+    {
+     "field": "sections.cover.PROGRAM_NAME",
+     "value": "Bir Program Seçiniz. PROGRAMI",
+     "reasoning": "Yer tutucu satır: cover › “Bir Program Seçiniz. PROGRAMI”"
+    },
+    {
+     "field": "sections.inner-cover.PROGRAM_NAME",
+     "value": "Bir Program Seçiniz. PROGRAMI",
+     "reasoning": "Yer tutucu satır: inner-cover › “Bir Program Seçiniz. PROGRAMI”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
+    },
+    {
+     "field": "typography.headings.1.numbering",
+     "value": "numarasız",
+     "reasoning": "Kaynak bu başlık düzeyi için numara biçimi belirtmiyor (Word'de numaralandırması olmayan başlık stili numarasızdır); motor yedeği yalnız düzeyin kendi sayacını yazıp numaraları tekrar ettireceği için numarasız kaydedildi."
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "measured": "10",
+     "guide": "9",
+     "guideSource": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/DEU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_TR.pdf sayfa 9"
+    }
+   ],
+   "guide": "DEU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_TR.pdf",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 30,
+   "bottomMm": 30,
+   "leftMm": 40,
+   "rightMm": 25
+  },
+  "header": {
+   "heightMm": 0,
+   "distanceMm": 12.51,
+   "content": "",
+   "firstPage": "same"
+  },
+  "footer": {
+   "heightMm": 4.87,
+   "distanceMm": 12.51,
+   "content": "",
+   "firstPage": "same"
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "right",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "lineHeight": 1.5
+  },
+  "paragraph": {
+   "firstLineIndentMm": 12.49,
+   "spaceAfterPt": 0
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "center",
+    "lineHeight": 1.5,
+    "spaceBeforePt": 0,
+    "spaceAfterPt": 0,
+    "keepWithNext": true,
+    "numbering": {
+     "enabled": false,
+     "format": "{1}",
+     "sequence": "arabic"
+    }
+   },
+   "2": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "justify",
+    "lineHeight": 1.5,
+    "spaceAfterPt": 0,
+    "textTransform": "uppercase",
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}."
+    },
+    "keepWithNext": true
+   },
+   "3": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "justify",
+    "lineHeight": 1.5,
+    "spaceAfterPt": 0,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}",
+     "suffix": "."
+    },
+    "keepWithNext": true
+   },
+   "4": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "justify",
+    "lineHeight": 1.5,
+    "spaceAfterPt": 0,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}.{4}",
+     "suffix": "."
+    },
+    "keepWithNext": true
+   }
+  },
+  "footnotes": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "lineHeight": 1,
+   "align": "justify",
+   "placement": "pageBottom"
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.15,
+   "baseline": "word"
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "cover",
+   "type": "outerCover",
+   "title": "Dış Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "T.C.",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "DOKUZ EYLÜL ÜNİVERSİTESİ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "SOSYAL BİLİMLER ENSTİTÜSÜ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "metadata",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     },
+     "field": "DEPARTMENT_NAME",
+     "fallback": "Anabilim dalı"
+    },
+    {
+     "type": "metadata",
+     "field": "PROGRAM_NAME",
+     "fallback": "Program",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     },
+     "suffix": " PROGRAMI"
+    },
+    {
+     "type": "text",
+     "value": "Tez/Proje Türünü Seçiniz.",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 29.21
+    },
+    {
+     "type": "metadata",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     },
+     "field": "THESIS_TITLE",
+     "fallback": "Tez başlığı"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 21.91
+    },
+    {
+     "type": "metadata",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     },
+     "field": "STUDENT_NAME",
+     "fallback": "Öğrenci adı soyadı"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 14.6
+    },
+    {
+     "type": "text",
+     "value": "Danışman",
+     "style": {
+      "align": "center",
+      "fontSizePt": 16,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Ünvan Seçiniz. Danışmanın Adı SOYADI 16 Punto yazınız.",
+     "style": {
+      "align": "center",
+      "fontSizePt": 16,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 21.91
+    },
+    {
+     "type": "metadata",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     },
+     "field": "MONTH_YEAR",
+     "fallback": "Ay ve yıl"
+    }
+   ]
+  },
+  {
+   "id": "inner-cover",
+   "type": "innerCover",
+   "title": "İç Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "T.C.",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "DOKUZ EYLÜL ÜNİVERSİTESİ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "SOSYAL BİLİMLER ENSTİTÜSÜ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "metadata",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     },
+     "field": "DEPARTMENT_NAME",
+     "fallback": "Anabilim dalı"
+    },
+    {
+     "type": "metadata",
+     "field": "PROGRAM_NAME",
+     "fallback": "Program",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     },
+     "suffix": " PROGRAMI"
+    },
+    {
+     "type": "text",
+     "value": "Tez/Proje Türünü Seçiniz.",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 29.21
+    },
+    {
+     "type": "metadata",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     },
+     "field": "THESIS_TITLE",
+     "fallback": "Tez başlığı"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 21.91
+    },
+    {
+     "type": "metadata",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     },
+     "field": "STUDENT_NAME",
+     "fallback": "Öğrenci adı soyadı"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 14.6
+    },
+    {
+     "type": "text",
+     "value": "Danışman",
+     "style": {
+      "align": "center",
+      "fontSizePt": 16,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Ünvan Seçiniz. Danışmanın Adı SOYADI 16 Punto yazınız.",
+     "style": {
+      "align": "center",
+      "fontSizePt": 16,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 21.91
+    },
+    {
+     "type": "text",
+     "value": "İZMİR - Yılı Seçin.",
+     "style": {
+      "align": "center",
+      "fontSizePt": 16,
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "approval",
+   "type": "approval",
+   "title": "Onay Sayfası",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "TEZ ONAY SAYFASI",
+     "style": {
+      "align": "left",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.3
+    },
+    {
+     "type": "text",
+     "value": "(Tezli Yüksek Lisans ve Doktora tezleri için Jüri Üyelerinin imzaladığı TEZ ONAY SAYFASI, Tezsiz Yüksek Lisans Bitirme Projelerinde ise Danışmanın imzaladığı “TEZSİZ YÜKSEK LİSANS DÖNEM PROJESİ ONAY FORMU” buraya konacaktır.",
+     "style": {
+      "align": "justify",
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "declaration",
+   "type": "declaration",
+   "title": "Etik Beyan",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "YEMİN METNİ",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "spaceBeforePt": 12
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.3
+    },
+    {
+     "type": "text",
+     "value": "Tez/Proje türü olarak sunduğum “Tez Başlığınızı İlk Harfleri Büyük Olacak Şekilde Yazınız.” adlı çalışmanın, tarafımdan, akademik kurallara ve etik değerlere uygun olarak yazıldığını ve yararlandığım eserlerin kaynakçada gösterilenlerden oluştuğunu, bunlara atıf yapılarak yararlanılmış olduğunu belirtir ve bunu onurumla doğrularım.",
+     "style": {
+      "align": "justify",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 21.91
+    },
+    {
+     "type": "text",
+     "value": "Tarih Seçiniz.",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "metadata",
+     "style": {
+      "align": "center",
+      "lineHeight": 1.5
+     },
+     "field": "STUDENT_NAME",
+     "fallback": "Öğrenci adı soyadı"
+    }
+   ]
+  },
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots",
+    "levels": [
+     1,
+     2,
+     3,
+     4
+    ]
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "KISALTMALAR",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "left"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR LİSTESİ",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "TABLOLAR LİSTESİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "left"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-figures",
+   "type": "listOfFigures",
+   "title": "ŞEKİLLER LİSTESİ",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "ŞEKİLLER LİSTESİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "justify"
+     }
+    }
+   }
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "GİRİŞ",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic",
+      "startAt": 1,
+      "restart": true
+     }
+    }
+   }
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER LİSTESİ",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "left"
+     }
+    }
+   }
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKÇA",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "justify"
+     }
+    }
+   }
+  }
+ ],
+ "tables": {
+  "label": "Tablo",
+  "position": "above",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "fontWeight": 700,
+   "align": "left",
+   "lineHeight": 1.5
+  },
+  "numbering": {
+   "scope": "document",
+   "format": "{n}",
+   "sequence": "arabic"
+  }
+ },
+ "figures": {
+  "label": "Şekil",
+  "position": "below",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "fontWeight": 700,
+   "align": "left",
+   "lineHeight": 1.5
+  },
+  "numbering": {
+   "scope": "document",
+   "format": "{n}",
+   "sequence": "arabic"
+  }
+ },
+ "bibliography": {
+  "heading": "KAYNAKÇA",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "left",
+   "lineHeight": 1.5
+  },
+  "hangingIndentMm": 12.7
+ },
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3,
+   4
+  ],
+  "showPageNumbers": true
+ }
+}

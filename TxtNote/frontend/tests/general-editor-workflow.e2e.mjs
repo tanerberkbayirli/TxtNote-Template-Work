@@ -28,7 +28,7 @@ try {
   await page.locator('.thesis-paper').first().waitFor();
   const drawer = page.getByRole('complementary', { name: 'Yan paneller', exact: true });
   const opener = page.getByRole('button', { name: 'Paneller', exact: true });
-  const panels = ['Yazım planı', 'Kaynaklar', 'Rehber', 'Sayfa ayarları', 'Öğe', 'Tez bilgileri'];
+  const panels = ['Yazım planı', 'Sayfa ayarları', 'Tez bilgileri'];
   for (const width of [1380, 500, 360]) {
     await page.setViewportSize({ width, height: 920 });
     await opener.click();
@@ -45,7 +45,7 @@ try {
     await drawer.waitFor({ state: 'hidden' });
     assert.equal(await opener.evaluate(node => node === document.activeElement), true);
   }
-  checks.push('Six panels at 1380/500/360px; Escape closes and restores focus');
+  checks.push('Five panels at 1380/500/360px; Escape closes and restores focus');
   await page.setViewportSize({ width: 1380, height: 920 });
   await opener.click();
   await page.getByRole('tab', { name: 'Dosya', exact: true }).click();

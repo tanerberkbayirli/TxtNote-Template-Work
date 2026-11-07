@@ -17,7 +17,8 @@ function textSpan(body) {
   }
   return null;
 }
-const indexFields = /<span class="thesis-index-(?:leader|page)">[\s\S]*?<\/span>/g;
+const indexFields = /<span class="thesis-index-(?:leader|page)"[^>]*>[\s\S]*?<\/span>/g;
+const PAGE_SPAN = /<span class="thesis-index-page"([^>]*)>([\s\S]*?)<\/span>/;
 
 /** Register non-editor paragraphs with the same document-local layout model as
  * cover blocks. Generated row anchors, rather than their order, identify rows.
@@ -30,7 +31,7 @@ export function resolvePresentationHtml(html, section, thesisLayout, kind = 'sta
   const result = String(html || '').replace(/<(h[1-6]|p|li|div(?=\s+class="thesis-index-page-heading"))\b([^>]*)>([\s\S]*?)<\/\1>/gi, (whole, tag, attrs, inner) => {
     // Only paragraph divs explicitly emitted by the index renderer are leaves.
     if (tag.toLowerCase() === 'div' && !/class="thesis-index-page-heading"/.test(attrs)) return whole;
-    if (/data-layout-id=/.test(attrs) || !plainThesisText(inner)) return whole;
+    if (/data-layout-id=|data-layout-frame-line=/.test(attrs) || !plainThesisText(inner)) return whole;
     const anchor = attrs.match(/data-index-target="([^"]*)"/)?.[1];
     const key = anchor ? `row:${anchor}` : `${tag.toLowerCase()}:${ordinal++}`;
     const id = presentationId(section.id, kind, key);
@@ -51,7 +52,25 @@ export function resolvePresentationHtml(html, section, thesisLayout, kind = 'sta
       // Replace only the row label. Its page number remains a live generated field.
       if (override !== undefined && span) body = body.slice(0, span.contentStart) + escape(override)
         + (span.inner.match(indexFields) || []).join('') + body.slice(span.end);
-      body = body.replace('<span class="thesis-index-text">', '<span class="thesis-index-text" data-layout-content="">');
+      const editableSpan = textSpan(body);
+      if (editableSpan) {
+        const fields = editableSpan.inner.match(indexFields) || [];
+        const label = editableSpan.inner.replace(indexFields, '');
+        body = body.slice(0, editableSpan.contentStart)
+          + `<span data-layout-content="">${label}</span>` + fields.join('')
+          + body.slice(editableSpan.end);
+      }
+      // The page number (or the row's "Sayfa" heading) is its own object: its typography is set apart from the row text,
+      // its value stays the live generated field (not editable as text).
+      const page = body.match(PAGE_SPAN);
+      const pageNode = page && resolveLayoutElement({ id: presentationId(section.id, kind, `page:${anchor}`), sectionId: section.id, type: 'text', layoutMode: 'flow',
+        text: plainThesisText(page[2]), editableLayout: true, editableContent: false, locked: false,
+        style: section.generatedIndex?.style || section.rules.body, presentation: true }, layout);
+      if (pageNode) {
+        pageNode.override = layout.elements[pageNode.id] || {};
+        elements.push(pageNode);
+        body = body.replace(PAGE_SPAN, `<span class="thesis-index-page"$1 data-layout-id="${escape(pageNode.id)}" data-layout-section="${escape(section.id)}" data-layout-type="text" data-layout-locked="false" data-layout-editable-content="false" data-layout-presentation="true">$2</span>`);
+      }
     } else if (override !== undefined) body = escape(override).replace(/\n/g, '<br>');
     const slotHeight = node.override.flowHeightMm;
     const positioned = ['absolute', 'anchored'].includes(node.layoutMode);

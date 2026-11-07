@@ -1,0 +1,831 @@
+[
+ {
+  "id": "page-size",
+  "kind": "page_size",
+  "params": {},
+  "expected": [
+   210,
+   297
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1; referenced thesis guide: A4"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "margin-left",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.left",
+   "sections": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ]
+  },
+  "expected": 40,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1 refers to thesis guide: Sayfa Düzeni; body sections only, cover follows Figure 1"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "margin-right",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.right",
+   "sections": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ]
+  },
+  "expected": 25,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1 refers to thesis guide: Sayfa Düzeni; body sections only, cover follows Figure 1"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "margin-top",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.top",
+   "sections": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ]
+  },
+  "expected": 25,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1 refers to thesis guide: Sayfa Düzeni; body sections only, cover follows Figure 1"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "margin-bottom",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.bottom",
+   "sections": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ]
+  },
+  "expected": 25,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1 refers to thesis guide: Sayfa Düzeni; body sections only, cover follows Figure 1"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "body-font",
+  "kind": "fonts",
+  "params": {
+   "families": [
+    "Times New Roman"
+   ]
+  },
+  "expected": [
+   "TimesNewRomanPSMT",
+   "TimesNewRomanPS-BoldMT",
+   "TimesNewRomanPS-ItalicMT",
+   "TimesNewRomanPS-BoldItalicMT"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1; thesis guide: Yazım Şekli ve Karakteri"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "body-size",
+  "kind": "font_size",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   }
+  },
+  "expected": 12,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1; thesis guide: 12 punto"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "body-spacing",
+  "kind": "docx_attr",
+  "params": {
+   "tag": "spacing",
+   "attrs": [
+    "line"
+   ],
+   "mode": "has",
+   "numeric_tol": 1
+  },
+  "expected": [
+   "360"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1; thesis guide: 1,5 satır"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "body-indent",
+  "kind": "docx_attr",
+  "params": {
+   "tag": "ind",
+   "attrs": [
+    "firstLine"
+   ],
+   "mode": "allowed"
+  },
+  "expected": [
+   "0"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1; thesis guide: paragraf girintisi yapılmamalıdır"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "cover-title-size",
+  "kind": "line_attr",
+  "params": {
+   "pages": [
+    1
+   ],
+   "regex": "^Çevrimiçi",
+   "attr": "size",
+   "agg": "all",
+   "source": "layout"
+  },
+  "expected": 14,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal p.5 Figure 1: TEZİN ADI (14 Punto Koyu)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "cover-title-bold",
+  "kind": "line_attr",
+  "params": {
+   "pages": [
+    1
+   ],
+   "regex": "^Çevrimiçi",
+   "attr": "bold",
+   "agg": "all"
+  },
+  "expected": 1,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal p.5 Figure 1: TEZİN ADI (14 Punto Koyu)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "docx-no-undefined",
+  "kind": "docx_no_undefined",
+  "params": {},
+  "expected": "none",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "engine package integrity"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "word-opens",
+  "kind": "word_opens",
+  "params": {},
+  "expected": "opens in Word",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "real Word render"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "pdf-word-pages",
+  "kind": "page_count_match",
+  "params": {},
+  "expected": "equal page counts",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "real PDF/DOCX output parity"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "pdf-word-labels",
+  "kind": "page_labels_match",
+  "params": {},
+  "expected": "identical labels on every physical page",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "real PDF/DOCX output parity"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "phd-page-size",
+  "kind": "page_size",
+  "params": {
+   "fixture": "phd"
+  },
+  "expected": [
+   210,
+   297
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1; referenced thesis guide: A4"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "phd-margin-left",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.left",
+   "sections": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ],
+   "fixture": "phd"
+  },
+  "expected": 40,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1 refers to thesis guide: Sayfa Düzeni; body sections only, cover follows Figure 1"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "phd-margin-right",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.right",
+   "sections": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ],
+   "fixture": "phd"
+  },
+  "expected": 25,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1 refers to thesis guide: Sayfa Düzeni; body sections only, cover follows Figure 1"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "phd-margin-top",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.top",
+   "sections": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ],
+   "fixture": "phd"
+  },
+  "expected": 25,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1 refers to thesis guide: Sayfa Düzeni; body sections only, cover follows Figure 1"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "phd-margin-bottom",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.bottom",
+   "sections": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+   ],
+   "fixture": "phd"
+  },
+  "expected": 25,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1 refers to thesis guide: Sayfa Düzeni; body sections only, cover follows Figure 1"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "phd-body-font",
+  "kind": "fonts",
+  "params": {
+   "families": [
+    "Times New Roman"
+   ],
+   "fixture": "phd"
+  },
+  "expected": [
+   "TimesNewRomanPSMT",
+   "TimesNewRomanPS-BoldMT",
+   "TimesNewRomanPS-ItalicMT",
+   "TimesNewRomanPS-BoldItalicMT"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1; thesis guide: Yazım Şekli ve Karakteri"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "phd-body-size",
+  "kind": "font_size",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "fixture": "phd"
+  },
+  "expected": 12,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1; thesis guide: 12 punto"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "phd-body-spacing",
+  "kind": "docx_attr",
+  "params": {
+   "tag": "spacing",
+   "attrs": [
+    "line"
+   ],
+   "mode": "has",
+   "numeric_tol": 1,
+   "fixture": "phd"
+  },
+  "expected": [
+   "360"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1; thesis guide: 1,5 satır"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "phd-body-indent",
+  "kind": "docx_attr",
+  "params": {
+   "tag": "ind",
+   "attrs": [
+    "firstLine"
+   ],
+   "mode": "allowed",
+   "fixture": "phd"
+  },
+  "expected": [
+   "0"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal §1.1; thesis guide: paragraf girintisi yapılmamalıdır"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "phd-cover-title-size",
+  "kind": "line_attr",
+  "params": {
+   "pages": [
+    1
+   ],
+   "regex": "^Çevrimiçi",
+   "attr": "size",
+   "agg": "all",
+   "source": "layout",
+   "fixture": "phd"
+  },
+  "expected": 14,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal p.5 Figure 1: TEZİN ADI (14 Punto Koyu)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "phd-cover-title-bold",
+  "kind": "line_attr",
+  "params": {
+   "pages": [
+    1
+   ],
+   "regex": "^Çevrimiçi",
+   "attr": "bold",
+   "agg": "all",
+   "fixture": "phd"
+  },
+  "expected": 1,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "proposal p.5 Figure 1: TEZİN ADI (14 Punto Koyu)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "phd-docx-no-undefined",
+  "kind": "docx_no_undefined",
+  "params": {
+   "fixture": "phd"
+  },
+  "expected": "none",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "engine package integrity"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "phd-word-opens",
+  "kind": "word_opens",
+  "params": {
+   "fixture": "phd"
+  },
+  "expected": "opens in Word",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "real Word render"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "phd-pdf-word-pages",
+  "kind": "page_count_match",
+  "params": {
+   "fixture": "phd"
+  },
+  "expected": "equal page counts",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "real PDF/DOCX output parity"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "phd-pdf-word-labels",
+  "kind": "page_labels_match",
+  "params": {
+   "fixture": "phd"
+  },
+  "expected": "identical labels on every physical page",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf + AFSU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+   "locator": "real PDF/DOCX output parity"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "source-inference",
+  "kind": "note",
+  "params": {
+   "text": "Proposal §1.1 explicitly requires an APA bibliography; its location is not specified. It is placed after the proposal body. Page/text rules are expressly inherited from the current thesis guide; cover values follow proposal Figure 1."
+  },
+  "expected": null,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf",
+   "locator": "§1.1 / Figure 1"
+  },
+  "evidence": "UNKNOWN"
+ },
+ {
+  "id": "visual-source-proposal-default-pdf",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    1
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "^AFYONKARAHİSAR SAĞLIK",
+    "^ÜNİVERSİTESİ LİSANSÜSTÜ",
+    "ANABİLİM DALI$",
+    "^Çevrimiçi",
+    "Tez Önerisi\\)$",
+    "^Hazırlayan$",
+    "ÖZDOĞAN$",
+    "^Danışman$",
+    "ÇİÇEK$",
+    "2026.*AFYONKARAHİSAR$"
+   ],
+   "source": "pdf",
+   "fixture": "default"
+  },
+  "expected": [
+   32.946,
+   37.603,
+   42.259,
+   46.915,
+   79.558,
+   92.6,
+   121.465,
+   126.122,
+   163.342,
+   168.039,
+   237.852
+  ],
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf",
+   "locator": "Physical p.5 Figure 1. Explicit 12/14 pt sizes kept despite reduced source diagram. Degree label baseline 92.6 mm reserves two title lines; other anchors measured directly."
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "visual-source-proposal-default-word",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    1
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "^AFYONKARAHİSAR SAĞLIK",
+    "^ÜNİVERSİTESİ LİSANSÜSTÜ",
+    "ANABİLİM DALI$",
+    "^Çevrimiçi",
+    "Tez Önerisi\\)$",
+    "^Hazırlayan$",
+    "ÖZDOĞAN$",
+    "^Danışman$",
+    "ÇİÇEK$",
+    "2026.*AFYONKARAHİSAR$"
+   ],
+   "source": "word",
+   "fixture": "default"
+  },
+  "expected": [
+   32.946,
+   37.603,
+   42.259,
+   46.915,
+   79.558,
+   92.6,
+   121.465,
+   126.122,
+   163.342,
+   168.039,
+   237.852
+  ],
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf",
+   "locator": "Physical p.5 Figure 1. Explicit 12/14 pt sizes kept despite reduced source diagram. Degree label baseline 92.6 mm reserves two title lines; other anchors measured directly."
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "visual-source-proposal-phd-pdf",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    1
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "^AFYONKARAHİSAR SAĞLIK",
+    "^ÜNİVERSİTESİ LİSANSÜSTÜ",
+    "ANABİLİM DALI$",
+    "^Çevrimiçi",
+    "Tez Önerisi\\)$",
+    "^Hazırlayan$",
+    "ÖZDOĞAN$",
+    "^Danışman$",
+    "ÇİÇEK$",
+    "2026.*AFYONKARAHİSAR$"
+   ],
+   "source": "pdf",
+   "fixture": "phd"
+  },
+  "expected": [
+   32.946,
+   37.603,
+   42.259,
+   46.915,
+   79.558,
+   92.6,
+   121.465,
+   126.122,
+   163.342,
+   168.039,
+   237.852
+  ],
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf",
+   "locator": "Physical p.5 Figure 1. Explicit 12/14 pt sizes kept despite reduced source diagram. Degree label baseline 92.6 mm reserves two title lines; other anchors measured directly."
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "visual-source-proposal-phd-word",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    1
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "^AFYONKARAHİSAR SAĞLIK",
+    "^ÜNİVERSİTESİ LİSANSÜSTÜ",
+    "ANABİLİM DALI$",
+    "^Çevrimiçi",
+    "Tez Önerisi\\)$",
+    "^Hazırlayan$",
+    "ÖZDOĞAN$",
+    "^Danışman$",
+    "ÇİÇEK$",
+    "2026.*AFYONKARAHİSAR$"
+   ],
+   "source": "word",
+   "fixture": "phd"
+  },
+  "expected": [
+   32.946,
+   37.603,
+   42.259,
+   46.915,
+   79.558,
+   92.6,
+   121.465,
+   126.122,
+   163.342,
+   168.039,
+   237.852
+  ],
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Lisansustu_Tez_Onerisi_Hazirlama_Kilavuzu_2025.pdf",
+   "locator": "Physical p.5 Figure 1. Explicit 12/14 pt sizes kept despite reduced source diagram. Degree label baseline 92.6 mm reserves two title lines; other anchors measured directly."
+  },
+  "evidence": "INFERRED"
+ }
+]

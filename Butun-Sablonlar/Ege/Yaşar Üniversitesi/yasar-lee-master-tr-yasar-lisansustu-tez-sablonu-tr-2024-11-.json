@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "templateVersion": "0.1.0-draft",
+ "templateVersion": "0.2.0-source-rebuild",
  "id": "yasar-lee-master-tr-yasar-lisansustu-tez-sablonu-tr-2024-11-",
  "universityId": "yasar",
  "universityName": "Yaşar Üniversitesi",
@@ -12,19 +12,346 @@
  "source": {
   "type": "official",
   "documentName": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx",
-  "verifiedAt": "2026-10-07",
+  "verifiedAt": "2026-10-23",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 a96608c4acfed017e94af51630662fadf5f77f604b3c045f7dc2b21f0aa4262b",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
-   "Kılavuz paragraf girintisi belirtmiyor; girinti yok (0 mm) kabul edildi",
-   "Kılavuz kuralları birleştirildi: Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf (1 alan, 1 çelişki)"
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
   ],
   "guideDocumentName": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx",
+  "rebuildKind": "docx-template",
+  "archiveSha256": "a96608c4acfed017e94af51630662fadf5f77f604b3c045f7dc2b21f0aa4262b",
+  "evidence": {
+   "page.margins": {
+    "value": {
+     "topMm": 25.01,
+     "bottomMm": 25.01,
+     "leftMm": 40,
+     "rightMm": 25.01
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › sectPr#16 (gövde bölümü, 27 paragraf) › w:pgMar",
+    "status": "MEASURED"
+   },
+   "page.size": {
+    "value": [
+     210,
+     297
+    ],
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › sectPr#16 (gövde bölümü, 27 paragraf) › w:pgSz",
+    "status": "MEASURED"
+   },
+   "page.numbering": {
+    "value": {
+     "enabled": true,
+     "position": "bottom",
+     "align": "center",
+     "format": "arabic",
+     "startAt": 1,
+     "restart": false
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › sectPr#16 (gövde bölümü, 27 paragraf) › footer PAGE alanı, w:pgNumType",
+    "status": "MEASURED"
+   },
+   "page.footer.distanceMm": {
+    "value": 15.01,
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › sectPr#16 (gövde bölümü, 27 paragraf) › w:pgMar/@w:footer",
+    "status": "MEASURED"
+   },
+   "typography.body": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "justify",
+     "lineHeight": 1.5
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › gövde profili: 128/243 paragraf (≥200 karakter), 15 farklı biçim",
+    "status": "MEASURED"
+   },
+   "typography.headings.1.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}"
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.1": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 13,
+     "fontWeight": 700,
+     "align": "center",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 18,
+     "spaceAfterPt": 12,
+     "textTransform": "uppercase",
+     "numbering": {
+      "enabled": true,
+      "format": "{1}"
+     },
+     "keepWithNext": true
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › 9/16 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.2.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}.{2}"
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.2": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 13,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 12,
+     "spaceAfterPt": 8,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}"
+     },
+     "keepWithNext": true
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › 11/11 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.3.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}"
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.3": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 12,
+     "spaceAfterPt": 8,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}"
+     },
+     "keepWithNext": true
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › 10/10 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.4.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}.{4}"
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.4": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1,
+     "spaceBeforePt": 8,
+     "spaceAfterPt": 0,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}.{4}"
+     },
+     "keepWithNext": true
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › 7/7 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "tables.position": {
+    "value": "above",
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › 35 üstte / 5 altta",
+    "status": "MEASURED"
+   },
+   "tables": {
+    "value": {
+     "label": "Tablo",
+     "position": "above",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1
+     },
+     "numbering": {
+      "scope": "chapter",
+      "format": "{chapter}.{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › 35/35 yazı; etiket sayımı {'Tablo': 35}",
+    "status": "MEASURED"
+   },
+   "figures": {
+    "value": {
+     "label": "Şekil",
+     "position": "below",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1
+     },
+     "numbering": {
+      "scope": "chapter",
+      "format": "{chapter}.{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › 1/1 yazı; etiket sayımı {'Şekil': 1}",
+    "status": "MEASURED"
+   },
+   "typography.footnotes": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 10,
+     "lineHeight": 1,
+     "align": "justify",
+     "placement": "pageBottom"
+    },
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › stil DipnotMetni + settings.xml footnotePr",
+    "status": "MEASURED"
+   },
+   "sections.cover": {
+    "value": "10 blok, outerCover",
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › ön sayfa #0: YAŞAR ÜNİVERSİTESİ / LİSANSÜSTÜ EĞİTİM ENSTİTÜSÜ / TEZ BAŞLIĞI / TEZ BAŞLIĞI İKİ",
+    "status": "MEASURED"
+   },
+   "sections.approval": {
+    "value": "19 blok, approval",
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › ön sayfa #1: JÜRİ ONAY SAYFASI / Jüri üyeleri olarak bu tezi okuduğumuzu ve kapsam ve kalite ",
+    "status": "MEASURED"
+   },
+   "sections.front-page-2": {
+    "value": "11 blok, custom",
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › ön sayfa #2: ÖZ / TEZ BAŞLIĞI / Soyad, İsim / Yüksek Lisans/Doktora/Sanatta Yeterlik Tezi, Pr",
+    "status": "MEASURED"
+   },
+   "sections.front-page-3-2": {
+    "value": "3 blok, custom",
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › ön sayfa #3: incelenmiştir. Yasalar/Standartlar/Yönetmelik/Mevzuat’ın en önemli etkileyen uns",
+    "status": "MEASURED"
+   },
+   "sections": {
+    "value": [
+     "outerCover",
+     "approval",
+     "custom",
+     "custom",
+     "englishAbstract",
+     "acknowledgements",
+     "tableOfContents",
+     "listOfFigures",
+     "listOfTables",
+     "listOfAbbreviations",
+     "bibliography",
+     "appendices",
+     "mainContent"
+    ],
+    "source": "Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx › 9 birinci düzey başlık, 32 fiziksel bölüm",
+    "status": "MEASURED"
+   },
+   "typography.footnotes.fontSizePt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 10,
+    "source": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+    "locations": [
+     {
+      "value": 10,
+      "location": "sayfa 26",
+      "sentence": "Dipnotlarda yazı tipi Times New Roman, boyutu ise 10 puntodur."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "sayfa 9",
+      "sentence": "Sayfa numaraları sayfanın orta alt bölmesinde yer almalıdır."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "center",
+    "source": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+    "locations": [
+     {
+      "value": "center",
+      "location": "sayfa 9",
+      "sentence": "Sayfa numaraları sayfanın orta alt bölmesinde yer almalıdır."
+     },
+     {
+      "value": "center",
+      "location": "sayfa 15",
+      "sentence": "Alternatifler için Sözel Değişkenler ve Değerleri Çok Kötü (CK) (0, 0, 1) Kötü (K) (0, 1, 3) Orta Kötü (OK) (1, 3, 5) Orta (O) (3, 5, 7) Orta İyi (Oİ) (5, 7, 9) İyi (İ) (7, 9, 10) Çok İyi (Cİ) (9,10,10) Kaynak: Yazar Tablo veya şeklin dikey veya yatay yerleştirilmesi, sayfa numarasının yerinde herha"
+     }
+    ]
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx",
+    "sha256": "1c3d3117f694b84ec064285de60b928e4d3f9445183e77771010aca6be86ba5c"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx",
+    "sha256": "f4d763b85dab95ba3287e3e24b17e585c2d3468b257a4882eab1c58e7d962e6e"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx",
+    "sha256": "a96608c4acfed017e94af51630662fadf5f77f604b3c045f7dc2b21f0aa4262b"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_EN_2024-11.pdf",
+    "sha256": "1d34350ba78b82f202e4199415b4475493d4706ffe0a56fc1b3aaf149c67dcb9"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+    "sha256": "0e49ceb57f431169c9756c6aef17519c1540596f35fc43d58d941a0bb68a4336"
+   }
+  ],
   "review": {
    "unknown": [
     {
      "field": "sections.mainContent",
      "reason": "Gövde başlığı (GİRİŞ vb.) bulunamadı; ana metin bölümü varsayılan olarak eklendi"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
     }
    ],
    "inferred": [
@@ -79,29 +406,19 @@
      "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
     },
     {
-     "field": "typography.paragraph.firstLineIndentMm",
-     "value": "0",
-     "reasoning": "Kılavuz paragraf girintisi belirtmiyor; girinti yok (0 mm) kabul edildi — kılavuzdan teyit edilmeli"
-    }
-   ],
-   "conflicts": [
-    {
-     "field": "typography.body.lineHeight",
-     "measured": "1.5",
-     "guide": "1",
-     "guideSource": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf › sayfa 34: “Sayfa altlığı (Bornova/ İzmir AY 20XX): Times New Roman, 11 punto, Normal kalınlık, ortalanmış, tek satır aralığı”"
-    }
-   ],
-   "guide": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
-   "gate": {
-    "overall": "CONFLICT",
-    "results": {
-     "PASS": 34,
-     "CONFLICT": 1
+     "field": "sections.sourceInstructions",
+     "value": "3",
+     "reasoning": "Şablonun kullanım yönergeleri ve örnek önsöz açıklamaları yeni tezin içeriği olarak basılmaması için çıkarıldı; özgün dosya korundu."
     },
-    "checkedAt": "2026-10-22",
-    "exportTool": "engine/tools/export.mjs"
-   }
+    {
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
+    }
+   ],
+   "conflicts": [],
+   "guide": "Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+   "gate": null
   }
  },
  "page": {
@@ -145,8 +462,7 @@
   },
   "paragraph": {
    "spaceBeforePt": 6,
-   "spaceAfterPt": 6,
-   "firstLineIndentMm": 0
+   "spaceAfterPt": 6
   },
   "headings": {
    "1": {
@@ -296,6 +612,82 @@
   "PROJECT_SUPPORT": {
    "label": "Proje desteği (varsa)",
    "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_NAME": {
+   "label": "Jury Member 1 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_NAME": {
+   "label": "Jury Member 2 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_NAME": {
+   "label": "Jury Member 3 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_NAME": {
+   "label": "Jury Member 4 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_NAME": {
+   "label": "Jury Member 5 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_INSTITUTION": {
+   "label": "Jury Member 1 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_INSTITUTION": {
+   "label": "Jury Member 2 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_INSTITUTION": {
+   "label": "Jury Member 3 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_INSTITUTION": {
+   "label": "Jury Member 4 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_INSTITUTION": {
+   "label": "Jury Member 5 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_NAME": {
+   "label": "Jury Member 6 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_NAME": {
+   "label": "Jury Member 7 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_INSTITUTION": {
+   "label": "Jury Member 6 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_INSTITUTION": {
+   "label": "Jury Member 7 Institution",
+   "type": "text"
   }
  },
  "sections": [
@@ -350,7 +742,7 @@
     {
      "type": "metadata",
      "field": "THESIS_TITLE",
-     "fallback": "TEZ BAŞLIĞI",
+     "fallback": "Tez başlığı",
      "style": {
       "align": "center",
       "fontSizePt": 16,
@@ -362,37 +754,13 @@
      }
     },
     {
-     "type": "text",
-     "value": "TEZ BAŞLIĞI İKİNCİ SATIR",
-     "style": {
-      "align": "center",
-      "fontSizePt": 16,
-      "fontWeight": 700,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 18,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "TEZ BAŞLIĞI ÜÇÜNCÜ SATIR",
-     "style": {
-      "align": "center",
-      "fontSizePt": 16,
-      "fontWeight": 700,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 18,
-      "lineHeight": 1.5
-     }
-    },
-    {
      "type": "spacer",
      "heightMm": 19.19
     },
     {
      "type": "metadata",
      "field": "STUDENT_NAME",
-     "fallback": "ÖĞRENCİNİN ADI SOYADI",
+     "fallback": "Öğrenci adı soyadı",
      "style": {
       "align": "center",
       "fontSizePt": 13,
@@ -406,7 +774,7 @@
      "type": "metadata",
      "field": "ADVISOR_NAME",
      "prefix": "TEZ DANIŞMANI: ",
-     "fallback": "TEZ DANIŞMANI: DR. ÖĞR. ÜYESİ/DOÇ. DR./prof. DR. XXX YYY",
+     "fallback": "Danışman adı soyadı",
      "style": {
       "align": "center",
       "fontSizePt": 13,
@@ -427,7 +795,7 @@
        "type": "metadata",
        "field": "CO_ADVISOR_NAME",
        "prefix": "EŞ DANIŞMANI: ",
-       "fallback": "EŞ DANIŞMANI: DR. ÖĞR. ÜYESİ/DOÇ. DR./prof. DR. XXX YYY (VARSA)",
+       "fallback": "İkinci danışman",
        "style": {
         "align": "center",
         "fontSizePt": 13,
@@ -916,14 +1284,15 @@
      }
     },
     {
-     "type": "text",
-     "value": "Prof. Dr. Yücel Öztürkoğlu",
+     "type": "metadata",
      "style": {
       "align": "right",
       "spaceBeforePt": 18,
       "spaceAfterPt": 7.2,
       "lineHeight": 1.5
-     }
+     },
+     "field": "INSTITUTE_DIRECTOR_NAME",
+     "fallback": "INSTITUTE_DIRECTOR_NAME"
     },
     {
      "type": "text",
@@ -939,18 +1308,14 @@
   },
   {
    "id": "front-page-2",
-   "type": "custom",
-   "title": "Ön sayfa 3",
+   "type": "abstract",
+   "title": "ÖZET",
    "status": "required",
    "group": "front",
-   "mode": "static",
+   "mode": "editable",
    "tocEntry": "none",
    "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": false
-     }
-    },
+    "page": {},
     "body": {
      "firstLineIndentMm": 0,
      "spaceBeforePt": 0,
@@ -958,169 +1323,7 @@
      "lineHeight": 1
     }
    },
-   "blocks": [
-    {
-     "type": "text",
-     "value": "ÖZ",
-     "style": {
-      "align": "center",
-      "fontSizePt": 13,
-      "fontWeight": 700,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "THESIS_TITLE",
-     "fallback": "TEZ BAŞLIĞI",
-     "style": {
-      "align": "center",
-      "fontSizePt": 13,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 18,
-      "lineHeight": 1.5,
-      "textTransform": "uppercase"
-     }
-    },
-    {
-     "type": "text",
-     "value": "Soyad, İsim",
-     "style": {
-      "align": "center",
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Yüksek Lisans/Doktora/Sanatta Yeterlik Tezi, Program Adı",
-     "style": {
-      "align": "center",
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Danışman: Dr. Öğr. Üyesi/Doç. Dr./Prof. Dr. Xxx YYY",
-     "style": {
-      "align": "center",
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Eş Danışman: Dr. Öğr. Üyesi/Doç. Dr./Prof. Dr. Xxx YYY",
-     "style": {
-      "align": "center",
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Ay 20XX",
-     "style": {
-      "align": "center",
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Araştırmada, “KOBİ’lerde Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) Yönetimi’ndeki engeller nelerdir?” ve “Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) uygulamalarında karşılaşılan engeller yapısal olarak birbirini nasıl etkilemektedir?” sorunsalı çerçevesinde Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) Yönetimi’nde KOBİ’ lerdeki engellerin incelenmesi amaçlanmaktadır. Bu amaç çerçevesinde öncelikle araştırmanın konusunu oluşturan unsurların belirlenmesi aşamasında derinlemesine bir literatür incelemesi gerçekleştirilmiştir.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 6,
-      "spaceAfterPt": 6,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Literatür incelemesi neticesinde Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) Yönetimi’ndeki engellerin %85’ini oluşturan 15 somut unsur elde edilmiştir. Elde edilen unsurların önem ve etki düzeyini incelemek amacıyla DEMATEL yönteminden yararlanılmıştır.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 6,
-      "spaceAfterPt": 6,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Bu doğrultuda Kayseri’de sürdürülebilirlik konusunda çalışmalar yürüten işletmeler ve 2022 yılı ISO birinci ve ikinci 500 işletmelerinin sektörel bazlı kümelenmesi gerçekleştirilerek, sürdürülebilirlik konusunda çalışmalar yürüten üst düzey yöneticilerinden 15 engel unsurunu ikili olarak karşılaştırmaları istenmiştir.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 6,
-      "spaceAfterPt": 6,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Elde edilen bulgular, KOBİ’lerde Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) Yönetimi’ndeki engellerden stratejilerin en yüksek önem düzeyinde olduğunu göstermektedir. Bununla birlikte KOBİ’lerde Sürdürülebilir Yalın Tedarik Zinciri (SYTZ) Yönetimi’ndeki engel unsurları etkileyen ve etkilenen olmak üzere iki şekilde",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 6,
-      "spaceAfterPt": 6,
-      "lineHeight": 1.5
-     }
-    }
-   ]
-  },
-  {
-   "id": "front-page-3-2",
-   "type": "custom",
-   "title": "Ön sayfa 4",
-   "status": "required",
-   "group": "front",
-   "mode": "static",
-   "tocEntry": "none",
-   "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": false
-     }
-    },
-    "body": {
-     "firstLineIndentMm": 0,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0,
-     "lineHeight": 1
-    }
-   },
-   "blocks": [
-    {
-     "type": "text",
-     "value": "incelenmiştir. Yasalar/Standartlar/Yönetmelik/Mevzuat’ın en önemli etkileyen unsur olduğu saptanmıştır.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 6,
-      "spaceAfterPt": 6,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "KOBİ’ ler için etkilenen en önemli unsurun tedarik/tedarikçiler olduğu tespit edilmiştir. Araştırma kapsamında elde edilen bulgular neticesinde ilgili alan yazına ve uygulamacılara yönelik çeşitli öneriler geliştirilmiştir.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 6,
-      "spaceAfterPt": 6,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Anahtar sözcükler: sürdürülebilirlik, yalın, tedarik zinciri yönetimi, engeller, KOBİ’ler",
-     "style": {
-      "align": "justify",
-      "fontWeight": 700,
-      "spaceBeforePt": 6,
-      "spaceAfterPt": 6,
-      "lineHeight": 1.5
-     }
-    }
-   ]
+   "showTitle": true
   },
   {
    "id": "english-abstract",
@@ -1240,6 +1443,15 @@
    }
   },
   {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
    "id": "bibliography",
    "type": "bibliography",
    "title": "KAYNAKÇA",
@@ -1270,15 +1482,6 @@
      }
     }
    }
-  },
-  {
-   "id": "main-content",
-   "type": "mainContent",
-   "title": "Ana metin",
-   "status": "required",
-   "group": "body",
-   "mode": "editable",
-   "showTitle": false
   }
  ],
  "tables": {
@@ -1320,8 +1523,7 @@
    "fontSizePt": 12,
    "align": "left",
    "lineHeight": 1.5
-  },
-  "hangingIndentMm": 8
+  }
  },
  "toc": {
   "heading": "İÇİNDEKİLER",

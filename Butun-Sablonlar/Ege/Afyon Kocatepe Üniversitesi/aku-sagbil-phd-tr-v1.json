@@ -254,13 +254,19 @@
    "minItems": 3,
    "separator": ",",
    "severity": "warning",
-   "message": "Anahtar Kelimeler 3-6 tane olmalı ve virgülle ayrılmalıdır."
+   "message": "Anahtar Kelimeler 3-6 tane olmalı ve virgülle ayrılmalıdır.",
+   "maxItems": 6,
+   "alphabetical": true,
+   "locale": "tr"
   },
   "KEYWORDS_EN": {
    "minItems": 3,
    "separator": ",",
    "severity": "warning",
-   "message": "Keywords 3-6 tane olmalı ve virgülle ayrılmalıdır."
+   "message": "Keywords 3-6 tane olmalı ve virgülle ayrılmalıdır.",
+   "maxItems": 6,
+   "alphabetical": true,
+   "locale": "en"
   }
  },
  "templateVersion": "1.0.0",
@@ -274,13 +280,13 @@
   "type": "official",
   "documentName": "AKÜ Sağlık Bilimleri Enstitüsü Tez Yazım Kılavuzu — AKU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2022.pdf (Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/)",
   "revisionDate": "2022-02-10 (kılavuz dosyası/yolu); kapak 2020 basar, Senato kabul tarihi boş",
-  "verifiedAt": "2026-10-02",
+  "verifiedAt": "2026-10-24",
   "notes": [
    "Kaynak: yalnız 2022 kılavuzu (spec: engine/specs/aku-sagbil.json, 2022 uzlaştırması). Eski (2009/2015) kılavuza ait değerler (üstte sayfa numarası, Tablo etiketi, 36/24 nk başlık aralıkları, 14 pt H1, 10 mm girinti, mavi kapak bandı vb.) uygulanmaz; engine/docs/reports/AKU_DECISIONS.md'deki aku-sagbil bölümü bu uzlaştırmadan öncedir ve onunla çeliştiği yerde spec + 2022 kılavuzu geçerlidir. Formal geçerlilik tarihi doğrulanamamıştır (UNKNOWN).",
    "Açık kılavuz değerleri (EXPLICIT): A4; her kenardan 3 cm; Times New Roman, iç kapak hariç 12 punto; 1,5 satır aralığı; iki yana yaslı; paragraf başı girintisiz; alt başlık ve paragraflardan önce/sonra 1 satır (1,5 aralıklı) boşluk; sayfa numarası yalnız alt bilgide ortalı, Times New Roman 11 punto, işaretsiz; ön sayfalar küçük Romen, GİRİŞ'ten itibaren 1,2,3…; 1. derece başlık BÜYÜK HARF, 2./3. derece her sözcüğün ilk harfi büyük (ve/veya/ile küçük), hepsi koyu ve solda, '1.', '1.1.', '1.1.1.' numaralı, her ana bölüm yeni sayfada; en çok 3. derece; şekil/çizelge/denklem bölüm içinde bağımsız {bölüm}.{n} numaralı, etiket+numara koyu ve ':' sonra açıklama koyu değil, çizelge açıklaması üstte, şekil açıklaması altta; bölünen çizelge '{etiket} {no}. Devam.'; dip not ana metinden 2 tam aralık sonra, soldan sayfa ortasına sürekli çizgi, daha küçük punto ve dar aralık; KAYNAKLAR 11 pt, tek aralık, iki yana yaslı, 2. satırdan itibaren 1,25 cm içeriden, her kaynaktan sonra 6 nk; ÖZET: başlık büyük harf koyu ortalı metin bloğunun üstünde, 2 aralık (24 nk) sonra tez adı (sözcük baş harfleri büyük, koyu), 1 satır (12 nk) sonra metin, 1 satır sonra koyu 'Anahtar Kelimeler:' ve 3–6 alfabetik sözcük; SUMMARY aynı düzende İngilizce.",
    "Örnek sayfaları (Örnek 1-14) kılavuzun kendi vektör metninden ölçülmüştür (MEASURED); özel sayfaların dikey yerleşimi bu taban çizgilerinden türetilmiştir. Örnek 2 notundaki 'Üsten 21 cm, sağ ve sol kenardan 5'er cm' ölçülen geometriyle yalnız mm okunuşuyla uyuşur (ilk taban çizgisi 30 mm kenar boşluğunun 21,07 mm altında, satırlar x 35,95–175,24 mm): iç kapakta 21 mm üst ve 5 mm yan girinti (INFERRED).",
    "Dış kapak: üniversite kitap satış biriminden sağlanan hazır kapaktır (§3.2.1); üretilmez. 'Dış kapak altı (ön kapak)' sayfası Örnek 1'dir ve üretilir.",
-   "CONFLICT — ön sayfa numaralaması: §2.6 dış kapak, iç kapak, onay ve etik sayfasını 'numaralandırılmaz' der ve Özet'ten itibaren i, ii, iii… verir; Örnek 8 ise onay sayfasını II, etik sayfasını III, ÖZET'i IV gösterir. Uygulama: iç kapak sayılır (i) ancak basılmaz, onay (ii) ve etik (iii) sayılır ancak basılmaz, ÖZET iv olur (Örnek 8); dış kapak altı sayfası sayılmaz. Çözüm insan kararı gerektirir.",
+   "Çözümlenen örnek/metin çelişkisi — ön sayfa numaralaması: §2.6 (PDF s.5) uygulanır. Dış/İç kapak, onay ve etik numaralandırılmaz ve Romen başlangıcına katılmaz; ÖZET i, SUMMARY ii, GİRİŞ 1 olur. Örnek 8’in ÖZET IV düzeni açık kılavuz kuralına karşı örnek olarak korunur, uygulanmaz.",
    "CONFLICT — dizin başlıkları: §3.2.9–3.2.11 'ŞEKİLLER DİZİNİ / ÇİZELGELER DİZİNİ / RESİMLER DİZİNİ' der (tırnaklı), Örnek 10–12 'ŞEKİLLER / ÇİZELGELER / RESİMLER' basar; metindeki ifade kullanılır. İçindekiler satırları başlıkları aynen yansıtır (§3.2.7), Örnek 8'deki 'ÖNSÖZ SAYFASI', 'KABUL VE ONAY SAYFASI', 'BİLİMSEL ETİK BİLDİRİM SAYFASI' örnek metinleridir, sayfa başlıkları (ÖNSÖZ, TEZ KABUL VE ONAY SAYFASI, BİLİMSEL ETİK BİLDİRİMİ) aynen listelenir.",
    "CONFLICT — şekil/çizelge yazı boyutu: §2.14 'ana metin puntosu ile aynı' (12), aynı bölümün örneği 'Times New Roman, 11 punto' der. Örnekteki 11 punto kullanılır (daha özel); çözülmemiştir. Çizelge altı kısaltma açıklaması 8 punto, iki yana yaslı (EXPLICIT).",
    "CONFLICT — EKLER: §3 ve §3.3.7 '7. EKLER' / 'EK 1., EK 2.' der, Örnek 8 başlığı '7. EKLER', alt kalemleri '8.1., 8.2.' gösterir, Örnek 13 '8. EKLER / Ek 8.1.' basar. KAYNAKLAR'dan sonraki bölüm numarası sürdürülür (7.), ek alt başlıkları 2. derece başlık olarak numaralanır ve her biri yeni sayfada başlar (EXPLICIT: ayrı sayfa).",
@@ -288,8 +294,119 @@
    "Kaynakta olmayan uygulama seçimleri (NOT_SPECIFIED): sayfa numarasının kenara uzaklığı 12,5 mm (Word varsayılanı; kılavuz uzaklık vermez); üst bilgi yok; başlıklar 12 pt (belge geneli 12 punto kuralından; kılavuz başlık boyutu vermez); paragraf aralığı 1 boş satır (§2.4 'alt bölüm başlıkları ile paragraflardan önce ve sonra'); şekil/çizelge ile açıklama arası 0, açıklama satır aralığı 1,5 (genel kural); çizelge çizgileri üst/başlık altı/alt üç yatay 0,5 pt (kılavuz: dikey çizgi yok, yatay çizgiler ana bilgilerle bölünmeli), hücre 12 pt; dip not 10 pt tek aralık Times New Roman, ayraç kalınlığı 0,5 pt, ayraç öncesi 24 pt ('2 tam aralık' = 2×12 nk, kılavuzun kendi 'aralık' birimi, INFERRED), ayraç uzunluğu sayfa ortasına kadar = metin genişliğinin %50'si; denklem numarası '(bölüm.n)' parantezli ve sağda; denklem yazı tipi Times New Roman 12; ÖNSÖZ/İÇİNDEKİLER/dizin/SİMGELER başlıkları metin bloğunun üstünde, başlıktan sonra 1 boş satır (başlık konumu UNKNOWN); H1 numarası sonrası boşluk; sembol listesi tek aralık (Örnek 9 ölçümü); anahtar kelime öncesi boşluk önceki paragrafın 1 boş satırı; Önsöz imza satırları Örnek 7'deki gibi ortalı, 6 pt aralıklı.",
    "Özet sayfası: Örnek 5/6 başlığı metin bloğunun 7,3 mm altında gösterir; açık kural (başlık metin bloğunun üstünde, 24 nk/12 nk boşluklar) uygulanır. Örnek 5 anahtar kelime etiketi 'Anahtar Kelimeler:', Örnek 6 'Keywords:' basar (spec'teki 'Key words:' PDF vektör metniyle doğrulanamadı). Özet satır aralığı kılavuzda yazılmamış (cümlede sözcük eksik) — genel 1,5 kuralı ve Örnek 5/6 ölçümü (7,3 mm).",
    "Onay sayfası: Örnek 3 'Tez Onay Sayfası' adlı tez çalışması der — tırnak içi tez başlığı yer tutucusu olarak yorumlanmıştır (INFERRED). Jüri sayısı yüksek lisans için belirtilmemiştir; örnek 5 üyelidir (başkan + 4 üye). 5. ve 6. üye satırları yalnız doldurulunca görünür ve enstitü onay çerçevesini sonraki sayfaya itebilir (kılavuz yalnız 'üye sayısına göre artırılıp azaltılmalı' der). Enstitü müdürü adı düzenlenebilir alandır.",
-   "Sınırlamalar: yatay sayfa TxtNote'ta yoktur; baskı (tek yüz, 70–100 g/m², en az 7 nüsha, ciltleme) belge içeriği değildir; ikinci dilde isteğe bağlı özetin yeri/başlığı kaynakta belirsizdir (UNKNOWN) ve üretilmez; Örnek 2'nin kırmızı açıklama kutuları basılmaz."
-  ]
+   "Sınırlamalar: yatay sayfa TxtNote'ta yoktur; baskı (tek yüz, 70–100 g/m², en az 7 nüsha, ciltleme) belge içeriği değildir; ikinci dilde isteğe bağlı özetin yeri/başlığı kaynakta belirsizdir (UNKNOWN) ve üretilmez; Örnek 2'nin kırmızı açıklama kutuları basılmaz.",
+   "24.10.2026 güncel kaynak denetimi: resmî sayfadan indirilen dosyalar SHA-256 ile doğrulandı. Çelişen örnek düzenleri yerine açık kılavuz metni esas alındı; kararlar currentVerification kaydındadır."
+  ],
+  "regionalAudit": {
+   "checkedAt": "2026-10-23",
+   "status": "CORE_RECHECKED",
+   "layoutRebuilt": false,
+   "visualConformanceRechecked": false,
+   "documents": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/AKU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2022.pdf",
+     "sha256": "b9ce1b784277b50b81c9da027bfe40d06948b78868d8d49145a2ecb730ffd581"
+    }
+   ],
+   "checkedFields": [
+    {
+     "field": "typography.body.fontFamily",
+     "template": "Times New Roman",
+     "sourceValue": "Times New Roman",
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/AKU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2022.pdf",
+     "evidence": [
+      {
+       "value": "Times New Roman",
+       "location": "sayfa 4",
+       "sentence": "Bunun için yazı karakteri “Times New Roman” olup, iç kapak hariç tezin tamamında “12 punto” olmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "template": 12,
+     "sourceValue": 12,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/AKU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2022.pdf",
+     "evidence": [
+      {
+       "value": 12,
+       "location": "sayfa 4",
+       "sentence": "Bunun için yazı karakteri “Times New Roman” olup, iç kapak hariç tezin tamamında “12 punto” olmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "template": 30,
+     "sourceValue": 30,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/AKU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2022.pdf",
+     "evidence": [
+      {
+       "value": 30,
+       "location": "sayfa 4",
+       "sentence": "Kenar BoĢlukları ve Sayfa Düzeni Her sayfa kenarından “3 cm” boĢluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.leftMm",
+     "template": 30,
+     "sourceValue": 30,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/AKU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2022.pdf",
+     "evidence": [
+      {
+       "value": 30,
+       "location": "sayfa 4",
+       "sentence": "Kenar BoĢlukları ve Sayfa Düzeni Her sayfa kenarından “3 cm” boĢluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.rightMm",
+     "template": 30,
+     "sourceValue": 30,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/AKU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2022.pdf",
+     "evidence": [
+      {
+       "value": 30,
+       "location": "sayfa 4",
+       "sentence": "Kenar BoĢlukları ve Sayfa Düzeni Her sayfa kenarından “3 cm” boĢluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "template": 1.5,
+     "sourceValue": 1.5,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/AKU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2022.pdf",
+     "evidence": [
+      {
+       "value": 1.5,
+       "location": "sayfa 4",
+       "sentence": "Kılavuz içinde belirtilen özel durumlar dıĢında tezin tamamının yazımında 1,5 satır aralığı kullanılmalıdır."
+      }
+     ]
+    }
+   ],
+   "conflicts": []
+  },
+  "currentVerification": {
+   "checkedAt": "2026-10-24T14:33:37.232Z",
+   "page": "https://sagbilens.aku.edu.tr/tez-yazim-klavuzu/",
+   "files": [
+    {
+     "label": "TEZ YAZIM KLAVUZU (PDF)",
+     "url": "https://sagbilens.aku.edu.tr/wp-content/uploads/sites/9/2022/02/Tez-Yazim-Klavuzu-SON-10.02.2022.pdf",
+     "sha256": "b9ce1b784277b50b81c9da027bfe40d06948b78868d8d49145a2ecb730ffd581",
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/AKU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2022.pdf"
+    }
+   ],
+   "precedence": "Explicit official guide requirements take precedence over illustrative examples; current official forms fill gaps not specified by guide text.",
+   "decisions": [
+    "§2.6 prose controls: abstract starts at lowercase Roman i; unnumbered covers, approval and ethics do not advance that sequence.",
+    "§3.2.5: each abstract at most two pages, 3–6 alphabetically ordered keywords."
+   ]
+  }
  },
  "placeholders": {
   "THESIS_TITLE": {
@@ -701,10 +818,7 @@
     },
     "page": {
      "numbering": {
-      "enabled": false,
-      "format": "roman-lower",
-      "startAt": 1,
-      "restart": true
+      "enabled": false
      },
      "trimTerminalTextLeading": true
     }
@@ -1570,9 +1684,7 @@
     },
     "page": {
      "numbering": {
-      "enabled": false,
-      "format": "roman-lower",
-      "indexLabelWhenHidden": true
+      "enabled": false
      },
      "margins": {
       "leftMm": 27.31,
@@ -1747,9 +1859,7 @@
     },
     "page": {
      "numbering": {
-      "enabled": false,
-      "format": "roman-lower",
-      "indexLabelWhenHidden": true
+      "enabled": false
      },
      "trimTerminalTextLeading": true
     }
@@ -1773,7 +1883,10 @@
     },
     "page": {
      "numbering": {
-      "format": "roman-lower"
+      "format": "roman-lower",
+      "enabled": true,
+      "startAt": 1,
+      "restart": true
      }
     }
    },
@@ -1796,7 +1909,8 @@
       "spaceAfterPt": 12
      }
     }
-   ]
+   ],
+   "maxPages": 2
   },
   {
    "id": "abstract",
@@ -1893,7 +2007,8 @@
       "spaceAfterPt": 12
      }
     }
-   ]
+   ],
+   "maxPages": 2
   },
   {
    "id": "abstract-en",

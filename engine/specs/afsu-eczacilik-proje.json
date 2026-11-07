@@ -427,5 +427,11 @@
       "Table caption -> table top: EXPLICIT 6 pt; measured 6.74 pt to the outer edge of the 0.75 pt rule (0.26 mm; 6.37 pt to rule centre). Table -> next text: EXPLICIT 12 pt; measured 12.75 pt to the outer edge (0.26 mm). PASS at the 0.5 mm default tolerance; not <=0.25 mm to the rule's outer edge.",
       "Interpretation (INFERRED): '12 pt gap' is treated as a Word paragraph-spacing box gap (line box to line box), the same reading used for the 12 pt paragraph gap; Word line model line top = baseline - 0.9336 em, line height 1.15 em x multiple."
     ]
+  },
+  "coverVisualDecision": {
+    "date": "2026-10-25",
+    "basis": "User requested visual comparison of editor-exported PDF with the official sample; physical pp.8-9 were measured and rendered.",
+    "conflict": "Prose requires outer/title 14 pt; official cover samples render 12 pt bold. Sample visual layout is used and prose requirements above are retained as a conflict.",
+    "report": "orchestration/raporlar/AFSU_ECZACILIK_GORSEL_2026-10-25.md"
   }
 }

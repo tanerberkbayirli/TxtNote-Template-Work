@@ -1,0 +1,13 @@
+<!-- organize-scan-sources -->
+# Piri Reis Üniversitesi — tez kaynakları (otomatik tarama)
+
+Alan adı: `pirireis.edu.tr` · İstanbul · vakif · tarama durumu: kısmi (39/40 sayfa) · 2026-10-04
+
+Derece, dil, enstitü ve revizyon tarihi bu listede doğrulanmadı; şablon uygulanmadan önce belgenin kendisinden teyit edilmeli.
+
+## Yazım kılavuzları
+
+- **Deniz Hukuku Tez Yazım Kılavuzu İndirmek İçin Tıklayınız** — PDF. Kaynak sayfa: [Dönem Projesi / Tez Yazım Kılavuzu – PRU | Lisansüstü Eğitim Enstitüsü](https://graduate.pirireis.edu.tr/donem-projesi-tez-yazim-kilavuzu/) · [dosya](https://graduate.pirireis.edu.tr/wp-content/uploads/2024/02/Deniz-Hukuku-Tez-Yazim-Kilavuzu.pdf). Yerel: Deniz-Hukuku-Tez-Yazim-Kilavuzu.pdf (yerel atıf: `../../../../Butun-Sablonlar/Marmara/Piri Reis Üniversitesi/Deniz-Hukuku-Tez-Yazim-Kilavuzu.pdf`; dosya bulunamadı) (SHA-256 `211d447830c6b9b2f34781166ed41df20a68cd33a8e4d3383268ed469478b0a9`).
+- **LEE Dönem Projesi Yazım Kılavuzunu İndirmek İçin Tıklayınız** — PDF. Kaynak sayfa: [Dönem Projesi / Tez Yazım Kılavuzu – PRU | Lisansüstü Eğitim Enstitüsü](https://graduate.pirireis.edu.tr/donem-projesi-tez-yazim-kilavuzu/) · [dosya](https://graduate.pirireis.edu.tr/wp-content/uploads/2024/02/LEE-Donem-Projesi-Yazim-Kilavuzu-2022.pdf). Yerel: LEE-Donem-Projesi-Yazim-Kilavuzu-2022.pdf (yerel atıf: `../../../../Butun-Sablonlar/Marmara/Piri Reis Üniversitesi/LEE-Donem-Projesi-Yazim-Kilavuzu-2022.pdf`; dosya bulunamadı) (SHA-256 `4d7e146795e58d2bbedec8227810c7bac608019daf9a4e400b78a591f5101145`).
+- **LEE Tez Yazım Kılavuzu (İng) İndirmek İçin Tıklayınız** — PDF. Kaynak sayfa: [Dönem Projesi / Tez Yazım Kılavuzu – PRU | Lisansüstü Eğitim Enstitüsü](https://graduate.pirireis.edu.tr/donem-projesi-tez-yazim-kilavuzu/) · [dosya](https://graduate.pirireis.edu.tr/wp-content/uploads/2024/02/LEE-Tez-Yazim-Kilavuzu-Ing-2022s.pdf). Yerel: LEE-Tez-Yazim-Kilavuzu-Ing-2022s.pdf (yerel atıf: `../../../../Butun-Sablonlar/Marmara/Piri Reis Üniversitesi/LEE-Tez-Yazim-Kilavuzu-Ing-2022s.pdf`; dosya bulunamadı) (SHA-256 `b54e5d03c0a058acd63d67fee31199a8db50424c52c3cff38328986cfdfedb69`).
+- **Tez Yazım Kılavuzu​** — DOC. Kaynak sayfa: [Tez Yazım Kılavuzu​ – Piri Reis Üniversitesi](https://pirireis.edu.tr/?files=tez-yazim-kilavuzu) · [dosya](https://pirireis.edu.tr/wp-content/uploads/2024/10/PRU-Maritime-Faculty-Thesis-Manual_2020_r22-1.doc). Yerel: PRU-Maritime-Faculty-Thesis-Manual_2020_r22-1.doc (yerel atıf: `../../../../Butun-Sablonlar/Marmara/Piri Reis Üniversitesi/PRU-Maritime-Faculty-Thesis-Manual_2020_r22-1.doc`; dosya bulunamadı) (SHA-256 `6e79b98a6451813b90c02fe99ba1ea2bb6dcfa1a5225b03032ec0ebd3839d7b6`).

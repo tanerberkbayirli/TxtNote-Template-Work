@@ -388,7 +388,100 @@
    "Kaynak göstermede danışmanınızla ACS ya da Chicago sistemini seçip tutarlı uygulayın. Şablon kaynakça yazımını otomatik doğrulamaz.",
    "Jüri üye sayısını kendi kurul kararınıza göre doldurun. Dördüncü/beşinci üye ve ikinci danışman alanları boşsa basılmaz.",
    "Ciltli dış kapak ayrı bir seçenektir. Siyah cilt, altın yazı ve sırt baskısını basımevi hazırlamalıdır."
-  ]
+  ],
+  "regionalAudit": {
+   "checkedAt": "2026-10-23",
+   "status": "CORE_RECHECKED",
+   "layoutRebuilt": false,
+   "visualConformanceRechecked": false,
+   "documents": [
+    {
+     "path": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+     "sha256": "0364854d1bbadd00c4bb65829cf7d1f431a74e61c7093515ce7c9703ef19eefb"
+    }
+   ],
+   "checkedFields": [
+    {
+     "field": "page.margins.leftMm",
+     "template": 35,
+     "sourceValue": 35.0,
+     "source": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+     "evidence": [
+      {
+       "value": 35.0,
+       "location": "sayfa 7",
+       "sentence": "Margins The left margin (binding side) must be 3.5 cm wide to allow for binding; other three margins must be 2.5 cm wide."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.topMm",
+     "template": 25,
+     "sourceValue": 25.0,
+     "source": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+     "evidence": [
+      {
+       "value": 25.0,
+       "location": "sayfa 7",
+       "sentence": "Margins The left margin (binding side) must be 3.5 cm wide to allow for binding; other three margins must be 2.5 cm wide."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.rightMm",
+     "template": 25,
+     "sourceValue": 25.0,
+     "source": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+     "evidence": [
+      {
+       "value": 25.0,
+       "location": "sayfa 7",
+       "sentence": "Margins The left margin (binding side) must be 3.5 cm wide to allow for binding; other three margins must be 2.5 cm wide."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "template": 25,
+     "sourceValue": 25.0,
+     "source": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+     "evidence": [
+      {
+       "value": 25.0,
+       "location": "sayfa 7",
+       "sentence": "Margins The left margin (binding side) must be 3.5 cm wide to allow for binding; other three margins must be 2.5 cm wide."
+      }
+     ]
+    },
+    {
+     "field": "typography.body.fontFamily",
+     "template": "Times New Roman",
+     "sourceValue": "Times New Roman",
+     "source": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+     "evidence": [
+      {
+       "value": "Times New Roman",
+       "location": "sayfa 7",
+       "sentence": "Font As a character font, use Times New Roman."
+      }
+     ]
+    },
+    {
+     "field": "typography.body.firstLineIndentMm",
+     "template": 12.7,
+     "sourceValue": 12.7,
+     "source": "Butun-Sablonlar/Ege/İzmir Yüksek Teknoloji Enstitüsü/Lisansustu_Egitim_Enstitusu_Tez/IYTE_Lisansustu_Tez_Yazim_Kilavuzu_EN_2019.pdf",
+     "evidence": [
+      {
+       "value": 12.7,
+       "location": "sayfa 9",
+       "sentence": "Paragraphs must be indented by tab of 1.27 cm. and there must be no spaces between two paragraphs."
+      }
+     ]
+    }
+   ],
+   "conflicts": []
+  }
  },
  "id": "iyte-lee-phd-en-v1",
  "degreeType": "phd",

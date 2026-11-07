@@ -19,7 +19,8 @@ export async function layoutEditorChecks(page, pass, { reload } = {}) {
   const id = await text.getAttribute('data-layout-id');
   const object = page.locator(`[data-layout-id="${id}"]`);
   const initial = await nodeRect(object);
-  await page.getByRole('tab',{name:'Öğe',exact:true}).click();
+  // The side panels no longer list "Öğe"; the selection's own "Ayrıntıları aç" opens the inspector.
+  await page.getByRole('button',{name:'Ayrıntıları aç',exact:true}).click();
   await settle(page);
   assert.ok(await page.getByLabel('Yazı tipi',{exact:true}).inputValue());
   assert.ok(Number(await page.getByLabel('Punto',{exact:true}).inputValue()) > 0);

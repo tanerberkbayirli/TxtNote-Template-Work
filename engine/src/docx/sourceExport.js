@@ -87,6 +87,7 @@ export async function buildSourceDocx(model) {
       const has = (attrs.class || "").split(/\s+/).includes(cls);
       const had = (expected.class || "").split(/\s+/).includes(cls);
       if (has !== had || !original && has) overrides[key] = has;
+      if ((attrs.class || "").split(/\s+/).includes(`fmt-not-${key}`)) overrides[key] = false;
     }
     for (const [key,a] of [["fontSizePt","data-fmt-pt"],["color","data-fmt-color"]]) if (attrs[a] !== undefined) overrides[key] = key === "fontSizePt" ? Number(attrs[a]) : attrs[a];
     if (!Object.keys(overrides).length) return;
@@ -157,6 +158,7 @@ export async function buildSourceDocx(model) {
   const authorFormat = (node,inherited={}) => {
     const result={...inherited},a=node.attributes||{},cls=a.class||"";
     for(const [key,tag,token] of [["bold",/^(b|strong)$/,"fmt-bold"],["italic",/^(i|em)$/,"fmt-italic"],["underline",/^u$/,"fmt-underline"],["strike",/^(s|del)$/,"fmt-strike"]])if(tag.test(node.tag||"")||cls.split(/\s+/).includes(token))result[key]=true;
+    for (const key of ["bold", "italic"]) if (cls.split(/\s+/).includes(`fmt-not-${key}`)) result[key] = false;
     if(a['data-fmt-pt'])result.fontSizePt=Number(a['data-fmt-pt']);
     if(a['data-fmt-color'])result.color=a['data-fmt-color'];
     return result;

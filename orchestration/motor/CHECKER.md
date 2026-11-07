@@ -1,6 +1,6 @@
-# Conformance checker (AGENTS.md 24A)
+# Çıktı kontrol araçları
 
-> Tarihsel not: başlıktaki "AGENTS.md 24A" eski AGENTS sürümüne aittir; güncel kurallar [../BASLA.md](../BASLA.md).
+Güncel çalışma kuralları [BASLA.md](../BASLA.md). Bu belge araç davranışını anlatır; eski faz numaraları yeni iş talimatı değildir.
 
 ```
 node engine/tools/check.mjs --target <id> [--fixture <path>] [--word] [--only <id,id>|failed]
@@ -15,7 +15,7 @@ Stdout shows only counts and FAIL/SKIPPED/CONFLICT rows. Exit 0 only if there is
 env `THESIS_BASE_URL`, `THESIS_BROWSER_EXECUTABLE` (default: local Chrome), `PLAYWRIGHT_MODULE` override defaults.
 Unit tests: `python -m unittest engine/tools/test_conformance.py`.
 Regression gate: `node engine/tools/check.mjs --all [--word]` runs every target with a `specs/<id>.checks.json`,
-prints one summary line per target and exits 1 if any target has a FAIL or errors (orchestration/plans/MOTOR.md 0.4).
+prints one summary line per target and exits 1 if any target has a FAIL or errors.
 With `--all`, `--out` creates a separate child directory per target; `--manifest`
 records exact child-command wall times, report paths, counts and export errors.
 `--targets` selects a subset for fresh targeted reruns. Layout-report export timings
@@ -127,8 +127,8 @@ Compare against preserved baseline DOCX using the same profile; Word opening nev
 Phase 5.1 local regression sequence (Word runs must be serial):
 `node engine/tools/check.mjs --all --word --out .test-tmp/validation/word-compat/phase-5.1/regression --manifest .test-tmp/validation/word-compat/phase-5.1/regression-manifest.json`,
 then `powershell -NoProfile -ExecutionPolicy Bypass -File engine/tools/validate-schema-regression.ps1`,
-then `python engine/tools/(silindi) --manifest .test-tmp/validation/word-compat/phase-5.1/regression-manifest.json`.
-The recorder rejects missing checks, lost PASS and changed retained FAIL measurements. Its regression gate
+The historical Python recorder is no longer present; that step cannot be executed. Do not claim full Phase 5.1 closure from the remaining commands alone.
+The historical recorder rejected missing checks, lost PASS and changed retained FAIL measurements. Its regression gate
 does not override separate schema FAIL or source UNKNOWN, and rerunning it replaces the diagnostic acceptance
 record; phase closure requires reviewing the resulting evidence and updating the status ledger.
 `required:true` UNKNOWN notes stay UNKNOWN and required SKIPPED/UNKNOWN checks return nonzero.

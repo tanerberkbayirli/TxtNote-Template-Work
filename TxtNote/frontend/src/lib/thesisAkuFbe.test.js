@@ -208,7 +208,7 @@ describe("index rows with leaderFlow inline", () => {
     const model = compile();
     const toc = section(model, "toc");
     assert.equal(toc.generatedIndex.leaderFlow, "inline");
-    assert.match(toc.html, /<span class="thesis-index-title">GİRİŞ<span class="thesis-index-leader">\.+<\/span><span class="thesis-index-page">/);
+    assert.match(toc.html, /<span class="thesis-index-title">GİRİŞ<span class="thesis-index-leader">\.+<\/span><span class="thesis-index-page"[^>]*>/);
     assert.match(toc.html, /<span class="thesis-index-title">ÖZET<span class="thesis-index-leader">/, "rows without a label get a title box too");
     const css = buildThesisCss(model);
     assert.match(css, /\.thesis-index-title>\.thesis-index-leader\{position:absolute;/);

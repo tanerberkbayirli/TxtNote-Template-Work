@@ -1,0 +1,385 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "ege-reklamcilik-undergraduate-tr-kaynak",
+ "universityId": "ege",
+ "universityName": "Ege Üniversitesi",
+ "instituteId": "reklamcilik",
+ "instituteName": "İletişim Fakültesi · Reklamcılık Bitirme Projesi",
+ "degreeType": "undergraduate",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
+  ],
+  "guideDocumentName": "Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+  "archivePath": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_Reklamcilik_Bitirme_Projesi/Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "4616929302e4ad6f6bd83c0241e2086d96baf4f581422f6027b54cd577d32aa0",
+  "evidence": {
+   "typography.body.lineHeight": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_Reklamcilik_Bitirme_Projesi/Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+    "locations": [
+     {
+      "value": 1.5,
+      "location": "paragraf 98",
+      "sentence": "Paragrafların satır aralığı 1,5 satır (öncesi ve sonrası 6 nk) olmalı, paragraflar arası boşluk olmamalı ve iki yana yaslanmalıdır."
+     }
+    ]
+   },
+   "typography.body.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "justify",
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_Reklamcilik_Bitirme_Projesi/Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+    "locations": [
+     {
+      "value": "justify",
+      "location": "paragraf 98",
+      "sentence": "Paragrafların satır aralığı 1,5 satır (öncesi ve sonrası 6 nk) olmalı, paragraflar arası boşluk olmamalı ve iki yana yaslanmalıdır."
+     }
+    ]
+   },
+   "typography.paragraph.spaceBeforePt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 6,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_Reklamcilik_Bitirme_Projesi/Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+    "locations": [
+     {
+      "value": 6,
+      "location": "paragraf 98",
+      "sentence": "Paragrafların satır aralığı 1,5 satır (öncesi ve sonrası 6 nk) olmalı, paragraflar arası boşluk olmamalı ve iki yana yaslanmalıdır."
+     }
+    ]
+   },
+   "typography.footnotes.fontSizePt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 10,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_Reklamcilik_Bitirme_Projesi/Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+    "locations": [
+     {
+      "value": 10,
+      "location": "paragraf 94",
+      "sentence": "Yazı tipi “Times New Roman” olarak seçilmeli, boyutu ise kapaklarda 14 punto, metin alanlarında 12 punto, dipnot verilmesi durumunda 10 punto olmalıdır."
+     }
+    ]
+   },
+   "typography.body.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_Reklamcilik_Bitirme_Projesi/Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+    "location": "paragraf 94",
+    "passage": "Bitirme Projesi dersi raporu bilgisayar ortamında Microsoft Word ya da PDF formatında hazırlanmalıdır. Yazı tipi “Times New Roman” olarak seçilmeli, boyutu ise kapaklarda 14 punto, metin alanlarında 12 punto, dipnot verilmesi durumunda 10 punto olmalıdır. Yazılar siyah renkte, başlıklar “kalın (bold)”, diğer alanlar ise “normal” şeklinde seçilmelidir.",
+    "decision": "Reklamcılık raporu metni; kapak 14 punto."
+   },
+   "typography.body.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_Reklamcilik_Bitirme_Projesi/Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+    "location": "paragraf 94",
+    "passage": "Bitirme Projesi dersi raporu bilgisayar ortamında Microsoft Word ya da PDF formatında hazırlanmalıdır. Yazı tipi “Times New Roman” olarak seçilmeli, boyutu ise kapaklarda 14 punto, metin alanlarında 12 punto, dipnot verilmesi durumunda 10 punto olmalıdır. Yazılar siyah renkte, başlıklar “kalın (bold)”, diğer alanlar ise “normal” şeklinde seçilmelidir.",
+    "decision": "Reklamcılık raporu metni; kapak 14 punto."
+   },
+   "page.margins.topMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_Reklamcilik_Bitirme_Projesi/Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+    "location": "paragraf 95",
+    "passage": "Bitirme Projesi dersi raporu kağıt boyutu A4, tüm kenar boşlukları ise 2,5 olmalıdır. Sayfalar numaralandırılmalıdır.",
+    "decision": "Belgede birim yazılmamış; 2,5 değeri cm olarak yorumlandı, yorum kaynak notunda korunur."
+   },
+   "page.margins.bottomMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_Reklamcilik_Bitirme_Projesi/Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+    "location": "paragraf 95",
+    "passage": "Bitirme Projesi dersi raporu kağıt boyutu A4, tüm kenar boşlukları ise 2,5 olmalıdır. Sayfalar numaralandırılmalıdır.",
+    "decision": "Belgede birim yazılmamış; 2,5 değeri cm olarak yorumlandı, yorum kaynak notunda korunur."
+   },
+   "page.margins.leftMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_Reklamcilik_Bitirme_Projesi/Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+    "location": "paragraf 95",
+    "passage": "Bitirme Projesi dersi raporu kağıt boyutu A4, tüm kenar boşlukları ise 2,5 olmalıdır. Sayfalar numaralandırılmalıdır.",
+    "decision": "Belgede birim yazılmamış; 2,5 değeri cm olarak yorumlandı, yorum kaynak notunda korunur."
+   },
+   "page.margins.rightMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_Reklamcilik_Bitirme_Projesi/Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+    "location": "paragraf 95",
+    "passage": "Bitirme Projesi dersi raporu kağıt boyutu A4, tüm kenar boşlukları ise 2,5 olmalıdır. Sayfalar numaralandırılmalıdır.",
+    "decision": "Belgede birim yazılmamış; 2,5 değeri cm olarak yorumlandı, yorum kaynak notunda korunur."
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_Reklamcilik_Bitirme_Projesi/Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+    "sha256": "4616929302e4ad6f6bd83c0241e2086d96baf4f581422f6027b54cd577d32aa0"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.body.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.paragraph.spaceBeforePt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
+    },
+    {
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
+    }
+   ],
+   "conflicts": [],
+   "guide": "Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "margins": {
+   "topMm": 25,
+   "bottomMm": 25,
+   "leftMm": 25,
+   "rightMm": 25
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "right",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "lineHeight": 1.5,
+   "align": "justify",
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12
+  },
+  "paragraph": {
+   "spaceBeforePt": 6
+  },
+  "footnotes": {
+   "fontSizePt": 10
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

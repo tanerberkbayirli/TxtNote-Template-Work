@@ -1,34 +1,35 @@
-# BASLA — yapay zekâ için tek giriş
+# Başlangıç
 
-Bu klasör iki iş içindir: **(1)** yapılacak görevler, ilerleme, notlar, hatalar → [GOREVLER.md](GOREVLER.md); **(2)** yapay zekânın şimdi izleyeceği adımlar → [prompts/](prompts/). Başka her şey kanıt ve referanstır ([KANIT.md](KANIT.md)).
+Düzenleme: 26 Ekim 2026. Bu dosya çalışma kurallarının tek giriş noktasıdır.
 
-**Motor (`engine/`) nedir:** binlerce üniversite ve tez şablonunu eklemeyi **kolaylaştırmak**, çıktıyı (editör, yazdırma, PDF, DOCX) **tutarlı** yapmak ve tekrar eden işleri **otomatize etmek** için vardır. Hem çalışma zamanı (`engine/src/`) hem otomasyon ve kapı araçları (`engine/tools/`) motorun parçasıdır. Ayrıntı: [orchestration/motor/ALTYAPI.md](motor/ALTYAPI.md).
+## Okuma sırası
 
-## Klasör kuralları (kullanıcı kararı, 22.10.2026; her yeni dosya buna göre yerleşir)
-1. **Şablonların tamamı `Butun-Sablonlar/` içindedir, başka hiçbir yerde değil, ve orada şablondan başka bir şey olmaz.** Orada: üniversitelerin resmî kaynak belgeleri (DOCX/DOC/PDF/ZIP/RAR), motorun yüklediği şablon verisi (`Ege/<üniversite>/<kimlik>.json`, yedek şablon `Genel/generic.json`) ve eski şablon kaynakları (`eski-js/`). Not, rapor, künye, açıklama yazısı orada durmaz.
-2. **Motor kodu yalnız `engine/` içindedir** (çalışma zamanı `engine/src/`, otomasyon ve kapılar `engine/tools/`, kaynaktan türetilen veri `engine/specs/`, `engine/references/`). **Uygulama kodu ve geri kalan her kod `TxtNote/` içindedir** (arayüz, Tauri, servisler).
-3. **Orkestrasyon, bilgi, detay, plan, rapor, belge ve bütün yapay zekâ komutları yalnız `orchestration/` içindedir.** Dışarıda not, bilgilendirme, açıklama yazısı, rapor ya da komut dosyası bulunmaz. Düzen: `motor/` (motor belgeleri), `raporlar/` (ölçüm ve kapanış raporları), `uygulama/` (uygulama belgeleri), `hedefler/` (hedef bağlamları ve referans dökümleri), `sablon-kaynaklari/` (her şablon klasörünün künyesi), `prompts/` (yapay zekâ komutları).
-Kapsam notu: kod dosyalarındaki satır yorumları koda aittir, belge sayılmaz. Uygulamayla birlikte dağıtılan üçüncü taraf lisans metni (`TxtNote/frontend/public/`) yasal zorunlulukla yerinde kalır. `.claude/launch.json` ve `.cargo/config.toml` aracın kendi yapılandırmasıdır, yerinde kalır. Taşıma haritası: [raporlar/tasinma-haritasi-2026-10-22.json](raporlar/tasinma-haritasi-2026-10-22.json).
+1. Bu dosya ve [bilinen değerlendirme hataları](AGENTS-RAPOR.md).
+2. [Açık işler](GOREVLER.md): yalnız verilen işle ilgili madde.
+3. İşe göre [uygulama](prompts/GOREV_YAP.md), [doğrulama](prompts/DOGRULA.md) veya [kaynak inceleme](prompts/KAYNAK_INCELE.md) yöntemi.
+4. Yalnız gereken teknik belge ve hedef kaydı; bütün geçmişi okumayın.
 
-## Okuma sırası (bu kadarı yeter)
-1. Bu dosya.
-2. [GOREVLER.md](GOREVLER.md) — yalnız size verilen görevin bölümü.
-3. [prompts/](prompts/) içinden görev türüne uygun tek dosya: `GOREV_YAP.md`, `DOGRULA.md` veya `KAYNAK_INCELE.md`.
-4. Gerekirse [KANIT.md](KANIT.md)'den ilgili raporu/aracı bulun. Tüm geçmişi taramayın.
+## Bilginin yeri ve yetkisi
 
+- Kullanıcının güncel talimatı önceki proje kararlarından önce gelir. Belgeler yeni iş, commit, push, paketleme veya yayınlama yetkisi vermez.
+- [KATI_KURALLAR.md](KATI_KURALLAR.md): dosya yerleşimi. [GOREVLER.md](GOREVLER.md): açık işler. [AGENTS-RAPOR.md](AGENTS-RAPOR.md): tekrar edilmeyecek değerlendirme hataları; görev listesi değildir.
+- [Motor](motor/README.md): mimari, araçlar ve komutlar. [Uygulama](uygulama/README.md): ürün davranışları. [Hedefler](hedefler/README.md): hedef bağlamı. [Kaynaklar](sablon-kaynaklari/README.md): üniversite künyeleri. [Raporlar](raporlar/README.md): tarihli sonuçlar.
+- Tarihli rapor, test sayısı ve eski “current/latest” kaydı bugünkü duruma kanıt değildir. Sonraki raporun kapattığı bulgu açık iş diye tekrarlanmaz. Kanıt yetersizse “yeniden doğrulanmalı” denir.
 
-## Kurallar
-1. Kullanıcının son talimatı esastır. Kullanıcı istemedikçe commit, push, deploy ve geniş süreç kapatma yok; kullanıcı komut verene kadar araştırma başlıkları işlenmez.
-2. **Açık görev, hata, ertelenen kapı ve "sonraki adım" yalnız GOREVLER.md'ye yazılır.** Başka dosyaya açık iş yazmayın; kapanan görev oradan silinir, kanıtı bir rapora yazılır (`reports/`).
-3. Resmî üniversite kaynakları esastır. Şablon XML/örnek yapısı, kılavuz düzyazısından önce gelir; iki tarafı da kaydedin. Kanıtlanmayan her şey `UNKNOWN`'dur; değer ya da varyant uydurulmaz.
-4. Sıra: kaynak → spec → uygulama → **gerçek dışa aktarım** → bağımsız doğrulama → regresyon. Birim testin geçmesi Word/PDF yerleşiminin ya da ürün kabulünün geçtiği anlamına gelmez. Kendi kendine PASS vermek bağımsız PASS değildir.
-5. Açık ölçülerde tolerans yalnız ölçüm gürültüsüdür (varsayılan ≤0,5 mm, güvenilirse ≤0,25 mm); geçsin diye genişletilmez. Dışa aktarılan **gerçek** font doğrulanır; ikame font tam uygunluk sayılmaz.
-6. Ortak motor davranışı genel tutulur; belge ID'sine veya sayfa numarasına bağlı koşul eklenmez (bunlar sınama belgesine uydurma çözümdür). **Üniversite adının kodda geçmesi yasak da zorunlu da değildir**: hangisi daha iyi çözümse (daha az elle iş, daha tutarlı çıktı, daha kolay bakım) o seçilir ve gerekçesi koda ya da [ALTYAPI.md](motor/ALTYAPI.md)'ye yazılır. Eşik düşürmek, girdiyi budamak, hatalı nesneyi silmek, özgün baytları geri koymak çözüm değildir.
-7. Kod yalnız `engine/` (motor) ve `TxtNote/` (uygulama) altında yazılır; şablon verisi `Butun-Sablonlar/`da, belge ve komut `orchestration/`dadır (Klasör kuralları). `orchestration/` altında kod, şablon veya çıktı tutulmaz.
-8. `Butun-Sablonlar/` içindeki özgün resmî belgeler (PDF/DOCX/DOC), tarihsel kanıtlar ve kullanıcının mevcut değişiklikleri değiştirilmez/geri alınmaz. Eski ölçüm/hash değerleri yeni sonuç gibi yeniden yazılmaz.
-9. Word yalnız sahip olunan tek örnekle (PID kaydı, zaman aşımı, `finally`'de `Quit`) çalıştırılır; kullanıcının diğer Word süreçlerine dokunulmaz.
-10. İş sonunda kısa kayıt: ne değişti, hangi kontroller çalıştı (komut + sonuç), ne açık kaldı. Açık kalanlar GOREVLER.md'ye gider.
+## Çalışma kuralları
 
-## Hızlı başvuru
-- Ortam, komutlar, araçlar, tuzaklar → [KANIT.md#ortam-ve-komutlar](KANIT.md#ortam-ve-komutlar)
-- Kanıt/rapor/spec/araç nerede → [KANIT.md](KANIT.md)
+1. **Kapsam:** editörün biçim becerisi incelenirken kullanıcının bilinçli unvan, cümle veya bölüm sayısı tercihini hata saymayın. İçeriği izinsiz değiştirmeyin; kaynakta olmayan teslim engeli eklemeyin.
+2. **Kaynak:** güncellik araştırılıyorsa canlı resmî kaynağa bakın. Güncel kaynak eskiden; aynı kılavuzdaki açık kural örnek geometrisinden; bölüme özgü talimat genel kuraldan önce gelir. Ayrı resmî Word şablonu ile kılavuz aynı güncellikteyse şablon XML'i esas alınır. Çelişkinin iki tarafını ve gerekçeyi kaydedin. Kullanıcının açık farklı kararı varsa uygulayın; kaynak kuralı olduğunu iddia etmeyin. Rutin çelişkide kendiliğinden onay engeli üretmeyin.
+3. **Ölçüm:** bildirilen hatayı gerçek dosya/kodda doğrulayın. Doğru mevcut değer “korundu” diye raporlanır. Şablon düz veridir; başka üniversiteden doğrulanmamış değer alınmaz.
+4. **Kontrol:** değişikliğe uygun testleri çalıştırın. Yerleşim değiştiyse gerçek editör çıktısı ve görsel kontrol gerekir. XML, PDF ve Word'ün yeniden sayfaladığı görünüm ayrı kanıtlardır. Kendi kontrolünüz bağımsız doğrulama değildir; bu sıra başka ajan veya görev başlatma talimatı vermez.
+5. **Kanıt sınırı:** tolerans ölçüm gürültüsüdür (varsayılan en çok 0,5 mm); geçsin diye büyütülmez. İkame font tam uygunluk değildir. Eksik render veya tamamlanmayan aktarım belirtilir. Örnek testlerden bütün çıktılara ya da enstitü kabulüne garanti çıkarılmaz.
+6. **Koruma:** mevcut kullanıcı değişiklikleri, özgün resmî belgeler ve içerik korunur. Belge kimliği/sayfa numarasıyla özel çözüm, içerik budama veya eşik gevşetme yapılmaz. Üniversiteye özgü davranış gerekiyorsa kaynak ve gerekçe yazılır.
+7. **Araçlar:** Word yalnız araca ait PID, zaman aşımı ve finally/Quit ile çalıştırılır; kullanıcının Word süreçleri kapatılmaz. Temizlikte kaldırılan kayıtlar geri alınabilir yedekle korunur.
+8. **Kapanış:** değişiklik, kontrol sonucu ve sınırları kısa yazın. Açık işi GOREVLER'e, ölçümü tarihli rapora bağlayın. Yalnız belge değişikliği için ilgisiz uygulama testleri veya derleme çalıştırmayın.
+
+## Korunan ürün kararları
+
+- Görünen şablonlar Ege bölgesiyle sınırlıdır; diğer bölgelerin kaynakları silinmez (`engine/src/templates/hidden.js`). Sabit şablon sayıları esas alınmaz.
+- İçe aktarma kabul çalışmaları askıdadır; Word/PDF içe aktarma düğmeleri görünür kalır. Düğmenin görünmesi SRC09/SRC10 kabul işlerini yeniden açmaz.
+- Sağ sütun sırası: İçindekiler → Tez bilgileri (kapalı “Sayfa ayarı”) → Kaynaklar → Yazım planı → Rehber. Aynı anda tek panel açılır; eski yan çekmece geri getirilmez.
+- Şablon/içindekiler işinde [İçindekiler paneli](uygulama/ICINDEKILER_PANELI.md), metadata işinde [Tez bilgileri](uygulama/TEZ_BILGILERI.md), rehber işinde [Rehber paneli](uygulama/REHBER_PANELI.md) okunur. Kararlaştırılmış davranışlar yeniden sorulmaz. Otomatik dizin ile kullanıcının elle girdiği dizin ayrı çıktı kurallarına sahiptir.

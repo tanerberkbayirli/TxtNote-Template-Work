@@ -1,0 +1,2097 @@
+{
+ "date": "2026-10-23",
+ "sourceCount": 211,
+ "scopeCount": 88,
+ "retainedLayouts": [
+  "aku-cografya-lisans-tr-v1",
+  "aku-fbe-master-tr-v1",
+  "aku-fbe-phd-tr-v1",
+  "aku-felsefe-lisans-tr-v1",
+  "aku-felsefe-seminer-tr-v1",
+  "aku-isg-tezsiz-proje-tr-v1",
+  "aku-kimya-lisans-tr-v1",
+  "aku-matematik-lisans-tr-v1",
+  "aku-mbg-lisans-tr-v1",
+  "aku-sagbil-master-tr-v1",
+  "aku-sagbil-phd-tr-v1",
+  "aku-sbe-master-en-v1",
+  "aku-sbe-master-tr-v1",
+  "aku-sbe-phd-en-v1",
+  "aku-sbe-phd-tr-v1",
+  "aku-sbe-sanatta-yeterlik-tr-v1",
+  "aku-sosyoloji-lisans-tr-v1",
+  "afsu-dis-hekimligi-uzmanlik-tr-v1",
+  "afsu-eczacilik-proje-lisans-tr-v1",
+  "afsu-lee-master-tr-v1",
+  "afsu-lee-phd-tr-v1",
+  "afsu-lee-proposal-master-tr-v1",
+  "afsu-lee-proposal-phd-tr-v1",
+  "afsu-tip-uzmanlik-tr-v1",
+  "adu-sagbil-master-tr-v1",
+  "adu-ziraat-lisans-tr-v1",
+  "mcbu-lee-master-tr-v1",
+  "mcbu-lee-phd-tr-v1",
+  "mcbu-tip-uzmanlik-tr-v1",
+  "iyte-eee-undergraduate-en-v1",
+  "iyte-lee-articles-master-en-v1",
+  "iyte-lee-articles-phd-en-v1",
+  "iyte-lee-master-en-v1",
+  "iyte-lee-phd-en-v1"
+ ],
+ "templates": [
+  {
+   "id": "adu-fbe-master-en-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/adu-fbe-master-en-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_EN_2023.pdf",
+   "guide": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_EN_2023.pdf",
+   "unknown": 5,
+   "conflicts": 0,
+   "reviewedFields": [
+    "page.margins.topMm",
+    "page.margins.leftMm",
+    "page.margins.rightMm",
+    "typography.body.lineHeight",
+    "typography.body.align",
+    "page.numbering.position",
+    "typography.paragraph.firstLineIndentMm",
+    "typography.paragraph.spaceBeforePt",
+    "typography.paragraph.spaceAfterPt",
+    "typography.footnotes.lineHeight",
+    "page.numbering.align",
+    "typography.footnotes.fontSizePt",
+    "bibliography.heading",
+    "bibliography.style.fontFamily",
+    "bibliography.style.fontSizePt",
+    "bibliography.style.hangingIndentMm",
+    "bibliography.style.lineHeight",
+    "bibliography.style.spaceBeforePt",
+    "bibliography.style.spaceAfterPt",
+    "tables.position",
+    "tables.label",
+    "figures.position",
+    "figures.label",
+    "page.margins.bottomMm"
+   ],
+   "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/adu-fbe-master-en-kaynak.json"
+  },
+  {
+   "id": "adu-fbe-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/adu-fbe-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2023.pdf",
+   "guide": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/ADU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2023.pdf",
+   "unknown": 3,
+   "conflicts": 0,
+   "reviewedFields": [
+    "page.margins.topMm",
+    "page.margins.bottomMm",
+    "page.margins.leftMm",
+    "page.margins.rightMm",
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt",
+    "typography.body.align",
+    "typography.footnotes.fontSizePt",
+    "typography.footnotes.lineHeight",
+    "page.numbering.position",
+    "page.numbering.align",
+    "typography.body.lineHeight",
+    "typography.paragraph.firstLineIndentMm",
+    "typography.paragraph.spaceBeforePt",
+    "typography.paragraph.spaceAfterPt",
+    "bibliography.heading",
+    "bibliography.style.fontFamily",
+    "bibliography.style.fontSizePt",
+    "bibliography.style.hangingIndentMm",
+    "bibliography.style.lineHeight",
+    "bibliography.style.spaceBeforePt",
+    "bibliography.style.spaceAfterPt",
+    "bibliography.style.align",
+    "tables.position",
+    "tables.label",
+    "figures.position",
+    "figures.label"
+   ],
+   "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/adu-fbe-master-tr-kaynak.json"
+  },
+  {
+   "id": "adu-muhendislik-undergraduate-tr-kaynak-5c0ea3",
+   "draft": "engine/output/ege-rebuild/drafts/adu-muhendislik-undergraduate-tr-kaynak-5c0ea3.json",
+   "source": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Muhendislik_Fakultesi_Lisans_Bitirme_Tezi/ADU_Muhendislik_Lisans_Bitirme_Tezi_Sablonu_2018.docx",
+   "guide": null,
+   "unknown": 6,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/adu-muhendislik-undergraduate-tr-kaynak-5c0ea3.json"
+  },
+  {
+   "id": "adu-sbe-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/adu-sbe-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/ADU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+   "guide": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/ADU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+   "unknown": 16,
+   "conflicts": 0,
+   "reviewedFields": [
+    "page.margins.bottomMm",
+    "page.margins.topMm",
+    "page.margins.leftMm",
+    "page.margins.rightMm"
+   ],
+   "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/adu-sbe-master-tr-kaynak.json"
+  },
+  {
+   "id": "adu-tip-specialization-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/adu-tip-specialization-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/ADU_Tip_Fakultesi_Tipta_Uzmanlik_Tez_Yazim_Kilavuzu_2023.pdf",
+   "guide": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/ADU_Tip_Fakultesi_Tipta_Uzmanlik_Tez_Yazim_Kilavuzu_2023.pdf",
+   "unknown": 4,
+   "conflicts": 0,
+   "reviewedFields": [
+    "page.margins.topMm",
+    "page.margins.bottomMm",
+    "page.margins.leftMm",
+    "page.margins.rightMm",
+    "typography.body.fontFamily",
+    "typography.footnotes.fontSizePt",
+    "typography.footnotes.lineHeight",
+    "page.numbering.position",
+    "page.numbering.align",
+    "typography.body.lineHeight",
+    "typography.paragraph.firstLineIndentMm",
+    "tables.position",
+    "tables.label",
+    "figures.position",
+    "figures.label",
+    "typography.body.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/adu-tip-specialization-tr-kaynak.json"
+  },
+  {
+   "id": "deu-ataturk-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/deu-ataturk-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Ataturk_Ilkeleri_Enstitusu_Tez/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+   "guide": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Ataturk_Ilkeleri_Enstitusu_Tez/DEU_Ataturk_Ilkeleri_Tez_Yazim_Kilavuzu_2026.pdf",
+   "unknown": 15,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/deu-ataturk-master-tr-kaynak.json"
+  },
+  {
+   "id": "deu-ebe-phd-tr-deu-egitim-bilimleri-doktora-tez-sablonu",
+   "draft": "engine/output/ege-rebuild/drafts/deu-ebe-phd-tr-deu-egitim-bilimleri-doktora-tez-sablonu.json",
+   "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx",
+   "guide": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx",
+   "unknown": 10,
+   "conflicts": 1,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/deu-ebe-phd-tr-deu-egitim-bilimleri-doktora-tez-sablonu.json"
+  },
+  {
+   "id": "deu-ebe-master-tr-deu-egitim-bilimleri-yuksek-lisans-tez-s",
+   "draft": "engine/output/ege-rebuild/drafts/deu-ebe-master-tr-deu-egitim-bilimleri-yuksek-lisans-tez-s.json",
+   "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/DEU_Egitim_Bilimleri_Yuksek_Lisans_Tez_Sablonu_2025-11-10.docx",
+   "guide": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx",
+   "unknown": 10,
+   "conflicts": 1,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/deu-ebe-master-tr-deu-egitim-bilimleri-yuksek-lisans-tez-s.json"
+  },
+  {
+   "id": "deu-endustri-undergraduate-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/deu-endustri-undergraduate-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Endustri_Muhendisligi_Bitirme/DEU_Endustri_Bitirme_Rapor_Yazim_Kilavuzu_2023-11.docx",
+   "guide": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Endustri_Muhendisligi_Bitirme/DEU_Endustri_Bitirme_Rapor_Yazim_Kilavuzu_2023-11.docx",
+   "unknown": 12,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.lineHeight",
+    "page.numbering.position",
+    "typography.body.fontSizePt",
+    "page.numbering.align",
+    "page.numbering.style.fontFamily",
+    "page.numbering.style.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/deu-endustri-undergraduate-tr-kaynak.json"
+  },
+  {
+   "id": "deu-fbe-phd-tr-deu-fen-bilimleri-doktora-tez-sablonu-tr",
+   "draft": "engine/output/ege-rebuild/drafts/deu-fbe-phd-tr-deu-fen-bilimleri-doktora-tez-sablonu-tr.json",
+   "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/DEU_Fen_Bilimleri_Doktora_Tez_Sablonu_TR_2025-09-04.docx",
+   "guide": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf",
+   "unknown": 6,
+   "conflicts": 1,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/deu-fbe-phd-tr-deu-fen-bilimleri-doktora-tez-sablonu-tr.json"
+  },
+  {
+   "id": "deu-fbe-phd-tr-deu-fen-bilimleri-doktora-thesis-templat",
+   "draft": "engine/output/ege-rebuild/drafts/deu-fbe-phd-tr-deu-fen-bilimleri-doktora-thesis-templat.json",
+   "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx",
+   "guide": null,
+   "unknown": 2,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/deu-fbe-phd-tr-deu-fen-bilimleri-doktora-thesis-templat.json"
+  },
+  {
+   "id": "deu-fbe-master-tr-deu-fen-bilimleri-yuksek-lisans-tez-sabl",
+   "draft": "engine/output/ege-rebuild/drafts/deu-fbe-master-tr-deu-fen-bilimleri-yuksek-lisans-tez-sabl.json",
+   "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/DEU_Fen_Bilimleri_Yuksek_Lisans_Tez_Sablonu_TR_2025-09-04.docx",
+   "guide": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf",
+   "unknown": 5,
+   "conflicts": 1,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/deu-fbe-master-tr-deu-fen-bilimleri-yuksek-lisans-tez-sabl.json"
+  },
+  {
+   "id": "deu-fbe-master-tr-deu-fen-bilimleri-yuksek-lisans-thesis-t",
+   "draft": "engine/output/ege-rebuild/drafts/deu-fbe-master-tr-deu-fen-bilimleri-yuksek-lisans-thesis-t.json",
+   "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/DEU_Fen_Bilimleri_Yuksek_Lisans_Thesis_Template_EN_2025-09-04.docx",
+   "guide": null,
+   "unknown": 2,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/deu-fbe-master-tr-deu-fen-bilimleri-yuksek-lisans-thesis-t.json"
+  },
+  {
+   "id": "deu-gse-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/deu-gse-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+   "guide": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Guzel_Sanatlar_Enstitusu_Tez/DEU_Guzel_Sanatlar_Tez_Yazim_Kilavuzu_2026.pdf",
+   "unknown": 15,
+   "conflicts": 1,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt",
+    "typography.body.lineHeight"
+   ],
+   "file": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/deu-gse-master-tr-kaynak.json"
+  },
+  {
+   "id": "deu-ibg-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/deu-ibg-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/iBG_Enstitusu_Tez/DEU_iBG_Tez_Yazim_Kurallari_2024.docx",
+   "guide": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/iBG_Enstitusu_Tez/DEU_iBG_Tez_Yazim_Kurallari_2024.docx",
+   "unknown": 6,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontSizePt",
+    "typography.body.lineHeight",
+    "page.margins.topMm",
+    "page.margins.bottomMm",
+    "page.margins.leftMm",
+    "page.margins.rightMm",
+    "typography.body.fontFamily",
+    "typography.paragraph.firstLineIndentMm",
+    "typography.body.align"
+   ],
+   "file": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/deu-ibg-master-tr-kaynak.json"
+  },
+  {
+   "id": "deu-makina-undergraduate-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/deu-makina-undergraduate-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Makina_Muhendisligi_Bitirme/DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+   "guide": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Makina_Muhendisligi_Bitirme/DEU_Makina_Bitirme_Yazim_Kurallari.pdf",
+   "unknown": 10,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.lineHeight",
+    "page.margins.topMm",
+    "page.margins.bottomMm",
+    "page.margins.leftMm",
+    "page.margins.rightMm",
+    "typography.body.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/deu-makina-undergraduate-tr-kaynak.json"
+  },
+  {
+   "id": "deu-sagbe-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/deu-sagbe-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/DEU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2023.pdf",
+   "guide": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/DEU_Saglik_Bilimleri_Enstitusu_Tez_Yazim_Kilavuzu_2023.pdf",
+   "unknown": 7,
+   "conflicts": 0,
+   "reviewedFields": [
+    "page.margins.topMm",
+    "page.margins.leftMm",
+    "page.margins.rightMm",
+    "typography.body.fontSizePt",
+    "page.margins.bottomMm",
+    "typography.body.fontFamily",
+    "typography.body.lineHeight",
+    "typography.paragraph.firstLineIndentMm"
+   ],
+   "file": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/deu-sagbe-master-tr-kaynak.json"
+  },
+  {
+   "id": "deu-sbe-master-tr-kaynak-2f1422",
+   "draft": "engine/output/ege-rebuild/drafts/deu-sbe-master-tr-kaynak-2f1422.json",
+   "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/DEU_Sosyal_Bilimler_Tez_Sablonu_2025-05-27.docx",
+   "guide": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/DEU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_TR.pdf",
+   "unknown": 6,
+   "conflicts": 1,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/deu-sbe-master-tr-kaynak-2f1422.json"
+  },
+  {
+   "id": "deu-tip-specialization-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/deu-tip-specialization-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/DEU_Tip_Fakultesi_Tipta_Uzmanlik_Tez_Yazim_Kilavuzu_2025.pdf",
+   "guide": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/DEU_Tip_Fakultesi_Tipta_Uzmanlik_Tez_Yazim_Kilavuzu_2025.pdf",
+   "unknown": 9,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt",
+    "page.margins.topMm",
+    "page.margins.bottomMm",
+    "page.margins.leftMm",
+    "page.margins.rightMm",
+    "typography.body.lineHeight"
+   ],
+   "file": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/deu-tip-specialization-tr-kaynak.json"
+  },
+  {
+   "id": "ege-dis-bitirme-undergraduate-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ege-dis-bitirme-undergraduate-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Bitirme_Projesi/EGE_Dis_Mezuniyet_Tezi_Yazim_Kurallari_2026.pdf",
+   "guide": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Bitirme_Projesi/EGE_Dis_Mezuniyet_Tezi_Yazim_Kurallari_2026.pdf",
+   "unknown": 8,
+   "conflicts": 0,
+   "reviewedFields": [
+    "page.numbering.position",
+    "page.margins.topMm",
+    "page.margins.bottomMm",
+    "page.margins.leftMm",
+    "page.margins.rightMm",
+    "page.numbering.align"
+   ],
+   "file": "Butun-Sablonlar/Ege/Ege Üniversitesi/ege-dis-bitirme-undergraduate-tr-kaynak.json"
+  },
+  {
+   "id": "ege-dhf-specialization-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ege-dhf-specialization-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+   "guide": "Butun-Sablonlar/Ege/Ege Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/EGE_Dis_Uzmanlik_Tezi_Yazim_Kurallari_Rehberi_2024.pdf",
+   "unknown": 17,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Ege Üniversitesi/ege-dhf-specialization-tr-kaynak.json"
+  },
+  {
+   "id": "ege-egitim-bilimleri-phd-tr-kaynak-6067f9",
+   "draft": "engine/output/ege-rebuild/drafts/ege-egitim-bilimleri-phd-tr-kaynak-6067f9.json",
+   "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/Ege_Egitim_Bilimleri_Tez_Sablonu_Doktora.docx",
+   "guide": null,
+   "unknown": 2,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Ege Üniversitesi/ege-egitim-bilimleri-phd-tr-kaynak-6067f9.json"
+  },
+  {
+   "id": "ege-egitim-master-tr-v1",
+   "draft": "engine/output/ege-rebuild/drafts/ege-egitim-master-tr-v1.json",
+   "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/Ege_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans.docx",
+   "guide": null,
+   "unknown": 2,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Ege Üniversitesi/ege-egitim-master-tr-v1.json"
+  },
+  {
+   "id": "ege-fbe-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ege-fbe-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+   "guide": "Butun-Sablonlar/Ege/Ege Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/EGE_Fen_Bilimleri_Tez_Yazim_Klavuzu_2025.docx",
+   "unknown": 10,
+   "conflicts": 0,
+   "reviewedFields": [
+    "page.margins.bottomMm",
+    "page.margins.leftMm",
+    "page.margins.rightMm",
+    "typography.body.fontFamily",
+    "typography.body.lineHeight",
+    "page.margins.topMm",
+    "typography.body.fontSizePt",
+    "page.numbering.position",
+    "page.numbering.align"
+   ],
+   "file": "Butun-Sablonlar/Ege/Ege Üniversitesi/ege-fbe-master-tr-kaynak.json"
+  },
+  {
+   "id": "ege-gazetecilik-undergraduate-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ege-gazetecilik-undergraduate-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_Gazetecilik_Bitirme_Projesi/Gazetecilik_Bitirme_Projesi_Kilavuzu_2026.docx",
+   "guide": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_Gazetecilik_Bitirme_Projesi/Gazetecilik_Bitirme_Projesi_Kilavuzu_2026.docx",
+   "unknown": 17,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Ege Üniversitesi/ege-gazetecilik-undergraduate-tr-kaynak.json"
+  },
+  {
+   "id": "ege-hit-undergraduate-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ege-hit-undergraduate-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_HIT_Bitirme_Tezi/HIT_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+   "guide": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_HIT_Bitirme_Tezi/HIT_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+   "unknown": 11,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/Ege Üniversitesi/ege-hit-undergraduate-tr-kaynak.json"
+  },
+  {
+   "id": "ege-reklamcilik-undergraduate-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ege-reklamcilik-undergraduate-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_Reklamcilik_Bitirme_Projesi/Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+   "guide": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_Reklamcilik_Bitirme_Projesi/Reklamcilik_Bitirme_Projesi_Kilavuzu_2023.docx",
+   "unknown": 10,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt",
+    "page.margins.topMm",
+    "page.margins.bottomMm",
+    "page.margins.leftMm",
+    "page.margins.rightMm"
+   ],
+   "file": "Butun-Sablonlar/Ege/Ege Üniversitesi/ege-reklamcilik-undergraduate-tr-kaynak.json"
+  },
+  {
+   "id": "ege-rts-undergraduate-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ege-rts-undergraduate-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_RTS_Bitirme_Tezi/RTS_Bitirme_Tezi_Yonergesi_2026.docx",
+   "guide": "Butun-Sablonlar/Ege/Ege Üniversitesi/Iletisim_Fakultesi_RTS_Bitirme_Tezi/RTS_Bitirme_Tezi_Yonergesi_2026.docx",
+   "unknown": 6,
+   "conflicts": 0,
+   "reviewedFields": [
+    "page.margins.topMm",
+    "page.margins.bottomMm",
+    "page.margins.leftMm",
+    "page.margins.rightMm",
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt",
+    "typography.body.lineHeight"
+   ],
+   "file": "Butun-Sablonlar/Ege/Ege Üniversitesi/ege-rts-undergraduate-tr-kaynak.json"
+  },
+  {
+   "id": "ege-deri-undergraduate-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ege-deri-undergraduate-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Muhendislik_Fakultesi_Deri_Bitirme_Tezi/Deri_Muhendisligi_Bitirme_Tezi_Yazim_Kurallari_2020.pdf",
+   "guide": "Butun-Sablonlar/Ege/Ege Üniversitesi/Muhendislik_Fakultesi_Deri_Bitirme_Tezi/Deri_Muhendisligi_Bitirme_Tezi_Yazim_Kurallari_2020.pdf",
+   "unknown": 8,
+   "conflicts": 2,
+   "reviewedFields": [
+    "page.margins.rightMm",
+    "typography.body.fontFamily",
+    "page.margins.topMm",
+    "page.margins.bottomMm",
+    "page.margins.leftMm",
+    "typography.body.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/Ege Üniversitesi/ege-deri-undergraduate-tr-kaynak.json"
+  },
+  {
+   "id": "ege-sagbe-master-tr-kaynak-af95d5",
+   "draft": "engine/output/ege-rebuild/drafts/ege-sagbe-master-tr-kaynak-af95d5.json",
+   "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/EGE_Saglik_Bilimleri_Tez_Sablonu_2018.docx",
+   "guide": "Butun-Sablonlar/Ege/Ege Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/Ege_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+   "unknown": 13,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Ege Üniversitesi/ege-sagbe-master-tr-kaynak-af95d5.json"
+  },
+  {
+   "id": "ege-sbe-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ege-sbe-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/EGE_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2024.docx",
+   "guide": "Butun-Sablonlar/Ege/Ege Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/EGE_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2024.docx",
+   "unknown": 15,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/Ege Üniversitesi/ege-sbe-master-tr-kaynak.json"
+  },
+  {
+   "id": "ege-su-urunleri-undergraduate-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ege-su-urunleri-undergraduate-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Su_Urunleri_Fakultesi_Lisans_Tez/Su_Urunleri_Lisans_Tez_Yazim_Kilavuzu_2022.pdf",
+   "guide": "Butun-Sablonlar/Ege/Ege Üniversitesi/Su_Urunleri_Fakultesi_Lisans_Tez/Su_Urunleri_Lisans_Tez_Yazim_Kilavuzu_2022.pdf",
+   "unknown": 9,
+   "conflicts": 1,
+   "reviewedFields": [
+    "page.margins.bottomMm",
+    "page.margins.leftMm",
+    "page.margins.rightMm",
+    "page.margins.topMm",
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/Ege Üniversitesi/ege-su-urunleri-undergraduate-tr-kaynak.json"
+  },
+  {
+   "id": "ege-tarih-undergraduate-tr-kaynak-55476b",
+   "draft": "engine/output/ege-rebuild/drafts/ege-tarih-undergraduate-tr-kaynak-55476b.json",
+   "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Tarih_Bolumu_Bitirme_Tezi/EGE_Tarih_Lisans_Bitirme_Tezi_Sablonu_2025.docx",
+   "guide": "Butun-Sablonlar/Ege/Ege Üniversitesi/Tarih_Bolumu_Bitirme_Tezi/EGE_Tarih_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+   "unknown": 7,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Ege Üniversitesi/ege-tarih-undergraduate-tr-kaynak-55476b.json"
+  },
+  {
+   "id": "ege-tip-specialization-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ege-tip-specialization-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/EGE_Tip_Uzmanlik_Tezi_Yazim_Kurallari_2018.pdf",
+   "guide": "Butun-Sablonlar/Ege/Ege Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/EGE_Tip_Uzmanlik_Tezi_Yazim_Kurallari_2018.pdf",
+   "unknown": 17,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Ege Üniversitesi/ege-tip-specialization-tr-kaynak.json"
+  },
+  {
+   "id": "bakircay-lee-proje-master-tr-kaynak-214fc1",
+   "draft": "engine/output/ege-rebuild/drafts/bakircay-lee-proje-master-tr-kaynak-214fc1.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Lisansustu_Egitim_Enstitusu_Donem_Projesi/BAKIRCAY_LEE_Donem_Projesi_Yazim_Sablonu_2026.docx",
+   "guide": null,
+   "unknown": 5,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/bakircay-lee-proje-master-tr-kaynak-214fc1.json"
+  },
+  {
+   "id": "bakircay-lee-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/bakircay-lee-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Bakircay_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Bakircay_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+   "unknown": 15,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "page.numbering.position",
+    "typography.body.fontSizePt",
+    "page.numbering.align",
+    "page.numbering.style.fontFamily",
+    "page.numbering.style.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/bakircay-lee-master-tr-kaynak.json"
+  },
+  {
+   "id": "bakircay-tip-specialization-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/bakircay-tip-specialization-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+   "guide": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/Bakircay_Tip_Fakultesi_Tipta_Uzmanlik_Tezi_Yazim_Kilavuzu_B_2026.pdf",
+   "unknown": 13,
+   "conflicts": 1,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.lineHeight",
+    "typography.body.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/bakircay-tip-specialization-tr-kaynak.json"
+  },
+  {
+   "id": "idu-lee-master-en-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/idu-lee-master-en-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+   "unknown": 11,
+   "conflicts": 1,
+   "reviewedFields": [
+    "page.margins.leftMm",
+    "typography.body.fontFamily",
+    "page.margins.topMm",
+    "page.margins.bottomMm",
+    "page.margins.rightMm",
+    "typography.body.fontSizePt",
+    "typography.body.lineHeight"
+   ],
+   "file": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/idu-lee-master-en-kaynak.json"
+  },
+  {
+   "id": "idu-lee-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/idu-lee-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+   "unknown": 13,
+   "conflicts": 1,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "page.margins.topMm",
+    "page.margins.bottomMm",
+    "page.margins.leftMm",
+    "page.margins.rightMm",
+    "typography.body.fontSizePt",
+    "typography.body.lineHeight"
+   ],
+   "file": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/idu-lee-master-tr-kaynak.json"
+  },
+  {
+   "id": "ieu-gastronomi-undergraduate-en-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ieu-gastronomi-undergraduate-en-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Gastronomi_ve_Mutfak_Sanatlari_Bitirme_Projesi/IEU_Gastronomi_Bitirme_Projesi_Kilavuzu_2017.pdf",
+   "guide": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Gastronomi_ve_Mutfak_Sanatlari_Bitirme_Projesi/IEU_Gastronomi_Bitirme_Projesi_Kilavuzu_2017.pdf",
+   "unknown": 8,
+   "conflicts": 1,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt",
+    "typography.body.lineHeight",
+    "page.margins.topMm",
+    "page.margins.bottomMm",
+    "page.margins.leftMm",
+    "page.margins.rightMm"
+   ],
+   "file": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/ieu-gastronomi-undergraduate-en-kaynak.json"
+  },
+  {
+   "id": "ieu-lee-phd-en-kaynak-8315cf",
+   "draft": "engine/output/ege-rebuild/drafts/ieu-lee-phd-en-kaynak-8315cf.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Doktora_Tez_Oncul_Sayfalar_EN.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_EN.pdf",
+   "unknown": 17,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt",
+    "typography.body.lineHeight",
+    "typography.headings.1.fontFamily",
+    "typography.headings.1.fontSizePt",
+    "typography.headings.1.fontWeight",
+    "typography.headings.1.lineHeight",
+    "typography.headings.1.italic",
+    "typography.headings.2.fontFamily",
+    "typography.headings.2.fontSizePt",
+    "typography.headings.2.fontWeight",
+    "typography.headings.2.lineHeight",
+    "typography.headings.2.italic",
+    "typography.headings.3.fontFamily",
+    "typography.headings.3.fontSizePt",
+    "typography.headings.3.fontWeight",
+    "typography.headings.3.lineHeight",
+    "typography.headings.3.italic",
+    "typography.headings.4.fontFamily",
+    "typography.headings.4.fontSizePt",
+    "typography.headings.4.fontWeight",
+    "typography.headings.4.lineHeight",
+    "typography.headings.4.italic"
+   ],
+   "file": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/ieu-lee-phd-en-kaynak-8315cf.json"
+  },
+  {
+   "id": "ieu-lee-es-danisman-phd-en-kaynak-20219c",
+   "draft": "engine/output/ege-rebuild/drafts/ieu-lee-es-danisman-phd-en-kaynak-20219c.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Doktora_Tez_Oncul_Sayfalar_EN_Ikinci_Danisman.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_EN.pdf",
+   "unknown": 17,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt",
+    "typography.body.lineHeight",
+    "typography.headings.1.fontFamily",
+    "typography.headings.1.fontSizePt",
+    "typography.headings.1.fontWeight",
+    "typography.headings.1.lineHeight",
+    "typography.headings.1.italic",
+    "typography.headings.2.fontFamily",
+    "typography.headings.2.fontSizePt",
+    "typography.headings.2.fontWeight",
+    "typography.headings.2.lineHeight",
+    "typography.headings.2.italic",
+    "typography.headings.3.fontFamily",
+    "typography.headings.3.fontSizePt",
+    "typography.headings.3.fontWeight",
+    "typography.headings.3.lineHeight",
+    "typography.headings.3.italic",
+    "typography.headings.4.fontFamily",
+    "typography.headings.4.fontSizePt",
+    "typography.headings.4.fontWeight",
+    "typography.headings.4.lineHeight",
+    "typography.headings.4.italic"
+   ],
+   "file": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/ieu-lee-es-danisman-phd-en-kaynak-20219c.json"
+  },
+  {
+   "id": "ieu-lee-master-en-kaynak-55611b",
+   "draft": "engine/output/ege-rebuild/drafts/ieu-lee-master-en-kaynak-55611b.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_YL_Tez_Oncul_Sayfalar_EN.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_EN.pdf",
+   "unknown": 17,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt",
+    "typography.body.lineHeight",
+    "typography.headings.1.fontFamily",
+    "typography.headings.1.fontSizePt",
+    "typography.headings.1.fontWeight",
+    "typography.headings.1.lineHeight",
+    "typography.headings.1.italic",
+    "typography.headings.2.fontFamily",
+    "typography.headings.2.fontSizePt",
+    "typography.headings.2.fontWeight",
+    "typography.headings.2.lineHeight",
+    "typography.headings.2.italic",
+    "typography.headings.3.fontFamily",
+    "typography.headings.3.fontSizePt",
+    "typography.headings.3.fontWeight",
+    "typography.headings.3.lineHeight",
+    "typography.headings.3.italic",
+    "typography.headings.4.fontFamily",
+    "typography.headings.4.fontSizePt",
+    "typography.headings.4.fontWeight",
+    "typography.headings.4.lineHeight",
+    "typography.headings.4.italic"
+   ],
+   "file": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/ieu-lee-master-en-kaynak-55611b.json"
+  },
+  {
+   "id": "ieu-lee-es-danisman-master-en-kaynak-ae21f3",
+   "draft": "engine/output/ege-rebuild/drafts/ieu-lee-es-danisman-master-en-kaynak-ae21f3.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_YL_Tez_Oncul_Sayfalar_EN_Ikinci_Danisman.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_EN.pdf",
+   "unknown": 18,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt",
+    "typography.body.lineHeight",
+    "typography.headings.1.fontFamily",
+    "typography.headings.1.fontSizePt",
+    "typography.headings.1.fontWeight",
+    "typography.headings.1.lineHeight",
+    "typography.headings.1.italic",
+    "typography.headings.2.fontFamily",
+    "typography.headings.2.fontSizePt",
+    "typography.headings.2.fontWeight",
+    "typography.headings.2.lineHeight",
+    "typography.headings.2.italic",
+    "typography.headings.3.fontFamily",
+    "typography.headings.3.fontSizePt",
+    "typography.headings.3.fontWeight",
+    "typography.headings.3.lineHeight",
+    "typography.headings.3.italic",
+    "typography.headings.4.fontFamily",
+    "typography.headings.4.fontSizePt",
+    "typography.headings.4.fontWeight",
+    "typography.headings.4.lineHeight",
+    "typography.headings.4.italic"
+   ],
+   "file": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/ieu-lee-es-danisman-master-en-kaynak-ae21f3.json"
+  },
+  {
+   "id": "ieu-lee-master-tr-kaynak-ff3227",
+   "draft": "engine/output/ege-rebuild/drafts/ieu-lee-master-tr-kaynak-ff3227.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_YL_Tez_Oncul_Sayfalar_TR.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+   "unknown": 17,
+   "conflicts": 0,
+   "reviewedFields": [
+    "page.numbering.position",
+    "typography.headings.1.fontFamily",
+    "typography.headings.1.fontSizePt",
+    "typography.headings.1.fontWeight",
+    "typography.headings.1.lineHeight",
+    "typography.headings.1.italic",
+    "typography.headings.2.fontFamily",
+    "typography.headings.2.fontSizePt",
+    "typography.headings.2.fontWeight",
+    "typography.headings.2.lineHeight",
+    "typography.headings.2.italic",
+    "typography.headings.3.fontFamily",
+    "typography.headings.3.fontSizePt",
+    "typography.headings.3.fontWeight",
+    "typography.headings.3.lineHeight",
+    "typography.headings.3.italic",
+    "typography.headings.4.fontFamily",
+    "typography.headings.4.fontSizePt",
+    "typography.headings.4.fontWeight",
+    "typography.headings.4.lineHeight",
+    "typography.headings.4.italic",
+    "page.numbering.align",
+    "page.numbering.style.fontFamily",
+    "page.numbering.style.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/ieu-lee-master-tr-kaynak-ff3227.json"
+  },
+  {
+   "id": "ieu-lee-es-danisman-master-tr-kaynak-946d09",
+   "draft": "engine/output/ege-rebuild/drafts/ieu-lee-es-danisman-master-tr-kaynak-946d09.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_YL_Tez_Oncul_Sayfalar_TR_Ikinci_Danisman.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IEU_Lisansustu_Tez_Yazim_Kilavuzu_TR.pdf",
+   "unknown": 17,
+   "conflicts": 0,
+   "reviewedFields": [
+    "page.numbering.position",
+    "typography.headings.1.fontFamily",
+    "typography.headings.1.fontSizePt",
+    "typography.headings.1.fontWeight",
+    "typography.headings.1.lineHeight",
+    "typography.headings.1.italic",
+    "typography.headings.2.fontFamily",
+    "typography.headings.2.fontSizePt",
+    "typography.headings.2.fontWeight",
+    "typography.headings.2.lineHeight",
+    "typography.headings.2.italic",
+    "typography.headings.3.fontFamily",
+    "typography.headings.3.fontSizePt",
+    "typography.headings.3.fontWeight",
+    "typography.headings.3.lineHeight",
+    "typography.headings.3.italic",
+    "typography.headings.4.fontFamily",
+    "typography.headings.4.fontSizePt",
+    "typography.headings.4.fontWeight",
+    "typography.headings.4.lineHeight",
+    "typography.headings.4.italic",
+    "page.numbering.align",
+    "page.numbering.style.fontFamily",
+    "page.numbering.style.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/İzmir Ekonomi Üniversitesi/ieu-lee-es-danisman-master-tr-kaynak-946d09.json"
+  },
+  {
+   "id": "ikc-dhf-specialization-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ikc-dhf-specialization-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/IKCU_Dis_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "guide": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Dis_Hekimligi_Uzmanlik_Tezi/IKCU_Dis_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
+   "unknown": 14,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/ikc-dhf-specialization-tr-kaynak.json"
+  },
+  {
+   "id": "ikc-fbe-master-tr-ikcu-fbe-tez-sablonu-tr-2023-10-28",
+   "draft": "engine/output/ege-rebuild/drafts/ikc-fbe-master-tr-ikcu-fbe-tez-sablonu-tr-2023-10-28.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Tez_Yazim_Kilavuzu_TR_2023-10-28.pdf",
+   "unknown": 15,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/ikc-fbe-master-tr-ikcu-fbe-tez-sablonu-tr-2023-10-28.json"
+  },
+  {
+   "id": "ikc-fbe-master-tr-ikcu-fbe-thesis-template-en-2023-10-28",
+   "draft": "engine/output/ege-rebuild/drafts/ikc-fbe-master-tr-ikcu-fbe-thesis-template-en-2023-10-28.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Thesis_Template_EN_2023-10-28.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
+   "unknown": 16,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/ikc-fbe-master-tr-ikcu-fbe-thesis-template-en-2023-10-28.json"
+  },
+  {
+   "id": "ikc-sagbe-master-tr-kaynak-fbf6f6",
+   "draft": "engine/output/ege-rebuild/drafts/ikc-sagbe-master-tr-kaynak-fbf6f6.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/IKCU_Saglik_Bilimleri_Tez_Sablonu.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/IKCU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+   "unknown": 12,
+   "conflicts": 1,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/ikc-sagbe-master-tr-kaynak-fbf6f6.json"
+  },
+  {
+   "id": "ikc-sbe-phd-tr-ikcu-sbe-doktora-tez-sablonu",
+   "draft": "engine/output/ege-rebuild/drafts/ikc-sbe-phd-tr-ikcu-sbe-doktora-tez-sablonu.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/IKCU_SBE_Doktora_Tez_Sablonu.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/IKCU_SBE_Tez_Yazim_Kilavuzu.pdf",
+   "unknown": 9,
+   "conflicts": 1,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/ikc-sbe-phd-tr-ikcu-sbe-doktora-tez-sablonu.json"
+  },
+  {
+   "id": "ikc-sbe-master-tr-ikcu-sbe-tezli-yuksek-lisans-tez-sablonu",
+   "draft": "engine/output/ege-rebuild/drafts/ikc-sbe-master-tr-ikcu-sbe-tezli-yuksek-lisans-tez-sablonu.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/IKCU_SBE_Tezli_Yuksek_Lisans_Tez_Sablonu.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/IKCU_SBE_Tez_Yazim_Kilavuzu.pdf",
+   "unknown": 9,
+   "conflicts": 1,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/ikc-sbe-master-tr-ikcu-sbe-tezli-yuksek-lisans-tez-sablonu.json"
+  },
+  {
+   "id": "ikc-su-urunleri-undergraduate-tr-kaynak-32e5d2",
+   "draft": "engine/output/ege-rebuild/drafts/ikc-su-urunleri-undergraduate-tr-kaynak-32e5d2.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Su_Urunleri_Fakultesi_Bitirme_Tezi/IKCU_SUF_Bitirme_Tezi_Yazim_Kilavuzu.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Su_Urunleri_Fakultesi_Bitirme_Tezi/IKCU_SUF_Bitirme_Tezi_Yazim_Kilavuzu.docx",
+   "unknown": 7,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/ikc-su-urunleri-undergraduate-tr-kaynak-32e5d2.json"
+  },
+  {
+   "id": "ikc-tip-specialization-tr-kaynak-708e64",
+   "draft": "engine/output/ege-rebuild/drafts/ikc-tip-specialization-tr-kaynak-708e64.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/IKCU_Tip_Uzmanlik_Tez_Yazim_Basim_Kilavuzu.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/IKCU_Tip_Uzmanlik_Tez_Yazim_Basim_Kilavuzu.docx",
+   "unknown": 8,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/ikc-tip-specialization-tr-kaynak-708e64.json"
+  },
+  {
+   "id": "tinaztepe-lee-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/tinaztepe-lee-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+   "unknown": 9,
+   "conflicts": 0,
+   "reviewedFields": [
+    "page.margins.leftMm",
+    "typography.body.fontFamily",
+    "page.numbering.position",
+    "typography.body.fontSizePt",
+    "typography.body.lineHeight",
+    "page.margins.topMm",
+    "page.margins.bottomMm",
+    "page.margins.rightMm",
+    "page.numbering.align",
+    "page.numbering.style.fontFamily",
+    "page.numbering.style.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/tinaztepe-lee-master-tr-kaynak.json"
+  },
+  {
+   "id": "dpu-eee-undergraduate-tr-kaynak-d8d6b9",
+   "draft": "engine/output/ege-rebuild/drafts/dpu-eee-undergraduate-tr-kaynak-d8d6b9.json",
+   "source": "Butun-Sablonlar/Ege/Kütahya Dumlupınar Üniversitesi/Elektrik_Elektronik_Muhendisligi_Bitirme/DPU_EEM_Lisans_Tez_Sablonu_2021.docx",
+   "guide": "Butun-Sablonlar/Ege/Kütahya Dumlupınar Üniversitesi/Elektrik_Elektronik_Muhendisligi_Bitirme/DPU_EEM_Lisans_Tez_Yazim_Kilavuzu.pdf",
+   "unknown": 4,
+   "conflicts": 3,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Kütahya Dumlupınar Üniversitesi/dpu-eee-undergraduate-tr-kaynak-d8d6b9.json"
+  },
+  {
+   "id": "dpu-endustri-undergraduate-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/dpu-endustri-undergraduate-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Kütahya Dumlupınar Üniversitesi/Endustri_Muhendisligi_Bitirme/DPU_Endustri_Muhendisligi_Yazim_Yonergesi.pdf",
+   "guide": "Butun-Sablonlar/Ege/Kütahya Dumlupınar Üniversitesi/Endustri_Muhendisligi_Bitirme/DPU_Endustri_Muhendisligi_Yazim_Yonergesi.pdf",
+   "unknown": 12,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/Kütahya Dumlupınar Üniversitesi/dpu-endustri-undergraduate-tr-kaynak.json"
+  },
+  {
+   "id": "dpu-lee-master-tr-kaynak-d16092",
+   "draft": "engine/output/ege-rebuild/drafts/dpu-lee-master-tr-kaynak-d16092.json",
+   "source": "Butun-Sablonlar/Ege/Kütahya Dumlupınar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/DPU_Lisansustu_Tez_Sablonu_2026-09-29.docx",
+   "guide": "Butun-Sablonlar/Ege/Kütahya Dumlupınar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/DPÜ_Lisansustu_Tez_Yazim_Kilavuzu_2026.docx",
+   "unknown": 5,
+   "conflicts": 0,
+   "reviewedFields": [
+    "page.margins.topMm",
+    "page.margins.bottomMm",
+    "page.margins.leftMm",
+    "page.margins.rightMm",
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt",
+    "typography.body.lineHeight",
+    "typography.paragraph.spaceBeforePt",
+    "typography.paragraph.spaceAfterPt",
+    "typography.body.align",
+    "typography.paragraph.firstLineIndentMm"
+   ],
+   "file": "Butun-Sablonlar/Ege/Kütahya Dumlupınar Üniversitesi/dpu-lee-master-tr-kaynak-d16092.json"
+  },
+  {
+   "id": "ksbu-dhf-specialization-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ksbu-dhf-specialization-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/KSBU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+   "guide": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/KSBU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+   "unknown": 11,
+   "conflicts": 1,
+   "reviewedFields": [
+    "page.margins.leftMm",
+    "page.margins.rightMm",
+    "page.margins.topMm",
+    "page.margins.bottomMm",
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt",
+    "typography.body.lineHeight"
+   ],
+   "file": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/ksbu-dhf-specialization-tr-kaynak.json"
+  },
+  {
+   "id": "ksbu-lee-master-tr-kilavuz",
+   "draft": "engine/output/ege-rebuild/drafts/ksbu-lee-master-tr-kilavuz.json",
+   "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+   "guide": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/KSBU_Lisansustu_Tez_Yazim_Kilavuzu_2024.docx",
+   "unknown": 17,
+   "conflicts": 1,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/ksbu-lee-master-tr-kilavuz.json"
+  },
+  {
+   "id": "ksbu-lee-proje-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ksbu-lee-proje-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Tezsiz_Donem_Projesi/KSBU_Donem_Projesi_Yazim_Kilavuzu_2022-04-07.pdf",
+   "guide": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Lisansustu_Tezsiz_Donem_Projesi/KSBU_Donem_Projesi_Yazim_Kilavuzu_2022-04-07.pdf",
+   "unknown": 17,
+   "conflicts": 1,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/ksbu-lee-proje-master-tr-kaynak.json"
+  },
+  {
+   "id": "ksbu-tip-specialization-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ksbu-tip-specialization-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+   "guide": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/KSBU_Tip_Uzmanlik_Tezi_Yazim_Kilavuzu_2019.pdf",
+   "unknown": 13,
+   "conflicts": 1,
+   "reviewedFields": [
+    "typography.body.lineHeight",
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/Kütahya Sağlık Bilimleri Üniversitesi/ksbu-tip-specialization-tr-kaynak.json"
+  },
+  {
+   "id": "mugla-ebe-phd-tr-msku-egitim-bilimleri-doktora-tez-sablon",
+   "draft": "engine/output/ege-rebuild/drafts/mugla-ebe-phd-tr-msku-egitim-bilimleri-doktora-tez-sablon.json",
+   "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/MSKU_Egitim_Bilimleri_Doktora_Tez_Sablonu_TR_2025-10-06.docx",
+   "guide": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_TR.pdf",
+   "unknown": 9,
+   "conflicts": 1,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/mugla-ebe-phd-tr-msku-egitim-bilimleri-doktora-tez-sablon.json"
+  },
+  {
+   "id": "mugla-ebe-phd-tr-msku-egitim-bilimleri-doktora-thesis-tem",
+   "draft": "engine/output/ege-rebuild/drafts/mugla-ebe-phd-tr-msku-egitim-bilimleri-doktora-thesis-tem.json",
+   "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx",
+   "guide": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf",
+   "unknown": 4,
+   "conflicts": 1,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/mugla-ebe-phd-tr-msku-egitim-bilimleri-doktora-thesis-tem.json"
+  },
+  {
+   "id": "mugla-ebe-master-tr-msku-egitim-bilimleri-yuksek-lisans-tez-",
+   "draft": "engine/output/ege-rebuild/drafts/mugla-ebe-master-tr-msku-egitim-bilimleri-yuksek-lisans-tez-.json",
+   "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/MSKU_Egitim_Bilimleri_Yuksek_Lisans_Tez_Sablonu_TR_2025-10-06.docx",
+   "guide": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_TR.pdf",
+   "unknown": 9,
+   "conflicts": 1,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/mugla-ebe-master-tr-msku-egitim-bilimleri-yuksek-lisans-tez-.json"
+  },
+  {
+   "id": "mugla-ebe-master-tr-msku-egitim-bilimleri-yuksek-lisans-thes",
+   "draft": "engine/output/ege-rebuild/drafts/mugla-ebe-master-tr-msku-egitim-bilimleri-yuksek-lisans-thes.json",
+   "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/MSKU_Egitim_Bilimleri_Yuksek_Lisans_Thesis_Template_EN_2025-10-06.docx",
+   "guide": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf",
+   "unknown": 4,
+   "conflicts": 1,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/mugla-ebe-master-tr-msku-egitim-bilimleri-yuksek-lisans-thes.json"
+  },
+  {
+   "id": "mugla-fbe-master-tr-msku-fen-bilimleri-tez-sablonu-tr",
+   "draft": "engine/output/ege-rebuild/drafts/mugla-fbe-master-tr-msku-fen-bilimleri-tez-sablonu-tr.json",
+   "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/MSKU_Fen_Bilimleri_Tez_Sablonu_TR.docx",
+   "guide": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/MSKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2024.doc",
+   "unknown": 5,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/mugla-fbe-master-tr-msku-fen-bilimleri-tez-sablonu-tr.json"
+  },
+  {
+   "id": "mugla-fbe-master-tr-msku-fen-bilimleri-thesis-template-en",
+   "draft": "engine/output/ege-rebuild/drafts/mugla-fbe-master-tr-msku-fen-bilimleri-thesis-template-en.json",
+   "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/MSKU_Fen_Bilimleri_Thesis_Template_EN.docx",
+   "guide": null,
+   "unknown": 2,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/mugla-fbe-master-tr-msku-fen-bilimleri-thesis-template-en.json"
+  },
+  {
+   "id": "mugla-sagbe-master-tr-msku-saglik-bilimleri-tez-yazim-sablonu-",
+   "draft": "engine/output/ege-rebuild/drafts/mugla-sagbe-master-tr-msku-saglik-bilimleri-tez-yazim-sablonu-.json",
+   "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/MSKU_Saglik_Bilimleri_Tez_Yazim_Sablonu_2025-11-20.docx",
+   "guide": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/MSKU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+   "unknown": 13,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/mugla-sagbe-master-tr-msku-saglik-bilimleri-tez-yazim-sablonu-.json"
+  },
+  {
+   "id": "mugla-sbe-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/mugla-sbe-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+   "guide": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+   "unknown": 12,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt",
+    "page.numbering.position",
+    "page.numbering.align",
+    "page.numbering.style.fontFamily",
+    "page.numbering.style.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/mugla-sbe-master-tr-kaynak.json"
+  },
+  {
+   "id": "mugla-tip-specialization-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/mugla-tip-specialization-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MSKU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2022.pdf",
+   "guide": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MSKU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2022.pdf",
+   "unknown": 13,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.lineHeight",
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/mugla-tip-specialization-tr-kaynak.json"
+  },
+  {
+   "id": "pau-arkeoloji-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/pau-arkeoloji-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Arkeoloji_Enstitusu_Tez/PAU_Arkeoloji_Enstitusu_Tez_ve_Seminer_Projesi_Yazim_Kurallari_2016.docx",
+   "guide": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Arkeoloji_Enstitusu_Tez/PAU_Arkeoloji_Enstitusu_Tez_ve_Seminer_Projesi_Yazim_Kurallari_2016.docx",
+   "unknown": 12,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/pau-arkeoloji-master-tr-kaynak.json"
+  },
+  {
+   "id": "pau-dhf-specialization-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/pau-dhf-specialization-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+   "guide": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+   "unknown": 14,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontSizePt",
+    "typography.body.fontFamily",
+    "typography.paragraph.firstLineIndentMm",
+    "typography.body.lineHeight"
+   ],
+   "file": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/pau-dhf-specialization-tr-kaynak.json"
+  },
+  {
+   "id": "pau-ebe-phd-tr-pau-egitim-bilimleri-tez-sablonu-doktora",
+   "draft": "engine/output/ege-rebuild/drafts/pau-ebe-phd-tr-pau-egitim-bilimleri-tez-sablonu-doktora.json",
+   "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx",
+   "guide": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx",
+   "unknown": 11,
+   "conflicts": 1,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/pau-ebe-phd-tr-pau-egitim-bilimleri-tez-sablonu-doktora.json"
+  },
+  {
+   "id": "pau-ebe-master-tr-pau-egitim-bilimleri-tez-sablonu-yuksek-",
+   "draft": "engine/output/ege-rebuild/drafts/pau-ebe-master-tr-pau-egitim-bilimleri-tez-sablonu-yuksek-.json",
+   "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/PAU_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans_2025.docx",
+   "guide": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx",
+   "unknown": 11,
+   "conflicts": 1,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/pau-ebe-master-tr-pau-egitim-bilimleri-tez-sablonu-yuksek-.json"
+  },
+  {
+   "id": "pau-fbe-master-tr-pau-fen-bilimleri-tez-sablonu",
+   "draft": "engine/output/ege-rebuild/drafts/pau-fbe-master-tr-pau-fen-bilimleri-tez-sablonu.json",
+   "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/PAU_Fen_Bilimleri_Tez_Sablonu.docx",
+   "guide": null,
+   "unknown": 0,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/pau-fbe-master-tr-pau-fen-bilimleri-tez-sablonu.json"
+  },
+  {
+   "id": "pau-sagbe-phd-tr-kaynak-545612",
+   "draft": "engine/output/ege-rebuild/drafts/pau-sagbe-phd-tr-kaynak-545612.json",
+   "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/PAU_Saglik_Bilimleri_Doktora_Tez_Sablonu_2023_Haziran.docx",
+   "guide": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/PAU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu_2024_Haziran.pdf",
+   "unknown": 16,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt",
+    "typography.body.lineHeight"
+   ],
+   "file": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/pau-sagbe-phd-tr-kaynak-545612.json"
+  },
+  {
+   "id": "pau-sagbe-master-tr-kaynak-a52689",
+   "draft": "engine/output/ege-rebuild/drafts/pau-sagbe-master-tr-kaynak-a52689.json",
+   "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/PAU_Saglik_Bilimleri_Yuksek_Lisans_Tez_Sablonu_2023_Haziran.docx",
+   "guide": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/PAU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu_2024_Haziran.pdf",
+   "unknown": 16,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt",
+    "typography.body.lineHeight"
+   ],
+   "file": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/pau-sagbe-master-tr-kaynak-a52689.json"
+  },
+  {
+   "id": "pau-sbe-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/pau-sbe-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/PAU_Sosyal_Bilimler_PAU_Tez_Yazim_Kurallari_2025.doc",
+   "guide": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/PAU_Sosyal_Bilimler_PAU_Tez_Yazim_Kurallari_2025.doc",
+   "unknown": 14,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/pau-sbe-master-tr-kaynak.json"
+  },
+  {
+   "id": "pau-tip-specialization-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/pau-tip-specialization-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/PAU_Tip_Fakultesi_Tipta_Uzmanlik_Tezleri_Yazim_ve_Basim_Kilavuzu_2025.pdf",
+   "guide": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/PAU_Tip_Fakultesi_Tipta_Uzmanlik_Tezleri_Yazim_ve_Basim_Kilavuzu_2025.pdf",
+   "unknown": 14,
+   "conflicts": 1,
+   "reviewedFields": [
+    "typography.body.lineHeight",
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/pau-tip-specialization-tr-kaynak.json"
+  },
+  {
+   "id": "usak-dhf-specialization-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/usak-dhf-specialization-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Dis_Hekimligi_Fakultesi_Tez/USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+   "guide": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Dis_Hekimligi_Fakultesi_Tez/USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+   "unknown": 15,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/Uşak Üniversitesi/usak-dhf-specialization-tr-kaynak.json"
+  },
+  {
+   "id": "usak-insaat-undergraduate-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/usak-insaat-undergraduate-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Insaat_Muhendisligi_Bitirme_Tezi/Usak_Insaat_Muhendisligi_Bitirme_Kilavuzu_2009.docx",
+   "guide": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Insaat_Muhendisligi_Bitirme_Tezi/Usak_Insaat_Muhendisligi_Bitirme_Kilavuzu_2009.docx",
+   "unknown": 14,
+   "conflicts": 0,
+   "reviewedFields": [
+    "page.margins.rightMm"
+   ],
+   "file": "Butun-Sablonlar/Ege/Uşak Üniversitesi/usak-insaat-undergraduate-tr-kaynak.json"
+  },
+  {
+   "id": "usak-lee-fen-saglik-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/usak-lee-fen-saglik-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Lisansustu_Fen_Saglik_Alanlari_Tez/Usak_Fen_Saglik_Alanlar_Tez_Kilavuzu_2021.docx",
+   "guide": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Lisansustu_Fen_Saglik_Alanlari_Tez/Usak_Fen_Saglik_Alanlar_Tez_Kilavuzu_2021.docx",
+   "unknown": 17,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Uşak Üniversitesi/usak-lee-fen-saglik-master-tr-kaynak.json"
+  },
+  {
+   "id": "usak-lee-sosyal-master-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/usak-lee-sosyal-master-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Lisansustu_Sosyal_Alanlar_Tez/Usak_Sosyal_Alanlar_Tez_Kilavuzu_2026.docx",
+   "guide": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Lisansustu_Sosyal_Alanlar_Tez/Usak_Sosyal_Alanlar_Tez_Kilavuzu_2026.docx",
+   "unknown": 15,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Uşak Üniversitesi/usak-lee-sosyal-master-tr-kaynak.json"
+  },
+  {
+   "id": "usak-makine-undergraduate-tr-kaynak-5e99ad",
+   "draft": "engine/output/ege-rebuild/drafts/usak-makine-undergraduate-tr-kaynak-5e99ad.json",
+   "source": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Makine_Muhendisligi_Bitirme/USAK_Makine_Muh_Ornek_Tez_Rev1_2020.docx",
+   "guide": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Makine_Muhendisligi_Bitirme/USAK_Makine_Muh_Tez_Yazim_Kilavuzu_2020.doc",
+   "unknown": 9,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Uşak Üniversitesi/usak-makine-undergraduate-tr-kaynak-5e99ad.json"
+  },
+  {
+   "id": "yasar-lee-master-tr-yasar-hukuk-programlari-tez-sablonu-tr-2",
+   "draft": "engine/output/ege-rebuild/drafts/yasar-lee-master-tr-yasar-hukuk-programlari-tez-sablonu-tr-2.json",
+   "source": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Hukuk_Programlari_Tez_Sablonu_TR_2025-07.docx",
+   "guide": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+   "unknown": 11,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/yasar-lee-master-tr-yasar-hukuk-programlari-tez-sablonu-tr-2.json"
+  },
+  {
+   "id": "yasar-lee-master-tr-yasar-lisansustu-tez-sablonu-en-2024-11-",
+   "draft": "engine/output/ege-rebuild/drafts/yasar-lee-master-tr-yasar-lisansustu-tez-sablonu-en-2024-11-.json",
+   "source": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Sablonu_EN_2024-11-19.docx",
+   "guide": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_EN_2024-11.pdf",
+   "unknown": 11,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/yasar-lee-master-tr-yasar-lisansustu-tez-sablonu-en-2024-11-.json"
+  },
+  {
+   "id": "yasar-lee-master-tr-yasar-lisansustu-tez-sablonu-tr-2024-11-",
+   "draft": "engine/output/ege-rebuild/drafts/yasar-lee-master-tr-yasar-lisansustu-tez-sablonu-tr-2024-11-.json",
+   "source": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Sablonu_TR_2024-11-19.docx",
+   "guide": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Yasar_Lisansustu_Tez_Yazim_Kilavuzu_TR_2025-06.pdf",
+   "unknown": 5,
+   "conflicts": 0,
+   "reviewedFields": [],
+   "file": "Butun-Sablonlar/Ege/Yaşar Üniversitesi/yasar-lee-master-tr-yasar-lisansustu-tez-sablonu-tr-2024-11-.json"
+  },
+  {
+   "id": "ege-sbe-phd-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/ege-sbe-phd-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/Ege Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/EGE_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2024.docx",
+   "guide": "Butun-Sablonlar/Ege/Ege Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/EGE_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2024.docx",
+   "unknown": 19,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "typography.body.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/Ege Üniversitesi/ege-sbe-phd-tr-kaynak.json"
+  },
+  {
+   "id": "bakircay-lee-phd-tr-kaynak",
+   "draft": "engine/output/ege-rebuild/drafts/bakircay-lee-phd-tr-kaynak.json",
+   "source": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Bakircay_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+   "guide": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/Bakircay_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+   "unknown": 19,
+   "conflicts": 0,
+   "reviewedFields": [
+    "typography.body.fontFamily",
+    "page.numbering.position",
+    "typography.body.fontSizePt",
+    "page.numbering.align",
+    "page.numbering.style.fontFamily",
+    "page.numbering.style.fontSizePt"
+   ],
+   "file": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/bakircay-lee-phd-tr-kaynak.json"
+  }
+ ],
+ "coverage": [
+  {
+   "university": "Afyon Kocatepe Üniversitesi",
+   "scope": "Cografya_Bolumu_Bitirme_Tezi",
+   "sources": 2,
+   "measuredTemplates": 1,
+   "retained": true,
+   "status": "processed"
+  },
+  {
+   "university": "Afyon Kocatepe Üniversitesi",
+   "scope": "Felsefe_Bolumu_Tez_ve_Seminer",
+   "sources": 2,
+   "measuredTemplates": 0,
+   "retained": true,
+   "status": "processed"
+  },
+  {
+   "university": "Afyon Kocatepe Üniversitesi",
+   "scope": "Fen_Bilimleri_Enstitusu_Tez",
+   "sources": 4,
+   "measuredTemplates": 2,
+   "retained": true,
+   "status": "processed"
+  },
+  {
+   "university": "Afyon Kocatepe Üniversitesi",
+   "scope": "Fen_Bilimleri_Is_Guvenligi_Tezsiz_Proje",
+   "status": "existing-special-layout",
+   "sources": [
+    "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Is_Guvenligi_Tezsiz_Proje/AKU_Fen_Bilimleri_Is_Guvenligi_Donem_Projesi_Sablonu_2022.doc"
+   ]
+  },
+  {
+   "university": "Afyon Kocatepe Üniversitesi",
+   "scope": "Kimya_Bolumu_Bitirme_Tezi",
+   "sources": 2,
+   "measuredTemplates": 1,
+   "retained": true,
+   "status": "processed"
+  },
+  {
+   "university": "Afyon Kocatepe Üniversitesi",
+   "scope": "Matematik_Bolumu_Bitirme_Tezi",
+   "sources": 1,
+   "measuredTemplates": 1,
+   "retained": true,
+   "status": "processed"
+  },
+  {
+   "university": "Afyon Kocatepe Üniversitesi",
+   "scope": "MBG_Lisans_Bitirme_Tezi",
+   "sources": 2,
+   "measuredTemplates": 1,
+   "retained": true,
+   "status": "processed"
+  },
+  {
+   "university": "Afyon Kocatepe Üniversitesi",
+   "scope": "Saglik_Bilimleri_Enstitusu_Tez",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": true,
+   "status": "processed"
+  },
+  {
+   "university": "Afyon Kocatepe Üniversitesi",
+   "scope": "Sosyal_Bilimler_Enstitusu_Tez",
+   "sources": 10,
+   "measuredTemplates": 0,
+   "retained": true,
+   "status": "processed"
+  },
+  {
+   "university": "Afyon Kocatepe Üniversitesi",
+   "scope": "Sosyoloji_Bolumu_Bitirme_Tezi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": true,
+   "status": "processed"
+  },
+  {
+   "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+   "scope": "Eczacilik_Arastirma_Projesi",
+   "status": "existing-special-layout",
+   "sources": [
+    "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Eczacilik_Arastirma_Projesi/AFSU_Eczacilik_Arastirma_Projesi_Dersleri_Yonergesi_2024.pdf"
+   ]
+  },
+  {
+   "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+   "scope": "Lisansustu_Egitim_Enstitusu_Tez",
+   "sources": 13,
+   "measuredTemplates": 2,
+   "retained": true,
+   "status": "processed"
+  },
+  {
+   "university": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+   "scope": "Tip_Dis_Hekimligi_Uzmanlik_Tezi",
+   "status": "existing-special-layout",
+   "sources": [
+    "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+    "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf"
+   ]
+  },
+  {
+   "university": "Aydın Adnan Menderes Üniversitesi",
+   "scope": "Fen_Bilimleri_Enstitusu_Tez",
+   "sources": 3,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Aydın Adnan Menderes Üniversitesi",
+   "scope": "Muhendislik_Fakultesi_Lisans_Bitirme_Tezi",
+   "sources": 1,
+   "measuredTemplates": 1,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Aydın Adnan Menderes Üniversitesi",
+   "scope": "Saglik_Bilimleri_Enstitusu_Tez",
+   "sources": 2,
+   "measuredTemplates": 1,
+   "retained": true,
+   "status": "processed"
+  },
+  {
+   "university": "Aydın Adnan Menderes Üniversitesi",
+   "scope": "Sosyal_Bilimler_Enstitusu_Tez",
+   "sources": 2,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Aydın Adnan Menderes Üniversitesi",
+   "scope": "Tip_Fakultesi_Uzmanlik_Tezi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Aydın Adnan Menderes Üniversitesi",
+   "scope": "Ziraat_Fakultesi_Lisans_Tezi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Dokuz Eylül Üniversitesi",
+   "scope": "Ataturk_Ilkeleri_Enstitusu_Tez",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Dokuz Eylül Üniversitesi",
+   "scope": "Egitim_Bilimleri_Enstitusu_Tez",
+   "sources": 4,
+   "measuredTemplates": 2,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Dokuz Eylül Üniversitesi",
+   "scope": "Endustri_Muhendisligi_Bitirme",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Dokuz Eylül Üniversitesi",
+   "scope": "Fen_Bilimleri_Enstitusu_Tez",
+   "sources": 5,
+   "measuredTemplates": 4,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Dokuz Eylül Üniversitesi",
+   "scope": "Guzel_Sanatlar_Enstitusu_Tez",
+   "sources": 2,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Dokuz Eylül Üniversitesi",
+   "scope": "iBG_Enstitusu_Tez",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Dokuz Eylül Üniversitesi",
+   "scope": "Makina_Muhendisligi_Bitirme",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Dokuz Eylül Üniversitesi",
+   "scope": "Saglik_Bilimleri_Enstitusu_Tez",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Dokuz Eylül Üniversitesi",
+   "scope": "Sosyal_Bilimler_Enstitusu_Tez",
+   "sources": 4,
+   "measuredTemplates": 1,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Dokuz Eylül Üniversitesi",
+   "scope": "Tip_Fakultesi_Uzmanlik_Tezi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Ege Üniversitesi",
+   "scope": "Dis_Hekimligi_Bitirme_Projesi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Ege Üniversitesi",
+   "scope": "Dis_Hekimligi_Uzmanlik_Tezi",
+   "sources": 2,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Ege Üniversitesi",
+   "scope": "Egitim_Bilimleri_Enstitusu_Tez",
+   "sources": 3,
+   "measuredTemplates": 2,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Ege Üniversitesi",
+   "scope": "Fen_Bilimleri_Enstitusu_Tez",
+   "sources": 7,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Ege Üniversitesi",
+   "scope": "Iletisim_Fakultesi_Gazetecilik_Bitirme_Projesi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Ege Üniversitesi",
+   "scope": "Iletisim_Fakultesi_HIT_Bitirme_Tezi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Ege Üniversitesi",
+   "scope": "Iletisim_Fakultesi_Reklamcilik_Bitirme_Projesi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Ege Üniversitesi",
+   "scope": "Iletisim_Fakultesi_RTS_Bitirme_Tezi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Ege Üniversitesi",
+   "scope": "Muhendislik_Fakultesi_Deri_Bitirme_Tezi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Ege Üniversitesi",
+   "scope": "Saglik_Bilimleri_Enstitusu_Donem_Projesi",
+   "status": "existing-special-layout",
+   "sources": [
+    "Butun-Sablonlar/Ege/Ege Üniversitesi/Saglik_Bilimleri_Enstitusu_Donem_Projesi/Saglik_Bilimleri_Donem_Projesi_Yazim_Kilavuzu_2019.pdf"
+   ]
+  },
+  {
+   "university": "Ege Üniversitesi",
+   "scope": "Saglik_Bilimleri_Enstitusu_Tez",
+   "sources": 2,
+   "measuredTemplates": 1,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Ege Üniversitesi",
+   "scope": "Sosyal_Bilimler_Enstitusu_Tez",
+   "sources": 3,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Ege Üniversitesi",
+   "scope": "Su_Urunleri_Fakultesi_Lisans_Tez",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Ege Üniversitesi",
+   "scope": "Tarih_Bolumu_Bitirme_Tezi",
+   "sources": 2,
+   "measuredTemplates": 1,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Ege Üniversitesi",
+   "scope": "Tip_Fakultesi_Uzmanlik_Tezi",
+   "sources": 2,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "İzmir Bakırçay Üniversitesi",
+   "scope": "Lisansustu_Egitim_Enstitusu_Donem_Projesi",
+   "sources": 2,
+   "measuredTemplates": 1,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "İzmir Bakırçay Üniversitesi",
+   "scope": "Lisansustu_Egitim_Enstitusu_Tez",
+   "sources": 7,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "İzmir Bakırçay Üniversitesi",
+   "scope": "Tip_Fakultesi_Uzmanlik_Tezi",
+   "sources": 2,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "İzmir Demokrasi Üniversitesi",
+   "scope": "Lisansustu_Egitim_Enstitusu_Tez",
+   "sources": 2,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "İzmir Ekonomi Üniversitesi",
+   "scope": "Gastronomi_ve_Mutfak_Sanatlari_Bitirme_Projesi",
+   "sources": 2,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "İzmir Ekonomi Üniversitesi",
+   "scope": "Lisansustu_Egitim_Enstitusu_Tez",
+   "sources": 9,
+   "measuredTemplates": 6,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "İzmir Kâtip Çelebi Üniversitesi",
+   "scope": "Dis_Hekimligi_Uzmanlik_Tezi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "İzmir Kâtip Çelebi Üniversitesi",
+   "scope": "Fen_Bilimleri_Enstitusu_Tez",
+   "sources": 4,
+   "measuredTemplates": 2,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "İzmir Kâtip Çelebi Üniversitesi",
+   "scope": "Saglik_Bilimleri_Enstitusu_Tez",
+   "sources": 2,
+   "measuredTemplates": 1,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "İzmir Kâtip Çelebi Üniversitesi",
+   "scope": "Sosyal_Bilimler_Enstitusu_Tez",
+   "sources": 3,
+   "measuredTemplates": 2,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "İzmir Kâtip Çelebi Üniversitesi",
+   "scope": "Su_Urunleri_Fakultesi_Bitirme_Tezi",
+   "sources": 1,
+   "measuredTemplates": 1,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "İzmir Kâtip Çelebi Üniversitesi",
+   "scope": "Tip_Fakultesi_Uzmanlik_Tezi",
+   "sources": 1,
+   "measuredTemplates": 1,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "İzmir Tınaztepe Üniversitesi",
+   "scope": "Lisansustu_Egitim_Enstitusu_Tez",
+   "sources": 12,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "İzmir Yüksek Teknoloji Enstitüsü",
+   "scope": "Elektrik_Elektronik_Muhendisligi_Bitirme",
+   "sources": 1,
+   "measuredTemplates": 1,
+   "retained": true,
+   "status": "processed"
+  },
+  {
+   "university": "İzmir Yüksek Teknoloji Enstitüsü",
+   "scope": "Lisansustu_Egitim_Enstitusu_Tez",
+   "sources": 6,
+   "measuredTemplates": 0,
+   "retained": true,
+   "status": "processed"
+  },
+  {
+   "university": "Kütahya Dumlupınar Üniversitesi",
+   "scope": "Ekonometri_Bolumu",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Kütahya Dumlupınar Üniversitesi",
+   "scope": "Elektrik_Elektronik_Muhendisligi_Bitirme",
+   "sources": 2,
+   "measuredTemplates": 1,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Kütahya Dumlupınar Üniversitesi",
+   "scope": "Endustri_Muhendisligi_Bitirme",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Kütahya Dumlupınar Üniversitesi",
+   "scope": "Lisansustu_Egitim_Enstitusu_Tez",
+   "sources": 2,
+   "measuredTemplates": 1,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Kütahya Dumlupınar Üniversitesi",
+   "scope": "Simav_Teknoloji_Fakultesi_Bitirme",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Kütahya Sağlık Bilimleri Üniversitesi",
+   "scope": "Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Kütahya Sağlık Bilimleri Üniversitesi",
+   "scope": "Lisansustu_Egitim_Enstitusu_Tez",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Kütahya Sağlık Bilimleri Üniversitesi",
+   "scope": "Lisansustu_Tezsiz_Donem_Projesi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Kütahya Sağlık Bilimleri Üniversitesi",
+   "scope": "Tip_Fakultesi_Uzmanlik_Tezi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Manisa Celal Bayar Üniversitesi",
+   "scope": "Lisansustu_Egitim_Enstitusu_Tez",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": true,
+   "status": "processed"
+  },
+  {
+   "university": "Manisa Celal Bayar Üniversitesi",
+   "scope": "Tip_Fakultesi_Uzmanlik_Tezi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": true,
+   "status": "processed"
+  },
+  {
+   "university": "Muğla Sıtkı Koçman Üniversitesi",
+   "scope": "Egitim_Bilimleri_Enstitusu_Tez",
+   "sources": 6,
+   "measuredTemplates": 4,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Muğla Sıtkı Koçman Üniversitesi",
+   "scope": "Fen_Bilimleri_Enstitusu_Tez",
+   "sources": 4,
+   "measuredTemplates": 2,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Muğla Sıtkı Koçman Üniversitesi",
+   "scope": "Saglik_Bilimleri_Enstitusu_Tez",
+   "sources": 2,
+   "measuredTemplates": 1,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Muğla Sıtkı Koçman Üniversitesi",
+   "scope": "Sosyal_Bilimler_Enstitusu_Tez",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Muğla Sıtkı Koçman Üniversitesi",
+   "scope": "Tip_Fakultesi_Uzmanlik_Tezi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Pamukkale Üniversitesi",
+   "scope": "Arkeoloji_Enstitusu_Tez",
+   "sources": 2,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Pamukkale Üniversitesi",
+   "scope": "Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Pamukkale Üniversitesi",
+   "scope": "Egitim_Bilimleri_Enstitusu_Tez",
+   "sources": 3,
+   "measuredTemplates": 2,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Pamukkale Üniversitesi",
+   "scope": "Fen_Bilimleri_Enstitusu_Tez",
+   "sources": 1,
+   "measuredTemplates": 1,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Pamukkale Üniversitesi",
+   "scope": "Saglik_Bilimleri_Enstitusu_Tez",
+   "sources": 3,
+   "measuredTemplates": 2,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Pamukkale Üniversitesi",
+   "scope": "Sosyal_Bilimler_Enstitusu_Tez",
+   "sources": 4,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Pamukkale Üniversitesi",
+   "scope": "Tip_Fakultesi_Uzmanlik_Tezi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Uşak Üniversitesi",
+   "scope": "Dis_Hekimligi_Fakultesi_Tez",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Uşak Üniversitesi",
+   "scope": "Insaat_Muhendisligi_Bitirme_Tezi",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Uşak Üniversitesi",
+   "scope": "Lisansustu_Fen_Saglik_Alanlari_Tez",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Uşak Üniversitesi",
+   "scope": "Lisansustu_Sosyal_Alanlar_Tez",
+   "sources": 1,
+   "measuredTemplates": 0,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Uşak Üniversitesi",
+   "scope": "Makine_Muhendisligi_Bitirme",
+   "sources": 3,
+   "measuredTemplates": 1,
+   "retained": false,
+   "status": "processed"
+  },
+  {
+   "university": "Yaşar Üniversitesi",
+   "scope": "Lisansustu_Egitim_Enstitusu_Tez",
+   "sources": 5,
+   "measuredTemplates": 3,
+   "retained": false,
+   "status": "processed"
+  }
+ ],
+ "limitations": [
+  "Schema validation does not certify visual conformity.",
+  "Unresolved source fields remain in source.review; new entries are drafts."
+ ]
+}

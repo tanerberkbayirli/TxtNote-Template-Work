@@ -1,27 +1,303 @@
 {
  "schemaVersion": 1,
- "templateVersion": "0.1.0-draft",
+ "templateVersion": "0.2.0-source-rebuild",
  "id": "ikc-fbe-master-tr-ikcu-fbe-tez-sablonu-tr-2023-10-28",
  "universityId": "ikc",
  "universityName": "İzmir Kâtip Çelebi Üniversitesi",
  "instituteId": "fbe",
- "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "instituteName": "Fen Bilimleri Enstitüsü",
  "degreeType": "master",
  "language": "tr",
  "status": "generic",
  "source": {
   "type": "official",
   "documentName": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx",
-  "verifiedAt": "2026-10-07",
+  "verifiedAt": "2026-10-23",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 bed453dd2a4d7420bc2d636818a4490ba1604acb16b9cf0103b7c9716a8ec008",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
-   "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi",
-   "Kılavuz kuralları birleştirildi: IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf (4 alan, 0 çelişki)"
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
   ],
-  "guideDocumentName": "IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
+  "guideDocumentName": "IKCU_FBE_Tez_Yazim_Kilavuzu_TR_2023-10-28.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx",
+  "rebuildKind": "docx-template",
+  "archiveSha256": "bed453dd2a4d7420bc2d636818a4490ba1604acb16b9cf0103b7c9716a8ec008",
+  "evidence": {
+   "page.margins": {
+    "value": {
+     "topMm": 25,
+     "bottomMm": 25.01,
+     "leftMm": 40,
+     "rightMm": 25
+    },
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › sectPr#2 (gövde bölümü, 292 paragraf) › w:pgMar",
+    "status": "MEASURED"
+   },
+   "page.size": {
+    "value": [
+     210,
+     297
+    ],
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › sectPr#2 (gövde bölümü, 292 paragraf) › w:pgSz",
+    "status": "MEASURED"
+   },
+   "page.numbering": {
+    "value": {
+     "enabled": true,
+     "position": "bottom",
+     "align": "center",
+     "format": "arabic",
+     "startAt": 1,
+     "restart": false
+    },
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › sectPr#2 (gövde bölümü, 292 paragraf) › footer PAGE alanı, w:pgNumType",
+    "status": "MEASURED"
+   },
+   "page.footer.distanceMm": {
+    "value": 8.01,
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › sectPr#2 (gövde bölümü, 292 paragraf) › w:pgMar/@w:footer",
+    "status": "MEASURED"
+   },
+   "typography.body": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "justify",
+     "lineHeight": 1.5
+    },
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › gövde profili: 49/63 paragraf (≥200 karakter), 5 farklı biçim",
+    "status": "MEASURED"
+   },
+   "tables.position": {
+    "value": "above",
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › 1 üstte / 1 altta",
+    "status": "MEASURED"
+   },
+   "tables": {
+    "value": {
+     "label": "Tablo",
+     "position": "above",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "align": "center",
+      "lineHeight": 1
+     },
+     "numbering": {
+      "scope": "chapter",
+      "format": "{chapter}.{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › 1/1 yazı; etiket sayımı {'Tablo': 1, 'Şekil': 1}",
+    "status": "MEASURED"
+   },
+   "figures": {
+    "value": {
+     "label": "Şekil",
+     "position": "below",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "align": "center",
+      "lineHeight": 1
+     },
+     "numbering": {
+      "scope": "chapter",
+      "format": "{chapter}.{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › 6/7 yazı; etiket sayımı {'Şekil': 7}",
+    "status": "MEASURED"
+   },
+   "typography.footnotes": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 10,
+     "lineHeight": 1,
+     "align": "justify",
+     "placement": "pageBottom"
+    },
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › stil DipnotMetni + settings.xml footnotePr",
+    "status": "MEASURED"
+   },
+   "sections.cover": {
+    "value": "13 blok, outerCover",
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › ön sayfa #0: Tez Hazırlama ve Yazım Kılavuzu (Tezin Türkçe Başlığı) / Mmmmm Mühendisliği Ana ",
+    "status": "MEASURED"
+   },
+   "sections.approval": {
+    "value": "23 blok, approval",
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › ön sayfa #1: İzmir Kâtip Çelebi Üniversitesi Fen Bilimleri Enstitüsü öğrencisi Aaaaa Bbbbb ta",
+    "status": "MEASURED"
+   },
+   "sections.declaration": {
+    "value": "11 blok, declaration",
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › ön sayfa #2: Yazarlık Beyanı / Ben, Aaaaa Bbbbb, başlığı Tezin Türkçe Başlığı olan bu tezimin",
+    "status": "MEASURED"
+   },
+   "sections.front-page-3": {
+    "value": "9 blok, custom",
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › ön sayfa #3: Tezin Türkçe Başlığı / Öz / Buraya tezin özeti yazılacaktır. Tezin özeti içinde ",
+    "status": "MEASURED"
+   },
+   "sections.front-page-4-2": {
+    "value": "9 blok, custom",
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › ön sayfa #4: Title of the Thesis in English / Abstract / Buraya tezin İngilizce özeti yazılac",
+    "status": "MEASURED"
+   },
+   "sections.dedication": {
+    "value": "2 blok, dedication",
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › ön sayfa #5: Tez çalışması bir kimseye (Aileme, Eşime, Anneme ve babama, vb.) ithaf edileceks",
+    "status": "MEASURED"
+   },
+   "sections.front-page-6-3": {
+    "value": "4 blok, custom",
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › ön sayfa #6: Teşekkür / Tez çalışmasına katkılarından dolayı kişilere ve/veya kurumlara teşek",
+    "status": "MEASURED"
+   },
+   "sections.declaration-2": {
+    "value": "24 blok, declaration",
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › ön sayfa #7: İçindekiler / Yazarlık Beyanı ii / Öz iii / Abstract iv",
+    "status": "MEASURED"
+   },
+   "sections.front-page-8-4": {
+    "value": "1 blok, custom",
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › ön sayfa #8: 2.6.1Şekillerin ve Tabloların Özellikleri7",
+    "status": "MEASURED"
+   },
+   "sections": {
+    "value": [
+     "outerCover",
+     "approval",
+     "declaration",
+     "custom",
+     "custom",
+     "dedication",
+     "custom",
+     "declaration",
+     "custom",
+     "mainContent"
+    ],
+    "source": "IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx › 1 birinci düzey başlık, 3 fiziksel bölüm",
+    "status": "MEASURED"
+   },
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Tez_Yazim_Kilavuzu_TR_2023-10-28.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 17",
+      "sentence": "2.1 Sayfa Düzeni ve Kenar Boşlukları Tezin tamamında sol kenar boşluğu (marjin) 4,00 cm; üst, sağ ve alt boşluklar 2,50 cm olacak şekilde ayarlanmalıdır."
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Tez_Yazim_Kilavuzu_TR_2023-10-28.pdf",
+    "locations": [
+     {
+      "value": 40,
+      "location": "sayfa 17",
+      "sentence": "2.1 Sayfa Düzeni ve Kenar Boşlukları Tezin tamamında sol kenar boşluğu (marjin) 4,00 cm; üst, sağ ve alt boşluklar 2,50 cm olacak şekilde ayarlanmalıdır."
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Tez_Yazim_Kilavuzu_TR_2023-10-28.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 17",
+      "sentence": "2.1 Sayfa Düzeni ve Kenar Boşlukları Tezin tamamında sol kenar boşluğu (marjin) 4,00 cm; üst, sağ ve alt boşluklar 2,50 cm olacak şekilde ayarlanmalıdır."
+     }
+    ]
+   },
+   "typography.footnotes.lineHeight": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 1,
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Tez_Yazim_Kilavuzu_TR_2023-10-28.pdf",
+    "locations": [
+     {
+      "value": 1,
+      "location": "sayfa 26",
+      "sentence": "Bir sayfadaki farklı dipnotları birbirinden ayırmak için tek satır aralığı kullanılır."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Tez_Yazim_Kilavuzu_TR_2023-10-28.pdf",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "sayfa 20",
+      "sentence": "Bütün sayfa numaraları sayfanın alt ortasında, sayfa alt kenarından 0,8 cm mesafede ve aynı konumda görünmelidir."
+     },
+     {
+      "value": "bottom",
+      "location": "sayfa 31",
+      "sentence": "3.1.8 İçindekiler İçindekiler dizininde, ii sayfa numaralı “Yazarlık Beyanı” sayfasından başlayarak tüm ön sayfalar, tez metni bölümleri ve tüm alt bölümleri, kaynaklar, ekler, –varsa– etik kurul onayı ve özgeçmiş eksiksiz olarak gösterilmelidir."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "center",
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Tez_Yazim_Kilavuzu_TR_2023-10-28.pdf",
+    "locations": [
+     {
+      "value": "center",
+      "location": "sayfa 20",
+      "sentence": "Bütün sayfa numaraları sayfanın alt ortasında, sayfa alt kenarından 0,8 cm mesafede ve aynı konumda görünmelidir."
+     }
+    ]
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx",
+    "sha256": "bed453dd2a4d7420bc2d636818a4490ba1604acb16b9cf0103b7c9716a8ec008"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Tez_Yazim_Kilavuzu_TR_2023-10-28.pdf",
+    "sha256": "5d7e975df5b37492076572481cdbbfb0dc29172fccdbe8f6120101ea61c493bf"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
+    "sha256": "014a91da32a22cc9fac9507bb8867508f1de8fa83f0f5804fbb3ed5c9762a46a"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Thesis_Template_EN_2023-10-28.docx",
+    "sha256": "4e4e5ee4d9bcf93f3c93d3dc595dd18b1d8e2ac1a672ac317508f8d7be45a60b"
+   }
+  ],
   "review": {
    "unknown": [
+    {
+     "field": "typography.headings.1",
+     "reason": "Balk1 stili var ama kullanılmamış; Word varsayılanı üniversite kuralı sayılmadı, kılavuzdan doğrulanmalı"
+    },
+    {
+     "field": "typography.headings.2",
+     "reason": "Belgede 2. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.3",
+     "reason": "Belgede 3. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.4",
+     "reason": "Belgede 4. düzey başlık stili veya örneği yok"
+    },
     {
      "field": "tables.extraLabels",
      "reason": "Belgede birden çok etiket var: {'Tablo': 1, 'Şekil': 1}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
@@ -32,11 +308,39 @@
     },
     {
      "field": "bibliography.hangingIndentMm",
-     "reason": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi"
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
     },
     {
      "field": "bibliography.heading",
      "reason": "Kaynakça başlığı belgede bulunamadı; 'KAYNAKLAR' yer tutucu"
+    },
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.lineHeight",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
     }
    ],
    "inferred": [
@@ -61,20 +365,19 @@
      "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
     },
     {
-     "field": "bibliography.hangingIndentMm",
-     "value": "0",
-     "reasoning": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi — kılavuzdan teyit edilmeli"
+     "field": "sections.sourceInstructions",
+     "value": "1",
+     "reasoning": "Şablonun kullanım yönergeleri ve örnek önsöz açıklamaları yeni tezin içeriği olarak basılmaması için çıkarıldı; özgün dosya korundu."
+    },
+    {
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
     }
    ],
    "conflicts": [],
-   "guide": "IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
-   "gate": {
-    "overall": "BLOCKED",
-    "results": {},
-    "reason": "Gerekli yazı tipi bu makinede PDF'e gömülemiyor: PDF yazı tipi Calibri Light izin verilen font ailelerinden biri değil",
-    "checkedAt": "2026-10-22",
-    "exportTool": "engine/tools/export.mjs"
-   }
+   "guide": "IKCU_FBE_Tez_Yazim_Kilavuzu_TR_2023-10-28.pdf",
+   "gate": null
   }
  },
  "page": {
@@ -83,10 +386,10 @@
   "heightMm": 297,
   "orientation": "portrait",
   "margins": {
-   "topMm": 25.01,
+   "topMm": 25,
    "bottomMm": 25.01,
    "leftMm": 40,
-   "rightMm": 25.01
+   "rightMm": 25
   },
   "header": {
    "heightMm": 0,
@@ -118,41 +421,7 @@
   },
   "paragraph": {
    "spaceBeforePt": 12,
-   "spaceAfterPt": 12,
-   "firstLineIndentMm": 12.5
-  },
-  "headings": {
-   "1": {
-    "fontFamily": "Calibri Light",
-    "fontSizePt": 16,
-    "fontWeight": 400,
-    "align": "justify",
-    "lineHeight": 1.5,
-    "spaceBeforePt": 12,
-    "spaceAfterPt": 0,
-    "keepWithNext": true
-   },
-   "2": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 26,
-    "fontWeight": 400,
-    "align": "left",
-    "keepWithNext": true
-   },
-   "3": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 26,
-    "fontWeight": 400,
-    "align": "left",
-    "keepWithNext": true
-   },
-   "4": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 26,
-    "fontWeight": 400,
-    "align": "left",
-    "keepWithNext": true
-   }
+   "spaceAfterPt": 12
   },
   "footnotes": {
    "fontFamily": "Times New Roman",
@@ -243,6 +512,82 @@
   "PROJECT_SUPPORT": {
    "label": "Proje desteği (varsa)",
    "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_NAME": {
+   "label": "Jury Member 1 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_NAME": {
+   "label": "Jury Member 2 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_NAME": {
+   "label": "Jury Member 3 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_NAME": {
+   "label": "Jury Member 4 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_NAME": {
+   "label": "Jury Member 5 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_INSTITUTION": {
+   "label": "Jury Member 1 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_INSTITUTION": {
+   "label": "Jury Member 2 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_INSTITUTION": {
+   "label": "Jury Member 3 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_INSTITUTION": {
+   "label": "Jury Member 4 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_INSTITUTION": {
+   "label": "Jury Member 5 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_NAME": {
+   "label": "Jury Member 6 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_NAME": {
+   "label": "Jury Member 7 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_INSTITUTION": {
+   "label": "Jury Member 6 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_INSTITUTION": {
+   "label": "Jury Member 7 Institution",
+   "type": "text"
   }
  },
  "sections": [
@@ -280,14 +625,15 @@
      "heightMm": 22.44
     },
     {
-     "type": "text",
-     "value": "Tez Hazırlama ve Yazım Kılavuzu (Tezin Türkçe Başlığı)",
+     "type": "metadata",
      "style": {
       "align": "center",
       "fontSizePt": 26,
       "spaceBeforePt": 12,
       "spaceAfterPt": 6
-     }
+     },
+     "field": "THESIS_TITLE",
+     "fallback": "Tez başlığı"
     },
     {
      "type": "spacer",
@@ -296,7 +642,7 @@
     {
      "type": "metadata",
      "field": "DEPARTMENT_NAME",
-     "fallback": "Mmmmm Mühendisliği Ana Bilim Dalı",
+     "fallback": "Anabilim dalı",
      "style": {
       "align": "center",
       "fontSizePt": 16,
@@ -306,7 +652,7 @@
     },
     {
      "type": "text",
-     "value": "Yüksek Lisans / Doktora Tezi",
+     "value": "YÜKSEK LİSANS TEZİ",
      "style": {
       "align": "center",
       "fontSizePt": 16,
@@ -319,14 +665,15 @@
      "heightMm": 11.22
     },
     {
-     "type": "text",
-     "value": "Aaaaa Yazar Adı Bbbbb",
+     "type": "metadata",
      "style": {
       "align": "center",
       "fontSizePt": 16,
       "spaceBeforePt": 12,
       "spaceAfterPt": 6
-     }
+     },
+     "field": "STUDENT_NAME",
+     "fallback": "Öğrenci adı soyadı"
     },
     {
      "type": "text",
@@ -344,7 +691,7 @@
     },
     {
      "type": "text",
-     "value": "Tez Danışmanı: Prof. Dr. Ccccc Ddddd",
+     "value": "Tez Danışmanı: {{ADVISOR_NAME}}",
      "style": {
       "align": "center",
       "fontSizePt": 14,
@@ -357,14 +704,15 @@
      "heightMm": 33.65
     },
     {
-     "type": "text",
-     "value": "Ocak 2024",
+     "type": "metadata",
      "style": {
       "align": "center",
       "fontSizePt": 14,
       "spaceBeforePt": 12,
       "spaceAfterPt": 6
-     }
+     },
+     "field": "MONTH_YEAR",
+     "fallback": "Ay ve yıl"
     }
    ]
   },
@@ -396,7 +744,7 @@
     },
     {
      "type": "text",
-     "value": "İzmir Kâtip Çelebi Üniversitesi Fen Bilimleri Enstitüsü öğrencisi Aaaaa Bbbbb tarafından hazırlanan Tezin Türkçe Başlığı başlıklı bu çalışma tarafımızca okunmuş olup, yapılan savunma sınavı sonucunda kapsam ve nitelik açısından başarılı bulunarak jürimiz tarafından YÜKSEK LİSANS / DOKTORA TEZİ olarak kabul edilmiştir.",
+     "value": "İzmir Kâtip Çelebi Üniversitesi Fen Bilimleri Enstitüsü öğrencisi {{STUDENT_NAME}} tarafından hazırlanan {{THESIS_TITLE}} başlıklı bu çalışma tarafımızca okunmuş olup, yapılan savunma sınavı sonucunda kapsam ve nitelik açısından başarılı bulunarak jürimiz tarafından YÜKSEK LİSANS / DOKTORA TEZİ olarak kabul edilmiştir.",
      "style": {
       "align": "justify",
       "spaceBeforePt": 12,
@@ -422,7 +770,7 @@
     },
     {
      "type": "text",
-     "value": "Tez Danışmanı:Prof. Dr. Ccccc Ddddd",
+     "value": "Tez Danışmanı:{{ADVISOR_NAME}}",
      "style": {
       "align": "justify",
       "fontWeight": 700
@@ -441,7 +789,7 @@
     },
     {
      "type": "text",
-     "value": "Tez Eş-danışmanı: Doç. Dr. Ccccc Ddddd",
+     "value": "Tez Eş-danışmanı: {{CO_ADVISOR_NAME}}",
      "style": {
       "align": "justify",
       "fontWeight": 700
@@ -471,12 +819,13 @@
      "heightMm": 4.87
     },
     {
-     "type": "text",
-     "value": "Prof. Dr. Ccccc Ddddd",
+     "type": "metadata",
      "style": {
       "align": "justify",
       "fontWeight": 700
-     }
+     },
+     "field": "ADVISOR_NAME",
+     "fallback": "Danışman adı soyadı"
     },
     {
      "type": "text",
@@ -490,12 +839,13 @@
      "heightMm": 9.74
     },
     {
-     "type": "text",
-     "value": "Doç. Dr. Ccccc Ddddd",
+     "type": "metadata",
      "style": {
       "align": "justify",
       "fontWeight": 700
-     }
+     },
+     "field": "CO_ADVISOR_NAME",
+     "fallback": "İkinci danışman"
     },
     {
      "type": "text",
@@ -509,12 +859,13 @@
      "heightMm": 9.74
     },
     {
-     "type": "text",
-     "value": "Dr. Öğr. Üyesi Ccccc Ddddd",
+     "type": "metadata",
      "style": {
       "align": "justify",
       "fontWeight": 700
-     }
+     },
+     "field": "JURY_MEMBER_NAME",
+     "fallback": "JURY_MEMBER_NAME"
     },
     {
      "type": "text",
@@ -576,7 +927,7 @@
     },
     {
      "type": "text",
-     "value": "Ben, Aaaaa Bbbbb, başlığı Tezin Türkçe Başlığı olan bu tezimin ve tezin içinde sunulan bilgilerin şahsıma ait olduğunu beyan ederim. Ayrıca:",
+     "value": "Ben, {{STUDENT_NAME}}, başlığı {{THESIS_TITLE}} olan bu tezimin ve tezin içinde sunulan bilgilerin şahsıma ait olduğunu beyan ederim. Ayrıca:",
      "style": {
       "align": "justify",
       "spaceBeforePt": 12,
@@ -660,18 +1011,14 @@
   },
   {
    "id": "front-page-3",
-   "type": "custom",
-   "title": "Ön sayfa 4",
+   "type": "abstract",
+   "title": "ÖZET",
    "status": "required",
    "group": "front",
-   "mode": "static",
+   "mode": "editable",
    "tocEntry": "none",
    "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": false
-     }
-    },
+    "page": {},
     "body": {
      "firstLineIndentMm": 0,
      "spaceBeforePt": 0,
@@ -679,98 +1026,18 @@
      "lineHeight": 1
     }
    },
-   "blocks": [
-    {
-     "type": "spacer",
-     "heightMm": 47.31
-    },
-    {
-     "type": "text",
-     "value": "Tezin Türkçe Başlığı",
-     "style": {
-      "align": "center",
-      "fontSizePt": 18,
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "spacer",
-     "heightMm": 15.77
-    },
-    {
-     "type": "text",
-     "value": "Öz",
-     "style": {
-      "align": "center",
-      "fontSizePt": 26,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Buraya tezin özeti yazılacaktır. Tezin özeti içinde ara başlık kullanılmayacaktır. Özet, tek paragraf veya birkaç paragraf halinde yazılabilir. Özetin bir sayfa olması uygun olur, ancak azami iki sayfayı geçmemesi gerekir. Özetten sonra bir satır aralığı boşluk bırakılarak “Anahtar Sözcükler” ibaresi yazılmalıdır. Anahtar sözcükler en az 5 sözcük veya sözcük grubundan oluşmalı ve önem sırasına göre yazılmalıdır. Anahtar sözcükler tez çalışmasıyla ilgili olmalıdır.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Bu tez yazım kılavuzu, burada belirtilen tüm yazım kurallarına uygun olarak hazırlandığı için aynı zamanda şablon olarak da kullanılabilir. Yazım kurallarının detayları kılavuz içerisinde verilmiştir.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Bu kısım sayfada dikeyde ortalanabilir.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "spacer",
-     "heightMm": 15.77
-    },
-    {
-     "type": "text",
-     "value": "Anahtar Sözcükler: Mühendislik, teknoloji, analitik yöntem, fen bilimleri, araştırma",
-     "style": {
-      "align": "justify",
-      "fontWeight": 700,
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    }
-   ]
+   "showTitle": true
   },
   {
    "id": "front-page-4-2",
-   "type": "custom",
-   "title": "Ön sayfa 5",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
    "status": "required",
    "group": "front",
-   "mode": "static",
+   "mode": "editable",
    "tocEntry": "none",
    "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": false
-     }
-    },
+    "page": {},
     "body": {
      "firstLineIndentMm": 0,
      "spaceBeforePt": 0,
@@ -778,83 +1045,7 @@
      "lineHeight": 1
     }
    },
-   "blocks": [
-    {
-     "type": "spacer",
-     "heightMm": 47.31
-    },
-    {
-     "type": "text",
-     "value": "Title of the Thesis in English",
-     "style": {
-      "align": "center",
-      "fontSizePt": 18,
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "spacer",
-     "heightMm": 15.77
-    },
-    {
-     "type": "text",
-     "value": "Abstract",
-     "style": {
-      "align": "center",
-      "fontSizePt": 26,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Buraya tezin İngilizce özeti yazılacaktır. İngilizce özet, Türkçe özetin uygun bir tercümesi olacaktır. Tezin özeti içinde ara başlık kullanılmayacaktır. Özet, tek paragraf veya birkaç paragraf halinde yazılabilir. Özetin bir sayfa olması uygun olur, ancak azami iki sayfayı geçmemesi gerekir. İngilizce özetten sonra bir satır aralığı boşluk bırakılarak “Keywords” ibaresi yazılmalıdır. Keywords (Anahtar sözcükler) en az 5 İngilizce sözcük veya sözcük grubundan oluşmalı ve önem sırasına göre yazılmalıdır. Anahtar sözcükler tez çalışmasıyla ilgili olmalıdır.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Bu tez yazım kılavuzu, burada belirtilen tüm yazım kurallarına uygun olarak hazırlandığı için aynı zamanda şablon olarak da kullanılabilir. Yazım kurallarının detayları kılavuz içerisinde verilmiştir.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Bu kısım sayfada dikeyde ortalanabilir.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "spacer",
-     "heightMm": 15.77
-    },
-    {
-     "type": "text",
-     "value": "Keywords: Engineering, technology, analytical method, sciences, research",
-     "style": {
-      "align": "justify",
-      "fontWeight": 700,
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    }
-   ]
+   "showTitle": true
   },
   {
    "id": "dedication",
@@ -897,18 +1088,14 @@
   },
   {
    "id": "front-page-6-3",
-   "type": "custom",
-   "title": "Ön sayfa 7",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
    "status": "required",
    "group": "front",
-   "mode": "static",
+   "mode": "editable",
    "tocEntry": "none",
    "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": false
-     }
-    },
+    "page": {},
     "body": {
      "firstLineIndentMm": 0,
      "spaceBeforePt": 0,
@@ -916,58 +1103,18 @@
      "lineHeight": 1
     }
    },
-   "blocks": [
-    {
-     "type": "spacer",
-     "heightMm": 94.61
-    },
-    {
-     "type": "text",
-     "value": "Teşekkür",
-     "style": {
-      "align": "center",
-      "fontSizePt": 26,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Tez çalışmasına katkılarından dolayı kişilere ve/veya kurumlara teşekkür edilecekse, buraya yazılacaktır.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Bu kısım, sayfada dikeyde ortalanmalıdır.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    }
-   ]
+   "showTitle": true
   },
   {
    "id": "declaration-2",
-   "type": "declaration",
-   "title": "Etik Beyan",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
    "status": "required",
    "group": "front",
-   "mode": "static",
+   "mode": "generated",
    "tocEntry": "none",
    "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": false
-     }
-    },
+    "page": {},
     "body": {
      "firstLineIndentMm": 0,
      "spaceBeforePt": 0,
@@ -975,256 +1122,13 @@
      "lineHeight": 1
     }
    },
-   "blocks": [
-    {
-     "type": "spacer",
-     "heightMm": 17.89
-    },
-    {
-     "type": "text",
-     "value": "İçindekiler",
-     "style": {
-      "align": "justify",
-      "fontSizePt": 26,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Yazarlık Beyanı ii",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "Öz iii",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "Abstract iv",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "Teşekkür vi",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "Şekiller Listesix",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "Tablolar Listesixi",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "Kısaltmalar Listesixii",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "Semboller Listesixiii",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "1Giriş 1",
-     "style": {
-      "align": "justify",
-      "fontWeight": 700,
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2Yazım Kuralları, Format, Görünüm ve İlgili Diğer Özellikler3",
-     "style": {
-      "align": "justify",
-      "fontWeight": 700,
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.1Sayfa Düzeni ve Kenar Boşlukları3",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.2Yazı Tipi, Boyutu ve Özellikleri4",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.2.1Yazı Tipi4",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.2.2Yazı Boyutu ve Özellikleri4",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.2.2.1Normal Metin Yazı Boyutu ve Özellikleri 4",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.2.2.2Başlıklarda Yazı Boyutu ve Özellikleri4",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.2.2.3Şekillerde ve Tablolarda Yazı Boyutu4",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.2.3Satır Aralıkları5",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.3Sayfa Numaralandırma6",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.4Başlıklar6",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.5Sayfa Boyutu 7",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.6Şekiller ve Tablolar7",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    }
-   ]
-  },
-  {
-   "id": "front-page-8-4",
-   "type": "custom",
-   "title": "Ön sayfa 9",
-   "status": "required",
-   "group": "front",
-   "mode": "static",
-   "tocEntry": "none",
-   "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": false
-     }
-    },
-    "body": {
-     "firstLineIndentMm": 0,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0,
-     "lineHeight": 1
-    }
-   },
-   "blocks": [
-    {
-     "type": "text",
-     "value": "2.6.1Şekillerin ve Tabloların Özellikleri7",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    }
-   ]
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
   },
   {
    "id": "main-content",
@@ -1275,14 +1179,11 @@
    "fontSizePt": 12,
    "align": "left",
    "lineHeight": 1.5
-  },
-  "hangingIndentMm": 0
+  }
  },
  "toc": {
   "heading": "İÇİNDEKİLER",
-  "levels": [
-   1
-  ],
+  "levels": [],
   "showPageNumbers": true
  }
 }

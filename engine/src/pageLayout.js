@@ -3,10 +3,10 @@ import { plainThesisText } from "./sourceHtml.js";
 import { convertLength } from "./units.js";
 import { ACADEMIC_TABLE_CELL_PADDING_PT } from "../../TxtNote/frontend/src/lib/academicDocument.js";
 
-/** Empty editing scaffolds are not physical pages. Explicit breaks and media are. */
+/** Empty editing scaffolds are not physical pages. Explicit breaks and media are. The main body (mainContent) is always a page: it is the thesis's writing area, numbered and counted even before the first line is typed. */
 export function thesisGroupHasPageContent(group) {
   return (group.sections || [group]).some((section) => {
-    if (section.specialPage || section.group === "cover" || section.mode === "generated" || section.html === undefined) return true;
+    if (section.specialPage || section.group === "cover" || section.mode === "generated" || section.html === undefined || section.type === "mainContent") return true;
     const html = section.html || "";
     return Boolean(plainThesisText(html).replace(/[\u200b\ufeff]/g, "").trim()
       || /<(?:img|table|figure|hr|svg|math|canvas|video|audio)\b|\bacademic-(?:page-break|footnote)\b|\bdata-academic-page-break\b/i.test(html));
@@ -137,14 +137,16 @@ export function numberThesisPages(sections, pageCounts = {}, chapterStarts = {})
     // The parity sheet belongs to the preceding numbering sequence. A restart on
     // this section is applied afterwards, to its first printed/content page.
     if (blankBefore) logicalPage += 1;
+    // The parity sheet is a counted page: it prints its own number like every other page of a numbered sequence.
+    const parityNumber = blankBefore ? formatNumber(logicalPage, rule.format) : "";
     if (rule.restart) logicalPage = startAt - 1;
     // Measured counts include the CSS-generated parity column. Before the first
     // measurement a missing/default count is one content page, so reserve both
     // the blank column and that page from the first render.
     const count = Math.max(blankBefore ? 2 : 1, Math.floor(pageCounts[section.id] || 1));
-    const indexLabels = blankBefore ? [""] : [];
-    const labels = blankBefore ? [""] : [];
-    const countedLabels = blankBefore ? [""] : [];
+    const indexLabels = blankBefore ? [rule.enabled || rule.indexLabelWhenHidden ? parityNumber : ""] : [];
+    const labels = blankBefore ? [rule.enabled ? parityNumber : ""] : [];
+    const countedLabels = blankBefore ? [parityNumber] : [];
     const blankPageIndexes = blankBefore ? [0] : [];
     for (let pageIndex = blankBefore ? 1 : 0; pageIndex < count; pageIndex += 1) {
       logicalPage += 1;
@@ -322,6 +324,9 @@ export function thesisPagedCss(groups) {
       for (const [level, style] of Object.entries(section.rules.headings)) {
         if (!style.pageBreakBefore) continue;
         rules.push(`${fragment} h${level}{break-before:column}`, `${fragment} h${level}[data-unnumbered]{break-before:auto}`);
+        // A section prefix holding only positioned frames (e.g. a text box added on the chapter's first page) is not content: the
+        // first heading of the body still opens the page (Word: docx/body.js bodyStart).
+        rules.push(`${fragment}>div[data-thesis-static-root]:not(:has(>:not([data-layout-mode="absolute"],[data-layout-mode="anchored"])))+div>.rich-text-body>h${level}:first-child{break-before:auto}`);
         if (style.pageBreakUnlessAfterHeading) rules.push(`${fragment} :is(h1,h2,h3,h4,h5,h6) + h${level}{break-before:auto}`,
           // The section title is fixed prefix content in its own wrapper, so `h + h` above never reaches the first heading of the
           // editable body (AKÜ Sağlık "7. EKLER" → "7.1."): Word (DOCX) keeps them on one page.

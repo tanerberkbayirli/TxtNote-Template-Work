@@ -230,7 +230,7 @@ describe("Batch B4 ordinal chapter labels on their own line, five heading levels
     const resolved = resolveGeneratedIndexes(model, Object.fromEntries(model.indexSources.map((s) => [s.anchor, { label: "4" }])));
     const html = resolved.sections.find((s) => s.id === "toc").html;
     assert.match(html, /<li data-index-level="1" data-index-target="[^"]+" data-index-label-line="true"[^>]*><span class="thesis-index-text"[^>]*><span class="thesis-index-label">BİRİNCİ BÖLÜM<\/span> <span class="thesis-index-title">KURAM<\/span><\/span><\/li>/);
-    assert.match(html, /<li data-index-level="2"[^>]*><span class="thesis-index-text"[^>]*>[^<]*<span class="thesis-index-label">1\.<\/span>[\s\S]*?<span class="thesis-index-page">4<\/span>/);
+    assert.match(html, /<li data-index-level="2"[^>]*><span class="thesis-index-text"[^>]*>[^<]*<span class="thesis-index-label">1\.<\/span>[\s\S]*?<span class="thesis-index-page"[^>]*>4<\/span>/);
     assert.match(buildThesisPrintHtml(model), /<h1 data-thesis-number="BİRİNCİ BÖLÜM">Kuram<\/h1>/);
     assert.equal(thesisSourceHtml(buildThesisPrintHtml(model)).includes('data-thesis-number="BİRİNCİ'), false);
   });

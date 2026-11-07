@@ -1,3 +1,5 @@
+> Belge kapsamı (25.10.2026): Tarihli ilerleme ve kabul notları geçmiş çalışmalara aittir; güncel test sonucu değildir. Kurallar [BASLA.md](../BASLA.md), açık işler [GOREVLER.md](../GOREVLER.md) içindedir. Eksik rapor atıfları doğrulama kanıtı sayılmaz.
+
 # Document layout
 
 The existing template compiler remains the source of resolved typography, sections,

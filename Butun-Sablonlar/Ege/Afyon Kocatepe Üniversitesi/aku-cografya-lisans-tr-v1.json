@@ -303,7 +303,122 @@
    "İçindekiler/dizinler: başlıklar 'İÇİNDEKİLER DİZİNİ', 'SİMGELER ve KISALTMALAR DİZİNİ', 'ŞEKİLLER DİZİNİ', 'TABLOLAR DİZİNİ' (şablon sayfa başlığı, kılavuz §2.6/§4.1 ve etiket 'Tablo'); kılavuz §4.2.10 ve şablonun önbellekli içindekileri 'ÇİZELGELER DİZİNİ' yazar (ÇELİŞKİ, kayıt altında). Başlıklar koyu, ortalı, tek satır; 'Sayfa' koyu sağda hemen altta (şablonda şekiller listesinde de var). Sayfa başı: kılavuz her ana başlığın yeni sayfada başlamasını ister (şablonda simgeler/şekiller aynı sayfada akar: ÇELİŞKİ, kılavuz izlendi). İçindekiler satırları 12 pt normal, 1,5 satır, 0 nk sonra, nokta kılavuzu sağ kenara (tab 8494 tw = 149,8 mm), girintiler 0/5/10/15 mm (stiller toc 2-5); şekiller/tablolar listesi satırları tek satır, 10 pt sonra (stil 'table of figures' after=200). Simgeler listesi tek satır, 0 nk, iki yana yaslı; tanımlar ortak sekmede (kılavuz §2.10; sekme 25 mm, şablonun asılı girinti değeri).",
    "ÖZET/ABSTRACT: tez başlığı büyük harf, tek aralıklı; 'Danışman:' / 'Supervisor:' etiketi koyu; İngilizce sayfada 'Graduation Thesis' (kılavuz §4.2.5); anahtar kelimeler 4-6 (etiket koyu, asılı girinti 37,52 / 22,0 mm şablon). Sıra: kılavuz metin, anahtar kelimeler, sonra 'yıl, ön sayfa + giriş sonrası sayfa (ekler dahil)' satırı; şablon son ikisini ters sıralar (ÇELİŞKİ, kılavuz izlendi). Şablonda 'ÖZET' başlığı 11 pt'tir (sz=22), kılavuz tüm metinler için 12 pt der (§2.2): 12 pt uygulandı. Özetin sözcük/sayfa sınırı UNKNOWN. Bibliyografya: 1,5 değil tek satır, 12 pt, 6 nk önce 0 nk sonra, 12,5 mm asılı girinti, iki yana yaslı, kaynaklar arası boşluk yok (kılavuz §4.3.6 ve ekran görüntüsü); şablon örnekleri 11 pt, 5 mm asılı, 0/0 nk'dır (ÇELİŞKİ, kılavuz izlendi). 'KAYNAKLAR' bir sonraki bölüm gibi numaralanır ('6. KAYNAKLAR', kılavuz §4 ve şablon); 'İnternet Kaynakları' ayrı grup olarak yazarca yazılır (motorda ayrı grup yok).",
    "UNKNOWN / üretilmeyenler: Dış Kapak düzeni; dipnot punto ve satır aralığı (kaynaklarda yok: kılavuzun genel 12 pt kuralı yazı tipi/punto için uygulandı, INFERRED); denklem numaralandırma ve stili; ÖZGEÇMİŞ ve RESİMLER DİZİNİ (yalnız şablonun eski önbellekli içindekilerinde, kılavuz §4.1 sıralamasında yok); EKLER başlık biçimi; ciltleme türü; yatay sayfa (şablonun örnek yatay şekil sayfası tek sayfalık bölümdür; motorda belge içi tek yatay sayfa yok). Fiziksel/gönderim kuralları (tek yüz, 70-100 g/m², %30 benzerlik) belge içeriği değildir."
-  ]
+  ],
+  "regionalAudit": {
+   "checkedAt": "2026-10-23",
+   "status": "CORE_RECHECKED",
+   "layoutRebuilt": false,
+   "visualConformanceRechecked": false,
+   "documents": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Cografya_Bolumu_Bitirme_Tezi/AKU_Cografya_Bitirme_Tezi_Sablonu_2024.docx",
+     "sha256": "63882661bcc0f0e40704e0e104a2f4818cabe840e78207dd71d380342a67935a"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Cografya_Bolumu_Bitirme_Tezi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "sha256": "6d010f61552387a96a675c679bb8ddf8bfd7066c8612441d252937dc0311aa30"
+    }
+   ],
+   "checkedFields": [
+    {
+     "field": "typography.body.fontFamily",
+     "template": "Times New Roman",
+     "sourceValue": "Times New Roman",
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Cografya_Bolumu_Bitirme_Tezi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "evidence": [
+      {
+       "value": "Times New Roman",
+       "location": "sayfa 2",
+       "sentence": "Bitirme tezindeki tüm metinler için yazı karakteri “Times New Roman” olup, kullanılacak karakter büyüklüğü “İç Kapak” hariç tezin tamamında 12 punto olmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "template": 12,
+     "sourceValue": 12.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Cografya_Bolumu_Bitirme_Tezi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "evidence": [
+      {
+       "value": 12.0,
+       "location": "sayfa 2",
+       "sentence": "Bitirme tezindeki tüm metinler için yazı karakteri “Times New Roman” olup, kullanılacak karakter büyüklüğü “İç Kapak” hariç tezin tamamında 12 punto olmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "template": 1.5,
+     "sourceValue": 1.5,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Cografya_Bolumu_Bitirme_Tezi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "evidence": [
+      {
+       "value": 1.5,
+       "location": "sayfa 2",
+       "sentence": "Satır aralığı ise 1.5 satır olarak ayarlanmalı, öncesi-sonrası 6 nk yapılmalıdır."
+      },
+      {
+       "value": 1.5,
+       "location": "sayfa 3",
+       "sentence": "Kılavuz içinde belirtilen özel durumlar dışında tezin tamamının yazımında 1,5 satır aralığı kullanılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.topMm",
+     "template": 25,
+     "sourceValue": 25.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Cografya_Bolumu_Bitirme_Tezi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "evidence": [
+      {
+       "value": 25.0,
+       "location": "sayfa 2",
+       "sentence": "Kenar Boşlukları ve Sayfa Düzeni Yazımda sayfa kenarlarında alt ve üst 2,5 cm, sağ ve sol 3 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "template": 25,
+     "sourceValue": 25.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Cografya_Bolumu_Bitirme_Tezi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "evidence": [
+      {
+       "value": 25.0,
+       "location": "sayfa 2",
+       "sentence": "Kenar Boşlukları ve Sayfa Düzeni Yazımda sayfa kenarlarında alt ve üst 2,5 cm, sağ ve sol 3 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.leftMm",
+     "template": 30,
+     "sourceValue": 30.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Cografya_Bolumu_Bitirme_Tezi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "evidence": [
+      {
+       "value": 30.0,
+       "location": "sayfa 2",
+       "sentence": "Kenar Boşlukları ve Sayfa Düzeni Yazımda sayfa kenarlarında alt ve üst 2,5 cm, sağ ve sol 3 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.rightMm",
+     "template": 30,
+     "sourceValue": 30.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Cografya_Bolumu_Bitirme_Tezi/AKU_Cografya_Bitirme_Tezi_Yazim_Kilavuzu_2024.pdf",
+     "evidence": [
+      {
+       "value": 30.0,
+       "location": "sayfa 2",
+       "sentence": "Kenar Boşlukları ve Sayfa Düzeni Yazımda sayfa kenarlarında alt ve üst 2,5 cm, sağ ve sol 3 cm boşluk bırakılmalıdır."
+      }
+     ]
+    }
+   ],
+   "conflicts": []
+  }
  },
  "placeholders": {
   "THESIS_TITLE": {

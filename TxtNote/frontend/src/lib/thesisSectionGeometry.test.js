@@ -11,16 +11,16 @@ import {docxImportFixture} from './fixtures/docxImportFixture.js';
 const group=(id,start=true,numbering={})=>({id,pageBreakBefore:start,rules:{page:{...structuredClone(generic.page),numbering:{enabled:true,format:'arabic',restart:false,...numbering}}},sections:[{specialPage:true}]});
 const pages=(groups,counts)=>buildThesisPageModel(groups,counts).flatMap(g=>g.pages);
 describe('Mission 06 section geometry',()=>{
- it('even-page padding is unlabelled, has no chrome and counts before restarting',()=>{
+ it('even-page padding prints its counted number, has no header/footer chrome and counts before restarting',()=>{
   const a=group('a'),b=group('b','evenPage',{restart:true,startAt:4});
-  const p=pages([a,b],{a:2,b:2});assert.deepEqual(p.map(p=>p.label),['1','2','','4']);assert.equal(p[2].showHeader,false);assert.equal(p[2].showFooter,false);assert.equal(p[3].physicalIndex,3);
+  const p=pages([a,b],{a:2,b:2});assert.deepEqual(p.map(p=>p.label),['1','2','3','4']);assert.equal(p[2].showHeader,false);assert.equal(p[2].showFooter,false);assert.equal(p[3].physicalIndex,3);
  });
  it('rounds conflicting numbered odd starts up without adding an extra sheet',()=>{const a=group('a'),b=group('b','oddPage',{restart:true,startAt:2});a.rules.page.header={evenContent:'EVEN'};assert.deepEqual(pages([a,b],{a:2,b:1}).map(p=>p.label),['1','2','3']);});
  it('ignores parity breaks on the first Word section',()=>assert.deepEqual(pages([group('a','evenPage')],{a:1}).map(p=>p.label),['1']));
  it('does not pad an even start already on an even physical sheet',()=>assert.deepEqual(pages([group('a'),group('b','evenPage')],{a:1,b:1}).map(p=>p.label),['1','2']));
  it('matches Word duplex numbering restarts even at ordinary next-page breaks',()=>{
   const a=group('a'),b=group('b',true,{format:'roman-lower',restart:true,startAt:1});a.rules.page.header={content:'ODD',evenContent:'EVEN'};
-  assert.deepEqual(pages([a,b],{a:1,b:2}).map(p=>p.label),['1','','i']);
+  assert.deepEqual(pages([a,b],{a:1,b:2}).map(p=>p.label),['1','ii','i']);
  });
  it('reserves parity columns for next-page numbering restarts as well as explicit odd/even starts',()=>{
   const t=structuredClone(generic),m=compileThesisDocument(t,{},'Tez','<p>BODY</p>');assert.match(thesisPagedCss(groupThesisSections(m.sections)),/data-thesis-odd-page-spacer/);

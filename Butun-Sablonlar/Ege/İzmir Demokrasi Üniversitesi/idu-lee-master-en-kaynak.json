@@ -1,0 +1,521 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "idu-lee-master-en-kaynak",
+ "universityId": "idu",
+ "universityName": "İzmir Demokrasi Üniversitesi",
+ "instituteId": "lee",
+ "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "degreeType": "master",
+ "language": "en",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
+  ],
+  "guideDocumentName": "IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+  "archivePath": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "854661fa24571ab5c9aa9d8080a4029fe41debb74921fdfa25777d1fa9cd142d",
+  "evidence": {
+   "page.margins.leftMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 35,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+    "location": "paragraf 138",
+    "passage": "Margins are adjusted in Microsoft Word through the menu “Page Layout > Margins > Custom Margins.” The left margin must be arranged as 2.5 cm + 1 cm binding margin, making a total of 3.5 cm. The right margin must be 2.5 cm, and the top and bottom margins must each be 2.5 cm. The binding margin is added to the left margin. See Appendix 1.",
+    "decision": "İngilizce kılavuzda sol kenar cilt payı dahil 3,5 cm."
+   },
+   "typography.body.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+    "location": "paragraf 141",
+    "passage": "The entire text is written in Times New Roman, 12-point font size, with 1.5 line spacing.",
+    "decision": "English guide general text rule."
+   },
+   "typography.body.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "justify",
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+    "locations": [
+     {
+      "value": "justify",
+      "location": "paragraf 166",
+      "sentence": "The text must be justified."
+     }
+    ]
+   },
+   "typography.paragraph.firstLineIndentMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 12.5,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+    "locations": [
+     {
+      "value": 12.5,
+      "location": "paragraf 139",
+      "sentence": "In the main text, a first-line paragraph indentation of 1.25 cm must be used."
+     },
+     {
+      "value": 12.5,
+      "location": "paragraf 166",
+      "sentence": "Paragraphs are written with a 1.25 cm first-line indentation and 1.5 line spacing."
+     }
+    ]
+   },
+   "typography.footnotes.lineHeight": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 1,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+    "locations": [
+     {
+      "value": 1,
+      "location": "paragraf 145",
+      "sentence": "Footnotes: 10-point, single line spacing"
+     },
+     {
+      "value": 1,
+      "location": "paragraf 164",
+      "sentence": "Explanations or footnotes are written in 10-point font size, with single line spacing, and are placed at the bottom of the page."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "paragraf 177",
+      "sentence": "If tables do not fit on the page, a landscape page may be used; the page number remains at the bottom center."
+     },
+     {
+      "value": "bottom",
+      "location": "paragraf 186",
+      "sentence": "If figures do not fit on the page, a landscape page may be used; the page number remains at the bottom center."
+     },
+     {
+      "value": "bottom",
+      "location": "paragraf 220",
+      "sentence": "Page numbers are written at the bottom center of each page in 10-point Times New Roman font."
+     },
+     {
+      "value": "bottom",
+      "location": "paragraf 471",
+      "sentence": "In the footnote placed at the bottom of the page, the author’s first name and surname, the title of the work, publication information, and the relevant page number are provided at first use."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "center",
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+    "locations": [
+     {
+      "value": "center",
+      "location": "paragraf 177",
+      "sentence": "If tables do not fit on the page, a landscape page may be used; the page number remains at the bottom center."
+     },
+     {
+      "value": "center",
+      "location": "paragraf 186",
+      "sentence": "If figures do not fit on the page, a landscape page may be used; the page number remains at the bottom center."
+     },
+     {
+      "value": "center",
+      "location": "paragraf 220",
+      "sentence": "Page numbers are written at the bottom center of each page in 10-point Times New Roman font."
+     }
+    ]
+   },
+   "page.margins.topMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+    "location": "paragraf 138",
+    "passage": "Margins are adjusted in Microsoft Word through the menu “Page Layout > Margins > Custom Margins.” The left margin must be arranged as 2.5 cm + 1 cm binding margin, making a total of 3.5 cm. The right margin must be 2.5 cm, and the top and bottom margins must each be 2.5 cm. The binding margin is added to the left margin. See Appendix 1.",
+    "decision": "İngilizce kılavuzda sol kenar cilt payı dahil 3,5 cm."
+   },
+   "page.margins.bottomMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+    "location": "paragraf 138",
+    "passage": "Margins are adjusted in Microsoft Word through the menu “Page Layout > Margins > Custom Margins.” The left margin must be arranged as 2.5 cm + 1 cm binding margin, making a total of 3.5 cm. The right margin must be 2.5 cm, and the top and bottom margins must each be 2.5 cm. The binding margin is added to the left margin. See Appendix 1.",
+    "decision": "İngilizce kılavuzda sol kenar cilt payı dahil 3,5 cm."
+   },
+   "page.margins.rightMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+    "location": "paragraf 138",
+    "passage": "Margins are adjusted in Microsoft Word through the menu “Page Layout > Margins > Custom Margins.” The left margin must be arranged as 2.5 cm + 1 cm binding margin, making a total of 3.5 cm. The right margin must be 2.5 cm, and the top and bottom margins must each be 2.5 cm. The binding margin is added to the left margin. See Appendix 1.",
+    "decision": "İngilizce kılavuzda sol kenar cilt payı dahil 3,5 cm."
+   },
+   "typography.body.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+    "location": "paragraf 141",
+    "passage": "The entire text is written in Times New Roman, 12-point font size, with 1.5 line spacing.",
+    "decision": "English guide general text rule."
+   },
+   "typography.body.lineHeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+    "location": "paragraf 141",
+    "passage": "The entire text is written in Times New Roman, 12-point font size, with 1.5 line spacing.",
+    "decision": "English guide general text rule."
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+    "sha256": "854661fa24571ab5c9aa9d8080a4029fe41debb74921fdfa25777d1fa9cd142d"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+    "sha256": "bb1d4fc9188477bcba85871ad7886073eaa21d585be2f174d4ecf3e870825e5a"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.body.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.paragraph.firstLineIndentMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.lineHeight",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
+    },
+    {
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.numbering.align",
+     "measured": "right",
+     "guide": "center",
+     "guideSource": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx paragraf 177"
+    }
+   ],
+   "guide": "IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "margins": {
+   "leftMm": 35,
+   "topMm": 25,
+   "bottomMm": 25,
+   "rightMm": 25
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "center",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "align": "justify",
+   "fontSizePt": 12,
+   "lineHeight": 1.5
+  },
+  "paragraph": {
+   "firstLineIndentMm": 12.5
+  },
+  "footnotes": {
+   "lineHeight": 1
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "ACKNOWLEDGMENTS",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "TABLE OF CONTENTS",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "TABLE OF CONTENTS",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-figures",
+   "type": "listOfFigures",
+   "title": "LIST OF FIGURES",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "LIST OF FIGURES",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "LIST OF TABLES",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "LIST OF TABLES",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "LIST OF ABBREVIATIONS",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Main text",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "REFERENCES",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "APPENDICES",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "curriculum-vitae",
+   "type": "curriculumVitae",
+   "title": "CURRICULUM VITAE",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "toc": {
+  "heading": "CONTENTS",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

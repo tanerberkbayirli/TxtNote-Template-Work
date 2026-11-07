@@ -4,7 +4,10 @@
 
 import { forwardRef, useCallback, useEffect, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { citationWithSpacing, escapeWritingText } from '../../lib/thesisWriting.js';
+import { citationAnalysisText, citationInsertionOffset, citationTextPosition } from '../../lib/citationPlacement.js';
+
 import { createTextHistory } from "../../lib/textHistory";
+import { paragraphAtCaret } from "../../lib/paragraphAtCaret.js";
 import { AcademicImageControls } from "./AcademicImageControls";
 import { BODY_PLACEHOLDER } from "../../config/strings";
 import { coerceSizeId, FORMAT_COLORS, FORMAT_HIGHLIGHTS, normalizeHex } from "../../config/format";
@@ -77,6 +80,40 @@ import {
   splitAlignBlockAtCaret,
 } from "../../lib/richTextAlign";
 import { sameThesisEditorProjection, thesisSourceHtml } from "../../../../../engine/src/sourceHtml.js";
+
+/** Where a citation goes for the caret `range` (citationPlacement.js rules): the collapsed DOM range plus the space/full-stop flags. */
+function citationSpot(root, range, placement) {
+  if (!range || !root.contains(range.startContainer)) return null;
+  const element = range.startContainer.nodeType === 1 ? range.startContainer : range.startContainer.parentElement;
+  const block = element?.closest?.('p,h1,h2,h3,h4,h5,h6,li,td,th') || root;
+  const doc = root.ownerDocument;
+  const head = doc.createRange(); head.selectNodeContents(block); head.setEnd(range.startContainer, range.startOffset);
+  const { offset, space, stop } = citationInsertionOffset(citationAnalysisText(block), head.toString().length, placement);
+  const target = citationTextPosition(block, offset);
+  const at = doc.createRange(); at.setStart(target.node, target.offset); at.collapse(true);
+  return { at, space, stop };
+}
+
+/** A collapsed range has no box at an element boundary: fall back to the edge of the neighbouring character or element. */
+function collapsedRangeRect(at) {
+  const own = at.getClientRects()[0];
+  if (own && own.height) return { left: own.left, top: own.top, height: own.height };
+  const { startContainer: node, startOffset: offset } = at;
+  const probe = node.ownerDocument.createRange();
+  if (node.nodeType === 3 && offset > 0) { probe.setStart(node, offset - 1); probe.setEnd(node, offset); }
+  else if (node.nodeType === 3 && offset < node.length) { probe.setStart(node, offset); probe.setEnd(node, offset + 1); }
+  else {
+    const before = node.childNodes?.[offset - 1], after = node.childNodes?.[offset];
+    if (!before && !after) return null;
+    probe.selectNode(before || after);
+    const box = probe.getBoundingClientRect();
+    return box.height ? { left: before ? box.right : box.left, top: box.top, height: box.height } : null;
+  }
+  const rects = probe.getClientRects();
+  const box = node.nodeType === 3 && offset > 0 ? rects[rects.length - 1] : rects[0];
+  if (!box || !box.height) return null;
+  return { left: node.nodeType === 3 && offset > 0 ? box.right : box.left, top: box.top, height: box.height };
+}
 
 /**
  * @param {{
@@ -156,6 +193,7 @@ export const RichTextBody = forwardRef(({
     handleMouseUp,
     rememberAll,
     rememberLiveSelection,
+    peekRange,
     withRange,
   } = useFormatMenu(bodyRef, emitChange);
 
@@ -274,7 +312,7 @@ export const RichTextBody = forwardRef(({
       withRange((root, range) => {
         const anchor = range?.startContainer;
         const element = anchor?.nodeType === 1 ? anchor : anchor?.parentElement;
-        const heading = element?.closest?.(paragraphSemantics ? "h1,h2,h3,h4,h5,h6,p" : "h1,h2,h3,h4,h5,h6");
+        const heading = paragraphSemantics ? paragraphAtCaret(root, range) : element?.closest?.("h1,h2,h3,h4,h5,h6");
         if (heading && heading !== root && root.contains(heading)) {
           const doc = root.ownerDocument;
           const next = doc.createElement(target ? `h${target}` : "p");
@@ -397,6 +435,22 @@ export const RichTextBody = forwardRef(({
         selection?.addRange(caret);
       });
       emitChange("insert");
+    },
+    /** A linked citation at the end of the caret's sentence: before its full stop ("before") or after it ("after", footnotes). */
+    insertCitation: (html, placement = "before") => {
+      withRange((root, range) => {
+        const spot = citationSpot(root, range, placement);
+        if (!spot) return;
+        const selection = window.getSelection(); selection?.removeAllRanges(); selection?.addRange(spot.at);
+        insertHtmlAtSelection(`${spot.space ? " " : ""}${html}${spot.stop ? "." : ""}`, root);
+      });
+      emitChange('insert');
+    },
+    /** Viewport box of the point insertCitation would use now, without moving focus or the selection (null without a caret here). */
+    citationCaretRect: (placement = "before") => {
+      const root = bodyRef.current;
+      const spot = root && citationSpot(root, peekRange(), placement);
+      return spot ? collapsedRangeRect(spot.at) : null;
     },
     insertFootnote: (text) => {
       withRange((root) => insertHtmlAtSelection(footnoteHtml(text), root));

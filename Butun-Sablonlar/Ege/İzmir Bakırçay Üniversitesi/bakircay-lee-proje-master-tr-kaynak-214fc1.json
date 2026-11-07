@@ -1,0 +1,738 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "bakircay-lee-proje-master-tr-kaynak-214fc1",
+ "universityId": "bakircay",
+ "universityName": "İzmir Bakırçay Üniversitesi",
+ "instituteId": "lee-proje",
+ "instituteName": "Lisansüstü Eğitim Enstitüsü · Dönem Projesi",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "BAKIRCAY_LEE_Donem_Projesi_Yazim_Sablonu_2026.docx",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Taslak docx-spec-to-template.py ile üretildi; SHA-256 426f4a4290bb228ec9a7c4552aa5b30fbd894a47d1822ddc62df81d01a6afb4a",
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
+  ],
+  "archivePath": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Lisansustu_Egitim_Enstitusu_Donem_Projesi/BAKIRCAY_LEE_Donem_Projesi_Yazim_Sablonu_2026.docx",
+  "rebuildKind": "docx-template",
+  "archiveSha256": "426f4a4290bb228ec9a7c4552aa5b30fbd894a47d1822ddc62df81d01a6afb4a",
+  "evidence": {
+   "page.margins": {
+    "value": {
+     "topMm": 25.01,
+     "bottomMm": 25.01,
+     "leftMm": 5.5,
+     "rightMm": 7
+    },
+    "source": "BAKIRCAY_LEE_Donem_Projesi_Yazim_Sablonu_2026.docx › sectPr#7 (gövde bölümü, 191 paragraf) › w:pgMar",
+    "status": "MEASURED"
+   },
+   "page.size": {
+    "value": [
+     210.4,
+     297.2
+    ],
+    "source": "BAKIRCAY_LEE_Donem_Projesi_Yazim_Sablonu_2026.docx › sectPr#7 (gövde bölümü, 191 paragraf) › w:pgSz",
+    "status": "MEASURED"
+   },
+   "page.numbering": {
+    "value": {
+     "enabled": true,
+     "position": "bottom",
+     "align": "center",
+     "format": "arabic",
+     "startAt": 1,
+     "restart": false
+    },
+    "source": "BAKIRCAY_LEE_Donem_Projesi_Yazim_Sablonu_2026.docx › sectPr#7 (gövde bölümü, 191 paragraf) › footer PAGE alanı, w:pgNumType",
+    "status": "MEASURED"
+   },
+   "page.footer.distanceMm": {
+    "value": 10.71,
+    "source": "BAKIRCAY_LEE_Donem_Projesi_Yazim_Sablonu_2026.docx › sectPr#7 (gövde bölümü, 191 paragraf) › w:pgMar/@w:footer",
+    "status": "MEASURED"
+   },
+   "typography.body": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "justify",
+     "lineHeight": 1.5
+    },
+    "source": "BAKIRCAY_LEE_Donem_Projesi_Yazim_Sablonu_2026.docx › gövde profili: 21/41 paragraf (≥200 karakter), 13 farklı biçim",
+    "status": "MEASURED"
+   },
+   "typography.headings.1.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}."
+    },
+    "source": "BAKIRCAY_LEE_Donem_Projesi_Yazim_Sablonu_2026.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.1": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "justify",
+     "spaceBeforePt": 24,
+     "spaceAfterPt": 18,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}."
+     },
+     "keepWithNext": true
+    },
+    "source": "BAKIRCAY_LEE_Donem_Projesi_Yazim_Sablonu_2026.docx › 15/27 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "tables.position": {
+    "value": "above",
+    "source": "BAKIRCAY_LEE_Donem_Projesi_Yazim_Sablonu_2026.docx › 3 üstte / 0 altta",
+    "status": "MEASURED"
+   },
+   "tables": {
+    "value": {
+     "label": "Tablo",
+     "position": "above",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "justify"
+     },
+     "numbering": {
+      "scope": "chapter",
+      "format": "{chapter}.{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "BAKIRCAY_LEE_Donem_Projesi_Yazim_Sablonu_2026.docx › 3/3 yazı; etiket sayımı {'Tablo': 3}",
+    "status": "MEASURED"
+   },
+   "figures": {
+    "value": {
+     "label": "Şekil",
+     "position": "below",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "left",
+      "lineHeight": 1.5
+     },
+     "numbering": {
+      "scope": "chapter",
+      "format": "{chapter}.{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "BAKIRCAY_LEE_Donem_Projesi_Yazim_Sablonu_2026.docx › 1/2 yazı; etiket sayımı {'Tablo': 2, 'Şekil': 2}",
+    "status": "MEASURED"
+   },
+   "sections.approval": {
+    "value": "9 blok, approval",
+    "source": "BAKIRCAY_LEE_Donem_Projesi_Yazim_Sablonu_2026.docx › ön sayfa #0: DANIŞMAN ve ENSTİTÜ ONAYI / İzmir Bakırçay Üniversitesi Lisansüstü Eğitim Enstit",
+    "status": "MEASURED"
+   },
+   "sections": {
+    "value": [
+     "approval",
+     "preface",
+     "abstract",
+     "declaration",
+     "tableOfContents",
+     "listOfTables",
+     "listOfFigures",
+     "listOfAbbreviations",
+     "mainContent",
+     "appendices",
+     "bibliography"
+    ],
+    "source": "BAKIRCAY_LEE_Donem_Projesi_Yazim_Sablonu_2026.docx › 10 birinci düzey başlık, 9 fiziksel bölüm",
+    "status": "MEASURED"
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Lisansustu_Egitim_Enstitusu_Donem_Projesi/BAKIRCAY_LEE_Donem_Projesi_Yazim_Kontrol_Listesi_2026.docx",
+    "sha256": "422af02780276ae8e1e250c95e00a1e2ec002e9eeffeeb48f20a5aa3e66cd99f"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Bakırçay Üniversitesi/Lisansustu_Egitim_Enstitusu_Donem_Projesi/BAKIRCAY_LEE_Donem_Projesi_Yazim_Sablonu_2026.docx",
+    "sha256": "426f4a4290bb228ec9a7c4552aa5b30fbd894a47d1822ddc62df81d01a6afb4a"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "typography.headings.2",
+     "reason": "Belgede 2. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.3",
+     "reason": "Belgede 3. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.4",
+     "reason": "Belgede 4. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Tablo': 2, 'Şekil': 2}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.46",
+     "reasoning": "Sayfa numarası yazısı 11.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (21/41 paragraf (≥200 karakter)); diğer 12 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "page.numbering.restart",
+     "value": "[2,3]",
+     "reasoning": "DOCX bölümleri [2, 3] önceki bölümle aynı biçimdeyken yeniden başlatıyor (Word'de elle girilmiş başlangıç); sayfa numarası dizinin ilk bölümünden kesintisiz sürüyor"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
+    }
+   ],
+   "conflicts": [],
+   "guide": null,
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210.4,
+  "heightMm": 297.2,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 25.01,
+   "bottomMm": 25.01,
+   "leftMm": 5.5,
+   "rightMm": 7
+  },
+  "header": {
+   "heightMm": 0,
+   "distanceMm": 0,
+   "content": "",
+   "firstPage": "same"
+  },
+  "footer": {
+   "heightMm": 4.46,
+   "distanceMm": 10.71,
+   "content": "",
+   "firstPage": "same"
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "center",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "lineHeight": 1.5
+  },
+  "paragraph": {
+   "firstLineIndentMm": 10,
+   "leftIndentMm": 30,
+   "rightIndentMm": 24.99
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "justify",
+    "spaceBeforePt": 24,
+    "spaceAfterPt": 18,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}."
+    },
+    "keepWithNext": true
+   }
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.15,
+   "baseline": "word"
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "approval",
+   "type": "approval",
+   "title": "Onay Sayfası",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "DANIŞMAN ve ENSTİTÜ ONAYI",
+     "style": {
+      "align": "center",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 9.77
+    },
+    {
+     "type": "text",
+     "value": "İzmir Bakırçay Üniversitesi Lisansüstü Eğitim Enstitüsü …………………………. ………………………… Anabilim dalında öğrenim görmekte olan ……………… .....................................................’nın {{THESIS_TITLE}} başlıklı dönem projesi .../.../20.. tarihinde danışmanı tarafından değerlendirilerek “İzmir Bakırçay Üniversitesi Lisansüstü Eğitim-Öğretim ve Sınav Yönetmeliği’nin ilgili maddeleri uyarınca, Anabilim dalında Tezsiz Yüksek Lisans Dönem Projesi olarak kabul edilmiştir.",
+     "style": {
+      "align": "justify",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 29.33
+    },
+    {
+     "type": "text",
+     "value": "............................................................................................................",
+     "style": {
+      "align": "left",
+      "spaceBeforePt": 0.05
+     }
+    },
+    {
+     "type": "text",
+     "value": "(Unvanı, Adı ve SOYADI) {{INSTITUTE_DIRECTOR_NAME}}",
+     "style": {
+      "align": "left",
+      "spaceBeforePt": 6.95
+     }
+    },
+    {
+     "type": "text",
+     "value": "Danışman Lisansüstü Eğitim Enstitüsü Müdürü",
+     "style": {
+      "align": "left",
+      "spaceBeforePt": 6.85
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 65.72
+    },
+    {
+     "type": "text",
+     "value": "* Bu belgenin ciltlenmiş dönem projesinin “Başlık” sayfasından sonra ıslak imzanız ile (fotokopi olmayacak şekilde) yer alması gerekmektedir.",
+     "style": {
+      "align": "left",
+      "fontSizePt": 11,
+      "spaceBeforePt": 9.4
+     }
+    }
+   ]
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖNSÖZ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center"
+     }
+    }
+   }
+  },
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center"
+     }
+    }
+   }
+  },
+  {
+   "id": "declaration",
+   "type": "declaration",
+   "title": "ETİK İLKE VE KURALLARA UYGUNLUK BEYANNAMESİ",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center"
+     }
+    }
+   }
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots",
+    "levels": [
+     1
+    ]
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR/ÇİZELGELER DİZİNİ",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "TABLOLAR/ÇİZELGELER DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-figures",
+   "type": "listOfFigures",
+   "title": "ŞEKİLLER DİZİNİ",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "ŞEKİLLER DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR DİZİNİ",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    },
+    "headings": {
+     "1": {
+      "align": "center"
+     }
+    }
+   }
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "GİRİŞ",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic",
+      "startAt": 1,
+      "restart": true
+     }
+    }
+   }
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "Ekler",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic"
+     }
+    }
+   }
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKÇA GÖSTERİMİ",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic"
+     }
+    }
+   }
+  }
+ ],
+ "tables": {
+  "label": "Tablo",
+  "position": "above",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "fontWeight": 700,
+   "align": "justify"
+  },
+  "numbering": {
+   "scope": "chapter",
+   "format": "{chapter}.{n}",
+   "sequence": "arabic"
+  }
+ },
+ "figures": {
+  "label": "Şekil",
+  "position": "below",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "fontWeight": 700,
+   "align": "left",
+   "lineHeight": 1.5
+  },
+  "numbering": {
+   "scope": "chapter",
+   "format": "{chapter}.{n}",
+   "sequence": "arabic"
+  }
+ },
+ "bibliography": {
+  "heading": "KAYNAKÇA GÖSTERİMİ",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "left",
+   "lineHeight": 1.5
+  }
+ },
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1
+  ],
+  "showPageNumbers": true
+ }
+}

@@ -1,27 +1,310 @@
 {
  "schemaVersion": 1,
- "templateVersion": "0.1.0-draft",
+ "templateVersion": "0.2.0-source-rebuild",
  "id": "ikc-fbe-master-tr-ikcu-fbe-thesis-template-en-2023-10-28",
  "universityId": "ikc",
  "universityName": "İzmir Kâtip Çelebi Üniversitesi",
  "instituteId": "fbe",
- "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "instituteName": "Fen Bilimleri Enstitüsü",
  "degreeType": "master",
- "language": "tr",
+ "language": "en",
  "status": "generic",
  "source": {
   "type": "official",
   "documentName": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx",
-  "verifiedAt": "2026-10-07",
+  "verifiedAt": "2026-10-23",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 4e4e5ee4d9bcf93f3c93d3dc595dd18b1d8e2ac1a672ac317508f8d7be45a60b",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
-   "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi",
-   "Kılavuz kuralları birleştirildi: IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf (4 alan, 0 çelişki)"
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
   ],
   "guideDocumentName": "IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Thesis_Template_EN_2023-10-28.docx",
+  "rebuildKind": "docx-template",
+  "archiveSha256": "4e4e5ee4d9bcf93f3c93d3dc595dd18b1d8e2ac1a672ac317508f8d7be45a60b",
+  "evidence": {
+   "page.margins": {
+    "value": {
+     "topMm": 25,
+     "bottomMm": 25,
+     "leftMm": 40,
+     "rightMm": 25
+    },
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › sectPr#2 (gövde bölümü, 286 paragraf) › w:pgMar",
+    "status": "MEASURED"
+   },
+   "page.size": {
+    "value": [
+     210,
+     297
+    ],
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › sectPr#2 (gövde bölümü, 286 paragraf) › w:pgSz",
+    "status": "MEASURED"
+   },
+   "page.numbering": {
+    "value": {
+     "enabled": true,
+     "position": "bottom",
+     "align": "center",
+     "format": "arabic",
+     "startAt": 1,
+     "restart": false
+    },
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › sectPr#2 (gövde bölümü, 286 paragraf) › footer PAGE alanı, w:pgNumType",
+    "status": "MEASURED"
+   },
+   "page.footer.distanceMm": {
+    "value": 8.01,
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › sectPr#2 (gövde bölümü, 286 paragraf) › w:pgMar/@w:footer",
+    "status": "MEASURED"
+   },
+   "typography.body": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "justify",
+     "lineHeight": 1.5
+    },
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › gövde profili: 47/61 paragraf (≥200 karakter), 6 farklı biçim",
+    "status": "MEASURED"
+   },
+   "tables.position": {
+    "value": "above",
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › 1 üstte / 1 altta",
+    "status": "MEASURED"
+   },
+   "tables": {
+    "value": {
+     "label": "Table",
+     "position": "above",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "align": "center",
+      "lineHeight": 1
+     },
+     "numbering": {
+      "scope": "chapter",
+      "format": "{chapter}.{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › 1/1 yazı; etiket sayımı {'Table': 1, 'Figure': 1}",
+    "status": "MEASURED"
+   },
+   "figures": {
+    "value": {
+     "label": "Figure",
+     "position": "below",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "align": "center",
+      "lineHeight": 1
+     },
+     "numbering": {
+      "scope": "chapter",
+      "format": "{chapter}.{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › 6/7 yazı; etiket sayımı {'Figure': 7}",
+    "status": "MEASURED"
+   },
+   "typography.footnotes": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 10,
+     "lineHeight": 1,
+     "align": "justify",
+     "placement": "pageBottom"
+    },
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › stil DipnotMetni + settings.xml footnotePr",
+    "status": "MEASURED"
+   },
+   "sections.cover": {
+    "value": "15 blok, outerCover",
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › ön sayfa #0: Guide for Thesis Preparation (Title of the Thesis in English) / Submitted to the",
+    "status": "MEASURED"
+   },
+   "sections.inner-cover": {
+    "value": "23 blok, innerCover",
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › ön sayfa #1: This is to certify that we have read the thesis Title of the Thesis in English s",
+    "status": "MEASURED"
+   },
+   "sections.front-page-2": {
+    "value": "11 blok, custom",
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › ön sayfa #2: Declaration of Authorship / I, Aaaaa Bbbbb, declare that this thesis titled Titl",
+    "status": "MEASURED"
+   },
+   "sections.front-page-3-2": {
+    "value": "9 blok, custom",
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › ön sayfa #3: Title of the Thesis in English / Abstract / The abstract of the thesis will be w",
+    "status": "MEASURED"
+   },
+   "sections.front-page-4-3": {
+    "value": "9 blok, custom",
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › ön sayfa #4: Tezin Türkçe Başlığı / Öz / Öz (Abstract) of the thesis will be written here in ",
+    "status": "MEASURED"
+   },
+   "sections.front-page-5-4": {
+    "value": "2 blok, custom",
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › ön sayfa #5: If the thesis work is to be dedicated to someone (family, spouse, mother and fat",
+    "status": "MEASURED"
+   },
+   "sections.front-page-6-5": {
+    "value": "4 blok, custom",
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › ön sayfa #6: Acknowledgment / If people and/or institutions are to be acknowledged for their ",
+    "status": "MEASURED"
+   },
+   "sections.front-page-7-6": {
+    "value": "24 blok, custom",
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › ön sayfa #7: Table of Contents / Declaration of Authorship ii / Abstract iii / Öz iv",
+    "status": "MEASURED"
+   },
+   "sections.front-page-8-7": {
+    "value": "1 blok, custom",
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › ön sayfa #8: 2.6.1Properties of Figures and Tables7",
+    "status": "MEASURED"
+   },
+   "sections": {
+    "value": [
+     "outerCover",
+     "innerCover",
+     "custom",
+     "custom",
+     "custom",
+     "custom",
+     "custom",
+     "custom",
+     "custom",
+     "mainContent"
+    ],
+    "source": "IKCU_FBE_Thesis_Template_EN_2023-10-28.docx › 0 birinci düzey başlık, 3 fiziksel bölüm",
+    "status": "MEASURED"
+   },
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 17",
+      "sentence": "2.1 Page Layout and Margins For the entire thesis, the left margin should be 4.00 cm, and top, right and bottom margins should be 2.50 cm."
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 17",
+      "sentence": "2.1 Page Layout and Margins For the entire thesis, the left margin should be 4.00 cm, and top, right and bottom margins should be 2.50 cm."
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
+    "locations": [
+     {
+      "value": 40,
+      "location": "sayfa 17",
+      "sentence": "2.1 Page Layout and Margins For the entire thesis, the left margin should be 4.00 cm, and top, right and bottom margins should be 2.50 cm."
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 17",
+      "sentence": "2.1 Page Layout and Margins For the entire thesis, the left margin should be 4.00 cm, and top, right and bottom margins should be 2.50 cm."
+     }
+    ]
+   },
+   "typography.footnotes.lineHeight": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 1,
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
+    "locations": [
+     {
+      "value": 1,
+      "location": "sayfa 26",
+      "sentence": "Single line spacing is used to separate different footnotes on one page."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "sayfa 20",
+      "sentence": "Center all page numbers at the bottom of the page, 0.8 cm from the bottom edge."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "center",
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
+    "locations": [
+     {
+      "value": "center",
+      "location": "sayfa 20",
+      "sentence": "Center all page numbers at the bottom of the page, 0.8 cm from the bottom edge."
+     }
+    ]
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Tez_Sablonu_TR_2023-10-28.docx",
+    "sha256": "bed453dd2a4d7420bc2d636818a4490ba1604acb16b9cf0103b7c9716a8ec008"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Tez_Yazim_Kilavuzu_TR_2023-10-28.pdf",
+    "sha256": "5d7e975df5b37492076572481cdbbfb0dc29172fccdbe8f6120101ea61c493bf"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
+    "sha256": "014a91da32a22cc9fac9507bb8867508f1de8fa83f0f5804fbb3ed5c9762a46a"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/IKCU_FBE_Thesis_Template_EN_2023-10-28.docx",
+    "sha256": "4e4e5ee4d9bcf93f3c93d3dc595dd18b1d8e2ac1a672ac317508f8d7be45a60b"
+   }
+  ],
   "review": {
    "unknown": [
+    {
+     "field": "typography.headings.1",
+     "reason": "Balk1 stili var ama kullanılmamış; Word varsayılanı üniversite kuralı sayılmadı, kılavuzdan doğrulanmalı"
+    },
+    {
+     "field": "typography.headings.2",
+     "reason": "Belgede 2. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.3",
+     "reason": "Belgede 3. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.4",
+     "reason": "Belgede 4. düzey başlık stili veya örneği yok"
+    },
     {
      "field": "tables.extraLabels",
      "reason": "Belgede birden çok etiket var: {'Table': 1, 'Figure': 1}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
@@ -32,11 +315,43 @@
     },
     {
      "field": "bibliography.hangingIndentMm",
-     "reason": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi"
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
     },
     {
      "field": "bibliography.heading",
      "reason": "Kaynakça başlığı belgede bulunamadı; 'KAYNAKLAR' yer tutucu"
+    },
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.lineHeight",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
     }
    ],
    "inferred": [
@@ -61,20 +376,19 @@
      "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
     },
     {
-     "field": "bibliography.hangingIndentMm",
-     "value": "0",
-     "reasoning": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi — kılavuzdan teyit edilmeli"
+     "field": "sections.sourceInstructions",
+     "value": "3",
+     "reasoning": "Şablonun kullanım yönergeleri ve örnek önsöz açıklamaları yeni tezin içeriği olarak basılmaması için çıkarıldı; özgün dosya korundu."
+    },
+    {
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
     }
    ],
    "conflicts": [],
    "guide": "IKCU_FBE_Thesis_Guide_EN_2023-10-28.pdf",
-   "gate": {
-    "overall": "BLOCKED",
-    "results": {},
-    "reason": "Gerekli yazı tipi bu makinede PDF'e gömülemiyor: PDF yazı tipi Calibri Light izin verilen font ailelerinden biri değil",
-    "checkedAt": "2026-10-22",
-    "exportTool": "engine/tools/export.mjs"
-   }
+   "gate": null
   }
  },
  "page": {
@@ -83,10 +397,10 @@
   "heightMm": 297,
   "orientation": "portrait",
   "margins": {
-   "topMm": 25.01,
-   "bottomMm": 25.01,
+   "topMm": 25,
+   "bottomMm": 25,
    "leftMm": 40,
-   "rightMm": 25.01
+   "rightMm": 25
   },
   "header": {
    "heightMm": 0,
@@ -118,41 +432,7 @@
   },
   "paragraph": {
    "spaceBeforePt": 12,
-   "spaceAfterPt": 12,
-   "firstLineIndentMm": 12.5
-  },
-  "headings": {
-   "1": {
-    "fontFamily": "Calibri Light",
-    "fontSizePt": 16,
-    "fontWeight": 400,
-    "align": "justify",
-    "lineHeight": 1.5,
-    "spaceBeforePt": 12,
-    "spaceAfterPt": 0,
-    "keepWithNext": true
-   },
-   "2": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 26,
-    "fontWeight": 400,
-    "align": "left",
-    "keepWithNext": true
-   },
-   "3": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 26,
-    "fontWeight": 400,
-    "align": "left",
-    "keepWithNext": true
-   },
-   "4": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 26,
-    "fontWeight": 400,
-    "align": "left",
-    "keepWithNext": true
-   }
+   "spaceAfterPt": 12
   },
   "footnotes": {
    "fontFamily": "Times New Roman",
@@ -242,6 +522,82 @@
   },
   "PROJECT_SUPPORT": {
    "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_NAME": {
+   "label": "Jury Member 1 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_NAME": {
+   "label": "Jury Member 2 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_NAME": {
+   "label": "Jury Member 3 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_NAME": {
+   "label": "Jury Member 4 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_NAME": {
+   "label": "Jury Member 5 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_INSTITUTION": {
+   "label": "Jury Member 1 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_INSTITUTION": {
+   "label": "Jury Member 2 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_INSTITUTION": {
+   "label": "Jury Member 3 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_INSTITUTION": {
+   "label": "Jury Member 4 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_INSTITUTION": {
+   "label": "Jury Member 5 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_NAME": {
+   "label": "Jury Member 6 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_NAME": {
+   "label": "Jury Member 7 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_INSTITUTION": {
+   "label": "Jury Member 6 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_INSTITUTION": {
+   "label": "Jury Member 7 Institution",
    "type": "text"
   }
  },
@@ -336,13 +692,14 @@
      }
     },
     {
-     "type": "text",
-     "value": "Aaaaa Author’s Name Bbbbb",
+     "type": "metadata",
      "style": {
       "align": "center",
       "fontSizePt": 15,
       "spaceAfterPt": 6
-     }
+     },
+     "field": "STUDENT_NAME",
+     "fallback": "Student name"
     },
     {
      "type": "text",
@@ -360,7 +717,7 @@
     },
     {
      "type": "text",
-     "value": "Advisor: Prof. Dr. Ccccc Ddddd",
+     "value": "Advisor: {{ADVISOR_NAME}}",
      "style": {
       "align": "center",
       "fontSizePt": 14,
@@ -412,7 +769,7 @@
     },
     {
      "type": "text",
-     "value": "This is to certify that we have read the thesis Title of the Thesis in English submitted by Aaaaa Bbbbb, and it has been judged to be successful, in scope and in quality, at the defense exam and accepted by our jury as a MASTER’S / DOCTORAL THESIS.",
+     "value": "This is to certify that we have read the thesis Title of the Thesis in English submitted by {{STUDENT_NAME}}, and it has been judged to be successful, in scope and in quality, at the defense exam and accepted by our jury as a MASTER’S / DOCTORAL THESIS.",
      "style": {
       "align": "justify",
       "spaceBeforePt": 12,
@@ -438,7 +795,7 @@
     },
     {
      "type": "text",
-     "value": "Advisor:Prof. Dr. Ccccc Ddddd",
+     "value": "Advisor:{{ADVISOR_NAME}}",
      "style": {
       "align": "justify",
       "fontWeight": 700
@@ -457,7 +814,7 @@
     },
     {
      "type": "text",
-     "value": "Co-advisor: Assoc. Prof. Dr. Ccccc Ddddd",
+     "value": "Co-advisor: Assoc. {{ADVISOR_NAME}}",
      "style": {
       "align": "justify",
       "fontWeight": 700
@@ -487,12 +844,13 @@
      "heightMm": 4.87
     },
     {
-     "type": "text",
-     "value": "Prof. Dr. Ccccc Ddddd",
+     "type": "metadata",
      "style": {
       "align": "justify",
       "fontWeight": 700
-     }
+     },
+     "field": "ADVISOR_NAME",
+     "fallback": "Advisor name"
     },
     {
      "type": "text",
@@ -507,7 +865,7 @@
     },
     {
      "type": "text",
-     "value": "Assoc. Prof. Dr. Ccccc Ddddd",
+     "value": "Assoc. {{ADVISOR_NAME}}",
      "style": {
       "align": "justify",
       "fontWeight": 700
@@ -526,7 +884,7 @@
     },
     {
      "type": "text",
-     "value": "Assist. Prof. Dr. Ccccc Ddddd",
+     "value": "Assist. {{ADVISOR_NAME}}",
      "style": {
       "align": "justify",
       "fontWeight": 700
@@ -555,8 +913,8 @@
   },
   {
    "id": "front-page-2",
-   "type": "custom",
-   "title": "Ön sayfa 3",
+   "type": "declaration",
+   "title": "Declaration of Authorship",
    "status": "required",
    "group": "front",
    "mode": "static",
@@ -592,7 +950,7 @@
     },
     {
      "type": "text",
-     "value": "I, Aaaaa Bbbbb, declare that this thesis titled Title of the Thesis in English and the work presented in it are my own. I confirm that:",
+     "value": "I, {{STUDENT_NAME}}, declare that this thesis titled Title of the Thesis in English and the work presented in it are my own. I confirm that:",
      "style": {
       "align": "justify",
       "spaceBeforePt": 12,
@@ -676,18 +1034,14 @@
   },
   {
    "id": "front-page-3-2",
-   "type": "custom",
-   "title": "Ön sayfa 4",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
    "status": "required",
    "group": "front",
-   "mode": "static",
+   "mode": "editable",
    "tocEntry": "none",
    "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": false
-     }
-    },
+    "page": {},
     "body": {
      "firstLineIndentMm": 0,
      "spaceBeforePt": 0,
@@ -695,98 +1049,18 @@
      "lineHeight": 1
     }
    },
-   "blocks": [
-    {
-     "type": "spacer",
-     "heightMm": 47.31
-    },
-    {
-     "type": "text",
-     "value": "Title of the Thesis in English",
-     "style": {
-      "align": "center",
-      "fontSizePt": 18,
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "spacer",
-     "heightMm": 15.77
-    },
-    {
-     "type": "text",
-     "value": "Abstract",
-     "style": {
-      "align": "center",
-      "fontSizePt": 26,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "The abstract of the thesis will be written here. No subtitles will be used in the abstract of the thesis. The abstract can be written in a single paragraph or a few paragraphs. A one page abstract is proper, but it should not exceed two pages at maximum. The phrase \"Keywords\" should be written after the abstract, leaving a blank space. Keywords should consist of at least 5 words or phrases and should be written in order of importance. Keywords should be related to the thesis work.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "This thesis writing guide can also be used as a template as it is prepared in accordance with all the guidelines stated here. Detailed guidelines are given in the following chapters.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "This part can be vertically centered on the page.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "spacer",
-     "heightMm": 15.77
-    },
-    {
-     "type": "text",
-     "value": "Keywords: Engineering, technology, analytical method, sciences, research",
-     "style": {
-      "align": "justify",
-      "fontWeight": 700,
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    }
-   ]
+   "showTitle": true
   },
   {
    "id": "front-page-4-3",
-   "type": "custom",
-   "title": "Ön sayfa 5",
+   "type": "abstract",
+   "title": "ÖZET",
    "status": "required",
    "group": "front",
-   "mode": "static",
+   "mode": "editable",
    "tocEntry": "none",
    "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": false
-     }
-    },
+    "page": {},
     "body": {
      "firstLineIndentMm": 0,
      "spaceBeforePt": 0,
@@ -794,196 +1068,18 @@
      "lineHeight": 1
     }
    },
-   "blocks": [
-    {
-     "type": "spacer",
-     "heightMm": 47.31
-    },
-    {
-     "type": "text",
-     "value": "Tezin Türkçe Başlığı",
-     "style": {
-      "align": "center",
-      "fontSizePt": 18,
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "spacer",
-     "heightMm": 15.77
-    },
-    {
-     "type": "text",
-     "value": "Öz",
-     "style": {
-      "align": "center",
-      "fontSizePt": 26,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Öz (Abstract) of the thesis will be written here in Turkish. The Turkish abstract will be an appropriate translation of the English abstract. No subtitles will be used in the abstract of the thesis. The abstract can be written in a single paragraph or a few paragraphs. A one page abstract is proper, but it should not exceed two pages at maximum. The phrase \"Anahtar Kelimeler\" should be written after the abstract, leaving a blank space. Anahtar Kelimeler (Keywords) should consist of at least 5 words or phrases and should be written in order of importance. Keywords should be related to the thesis work.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "This thesis writing guide can also be used as a template as it is prepared in accordance with all the guidelines stated here. Detailed guidelines are given in the following chapters.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "This part can be vertically centered on the page.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "spacer",
-     "heightMm": 15.77
-    },
-    {
-     "type": "text",
-     "value": "Anahtar Kelimeler: Engineering, technology, analytical method, sciences, research",
-     "style": {
-      "align": "justify",
-      "fontWeight": 700,
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    }
-   ]
-  },
-  {
-   "id": "front-page-5-4",
-   "type": "custom",
-   "title": "Ön sayfa 6",
-   "status": "required",
-   "group": "front",
-   "mode": "static",
-   "tocEntry": "none",
-   "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": false
-     }
-    },
-    "body": {
-     "firstLineIndentMm": 0,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0,
-     "lineHeight": 1
-    }
-   },
-   "blocks": [
-    {
-     "type": "spacer",
-     "heightMm": 126.15
-    },
-    {
-     "type": "text",
-     "value": "If the thesis work is to be dedicated to someone (family, spouse, mother and father, etc.), it will be centered here. . . Optional.",
-     "style": {
-      "align": "center",
-      "italic": true,
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    }
-   ]
-  },
-  {
-   "id": "front-page-6-5",
-   "type": "custom",
-   "title": "Ön sayfa 7",
-   "status": "required",
-   "group": "front",
-   "mode": "static",
-   "tocEntry": "none",
-   "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": false
-     }
-    },
-    "body": {
-     "firstLineIndentMm": 0,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0,
-     "lineHeight": 1
-    }
-   },
-   "blocks": [
-    {
-     "type": "spacer",
-     "heightMm": 94.61
-    },
-    {
-     "type": "text",
-     "value": "Acknowledgment",
-     "style": {
-      "align": "center",
-      "fontSizePt": 26,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "If people and/or institutions are to be acknowledged for their contribution to the thesis study, they will be written here.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "This part should be vertically centered on the page.",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    }
-   ]
+   "showTitle": true
   },
   {
    "id": "front-page-7-6",
-   "type": "custom",
-   "title": "Ön sayfa 8",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
    "status": "required",
    "group": "front",
-   "mode": "static",
+   "mode": "editable",
    "tocEntry": "none",
    "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": false
-     }
-    },
+    "page": {},
     "body": {
      "firstLineIndentMm": 0,
      "spaceBeforePt": 0,
@@ -991,256 +1087,7 @@
      "lineHeight": 1
     }
    },
-   "blocks": [
-    {
-     "type": "spacer",
-     "heightMm": 17.89
-    },
-    {
-     "type": "text",
-     "value": "Table of Contents",
-     "style": {
-      "align": "justify",
-      "fontSizePt": 26,
-      "spaceBeforePt": 18,
-      "spaceAfterPt": 12,
-      "lineHeight": 1.5
-     }
-    },
-    {
-     "type": "text",
-     "value": "Declaration of Authorship ii",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "Abstract iii",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "Öz iv",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "Acknowledgment vi",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "List of Figuresx",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "List of Tablesxi",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "List of Abbreviationsxii",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "List of Symbolsxiii",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "1Introduction 1",
-     "style": {
-      "align": "justify",
-      "fontWeight": 700,
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2Thesis Style and Format Requirements 3",
-     "style": {
-      "align": "justify",
-      "fontWeight": 700,
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.1Page Layout and Margins3",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.2Font, Font Size and Other Text Properties4",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.2.1Font 4",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.2.2Font Size and Other Text Properties4",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.2.2.1Font Size and Other Text Properties in Main Body 4",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.2.2.2Font Size and Other Text Properties in Headings4",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.2.2.3Font Size in Figures and Tables4",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.2.3Spacing5",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.3Page Numbering6",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.4Headings6",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.5Page Size 7",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    },
-    {
-     "type": "text",
-     "value": "2.6Figures and Tables7",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    }
-   ]
-  },
-  {
-   "id": "front-page-8-7",
-   "type": "custom",
-   "title": "Ön sayfa 9",
-   "status": "required",
-   "group": "front",
-   "mode": "static",
-   "tocEntry": "none",
-   "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": false
-     }
-    },
-    "body": {
-     "firstLineIndentMm": 0,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0,
-     "lineHeight": 1
-    }
-   },
-   "blocks": [
-    {
-     "type": "text",
-     "value": "2.6.1Properties of Figures and Tables7",
-     "style": {
-      "align": "justify",
-      "spaceBeforePt": 12,
-      "spaceAfterPt": 6
-     }
-    }
-   ]
+   "showTitle": true
   },
   {
    "id": "main-content",
@@ -1291,14 +1138,11 @@
    "fontSizePt": 12,
    "align": "left",
    "lineHeight": 1.5
-  },
-  "hangingIndentMm": 0
+  }
  },
  "toc": {
   "heading": "İÇİNDEKİLER",
-  "levels": [
-   1
-  ],
+  "levels": [],
   "showPageNumbers": true
  }
 }

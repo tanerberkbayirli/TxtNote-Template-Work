@@ -1,0 +1,523 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "mugla-sbe-master-tr-kaynak",
+ "universityId": "mugla",
+ "universityName": "Muğla Sıtkı Koçman Üniversitesi",
+ "instituteId": "sbe",
+ "instituteName": "Sosyal Bilimler Enstitüsü",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
+  ],
+  "guideDocumentName": "MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+  "archivePath": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "e7e1cefa6d0f288d5c7bf713640c979b14e7f828d73bc931e4ccdbc08dc9e2ad",
+  "evidence": {
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+    "locations": [
+     {
+      "value": 25,
+      "location": "paragraf 96",
+      "sentence": "Sayfa düzeni, üst kenar boşluğu 2,5 cm, sol kenar boşluğu 4 cm, alt kenar boşluğu 2,5 cm ve sağ kenar boşluğu ise 2,5 cm olacak şekilde ayarlanmalıdır."
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+    "locations": [
+     {
+      "value": 25,
+      "location": "paragraf 96",
+      "sentence": "Sayfa düzeni, üst kenar boşluğu 2,5 cm, sol kenar boşluğu 4 cm, alt kenar boşluğu 2,5 cm ve sağ kenar boşluğu ise 2,5 cm olacak şekilde ayarlanmalıdır."
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+    "locations": [
+     {
+      "value": 40,
+      "location": "paragraf 96",
+      "sentence": "Sayfa düzeni, üst kenar boşluğu 2,5 cm, sol kenar boşluğu 4 cm, alt kenar boşluğu 2,5 cm ve sağ kenar boşluğu ise 2,5 cm olacak şekilde ayarlanmalıdır."
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+    "locations": [
+     {
+      "value": 25,
+      "location": "paragraf 96",
+      "sentence": "Sayfa düzeni, üst kenar boşluğu 2,5 cm, sol kenar boşluğu 4 cm, alt kenar boşluğu 2,5 cm ve sağ kenar boşluğu ise 2,5 cm olacak şekilde ayarlanmalıdır."
+     }
+    ]
+   },
+   "typography.body.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+    "location": "paragraf 98",
+    "passage": "Tez yazımında Times New Roman yazı tipi tercih edilmelidir. İlgili anabilim veya anasanat dalının uygun görmesi halinde, metin içinde farklı dillere ait yazılar için farklı bir yazı tipi kullanılabilir. Metin ve kaynakça için yazı boyutu 12 punto, dipnotlar için ise 10 punto şeklinde olmalıdır. Tablo ve grafiklerde ise yazı boyutu tercihe bağlı olarak 10 puntoya kadar küçültülebilir. Yazım sırasında nokta, virgül, noktalı virgül, soru işareti gibi tüm noktalama işaretlerinden sonra bir karakterlik boşluk bırakılmalıdır.",
+    "decision": "Dipnot 10 puntosu ana metin olarak yanlış çıkarılmıştı."
+   },
+   "typography.body.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+    "location": "paragraf 98",
+    "passage": "Tez yazımında Times New Roman yazı tipi tercih edilmelidir. İlgili anabilim veya anasanat dalının uygun görmesi halinde, metin içinde farklı dillere ait yazılar için farklı bir yazı tipi kullanılabilir. Metin ve kaynakça için yazı boyutu 12 punto, dipnotlar için ise 10 punto şeklinde olmalıdır. Tablo ve grafiklerde ise yazı boyutu tercihe bağlı olarak 10 puntoya kadar küçültülebilir. Yazım sırasında nokta, virgül, noktalı virgül, soru işareti gibi tüm noktalama işaretlerinden sonra bir karakterlik boşluk bırakılmalıdır.",
+    "decision": "Dipnot 10 puntosu ana metin olarak yanlış çıkarılmıştı."
+   },
+   "typography.footnotes.fontSizePt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 10,
+    "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+    "locations": [
+     {
+      "value": 10,
+      "location": "paragraf 98",
+      "sentence": "Metin ve kaynakça için yazı boyutu 12 punto, dipnotlar için ise 10 punto şeklinde olmalıdır."
+     },
+     {
+      "value": 10,
+      "location": "paragraf 119",
+      "sentence": "Bütün dipnotlar aynı sayfa altında Times New Roman yazı tipiyle tek satır aralığında, 10 punto ve iki yana yaslı olarak yazılmalıdır."
+     }
+    ]
+   },
+   "typography.footnotes.lineHeight": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 1,
+    "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+    "locations": [
+     {
+      "value": 1,
+      "location": "paragraf 119",
+      "sentence": "Bütün dipnotlar aynı sayfa altında Times New Roman yazı tipiyle tek satır aralığında, 10 punto ve iki yana yaslı olarak yazılmalıdır."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "REVIEWED_SOURCE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+    "location": "paragraf 102",
+    "passage": "Sayfa numaraları kâğıdın sağ alt kenarında olmalı, numaraların önünde ve arkasında ayraç, çizgi vb. karakterler kullanılmamalıdır. Numaralandırmalar Times New Roman yazı tipinde 12 punto olmalıdır. “Dış kapak”, İç Kapak”, “Kabul ve Onay Sayfası”, “Tutanak”, “Beyan Metinleri”, “Özet” ve “Abstract” sayfaları numaralandırılmaz. “Giriş”e kadar olan “Ön söz”, “İçindekiler”, “Tablolar”, “Şekiller”, “Fotoğraf, Levha, Malzemeler (varsa)”, “Kısaltmalar (varsa)”, “Transkripsiyon (varsa)” sayfaları büyük Romen (I, II, III, IV, V, VI, VII) rakamlarıyla numaralandırılır. “Giriş”ten itibaren ise tez boyunca sayfaların tamamı (ekler ve kaynakça da dâhil) normal rakamlarla numaralandırılır. Tezin sonuna tezi hazırlayanın “Özgeçmiş” sayfası eklenir, bu sayfaya sayfa numarası verilmez.",
+    "decision": "Kaynak açıkça kapaklar, onay, beyan, özet ve abstractı numarasız tutar."
+   },
+   "page.numbering.align": {
+    "status": "REVIEWED_SOURCE",
+    "value": "right",
+    "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+    "location": "paragraf 102",
+    "passage": "Sayfa numaraları kâğıdın sağ alt kenarında olmalı, numaraların önünde ve arkasında ayraç, çizgi vb. karakterler kullanılmamalıdır. Numaralandırmalar Times New Roman yazı tipinde 12 punto olmalıdır. “Dış kapak”, İç Kapak”, “Kabul ve Onay Sayfası”, “Tutanak”, “Beyan Metinleri”, “Özet” ve “Abstract” sayfaları numaralandırılmaz. “Giriş”e kadar olan “Ön söz”, “İçindekiler”, “Tablolar”, “Şekiller”, “Fotoğraf, Levha, Malzemeler (varsa)”, “Kısaltmalar (varsa)”, “Transkripsiyon (varsa)” sayfaları büyük Romen (I, II, III, IV, V, VI, VII) rakamlarıyla numaralandırılır. “Giriş”ten itibaren ise tez boyunca sayfaların tamamı (ekler ve kaynakça da dâhil) normal rakamlarla numaralandırılır. Tezin sonuna tezi hazırlayanın “Özgeçmiş” sayfası eklenir, bu sayfaya sayfa numarası verilmez.",
+    "decision": "Kaynak açıkça kapaklar, onay, beyan, özet ve abstractı numarasız tutar."
+   },
+   "page.numbering.style.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+    "location": "paragraf 102",
+    "passage": "Sayfa numaraları kâğıdın sağ alt kenarında olmalı, numaraların önünde ve arkasında ayraç, çizgi vb. karakterler kullanılmamalıdır. Numaralandırmalar Times New Roman yazı tipinde 12 punto olmalıdır. “Dış kapak”, İç Kapak”, “Kabul ve Onay Sayfası”, “Tutanak”, “Beyan Metinleri”, “Özet” ve “Abstract” sayfaları numaralandırılmaz. “Giriş”e kadar olan “Ön söz”, “İçindekiler”, “Tablolar”, “Şekiller”, “Fotoğraf, Levha, Malzemeler (varsa)”, “Kısaltmalar (varsa)”, “Transkripsiyon (varsa)” sayfaları büyük Romen (I, II, III, IV, V, VI, VII) rakamlarıyla numaralandırılır. “Giriş”ten itibaren ise tez boyunca sayfaların tamamı (ekler ve kaynakça da dâhil) normal rakamlarla numaralandırılır. Tezin sonuna tezi hazırlayanın “Özgeçmiş” sayfası eklenir, bu sayfaya sayfa numarası verilmez.",
+    "decision": "Kaynak açıkça kapaklar, onay, beyan, özet ve abstractı numarasız tutar."
+   },
+   "page.numbering.style.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+    "location": "paragraf 102",
+    "passage": "Sayfa numaraları kâğıdın sağ alt kenarında olmalı, numaraların önünde ve arkasında ayraç, çizgi vb. karakterler kullanılmamalıdır. Numaralandırmalar Times New Roman yazı tipinde 12 punto olmalıdır. “Dış kapak”, İç Kapak”, “Kabul ve Onay Sayfası”, “Tutanak”, “Beyan Metinleri”, “Özet” ve “Abstract” sayfaları numaralandırılmaz. “Giriş”e kadar olan “Ön söz”, “İçindekiler”, “Tablolar”, “Şekiller”, “Fotoğraf, Levha, Malzemeler (varsa)”, “Kısaltmalar (varsa)”, “Transkripsiyon (varsa)” sayfaları büyük Romen (I, II, III, IV, V, VI, VII) rakamlarıyla numaralandırılır. “Giriş”ten itibaren ise tez boyunca sayfaların tamamı (ekler ve kaynakça da dâhil) normal rakamlarla numaralandırılır. Tezin sonuna tezi hazırlayanın “Özgeçmiş” sayfası eklenir, bu sayfaya sayfa numarası verilmez.",
+    "decision": "Kaynak açıkça kapaklar, onay, beyan, özet ve abstractı numarasız tutar."
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+    "sha256": "e7e1cefa6d0f288d5c7bf713640c979b14e7f828d73bc931e4ccdbc08dc9e2ad"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.lineHeight",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
+    },
+    {
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
+    }
+   ],
+   "conflicts": [],
+   "guide": "MSKU_Sosyal_Bilimler_Tez_Yazim_Kilavuzu_2025.docx",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "margins": {
+   "topMm": 25,
+   "bottomMm": 25,
+   "leftMm": 40,
+   "rightMm": 25
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "right",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false,
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12
+   }
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12
+  },
+  "footnotes": {
+   "fontSizePt": 10,
+   "lineHeight": 1
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_NAME": {
+   "label": "Jury Member 1 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_NAME": {
+   "label": "Jury Member 2 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_NAME": {
+   "label": "Jury Member 3 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_NAME": {
+   "label": "Jury Member 4 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_NAME": {
+   "label": "Jury Member 5 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_INSTITUTION": {
+   "label": "Jury Member 1 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_INSTITUTION": {
+   "label": "Jury Member 2 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_INSTITUTION": {
+   "label": "Jury Member 3 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_INSTITUTION": {
+   "label": "Jury Member 4 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_INSTITUTION": {
+   "label": "Jury Member 5 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_NAME": {
+   "label": "Jury Member 6 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_NAME": {
+   "label": "Jury Member 7 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_INSTITUTION": {
+   "label": "Jury Member 6 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_INSTITUTION": {
+   "label": "Jury Member 7 Institution",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖNSÖZ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "curriculum-vitae",
+   "type": "curriculumVitae",
+   "title": "ÖZGEÇMİŞ",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

@@ -1,39 +1,242 @@
 {
  "schemaVersion": 1,
- "templateVersion": "0.1.0-draft",
+ "templateVersion": "0.2.0-source-rebuild",
  "id": "ikc-sbe-phd-tr-ikcu-sbe-doktora-tez-sablonu",
  "universityId": "ikc",
  "universityName": "İzmir Kâtip Çelebi Üniversitesi",
  "instituteId": "sbe",
- "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "instituteName": "Sosyal Bilimler Enstitüsü",
  "degreeType": "phd",
  "language": "tr",
  "status": "generic",
  "source": {
   "type": "official",
   "documentName": "IKCU_SBE_Doktora_Tez_Sablonu.docx",
-  "verifiedAt": "2026-10-07",
+  "verifiedAt": "2026-10-23",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 404e5eb0a86a7d7d8a32b1aacd7935c9db3e4d1ffbdccb738e4557a18d842c18",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
-   "tables: yazı konumu kılavuzda yok, motor varsayılanı (above)",
-   "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi",
-   "Kılavuz kuralları birleştirildi: IKCU_SBE_Tez_Yazim_Kilavuzu.pdf (4 alan, 5 çelişki)"
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
   ],
   "guideDocumentName": "IKCU_SBE_Tez_Yazim_Kilavuzu.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/IKCU_SBE_Doktora_Tez_Sablonu.docx",
+  "rebuildKind": "docx-template",
+  "archiveSha256": "404e5eb0a86a7d7d8a32b1aacd7935c9db3e4d1ffbdccb738e4557a18d842c18",
+  "evidence": {
+   "page.margins": {
+    "value": {
+     "topMm": 30,
+     "bottomMm": 30,
+     "leftMm": 40,
+     "rightMm": 25.01
+    },
+    "source": "IKCU_SBE_Doktora_Tez_Sablonu.docx › sectPr#10 (gövde bölümü, 26 paragraf) › w:pgMar",
+    "status": "MEASURED"
+   },
+   "page.size": {
+    "value": [
+     210,
+     297
+    ],
+    "source": "IKCU_SBE_Doktora_Tez_Sablonu.docx › sectPr#10 (gövde bölümü, 26 paragraf) › w:pgSz",
+    "status": "MEASURED"
+   },
+   "page.numbering": {
+    "value": {
+     "enabled": true,
+     "position": "bottom",
+     "align": "left",
+     "format": "arabic",
+     "startAt": 1,
+     "restart": false
+    },
+    "source": "IKCU_SBE_Doktora_Tez_Sablonu.docx › sectPr#10 (gövde bölümü, 26 paragraf) › footer PAGE alanı, w:pgNumType",
+    "status": "MEASURED"
+   },
+   "page.footer.distanceMm": {
+    "value": 10,
+    "source": "IKCU_SBE_Doktora_Tez_Sablonu.docx › sectPr#10 (gövde bölümü, 26 paragraf) › w:pgMar/@w:footer",
+    "status": "MEASURED"
+   },
+   "typography.body": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "justify",
+     "lineHeight": 1.5
+    },
+    "source": "IKCU_SBE_Doktora_Tez_Sablonu.docx › gövde profili: 78/82 paragraf (≥200 karakter), 2 farklı biçim",
+    "status": "MEASURED"
+   },
+   "typography.headings.1": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 14,
+     "fontWeight": 700,
+     "align": "center",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 3,
+     "spaceAfterPt": 3,
+     "keepWithNext": true
+    },
+    "source": "IKCU_SBE_Doktora_Tez_Sablonu.docx › 14/31 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.2": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "justify",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 18,
+     "spaceAfterPt": 12,
+     "keepWithNext": true
+    },
+    "source": "IKCU_SBE_Doktora_Tez_Sablonu.docx › 24/24 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "figures": {
+    "value": {
+     "label": "Şekil",
+     "position": "below",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "justify",
+      "lineHeight": 1.5
+     },
+     "numbering": {
+      "scope": "document",
+      "format": "{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "IKCU_SBE_Doktora_Tez_Sablonu.docx › 6/6 yazı; etiket sayımı {'Tablo': 6, 'Şekil': 6}",
+    "status": "MEASURED"
+   },
+   "sections.cover": {
+    "value": "14 blok, outerCover",
+    "source": "IKCU_SBE_Doktora_Tez_Sablonu.docx › ön sayfa #0: T.C. / İZMİR KATİP ÇELEBİ ÜNİVERSİTESİ / SOSYAL BİLİMLER ENSTİTÜSÜ / ………… ANA Bİ",
+    "status": "MEASURED"
+   },
+   "sections.approval": {
+    "value": "19 blok, approval",
+    "source": "IKCU_SBE_Doktora_Tez_Sablonu.docx › ön sayfa #1: T.C. / İZMİR KATİP ÇELEBİ ÜNİVERSİTESİ / SOSYAL BİLİMLER ENSTİTÜSÜ / ………… ANA Bİ",
+    "status": "MEASURED"
+   },
+   "sections.declaration": {
+    "value": "6 blok, declaration",
+    "source": "IKCU_SBE_Doktora_Tez_Sablonu.docx › ön sayfa #2: YEMİN METNİ / Doktora tezi olarak sunduğum \"……………………………..” adlı çalışmanın, tara",
+    "status": "MEASURED"
+   },
+   "sections": {
+    "value": [
+     "outerCover",
+     "approval",
+     "declaration",
+     "abstract",
+     "englishAbstract",
+     "tableOfContents",
+     "listOfTables",
+     "listOfFigures",
+     "listOfAbbreviations",
+     "preface",
+     "mainContent",
+     "bibliography",
+     "appendices"
+    ],
+    "source": "IKCU_SBE_Doktora_Tez_Sablonu.docx › 10 birinci düzey başlık, 17 fiziksel bölüm",
+    "status": "MEASURED"
+   },
+   "typography.footnotes.fontSizePt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/IKCU_SBE_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": 12,
+      "location": "sayfa 11",
+      "sentence": "Kenar Boşlukları : Üst boşluk (top) : 3 cm Alt boşluk (bottom) : 3 cm Sol (left) : 4 cm Sağ (right) : 2,5 cm Cilt Payı : 0 cm Karakter : Times New Roman Yazı Rengi : Siyah Punto : 12 punto Satır Aralıkları : 1,5 Paragraf Aralıkları : önce 3nk, sonra 3nk Paragraf Girintisi : 1 cm Hizalama : İki yana "
+     }
+    ]
+   },
+   "typography.footnotes.lineHeight": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/IKCU_SBE_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": 1.5,
+      "location": "sayfa 11",
+      "sentence": "Kenar Boşlukları : Üst boşluk (top) : 3 cm Alt boşluk (bottom) : 3 cm Sol (left) : 4 cm Sağ (right) : 2,5 cm Cilt Payı : 0 cm Karakter : Times New Roman Yazı Rengi : Siyah Punto : 12 punto Satır Aralıkları : 1,5 Paragraf Aralıkları : önce 3nk, sonra 3nk Paragraf Girintisi : 1 cm Hizalama : İki yana "
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/IKCU_SBE_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "sayfa 12",
+      "sentence": "Sayfa Numarası Tezin, kapak bölümleri dışında tüm sayfalarına sıra ile sayfa altında ortalanmış şekilde bir numara verilmelidir."
+     }
+    ]
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/IKCU_SBE_Doktora_Tez_Sablonu.docx",
+    "sha256": "404e5eb0a86a7d7d8a32b1aacd7935c9db3e4d1ffbdccb738e4557a18d842c18"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/IKCU_SBE_Tez_Yazim_Kilavuzu.pdf",
+    "sha256": "00a42380a1c33c317e256f6b810e1c8b1ef782f06b43ced86f4c7df7e92b24be"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/IKCU_SBE_Tezli_Yuksek_Lisans_Tez_Sablonu.docx",
+    "sha256": "a7ec6d1058bcf0a7a120f43cf894f568ffae77695a65c53ad2cf7584f6fd3f22"
+   }
+  ],
   "review": {
    "unknown": [
+    {
+     "field": "typography.headings.3",
+     "reason": "Balk3 stili var ama kullanılmamış; Word varsayılanı üniversite kuralı sayılmadı, kılavuzdan doğrulanmalı"
+    },
+    {
+     "field": "typography.headings.4",
+     "reason": "Belgede 4. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "tables",
+     "reason": "Belgede örnek çizelge/tablo yazısı yok"
+    },
     {
      "field": "figures.extraLabels",
      "reason": "Belgede birden çok etiket var: {'Tablo': 6, 'Şekil': 6}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
     },
     {
      "field": "bibliography.hangingIndentMm",
-     "reason": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi"
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
     },
     {
-     "field": "tables.position",
-     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+     "field": "typography.footnotes.fontSizePt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.lineHeight",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
     }
    ],
    "inferred": [
@@ -93,68 +296,21 @@
      "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
     },
     {
-     "field": "tables.position",
-     "value": "above",
-     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
-    },
-    {
-     "field": "tables.style.fontSizePt",
-     "value": "12",
-     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
-    },
-    {
-     "field": "tables.numbering",
-     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
-     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
-    },
-    {
-     "field": "bibliography.hangingIndentMm",
-     "value": "0",
-     "reasoning": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi — kılavuzdan teyit edilmeli"
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
     }
    ],
    "conflicts": [
     {
-     "field": "typography.body.lineHeight",
-     "measured": "1.5",
-     "guide": "1",
-     "guideSource": "IKCU_SBE_Tez_Yazim_Kilavuzu.pdf › sayfa 11: “Karakter : Times New Roman Punto : 10 punto Satır Aralıkları : 1 Paragraf Aralıkları : önce 2nk, sonra 2nk Paragraf Girintisi : Asılı Değer: 0,5 cm Hizalama : İ”"
-    },
-    {
-     "field": "typography.paragraph.firstLineIndentMm",
-     "measured": "10",
-     "guide": "5",
-     "guideSource": "IKCU_SBE_Tez_Yazim_Kilavuzu.pdf › sayfa 11: “Karakter : Times New Roman Punto : 10 punto Satır Aralıkları : 1 Paragraf Aralıkları : önce 2nk, sonra 2nk Paragraf Girintisi : Asılı Değer: 0,5 cm Hizalama : İ”"
-    },
-    {
-     "field": "typography.paragraph.spaceBeforePt",
-     "measured": "3",
-     "guide": "2",
-     "guideSource": "IKCU_SBE_Tez_Yazim_Kilavuzu.pdf › sayfa 11: “Karakter : Times New Roman Punto : 10 punto Satır Aralıkları : 1 Paragraf Aralıkları : önce 2nk, sonra 2nk Paragraf Girintisi : Asılı Değer: 0,5 cm Hizalama : İ”"
-    },
-    {
-     "field": "typography.paragraph.spaceAfterPt",
-     "measured": "3",
-     "guide": "2",
-     "guideSource": "IKCU_SBE_Tez_Yazim_Kilavuzu.pdf › sayfa 11: “Karakter : Times New Roman Punto : 10 punto Satır Aralıkları : 1 Paragraf Aralıkları : önce 2nk, sonra 2nk Paragraf Girintisi : Asılı Değer: 0,5 cm Hizalama : İ”"
-    },
-    {
      "field": "page.numbering.align",
      "measured": "left",
      "guide": "right",
-     "guideSource": "IKCU_SBE_Tez_Yazim_Kilavuzu.pdf › sayfa 11: “Kenar Boşlukları : Üst boşluk (top) : 3 cm Alt boşluk (bottom) : 3 cm Sol (left) : 4 cm Sağ (right) : 2,5 cm Cilt Payı : 0 cm Karakter : Times New Roman Yazı Re”"
+     "guideSource": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Sosyal_Bilimler_Enstitusu_Tez/IKCU_SBE_Tez_Yazim_Kilavuzu.pdf sayfa 11"
     }
    ],
    "guide": "IKCU_SBE_Tez_Yazim_Kilavuzu.pdf",
-   "gate": {
-    "overall": "CONFLICT",
-    "results": {
-     "PASS": 27,
-     "CONFLICT": 2
-    },
-    "checkedAt": "2026-10-22",
-    "exportTool": "engine/tools/export.mjs"
-   }
+   "gate": null
   }
  },
  "page": {
@@ -220,23 +376,6 @@
     "lineHeight": 1.5,
     "spaceBeforePt": 18,
     "spaceAfterPt": 12,
-    "keepWithNext": true
-   },
-   "3": {
-    "fontFamily": "Calibri Light",
-    "fontSizePt": 12,
-    "fontWeight": 400,
-    "align": "left",
-    "lineHeight": 1.079,
-    "spaceBeforePt": 2,
-    "spaceAfterPt": 0,
-    "keepWithNext": true
-   },
-   "4": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 14,
-    "fontWeight": 400,
-    "align": "left",
     "keepWithNext": true
    }
   },
@@ -326,6 +465,82 @@
   "PROJECT_SUPPORT": {
    "label": "Proje desteği (varsa)",
    "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_NAME": {
+   "label": "Jury Member 1 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_NAME": {
+   "label": "Jury Member 2 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_NAME": {
+   "label": "Jury Member 3 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_NAME": {
+   "label": "Jury Member 4 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_NAME": {
+   "label": "Jury Member 5 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_INSTITUTION": {
+   "label": "Jury Member 1 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_INSTITUTION": {
+   "label": "Jury Member 2 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_INSTITUTION": {
+   "label": "Jury Member 3 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_INSTITUTION": {
+   "label": "Jury Member 4 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_INSTITUTION": {
+   "label": "Jury Member 5 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_NAME": {
+   "label": "Jury Member 6 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_NAME": {
+   "label": "Jury Member 7 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_INSTITUTION": {
+   "label": "Jury Member 6 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_INSTITUTION": {
+   "label": "Jury Member 7 Institution",
+   "type": "text"
   }
  },
  "sections": [
@@ -394,7 +609,7 @@
     {
      "type": "metadata",
      "field": "DEPARTMENT_NAME",
-     "fallback": "………… ANA BİLİM DALI",
+     "fallback": "Anabilim dalı",
      "style": {
       "align": "center",
       "fontSizePt": 14,
@@ -421,8 +636,7 @@
      "heightMm": 36.87
     },
     {
-     "type": "text",
-     "value": "TEZİN ADINI GİRİNİZ",
+     "type": "metadata",
      "style": {
       "align": "center",
       "fontSizePt": 18,
@@ -430,7 +644,9 @@
       "spaceBeforePt": 3,
       "spaceAfterPt": 3,
       "lineHeight": 1.5
-     }
+     },
+     "field": "THESIS_TITLE",
+     "fallback": "Tez başlığı"
     },
     {
      "type": "spacer",
@@ -454,7 +670,7 @@
     {
      "type": "metadata",
      "field": "STUDENT_NAME",
-     "fallback": "Adı SOYADI",
+     "fallback": "Öğrenci adı soyadı",
      "style": {
       "align": "center",
       "fontSizePt": 14,
@@ -539,7 +755,7 @@
     {
      "type": "metadata",
      "field": "DEPARTMENT_NAME",
-     "fallback": "………… ANA BİLİM DALI",
+     "fallback": "Anabilim dalı",
      "style": {
       "align": "center",
       "fontSizePt": 14,
@@ -565,8 +781,7 @@
      "heightMm": 25.29
     },
     {
-     "type": "text",
-     "value": "TEZİN ADINI GİRİNİZ",
+     "type": "metadata",
      "style": {
       "align": "center",
       "fontSizePt": 18,
@@ -574,7 +789,9 @@
       "spaceBeforePt": 3,
       "spaceAfterPt": 3,
       "lineHeight": 1.5
-     }
+     },
+     "field": "THESIS_TITLE",
+     "fallback": "Tez başlığı"
     },
     {
      "type": "spacer",
@@ -598,7 +815,7 @@
     {
      "type": "metadata",
      "field": "STUDENT_NAME",
-     "fallback": "Adı SOYADI",
+     "fallback": "Öğrenci adı soyadı",
      "style": {
       "align": "center",
       "fontSizePt": 14,
@@ -753,7 +970,7 @@
     {
      "type": "metadata",
      "field": "STUDENT_NAME",
-     "fallback": "Adı SOYADI",
+     "fallback": "Öğrenci adı soyadı",
      "style": {
       "align": "right",
       "spaceBeforePt": 3,
@@ -809,8 +1026,7 @@
     "leader": "dots",
     "levels": [
      1,
-     2,
-     3
+     2
     ]
    },
    "overrides": {
@@ -939,20 +1155,6 @@
    }
   }
  ],
- "tables": {
-  "label": "Tablo",
-  "position": "above",
-  "style": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 12,
-   "align": "center"
-  },
-  "numbering": {
-   "scope": "chapter",
-   "format": "{chapter}.{n}",
-   "sequence": "arabic"
-  }
- },
  "figures": {
   "label": "Şekil",
   "position": "below",
@@ -976,15 +1178,13 @@
    "fontSizePt": 12,
    "align": "left",
    "lineHeight": 1.5
-  },
-  "hangingIndentMm": 0
+  }
  },
  "toc": {
   "heading": "İÇİNDEKİLER",
   "levels": [
    1,
-   2,
-   3
+   2
   ],
   "showPageNumbers": true
  }

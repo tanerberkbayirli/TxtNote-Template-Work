@@ -15,24 +15,24 @@ Her üniversitede öncelikle Lisansüstü Eğitim Enstitüsü ve alan enstitüle
 
 ## Üniversiteler, klasörler ve incelenen birimler
 
-1. [Afyon Kocatepe Üniversitesi](<./Afyon Kocatepe Üniversitesi/kaynaklar.md>) — SBE, FBE, Coğrafya, Moleküler Biyoloji ve Genetik, Sağlık Bilimleri Enstitüsü.
-2. [Afyonkarahisar Sağlık Bilimleri Üniversitesi](<./Afyonkarahisar Sağlık Bilimleri Üniversitesi/kaynaklar.md>) — LEE, Tıp Fakültesi.
-3. [Aydın Adnan Menderes Üniversitesi](<./Aydın Adnan Menderes Üniversitesi/kaynaklar.md>) — Fen, Sosyal ve Sağlık Bilimleri Enstitüleri; Ziraat ve Tıp Fakülteleri.
-4. [Pamukkale Üniversitesi](<./Pamukkale Üniversitesi/kaynaklar.md>) — Fen ve Eğitim Bilimleri Enstitüleri, Tıp Fakültesi; Kimya Mühendisliği.
-5. [Ege Üniversitesi](<./Ege Üniversitesi/kaynaklar.md>) — Fen, Sağlık ve Eğitim Bilimleri Enstitüleri.
-6. [Dokuz Eylül Üniversitesi](<./Dokuz Eylül Üniversitesi/kaynaklar.md>) — Sağlık, Fen ve Eğitim Bilimleri; Atatürk İlkeleri ve İnkılap Tarihi; Tıp; iBG.
-7. [İzmir Yüksek Teknoloji Enstitüsü](<./İzmir Yüksek Teknoloji Enstitüsü/kaynaklar.md>) — LEE.
-8. [İzmir Kâtip Çelebi Üniversitesi](<./İzmir Kâtip Çelebi Üniversitesi/kaynaklar.md>) — Fen, Sosyal ve Sağlık Bilimleri Enstitüleri.
-9. [İzmir Bakırçay Üniversitesi](<./İzmir Bakırçay Üniversitesi/kaynaklar.md>) — LEE.
-10. [İzmir Demokrasi Üniversitesi](<./İzmir Demokrasi Üniversitesi/kaynaklar.md>) — Sosyal Bilimler Enstitüsü.
-11. [İzmir Ekonomi Üniversitesi](<./İzmir Ekonomi Üniversitesi/kaynaklar.md>) — LEE; hukuk alanı ek açıklamaları.
-12. [Yaşar Üniversitesi](<./Yaşar Üniversitesi/kaynaklar.md>) — LEE.
-13. [İzmir Tınaztepe Üniversitesi](<./İzmir Tınaztepe Üniversitesi/kaynaklar.md>) — LEE.
-14. [Kütahya Dumlupınar Üniversitesi](<./Kütahya Dumlupınar Üniversitesi/kaynaklar.md>) — LEE, Ekonometri Bölümü.
-15. [Kütahya Sağlık Bilimleri Üniversitesi](<./Kütahya Sağlık Bilimleri Üniversitesi/kaynaklar.md>) — LEE.
-16. [Manisa Celal Bayar Üniversitesi](<./Manisa Celal Bayar Üniversitesi/kaynaklar.md>) — LEE.
-17. [Muğla Sıtkı Koçman Üniversitesi](<./Muğla Sıtkı Koçman Üniversitesi/kaynaklar.md>) — Eğitim, Fen, Sağlık ve Sosyal Bilimler Enstitüleri.
-18. [Uşak Üniversitesi](<./Uşak Üniversitesi/kaynaklar.md>) — LEE, İnşaat Mühendisliği.
+1. [Afyon Kocatepe Üniversitesi](<Afyon Kocatepe Üniversitesi/kaynaklar.md>) — SBE, FBE, Coğrafya, Moleküler Biyoloji ve Genetik, Sağlık Bilimleri Enstitüsü.
+2. [Afyonkarahisar Sağlık Bilimleri Üniversitesi](<Afyonkarahisar Sağlık Bilimleri Üniversitesi/kaynaklar.md>) — LEE, Tıp Fakültesi.
+3. [Aydın Adnan Menderes Üniversitesi](<Aydın Adnan Menderes Üniversitesi/kaynaklar.md>) — Fen, Sosyal ve Sağlık Bilimleri Enstitüleri; Ziraat ve Tıp Fakülteleri.
+4. [Pamukkale Üniversitesi](<Pamukkale Üniversitesi/kaynaklar.md>) — Fen ve Eğitim Bilimleri Enstitüleri, Tıp Fakültesi; Kimya Mühendisliği.
+5. [Ege Üniversitesi](<Ege Üniversitesi/kaynaklar.md>) — Fen, Sağlık ve Eğitim Bilimleri Enstitüleri.
+6. [Dokuz Eylül Üniversitesi](<Dokuz Eylül Üniversitesi/kaynaklar.md>) — Sağlık, Fen ve Eğitim Bilimleri; Atatürk İlkeleri ve İnkılap Tarihi; Tıp; iBG.
+7. [İzmir Yüksek Teknoloji Enstitüsü](<İzmir Yüksek Teknoloji Enstitüsü/kaynaklar.md>) — LEE.
+8. [İzmir Kâtip Çelebi Üniversitesi](<İzmir Kâtip Çelebi Üniversitesi/kaynaklar.md>) — Fen, Sosyal ve Sağlık Bilimleri Enstitüleri.
+9. [İzmir Bakırçay Üniversitesi](<İzmir Bakırçay Üniversitesi/kaynaklar.md>) — LEE.
+10. [İzmir Demokrasi Üniversitesi](<İzmir Demokrasi Üniversitesi/kaynaklar.md>) — Sosyal Bilimler Enstitüsü.
+11. [İzmir Ekonomi Üniversitesi](<İzmir Ekonomi Üniversitesi/kaynaklar.md>) — LEE; hukuk alanı ek açıklamaları.
+12. [Yaşar Üniversitesi](<Yaşar Üniversitesi/kaynaklar.md>) — LEE.
+13. [İzmir Tınaztepe Üniversitesi](<İzmir Tınaztepe Üniversitesi/kaynaklar.md>) — LEE.
+14. [Kütahya Dumlupınar Üniversitesi](<Kütahya Dumlupınar Üniversitesi/kaynaklar.md>) — LEE, Ekonometri Bölümü.
+15. [Kütahya Sağlık Bilimleri Üniversitesi](<Kütahya Sağlık Bilimleri Üniversitesi/kaynaklar.md>) — LEE.
+16. [Manisa Celal Bayar Üniversitesi](<Manisa Celal Bayar Üniversitesi/kaynaklar.md>) — LEE.
+17. [Muğla Sıtkı Koçman Üniversitesi](<Muğla Sıtkı Koçman Üniversitesi/kaynaklar.md>) — Eğitim, Fen, Sağlık ve Sosyal Bilimler Enstitüleri.
+18. [Uşak Üniversitesi](<Uşak Üniversitesi/kaynaklar.md>) — LEE, İnşaat Mühendisliği.
 
 ## Envanter özeti
 

@@ -1,0 +1,1346 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "1.0.0",
+ "id": "adu-muhendislik-undergraduate-tr-kaynak-5c0ea3",
+ "universityId": "adu",
+ "universityName": "Aydın Adnan Menderes Üniversitesi",
+ "instituteId": "muhendislik",
+ "instituteName": "Mühendislik Fakültesi · Bitirme Tezi",
+ "degreeType": "undergraduate",
+ "language": "en",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "ADU_Muhendislik_Lisans_Bitirme_Tezi_Sablonu_2018.docx",
+  "verifiedAt": "2026-10-25",
+  "notes": [
+   "Kaynak: Word şablonu (XML) + şablon içindeki kılavuz metni; aynı güncellikte (2018) olduğundan XML önce, açık kural metni örnek sayfadan önce alındı.",
+   "Kenar boşlukları: 'cilt tarafı en az 4 cm, diğer üç kenar en az 2,5 cm' (kural). Word şablonu aynalı kenar (mirrorMargins) ve 25 mm + 15 mm cilt payı (sol) taşır: sol kenar 40 mm olarak alındı; aynalı (çift yüz) iç/dış değişimi motorda ifade edilemiyor.",
+   "Şablon dili İngilizcedir (kapak, ABSTRACT, başlıklar); id'deki '-tr' eki dil kodu değildir (kayıt adı değiştirilmedi). ÖZET Türkçedir.",
+   "Dış/iç kapak: kılavuzun punto notları ('(Font size:16 pt, Bold...)') şablon notu olarak yazdırılmaz; iç kapağa kural gereği 'Date of Submission' (ay-yıl) eklendi (örnek sayfada yok)."
+  ],
+  "archivePath": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Muhendislik_Fakultesi_Lisans_Bitirme_Tezi/ADU_Muhendislik_Lisans_Bitirme_Tezi_Sablonu_2018.docx",
+  "rebuildKind": "docx-template+guide-text",
+  "archiveSha256": "4d417430714409d01ed4f6abcce500078f7f5e0f71a6683fbeecabc1048d4c88",
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Muhendislik_Fakultesi_Lisans_Bitirme_Tezi/ADU_Muhendislik_Lisans_Bitirme_Tezi_Sablonu_2018.docx",
+    "sha256": "4d417430714409d01ed4f6abcce500078f7f5e0f71a6683fbeecabc1048d4c88"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "page.margins.gutterSide",
+     "reason": "Kural 'binding side' der; sol mu sağ mı yazmaz. Word gutter (sol) ve mirrorMargins taşır; tek yüzlü düzenleyicide sol 40 mm alındı."
+    },
+    {
+     "field": "typography.headings.alignment",
+     "reason": "Başlık hizalaması (sol/orta) kuralda yok; Word şablon stili sola yaslı (özel sayfa başlıkları ortalı)."
+    },
+    {
+     "field": "typography.headings.3.fontWeight",
+     "reason": "3. ve sonraki düzey: kural 12 pt, yalnız ilk harf büyük der; kalınlık yok. Örnek satır koyu değil: 400 alındı (örnekte 11 pt, kural 12 pt: kural esas)."
+    },
+    {
+     "field": "bibliography.hangingIndent",
+     "reason": "Kaynakça girintisi kuralda ve XML'de tanımlı değil; satır aralığı 'tek olabilir' (isteğe bağlı), 1,5 bırakıldı."
+    },
+    {
+     "field": "sections.toc.title",
+     "reason": "İçindekiler sayfa başlığı TABLE OF CONTENTS (XML metni) alındı; kılavuz sırada 'Table of contents' yazar."
+    },
+    {
+     "field": "sections.appendices.title",
+     "reason": "Ekler bölüm başlığı yok ('Appendices' sırada geçer; sayfa üstbilgisi 'Appendix A ...')."
+    },
+    {
+     "field": "sections.preface-vita-approval",
+     "reason": "Önsöz, özgeçmiş (vita sayfa numaralamada anılır), onay/beyan sayfaları kuralda ve örnekte yok."
+    },
+    {
+     "field": "page.numbering.dedication",
+     "reason": "İthaf sayfasında numara olup olmadığı belirtilmemiş."
+    },
+    {
+     "field": "abstract.wordLimit",
+     "reason": "Özet en çok 1 sayfa; sözcük sınırı yok."
+    },
+    {
+     "field": "footnotes.fontSize",
+     "reason": "Dipnot/sondipnot puntosu verilmedi (12 pt alındı)."
+    }
+   ],
+   "conflicts": [
+    "Kapak tezlik notları: iki kapak sürümü (danışman satırı 'Thesis Supervisor’s Title Name SURNAME' / 'Title Name SURNAME') farklı; kural metni 'title, name and surname' esas alındı.",
+    "İç kapak tarihi: kural (§1.2) ay-yıl tarih ister, ikinci örnekte yok: kural esas alındı.",
+    "Paragraf: 'paragraf aralığı 6 pt' ile 'aralık kullanılırsa girinti yok': girinti 0.",
+    "Önsöz (foreword) ile acknowledgement aynı bölümü anlatıyor; ACKNOWLEDGEMENT kullanıldı.",
+    "Liste başlıkları: sıra listesi 'Abbreviations/Symbols', örnek sayfalar 'LIST OF ABBREVIATIONS/SYMBOLS': örnek sayfa metni kullanıldı."
+   ]
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 25,
+   "bottomMm": 25,
+   "leftMm": 40,
+   "rightMm": 25
+  },
+  "header": {
+   "heightMm": 0,
+   "distanceMm": 12.51,
+   "content": "",
+   "firstPage": "omit"
+  },
+  "footer": {
+   "heightMm": 4.87,
+   "distanceMm": 12.51,
+   "content": "",
+   "firstPage": "omit"
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "center",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false,
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12
+   }
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "lineHeight": 1.5,
+   "fontWeight": 400,
+   "spaceBeforePt": 0,
+   "spaceAfterPt": 6,
+   "firstLineIndentMm": 0,
+   "color": "#000000"
+  },
+  "paragraph": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "lineHeight": 1.5,
+   "fontWeight": 400,
+   "spaceBeforePt": 0,
+   "spaceAfterPt": 6,
+   "firstLineIndentMm": 0,
+   "color": "#000000"
+  },
+  "footnotes": {
+   "placement": "pageBottom",
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "numbering": "document",
+   "lineHeight": 1
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.15,
+   "baseline": "word"
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontWeight": 700,
+    "lineHeight": 1.5,
+    "keepWithNext": true,
+    "fontSizePt": 12,
+    "align": "left",
+    "firstLineIndentMm": 0,
+    "spaceBeforePt": 0,
+    "spaceAfterPt": 6,
+    "pageBreakBefore": true,
+    "textTransform": "uppercase",
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.",
+     "sequence": "arabic"
+    }
+   },
+   "2": {
+    "fontFamily": "Times New Roman",
+    "fontWeight": 700,
+    "lineHeight": 1.5,
+    "keepWithNext": true,
+    "fontSizePt": 12,
+    "align": "left",
+    "firstLineIndentMm": 0,
+    "spaceBeforePt": 0,
+    "spaceAfterPt": 6,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.",
+     "sequence": "arabic"
+    }
+   },
+   "3": {
+    "fontFamily": "Times New Roman",
+    "fontWeight": 400,
+    "lineHeight": 1.5,
+    "keepWithNext": true,
+    "fontSizePt": 12,
+    "align": "left",
+    "firstLineIndentMm": 0,
+    "spaceBeforePt": 0,
+    "spaceAfterPt": 6,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}.",
+     "sequence": "arabic"
+    }
+   },
+   "4": {
+    "fontFamily": "Times New Roman",
+    "fontWeight": 400,
+    "lineHeight": 1.5,
+    "keepWithNext": true,
+    "fontSizePt": 12,
+    "align": "left",
+    "firstLineIndentMm": 0,
+    "spaceBeforePt": 0,
+    "spaceAfterPt": 6,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}.{4}.",
+     "sequence": "arabic"
+    }
+   }
+  }
+ },
+ "tables": {
+  "label": "Table",
+  "position": "above",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "fontWeight": 400,
+   "align": "left",
+   "lineHeight": 1,
+   "spaceBeforePt": 6,
+   "spaceAfterPt": 6
+  },
+  "numbering": {
+   "scope": "document",
+   "format": "{n}.",
+   "sequence": "arabic"
+  }
+ },
+ "figures": {
+  "label": "Figure",
+  "position": "below",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 10,
+   "fontWeight": 400,
+   "align": "center",
+   "lineHeight": 1,
+   "spaceBeforePt": 6,
+   "spaceAfterPt": 6
+  },
+  "numbering": {
+   "scope": "document",
+   "format": "{n}.",
+   "sequence": "arabic"
+  }
+ },
+ "bibliography": {
+  "heading": "REFERENCES",
+  "citationStyle": "APA",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "lineHeight": 1.5,
+   "spaceBeforePt": 0,
+   "spaceAfterPt": 6,
+   "firstLineIndentMm": 0
+  }
+ },
+ "toc": {
+  "heading": "TABLE OF CONTENTS",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ },
+ "placeholders": {
+  "DEPARTMENT_NAME": {
+   "label": "Department line (e.g. …… ENGINEERING DEPARTMENT; officially approved name)",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE": {
+   "label": "Thesis title (no formulas, symbols or non-standard abbreviations)",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "Thesis title (ABSTRACT page)",
+   "type": "text"
+  },
+  "THESIS_TITLE_TR": {
+   "label": "Tez başlığı (ÖZET sayfası)",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Student’s Name SURNAME (alphabetical by surname if more than one)",
+   "type": "text",
+   "required": true
+  },
+  "ADVISOR_TITLE": {
+   "label": "Supervisor title",
+   "type": "text",
+   "required": true
+  },
+  "ADVISOR_NAME": {
+   "label": "Supervisor Name SURNAME",
+   "type": "text",
+   "required": true
+  },
+  "SUBMISSION_DATE": {
+   "label": "Date of submission (month and year, e.g. June 2017)",
+   "type": "text"
+  },
+  "DEPARTMENT_TR": {
+   "label": "Bölüm adı (ÖZET künyesi, örn. Makine Mühendisliği Bölümü)",
+   "type": "text"
+  },
+  "DEPARTMENT_EN": {
+   "label": "Department (ABSTRACT line, e.g. Mechanical Engineering Department)",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Year",
+   "type": "number"
+  },
+  "PAGES": {
+   "label": "Number of pages",
+   "type": "number"
+  },
+  "KEYWORDS_EN": {
+   "label": "Keywords (maximum five, comma separated)",
+   "type": "text"
+  },
+  "KEYWORDS_TR": {
+   "label": "Anahtar kelimeler (en çok beş, virgülle)",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "outer-cover",
+   "type": "outerCover",
+   "title": "Outer cover",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "blocks": [
+    {
+     "type": "text",
+     "value": "AYDIN ADNAN MENDERES UNIVERSITY",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "text",
+     "value": "ENGINEERING FACULTY",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "DEPARTMENT_NAME",
+     "fallback": "…… ENGINEERING DEPARTMENT",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 198,
+      "firstLineIndentMm": 0,
+      "align": "center",
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "fallback": "THESIS TITLE",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 84,
+      "firstLineIndentMm": 0,
+      "align": "center",
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NAME",
+     "fallback": "Student’s Name SURNAME",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "text",
+     "value": "Supervisor:",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 54,
+      "spaceAfterPt": 6,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    }
+   ],
+   "overrides": {
+    "body": {
+     "align": "center",
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "color": "#000000"
+    },
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    }
+   }
+  },
+  {
+   "id": "inner-cover",
+   "type": "innerCover",
+   "title": "Inner cover",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "blocks": [
+    {
+     "type": "text",
+     "value": "AYDIN ADNAN MENDERES UNIVERSITY",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "text",
+     "value": "ENGINEERING FACULTY",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "DEPARTMENT_NAME",
+     "fallback": "…… ENGINEERING DEPARTMENT",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 198,
+      "firstLineIndentMm": 0,
+      "align": "center",
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "fallback": "THESIS TITLE",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 16,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 84,
+      "firstLineIndentMm": 0,
+      "align": "center",
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NAME",
+     "fallback": "Student’s Name SURNAME",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "text",
+     "value": "Supervisor:",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 54,
+      "spaceAfterPt": 6,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "SUBMISSION_DATE",
+     "fallback": "Month Year",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1,
+      "spaceBeforePt": 60,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    }
+   ],
+   "overrides": {
+    "body": {
+     "align": "center",
+     "lineHeight": 1,
+     "firstLineIndentMm": 0,
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "color": "#000000"
+    },
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    }
+   }
+  },
+  {
+   "id": "dedication",
+   "type": "dedication",
+   "title": "Dedication",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": false,
+   "tocEntry": "none",
+   "pageBreakBefore": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": true,
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "paragraph": {
+     "firstLineIndentMm": 0,
+     "align": "center",
+     "lineHeight": 1.5
+    }
+   }
+  },
+  {
+   "id": "abstract-en-header",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "standalone": false,
+   "tocEntry": "title",
+   "pageBreakBefore": true,
+   "blocks": [
+    {
+     "type": "text",
+     "value": "ABSTRACT",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE_EN",
+     "fallback": "",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center",
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{STUDENT_NAME}}",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1,
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "text",
+     "value": "B.Sc. Thesis, {{DEPARTMENT_EN}}",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1,
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "text",
+     "value": "Supervisor: {{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1,
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{YEAR}}, {{PAGES}} pages",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1,
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 24,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    }
+   ],
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "body": {
+     "lineHeight": 1,
+     "firstLineIndentMm": 0
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1.5,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "abstract-en",
+   "type": "englishAbstract",
+   "title": "Abstract text",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": false,
+   "pageBreakBefore": false,
+   "maxPages": 1,
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "paragraph": {
+     "firstLineIndentMm": 0,
+     "align": "justify",
+     "lineHeight": 1.5,
+     "spaceAfterPt": 6
+    }
+   }
+  },
+  {
+   "id": "abstract-en-footer",
+   "type": "englishAbstract",
+   "title": "Keywords",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "standalone": false,
+   "pageBreakBefore": false,
+   "tocEntry": "none",
+   "blocks": [
+    {
+     "type": "text",
+     "value": "**Keywords:** {{KEYWORDS_EN}}",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 24,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "left"
+     },
+     "markup": "inline"
+    }
+   ],
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    }
+   }
+  },
+  {
+   "id": "abstract-tr-header",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "standalone": false,
+   "tocEntry": "title",
+   "pageBreakBefore": true,
+   "blocks": [
+    {
+     "type": "text",
+     "value": "ÖZET",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 6,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE_TR",
+     "fallback": "",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "lineHeight": 1,
+      "spaceBeforePt": 0,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center",
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{STUDENT_NAME}}",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1,
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "text",
+     "value": "Lisans Bitirme Tezi, {{DEPARTMENT_TR}}",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1,
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "text",
+     "value": "Tez Danışmanı: {{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1,
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    },
+    {
+     "type": "text",
+     "value": "{{YEAR}}, {{PAGES}} sayfa",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1,
+      "spaceBeforePt": 12,
+      "spaceAfterPt": 24,
+      "firstLineIndentMm": 0,
+      "align": "center"
+     }
+    }
+   ],
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "body": {
+     "lineHeight": 1,
+     "firstLineIndentMm": 0
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1.5,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "abstract-tr",
+   "type": "abstract",
+   "title": "Özet metni",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": false,
+   "pageBreakBefore": false,
+   "maxPages": 1,
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "paragraph": {
+     "firstLineIndentMm": 0,
+     "align": "justify",
+     "lineHeight": 1.5,
+     "spaceAfterPt": 6
+    }
+   }
+  },
+  {
+   "id": "abstract-tr-footer",
+   "type": "abstract",
+   "title": "Anahtar kelimeler",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "standalone": false,
+   "pageBreakBefore": false,
+   "tocEntry": "none",
+   "blocks": [
+    {
+     "type": "text",
+     "value": "**Anahtar Kelimeler:** {{KEYWORDS_TR}}",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 400,
+      "lineHeight": 1.5,
+      "spaceBeforePt": 24,
+      "spaceAfterPt": 0,
+      "firstLineIndentMm": 0,
+      "align": "left"
+     },
+     "markup": "inline"
+    }
+   ],
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    }
+   }
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "ACKNOWLEDGEMENT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "pageBreakBefore": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "center",
+      "lineHeight": 1.5,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    },
+    "paragraph": {
+     "firstLineIndentMm": 0,
+     "align": "justify",
+     "lineHeight": 1.5,
+     "spaceAfterPt": 6
+    }
+   }
+  },
+  {
+   "id": "toc",
+   "type": "tableOfContents",
+   "title": "TABLE OF CONTENTS",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "tocEntry": "none",
+   "pageBreakBefore": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "TABLE OF CONTENTS",
+    "leader": "dots",
+    "style": {
+     "align": "left",
+     "lineHeight": 1.5,
+     "fontSizePt": 12,
+     "spaceAfterPt": 0,
+     "spaceBeforePt": 0
+    }
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "left",
+      "lineHeight": 1.5,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "list-tables",
+   "type": "listOfTables",
+   "title": "LIST OF TABLES",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "tocEntry": "title",
+   "pageBreakBefore": true,
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "LIST OF TABLES",
+    "leader": "dots",
+    "style": {
+     "align": "left",
+     "lineHeight": 1.5,
+     "fontSizePt": 12,
+     "spaceAfterPt": 0,
+     "spaceBeforePt": 0
+    }
+   },
+   "visibleWhen": {
+    "count": "tables",
+    "gte": 1
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "left",
+      "lineHeight": 1.5,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "list-figures",
+   "type": "listOfFigures",
+   "title": "LIST OF FIGURES",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "tocEntry": "title",
+   "pageBreakBefore": true,
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "LIST OF FIGURES",
+    "leader": "dots",
+    "style": {
+     "align": "left",
+     "lineHeight": 1.5,
+     "fontSizePt": 12,
+     "spaceAfterPt": 0,
+     "spaceBeforePt": 0
+    }
+   },
+   "visibleWhen": {
+    "count": "figures",
+    "gte": 1
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "left",
+      "lineHeight": 1.5,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "LIST OF ABBREVIATIONS",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "pageBreakBefore": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "left",
+      "lineHeight": 1.5,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    },
+    "paragraph": {
+     "firstLineIndentMm": 0,
+     "align": "justify",
+     "lineHeight": 1.5,
+     "spaceAfterPt": 6
+    }
+   }
+  },
+  {
+   "id": "symbols",
+   "type": "listOfSymbols",
+   "title": "LIST OF SYMBOLS",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "pageBreakBefore": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "left",
+      "lineHeight": 1.5,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    },
+    "paragraph": {
+     "firstLineIndentMm": 0,
+     "align": "justify",
+     "lineHeight": 1.5,
+     "spaceAfterPt": 6
+    }
+   }
+  },
+  {
+   "id": "main",
+   "type": "mainContent",
+   "title": "INTRODUCTION",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false,
+   "tocEntry": "headings",
+   "pageBreakBefore": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic",
+      "startAt": 1,
+      "restart": true
+     }
+    }
+   }
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "REFERENCES",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "pageBreakBefore": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "left",
+      "lineHeight": 1.5,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "APPENDICES",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true,
+   "tocEntry": "title",
+   "pageBreakBefore": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic",
+      "restart": false
+     }
+    },
+    "headings": {
+     "1": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "left",
+      "lineHeight": 1.5,
+      "numbering": {
+       "enabled": false
+      }
+     }
+    }
+   }
+  }
+ ]
+}

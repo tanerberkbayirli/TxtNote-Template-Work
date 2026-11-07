@@ -1,0 +1,408 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "deu-ibg-master-tr-kaynak",
+ "universityId": "deu",
+ "universityName": "Dokuz Eylül Üniversitesi",
+ "instituteId": "ibg",
+ "instituteName": "İzmir Biyotıp ve Genom Enstitüsü",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "DEU_iBG_Tez_Yazim_Kurallari_2024.docx",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
+  ],
+  "guideDocumentName": "DEU_iBG_Tez_Yazim_Kurallari_2024.docx",
+  "archivePath": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/iBG_Enstitusu_Tez/DEU_iBG_Tez_Yazim_Kurallari_2024.docx",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "2521002b0569c3dc696e0c3787e60df44e8c850860919b2858a6b7420945e4fb",
+  "evidence": {
+   "typography.body.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/iBG_Enstitusu_Tez/DEU_iBG_Tez_Yazim_Kurallari_2024.docx",
+    "location": "paragraf 184",
+    "passage": "Sayfa düzeninde üst, alt ve sol kenardan üçer cm, sağ kenardan iki cm boşluk bırakılmalıdır. Yazım düzenini korumak için tüm satırlar aynı hizada bloklanmalıdır. Tüm tez metninde 12 punto Arial, Tahoma, Times New Roman veya Courier (daktilo harfi) karakterlerinden birisi normal olarak (İtalik değil) 1,5 satır aralığı ile kullanılmalıdır. Sayfa sonuna gelen başlıkları en az iki satır izlemeli, aksi halde yeni sayfaya geçilmelidir. Paragraf başlangıçları bir cm içerden başlamalıdır. Metinde 10'a kadar olan sayılar yazıyla daha büyükleri rakamla yazılmalıdır. Cümle başına gelen sayılar yazıyla yazılmalıdır. Ana başlıklar koyu (bold) ve alt çizgili, alt başlıklar koyu ve bölüm içi küçük başlıklar italik yazılmalıdır. Ana bölüm başlıklarının tümü, alt başlıkların her sözcüğünün ilk harfi büyük yazılmalıdır. Tez tercihen lazer yazıcı ile basılmalıdır.",
+    "decision": "İzin verilen fontlardan Times New Roman seçildi; Arial, Tahoma ve Courier de izinlidir."
+   },
+   "typography.body.lineHeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/iBG_Enstitusu_Tez/DEU_iBG_Tez_Yazim_Kurallari_2024.docx",
+    "location": "paragraf 184",
+    "passage": "Sayfa düzeninde üst, alt ve sol kenardan üçer cm, sağ kenardan iki cm boşluk bırakılmalıdır. Yazım düzenini korumak için tüm satırlar aynı hizada bloklanmalıdır. Tüm tez metninde 12 punto Arial, Tahoma, Times New Roman veya Courier (daktilo harfi) karakterlerinden birisi normal olarak (İtalik değil) 1,5 satır aralığı ile kullanılmalıdır. Sayfa sonuna gelen başlıkları en az iki satır izlemeli, aksi halde yeni sayfaya geçilmelidir. Paragraf başlangıçları bir cm içerden başlamalıdır. Metinde 10'a kadar olan sayılar yazıyla daha büyükleri rakamla yazılmalıdır. Cümle başına gelen sayılar yazıyla yazılmalıdır. Ana başlıklar koyu (bold) ve alt çizgili, alt başlıklar koyu ve bölüm içi küçük başlıklar italik yazılmalıdır. Ana bölüm başlıklarının tümü, alt başlıkların her sözcüğünün ilk harfi büyük yazılmalıdır. Tez tercihen lazer yazıcı ile basılmalıdır.",
+    "decision": "İzin verilen fontlardan Times New Roman seçildi; Arial, Tahoma ve Courier de izinlidir."
+   },
+   "page.margins.topMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/iBG_Enstitusu_Tez/DEU_iBG_Tez_Yazim_Kurallari_2024.docx",
+    "location": "paragraf 184",
+    "passage": "Sayfa düzeninde üst, alt ve sol kenardan üçer cm, sağ kenardan iki cm boşluk bırakılmalıdır. Yazım düzenini korumak için tüm satırlar aynı hizada bloklanmalıdır. Tüm tez metninde 12 punto Arial, Tahoma, Times New Roman veya Courier (daktilo harfi) karakterlerinden birisi normal olarak (İtalik değil) 1,5 satır aralığı ile kullanılmalıdır. Sayfa sonuna gelen başlıkları en az iki satır izlemeli, aksi halde yeni sayfaya geçilmelidir. Paragraf başlangıçları bir cm içerden başlamalıdır. Metinde 10'a kadar olan sayılar yazıyla daha büyükleri rakamla yazılmalıdır. Cümle başına gelen sayılar yazıyla yazılmalıdır. Ana başlıklar koyu (bold) ve alt çizgili, alt başlıklar koyu ve bölüm içi küçük başlıklar italik yazılmalıdır. Ana bölüm başlıklarının tümü, alt başlıkların her sözcüğünün ilk harfi büyük yazılmalıdır. Tez tercihen lazer yazıcı ile basılmalıdır.",
+    "decision": "Aynı paragrafta sağ kenar iki cm."
+   },
+   "page.margins.bottomMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/iBG_Enstitusu_Tez/DEU_iBG_Tez_Yazim_Kurallari_2024.docx",
+    "location": "paragraf 184",
+    "passage": "Sayfa düzeninde üst, alt ve sol kenardan üçer cm, sağ kenardan iki cm boşluk bırakılmalıdır. Yazım düzenini korumak için tüm satırlar aynı hizada bloklanmalıdır. Tüm tez metninde 12 punto Arial, Tahoma, Times New Roman veya Courier (daktilo harfi) karakterlerinden birisi normal olarak (İtalik değil) 1,5 satır aralığı ile kullanılmalıdır. Sayfa sonuna gelen başlıkları en az iki satır izlemeli, aksi halde yeni sayfaya geçilmelidir. Paragraf başlangıçları bir cm içerden başlamalıdır. Metinde 10'a kadar olan sayılar yazıyla daha büyükleri rakamla yazılmalıdır. Cümle başına gelen sayılar yazıyla yazılmalıdır. Ana başlıklar koyu (bold) ve alt çizgili, alt başlıklar koyu ve bölüm içi küçük başlıklar italik yazılmalıdır. Ana bölüm başlıklarının tümü, alt başlıkların her sözcüğünün ilk harfi büyük yazılmalıdır. Tez tercihen lazer yazıcı ile basılmalıdır.",
+    "decision": "Aynı paragrafta sağ kenar iki cm."
+   },
+   "page.margins.leftMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/iBG_Enstitusu_Tez/DEU_iBG_Tez_Yazim_Kurallari_2024.docx",
+    "location": "paragraf 184",
+    "passage": "Sayfa düzeninde üst, alt ve sol kenardan üçer cm, sağ kenardan iki cm boşluk bırakılmalıdır. Yazım düzenini korumak için tüm satırlar aynı hizada bloklanmalıdır. Tüm tez metninde 12 punto Arial, Tahoma, Times New Roman veya Courier (daktilo harfi) karakterlerinden birisi normal olarak (İtalik değil) 1,5 satır aralığı ile kullanılmalıdır. Sayfa sonuna gelen başlıkları en az iki satır izlemeli, aksi halde yeni sayfaya geçilmelidir. Paragraf başlangıçları bir cm içerden başlamalıdır. Metinde 10'a kadar olan sayılar yazıyla daha büyükleri rakamla yazılmalıdır. Cümle başına gelen sayılar yazıyla yazılmalıdır. Ana başlıklar koyu (bold) ve alt çizgili, alt başlıklar koyu ve bölüm içi küçük başlıklar italik yazılmalıdır. Ana bölüm başlıklarının tümü, alt başlıkların her sözcüğünün ilk harfi büyük yazılmalıdır. Tez tercihen lazer yazıcı ile basılmalıdır.",
+    "decision": "Aynı paragrafta sağ kenar iki cm."
+   },
+   "page.margins.rightMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 20,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/iBG_Enstitusu_Tez/DEU_iBG_Tez_Yazim_Kurallari_2024.docx",
+    "location": "paragraf 184",
+    "passage": "Sayfa düzeninde üst, alt ve sol kenardan üçer cm, sağ kenardan iki cm boşluk bırakılmalıdır. Yazım düzenini korumak için tüm satırlar aynı hizada bloklanmalıdır. Tüm tez metninde 12 punto Arial, Tahoma, Times New Roman veya Courier (daktilo harfi) karakterlerinden birisi normal olarak (İtalik değil) 1,5 satır aralığı ile kullanılmalıdır. Sayfa sonuna gelen başlıkları en az iki satır izlemeli, aksi halde yeni sayfaya geçilmelidir. Paragraf başlangıçları bir cm içerden başlamalıdır. Metinde 10'a kadar olan sayılar yazıyla daha büyükleri rakamla yazılmalıdır. Cümle başına gelen sayılar yazıyla yazılmalıdır. Ana başlıklar koyu (bold) ve alt çizgili, alt başlıklar koyu ve bölüm içi küçük başlıklar italik yazılmalıdır. Ana bölüm başlıklarının tümü, alt başlıkların her sözcüğünün ilk harfi büyük yazılmalıdır. Tez tercihen lazer yazıcı ile basılmalıdır.",
+    "decision": "Aynı paragrafta sağ kenar iki cm."
+   },
+   "typography.body.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/iBG_Enstitusu_Tez/DEU_iBG_Tez_Yazim_Kurallari_2024.docx",
+    "location": "paragraf 184",
+    "passage": "Sayfa düzeninde üst, alt ve sol kenardan üçer cm, sağ kenardan iki cm boşluk bırakılmalıdır. Yazım düzenini korumak için tüm satırlar aynı hizada bloklanmalıdır. Tüm tez metninde 12 punto Arial, Tahoma, Times New Roman veya Courier (daktilo harfi) karakterlerinden birisi normal olarak (İtalik değil) 1,5 satır aralığı ile kullanılmalıdır. Sayfa sonuna gelen başlıkları en az iki satır izlemeli, aksi halde yeni sayfaya geçilmelidir. Paragraf başlangıçları bir cm içerden başlamalıdır. Metinde 10'a kadar olan sayılar yazıyla daha büyükleri rakamla yazılmalıdır. Cümle başına gelen sayılar yazıyla yazılmalıdır. Ana başlıklar koyu (bold) ve alt çizgili, alt başlıklar koyu ve bölüm içi küçük başlıklar italik yazılmalıdır. Ana bölüm başlıklarının tümü, alt başlıkların her sözcüğünün ilk harfi büyük yazılmalıdır. Tez tercihen lazer yazıcı ile basılmalıdır.",
+    "decision": "İzin verilen fontlardan Times New Roman seçildi; Arial, Tahoma ve Courier de izinlidir."
+   },
+   "typography.paragraph.firstLineIndentMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 10,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/iBG_Enstitusu_Tez/DEU_iBG_Tez_Yazim_Kurallari_2024.docx",
+    "location": "paragraf 184",
+    "passage": "Sayfa düzeninde üst, alt ve sol kenardan üçer cm, sağ kenardan iki cm boşluk bırakılmalıdır. Yazım düzenini korumak için tüm satırlar aynı hizada bloklanmalıdır. Tüm tez metninde 12 punto Arial, Tahoma, Times New Roman veya Courier (daktilo harfi) karakterlerinden birisi normal olarak (İtalik değil) 1,5 satır aralığı ile kullanılmalıdır. Sayfa sonuna gelen başlıkları en az iki satır izlemeli, aksi halde yeni sayfaya geçilmelidir. Paragraf başlangıçları bir cm içerden başlamalıdır. Metinde 10'a kadar olan sayılar yazıyla daha büyükleri rakamla yazılmalıdır. Cümle başına gelen sayılar yazıyla yazılmalıdır. Ana başlıklar koyu (bold) ve alt çizgili, alt başlıklar koyu ve bölüm içi küçük başlıklar italik yazılmalıdır. Ana bölüm başlıklarının tümü, alt başlıkların her sözcüğünün ilk harfi büyük yazılmalıdır. Tez tercihen lazer yazıcı ile basılmalıdır.",
+    "decision": "Sayfa düzeni paragrafında açık kural."
+   },
+   "typography.body.align": {
+    "status": "REVIEWED_SOURCE",
+    "value": "justify",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/iBG_Enstitusu_Tez/DEU_iBG_Tez_Yazim_Kurallari_2024.docx",
+    "location": "paragraf 184",
+    "passage": "Sayfa düzeninde üst, alt ve sol kenardan üçer cm, sağ kenardan iki cm boşluk bırakılmalıdır. Yazım düzenini korumak için tüm satırlar aynı hizada bloklanmalıdır. Tüm tez metninde 12 punto Arial, Tahoma, Times New Roman veya Courier (daktilo harfi) karakterlerinden birisi normal olarak (İtalik değil) 1,5 satır aralığı ile kullanılmalıdır. Sayfa sonuna gelen başlıkları en az iki satır izlemeli, aksi halde yeni sayfaya geçilmelidir. Paragraf başlangıçları bir cm içerden başlamalıdır. Metinde 10'a kadar olan sayılar yazıyla daha büyükleri rakamla yazılmalıdır. Cümle başına gelen sayılar yazıyla yazılmalıdır. Ana başlıklar koyu (bold) ve alt çizgili, alt başlıklar koyu ve bölüm içi küçük başlıklar italik yazılmalıdır. Ana bölüm başlıklarının tümü, alt başlıkların her sözcüğünün ilk harfi büyük yazılmalıdır. Tez tercihen lazer yazıcı ile basılmalıdır.",
+    "decision": "Sayfa düzeni paragrafında açık kural."
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/iBG_Enstitusu_Tez/DEU_iBG_Tez_Yazim_Kurallari_2024.docx",
+    "sha256": "2521002b0569c3dc696e0c3787e60df44e8c850860919b2858a6b7420945e4fb"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
+    },
+    {
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
+    }
+   ],
+   "conflicts": [],
+   "guide": "DEU_iBG_Tez_Yazim_Kurallari_2024.docx",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "margins": {
+   "topMm": 30,
+   "bottomMm": 30,
+   "leftMm": 30,
+   "rightMm": 20
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "right",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontSizePt": 12,
+   "lineHeight": 1.5,
+   "fontFamily": "Times New Roman",
+   "align": "justify"
+  },
+  "paragraph": {
+   "firstLineIndentMm": 10
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-figures",
+   "type": "listOfFigures",
+   "title": "ŞEKİLLER DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "ŞEKİLLER DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "TABLOLAR DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "curriculum-vitae",
+   "type": "curriculumVitae",
+   "title": "ÖZGEÇMİŞ",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

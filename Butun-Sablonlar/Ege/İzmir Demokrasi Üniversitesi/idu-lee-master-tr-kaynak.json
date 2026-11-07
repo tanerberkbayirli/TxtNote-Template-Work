@@ -1,0 +1,549 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "idu-lee-master-tr-kaynak",
+ "universityId": "idu",
+ "universityName": "İzmir Demokrasi Üniversitesi",
+ "instituteId": "lee",
+ "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
+  ],
+  "guideDocumentName": "IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+  "archivePath": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "bb1d4fc9188477bcba85871ad7886073eaa21d585be2f174d4ecf3e870825e5a",
+  "evidence": {
+   "typography.body.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+    "location": "paragraf 141",
+    "passage": "Tüm metin, Times New Roman yazı tipi ile 12 punto ve 1,5 satır aralığında yazılır.Paragraf aralarında 6 nk (yaklaşık yarım satır) boşluk bırakılır.",
+    "decision": "Türkçe kılavuzda tüm metin kuralı."
+   },
+   "typography.body.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "justify",
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+    "locations": [
+     {
+      "value": "justify",
+      "location": "paragraf 165",
+      "sentence": "Metin iki yana yaslı olmalıdır."
+     }
+    ]
+   },
+   "typography.paragraph.firstLineIndentMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 12.5,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+    "locations": [
+     {
+      "value": 12.5,
+      "location": "paragraf 165",
+      "sentence": "Paragraflar 1,25 cm girintiyle ve 1,5 satır aralığında yazılır."
+     }
+    ]
+   },
+   "typography.paragraph.spaceAfterPt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 6,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+    "locations": [
+     {
+      "value": 6,
+      "location": "paragraf 165",
+      "sentence": "Paragraflar arasında 6 nk boşluk bırakılır."
+     }
+    ]
+   },
+   "typography.footnotes.fontSizePt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 10,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+    "locations": [
+     {
+      "value": 10,
+      "location": "paragraf 144",
+      "sentence": "Dipnotlar: 10 punto, 1 satır aralığı"
+     }
+    ]
+   },
+   "typography.footnotes.lineHeight": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 1,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+    "locations": [
+     {
+      "value": 1,
+      "location": "paragraf 144",
+      "sentence": "Dipnotlar: 10 punto, 1 satır aralığı"
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "paragraf 177",
+      "sentence": "Tablolar sayfaya sığmıyorsa yatay sayfa kullanılabilir; sayfa numarası alt ortada kalır."
+     },
+     {
+      "value": "bottom",
+      "location": "paragraf 186",
+      "sentence": "Şekiller sayfaya sığmıyorsa yatay sayfa kullanılabilir; sayfa numarası alt ortada kalır."
+     },
+     {
+      "value": "bottom",
+      "location": "paragraf 220",
+      "sentence": "Sayfa numaraları her sayfanın alt ortasında, 10 punto Times New Roman karakteriyle yazılır."
+     },
+     {
+      "value": "bottom",
+      "location": "paragraf 253",
+      "sentence": "İçindekiler sayfasında tezde yer alan tüm ana başlıklar ve alt başlıklar, sayfa numaralarıyla birlikte sıralanır."
+     },
+     {
+      "value": "bottom",
+      "location": "paragraf 470",
+      "sentence": "Sayfa altında yer alan dipnotta ilk kullanımda yazar adı-soyadı, eser adı, yayın bilgisi ve ilgili sayfa numarası gösterilir."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "center",
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+    "locations": [
+     {
+      "value": "center",
+      "location": "paragraf 220",
+      "sentence": "Sayfa numaraları her sayfanın alt ortasında, 10 punto Times New Roman karakteriyle yazılır."
+     }
+    ]
+   },
+   "page.margins.topMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+    "location": "paragraf 138",
+    "passage": "Kenar boşlukları Microsoft Word’de “Sayfa Düzeni > Kenar Boşlukları > Özel Kenar Boşlukları” menüsünden ayarlanır. Sol kenar 2,5 cm + 1 cm cilt payı (toplam 3,5 cm), sağ kenar 2,5 cm, üst ve alt kenarlar 2,5 cm olacak şekilde düzenlenir. Cilt payı sol kenara eklenir. (Ek-1).",
+    "decision": "Türkçe kılavuzda sol kenar cilt payı dahil 3,5 cm."
+   },
+   "page.margins.bottomMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+    "location": "paragraf 138",
+    "passage": "Kenar boşlukları Microsoft Word’de “Sayfa Düzeni > Kenar Boşlukları > Özel Kenar Boşlukları” menüsünden ayarlanır. Sol kenar 2,5 cm + 1 cm cilt payı (toplam 3,5 cm), sağ kenar 2,5 cm, üst ve alt kenarlar 2,5 cm olacak şekilde düzenlenir. Cilt payı sol kenara eklenir. (Ek-1).",
+    "decision": "Türkçe kılavuzda sol kenar cilt payı dahil 3,5 cm."
+   },
+   "page.margins.leftMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 35,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+    "location": "paragraf 138",
+    "passage": "Kenar boşlukları Microsoft Word’de “Sayfa Düzeni > Kenar Boşlukları > Özel Kenar Boşlukları” menüsünden ayarlanır. Sol kenar 2,5 cm + 1 cm cilt payı (toplam 3,5 cm), sağ kenar 2,5 cm, üst ve alt kenarlar 2,5 cm olacak şekilde düzenlenir. Cilt payı sol kenara eklenir. (Ek-1).",
+    "decision": "Türkçe kılavuzda sol kenar cilt payı dahil 3,5 cm."
+   },
+   "page.margins.rightMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+    "location": "paragraf 138",
+    "passage": "Kenar boşlukları Microsoft Word’de “Sayfa Düzeni > Kenar Boşlukları > Özel Kenar Boşlukları” menüsünden ayarlanır. Sol kenar 2,5 cm + 1 cm cilt payı (toplam 3,5 cm), sağ kenar 2,5 cm, üst ve alt kenarlar 2,5 cm olacak şekilde düzenlenir. Cilt payı sol kenara eklenir. (Ek-1).",
+    "decision": "Türkçe kılavuzda sol kenar cilt payı dahil 3,5 cm."
+   },
+   "typography.body.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+    "location": "paragraf 141",
+    "passage": "Tüm metin, Times New Roman yazı tipi ile 12 punto ve 1,5 satır aralığında yazılır.Paragraf aralarında 6 nk (yaklaşık yarım satır) boşluk bırakılır.",
+    "decision": "Türkçe kılavuzda tüm metin kuralı."
+   },
+   "typography.body.lineHeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+    "location": "paragraf 141",
+    "passage": "Tüm metin, Times New Roman yazı tipi ile 12 punto ve 1,5 satır aralığında yazılır.Paragraf aralarında 6 nk (yaklaşık yarım satır) boşluk bırakılır.",
+    "decision": "Türkçe kılavuzda tüm metin kuralı."
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_EN_2026-06-12.docx",
+    "sha256": "854661fa24571ab5c9aa9d8080a4029fe41debb74921fdfa25777d1fa9cd142d"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+    "sha256": "bb1d4fc9188477bcba85871ad7886073eaa21d585be2f174d4ecf3e870825e5a"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.body.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.paragraph.firstLineIndentMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.paragraph.spaceAfterPt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.lineHeight",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
+    },
+    {
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.numbering.align",
+     "measured": "right",
+     "guide": "center",
+     "guideSource": "Butun-Sablonlar/Ege/İzmir Demokrasi Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx paragraf 220"
+    }
+   ],
+   "guide": "IDU_LEE_Tez_Yazim_Kilavuzu_TR_2026-06-12.docx",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "margins": {
+   "topMm": 25,
+   "bottomMm": 25,
+   "leftMm": 35,
+   "rightMm": 25
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "center",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "align": "justify",
+   "fontSizePt": 12,
+   "lineHeight": 1.5
+  },
+  "paragraph": {
+   "firstLineIndentMm": 12.5,
+   "spaceAfterPt": 6
+  },
+  "footnotes": {
+   "fontSizePt": 10,
+   "lineHeight": 1
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖNSÖZ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-figures",
+   "type": "listOfFigures",
+   "title": "ŞEKİLLER DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "ŞEKİLLER DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "TABLOLAR DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "curriculum-vitae",
+   "type": "curriculumVitae",
+   "title": "ÖZGEÇMİŞ",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

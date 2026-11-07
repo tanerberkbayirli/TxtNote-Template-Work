@@ -292,7 +292,122 @@
    "Dizinler: İÇİNDEKİLER / ŞEKİLLER / ÇİZELGELER / RESİMLER DİZİNİ ve SİMGELER ve KISALTMALAR DİZİNİ başlıkları koyu, ORTALI (şablon stili Balk1; kılavuz §4.2.7-4.2.11 de ortalı), 'Sayfa' koyu sağda hemen altta; satırlar 12 pt normal, 1,5 satır, 0 nk sonra, nokta kılavuzu sağ kenara; içindekiler girintileri 0/5/10/15 mm (stiller toc 3-5); şekil/çizelge/resim satırlarında etiket koyu, devam satırları metne hizalı asılı (Word çıktısı 16,3 mm). Simgeler/Kısaltmalar: tek aralıklı, 0 nk, tanımlar ortak sekmede 40,71 mm (şablon tablosu: 2196 + 108 tw); şablon tablo kullanır ve simgeleri hücre iç boşluğu kadar (1,95 mm) içeride gösterir, kılavuz §2.11 'boşluk bırakılmadan' der: 0 mm uygulandı (motorda tablo içeriği yazar işidir).",
    "Kaynaklar: '6. KAYNAKLAR' bir sonraki bölüm gibi numaralanır (şablon başlığı), 12 pt, 1,5 satır, öncesi 6 nk sonrası 0 nk, iki yana yaslı, 12,5 mm asılı girinti (709 tw), soyadına göre alfabetik; atıf 'Yazar Yıl' (kılavuz §2.9). 'İnternet Kaynakları' ayrı bir grup olarak '1-' ile yazarca yazılır (motorda ayrı grup yok). ÖZGEÇMİŞ ve EKLER: başlıklar koyu ortalı (şablon), EKLER başlığının hemen altında 'EK 1.' gelir (boş satır yok), ÖZGEÇMİŞ başlığından sonra bir boş satır; ÖZGEÇMİŞ'in alan satırları (Adı Soyadı, Doğum Yeri ve Tarihi, ...) yazar içeriği olarak bırakıldı.",
    "Dipnot: kılavuzda dipnot biçimi yoktur; şablonun 'footnote text' stili (DipnotMetni) Normal'dan türer ve boyut vermez (Word varsayılanı 10 pt, tek satır): DOCX değeri 10 pt tek satır uygulandı (kılavuzun 'tezin tamamında 12 punto' genel cümlesi ile çelişir; dipnot adıyla anılmadığı için INFERRED). Bitirme tezi benzerlik üst sınırı %20 ve baskı (tek yüz, 70-100 g/m², Word'den yazdırma, spiral cilt) fiziksel/gönderim kuralıdır, belge içeriği değildir. Yatay sayfa: motorda belge içi tek yatay sayfa yok."
-  ]
+  ],
+  "regionalAudit": {
+   "checkedAt": "2026-10-23",
+   "status": "CORE_RECHECKED",
+   "layoutRebuilt": false,
+   "visualConformanceRechecked": false,
+   "documents": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Sablonu_2026.docx",
+     "sha256": "d9bdcbb061d897d8b54f61d24d1cc29c121a6f48b81d04e612e44eac36d14d5c"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "sha256": "1b4b3c2569af15a023423a4e33e6b41b50e0a8f5474d243bd1df83874fc8ed7b"
+    }
+   ],
+   "checkedFields": [
+    {
+     "field": "typography.body.fontFamily",
+     "template": "Times New Roman",
+     "sourceValue": "Times New Roman",
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "evidence": [
+      {
+       "value": "Times New Roman",
+       "location": "sayfa 5",
+       "sentence": "Bitirme tezindeki tüm metinler için yazı karakteri “Times New Roman” olup, kullanılacak karakter büyüklüğü “İç Kapak” hariç tezin tamamında 12 punto olmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "template": 12,
+     "sourceValue": 12.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "evidence": [
+      {
+       "value": 12.0,
+       "location": "sayfa 5",
+       "sentence": "Bitirme tezindeki tüm metinler için yazı karakteri “Times New Roman” olup, kullanılacak karakter büyüklüğü “İç Kapak” hariç tezin tamamında 12 punto olmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.topMm",
+     "template": 30,
+     "sourceValue": 30.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "evidence": [
+      {
+       "value": 30.0,
+       "location": "sayfa 5",
+       "sentence": "2.3 Kenar Boşlukları ve Sayfa Düzeni Yazımda sayfa kenarlarından 3 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "template": 30,
+     "sourceValue": 30.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "evidence": [
+      {
+       "value": 30.0,
+       "location": "sayfa 5",
+       "sentence": "2.3 Kenar Boşlukları ve Sayfa Düzeni Yazımda sayfa kenarlarından 3 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.leftMm",
+     "template": 30,
+     "sourceValue": 30.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "evidence": [
+      {
+       "value": 30.0,
+       "location": "sayfa 5",
+       "sentence": "2.3 Kenar Boşlukları ve Sayfa Düzeni Yazımda sayfa kenarlarından 3 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.rightMm",
+     "template": 30,
+     "sourceValue": 30.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "evidence": [
+      {
+       "value": 30.0,
+       "location": "sayfa 5",
+       "sentence": "2.3 Kenar Boşlukları ve Sayfa Düzeni Yazımda sayfa kenarlarından 3 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "template": 1.5,
+     "sourceValue": 1.5,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Kimya_Bolumu_Bitirme_Tezi/AKU_Kimya_Bitirme_Tezi_Yazim_Kilavuzu_2023.pdf",
+     "evidence": [
+      {
+       "value": 1.5,
+       "location": "sayfa 6",
+       "sentence": "3 yazımında 1,5 satır aralığı kullanılmalıdır."
+      },
+      {
+       "value": 1.5,
+       "location": "sayfa 22",
+       "sentence": "Satır aralıkları 1.5 satır olarak uygulanmalıdır."
+      }
+     ]
+    }
+   ],
+   "conflicts": []
+  }
  },
  "placeholders": {
   "THESIS_TITLE": {

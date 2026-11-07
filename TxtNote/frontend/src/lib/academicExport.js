@@ -151,6 +151,8 @@ export function runStyle(el) {
     }
     if (c.contains("fmt-bold") || /^(B|STRONG|TH)$/.test(n.tagName)) style.bold = true;
     if (c.contains("fmt-italic") || /^(I|EM)$/.test(n.tagName)) style.italics = true;
+    if (c.contains("fmt-not-bold")) style.bold = false;
+    if (c.contains("fmt-not-italic")) style.italics = false;
     if (c.contains("fmt-strike") || /^(S|DEL|STRIKE)$/.test(n.tagName)) style.strike = true;
     if (c.contains("fmt-underline") || n.tagName === "U") style.underline = {};
     if (c.contains("fmt-overline")) style.overline = true;

@@ -1,4 +1,5 @@
-import { chapterNumberSequence, formatNumber, groupThesisSections, transformThesisText } from "./engine.js";
+import { manualTocEntries } from "./manualToc.js";
+import { chapterNumberSequence, extractThesisHeadings, formatNumber, groupThesisSections, transformThesisText } from "./engine.js";
 import { flattenSpecialPage, resolveSpecialPage, specialPageHtml } from "./specialPages.js";
 import { resolveLayoutNodes } from "./layoutDocument.js";
 import { resolvePresentationHtml } from "./presentationLayout.js";
@@ -231,18 +232,27 @@ export function indexEntries(sources, rule, pages = {}, language = "tr") {
     .map((entry) => {
       // matchHeadingTransform: a row reads like its rendered heading (e.g. an uppercase H1).
       const title = rule.matchHeadingTransform && entry.textTransform ? transformThesisText(entry.title, entry, language) : entry.title;
-      return { ...entry, text: [entry.label, title].filter(Boolean).join(" "), rowTitle: title, page: pages[entry.anchor]?.indexLabel ?? pages[entry.anchor]?.label ?? "" };
+      return { ...entry, text: [entry.label, title].filter(Boolean).join(" "), rowTitle: title, page: pages[entry.anchor]?.indexLabel ?? pages[entry.anchor]?.label ?? "", pageResolved: Object.hasOwn(pages, entry.anchor) };
     });
 }
 
 /** Row style of a generated-index entry: `levelStyles.unnumbered` for unnumbered title rows, else `levelStyles[level]`. */
 export const indexRowStyle = (rule, entry) => (entry.unnumbered && rule.levelStyles?.unnumbered) || rule.levelStyles?.[entry.level || 1];
 
+/** Whether a Word TOC row has a real page label to show after pagination. */
+export function indexRowIncludesPageNumber(rule, entry) {
+  return Boolean(rule.includePageNumbers)
+    && indexRowStyle(rule, entry)?.includePageNumber !== false
+    // An unnumbered target with an explicitly resolved empty index label is not a
+    // page-numbered row. Hidden-but-counted targets have a nonempty indexLabel.
+    && !(entry.unnumbered && entry.pageResolved === true && entry.page === "");
+}
+
 /** Targets whose resolved page mapping must be present before a generated-index export. */
 export function generatedIndexPageTargets(model) {
   return [...new Set((model.sections || []).flatMap((section) => {
     const rule = section.generatedIndex;
-    if (!rule?.includePageNumbers) return [];
+    if (!rule?.includePageNumbers || (rule.kind === "toc" && model.manualToc?.enabled)) return [];
     return indexEntries(model.indexSources || [], rule, {}, model.language)
       .filter((entry) => indexRowStyle(rule, entry)?.includePageNumber !== false)
       .map((entry) => entry.anchor)
@@ -254,18 +264,33 @@ export function missingGeneratedIndexPages(model, pages = {}) {
   return generatedIndexPageTargets(model).filter((target) => !Object.hasOwn(pages, target));
 }
 
+/** Row that carries the page heading under pageHeadingPlacement "row" (-1: the heading is its own block). */
+export function pageHeadingRowIndex(entries, rule) {
+  let headingRow = -1;
+  if (!rule.includePageNumbers || !rule.pageHeading || rule.pageHeadingPlacement !== "row") return headingRow;
+  for (let index = 0; index < entries.length && entries[index].unnumbered && indexRowStyle(rule, entries[index])?.includePageNumber === false; index += 1) headingRow = index;
+  return headingRow;
+}
+
 export function generatedIndexHtml(entries, rule) {
-  const pageHeading = rule.includePageNumbers && rule.pageHeading ? `<div class="thesis-index-page-heading">${escape(rule.pageHeading)}</div>` : "";
+  // pageHeadingPlacement "row": the "Sayfa" heading sits in the page column of the last leading unnumbered row without a page
+  // number (e.g. "İÇİNDEKİLER ... Sayfa" in a contents list that opens with ÖNSÖZ / İÇİNDEKİLER); without such a row it stays a block.
+  const headingRow = pageHeadingRowIndex(entries, rule);
+  const pageHeading = headingRow < 0 && rule.includePageNumbers && rule.pageHeading ? `<div class="thesis-index-page-heading">${escape(rule.pageHeading)}</div>` : "";
   // Label ("Şekil 2.1", "1.2") and title are separate spans so a template can style the label and hang
   // wrapped lines under the title; without those rules they read exactly as one text.
   const inline = rule.leaderFlow === "inline";
-  const rowText = (entry, tail = "") => entry.label && entry.rowTitle !== undefined ? `<span class="thesis-index-label">${escape(entry.label)}</span> <span class="thesis-index-title">${escape(entry.rowTitle)}${tail}</span>` : inline ? `<span class="thesis-index-title">${escape(entry.text)}${tail}</span>` : escape(entry.text);
+  const rowText = (entry, tail = "") => entry.label && entry.rowTitle !== undefined
+    ? inline && rule.hanging > 0
+      ? `<span class="thesis-index-title"><span class="thesis-index-label">${escape(entry.label)}</span> ${escape(entry.rowTitle)}${tail}</span>`
+      : `<span class="thesis-index-label">${escape(entry.label)}</span> <span class="thesis-index-title">${escape(entry.rowTitle)}${tail}</span>`
+    : inline ? `<span class="thesis-index-title">${escape(entry.text)}${tail}</span>` : escape(entry.text);
   // A level may list its rows without page numbers (e.g. centred chapter rows): levelStyles[level].includePageNumber === false.
   // levelStyles.unnumbered styles the unnumbered title rows (ÖZET, GİRİŞ, KAYNAKÇA, …) of any level and wins over the level's own style.
   const withPage = (entry) => rule.includePageNumbers && indexRowStyle(rule, entry)?.includePageNumber !== false;
   const leader = (entry) => `<span class="thesis-index-leader">${rule.leader === "dots" ? ".".repeat(400) : ""}</span><span class="thesis-index-page">${escape(entry.page)}</span>`;
   // leaderFlow "inline": leader and page number sit inside the title box, on the last line of a wrapped entry (floats, see engine CSS).
-  return `<h1 data-unnumbered="true">${escape(rule.title)}</h1>${pageHeading}<ol class="thesis-toc" data-thesis-generated="${escape(rule.kind)}">${entries.map((entry) => `<li data-index-level="${entry.level || 1}" data-index-target="${escape(entry.anchor)}"${entry.unnumbered && rule.levelStyles?.unnumbered ? ' data-index-unnumbered="true"' : ""}${entry.labelLine ? ' data-index-label-line="true"' : ""}><span class="thesis-index-text">${rowText(entry, inline && withPage(entry) ? leader(entry) : "")}</span>${!inline && withPage(entry) ? leader(entry) : ""}</li>`).join("")}</ol>`;
+  return `<h1 data-unnumbered="true">${escape(rule.title)}</h1>${pageHeading}<ol class="thesis-toc" data-thesis-generated="${escape(rule.kind)}">${entries.map((entry, index) => `<li data-index-level="${entry.level || 1}" data-index-target="${escape(entry.anchor)}"${entry.manualPage ? ` data-index-manual-page="${escape(entry.page)}" tabindex="0" role="link" aria-label="${escape(entry.text)}, sayfa ${escape(entry.page)}"` : ""}${entry.unnumbered && rule.levelStyles?.unnumbered ? ' data-index-unnumbered="true"' : ""}${entry.labelLine ? ' data-index-label-line="true"' : ""}${index === headingRow ? ' data-index-page-heading="true"' : ""}><span class="thesis-index-text">${rowText(entry, inline && withPage(entry) ? leader(entry) : "")}</span>${!inline && withPage(entry) ? leader(entry) : index === headingRow ? `<span class="thesis-index-leader"></span><span class="thesis-index-page" data-index-page-heading="true">${escape(rule.pageHeading)}</span>` : ""}</li>`).join("")}</ol>`;
 }
 
 /**
@@ -308,7 +333,15 @@ export function resolveGeneratedIndexes(model, pages = {}, counts = {}) {
   return { ...model, values, indexPages: pages, sections: model.sections.map((current) => {
     const section = current.derivedLayout ? withDerivedLayout(current, values) : current;
     if (!section.generatedIndex) return { ...section, documentLayout: model.documentLayout };
-    const indexRows = indexEntries(model.indexSources, section.generatedIndex, pages, model.language);
+    const manual = section.generatedIndex.kind === "toc" && model.manualToc?.enabled;
+    const counters = [];
+    const headingRules = model.sections.find(item => item.type === "mainContent")?.rules || section.rules;
+    const indexRows = manual ? manualTocEntries(model.manualToc.rows).map(row => {
+      if (row.literalTitle) return row;
+      const heading = extractThesisHeadings(`<h${row.level}${row.unnumbered ? ' data-unnumbered="true"' : ''}>${escape(row.title)}</h${row.level}>`, headingRules, counters)[0];
+      const title = section.generatedIndex.matchHeadingTransform ? transformThesisText(row.title, headingRules.headings[row.level] || {}, model.language) : row.title;
+      return { ...row, label: heading.label, labelLine: heading.labelLine, rowTitle: title, text: [heading.label, title].filter(Boolean).join(" ") };
+    }) : indexEntries(model.indexSources, section.generatedIndex, pages, model.language);
     const presentation = resolvePresentationHtml(generatedIndexHtml(indexRows, section.generatedIndex), section, model.documentLayout, "generated");
     return { ...section, documentLayout: model.documentLayout, indexRows, presentationElements: presentation.elements,
       html: presentation.html + specialPageHtml(section.layout || []) };

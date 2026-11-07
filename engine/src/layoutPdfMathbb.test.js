@@ -11,10 +11,10 @@ describe("mathbb PDF character mapping", () => {
     assert.equal(doubleStruckMathText("R+"), "ℝ+");
   });
 });
-
 describe("paged PDF highlight clipping", () => {
   it("clips a text highlight rectangle to the physical page bounds", () => {
     assert.deepEqual(clipPageRect({ x: 4, top: 90, width: 20, height: 20 }, 100, 800), { x: 4, top: 100, width: 20, height: 10 });
     assert.equal(clipPageRect({ x: 4, top: 10, width: 20, height: 5 }, 100, 800), null);
   });
 });
+

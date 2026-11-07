@@ -1,7 +1,7 @@
 /** Editable Word export primitives for positioned special-page layout nodes. */
 import {
   AlignmentType, BorderStyle, FrameAnchorType, FrameWrap, HeightRule, HorizontalPositionRelativeFrom,
-  ImageRun, LineRuleType, PageNumber, Paragraph, TextRun, TextWrappingType, VerticalPositionRelativeFrom, WpsShapeRun,
+  HeadingLevel, ImageRun, LineRuleType, PageNumber, Paragraph, TextRun, TextWrappingType, VerticalPositionRelativeFrom, WpsShapeRun,
 } from "./docx/runtime.js";
 import { convertLength, mmToTwip, ptToTwip } from "./units.js";
 import { transformThesisText } from "./engine.js";
@@ -76,12 +76,13 @@ function textFrame(node, { language = "tr", lineSpacing = null } = {}) {
   const widthMm = node.widthMm;
   const lineHeightMm = (Number(style.fontSizePt) || 12) * ((Number(style.lineHeight) || 1.5) * (25.4 / 72));
   const heightMm = Number.isFinite(node.heightMm) && node.heightMm > 0 ? node.heightMm : lineHeightMm;
-  const paragraph = new Paragraph({
+  const paragraphs = (["ul", "ol"].includes(node.list) ? String(node.text || "").split("\n") : [node.text]).map((text, index) => new Paragraph({
+    ...(node.headingLevel ? { heading: HeadingLevel[`HEADING_${node.headingLevel}`] } : {}),
     alignment: aligned(style.align),
     spacing: { before: ptToTwip(style.spaceBeforePt || 0), after: ptToTwip(style.spaceAfterPt || 0), ...linePitch(style, lineSpacing) },
     indent: { firstLine: mmToTwip(style.firstLineIndentMm || 0), left: mmToTwip(style.leftIndentMm || 0), right: mmToTwip(style.rightIndentMm || 0) },
-    children: textRuns(node.text, style, language),
-  });
+    children: textRuns(node.list === "ul" ? `• ${text}` : node.list === "ol" ? `${index + 1}. ${text}` : text, style, language),
+  }));
   // DrawingML's editable text box has zero insets; x/y are measured from the page edge.
   return new WpsShapeRun({
     type: "wps",
@@ -95,7 +96,7 @@ function textFrame(node, { language = "tr", lineSpacing = null } = {}) {
     nonVisualProperties: { txBox: "1" },
     altText: { name: node.id || "TxtNote positioned text", title: node.id || "TxtNote positioned text" },
     bodyProperties: { margins: { top: 0, bottom: 0, left: 0, right: 0 }, noAutoFit: false },
-    children: [paragraph],
+    children: paragraphs,
   });
 }
 

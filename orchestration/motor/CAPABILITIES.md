@@ -1,68 +1,9 @@
-# TxtEngine capability catalog
+# Motor yetenek kataloğu
 
-19 October 2026 A1/A2 closure: fresh source Word/editor SRC09 180/180 pages, 0/157 openings, identical blank-page locations; corrected partial-order coverage 0.99511. Same-data legacy scalar/line coverage 0.98473/0.99293 is retained: measurement correction is not a production content fix. Full UI DOCX Word 180/180, 0/157, 0.99998. PDF 180 pages and 0.99559 coverage; overall SRC09 acceptance NOT granted. 1118 tests/build PASS; SRC10 91/91 and 0/75 retained. [Evidence and scope](../raporlar/SRC09_A1_A2_KAPANIS_2026-10-19.md); current tasks only in [Missions.md](../../Missions.md).
-
-
-19 October 2026 (second record): full UI-exported SRC10 DOCX opens in Word (leaf `w:tab`, rPr/pPr child order and drawing relationship ids fixed in the source writer; SDK findings 419 → 89, the remaining 89 are identical in the original DOCX); field update, save and reopen give 91 → 89 → 89 like the original. Full SRC10 PDF now embeds the four installed Liberation Serif faces (91 pages; pages 57/75 correct). SRC09: contextual spacing chains across the cells of a row, vertical (btLr/tbRl) header cells are no longer word-fitted against the cell thickness, and multiple line spacing inside cells uses its own Word baseline offset; coverage 0.98036 → 0.98472 on the existing gate (second pass: cell list/caption baseline offsets, double border width, table-style conditional borders, cell shading, list flush in exact rows), 180/180 pages and 0/157 openings kept — the gate (≥0.995) is NOT met. A line-ordered diagnostic gives 0.99293 and is not used as the gate. 1117/1117 tests, build and Rust font test pass. [Report](../raporlar/SRC09_SRC10_SONNET_2026-10-19.md).
-
-19 October 2026 SRC10 layout closure: source-list fragments reserve one Word twip at the fit boundary, with Symbol first-line allowance kept in a single inline strut. Isolated East Asian-hinted punctuation uses the validated installed MS Mincho program in preview/PDF; desktop loading includes the Office CloudFonts cache. SRC10 original-Word/editor layout is 91/91 pages, 0/75 shifted openings, coverage 0.99565. Eight small Word controls, small font PDF/DOCX, 1107 tests, build and native font test pass. Full SRC10 PDF remains blocked by Liberation Serif; the full UI-exported DOCX failed to open in Word. These are separate open export defects. SRC09 180/180, 0/157 openings, coverage 0.98036 (FAIL). [Evidence](../raporlar/SRC10_S57_S75_2026-10-19.md).
-
-19 October 2026 follow-up: saved generated TOC row typography now registers its effective font/size baseline probe and compensates relative to the list container using canonical line spacing. The original PDF/Word baseline difference decreased from 0.296223 to 0.027506 mm. Five real TOC controls (TNR 10/16/20, TNR 18 italic, Arial 16) remain below 0.031 mm before/after Word refresh; adjacent rows and previous position/number controls pass. Full suite 1102 PASS, build PASS. This closes the separate baseline issue recorded below; general/long-document acceptance remains open. [Evidence](../raporlar/ICINDEKILER_DIKEY_HIZALAMA_2026-10-19.md).
-
-19 October 2026 scoped closures: same-page presentation text exports as native page-anchored editable Word paragraphs, retaining bookmarks and the saved flow slot. Measured per-sheet number overrides use conditional live PAGE fields and do not repeat on the next sheet. Custom TOC labels use TC sources and isolated output-level styles, preserving source headings and appearance through full Word refresh. Four real editor/PDF/Word controls retain 12/12/12/13 pages, including refreshed Word output; full suite 1100 PASS, build PASS. Separate custom-TOC PDF/Word baseline difference ~0.2962 mm, cross-page/dense frames, source mode and global/long-document acceptance remain open. [Evidence and limits](../raporlar/KONUM_SAYFA_DIZIN_2026-10-19.md).
-
-18 October 2026 scoped export consistency fix: paragraph/heading parsing retains presentation IDs, so DOCX uses saved presentation typography rather than template defaults. Generated title/row cached output keeps saved choices and native fields. Empty titled editing hosts retain one body line and the additive prefix gap in Word. Three controlled template documents retain 12/15/12 editor/PDF/Word pages before and after field update; measured title x error is below 0.0165 mm and two following signature baseline errors below 0.009 mm. Full suite 1095 PASS, build PASS. Object positioning, full TOC regeneration appearance and general/long-document acceptance remain open. [Evidence and limits](../raporlar/CIKTI_TUTARLILIGI_2026-10-18.md).
-
-Current status, 18 October 2026 (record reconciliation, no new Word run): the 16 October SRC09 acceptance records 0/157 opening differences and coverage 0.98068; the later export correction records editor/PDF/Word 180/180/180 and three retained TOCs. Arial/long-token parity closed within the measured corpus on 15 October (78 PASS). Older 11-opening, Wingdings-blocked PDF and Arial-deferral statements below describe their dated checkpoints. Current open gates are coverage, remaining shape/chart detail, SRC10 pages 57/75, performance and final serial acceptance. The current workspace suite passes 1088/1088; the earlier AFSÜ LEE spacing-test failure is historical. See [current mission](../../MISSION.md) and [editor work report](../raporlar/GENEL_DUZEN_2026-10-18.md).
-
-16 October export correction: source-mode DOCX now rebuilds live model content with original paragraph/run/table/section properties and preserves fields across section boundaries. Source header pictures are rendered in page chrome. PDF supports separately rasterized SVG graphics/backgrounds, ancestor clipping and orthogonal rotated labels; normal academic PDF uses measured DOM typography. Fresh SRC09 editor/PDF/Word: 180/180/180 pages, including explicit Word field update; three TOCs retained. Full suite: 1077/1078 pass (existing AFSÜ LEE spacing failure), build pass. Scoped evidence and remaining limits: [report](../raporlar/EXPORT_DUZELTMELERI_2026-10-16.md).
-
-14 October Pareto continuation: validated aggregated ChartEx column/cumulative-line caches have a text-bearing SVG preview; unknown layouts retain the source fallback. Explicit SVG direction isolates anchors from multicol RTL. The original cached picture remains the PDF representation, and DOCX retains one editable native chart. A small real browser/export control verifies that PDF image RGB pixels exactly equal the original cache. SRC09 page 91 opening passes; 11 EK-2 openings and global coverage remain open. Evidence: `orchestration/reports/ENGINE_RESUME_2026-10-14_4.md`.
-
-14 October long-table continuation: verified long native DOCX tables use one terminal guard per physical table fragment, avoiding accumulated cell guards. Eligibility requires declared row minima greater than a page; complex cells, floating/nested tables and merges beyond two rows retain the old path. Thesis editing preserves native table paragraphs/captions rather than adding academic shells and out-of-paragraph caret pads. Real Word/Chrome controls and remaining two SRC10 page-opening failures are recorded in `orchestration/reports/ENGINE_RESUME_2026-10-14_3.md`.
-
-14 October continuation: source DOCX preview honors explicit document default tab intervals and terminal-tab wrapping, plus inherited/disabled font kerning thresholds (`w:kern`). Line measurement uses the same kerning as rendered source runs. Controlled one-line paragraphs keep their terminal-leading guard. Independent real Word/Chrome controls and remaining long-document failures are in `orchestration/reports/ENGINE_RESUME_2026-10-14.md`; these are scoped fixes, not full layout acceptance.
-
-14 October 2026 source-import corrections: drawing clearance skips cloning paragraphs with no active drawing; source text boxes use their own document-default bold/italic/case instead of inheriting an anchor's formatting; an empty page-section marker following a paragraph contributes no additional editor line while its original XML remains saved. Three real Word/Chrome section-marker controls are recorded under `orchestration/engine-work/resume-20261014/section-break/`. Full long-document acceptance remains open; see the current `orchestration/MISSION.md`.
-
-User-deferred scope (11 October 2026): full long-document Word pagination parity, remaining PDF/ChartEx export, and final serial general acceptance (13-D) are explicitly postponed. These gates remain open; the engine is not certified as globally complete. The current SRC09 PDF button stops on unsupported Wingdings embedding. The 20-sample benchmark has diagnostic samples but no completed export/overall acceptance run, and no numeric performance baseline was predefined. Missions 11/12, real-Word heading numbering, bookmark/field preservation and the current SRC10 interaction proof are verified within their recorded scope. SRC08/SRC10 have now been inspected and are regression fixtures, not a blind holdout. IME evidence uses CDP composition events, not a physical OS IME.
-
-Current handoff, 11 October 2026: portrait/landscape sections, odd/even transitions,
-native footnotes/endnotes (including section numbering restarts), merged/nested and
-multi-page tables, native editable OMML export, balanced imported fields and internal
-links are implemented. Existing native equation content remains editable in Word;
-application equation editing uses LaTeX. Unsupported source properties/layout keep
-located notices and the original package. Import/model support alone is not visual
-parity certification. See README's current scope and `orchestration/engine-work/final-closure/` for
-fresh evidence; older phase records below do not override the final acceptance.
-
-Mission 03 native import: **Dosya → Word içe aktar**, cancellable worker, preview,
-atomic apply and persistent located report. `importThesisDocx` / `importThesisWordFile`
-retain source Word sections, inherited/direct paragraph/run styles, numbering
-instances/levels/overrides, relationships, notes, native objects and source bytes.
-Original compressed ZIP plus per-node locators avoids ancestor-XML duplication.
-All imported sections remain available in source and template modes. Source styles
-are projected through scoped CSS. Unknown properties/layout are reported and kept;
-native-object adapters and remaining limits are described in the current handoff below. Legacy DOC has an
-explicit Word/LibreOffice `.docx` conversion route. See README "Structural Word import"
-and `thesisDocxImport.test.js`; independent corpus/browser evidence is in `orchestration/engine-work/mission03`.
-
-Mission 02 document state: `document.version`, `document.sections`, `nodes`,
-`properties`, `styles`, `basedOn`, `direct`, `numbering`, `notes`, `resources`,
-`references` and `source` retain semantic/native JSON independently of layout.
-`document.formatMode` is `template` (default) or `source`; recorded source section
-rules apply before document layout overrides. `data-txt-node-id` retains editor
-identity across edits; generated pagination/line markers are not persisted.
-This is model/storage support, not certification of DOCX adapters or rendering
-all native objects. Tests: `thesisContentModel.test.js`; README "Persistent content
-model" describes the adapter boundary and immutable edit API.
-
-Authored table-cell alignment uses existing `fmt-align-*` classes, overriding
-`tables.cellStyle.align` in editor/PDF/DOCX without replacing table-cell display.
-Inline alignment styles do not survive sanitization. Test: `thesisCellAlignment.test.js`.
+Bu dosya teknik anahtar başvurusudur. Tarihli kabul sayıları güncel test sonucu değildir; eski açık/kapalı durumları [GOREVLER.md](../GOREVLER.md) ve [rapor dizini](../raporlar/README.md) ile değerlendirilir. İçe aktarma desteğinin kodda bulunması askıdaki kabul kapsamını yeniden açmaz. Eski ilerleme günlüğü tam temizlik yedeğinde korunur.
 
 What a thesis template can express, so you need not read engine code. Paths are relative to the template object
-(`schema.d.ts` has the types; `orchestration/reports/ENGINE_EXTENSIONS.md` the history and design notes).
+(`engine/src/schema.d.ts` has the types; `engine/src/validation.js` validates them).
 Lengths are mm, type sizes and spacing pt. Everything here is opt-in unless a Default says otherwise.
 
 Legend. Support: E editor, P layout PDF, D DOCX (tick = supported, x = not, "limit" = see Need/Notes). Tests: file in
@@ -75,7 +16,7 @@ special blocks/headings/captions/index rows/table rows and cells/footnotes/page 
 exported fonts and per-page body baselines. Structural boxes inherit text metrics and
 are fragmented by physical page. `thesisLayoutReport.test.js` covers the pure model;
 checker gates validate the contract and independent PDF glyph samples. See README.md
-"Measured layout report" and `orchestration/tools/CHECKER.md` for selectors and limitations.
+"Measured layout report" and `CHECKER.md` for selectors and limitations.
 
 ## 1. Template metadata and common keys
 | Need | Key | Values | Default | E P D | Test |
@@ -83,10 +24,11 @@ checker gates validate the contract and independent PDF glyph samples. See READM
 | template identity / provenance | `schemaVersion`, `templateVersion`, `universityId`, `universityName`, `degreeType`, `language`, `status` (demo/generic/official) | strings | required | - | AfsuTip |
 | official source reference | `source.type`, `source.url`, `source.documentName`, `source.verifiedAt` (official needs url or documentName + verifiedAt) | strings | required | - | AfsuTip |
 | fill-in values on special pages | `placeholders` (label/type/required/defaultValue), `derived` = `totalPages` / `frontLastLabel` / `mainPageCount` | text/date/number/multiline | - | ✓✓✓ | AkuFbe, EngineExtensions, Mcbu |
-| content rules (e.g. min. keywords) | `validation` with `minItems`, `separator`, `severity`, `message` | error/warning | - | editor only | Extensions |
+| content rules (e.g. keyword limits and order) | `validation` with `minItems`, `maxItems`, `alphabetical`, `locale` (`tr` or `en`), `separator`, `severity`, `message` | error/warning; alphabetical comparison uses the selected language | opt-in | editor only | Extensions |
+| minimum prose word count, excluding separately generated titles and keywords | `validation.<sectionId>.minWords` | positive integer; counts visible section text, including paragraph boundaries | opt-in | editor warnings/errors, no rewriting | contentConformance |
 | required ordered chapter titles, with source-backed alternatives | `validation.<sectionId>.headingSequence`, `headingLevel` | array of titles or arrays of allowed titles; heading level 1..6 | opt-in | editor warnings/errors, no rewriting | contentConformance |
 | detect author-year citations / out-of-order first numeric references; check numbered reference rows | `validation.<sectionId>.numericCitations`, `numberedEntries` | boolean; structural checks, no bibliographic or semantic certification | opt-in | editor warnings/errors | contentConformance |
-| physical page limit for a section | `sections[].maxPages` | positive integer; settled page-group count required | opt-in | editor advisory, no export blocking | contentConformance |
+| physical page limit for a section | `sections[].maxPages` | positive integer; settled page-group count required | opt-in | editor advisory by default; strict policy may block error-level findings | contentConformance |
 | optional rules get engine defaults | `engineDefaults.js` (headings, tables, figures, bibliography, toc) | - | applied | ✓✓✓ | EngineDefaults |
 | ids / order on any object | `id`, `type`, `order`, `title`, `label`, `kind`, `field`, `format`, `position`, `scope`, `sequence`, `number`, `mode`, `content`, `style`, `table`, `figure`, `equation`, `document`, `page`, `body`, `paragraph`, `sections`, `overrides` | see schema | - | - | AfsuLeeProposal |
 
@@ -159,6 +101,8 @@ checker gates validate the contract and independent PDF glyph samples. See READM
 | block kinds | `type` image / text / metadata / spacer / separator / group; `value`, `source`, `field`, `prefix`, `suffix`, `fallback`, `markup: "inline"` (`**bold**`) | - | - | ✓✓✓ | SpecialPages |
 | positioned blocks | `layoutMode`, `xMm`, `yMm`, `widthMm`, `heightMm`, `zIndex`, `flowHeightMm` (0 = no flow slot), `marginTopMm`, `marginBottomMm`, `widthPercent` | mm | flow | ✓✓✓ | LayoutDocument |
 | rows / columns, gaps | `group` `direction`, `gapMm`, `minHeightMm`, `verticalAlign` top/center/bottom | - | column | ✓✓✓ | AkuFbe |
+| fixed-width frame centred/right; frame as a Word table (e.g. thesis spine) | `group` `widthMm` + `align` left/center/right; `table` (framed group: each child group a row, `minHeightMm` at-least height, `verticalAlign` cell alignment, no inner rules) | mm | full width | ✓✓✓ (DOCX one-column table, tbRl cell for vertical text) | McbuLee spine |
+| vertical text (top-to-bottom) | text style `writingMode` `horizontal-tb`/`vertical-rl` | - | horizontal-tb | ✓✓✓ (editor/PDF writing-mode; DOCX via `table` row textDirection tbRl) | McbuLee spine |
 | framed cell (double / thick-thin rule) | `group.border` `{outerPt, gapPt, innerPt, paddingMm, color, docx {style, sizePt, sides}}` | - | none | ✓✓✓ (CSS frame symmetric; per-side only D) | AkuFbe |
 | block shown only when fields empty / filled | `visibleWhen` `{anyFilled}` / `{noneFilled}` | field names | always | ✓✓✓ | AkuFbe |
 | separator line, spacer | `separator` (`thicknessPt`, `lengthPercent`), `spacer` | - | - | ✓✓✓ | SpecialPages |
@@ -171,6 +115,8 @@ checker gates validate the contract and independent PDF glyph samples. See READM
 | indent / hanging of wrapped entries | `indentMm`, `hanging` "label" or mm, `labelStyle`, `matchHeadingTransform` | - | - | ✓✓✓ | AkuCografya, BatchB |
 | per-level row style, rows without number | `levelStyles.<n>` `{weight, lineHeight, spaceBeforePt, leftIndentMm, align, includePageNumber:false}` (`includePageNumber`) | - | - | ✓✓✓ | AkuSbe |
 | extra gap before first back-matter row | `unnumberedAfterNumberedSpaceBeforePt` | pt | 0 | ✓✓✓ | AkuSbe |
+| right-aligned label column ("VIII."), titles at one x | `labelColumnMm` (column width), `labelGapMm` (gap to the title), `labelColumnLevels` (levels that use the column; default all) | mm | - | ✓✓✓ (DOCX right tab + left tab + hanging indent) | McbuTip |
+| "Sayfa" heading on a list row | `pageHeadingPlacement` `block` (own line) / `row` (page cell of the last leading unnumbered row without a page number) | - | block | ✓✓✓ | McbuTip |
 | list only from n items | `visibleWhen.count` + `gte` | - | - | ✓✓✓ | BatchB |
 | limit: leaders are emulated, not Word tab stops | - | - | - | limit | - |
 
@@ -214,7 +160,7 @@ checker gates validate the contract and independent PDF glyph samples. See READM
 ## 12. PDF and fonts
 - Layout PDF reads the editor DOM (editor = PDF by construction); text drawn with embedded genuine system fonts (`model.systemFonts`).
 - Required font missing: report the font actually used, never claim exact compliance.
-- Math glyph fallbacks (`aliasGlyphs`) cover symbols without a Times New Roman look-alike; see `ENGINE_EXTENSIONS.md` C14-C20.
+- Math glyph fallbacks (`aliasGlyphs`) cover symbols without a Times New Roman look-alike; the implementation must be checked for the selected font and glyphs.
 
 ## 13. Remaining conformance work and capability gaps
 | Gap | Evidence / effect | Phase |
@@ -223,7 +169,7 @@ checker gates validate the contract and independent PDF glyph samples. See READM
 | Authored column widths across browsers | typed attr() dependency removed; normalized literal CSS and idempotent DOM widths implemented; Firefox/Safari runtime not exercised here | Platform validation |
 | Unnamed-block terminal allowance | UNKNOWN: captions, quotes and list items outside named paragraphStyles use the column allowance; the accepted named-style fixture does not establish their own terminal leading | Documented residual |
 | Split-note horizontal placement | MEASURED residual: note text-box widths/indentation differ between editor and Word. The new split-note checks cover line counts, pages and baselines (four reference-page lines, maximum 0.016 mm); horizontal placement is outside that acceptance scope | Documented residual |
-| Justification follow-ups | Deferred B3.6: editor last-line preview remains compressed; custom Word line breaker is unimplemented. engine-word-justify remains 17 PASS / 3 FAIL (Arial 10/12 pt) in both final runs | Explicitly deferred |
+| Justification | `wordLineFit.js` and `wordLineLayout.js` implement line fitting; the older “unimplemented / 3 FAIL” checkpoint was superseded by the later Word justified-line fitting implementation below. Fresh acceptance still requires rerunning the selected corpus. | Current implementation, scoped validation |
 | Official-source PDF locators | Engine page-number landmarks are covered; independent official-source PDFs still require explicit locators when authoring source expectations | Source authoring |
 
 | Additional source structures/variants beyond the ADU Sagbil Tier 1 pilot | source profile and preserved gaps require review before registration | University queue after MOTOR Phase 4 |
@@ -231,7 +177,7 @@ checker gates validate the contract and independent PDF glyph samples. See READM
 Template validation also accepts generated-index kind `appendices` and section-level
 `minWords` / `minWordsByHeading` rules. These are source-driven requirements: the
 appendix index reuses the generic index collector and page anchors, while minimum
-word counts are advisory checks for authored sections and heading groups.
+word counts produce advisory warnings/errors by default. With `exportValidation: "strict"`, actual error-level checks can block UI export; they do not rewrite authored content.
 
 ## Phase 2 opt-in additions (2026-10-03)
 
@@ -251,13 +197,11 @@ Tab leaders follow Word's measured model: glyphs sit on a page-edge grid of whol
 `decimalCharacter` overrides browser measurement only; Word decimal tabs use the document/environment locale. This option does not establish cross-export parity for a non-locale separator.
 `rule` values: `auto`, `exact`, `atLeast`.
 
-## Phase 2 B3 measured closure (2026-10-04)
-
-Implementation checkpoint `8176503`; both `orchestration/validation/phase2-close/final-run-1.json` and `final-run-2.json` cover 14 targets: 897 PASS, 3 explicitly deferred Arial FAIL, 17 INFO, no SKIPPED/CONFLICT. Mandatory B3.1–B3.5 gates PASS: pagefit 205, structure 130, parity 146; all ten university targets have no FAIL. Both full runs completed without export failures or retries. This is measured fixture compliance, not universal Word determinism or completion of every university variant.
+## Terminal allowance and note splitting
 
 Per-style terminal allowance is auto pitch minus the measured single line (single/exact/atLeast = 0). The flow carries the largest allowance; smaller styles guard each fragment. Reserve stamps retain captured native padding and cancellation; break stamps keep the native guard. Kept reference paragraphs constrain available note area so Word-like note splitting can retain the paragraph. The 205-check matrix includes 23 native-table tail checks, three combined style/note cases and two split-note vertical checks; native and wrapped source tables share the same block-gap model. Historical Word render drift up to 0.367 mm remains recorded in the pagefit context; cause is not established.
 
-## Word justified-line fitting (Mission 05, 2026-10-09)
+## Word justified-line fitting
 
 `wordLineFit.js` applies Word's measured per-line compression budget:
 `min(.25 * gaps * space, .36 * (lastWord + space) - gaps * .04 pt)`.
@@ -280,12 +224,6 @@ and transient wbr elements. Selection survives remeasurement; composition skips
 rewriting until compositionend. A short final line retains natural spacing; an
 overfull final line is compressed as in Word. Editor and PDF share these positions.
 
-The eight-case source/emphasis/URL matrix has identical editor/PDF/Word line
-strings (204 lines); all 22 checks pass. The six independent Word regression
-targets pass 617 checks, including original justification, style precedence,
-line spacing, tabs/structure and page fit. Evidence and bounded coverage are in
-`orchestration/engine-work/mission05`; source excerpts do not certify full 180-page thesis pagination.
-
 PDF export includes font families actually rendered by native inline runs,
 verifies genuine embedded SFNT name tables and embedding permissions, and rejects
 unsupported/missing families. The editor's document warnings name unavailable
@@ -301,8 +239,7 @@ their existing specialized paths. No acceptance tolerances were relaxed.
 checks/fixtures/context and an explicit unmapped-property inventory. ADU Sagbil
 master/TR is the measured Tier 1 pilot; other variants and arbitrary replacement
 text on positioned pages require review.
-`orchestration/specs/template-families.json` inventories official ADU Sagbil,
-AKU FBE and AFSU LEE structures: two candidate families (Heading/TOC 1–9 vs 1–3).
+`template-families.mjs` can inventory official source structures; matching structure alone does not authorize sharing university requirements.
 The reviewed `wordFlowPreset` shares Word flow/additive spacing semantics and
 font-program metrics already in the engine. Every university supplies its own
 margins, sizes, spacing and page requirements. Theme/conditional table styles and
@@ -320,12 +257,18 @@ persistent located notices. Academic PDF notes retain all imported sections when
 opened or reloaded through either production editor router. Original PDF bytes
 and token evidence remain stored. Source/template format selection is available.
 
-Evidence: `orchestration/engine-work/mission04/README.md`. Acceptance has two development PDFs,
-46 physical pages, UI persistence/cancellation and production CSP checks.
-This establishes the controlled import workflow within that corpus. Arbitrary
+Historical import checks used a limited development corpus and a synthetic scan; they do not establish general acceptance. Import acceptance remains user-deferred. Arbitrary
 PDF reconstruction, perfect OCR, vector drawing semantics, borderless table
 semantics, native math reconstruction and Word/PDF visual parity remain unverified.
 The scan case is synthetic. Review acknowledgement does not clear uncertainties.
 
 Mission 06: when even/odd chrome is active, Word aligns ordinary numbering restarts to physical parity. Explicit odd/even sections round conflicting restart numbers upward. Native plain header/footer text, PAGE and NUMPAGES fields are projected from imported sections; richer objects retain located notices.
 
+2026-10-25: `sections[].overrides.justify` can select `"word"` or `"browser"` for one section; omitted values inherit `typography.justify`. This permits a fixed source page to retain natural wrapping without disabling Word-compatible space compression across the whole thesis. The setting is validated and covered by `engine/src/sectionJustification.test.js`.
+
+## Güncel şablon uygunluk seçenekleri
+
+- `exportValidation`: isteğe bağlı `"strict"`; UI dışa aktarımında gerçek hata seviyesindeki bulguları ve eksik zorunlu metadatayı engelleyebilir. Varsayılanda bu engel yoktur. Kaynağı olmayan içerik tercihi hata kuralına çevrilmez.
+- `placeholders.<key>.nameFormat`: `"surnameUpper"` son sözcüğü Türkçe büyük harfle gösterir; saklanan adı değiştirmez. Birleşik soyadın tamamını otomatik çıkarma garantisi değildir.
+- `typography.body.emptyParagraphs`: `"omit"` ara boş akış paragraflarını çıktı modelinde ayıklar; kayıtlı içeriği, nesne/hücre/yer imi/sayfa sonu ve uç giriş paragraflarını korur.
+- `validation.<key>.pattern` regex kontrolü, `validation.<section>.minHeadings` başlık sayısı kontrolüdür. Yalnız açık kaynak veya kullanıcı gereksinimiyle eklenir; CBÜ'deki bilinçli “Akademisyen” ve tek ana bölüm tercihine uygulanmaz.

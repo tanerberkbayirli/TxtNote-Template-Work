@@ -1,0 +1,1119 @@
+[
+ {
+  "id": "page-size",
+  "kind": "page_size",
+  "params": {},
+  "expected": [
+   210,
+   297
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.4 §2.2 / EK 1 (A4)"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "docx-margin-left",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.left"
+  },
+  "expected": 40,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.4 §2.2 + EK 1 (p.16) callouts"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "docx-margin-right",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.right"
+  },
+  "expected": 25,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.4 §2.2 + EK 1 (p.16)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "docx-margin-top",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.top"
+  },
+  "expected": 25,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.4 §2.2 + EK 1 (p.16)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "docx-margin-bottom",
+  "kind": "docx_section",
+  "params": {
+   "field": "margins.bottom"
+  },
+  "expected": 25,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.4 §2.2 + EK 1 (p.16)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "margin-left-pdf",
+  "kind": "text_extent",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "metric": "x0min"
+  },
+  "expected": 40,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.4 §2.2"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "margin-right-pdf",
+  "kind": "text_extent",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "metric": "x1max"
+  },
+  "expected": 185,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.4 §2.2 (210-25 mm; justified text, bound)"
+  },
+  "evidence": "EXPLICIT",
+  "cmp": "le"
+ },
+ {
+  "id": "body-font",
+  "kind": "fonts",
+  "params": {
+   "ignore": "^(?:[ivxlcdmIVXLCDM]+|[0-9]+)$",
+   "families": [
+    "Times New Roman"
+   ]
+  },
+  "expected": [
+   "TimesNewRomanPSMT",
+   "TimesNewRomanPS-BoldMT",
+   "TimesNewRomanPS-ItalicMT",
+   "TimesNewRomanPS-BoldItalicMT"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.5 §2.5 (Times New Roman 12)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "body-font-docx",
+  "kind": "docx_attr",
+  "params": {
+   "tag": "rFonts",
+   "attrs": [
+    "ascii",
+    "hAnsi"
+   ]
+  },
+  "expected": [
+   "Times New Roman"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.5 §2.5"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "body-font-size",
+  "kind": "font_size",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   }
+  },
+  "expected": 12,
+  "tolerance": 0.1,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.5 §2.5 (12 punto)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "body-line-spacing-docx",
+  "kind": "docx_attr",
+  "params": {
+   "tag": "spacing",
+   "attrs": [
+    "line"
+   ],
+   "mode": "has",
+   "numeric_tol": 1
+  },
+  "expected": [
+   "360"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.4 §2.2, p.6 §2.7 (1.5 satır)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "body-line-pitch",
+  "kind": "line_pitch",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "source": "layout"
+  },
+  "expected": 7.3,
+  "tolerance": 0.1,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.4 §2.2 1.5 lines. DERIVED: 1.5 x Times New Roman single line (1.149 em x 12 pt = 13.8 pt) = 20.7 pt = 7.30 mm"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "first-line-indent-docx",
+  "kind": "docx_attr",
+  "params": {
+   "tag": "ind",
+   "attrs": [
+    "firstLine"
+   ],
+   "mode": "has",
+   "numeric_tol": 3
+  },
+  "expected": [
+   "709"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.4 §2.2 / p.6 §2.7: 12.5 mm = 709 tw (DERIVED mm->twips)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "first-line-indent-pdf",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "regex": "^(Önsöz|Özet|\\d+\\.\\d+) \\d\\. Çevrimiçi",
+   "attr": "x0",
+   "agg": "all",
+   "source": "layout"
+  },
+  "expected": 52.5,
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.4 §2.2: 40 + 12.5 mm"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "body-align-docx",
+  "kind": "docx_attr",
+  "params": {
+   "tag": "jc",
+   "attrs": [
+    "val"
+   ],
+   "mode": "has"
+  },
+  "expected": [
+   "both"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.4 §2.2 (iki yana yaslı)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "h1-size",
+  "kind": "landmark_y",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "regex": "^\\d+\\. [A-ZÇĞİÖŞÜ ]+$",
+   "attr": "size",
+   "agg": "all",
+   "source": "layout",
+   "kind": "heading"
+  },
+  "expected": 14,
+  "tolerance": 0.1,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "pp.5-6 §2.5-2.7; EK 1 '1. GİRİŞ (14 punto)'"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "h1-bold",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "regex": "^\\d+\\. [A-ZÇĞİÖŞÜ ]+$",
+   "attr": "bold",
+   "agg": "all"
+  },
+  "expected": 1,
+  "tolerance": 0,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "pp.5-6 §2.5-2.7 (kalın)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "h1-top-margin",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "regex": "^\\d+\\. [A-ZÇĞİÖŞÜ ]+$",
+   "attr": "top",
+   "agg": "all"
+  },
+  "expected": 25,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "new page at top margin 25 mm (p.4 §2.2; EK 1)"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "h1-centre",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "regex": "^\\d+\\. [A-ZÇĞİÖŞÜ ]+$",
+   "attr": "cx",
+   "agg": "all",
+   "source": "layout"
+  },
+  "expected": 112.5,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "pp.5-6 (ortalı); centre of text area 40..185 INFERRED"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "h1-space-after-docx",
+  "kind": "docx_attr",
+  "params": {
+   "tag": "spacing",
+   "attrs": [
+    "after"
+   ],
+   "mode": "has",
+   "numeric_tol": 1
+  },
+  "expected": [
+   "240"
+  ],
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.6 §2.7 (12 nk); 240 tw = 12 pt. Weak: present anywhere in document/styles"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "h2-indent-upper",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "regex": "^\\d+\\.\\d+\\. [A-ZÇĞİÖŞÜ0-9. ]+$",
+   "attr": "x0",
+   "agg": "all",
+   "source": "layout"
+  },
+  "expected": 52.5,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "§2.7 'alt başlıklar gövde metni ile aynı hizadan' (40+12.5); H2 uppercase per EK 1/EK 13 (CONFLICT with §2.6 prose, example applied per user rule)"
+  },
+  "evidence": "MEASURED",
+  "ruling": "CONFLICT H2 case: example applied"
+ },
+ {
+  "id": "h2-bold",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "regex": "^\\d+\\.\\d+\\. [A-ZÇĞİÖŞÜ0-9. ]+$",
+   "attr": "bold",
+   "agg": "all"
+  },
+  "expected": 1,
+  "tolerance": 0,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "EK 1 p.16 (12 pt bold)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "h3-indent",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "regex": "^\\d+\\.\\d+\\.\\d+\\. Alt Başlık",
+   "attr": "x0",
+   "agg": "all",
+   "source": "layout"
+  },
+  "expected": 52.5,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "EK 1 p.16 H3 x aligned with text (64.3 measured on example page = 51.8+12.5)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "h3-size",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "label": "arabic"
+   },
+   "regex": "^\\d+\\.\\d+\\.\\d+\\. Alt Başlık",
+   "attr": "size",
+   "agg": "all",
+   "source": "layout"
+  },
+  "expected": 12,
+  "tolerance": 0.1,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "EK 1 p.16 / §2.7"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "page-labels",
+  "kind": "page_labels",
+  "params": {
+   "pages": "all",
+   "open_end": true
+  },
+  "expected": "none x2, i, ii, iii, iv, v, vi, vii, viii, ix, x, 1..N",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.4 §2.3, p.8 §3.1.2-3.1.3: dış kapak + boş sayfa numarasız; Roman i from iç kapak; Arabic 1 from giriş"
+  },
+  "evidence": "EXPLICIT"
+ },
+ {
+  "id": "page-number-centre-sheet",
+  "kind": "landmark_x",
+  "params": {
+   "pages": "all",
+   "attr": "cx",
+   "source": "layout",
+   "kind": "page-number"
+  },
+  "expected": 115,
+  "tolerance": 0.5,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 physical pp.3/10/20/30/50; measured centre 115.0±0.05 mm, user-authorized example decision supersedes prior sheet-centre inference."
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "toc-sayfa-to-first-row",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "find": "^İÇİNDEKİLER$"
+   },
+   "a": "^Sayfa$",
+   "b": "^İÇ KAPAK",
+   "source": "layout"
+  },
+  "expected": 9.41,
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "EK 13 (p.29): 64.11-54.70"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "toc-row-pitch",
+  "kind": "pitch_series",
+  "params": {
+   "pages": {
+    "find": "^İÇİNDEKİLER$"
+   },
+   "regex": "\\.{5,}",
+   "stat": "median",
+   "source": "layout"
+  },
+  "expected": 8.71,
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "EK 13 (p.29) 24.7 pt row pitch = 8.71 mm (measured ~8.72)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "toc-h2-indent",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "find": "^İÇİNDEKİLER$"
+   },
+   "regex": "^\\d+\\.\\d+\\. [A-ZÇĞİÖŞÜ0-9. ]+\\.{3,}",
+   "attr": "x0",
+   "agg": "all",
+   "source": "layout"
+  },
+  "expected": 45,
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "EK 13 (p.29): H2 indent 5.0 mm from text-area left (30.01-25.00)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "toc-h3-indent",
+  "kind": "line_attr",
+  "params": {
+   "pages": {
+    "find": "^İÇİNDEKİLER$"
+   },
+   "regex": "^\\d+\\.\\d+\\.\\d+\\. [^.]+ \\d+\\.\\d+\\.\\d+\\s*\\.{3,}",
+   "attr": "x0",
+   "agg": "all",
+   "source": "layout"
+  },
+  "expected": 52.5,
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "EK 13 (p.29): H3 indent 12.5 mm (37.51-25.00)"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "note-toc-labels",
+  "kind": "note",
+  "params": {
+   "text": "toc_labels kind cannot resolve the İÇ KAPAK and KABUL VE ONAY SAYFASI rows (those pages print no title line); the other 38 TOC rows match their real page labels (checker run 1: 38/40)."
+  },
+  "expected": null,
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "EK 13"
+  },
+  "evidence": "UNKNOWN"
+ },
+ {
+  "id": "footnote-single-pitch",
+  "kind": "line_gap",
+  "params": {
+   "page": {
+    "find": "^Açıklama dipnotu 1:"
+   },
+   "a": "^Açıklama dipnotu 1:",
+   "b": "^açısından ayrıntılı biçimde incelenmiştir\\.$",
+   "source": "layout"
+  },
+  "expected": 9.74,
+  "tolerance": 0.1,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "p.6 §2.7 (dipnot tek aralık). DERIVED: 2 footnote line pitches x TNR single 13.8 pt (4.87 mm); footnote size UNKNOWN (12 pt general INFERRED)"
+  },
+  "evidence": "INFERRED"
+ },
+ {
+  "id": "docx-no-undefined",
+  "kind": "docx_no_undefined",
+  "params": {},
+  "expected": "none",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "DOCX validity"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "word.opens",
+  "kind": "word_opens",
+  "params": {},
+  "expected": "opens in Word",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "Word COM own instance"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "docx-page-count-vs-pdf",
+  "kind": "page_count_match",
+  "params": {},
+  "expected": "equal page counts",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "Word render vs editor PDF same rules/pagination"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "docx-page-labels-vs-pdf",
+  "kind": "page_labels_match",
+  "params": {},
+  "expected": "identical labels on every physical page",
+  "tolerance": 0.5,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "Word render vs editor PDF same rules/pagination"
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "example-number-pdf-roman-baseline",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "pdf",
+   "pages": {
+    "label": "roman"
+   },
+   "attr": "baseline"
+  },
+  "expected": 278.757,
+  "tolerance": 0.25,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-pdf-roman-cx",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "pdf",
+   "pages": {
+    "label": "roman"
+   },
+   "attr": "cx"
+  },
+  "expected": 115,
+  "tolerance": 0.25,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-pdf-roman-size",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "pdf",
+   "pages": {
+    "label": "roman"
+   },
+   "attr": "size"
+  },
+  "expected": 11,
+  "tolerance": 0.1,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-pdf-roman-font",
+  "kind": "page_number_font",
+  "params": {
+   "source": "pdf",
+   "pages": {
+    "label": "roman"
+   }
+  },
+  "expected": [
+   "Calibri"
+  ],
+  "tolerance": 0,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-pdf-arabic-baseline",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "pdf",
+   "pages": {
+    "label": "arabic"
+   },
+   "attr": "baseline"
+  },
+  "expected": 278.757,
+  "tolerance": 0.25,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-pdf-arabic-cx",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "pdf",
+   "pages": {
+    "label": "arabic"
+   },
+   "attr": "cx"
+  },
+  "expected": 115,
+  "tolerance": 0.25,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-pdf-arabic-size",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "pdf",
+   "pages": {
+    "label": "arabic"
+   },
+   "attr": "size"
+  },
+  "expected": 11,
+  "tolerance": 0.1,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-pdf-arabic-font",
+  "kind": "page_number_font",
+  "params": {
+   "source": "pdf",
+   "pages": {
+    "label": "arabic"
+   }
+  },
+  "expected": [
+   "Calibri"
+  ],
+  "tolerance": 0,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-word-roman-baseline",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "word",
+   "pages": {
+    "label": "roman"
+   },
+   "attr": "baseline"
+  },
+  "expected": 278.757,
+  "tolerance": 0.25,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-word-roman-cx",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "word",
+   "pages": {
+    "label": "roman"
+   },
+   "attr": "cx"
+  },
+  "expected": 115,
+  "tolerance": 0.25,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-word-roman-size",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "word",
+   "pages": {
+    "label": "roman"
+   },
+   "attr": "size"
+  },
+  "expected": 11,
+  "tolerance": 0.1,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-word-roman-font",
+  "kind": "page_number_font",
+  "params": {
+   "source": "word",
+   "pages": {
+    "label": "roman"
+   }
+  },
+  "expected": [
+   "Calibri"
+  ],
+  "tolerance": 0,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-word-arabic-baseline",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "word",
+   "pages": {
+    "label": "arabic"
+   },
+   "attr": "baseline"
+  },
+  "expected": 278.757,
+  "tolerance": 0.25,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-word-arabic-cx",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "word",
+   "pages": {
+    "label": "arabic"
+   },
+   "attr": "cx"
+  },
+  "expected": 115,
+  "tolerance": 0.25,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-word-arabic-size",
+  "kind": "page_number_attr",
+  "params": {
+   "source": "word",
+   "pages": {
+    "label": "arabic"
+   },
+   "attr": "size"
+  },
+  "expected": 11,
+  "tolerance": 0.1,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "example-number-word-arabic-font",
+  "kind": "page_number_font",
+  "params": {
+   "source": "word",
+   "pages": {
+    "label": "arabic"
+   }
+  },
+  "expected": [
+   "Calibri"
+  ],
+  "tolerance": 0,
+  "source": {
+   "file": "orchestration/validation/template-thesis-research-20261015/sources/afsu-tip-esaglik-2025-0.pdf",
+   "locator": "Yılmaz 2025 pp.3/10/20/30/50, user-authorized example decision; PDF measured 11.04 pt, Word nominal 11 pt; baseline=278.757 mm, centre=115 mm."
+  },
+  "evidence": "INFERRED",
+  "required": true
+ },
+ {
+  "id": "source-conflicts",
+  "kind": "note",
+  "params": {
+   "text": "DHF cover/approval example geometry differs from the Tıp copy; those Tıp coordinates were not copied into DHF acceptance. Missing ethics wording and conflicting contents/prose order remain source uncertainties. See live-source hash verification 2026-10-25."
+  },
+  "expected": null,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "§3.1 and EK 7/9/13"
+  },
+  "evidence": "UNKNOWN"
+ },
+ {
+  "id": "visual-conditional-bap-pdf",
+  "kind": "line_baselines",
+  "params": {
+   "fixture": "bap",
+   "page": [
+    3
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "^AFYONKARAHİSAR SAĞLIK",
+    "FAKÜLTESİ$",
+    "Anabilim Dalı$",
+    "^ÇEVRİMİÇİ",
+    "ÖZDOĞAN$",
+    "UZMANLIK TEZİ$",
+    "^Danışman$",
+    "^Doç\\. Dr\\.",
+    "^Bu çalışma;",
+    "2026.*AFYONKARAHİSAR$"
+   ],
+   "source": "pdf"
+  },
+  "expected": [
+   59.104,
+   63.973,
+   68.841,
+   78.578,
+   117.535,
+   151.613,
+   161.357,
+   188.154,
+   193.022,
+   234.393,
+   266.014
+  ],
+  "tolerance": 0.3,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "Physical p.23, EK 8 supported-thesis inner cover, each faculty's own PDF."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "visual-conditional-bap-word",
+  "kind": "line_baselines",
+  "params": {
+   "fixture": "bap",
+   "page": [
+    3
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "^AFYONKARAHİSAR SAĞLIK",
+    "FAKÜLTESİ$",
+    "Anabilim Dalı$",
+    "^ÇEVRİMİÇİ",
+    "ÖZDOĞAN$",
+    "UZMANLIK TEZİ$",
+    "^Danışman$",
+    "^Doç\\. Dr\\.",
+    "^Bu çalışma;",
+    "2026.*AFYONKARAHİSAR$"
+   ],
+   "source": "word"
+  },
+  "expected": [
+   59.104,
+   63.973,
+   68.841,
+   78.578,
+   117.535,
+   151.613,
+   161.357,
+   188.154,
+   193.022,
+   234.393,
+   266.014
+  ],
+  "tolerance": 0.3,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "Physical p.23, EK 8 supported-thesis inner cover, each faculty's own PDF."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "visual-source-outer-pdf",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    1
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "^AFYONKARAHİSAR SAĞLIK",
+    "FAKÜLTESİ.*ANABİLİM DALI$",
+    "^ÇEVRİMİÇİ",
+    "^Hazırlayan$",
+    "ÖZDOĞAN$",
+    "^Danışman$",
+    "^Doç\\. Dr\\.",
+    "2026.*AFYONKARAHİSAR$"
+   ],
+   "source": "pdf"
+  },
+  "expected": [
+   54.236,
+   59.104,
+   63.973,
+   102.93,
+   137.008,
+   141.877,
+   175.962,
+   180.83,
+   258.734
+  ],
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "Physical p.21, EK 6. Geometry measured on this faculty's own copy. Point-size instructions/frame excluded from printed content."
+  },
+  "evidence": "MEASURED"
+ },
+ {
+  "id": "visual-source-outer-word",
+  "kind": "line_baselines",
+  "params": {
+   "page": [
+    1
+   ],
+   "lines": [
+    "^T\\.C\\.$",
+    "^AFYONKARAHİSAR SAĞLIK",
+    "FAKÜLTESİ.*ANABİLİM DALI$",
+    "^ÇEVRİMİÇİ",
+    "^Hazırlayan$",
+    "ÖZDOĞAN$",
+    "^Danışman$",
+    "^Doç\\. Dr\\.",
+    "2026.*AFYONKARAHİSAR$"
+   ],
+   "source": "word"
+  },
+  "expected": [
+   54.236,
+   59.104,
+   63.973,
+   102.93,
+   137.008,
+   141.877,
+   175.962,
+   180.83,
+   258.734
+  ],
+  "tolerance": 0.25,
+  "source": {
+   "file": "AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+   "locator": "Physical p.21, EK 6. Geometry measured on this faculty's own copy. Point-size instructions/frame excluded from printed content."
+  },
+  "evidence": "MEASURED"
+ }
+]

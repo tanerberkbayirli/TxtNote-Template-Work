@@ -126,7 +126,7 @@ export const DocumentPane = ({
           onEntriesChange={(entries, reason) => onNoteChange(tab.id, { entries }, reason)}
         />
       ) : tab.noteType === "thesis" || (tab.noteType === "academic" && note?.researchData?.thesis?.document?.source?.format === "pdf") ? (
-        <ThesisEditor key={tab.id} title={note?.title ?? ""} content={note?.content ?? ""}
+        <ThesisEditor key={tab.id} documentId={tab.id} title={note?.title ?? ""} content={note?.content ?? ""}
           onDocumentChange={(value) => onNoteChange(tab.id, value, "action")}
           researchData={note?.researchData}
           onTitleChange={(value, reason) => onTitleChange(tab.id, value, reason)}

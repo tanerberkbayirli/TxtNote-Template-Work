@@ -2,6 +2,7 @@
  * Helpers for the contentEditable note body.
  */
 
+import { renderedTextFormat } from "./renderedTextFormat.js";
 import {
   DEFAULT_FORMAT,
   formatClassName,
@@ -40,7 +41,7 @@ import { markerAt, parseTextMarkup, sentenceBreakAt } from "./textMarkup.js";
 
 /** Entities count too: "a&nbsp;b" is saved editor output, not raw user text. */
 const HTML_MARKUP = /<[a-z!/][\s\S]*>|&(?:[a-z]+|#\d+);/i;
-const FORMAT_CLASS = /fmt-(size|color|pt|highlight)-|fmt-(bold|italic|strike|underline|overline)/;
+const FORMAT_CLASS = /fmt-(size|color|pt|highlight)-|fmt-(?:not-)?(bold|italic|strike|underline|overline)/;
 
 /** True when the string already looks like HTML from the editor. */
 export function isHtmlContent(content) {
@@ -251,6 +252,25 @@ function isFormatSpan(node) {
   return node instanceof HTMLSpanElement && (FORMAT_CLASS.test(node.className) || hasCustomFormatAttr(node));
 }
 
+/** Preserve authored inline values without writing default size/colour over template CSS. */
+function patchedFormatTokens(node, patch) {
+  const chain = [];
+  let el = node?.nodeType === Node.TEXT_NODE ? node.parentElement : node;
+  while (el instanceof HTMLElement) {
+    if (isFormatSpan(el) || /^(B|STRONG|I|EM|U|S|STRIKE|DEL)$/.test(el.tagName)) chain.unshift(el);
+    if (el.getAttribute("contenteditable") === "true") break;
+    el = el.parentElement;
+  }
+  const inherited = chain.reduce((tokens, span) => {
+    const semantic = { ...(/^(B|STRONG)$/.test(span.tagName) ? { bold: true } : {}),
+      ...(/^(I|EM)$/.test(span.tagName) ? { italic: true } : {}),
+      ...(span.tagName === "U" ? { underline: true } : {}),
+      ...(/^(S|STRIKE|DEL)$/.test(span.tagName) ? { strike: true } : {}) };
+    return mergeFormatClassName(tokens, { ...semantic, ...parsePartialFormat(spanFormatTokens(span)) });
+  }, "");
+  return mergeFormatClassName(inherited, patch);
+}
+
 /** Walk from the node up, so nested size/colour/style spans combine. */
 export function readFormatFromNode(node) {
   const chain = [];
@@ -294,6 +314,29 @@ export function readFormatFromRange(range) {
     strike: formats.every((row) => row.strike),
     underline: formats.every((row) => row.underline),
     overline: formats.every((row) => row.overline),
+  };
+}
+
+/** Toolbar state uses rendered values, including template CSS and semantic
+ * strong/em tags. A mixed selection must not report its first run as uniform.
+ */
+export function readRenderedFormatFromRange(range, root) {
+  if (!range) return { ...DEFAULT_FORMAT };
+  const nodes = range.collapsed ? [] : getTextNodesInRange(range);
+  const samples = nodes.length ? nodes : [sampleNodeForFormat(range) ?? range.startContainer];
+  const formats = samples.map(node => renderedTextFormat(node, root));
+  const [first, ...rest] = formats;
+  const same = key => rest.every(format => format[key] === first[key]);
+  return {
+    ...readFormatFromRange(range), ...first,
+    sizePt: same("sizePt") ? first.sizePt : undefined,
+    sizeMixed: !same("sizePt"),
+    fontFamily: same("fontFamily") ? first.fontFamily : "",
+    fontFamilyMixed: !same("fontFamily"),
+    color: same("color") ? first.color : "", colorMixed: !same("color"),
+    highlight: same("highlight") ? first.highlight : "", highlightMixed: !same("highlight"),
+    align: same("align") ? first.align : "", alignMixed: !same("align"),
+    ...Object.fromEntries(["bold", "italic", "underline", "strike", "overline"].map(key => [key, formats.every(format => format[key])])),
   };
 }
 
@@ -472,7 +515,7 @@ function wrapTextSlice(textNode, range, patch) {
 
   const patchedClass = patch.clearFormatting
     ? clearFormatClasses(isFormatSpan(textNode.parentElement) ? spanFormatTokens(textNode.parentElement) : textNode.parentElement?.className ?? "")
-    : formatClassName({ ...readFormatFromNode(textNode), ...patch });
+    : patchedFormatTokens(textNode, patch);
 
   // Format span with only this text: split into sibling spans so turning a
   // style off (bold → not bold) does not inherit it from a wrapping parent.
@@ -575,9 +618,8 @@ export function applyFormatToRange(range, patch, preserveSelection = false) {
 
 /** Place the caret inside a styled span so the next keystrokes inherit this pick. */
 export function applyFormatAtCursor(range, patch) {
-  const inherited = readFormatFromNode(range.startContainer);
   const span = document.createElement("span");
-  setSpanFormatTokens(span, patch.clearFormatting ? "" : formatClassName({ ...inherited, ...patch }));
+  setSpanFormatTokens(span, patch.clearFormatting ? "" : patchedFormatTokens(sampleNodeForFormat(range) ?? range.startContainer, patch));
 
   const anchor = document.createTextNode("\u200B");
   span.appendChild(anchor);
@@ -599,7 +641,7 @@ export function applyFormatAtCursor(range, patch) {
 /** Remove only known inline formatting tokens; links and academic structure remain on their existing parents. */
 function clearFormatClasses(className) {
   const tokens = String(className || "").split(/\s+/).filter(Boolean);
-  const isFormat = (token) => token.startsWith("@") || /^fmt-(?:size|color|pt|highlight)-/.test(token) || /^fmt-(?:bold|italic|strike|underline|overline)$/.test(token);
+  const isFormat = (token) => token.startsWith("@") || /^fmt-(?:size|color|pt|highlight)-/.test(token) || /^fmt-(?:not-)?(?:bold|italic|strike|underline|overline)$/.test(token);
   return tokens.filter((token) => !isFormat(token)).join(" ");
 }
 

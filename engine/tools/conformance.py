@@ -439,6 +439,8 @@ def k_section_page_count(ctx, c):
               if re.search(params['start'], line['text'])]
     stops = [(page, line) for page in range(1, doc.n+1) for line in doc.lines(page)
              if re.search(params['end'], line['text'])]
+    if params.get('first'):  # first match of each anchor (later ones: e.g. a contents list naming the section)
+        starts, stops = starts[:1], [stop for stop in stops if starts and stop[0] > starts[0][0]][:1]
     if len(starts) != 1 or len(stops) != 1 or stops[0][0] <= starts[0][0]:
         return {'actual': None, 'note': 'missing, ambiguous or non-forward section boundaries'}
     return {'actual': stops[0][0]-starts[0][0], 'note': f'physical pages {starts[0][0]}..{stops[0][0]-1}'}
@@ -1099,6 +1101,9 @@ def k_line_attr(ctx, c):
         if not isinstance(nth, int) or isinstance(nth, bool) or nth < 0:
             raise ValueError('line_attr nth must be a nonnegative integer')
         hits = hits[nth:nth + 1]
+    if P.get('firstPerPage'):  # a page title is the first match on its page; later rows (e.g. a contents list naming it) are not titles
+        seen = set()
+        hits = [h for h in hits if h[0] not in seen and not seen.add(h[0])]
     if not hits:
         return {"actual": None, "note": "no line matched"}
     vals = [round(ATTR[P["attr"]](l), 3) for _, l in hits]

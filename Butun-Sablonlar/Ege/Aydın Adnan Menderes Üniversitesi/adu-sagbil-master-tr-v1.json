@@ -257,7 +257,21 @@
   "verifiedAt": "2026-10-07",
   "notes": [
    "Source-derived Phase 4 pilot. XML/example structure has precedence; unresolved source properties are retained in the mapping inventory. Fixed-page text nodes remain editable in layout and Word; long replacement text needs layout review."
-  ]
+  ],
+  "regionalAudit": {
+   "checkedAt": "2026-10-23",
+   "status": "CORE_RECHECKED",
+   "layoutRebuilt": false,
+   "visualConformanceRechecked": false,
+   "documents": [
+    {
+     "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/ADU_Saglik_Bilimleri_Tez_Sablonu_2026.docx",
+     "sha256": "82b87cfd7047e257b6a955374031f10e5ef9d20bd28f4d4f3b527b590da683d7"
+    }
+   ],
+   "checkedFields": [],
+   "conflicts": []
+  }
  },
  "placeholders": {},
  "sections": [

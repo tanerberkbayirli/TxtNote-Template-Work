@@ -1613,7 +1613,7 @@
     "id": "source-conflicts-required",
     "kind": "note",
     "params": {
-      "text": "RESOLVED 2026-10-15: cover gaps 9/1 per guide G[10]/G[32] corroborated by Bölükbaşı 2025 p.1; abstract page count = total physical PDF pages (88 printed / 88 physical, last Arabic 76). Both abstracts 1.5 per prior user decision. See validation/mcbu-thesis-research-20261015/decisions-v2.json."
+      "text": "RESOLVED 2026-10-15: cover gaps 9/1 per guide G[10]/G[32] corroborated by Bölükbaşı 2025 p.1; abstract page count = total physical PDF pages (88 printed / 88 physical, last Arabic 76). Both abstracts 1.5 per prior user decision. See validation/mcbu-thesis-research-20261015/decisions-v2.json. Source audit 2026-10-24 (user rule: the current official source is the reference; an older or secondary source only where the current one is silent and the value is reasonable): live official file re-hashed and identical, no newer guide published; the value above rests on the current guide alone, the published student thesis is not a reference."
     },
     "expected": null,
     "source": {
@@ -1775,5 +1775,165 @@
     },
     "evidence": "MEASURED",
     "ruling": "Guide prose corroborated by user-authorized published MCBÜ example; only this gap transferred."
+  },
+  {
+    "id": "master-pdf-abstract-tr-paragraph-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "page": {
+        "find": "^ÖZET$"
+      },
+      "a": ".",
+      "b": "^Özet 2\\."
+    },
+    "expected": 14.605,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[96] 'paragraflar arasında bir satır boşluk': 1.5 pitch 20.7 pt + one empty 1.5 line 20.7 pt = 41.4 pt between paragraph baselines"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "master-pdf-abstract-en-paragraph-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "master",
+      "source": "pdf",
+      "page": {
+        "find": "^ABSTRACT$"
+      },
+      "a": ".",
+      "b": "^Abstract 2\\."
+    },
+    "expected": 14.605,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[96] 'paragraflar arasında bir satır boşluk': 1.5 pitch 20.7 pt + one empty 1.5 line 20.7 pt = 41.4 pt between paragraph baselines"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "master-word-abstract-tr-paragraph-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "page": {
+        "find": "^ÖZET$"
+      },
+      "a": ".",
+      "b": "^Özet 2\\."
+    },
+    "expected": 14.605,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[96] 'paragraflar arasında bir satır boşluk': 1.5 pitch 20.7 pt + one empty 1.5 line 20.7 pt = 41.4 pt between paragraph baselines"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "master-word-abstract-en-paragraph-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "master",
+      "source": "word",
+      "page": {
+        "find": "^ABSTRACT$"
+      },
+      "a": ".",
+      "b": "^Abstract 2\\."
+    },
+    "expected": 14.605,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[96] 'paragraflar arasında bir satır boşluk': 1.5 pitch 20.7 pt + one empty 1.5 line 20.7 pt = 41.4 pt between paragraph baselines"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "phd-pdf-abstract-tr-paragraph-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "page": {
+        "find": "^ÖZET$"
+      },
+      "a": ".",
+      "b": "^Özet 2\\."
+    },
+    "expected": 14.605,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[96] 'paragraflar arasında bir satır boşluk': 1.5 pitch 20.7 pt + one empty 1.5 line 20.7 pt = 41.4 pt between paragraph baselines"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "phd-pdf-abstract-en-paragraph-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "phd",
+      "source": "pdf",
+      "page": {
+        "find": "^ABSTRACT$"
+      },
+      "a": ".",
+      "b": "^Abstract 2\\."
+    },
+    "expected": 14.605,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[96] 'paragraflar arasında bir satır boşluk': 1.5 pitch 20.7 pt + one empty 1.5 line 20.7 pt = 41.4 pt between paragraph baselines"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "phd-word-abstract-tr-paragraph-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "page": {
+        "find": "^ÖZET$"
+      },
+      "a": ".",
+      "b": "^Özet 2\\."
+    },
+    "expected": 14.605,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[96] 'paragraflar arasında bir satır boşluk': 1.5 pitch 20.7 pt + one empty 1.5 line 20.7 pt = 41.4 pt between paragraph baselines"
+    },
+    "evidence": "INFERRED"
+  },
+  {
+    "id": "phd-word-abstract-en-paragraph-gap",
+    "kind": "line_gap",
+    "params": {
+      "fixture": "phd",
+      "source": "word",
+      "page": {
+        "find": "^ABSTRACT$"
+      },
+      "a": ".",
+      "b": "^Abstract 2\\."
+    },
+    "expected": 14.605,
+    "tolerance": 0.25,
+    "source": {
+      "file": "MCBU_Lisansustu_Tez_Yazim_Kilavuzu_2025.docx",
+      "locator": "G[96] 'paragraflar arasında bir satır boşluk': 1.5 pitch 20.7 pt + one empty 1.5 line 20.7 pt = 41.4 pt between paragraph baselines"
+    },
+    "evidence": "INFERRED"
   }
 ]

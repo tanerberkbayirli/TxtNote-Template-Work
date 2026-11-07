@@ -2,7 +2,7 @@ import { blockDescriptors, describeBlock, figureAlign, figureMargins, gapBetween
 import { Bookmark, LineRuleType, PageBreak, Paragraph, TextRun, TabStopType, LeaderType } from "./runtime.js";
 import { ACADEMIC_FIGURE_MARGIN_PT } from "../../../TxtNote/frontend/src/lib/academicDocument.js";
 import { PX_PER_MM } from "../pageLayout.js";
-import { indexRowStyle } from "../generatedIndex.js";
+import { indexRowStyle, indexRowIncludesPageNumber, pageHeadingRowIndex } from "../generatedIndex.js";
 import { positionedLayoutDocx, splitLayoutNodes } from "../layoutDocx.js";
 import { imageRun } from "./imageRuns.js";
 import { alignDocx, asBlocks, halfPointSize, imageBytes, plainRuns, pt, twip } from "./xml.js";
@@ -43,12 +43,14 @@ export function docxChildren(section, context) {
     const title = docxParagraph(plainRuns(presentationText(titleId, rule.title)), presentationStyle(titleId, { ...headings[1], pageBreakBefore: false }), context, { anchor: titleEntry?.anchor });
     // Generated list/TOC titles need the same live TC source as other indexed
     // special-page titles. A cached TOC row alone disappears on Word refresh.
-    if (titleRow) title.root.push(...tocSpecialField({ ...titleRow, title: titleRow.tocTextOverride ?? rule.title }));
+    if (titleRow && !titleRow.wordStatic) title.root.push(...tocSpecialField({ ...titleRow, title: titleRow.tocTextOverride ?? rule.title }));
     children.push(title);
-    if (rule.includePageNumbers && rule.pageHeading) children.push(docxParagraph(plainRuns(rule.pageHeading), { ...rule.style, ...rule.pageHeadingStyle, align: "right", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0 }, context));
+    const headingRow = pageHeadingRowIndex(section.indexRows, rule);
+    if (rule.includePageNumbers && rule.pageHeading && headingRow < 0) children.push(docxParagraph(plainRuns(rule.pageHeading), { ...rule.style, ...rule.pageHeadingStyle, align: "right", firstLineIndentMm: 0, spaceBeforePt: 0, spaceAfterPt: 0 }, context));
     const indexParagraphStart = children.length;
     let previousRow = null;
-    for (const row of section.indexRows) {
+    const pageTab = () => ({ type: TabStopType[rule.pageNumberAlignment.toUpperCase()], position: twip(rule.pageColumnWidthMm > 0 && rule.pageNumberAlignment === "center" ? widthMm - rule.pageColumnWidthMm / 2 : widthMm), leader: rule.leader === "dots" ? LeaderType.DOT : LeaderType.NONE });
+    for (const [rowIndex, row] of section.indexRows.entries()) {
       const levelStyle = { ...(indexRowStyle(rule, row) || {}) };
       // generatedIndex.unnumberedAfterNumberedSpaceBeforePt: extra space above an unnumbered title row that follows a numbered row.
       if (rule.unnumberedAfterNumberedSpaceBeforePt > 0 && row.unnumbered && previousRow && !previousRow.unnumbered) levelStyle.spaceBeforePt = (levelStyle.spaceBeforePt ?? rule.style?.spaceBeforePt ?? 0) + rule.unnumberedAfterNumberedSpaceBeforePt;
@@ -61,15 +63,31 @@ export function docxChildren(section, context) {
       // editor/PDF row block so before/after spacing surrounds the block instead of its two lines.
       const lineLabel = row.labelLine && row.label && row.rowTitle !== undefined;
       const labelOverride = presentationText(rowId, null);
+      // labelColumnMm: the label ends at a right tab of that width, the title starts at a left tab after labelGapMm, and the
+      // hanging indent brings wrapped lines back to the title (the editor's right-aligned label column).
+      const labelColumn = rule.labelColumnMm > 0 && (!rule.labelColumnLevels || rule.labelColumnLevels.includes(Number(row.level || 1))) && labelOverride === null && !lineLabel && row.label && row.rowTitle !== undefined;
+      const columnLeftMm = style.leftIndentMm || 0, titleMm = columnLeftMm + (rule.labelColumnMm || 0) + (Number(rule.labelGapMm) || 0);
       const runs = labelOverride !== null ? plainRuns(labelOverride) : lineLabel
         ? [{ type: "text", text: row.label, bold: bold || (levelStyle.fontWeight || 0) >= 600 }, { type: "break" }, ...plainRuns(row.rowTitle)]
+        : labelColumn ? [{ type: "tab" }, { type: "text", text: row.label, bold }, { type: "tab" }, ...plainRuns(row.rowTitle)]
         : row.label && row.rowTitle !== undefined && rule.labelStyle ? [{ type: "text", text: `${row.label} `, bold }, ...plainRuns(row.rowTitle)] : plainRuns(row.text);
-      const withPage = rule.includePageNumbers && levelStyle.includePageNumber !== false;
-      if (withPage) runs.push({ type: "tab" }, row.anchor ? { type: "pageref", bookmark: bookmarkName(row.anchor), text: String(row.page ?? "") } : plainRuns(row.page)[0] || { type: "text", text: "" });
-      children.push(docxParagraph(runs, style, context, withPage ? { tabStops: [{ type: TabStopType[rule.pageNumberAlignment.toUpperCase()], position: twip(rule.pageColumnWidthMm > 0 && rule.pageNumberAlignment === "center" ? widthMm - rule.pageColumnWidthMm / 2 : widthMm), leader: rule.leader === "dots" ? LeaderType.DOT : LeaderType.NONE }] } : {}));
+      const tocRow = context.tocRowsByAnchor?.get(row.anchor);
+      const withPage = tocRow ? tocRow.includePageNumber : indexRowIncludesPageNumber(rule, row);
+      const headingHere = rowIndex === headingRow;
+      // The page cell is its own layout object (presentationLayout.js): its saved typography applies to the page run only.
+      const pageStyle = presentation.get(presentationId(section.id, 'generated', `page:${row.anchor}`))?.override?.style;
+      const pageRunStyle = pageStyle && Object.keys(pageStyle).length ? { style: pageStyle } : {};
+      if (withPage) runs.push({ type: "tab" }, row.anchor && !row.manualPage ? { type: "pageref", bookmark: bookmarkName(row.anchor), text: String(row.page ?? ""), ...pageRunStyle } : plainRuns(row.page)[0] || { type: "text", text: "" });
+      else if (headingHere) runs.push({ type: "tab" }, { type: "text", text: rule.pageHeading, bold: ((pageStyle?.fontWeight ?? rule.pageHeadingStyle?.fontWeight) || 0) >= 600 });
+      const tabStops = [...(labelColumn ? [{ type: TabStopType.RIGHT, position: twip(columnLeftMm + rule.labelColumnMm) }, { type: TabStopType.LEFT, position: twip(titleMm) }] : []), ...(withPage || headingHere ? [pageTab()] : [])];
+      const rowStyle = labelColumn ? { ...style, leftIndentMm: columnLeftMm, hangingIndentMm: titleMm - columnLeftMm, firstLineIndentMm: 0 } : style;
+      children.push(docxParagraph(runs, rowStyle, context, tabStops.length ? { tabStops } : {}));
     }
     if (rule.kind === "toc") {
       const rows = children.splice(indexParagraphStart);
+      // The leading fixed rows (through the "Sayfa" heading row) stay outside the field; see export.js wordStatic.
+      const fixed = rows.splice(0, headingRow + 1);
+      children.push(...fixed);
       if (context.nativeTocField) children.push(...(rows.length ? wrapParagraphsInField(rows, context.nativeTocField.instruction) : [emptyComplexFieldParagraph(context.nativeTocField.instruction)]));
       else children.push(...rows);
     }
@@ -80,7 +98,7 @@ export function docxChildren(section, context) {
   const titleAnchor = titleEntry?.anchor;
   if (titleAnchor) {
     const row = context.tocRowsByAnchor?.get(titleAnchor);
-    const tc = row ? [...tocSpecialField({ ...titleEntry, title: row.tocTextOverride ?? titleEntry.title, wordTocLevel: row.wordTocLevel, includePageNumber: row.includePageNumber })] : [];
+    const tc = row && !row.wordStatic ? [...tocSpecialField({ ...titleEntry, title: row.tocTextOverride ?? titleEntry.title, wordTocLevel: row.wordTocLevel, includePageNumber: row.includePageNumber })] : [];
     children.push(new Paragraph({ spacing: { before: 0, after: 0, line: 1, lineRule: LineRuleType.EXACT }, children: [new Bookmark({ id: bookmarkName(titleAnchor), children: [new TextRun({ text: "", size: 2 })] }), ...tc] }));
   }
   if (section.layout) {
@@ -96,6 +114,9 @@ export function docxChildren(section, context) {
     });
     children.push(...positionedLayoutDocx(positioned, { language: context.language, lineSpacing: context.lineSpacing, pageMargins: page.margins }));
   }
+  // Positioned frames (zero-height anchor paragraphs) and title bookmarks written above are not body content: the first block
+  // still opens the section's page, so its page break (or chapter section split) must not push it onto a second page.
+  const bodyStart = children.length;
   let afterHeading = false;
   // The gap between two blocks comes from one table (blockGap.js) for every template: the opt-in paragraph-pitch rule or the editor's block
   // margins (CSS collapse, additive paragraph pairs, contextual spacing). The whole gap goes on the next block's space-before.
@@ -165,14 +186,14 @@ export function docxChildren(section, context) {
       let sectionStart = false;
       const keepsTopSpace = headStyle.pageBreakBefore && withGap(headStyle).spaceBeforePt > 0;
       if (Number(block.level) === 1 && (page.numbering?.omitOnChapterStart || keepsTopSpace)) {
-        if (children.length === 0) children.startsWithChapter = true;
+        if (children.length === bodyStart) children.startsWithChapter = true;
         else if (headStyle.pageBreakBefore) { (children.chapterSplits ||= []).push(children.length); sectionStart = true; }
       }
       // Spacing is resolved while the heading still counts as page-breaking (an additive gap never adds the previous space-after to a page's first
       // paragraph); the Word section break then replaces the page-break property.
-      const spacedHead = withGap(headStyle);
+      const spacedHead = children.length === bodyStart && bodyStart > 0 ? { ...withGap(headStyle), pageBreakBefore: false } : withGap(headStyle);
       const paragraph = docxParagraph(runs, chain(sectionStart ? { ...spacedHead, pageBreakBefore: false } : spacedHead), context, { style: sourceStyleId, anchor: [block.thesisAnchor, block.appendixAnchor], presentationFrame: frameFor(block.layoutId) });
-      if (indexedRow?.tocTitle || indexedRow?.customToc) paragraph.root.push(...tocSpecialField({ ...indexedRow, title: indexedRow.tocTextOverride ?? indexedRow.rowTitle ?? indexedRow.title, wordTocLevel: indexedRow.wordTocLevel }));
+      if ((indexedRow?.tocTitle || indexedRow?.customToc) && !indexedRow.wordStatic) paragraph.root.push(...tocSpecialField({ ...indexedRow, title: indexedRow.tocTextOverride ?? indexedRow.rowTitle ?? indexedRow.title, wordTocLevel: indexedRow.wordTocLevel }));
       pushPresentation(paragraph, block.layoutId);
     } else if (block.type === "paragraph" || block.type === "quote") {
       const named = block.thesisStyle && section.rules.paragraphStyles?.[block.thesisStyle];

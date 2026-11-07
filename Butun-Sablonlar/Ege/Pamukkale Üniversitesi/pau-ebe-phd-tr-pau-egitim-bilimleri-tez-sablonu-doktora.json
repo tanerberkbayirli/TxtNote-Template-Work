@@ -1,39 +1,280 @@
 {
  "schemaVersion": 1,
- "templateVersion": "0.1.0-draft",
+ "templateVersion": "0.2.0-source-rebuild",
  "id": "pau-ebe-phd-tr-pau-egitim-bilimleri-tez-sablonu-doktora",
  "universityId": "pau",
  "universityName": "Pamukkale Üniversitesi",
  "instituteId": "ebe",
- "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "instituteName": "Eğitim Bilimleri Enstitüsü",
  "degreeType": "phd",
  "language": "tr",
  "status": "generic",
  "source": {
   "type": "official",
   "documentName": "PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx",
-  "verifiedAt": "2026-10-07",
+  "verifiedAt": "2026-10-23",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 7dd2ac57e508c986cca832a30f0bdcc97f0853fc941ee90f9d1f5ffc04fa27b9",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Şablon yönergesi (Dış Kapak): T.C. PAMUKKALE ÜNİVERSİTESİ EĞİTİM BİLİMLERİ ENSTİTÜSÜ ……………………….. ANABİLİM DALI …………………………………….. BİLİM DALI DOKTORA TEZİ",
    "Şablon yönergesi (Dış Kapak): ÖĞRENCİ ADI SOYADI",
    "Şablon yönergesi (Dış Kapak): Denizli-YILI",
-   "Şablon yönergesi (Dış Kapak): TEZİN ADI (18 PUNTO, TIMES NEW ROMAN, KALIN, TEK SATIR ARALIĞI, BEYAZ ALAN İÇİNDE ALTTAN VE ÜSTTEN ORTALANMIŞ VE SAĞA YASLANMIŞ)",
-   "figures: yazı konumu kılavuzda yok, motor varsayılanı (below)",
-   "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi",
-   "Kılavuz kuralları birleştirildi: PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx (3 alan, 3 çelişki)"
+   "Şablon yönergesi (Dış Kapak): TEZİN ADI (18 PUNTO, TIMES NEW ROMAN, KALIN, TEK SATIR ARALIĞI, BEYAZ ALAN İÇİNDE ALTTAN VE ÜSTTEN ORTALANMIŞ VE SAĞA YASLANMIŞ)"
   ],
   "guideDocumentName": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx",
+  "archivePath": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx",
+  "rebuildKind": "docx-template",
+  "archiveSha256": "7dd2ac57e508c986cca832a30f0bdcc97f0853fc941ee90f9d1f5ffc04fa27b9",
+  "evidence": {
+   "page.margins": {
+    "value": {
+     "topMm": 25,
+     "bottomMm": 25,
+     "leftMm": 35,
+     "rightMm": 20
+    },
+    "source": "PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx › sectPr#2 (gövde bölümü, 21 paragraf) › w:pgMar",
+    "status": "MEASURED"
+   },
+   "page.size": {
+    "value": [
+     210,
+     297
+    ],
+    "source": "PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx › sectPr#2 (gövde bölümü, 21 paragraf) › w:pgSz",
+    "status": "MEASURED"
+   },
+   "page.numbering": {
+    "value": {
+     "enabled": true,
+     "position": "top",
+     "align": "left",
+     "format": "arabic",
+     "startAt": 1,
+     "restart": false
+    },
+    "source": "PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx › sectPr#2 (gövde bölümü, 21 paragraf) › header PAGE alanı, w:pgNumType",
+    "status": "MEASURED"
+   },
+   "page.header.distanceMm": {
+    "value": 12.51,
+    "source": "PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx › sectPr#2 (gövde bölümü, 21 paragraf) › w:pgMar/@w:header",
+    "status": "MEASURED"
+   },
+   "typography.body": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "justify",
+     "lineHeight": 1.5
+    },
+    "source": "PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx › gövde profili: 17/27 paragraf (≥200 karakter), 6 farklı biçim",
+    "status": "MEASURED"
+   },
+   "typography.headings.1": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "center",
+     "spaceBeforePt": 12,
+     "spaceAfterPt": 6,
+     "textTransform": "uppercase",
+     "keepWithNext": true
+    },
+    "source": "PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx › 15/15 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.2": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "center",
+     "spaceBeforePt": 12,
+     "spaceAfterPt": 6,
+     "keepWithNext": true
+    },
+    "source": "PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx › 16/16 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.3": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "spaceBeforePt": 12,
+     "spaceAfterPt": 6,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}",
+      "suffix": "."
+     },
+     "keepWithNext": true
+    },
+    "source": "PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx › 2/2 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "sections.cover": {
+    "value": "2 blok, outerCover",
+    "source": "PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx › ön sayfa #0: ",
+    "status": "MEASURED"
+   },
+   "sections.inner-cover": {
+    "value": "17 blok, innerCover",
+    "source": "PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx › ön sayfa #1: T.C. / PAMUKKALE ÜNİVERSİTESİ / EĞİTİM BİLİMLERİ ENSTİTÜSÜ / ……………………….. ANABİLİ",
+    "status": "MEASURED"
+   },
+   "sections.approval": {
+    "value": "19 blok, approval",
+    "source": "PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx › ön sayfa #2: JÜRİ ÜYELERİ ONAY SAYFASI / ………………. tarafından hazırlanan, “....................",
+    "status": "MEASURED"
+   },
+   "sections.declaration": {
+    "value": "6 blok, declaration",
+    "source": "PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx › ön sayfa #3: ETİK BEYANNAMESİ / Pamukkale Üniversitesi Eğitim Bilimleri Enstitüsünün yazım ku",
+    "status": "MEASURED"
+   },
+   "sections": {
+    "value": [
+     "outerCover",
+     "innerCover",
+     "approval",
+     "declaration",
+     "acknowledgements",
+     "abstract",
+     "englishAbstract",
+     "tableOfContents",
+     "listOfTables",
+     "listOfFigures",
+     "mainContent",
+     "bibliography",
+     "appendices"
+    ],
+    "source": "PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx › 11 birinci düzey başlık, 10 fiziksel bölüm",
+    "status": "MEASURED"
+   },
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx",
+    "locations": [
+     {
+      "value": 25,
+      "location": "paragraf 64",
+      "sentence": "Sayfanın sol kenar boşluğu 3.5 cm, sağ kenar boşluğu 2 cm, üst ve alt kenar boşlukları ise 2.5 cm olmalıdır."
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx",
+    "locations": [
+     {
+      "value": 25,
+      "location": "paragraf 64",
+      "sentence": "Sayfanın sol kenar boşluğu 3.5 cm, sağ kenar boşluğu 2 cm, üst ve alt kenar boşlukları ise 2.5 cm olmalıdır."
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 35,
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx",
+    "locations": [
+     {
+      "value": 35,
+      "location": "paragraf 64",
+      "sentence": "Sayfanın sol kenar boşluğu 3.5 cm, sağ kenar boşluğu 2 cm, üst ve alt kenar boşlukları ise 2.5 cm olmalıdır."
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 20,
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx",
+    "locations": [
+     {
+      "value": 20,
+      "location": "paragraf 64",
+      "sentence": "Sayfanın sol kenar boşluğu 3.5 cm, sağ kenar boşluğu 2 cm, üst ve alt kenar boşlukları ise 2.5 cm olmalıdır."
+     }
+    ]
+   },
+   "typography.footnotes.fontSizePt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 10,
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx",
+    "locations": [
+     {
+      "value": 10,
+      "location": "paragraf 103",
+      "sentence": "Dipnotlar için yazı boyutu 10 punto olarak ayarlanmalıdır."
+     }
+    ]
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/PAU_Egitim_Bilimleri_Tez_Sablonu_Doktora_2025.docx",
+    "sha256": "7dd2ac57e508c986cca832a30f0bdcc97f0853fc941ee90f9d1f5ffc04fa27b9"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/PAU_Egitim_Bilimleri_Tez_Sablonu_Yuksek_Lisans_2025.docx",
+    "sha256": "0a1ce00b6a409c66597c63a424a5672766cdeb86aec3ee751f62328b42766c39"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx",
+    "sha256": "929804d54c4d1baebf4986fef4bf4a5133277942120971984b2bdf44332f1755"
+   }
+  ],
   "review": {
    "unknown": [
     {
-     "field": "bibliography.hangingIndentMm",
-     "reason": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi"
+     "field": "typography.headings.4",
+     "reason": "Balk4 stili var ama kullanılmamış; Word varsayılanı üniversite kuralı sayılmadı, kılavuzdan doğrulanmalı"
     },
     {
-     "field": "figures.position",
-     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+     "field": "tables",
+     "reason": "Belgede örnek çizelge/tablo yazısı yok"
+    },
+    {
+     "field": "figures",
+     "reason": "Belgede örnek şekil yazısı yok"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
     }
    ],
    "inferred": [
@@ -83,24 +324,14 @@
      "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
     },
     {
-     "field": "figures.position",
-     "value": "below",
-     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
+     "field": "sections.sourceInstructions",
+     "value": "1",
+     "reasoning": "Şablonun kullanım yönergeleri ve örnek önsöz açıklamaları yeni tezin içeriği olarak basılmaması için çıkarıldı; özgün dosya korundu."
     },
     {
-     "field": "figures.numbering",
-     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
-     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
-    },
-    {
-     "field": "tables.numbering",
-     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
-     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
-    },
-    {
-     "field": "bibliography.hangingIndentMm",
-     "value": "0",
-     "reasoning": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi — kılavuzdan teyit edilmeli"
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
     },
     {
      "field": "typography.headings.1.numbering",
@@ -111,43 +342,18 @@
      "field": "typography.headings.2.numbering",
      "value": "numarasız",
      "reasoning": "Kaynak bu başlık düzeyi için numara biçimi belirtmiyor (Word'de numaralandırması olmayan başlık stili numarasızdır); motor yedeği yalnız düzeyin kendi sayacını yazıp numaraları tekrar ettireceği için numarasız kaydedildi."
-    },
-    {
-     "field": "typography.headings.4.numbering",
-     "value": "numarasız",
-     "reasoning": "Kaynak bu başlık düzeyi için numara biçimi belirtmiyor (Word'de numaralandırması olmayan başlık stili numarasızdır); motor yedeği yalnız düzeyin kendi sayacını yazıp numaraları tekrar ettireceği için numarasız kaydedildi."
     }
    ],
    "conflicts": [
     {
-     "field": "typography.body.lineHeight",
-     "measured": "1.5",
-     "guide": "1",
-     "guideSource": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx › paragraf 71: “Metin içinde 1.5 satır aralığı kullanılmalıdır.”"
-    },
-    {
      "field": "page.numbering.align",
      "measured": "left",
      "guide": "right",
-     "guideSource": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx › paragraf 66: “Tezlerde/projelerde sayfa numaraları sayfanın sağ üst köşesine yazılmalıdır.”"
-    },
-    {
-     "field": "bibliography.lineHeight",
-     "measured": "1.5",
-     "guide": "1",
-     "guideSource": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx › paragraf 71: “Tablo, şekil, ekler ve kaynakçada ise tek satır aralığı kullanılmalıdır.”"
+     "guideSource": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx paragraf 66"
     }
    ],
    "guide": "PAU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2025.docx",
-   "gate": {
-    "overall": "CONFLICT",
-    "results": {
-     "PASS": 33,
-     "CONFLICT": 2
-    },
-    "checkedAt": "2026-10-22",
-    "exportTool": "engine/tools/export.mjs"
-   }
+   "gate": null
   }
  },
  "page": {
@@ -156,9 +362,9 @@
   "heightMm": 297,
   "orientation": "portrait",
   "margins": {
-   "topMm": 25.01,
-   "bottomMm": 25.01,
-   "leftMm": 35.01,
+   "topMm": 25,
+   "bottomMm": 25,
+   "leftMm": 35,
    "rightMm": 20
   },
   "header": {
@@ -235,20 +441,6 @@
      "suffix": "."
     },
     "keepWithNext": true
-   },
-   "4": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 12,
-    "fontWeight": 700,
-    "align": "left",
-    "spaceBeforePt": 12,
-    "spaceAfterPt": 6,
-    "keepWithNext": true,
-    "numbering": {
-     "enabled": false,
-     "format": "{1}.{2}.{3}.{4}",
-     "sequence": "arabic"
-    }
    }
   },
   "lineSpacing": {
@@ -335,6 +527,82 @@
   },
   "PROJECT_SUPPORT": {
    "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_NAME": {
+   "label": "Jury Member 1 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_NAME": {
+   "label": "Jury Member 2 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_NAME": {
+   "label": "Jury Member 3 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_NAME": {
+   "label": "Jury Member 4 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_NAME": {
+   "label": "Jury Member 5 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_INSTITUTION": {
+   "label": "Jury Member 1 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_INSTITUTION": {
+   "label": "Jury Member 2 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_INSTITUTION": {
+   "label": "Jury Member 3 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_INSTITUTION": {
+   "label": "Jury Member 4 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_INSTITUTION": {
+   "label": "Jury Member 5 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_NAME": {
+   "label": "Jury Member 6 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_NAME": {
+   "label": "Jury Member 7 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_INSTITUTION": {
+   "label": "Jury Member 6 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_INSTITUTION": {
+   "label": "Jury Member 7 Institution",
    "type": "text"
   }
  },
@@ -430,7 +698,7 @@
     {
      "type": "metadata",
      "field": "DEPARTMENT_NAME",
-     "fallback": "……………………….. ANABİLİM DALI",
+     "fallback": "Anabilim dalı",
      "style": {
       "align": "center",
       "fontWeight": 700,
@@ -468,7 +736,7 @@
     {
      "type": "metadata",
      "field": "THESIS_TITLE",
-     "fallback": "TEZİN ADI",
+     "fallback": "Tez başlığı",
      "style": {
       "align": "center",
       "fontSizePt": 14,
@@ -484,7 +752,7 @@
     {
      "type": "metadata",
      "field": "STUDENT_NAME",
-     "fallback": "Öğrencinin Adı SOYADI",
+     "fallback": "Öğrenci adı soyadı",
      "style": {
       "align": "center",
       "fontWeight": 700
@@ -504,31 +772,24 @@
      }
     },
     {
-     "type": "text",
-     "value": "Akademik Unvanı Adı SOYADI",
+     "type": "metadata",
      "style": {
       "align": "center",
       "fontWeight": 700,
       "lineHeight": 2
-     }
+     },
+     "field": "ADVISOR_NAME",
+     "fallback": "Danışman adı soyadı"
     },
     {
-     "type": "text",
-     "value": "(Varsa İkinci Danışman)",
+     "type": "metadata",
      "style": {
       "align": "center",
       "fontWeight": 700,
       "lineHeight": 2
-     }
-    },
-    {
-     "type": "text",
-     "value": "Akademik Unvanı Adı SOYADI",
-     "style": {
-      "align": "center",
-      "fontWeight": 700,
-      "lineHeight": 2
-     }
+     },
+     "field": "ADVISOR_NAME",
+     "fallback": "Danışman adı soyadı"
     }
    ]
   },
@@ -570,7 +831,7 @@
     },
     {
      "type": "text",
-     "value": "………………. tarafından hazırlanan, “............................” başlıklı tez çalışmasının savunma sınavı ……… tarihinde yapılmış; tez, aşağıda belirtilen jüri tarafından oy birliği/oy çokluğu ile başarılı bulunarak Pamukkale Üniversitesi Eğitim Bilimleri Enstitüsü …………….. Anabilim Dalı ........................... Bilim Dalında doktora tezi olarak kabul edilmiştir.",
+     "value": "………………. tarafından hazırlanan, {{THESIS_TITLE}} başlıklı tez çalışmasının savunma sınavı ……… tarihinde yapılmış; tez, aşağıda belirtilen jüri tarafından oy birliği/oy çokluğu ile başarılı bulunarak Pamukkale Üniversitesi Eğitim Bilimleri Enstitüsü …………….. Anabilim Dalı ........................... Bilim Dalında doktora tezi olarak kabul edilmiştir.",
      "style": {
       "align": "justify",
       "lineHeight": 1.5
@@ -661,12 +922,13 @@
      "heightMm": 14.6
     },
     {
-     "type": "text",
-     "value": "Prof. Dr. Ahu ARICIOĞLU",
+     "type": "metadata",
      "style": {
       "align": "center",
       "lineHeight": 1.5
-     }
+     },
+     "field": "INSTITUTE_DIRECTOR_NAME",
+     "fallback": "INSTITUTE_DIRECTOR_NAME"
     },
     {
      "type": "text",
@@ -736,7 +998,7 @@
     {
      "type": "metadata",
      "field": "STUDENT_NAME",
-     "fallback": "Öğrencinin Adı Soyadı",
+     "fallback": "Öğrenci adı soyadı",
      "style": {
       "align": "center"
      }
@@ -806,8 +1068,7 @@
     "levels": [
      1,
      2,
-     3,
-     4
+     3
     ]
    },
    "overrides": {
@@ -897,36 +1158,6 @@
    "showTitle": true
   }
  ],
- "tables": {
-  "label": "Tablo",
-  "position": "below",
-  "style": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 12,
-   "align": "center",
-   "lineHeight": 1.5
-  },
-  "numbering": {
-   "scope": "chapter",
-   "format": "{chapter}.{n}",
-   "sequence": "arabic"
-  }
- },
- "figures": {
-  "label": "Şekil",
-  "position": "below",
-  "style": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 12,
-   "align": "center",
-   "lineHeight": 1.5
-  },
-  "numbering": {
-   "scope": "chapter",
-   "format": "{chapter}.{n}",
-   "sequence": "arabic"
-  }
- },
  "bibliography": {
   "heading": "KAYNAKÇA",
   "style": {
@@ -934,16 +1165,14 @@
    "fontSizePt": 12,
    "align": "left",
    "lineHeight": 1.5
-  },
-  "hangingIndentMm": 0
+  }
  },
  "toc": {
   "heading": "İÇİNDEKİLER",
   "levels": [
    1,
    2,
-   3,
-   4
+   3
   ],
   "showPageNumbers": true
  }

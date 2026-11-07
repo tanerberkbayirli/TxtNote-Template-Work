@@ -1,0 +1,43 @@
+.thesis-guide-panel{flex:1;min-height:0;width:100%;display:flex;flex-direction:column;gap:10px;overflow:auto;padding:12px 12px 58px;font:13px/1.4 system-ui;overflow-wrap:anywhere;border-top:1px solid #d4d4d4}
+.thesis-guide-panel>header{display:flex;align-items:center;justify-content:space-between;position:sticky;top:-12px;z-index:1;background:#fafafa;padding:8px 0}
+.thesis-guide-panel h3{margin:0;font-size:14px}
+.thesis-guide-close{border:0;background:transparent;color:inherit;cursor:pointer;padding:4px;border-radius:4px;display:inline-flex}
+.thesis-guide-choices{display:grid;gap:6px}
+.thesis-guide-choices button{display:flex;gap:8px;align-items:flex-start;text-align:left;border:1px solid #cbd5e1;border-radius:7px;background:#fff;color:#334155;padding:8px 10px;cursor:pointer;font:inherit}
+.thesis-guide-choices button strong{display:block;font-size:13px}.thesis-guide-choices button small{display:block;color:#64748b;font-size:11px}
+.thesis-guide-choices button[aria-pressed=true]{border-color:#2563eb;background:#eff6ff;box-shadow:inset 3px 0 0 #2563eb}
+.thesis-guide-choices button:focus-visible,.thesis-guide-close:focus-visible,.thesis-guide-section>summary:focus-visible{outline:2px solid #2563eb;outline-offset:2px}
+.thesis-guide-identity{display:flex;flex-direction:column;gap:2px}.thesis-guide-identity span{font-size:12px;color:#64748b}
+.thesis-guide-status{margin:0;padding:7px 9px;border-radius:6px;font-size:12px;background:#f1f5f9}
+.thesis-guide-status.is-checked{background:#ecfdf5}.thesis-guide-status.is-draft,.thesis-guide-status.is-unverified{background:#fffbeb;color:#92400e}
+.thesis-guide-section{border-top:1px solid #e5e5e5;padding:4px 0}.thesis-guide-section>summary{cursor:pointer;font-weight:600;padding:6px 0}
+.thesis-guide-items{display:grid;gap:5px;margin:4px 0 6px}.thesis-guide-items>div{display:grid;grid-template-columns:minmax(80px,38%) minmax(0,1fr);gap:8px;font-size:12px}
+.thesis-guide-items dt{color:#64748b;font-weight:600}.thesis-guide-items dd{margin:0}.thesis-guide-items .is-unknown dd{color:#92400e}
+.thesis-guide-note{margin:2px 0 6px;font-size:11px;color:#64748b}
+.thesis-guide-sources{list-style:none;margin:6px 0;padding:0;display:grid;gap:6px;font-size:12px}.thesis-guide-sources li{display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline}.thesis-guide-sources a{color:#2563eb;text-decoration:underline}
+.thesis-guide-sources details{width:100%;font-size:11px;color:#64748b}.thesis-guide-sources details dl{margin:4px 0;display:grid;grid-template-columns:auto 1fr;gap:2px 8px}.thesis-guide-sources details dd{margin:0;word-break:break-all}
+.dark .thesis-guide-panel{border-color:#555}.dark .thesis-guide-panel>header{background:#262626}.dark .thesis-guide-choices button{background:#303030;border-color:#555;color:#eee}.dark .thesis-guide-choices button[aria-pressed=true]{background:#1e3a5f;border-color:#60a5fa}.dark .thesis-guide-status{background:#303030}.dark .thesis-guide-section{border-color:#444}
+.app-guide-backdrop{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:24px;background:rgba(15,23,42,.35);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.app-guide-dialog{position:relative;display:flex;flex-direction:column;width:min(720px,100%);max-height:min(86vh,100%);background:#fff;color:#171717;border-radius:12px;box-shadow:0 24px 60px rgba(0,0,0,.35);font:14px/1.5 system-ui;overflow:hidden}
+.app-guide-head{flex:none;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:16px 18px 12px 20px;border-bottom:1px solid #e5e5e5}.app-guide-head h2{margin:0;font-size:18px}.app-guide-head p{margin:2px 0 0;font-size:12px;color:#64748b}
+.app-guide-close{flex:none;border:1px solid #cbd5e1;border-radius:8px;background:#fff;color:#171717;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer}.app-guide-close:hover{background:#f1f5f9}.app-guide-close:focus-visible{outline:2px solid #2563eb;outline-offset:2px}
+.app-guide-body{flex:1;min-height:0;overflow:auto;padding:14px 20px 20px}.app-guide-body:focus-visible{outline:2px solid #2563eb;outline-offset:-2px}
+.app-guide-toc ol{margin:0 0 12px;padding:0;list-style:none;display:grid;gap:2px}.app-guide-toc a{color:#2563eb;font-size:13px}
+.app-guide-section{margin:16px 0}.app-guide-section h3{display:flex;gap:8px;align-items:center;margin:0 0 6px;font-size:15px}.app-guide-section h3 span{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:#2563eb;color:#fff;font-size:12px}
+.app-guide-section ol{margin:0;padding-left:20px;list-style:disc}.app-guide-section li{margin:3px 0}.app-guide-version{margin:16px 0 0;font-size:11px;color:#64748b}
+.dark .app-guide-dialog{background:#262626;color:#eee}.dark .app-guide-head{border-color:#444}.dark .app-guide-close{background:#303030;border-color:#555;color:#eee}
+@media (max-width:520px){.app-guide-backdrop{padding:8px}.app-guide-dialog{max-height:96vh}}
+.thesis-guide-rule-source{font-size:11px}.thesis-guide-rule-source a{color:#2563eb;text-decoration:underline}.thesis-guide-rule-source small{display:block;color:#64748b;font-size:11px}
+.thesis-sources-toggle{flex:none;margin-top:0;margin-bottom:0}
+.thesis-sources-panel{flex:1;min-height:0;width:100%;display:flex;flex-direction:column;overflow:auto;padding:12px 12px 12px;border-top:1px solid #d4d4d4;font:13px/1.4 system-ui;overflow-wrap:anywhere}
+.thesis-sources-panel>header{display:flex;align-items:center;justify-content:space-between;position:sticky;top:-12px;z-index:1;background:#fafafa;padding:8px 0}.thesis-sources-panel h3{margin:0;font-size:14px}
+.dark .thesis-sources-panel{border-color:#555}.dark .thesis-sources-panel>header{background:#262626}
+.thesis-outline-panel,.thesis-item-panel{overflow-x:hidden}.thesis-outline-panel .thesis-workspace-panel,.thesis-outline-panel .thesis-workspace-content,.thesis-item-panel .thesis-ribbon-inspector{min-width:0;width:100%;max-width:100%;box-sizing:border-box}
+/* Dar sağ sütunda tek sütun: şeritteki geniş çok sütunlu yerleşim kapatılır */
+.thesis-contents-rail .thesis-ribbon-workspace .thesis-workspace-content,.thesis-contents-rail .thesis-ribbon-workspace[data-workspace-panel=outline] .thesis-workspace-content{display:block;padding:8px 0}
+.thesis-contents-rail .thesis-ribbon-workspace[data-workspace-panel] .thesis-plan-list{display:block;grid-column:auto;grid-row:auto}
+.thesis-contents-rail .thesis-ribbon-workspace[data-workspace-panel=sources] .thesis-workspace-content>div:not([hidden]),.thesis-contents-rail .thesis-ribbon-workspace[data-workspace-panel=sources] .thesis-source-list{display:block;grid-template-columns:none}
+.thesis-contents-rail .thesis-ribbon-workspace[data-workspace-panel=sources] .thesis-source-list{padding:0;margin:0;list-style:none}
+.thesis-outline-panel .thesis-workspace-panel{padding:0}
+/* Bir sağ panel açıkken diğer panellerin düğmeleri gizlenir */
+.thesis-contents-rail[data-open="true"]>.thesis-contents-toggle{display:none}

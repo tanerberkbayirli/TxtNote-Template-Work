@@ -1,25 +1,238 @@
 {
  "schemaVersion": 1,
- "templateVersion": "0.1.0-draft",
+ "templateVersion": "0.2.0-source-rebuild",
  "id": "deu-fbe-phd-tr-deu-fen-bilimleri-doktora-thesis-templat",
  "universityId": "deu",
  "universityName": "Dokuz Eylül Üniversitesi",
  "instituteId": "fbe",
- "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "instituteName": "Fen Bilimleri Enstitüsü",
  "degreeType": "phd",
- "language": "tr",
+ "language": "en",
  "status": "generic",
  "source": {
   "type": "official",
   "documentName": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx",
-  "verifiedAt": "2026-10-07",
+  "verifiedAt": "2026-10-23",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 f08f908ce05137c4f917fee11fc02f839ccd582b5d7b9169c96725906d9b7a4c",
-   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
-   "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi",
-   "Kılavuz kuralları birleştirildi: DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf (3 alan, 2 çelişki)"
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
   ],
-  "guideDocumentName": "DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx",
+  "rebuildKind": "docx-template",
+  "archiveSha256": "f08f908ce05137c4f917fee11fc02f839ccd582b5d7b9169c96725906d9b7a4c",
+  "evidence": {
+   "page.margins": {
+    "value": {
+     "topMm": 30,
+     "bottomMm": 30,
+     "leftMm": 40,
+     "rightMm": 25.01
+    },
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › sectPr#2 (gövde bölümü, 11 paragraf) › w:pgMar",
+    "status": "MEASURED"
+   },
+   "page.size": {
+    "value": [
+     210,
+     297
+    ],
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › sectPr#2 (gövde bölümü, 11 paragraf) › w:pgSz",
+    "status": "MEASURED"
+   },
+   "page.numbering": {
+    "value": {
+     "enabled": true,
+     "position": "bottom",
+     "align": "center",
+     "format": "arabic",
+     "startAt": 1,
+     "restart": false
+    },
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › sectPr#2 (gövde bölümü, 11 paragraf) › footer PAGE alanı, w:pgNumType",
+    "status": "MEASURED"
+   },
+   "page.footer.distanceMm": {
+    "value": 12.51,
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › sectPr#2 (gövde bölümü, 11 paragraf) › w:pgMar/@w:footer",
+    "status": "MEASURED"
+   },
+   "typography.body": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "justify",
+     "lineHeight": 1.5
+    },
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › gövde profili: 6/15 paragraf (≥200 karakter), 6 farklı biçim",
+    "status": "MEASURED"
+   },
+   "typography.headings.1": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "center",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "keepWithNext": true
+    },
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › 4/5 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.2": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "center",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "keepWithNext": true
+    },
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › 2/7 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.3.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}"
+    },
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.3": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 10,
+     "spaceAfterPt": 0,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}"
+     },
+     "keepWithNext": true
+    },
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › 4/4 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.4": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "left",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 10,
+     "spaceAfterPt": 0,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}.{4}",
+      "suffix": ""
+     },
+     "keepWithNext": true
+    },
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › 6/6 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "tables.position": {
+    "value": "above",
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › 1 üstte / 0 altta",
+    "status": "MEASURED"
+   },
+   "tables": {
+    "value": {
+     "label": "Table",
+     "position": "above",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 10,
+      "fontWeight": 400,
+      "align": "justify",
+      "lineHeight": 1
+     },
+     "numbering": {
+      "scope": "chapter",
+      "format": "{chapter}.{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › 1/1 yazı; etiket sayımı {'Table': 1}",
+    "status": "MEASURED"
+   },
+   "figures": {
+    "value": {
+     "label": "Figure",
+     "position": "below",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 10,
+      "fontWeight": 400,
+      "align": "center",
+      "lineHeight": 1
+     },
+     "numbering": {
+      "scope": "chapter",
+      "format": "{chapter}.{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › 13/14 yazı; etiket sayımı {'Figure': 14}",
+    "status": "MEASURED"
+   },
+   "sections.cover": {
+    "value": "4 blok, outerCover",
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › ön sayfa #0: DOKUZ EYLÜL UNIVERSITY / GRADUATE SCHOOL OF NATURAL AND APPLIED SCIENCES / İZMİR",
+    "status": "MEASURED"
+   },
+   "sections.inner-cover": {
+    "value": "9 blok, innerCover",
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › ön sayfa #1: A Thesis Submitted to the / Graduate School of Natural and Applied Sciences of D",
+    "status": "MEASURED"
+   },
+   "sections.front-page-2": {
+    "value": "14 blok, custom",
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › ön sayfa #2: Ph.D. THESIS EXAMINATION RESULT FORM / We have read the thesis entitled “WRITE T",
+    "status": "MEASURED"
+   },
+   "sections": {
+    "value": [
+     "outerCover",
+     "innerCover",
+     "custom",
+     "bibliography",
+     "mainContent"
+    ],
+    "source": "DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx › 1 birinci düzey başlık, 6 fiziksel bölüm",
+    "status": "MEASURED"
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/DEU_Fen_Bilimleri_Doktora_Tez_Sablonu_TR_2025-09-04.docx",
+    "sha256": "fc5946250d2f0b5a1a925fd6ab184e52c0a85acd1340b15fbc44f4cfc1f4a970"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/DEU_Fen_Bilimleri_Doktora_Thesis_Template_EN_2025-09-04.docx",
+    "sha256": "f08f908ce05137c4f917fee11fc02f839ccd582b5d7b9169c96725906d9b7a4c"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf",
+    "sha256": "31ce0367107d6b92b4fed6211b293267af58e2824e80025f8857d8f13fc3aa38"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/DEU_Fen_Bilimleri_Yuksek_Lisans_Tez_Sablonu_TR_2025-09-04.docx",
+    "sha256": "a35615a80abb06f87e75aa8f6e25d18628a94341637dbcbec00dfdcb518d18b2"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/DEU_Fen_Bilimleri_Yuksek_Lisans_Thesis_Template_EN_2025-09-04.docx",
+    "sha256": "f702932ff14bc464bb0500e4158a25c0a0abc37b4a0a42d20cf777bb37e16226"
+   }
+  ],
   "review": {
    "unknown": [
     {
@@ -28,7 +241,7 @@
     },
     {
      "field": "bibliography.hangingIndentMm",
-     "reason": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi"
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
     }
    ],
    "inferred": [
@@ -73,9 +286,9 @@
      "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
     },
     {
-     "field": "bibliography.hangingIndentMm",
-     "value": "0",
-     "reasoning": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi — kılavuzdan teyit edilmeli"
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
     },
     {
      "field": "typography.headings.1.numbering",
@@ -88,30 +301,9 @@
      "reasoning": "Kaynak bu başlık düzeyi için numara biçimi belirtmiyor (Word'de numaralandırması olmayan başlık stili numarasızdır); motor yedeği yalnız düzeyin kendi sayacını yazıp numaraları tekrar ettireceği için numarasız kaydedildi."
     }
    ],
-   "conflicts": [
-    {
-     "field": "tables.position",
-     "measured": "above",
-     "guide": "below",
-     "guideSource": "DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf › sayfa 15: “• Tablo başlıklarının bir satıra sığmadığı durumlarda başlık alt satırda satır başından değil, tablo başlık yazısının başlama hizasından itibaren yazılmaya deva”"
-    },
-    {
-     "field": "page.numbering.align",
-     "measured": "center",
-     "guide": "right",
-     "guideSource": "DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf › sayfa 14: “• Sayfa numaraları sağa dayalı yazılmalıdır.”"
-    }
-   ],
-   "guide": "DEU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2025_v3.pdf",
-   "gate": {
-    "overall": "CONFLICT",
-    "results": {
-     "PASS": 30,
-     "CONFLICT": 2
-    },
-    "checkedAt": "2026-10-22",
-    "exportTool": "engine/tools/export.mjs"
-   }
+   "conflicts": [],
+   "guide": null,
+   "gate": null
   }
  },
  "page": {
@@ -168,7 +360,6 @@
     "spaceBeforePt": 0,
     "spaceAfterPt": 0,
     "keepWithNext": true,
-    "textTransform": "uppercase",
     "numbering": {
      "enabled": false,
      "format": "{1}",
@@ -224,10 +415,6 @@
    "mode": "word",
    "singleLineEm": 1.15,
    "baseline": "word"
-  },
-  "footnotes": {
-   "fontSizePt": 10,
-   "lineHeight": 1
   }
  },
  "placeholders": {
@@ -305,6 +492,26 @@
   },
   "PROJECT_SUPPORT": {
    "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
    "type": "text"
   }
  },
@@ -414,7 +621,7 @@
     {
      "type": "metadata",
      "field": "PROGRAM_NAME",
-     "fallback": "In Partial Fulfillment of the Requirements for the Degree of Doctor of Philosophy in Department of Select Department., Enter the program information. Program",
+     "fallback": "Program",
      "style": {
       "align": "center",
       "fontWeight": 700,
@@ -441,13 +648,14 @@
      "heightMm": 63.08
     },
     {
-     "type": "text",
-     "value": "Write the thesis publication date as month and year, 12 pt, bold and centered.",
+     "type": "metadata",
      "style": {
       "align": "center",
       "spaceBeforePt": 12,
       "spaceAfterPt": 12
-     }
+     },
+     "field": "MONTH_YEAR",
+     "fallback": "Month and year"
     },
     {
      "type": "text",
@@ -463,8 +671,8 @@
   },
   {
    "id": "front-page-2",
-   "type": "custom",
-   "title": "Ön sayfa 3",
+   "type": "approval",
+   "title": "Approval",
    "status": "required",
    "group": "front",
    "mode": "static",
@@ -496,7 +704,7 @@
     },
     {
      "type": "text",
-     "value": "We have read the thesis entitled “WRITE THE NAME OF THE THESIS IN CAPITAL, 12 POINT AND BOLD HERE.” completed by THESIS AUTHOR IN CAPITAL, 12 POINT, BOLD under supervision of SELECT TITLE. WRITE THE NAME OF THE SUPERVISOR IN CAPITAL, 12 POINT AND BOLD HERE. and we certify that in our opinion it is fully adequate, in scope and in quality, as a thesis for the degree of Doctor of Philosophy.",
+     "value": "We have read the thesis entitled “{{THESIS_TITLE}}” completed by {{STUDENT_NAME}} under supervision of {{ADVISOR_NAME}} and we certify that in our opinion it is fully adequate, in scope and in quality, as a thesis for the degree of Doctor of Philosophy.",
      "style": {
       "align": "justify",
       "spaceBeforePt": 10,
@@ -569,12 +777,13 @@
      "heightMm": 53.9
     },
     {
-     "type": "text",
-     "value": "Prof. Dr. Abdullah SEÇGİN",
+     "type": "metadata",
      "style": {
       "align": "center",
       "lineHeight": 1.5
-     }
+     },
+     "field": "INSTITUTE_DIRECTOR_NAME",
+     "fallback": "INSTITUTE_DIRECTOR_NAME"
     },
     {
      "type": "text",
@@ -595,6 +804,15 @@
    ]
   },
   {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
    "id": "bibliography",
    "type": "bibliography",
    "title": "REFERENCES",
@@ -609,15 +827,6 @@
      }
     }
    }
-  },
-  {
-   "id": "main-content",
-   "type": "mainContent",
-   "title": "Ana metin",
-   "status": "required",
-   "group": "body",
-   "mode": "editable",
-   "showTitle": false
   }
  ],
  "tables": {
@@ -659,8 +868,7 @@
    "fontSizePt": 12,
    "align": "left",
    "lineHeight": 1.5
-  },
-  "hangingIndentMm": 0
+  }
  },
  "toc": {
   "heading": "İÇİNDEKİLER",

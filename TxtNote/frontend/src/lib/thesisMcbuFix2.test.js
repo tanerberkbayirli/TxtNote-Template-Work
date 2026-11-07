@@ -28,14 +28,13 @@ describe("MCBÜ LEE fix 2: official example XML decisions", () => {
     assert.deepEqual(flat(layout).filter((node) => node.type === "spacer").map(pt), [16.1, 13.8, 124.2, 80.5, 69, 13.8]);
   });
 
-  it("C2: ÖZET and ABSTRACT bodies as the two example paragraphs show", () => {
+  it("C2: ÖZET and ABSTRACT bodies alike: single line (25.10.2026 decision, guide prose), 1.25 cm indent, one empty single line between paragraphs", () => {
     const model = compile();
-    const tr = section(model, "abstract").rules.body;
-    assert.deepEqual([tr.lineHeight, tr.align, tr.spaceAfterPt], [1.5, "justify", 10]);
-    near(tr.firstLineIndentMm, 12.5); near(tr.leftIndentMm, 0);
-    const en = section(model, "abstract-en").rules.body;
-    assert.deepEqual([en.lineHeight, en.align, en.spaceAfterPt, en.leftIndentMm], [1.5, "justify", 0, 0]);
-    near(en.firstLineIndentMm, 709 * TW);
+    for (const id of ["abstract", "abstract-en"]) {
+      const body = section(model, id).rules.body;
+      assert.deepEqual([body.lineHeight, body.align, body.spaceAfterPt], [1, "justify", 13.8], id);
+      near(body.firstLineIndentMm, 12.5); near(body.leftIndentMm, 0);
+    }
   });
 
   it("C1/C6: TOC chapter rows are the example's centred two-line rows, sub-entries indented by typed spaces", () => {

@@ -3,7 +3,8 @@ export const plainThesisText = (html) => String(html || "").replace(/<br\b[^>]*>
 /** Model identity annotations acknowledge an editor edit without replacing its
  * live DOM/caret or resetting undo. All authored text/format attributes still count. */
 export function sameThesisEditorProjection(left, right) {
-  const withoutIds = (html) => thesisSourceHtml(html).replace(/\sdata-txt-node-id=["'][^"']*["']/gi, "").replace(/(\sclass=["'])txn-[\w:-]+\s?/gi, "$1").replace(/\sclass=["']["']/gi, "");
+  // Citation labels/footnote form are presentation (citations.js): compare the stored citation, not its current label.
+  const withoutIds = (html) => storedCitationHtml(thesisSourceHtml(html)).replace(/\sdata-txt-node-id=["'][^"']*["']/gi, "").replace(/(\sclass=["'])txn-[\w:-]+\s?/gi, "$1").replace(/\sclass=["']["']/gi, "");
   const a = withoutIds(left), b = withoutIds(right);
   if (a === b) return true;
   if (typeof document === "undefined") return false;
@@ -13,6 +14,7 @@ export function sameThesisEditorProjection(left, right) {
 }
 
 import { stripMathPresentation } from "./contentMarkup.js";
+import { storedCitationHtml } from "./citations.js";
 
 /** Strip only presentation stamps. No DOM round trip (images may be multi-MB). */
 // A single edit asks for the same multi-MB projection several times (usedIds
@@ -30,8 +32,31 @@ export function thesisSourceHtml(html) {
   return result;
 }
 
+/**
+ * Word-justification runs (wordLineLayout.js) are transient spans around text. An atom inserted inside one (a citation,
+ * a footnote mark) nests elements in it, so a run is unwrapped by its own matching closing tag, not only when it holds text.
+ */
+const WORD_FIT_OPEN = /<span\b[^>]*\sdata-thesis-word-fit=["'][^"']*["'][^>]*>/i;
+function unwrapWordFitRuns(html) {
+  let out = String(html ?? "");
+  if (!out.includes("data-thesis-word-fit=")) return out;
+  for (let match = WORD_FIT_OPEN.exec(out); match; match = WORD_FIT_OPEN.exec(out)) {
+    const start = match.index, contentStart = start + match[0].length;
+    const tags = /<span\b[^>]*>|<\/span\s*>/gi;
+    tags.lastIndex = contentStart;
+    let depth = 1, close = null;
+    for (let tag = tags.exec(out); tag; tag = tags.exec(out)) {
+      depth += tag[0][1] === "/" ? -1 : 1;
+      if (!depth) { close = tag; break; }
+    }
+    if (!close) break;
+    out = out.slice(0, start) + out.slice(contentStart, close.index) + out.slice(close.index + close[0].length);
+  }
+  return out;
+}
+
 function computeThesisSourceHtml(html) {
-  return stripMathPresentation(html)
+  return unwrapWordFitRuns(stripMathPresentation(html))
     .replace(/<g\b[^>]*\sdata-thesis-group-text-layer(?:=["'][^"']*["'])?[^>]*>[\s\S]*?<\/g>/gi, '')
     .replace(/\svisibility=["']hidden["']\sdata-thesis-group-text-source(?:=["'][^"']*["'])?/gi, '')
     .replace(/(\sclass=)(["'])([^"']*)\2/gi, (all, head, quote, value) => {

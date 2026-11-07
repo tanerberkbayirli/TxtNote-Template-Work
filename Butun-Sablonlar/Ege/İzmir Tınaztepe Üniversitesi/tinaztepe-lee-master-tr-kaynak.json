@@ -1,0 +1,1150 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "tinaztepe-lee-master-tr-kaynak",
+ "universityId": "tinaztepe",
+ "universityName": "İzmir Tınaztepe Üniversitesi",
+ "instituteId": "lee",
+ "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
+  ],
+  "guideDocumentName": "TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+  "archivePath": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "3bccf3b2eea657a41b2ffae0dc06e16aa95e817fab6345b5f1741561e5ab33e5",
+  "evidence": {
+   "page.margins.leftMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+    "location": "paragraf 276",
+    "passage": "Tez metni her sayfanın sol kenarında 4 cm, alt ve üst kenarda 3cm ve sağ kenarlarda 2,5 cm boşluk kalacak şekilde tüm satırlar, “iki yana yaslı” formatta yazılmalıdır. Ana bölüm başlıklarını içeren sayfalarda üstten 7 cm boşluk bırakılmalıdır. Yazılar, şekiller ve çizelgeler metin bloğu dışına taşmamalıdır.",
+    "decision": "Normal sayfa kenarları; ana başlık sayfalarının 7 cm üst boşluğu ayrı istisnadır."
+   },
+   "typography.body.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+    "location": "paragraf 269",
+    "passage": "Tezdeki tüm metinler için “Times New Roman” yazı karakteri kullanılmalıdır. Tezde ana başlıklar “14 punto”, metin içeriği “12 punto” ve 1,5 satır aralığı, şekil, resim, tablo ve çizelge başlığı ve içeriği, özet, yabancı dilde özet, kaynaklar, ekler “10 punto” ve tüm dipnotlar ise 9 punto olmalıdır. Kaynaklar kısmında da her bir kaynak tek satır aralığı ile yazılmalı ve her kaynağın öncesinde tek satır paragraf boşluğu bırakılmalıdır.",
+    "decision": "Tınaztepe gövde 12; özet/kaynaklar için ayrı kurallar var."
+   },
+   "typography.body.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "justify",
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+    "locations": [
+     {
+      "value": "justify",
+      "location": "paragraf 276",
+      "sentence": "Tez metni her sayfanın sol kenarında 4 cm, alt ve üst kenarda 3cm ve sağ kenarlarda 2,5 cm boşluk kalacak şekilde tüm satırlar, “iki yana yaslı” formatta yazılmalıdır."
+     },
+     {
+      "value": "justify",
+      "location": "paragraf 284",
+      "sentence": "Yazım düzenini korumak amacı ile tüm satırlar iki yana yaslı formatta yazılmalıdır."
+     }
+    ]
+   },
+   "typography.paragraph.firstLineIndentMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 0,
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+    "locations": [
+     {
+      "value": 0,
+      "location": "paragraf 286",
+      "sentence": "Paragraf için girinti yapılmaz ve paragraflar arasında 6 nk boşluk bırakılmalıdır."
+     }
+    ]
+   },
+   "typography.paragraph.spaceAfterPt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 6,
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+    "locations": [
+     {
+      "value": 6,
+      "location": "paragraf 286",
+      "sentence": "Paragraf için girinti yapılmaz ve paragraflar arasında 6 nk boşluk bırakılmalıdır."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "REVIEWED_SOURCE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+    "location": "paragraf 279",
+    "passage": "Sayfa numaraları, metin alanının dışında, sayfanın alt ortasına yazılmalıdır, önünde ve arkasında parantez, çizgi gibi işaretler olmamalıdır. Yatay sayfalar da dikey sayfa gibi düşünülerek numara verilmelidir. Sayfa numaraları Times New Roman, 10 punto olmalıdır.Etik Beyan, Kabul ve Onay, Önsöz, Özet, Yabancı Dilde Özet, İçindekiler, Simgeler ve Kısaltmalar, Şekiller, Çizelgeler vb. gibi tez ön sayfalarını belirten sayfalar küçük harf Roma rakamları ile (ii, iii, iv, v,…) numaralandırılmalıdır. İç kapak ile ek sayfalar dışındaki tüm sayfalar numaralandırılmalıdır. Giriş bölümü ile başlayan tez ana metin sayfaları ise 1, 2, 3, 4, 5,… şeklinde numaralandırılmalıdır.",
+    "decision": "Sayfa numarası konum ve boyutu."
+   },
+   "typography.body.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+    "location": "paragraf 269",
+    "passage": "Tezdeki tüm metinler için “Times New Roman” yazı karakteri kullanılmalıdır. Tezde ana başlıklar “14 punto”, metin içeriği “12 punto” ve 1,5 satır aralığı, şekil, resim, tablo ve çizelge başlığı ve içeriği, özet, yabancı dilde özet, kaynaklar, ekler “10 punto” ve tüm dipnotlar ise 9 punto olmalıdır. Kaynaklar kısmında da her bir kaynak tek satır aralığı ile yazılmalı ve her kaynağın öncesinde tek satır paragraf boşluğu bırakılmalıdır.",
+    "decision": "Tınaztepe gövde 12; özet/kaynaklar için ayrı kurallar var."
+   },
+   "typography.body.lineHeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+    "location": "paragraf 269",
+    "passage": "Tezdeki tüm metinler için “Times New Roman” yazı karakteri kullanılmalıdır. Tezde ana başlıklar “14 punto”, metin içeriği “12 punto” ve 1,5 satır aralığı, şekil, resim, tablo ve çizelge başlığı ve içeriği, özet, yabancı dilde özet, kaynaklar, ekler “10 punto” ve tüm dipnotlar ise 9 punto olmalıdır. Kaynaklar kısmında da her bir kaynak tek satır aralığı ile yazılmalı ve her kaynağın öncesinde tek satır paragraf boşluğu bırakılmalıdır.",
+    "decision": "Tınaztepe gövde 12; özet/kaynaklar için ayrı kurallar var."
+   },
+   "page.margins.topMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+    "location": "paragraf 276",
+    "passage": "Tez metni her sayfanın sol kenarında 4 cm, alt ve üst kenarda 3cm ve sağ kenarlarda 2,5 cm boşluk kalacak şekilde tüm satırlar, “iki yana yaslı” formatta yazılmalıdır. Ana bölüm başlıklarını içeren sayfalarda üstten 7 cm boşluk bırakılmalıdır. Yazılar, şekiller ve çizelgeler metin bloğu dışına taşmamalıdır.",
+    "decision": "Normal sayfa kenarları; ana başlık sayfalarının 7 cm üst boşluğu ayrı istisnadır."
+   },
+   "page.margins.bottomMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+    "location": "paragraf 276",
+    "passage": "Tez metni her sayfanın sol kenarında 4 cm, alt ve üst kenarda 3cm ve sağ kenarlarda 2,5 cm boşluk kalacak şekilde tüm satırlar, “iki yana yaslı” formatta yazılmalıdır. Ana bölüm başlıklarını içeren sayfalarda üstten 7 cm boşluk bırakılmalıdır. Yazılar, şekiller ve çizelgeler metin bloğu dışına taşmamalıdır.",
+    "decision": "Normal sayfa kenarları; ana başlık sayfalarının 7 cm üst boşluğu ayrı istisnadır."
+   },
+   "page.margins.rightMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+    "location": "paragraf 276",
+    "passage": "Tez metni her sayfanın sol kenarında 4 cm, alt ve üst kenarda 3cm ve sağ kenarlarda 2,5 cm boşluk kalacak şekilde tüm satırlar, “iki yana yaslı” formatta yazılmalıdır. Ana bölüm başlıklarını içeren sayfalarda üstten 7 cm boşluk bırakılmalıdır. Yazılar, şekiller ve çizelgeler metin bloğu dışına taşmamalıdır.",
+    "decision": "Normal sayfa kenarları; ana başlık sayfalarının 7 cm üst boşluğu ayrı istisnadır."
+   },
+   "page.numbering.align": {
+    "status": "REVIEWED_SOURCE",
+    "value": "center",
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+    "location": "paragraf 279",
+    "passage": "Sayfa numaraları, metin alanının dışında, sayfanın alt ortasına yazılmalıdır, önünde ve arkasında parantez, çizgi gibi işaretler olmamalıdır. Yatay sayfalar da dikey sayfa gibi düşünülerek numara verilmelidir. Sayfa numaraları Times New Roman, 10 punto olmalıdır.Etik Beyan, Kabul ve Onay, Önsöz, Özet, Yabancı Dilde Özet, İçindekiler, Simgeler ve Kısaltmalar, Şekiller, Çizelgeler vb. gibi tez ön sayfalarını belirten sayfalar küçük harf Roma rakamları ile (ii, iii, iv, v,…) numaralandırılmalıdır. İç kapak ile ek sayfalar dışındaki tüm sayfalar numaralandırılmalıdır. Giriş bölümü ile başlayan tez ana metin sayfaları ise 1, 2, 3, 4, 5,… şeklinde numaralandırılmalıdır.",
+    "decision": "Sayfa numarası konum ve boyutu."
+   },
+   "page.numbering.style.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+    "location": "paragraf 279",
+    "passage": "Sayfa numaraları, metin alanının dışında, sayfanın alt ortasına yazılmalıdır, önünde ve arkasında parantez, çizgi gibi işaretler olmamalıdır. Yatay sayfalar da dikey sayfa gibi düşünülerek numara verilmelidir. Sayfa numaraları Times New Roman, 10 punto olmalıdır.Etik Beyan, Kabul ve Onay, Önsöz, Özet, Yabancı Dilde Özet, İçindekiler, Simgeler ve Kısaltmalar, Şekiller, Çizelgeler vb. gibi tez ön sayfalarını belirten sayfalar küçük harf Roma rakamları ile (ii, iii, iv, v,…) numaralandırılmalıdır. İç kapak ile ek sayfalar dışındaki tüm sayfalar numaralandırılmalıdır. Giriş bölümü ile başlayan tez ana metin sayfaları ise 1, 2, 3, 4, 5,… şeklinde numaralandırılmalıdır.",
+    "decision": "Sayfa numarası konum ve boyutu."
+   },
+   "page.numbering.style.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 10,
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+    "location": "paragraf 279",
+    "passage": "Sayfa numaraları, metin alanının dışında, sayfanın alt ortasına yazılmalıdır, önünde ve arkasında parantez, çizgi gibi işaretler olmamalıdır. Yatay sayfalar da dikey sayfa gibi düşünülerek numara verilmelidir. Sayfa numaraları Times New Roman, 10 punto olmalıdır.Etik Beyan, Kabul ve Onay, Önsöz, Özet, Yabancı Dilde Özet, İçindekiler, Simgeler ve Kısaltmalar, Şekiller, Çizelgeler vb. gibi tez ön sayfalarını belirten sayfalar küçük harf Roma rakamları ile (ii, iii, iv, v,…) numaralandırılmalıdır. İç kapak ile ek sayfalar dışındaki tüm sayfalar numaralandırılmalıdır. Giriş bölümü ile başlayan tez ana metin sayfaları ise 1, 2, 3, 4, 5,… şeklinde numaralandırılmalıdır.",
+    "decision": "Sayfa numarası konum ve boyutu."
+   },
+   "sections.source-form-404388": {
+    "status": "MEASURED",
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Ek1_Dis_Kapak.docx",
+    "sourceSha256": "31decb3c654dcb75869e60d9c0538310297fa59253c1e60345a198681b4e6773",
+    "location": "ön sayfa 1",
+    "value": "outerCover"
+   },
+   "sections.source-form-c525b9": {
+    "status": "MEASURED",
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Ek4_Kabul_Onay.docx",
+    "sourceSha256": "e7984de0824593932da79ea02ac6418ca6b18810eba16c5f81cb983615ad8cbd",
+    "location": "ön sayfa 1",
+    "value": "approval"
+   },
+   "sections.source-form-c665fb": {
+    "status": "MEASURED",
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Ek5_Etik_Beyan.docx",
+    "sourceSha256": "b4549273f30bb01dc21a51825ff7dde032824819dcca9aa436799318ea6b3251",
+    "location": "ön sayfa 1",
+    "value": "declaration"
+   },
+   "sections.source-form-006b83": {
+    "status": "MEASURED",
+    "source": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Ek6_Kilavuza_Uygunluk.docx",
+    "sourceSha256": "c774428b68abe1162e41d1ffe4ffebc2c7000437f06c914cda436f2581675125",
+    "location": "ön sayfa 1",
+    "value": "custom"
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Ek12_Kaynaklar.docx",
+    "sha256": "e1040aa8a3e5f5840aa648a64b5ba7ef41175843e2a5d3388cfb4ce179b744db"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Ek13_Ozgecmis.docx",
+    "sha256": "b52290d7cdc3b413be4ad6f21c0e22bc16753ccf634bc92f5bfe1d75388b56b4"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Ek1_Dis_Kapak.docx",
+    "sha256": "31decb3c654dcb75869e60d9c0538310297fa59253c1e60345a198681b4e6773"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Ek2_Dis_Kapak_Sirt.docx",
+    "sha256": "d737c3e406f1cca0ddf454960ee19d8ddcac073cc7667249293287ba7bd92d11"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Ek4_Kabul_Onay.docx",
+    "sha256": "e7984de0824593932da79ea02ac6418ca6b18810eba16c5f81cb983615ad8cbd"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Ek5_Etik_Beyan.docx",
+    "sha256": "b4549273f30bb01dc21a51825ff7dde032824819dcca9aa436799318ea6b3251"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Ek6_Kilavuza_Uygunluk.docx",
+    "sha256": "c774428b68abe1162e41d1ffe4ffebc2c7000437f06c914cda436f2581675125"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Ek7_Ozet_Summary.docx",
+    "sha256": "4b0f03f7e7766dcfee39c9805f75067b08cd560d3450062ef9070f403ddeb947"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Ek8_Icindekiler.docx",
+    "sha256": "e6d7e37f2a4f142e122099f4caf1ce4df4e4885489923b02e276b426ac8fa35d"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Ek9_11_Dizin_Sayfalari.docx",
+    "sha256": "16408b64e92c2d3ac07854d0b17786e7df865eec037a4764c802de57af33f8c6"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Kontrol_Listesi.docx",
+    "sha256": "3282566de3da5cec9c634ddc56678112fe752a3277bc1fe192c1b5a24a882038"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Tınaztepe Üniversitesi/Lisansustu_Egitim_Enstitusu_Tez/TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+    "sha256": "3bccf3b2eea657a41b2ffae0dc06e16aa95e817fab6345b5f1741561e5ab33e5"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.body.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.paragraph.firstLineIndentMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.paragraph.spaceAfterPt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
+    },
+    {
+     "field": "sections.cover.illustration",
+     "value": "ön kapak sütunu",
+     "reasoning": "EK 1 omurga ve ön kapağı birlikte gösterir. Ön kapak ayrıldı; açık 5 aralık notu 14 punto × 1,5 Word satırı olarak uygulandı."
+    },
+    {
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
+    },
+    {
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
+    }
+   ],
+   "conflicts": [],
+   "guide": "TINAZTEPE_Lisansustu_Tez_Yazim_Kilavuzu.docx",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "margins": {
+   "leftMm": 40,
+   "topMm": 30,
+   "bottomMm": 30,
+   "rightMm": 25
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "center",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false,
+   "style": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 10
+   }
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "align": "justify",
+   "fontSizePt": 12,
+   "lineHeight": 1.5
+  },
+  "paragraph": {
+   "firstLineIndentMm": 0,
+   "spaceAfterPt": 6
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_NAME": {
+   "label": "Jury Member 1 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_NAME": {
+   "label": "Jury Member 2 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_NAME": {
+   "label": "Jury Member 3 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_NAME": {
+   "label": "Jury Member 4 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_NAME": {
+   "label": "Jury Member 5 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_INSTITUTION": {
+   "label": "Jury Member 1 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_INSTITUTION": {
+   "label": "Jury Member 2 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_INSTITUTION": {
+   "label": "Jury Member 3 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_INSTITUTION": {
+   "label": "Jury Member 4 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_INSTITUTION": {
+   "label": "Jury Member 5 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_NAME": {
+   "label": "Jury Member 6 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_NAME": {
+   "label": "Jury Member 7 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_INSTITUTION": {
+   "label": "Jury Member 6 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_INSTITUTION": {
+   "label": "Jury Member 7 Institution",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "source-form-404388",
+   "type": "outerCover",
+   "title": "Dış Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     },
+     "margins": {
+      "topMm": 24.99,
+      "bottomMm": 24.99,
+      "leftMm": 24.99,
+      "rightMm": 24.99
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "TÜRKİYE CUMHURİYETİ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "spaceAfterPt": 8,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "İZMİR TINAZTEPE ÜNİVERSİTESİ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "spaceAfterPt": 8,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "LİSANSÜSTÜ EĞİTİM ENSTİTÜSÜ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "spaceAfterPt": 8,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 42.6
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "style": {
+      "align": "center",
+      "fontSizePt": 16,
+      "fontWeight": 700,
+      "spaceAfterPt": 8,
+      "lineHeight": 1.5,
+      "textTransform": "uppercase"
+     },
+     "fallback": "Tez başlığı"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 15.27
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NAME",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "spaceAfterPt": 8,
+      "lineHeight": 1.5
+     },
+     "fallback": "Öğrenci adı soyadı"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.64
+    },
+    {
+     "type": "metadata",
+     "field": "DEPARTMENT_NAME",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "spaceAfterPt": 8,
+      "lineHeight": 1.5
+     },
+     "suffix": " ANABİLİM DALI",
+     "fallback": "Anabilim dalı"
+    },
+    {
+     "type": "text",
+     "value": "YÜKSEK LİSANS TEZİ",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "spaceAfterPt": 8,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 22.91
+    },
+    {
+     "type": "text",
+     "value": "İZMİR",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "spaceAfterPt": 8,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "YEAR",
+     "style": {
+      "align": "center",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "spaceAfterPt": 8,
+      "lineHeight": 1.5
+     },
+     "fallback": "Yıl"
+    }
+   ]
+  },
+  {
+   "id": "source-form-c525b9",
+   "type": "approval",
+   "title": "Kabul ve Onay",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     },
+     "margins": {
+      "topMm": 24.99,
+      "bottomMm": 24.99,
+      "leftMm": 24.99,
+      "rightMm": 24.99
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "Kabul ve Onay Sayfası.",
+     "style": {
+      "align": "left",
+      "fontSizePt": 11,
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 31.72
+    },
+    {
+     "type": "text",
+     "value": "KABUL VE ONAY SAYFASI",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.93
+    },
+    {
+     "type": "text",
+     "value": "{{ADVISOR_NAME}} danışmanlığında {{STUDENT_NAME}} tarafından hazırlanan {{DEPARTMENT_NAME}} Anabilim Dalı(varsa Programı)’nda yürütülen“…………………………………. ……………….. …… “ adlı tez çalışması Jürimiz tarafından İzmir Tınaztepe Üniversitesi, Lisansüstü Eğitim Enstitüsü yüksek lisans tezi olarak kabul edilmiştir.",
+     "style": {
+      "align": "left",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 15.86
+    },
+    {
+     "type": "text",
+     "value": "Danışman: Ünvan Adı Soyadı..………………….İmza………………………..Tarih",
+     "style": {
+      "align": "left"
+     }
+    },
+    {
+     "type": "text",
+     "value": "İzmir Tınaztepe Üniversitesi",
+     "style": {
+      "align": "left"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.93
+    },
+    {
+     "type": "text",
+     "value": "Üye : Ünvan. Adı Soyadı…………………….İmza………………………..Tarih",
+     "style": {
+      "align": "left",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "text",
+     "value": "………………..Üniversitesi",
+     "style": {
+      "align": "left",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.93
+    },
+    {
+     "type": "text",
+     "value": "Üye: Ünvan Adı Soyadı.……………………….İmza………………………..Tarih",
+     "style": {
+      "align": "left",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "text",
+     "value": "…………......... Üniversitesi",
+     "style": {
+      "align": "left",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 15.86
+    },
+    {
+     "type": "text",
+     "value": "İzmir Tınaztepe Üniversitesi, Lisansüstü Eğitim Enstitüsü Yönetim Kurulu’nun ..../..../....... tarih ve ........... sayılı kararıyla onaylanmıştır.",
+     "style": {
+      "align": "left",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.93
+    },
+    {
+     "type": "metadata",
+     "style": {
+      "align": "center",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     },
+     "field": "INSTITUTE_DIRECTOR_NAME",
+     "fallback": "INSTITUTE_DIRECTOR_NAME"
+    },
+    {
+     "type": "text",
+     "value": "Lisansüstü Eğitim Enstitüsü Müdürü",
+     "style": {
+      "align": "left",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "text",
+     "value": "Tarih-İmza",
+     "style": {
+      "align": "left",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    }
+   ]
+  },
+  {
+   "id": "source-form-c665fb",
+   "type": "declaration",
+   "title": "Etik Beyan",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     },
+     "margins": {
+      "topMm": 24.99,
+      "bottomMm": 24.99,
+      "leftMm": 24.99,
+      "rightMm": 24.99
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "ETİK BEYAN",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.93
+    },
+    {
+     "type": "text",
+     "value": "İzmir Tınaztepe Üniversitesi",
+     "style": {
+      "align": "center",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "text",
+     "value": "Lisansüstü Eğitim Enstitüsü Müdürlüğü’ne",
+     "style": {
+      "align": "center",
+      "fontWeight": 700
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.73
+    },
+    {
+     "type": "spacer",
+     "heightMm": 4.73
+    },
+    {
+     "type": "text",
+     "value": "yüksek lisans tezi olarak hazırlayıp sunduğum {{THESIS_TITLE}} başlıklı tezin tasarımı, hazırlanması, yürütülmesi ve tüm araştırma aşamalarında verilerin elde edilmesi ve yorumlanmasında bilimsel etik ve değerlere, akademik kurallara uyularak tarafımdan yazıldığını ve sonuçların tam olarak aktarıldığını beyan ederim. Tez içerisinde yararlandığım ve başkalarına ait olan bilgi, veri, materyaller için ilgili eserlere bilimsel etik ve kurallar doğrultusunda atıfta bulunduğumu ve uygun şekilde kaynak gösterilerek alıntılandığını beyan ederim.",
+     "style": {
+      "align": "left"
+     }
+    },
+    {
+     "type": "text",
+     "value": "Yukarıda belirtilen hususların doğruluğunu beyan ederim.",
+     "style": {
+      "align": "left"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 14.2
+    },
+    {
+     "type": "text",
+     "value": "Tez Öğrencisin Adı Soyadı:",
+     "style": {
+      "align": "left"
+     }
+    },
+    {
+     "type": "text",
+     "value": "Tarih:",
+     "style": {
+      "align": "left"
+     }
+    },
+    {
+     "type": "text",
+     "value": "İmza:",
+     "style": {
+      "align": "left"
+     }
+    }
+   ]
+  },
+  {
+   "id": "source-form-006b83",
+   "type": "custom",
+   "title": "Kılavuza Uygunluk",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     },
+     "margins": {
+      "topMm": 24.99,
+      "bottomMm": 24.99,
+      "leftMm": 24.99,
+      "rightMm": 24.99
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "spacer",
+     "heightMm": 23.79
+    },
+    {
+     "type": "text",
+     "value": "Tez Yazım Kılavuzuna Uygunluk Sayfası",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.93
+    },
+    {
+     "type": "text",
+     "value": "{{THESIS_TITLE}} adlı tez çalışması İzmir Tınaztepe Üniversitesi Lisansüstü Eğitim Enstitüsü Tez Önerisi ve Tez Yazım Kılavuzuna uygun olarak hazırlanmıştır.",
+     "style": {
+      "align": "left",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 7.93
+    },
+    {
+     "type": "text",
+     "value": "Tezi HazırlayanDanışman",
+     "style": {
+      "align": "left",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "text",
+     "value": "İmzaUnvan-İmza",
+     "style": {
+      "align": "left",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 15.86
+    },
+    {
+     "type": "text",
+     "value": "Anabilim Dalı Başkanı",
+     "style": {
+      "align": "left",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    },
+    {
+     "type": "text",
+     "value": "Unvan-İmza",
+     "style": {
+      "align": "left",
+      "spaceAfterPt": 8,
+      "lineHeight": 1.079
+     }
+    }
+   ]
+  },
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖNSÖZ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "TABLOLAR DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "curriculum-vitae",
+   "type": "curriculumVitae",
+   "title": "ÖZGEÇMİŞ",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

@@ -12,14 +12,15 @@ const flowHeight = (pages, metrics) => pages * metrics.contentHeightPx + (pages 
 const labelsOf = (model) => Object.fromEntries(model.map((entry) => [entry.groupId, entry.pages.map((page) => page.label)]));
 
 describe("thesis pagination page model", () => {
-  it("does not allocate sheets or consume numbering for empty scaffolds, but keeps explicit blank pages and media", () => {
+  it("numbers the empty main body as a page, does not allocate sheets for other empty scaffolds, and keeps explicit blank pages and media", () => {
     for (const html of ["", "<p><br></p>", "<div><p>&nbsp;\u200b</p></div>", '<span data-pagination-sentinel="true"></span>']) {
       const groups = groupsOf(generic, {}, html);
       const main = groups.find(group => group.id === "main");
-      assert.equal(thesisGroupHasPageContent(main), false);
-      const pages = labelsOf(buildThesisPageModel(groups, { main: 7 }));
-      assert.deepEqual(pages.main, []);
-      assert.deepEqual(pages.bibliography, ["1"]);
+      // The main body is the writing area: it is a numbered page even while empty (25.10.2026 decision); other empty scaffolds are still not pages.
+      assert.equal(thesisGroupHasPageContent(main), true);
+      const pages = labelsOf(buildThesisPageModel(groups, { main: 1 }));
+      assert.deepEqual(pages.main, ["1"]);
+      assert.deepEqual(pages.bibliography, ["2"]);
     }
     for (const html of ['<div class="academic-page-break"></div>', '<div data-academic-page-break="true"></div>', '<img src="x">', '<table><tr><td></td></tr></table>', '<h1>A chapter</h1>']) {
       const groups = groupsOf(generic, {}, html);
@@ -99,7 +100,7 @@ describe("thesis pagination page model", () => {
     const odd = group("odd", "oddPage");
     assert.deepEqual(buildThesisPageModel([odd], { odd: 1 })[0].pages.map((page) => page.label), ["1"], "the first physical page is already odd, so it needs no padding");
     let numbers = buildThesisPageModel([prior, odd], { prior: 1, odd: 1 });
-    assert.deepEqual(numbers.map((entry) => entry.pages.map((page) => page.label)), [["1"], ["", "3"]]);
+    assert.deepEqual(numbers.map((entry) => entry.pages.map((page) => page.label)), [["1"], ["2", "3"]]); // the parity sheet prints its own counted number (25.10.2026 decision)
     assert.deepEqual(numbers.flatMap((entry) => entry.pages.map((page) => page.physicalIndex)), [0, 1, 2]);
     assert.deepEqual(numbers[1].pages.map((page) => page.blank), [true, false]);
     assert.equal(numbers[1].pages[0].showHeader, false);
@@ -117,11 +118,11 @@ describe("thesis pagination page model", () => {
     assert.deepEqual(numbers.map((entry) => entry.pages.map((page) => page.label)), [["1", "2"], ["3"]], "an even number of preceding sheets needs no padding");
 
     numbers = buildThesisPageModel([prior, odd], { prior: 3, odd: 2 });
-    assert.deepEqual(numbers[1].pages.map((page) => page.label), ["", "5"], "a multi-page predecessor gets one blank after its final odd sheet");
+    assert.deepEqual(numbers[1].pages.map((page) => page.label), ["4", "5"], "a multi-page predecessor gets one blank after its final odd sheet");
 
     const restarted = { ...odd, rules: { page: { numbering: { ...odd.rules.page.numbering, restart: true, startAt: 1 }, header: {}, footer: {} } } };
     numbers = buildThesisPageModel([prior, restarted], { prior: 1, [restarted.id]: 2 });
-    assert.deepEqual(numbers[1].pages.map((page) => page.label), ["", "1"], "the parity sheet is counted before, not under, the new numbering sequence");
+    assert.deepEqual(numbers[1].pages.map((page) => page.label), ["2", "1"], "the parity sheet is counted before, not under, the new numbering sequence");
   });
 
   it("adds odd-page start to the first flow column without changing legacy breaks", () => {

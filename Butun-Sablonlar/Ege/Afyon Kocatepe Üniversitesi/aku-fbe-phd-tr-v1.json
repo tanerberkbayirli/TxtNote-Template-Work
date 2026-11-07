@@ -269,13 +269,15 @@
    "minItems": 4,
    "separator": ",",
    "severity": "warning",
-   "message": "Anahtar Kelimeler 4-6 tane olmalı ve virgülle ayrılmalıdır."
+   "message": "Anahtar Kelimeler 4-6 tane olmalı ve virgülle ayrılmalıdır.",
+   "maxItems": 6
   },
   "KEYWORDS_EN": {
    "minItems": 4,
    "separator": ",",
    "severity": "warning",
-   "message": "Keywords 4-6 tane olmalı ve virgülle ayrılmalıdır."
+   "message": "Keywords 4-6 tane olmalı ve virgülle ayrılmalıdır.",
+   "maxItems": 6
   }
  },
  "templateVersion": "1.0.0",
@@ -287,13 +289,13 @@
  "status": "official",
  "source": {
   "type": "official",
-  "documentName": "AKÜ Fen Bilimleri Enstitüsü Tez Yazım Kılavuzu (2020) — AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf; AKU_Fen_Bilimleri_Tez_Sablonu_2025.docx",
-  "revisionDate": "2020-01 (kılavuz, Ocak 2020'den itibaren geçerli); şablon dosyası 2025-01-23",
-  "verifiedAt": "2026-09-28",
+  "documentName": "AKÜ Fen Bilimleri Enstitüsü Tez Yazım Kılavuzu (2020); resmî Word şablonu (2023)",
+  "revisionDate": "Kılavuz Ocak 2020; resmî sitede halen bağlantısı verilen Word şablonu Aralık 2023 (24.10.2026 doğrulandı)",
+  "verifiedAt": "2026-10-24",
   "notes": [
-   "Kılavuz 2020, şablon dosyası 2025: şablon, kılavuzla birlikte hazırlanan 2019/2020 şablonunun yeniden kaydıdır; daha yeni bir kural seti yoktur (flag guide-template-version-gap). Şablondaki 2019/2020 yılları ve müdür adı (Prof. Dr. Bekir YALÇIN) örnek içeriktir, basılmaz.",
+   "Canlı resmî sayfa 24.10.2026 tarihinde 2020 kılavuzuna ve Aralık 2023 Word şablonuna bağlantı vermektedir; bu dosyaların SHA-256 değerleri currentVerification içinde kayıtlıdır. Klasördeki 2025 yeniden kaydı güncel resmî bağlantı değildir; yardımcı karşılaştırma olarak korunur. Şablondaki örnek yıllar ve müdür adı kullanıcı verisi yerine basılmaz.",
    "Öncelik: kılavuzun açık cümlesi > şablon XML > kılavuzdaki örnek sayfa geometrisi. Sol/üst/sağ/alt kenar boşlukları 3 cm (kılavuzun kendi sayfalarında sağ kenar 28,9 mm; açık kural ve şablon 30 mm).",
-   "ÖZET/ABSTRACT: 15.10.2026 kullanıcı izniyle Temmuz 2026 Bilgehan ve Çakal tezleri örnek alındı: yıl/sayfa → Anahtar Kelimeler. Resmî şablon ve kılavuz örnekleri de bu sıradadır; p.18 düzyazısı karşı kanıt olarak korunur. ÖZGEÇMİŞ, EKLER'den önce gelir (kılavuzun sıra listesi, İçindekiler örneği ve şablon; metin 'en son sayfa' der, needsConfirmation).",
+   "ÖZET/ABSTRACT: §4.2.5 (PDF s.18) açık metni uygulanır: özet metni → 1 boş satır → Anahtar Kelimeler/Keywords → 1 boş satır → savunma yılı ve sayfa sayısı. Şablon/örnek sayfaların ters sırası ve 15.10.2026 örnek-tez tercihi bu güncel kılavuz denetiminde esas alınmaz. ÖZGEÇMİŞ/EKLER sırası için §4.1 açık sıralama listesi (Özgeçmiş, sonra varsa Ekler) korunur.",
    "Onay sayfası: şablon (dış kenarlar 27,32-178,91 mm, 14,29 mm jüri aralığı, müdür adı sırası) kılavuz örneğinden (154 mm, 12,91 mm) önceliklidir; jüri satırlarının taban çizgileri şablon XML'inden hesaplanmıştır (INFERRED). Yüksek lisans varsayılanı Temmuz 2026 Bilgehan ve Çakal tezlerine göre 3 jüri satırıdır; 4-7. satırlar doldurulunca görünür. Doktorada mevcut 5 satır ve isteğe bağlı 6-7 korunur. 6-7. satırlara aynı kaynak satır düzeni INFERRED olarak uygulanır; uzun onay sayfasının sınır içinde kalacağı iddia edilmez.",
    "Enstitü müdürü adı düzenlenebilir alandır; 2019 örnek içeriği yazılmaz. Gri 'İmza' ipuçları şablondaki gibi (BFBFBF) basılır; basılıp basılmayacağı kaynakta belirtilmemiştir.",
    "Dış Kapak: fiziksel 1. sayfa, numarasız ve sayılmaz; metin yalnız x 55-155 mm, y 210-275 mm alanında, üstten hizalı (ilk taban çizgisi 215,53 mm, INFERRED); kapak kartonunun kendisi ve kenarlığı üretilmez. İsteğe bağlı satırlar (proje numarası, ikinci danışman) yoksa yuvasıyla birlikte çıkar (kaynak: belirsiz).",
@@ -307,8 +309,152 @@
    "Uzun tez başlıkları veya isteğe bağlı kapak/jüri bilgileri resmî kapak ve onay alanını aşabilir; çıktıyı baskıdan önce elle gözden geçirin. İç kapak tarihi ayrı sayfaya düşerse PDF'yi kontrol edin.",
    "Dikey ritim tek tabloda (blockGap.js): paragraf, başlık, şekil, çizelge, çizelge notu, liste ve denklem arasındaki boşluk hem editörde/PDF'de hem Word'de aynı tablodan gelir. Liste paragrafları, gövde paragrafları gibi, sonrasında bir boş satır (20,7 pt) bırakır. Denklem tek satırlıksa taban çizgisi önceki/sonraki bloğa 14,6 mm uzaktadır; uzun (kesir, toplam, integral) denklemler kendi satır kutusunu kullanır ve aralığı büyütür (Word'de de). Denklem sayfa başındaysa 33,95 mm'de başlar.",
    "DOCX: içindekiler ve dizin satırlarının sayfa numaraları PAGEREF alanlarıdır (önbellekteki değer editörün etiketi); Word kendi sayfalamasında alanları günceller, LibreOffice ön ekli (i, ii) etiketleri sade rakam gösterebilir. Bölünen çizelgeler için '(Devam)' başlığı DOCX'te editörün sayfa kırılımında sabit metindir (Word kendi kırılımını yapar).",
-   "Kaynak dışı değerler: boşluk (widow/orphan) kılavuzda zorunlu, şablonun Normal stili kapalıdır (kılavuz uygulanır). H3/H4 Baş Harfleri Büyük biçimi örneklerden çıkarılmıştır (INFERRED)."
-  ]
+   "Kaynak dışı değerler: boşluk (widow/orphan) kılavuzda zorunlu, şablonun Normal stili kapalıdır (kılavuz uygulanır). H3/H4 Baş Harfleri Büyük biçimi örneklerden çıkarılmıştır (INFERRED).",
+   "24.10.2026 güncel kaynak denetimi: resmî sayfadan indirilen dosyalar SHA-256 ile doğrulandı. Çelişen örnek düzenleri yerine açık kılavuz metni esas alındı; kararlar currentVerification kaydındadır."
+  ],
+  "regionalAudit": {
+   "checkedAt": "2026-10-23",
+   "status": "CORE_RECHECKED",
+   "layoutRebuilt": false,
+   "visualConformanceRechecked": false,
+   "documents": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/AKU_FBE_Tez_Sablonu_online_2023.docx",
+     "sha256": "e067eb268e9e9696158f8aa9bd7c061c65cc998d3c0e7ef83a18eee05b6d7adc"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "sha256": "2532ade9908edd81e2bab5be4011395d05e8389a71b70a179890cb60598ae690"
+    }
+   ],
+   "checkedFields": [
+    {
+     "field": "typography.body.fontFamily",
+     "template": "Times New Roman",
+     "sourceValue": "Times New Roman",
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "evidence": [
+      {
+       "value": "Times New Roman",
+       "location": "sayfa 5",
+       "sentence": "Tezdeki tüm metinler için yazı karakteri “Times New Roman” olup, kullanılacak karakter büyüklüğü “İç Kapak” hariç tezin tamamında 12 punto olmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "template": 12,
+     "sourceValue": 12,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "evidence": [
+      {
+       "value": 12,
+       "location": "sayfa 5",
+       "sentence": "Tezdeki tüm metinler için yazı karakteri “Times New Roman” olup, kullanılacak karakter büyüklüğü “İç Kapak” hariç tezin tamamında 12 punto olmalıdır."
+      },
+      {
+       "value": 12,
+       "location": "sayfa 32",
+       "sentence": "KARAKTERİ VE 12 PUNTO"
+      }
+     ]
+    },
+    {
+     "field": "page.margins.topMm",
+     "template": 30,
+     "sourceValue": 30,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "evidence": [
+      {
+       "value": 30,
+       "location": "sayfa 5",
+       "sentence": "2.3 Kenar Boşlukları ve Sayfa Düzeni Yazımda sayfa kenarlarından 3 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "template": 30,
+     "sourceValue": 30,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "evidence": [
+      {
+       "value": 30,
+       "location": "sayfa 5",
+       "sentence": "2.3 Kenar Boşlukları ve Sayfa Düzeni Yazımda sayfa kenarlarından 3 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.leftMm",
+     "template": 30,
+     "sourceValue": 30,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "evidence": [
+      {
+       "value": 30,
+       "location": "sayfa 5",
+       "sentence": "2.3 Kenar Boşlukları ve Sayfa Düzeni Yazımda sayfa kenarlarından 3 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.rightMm",
+     "template": 30,
+     "sourceValue": 30,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "evidence": [
+      {
+       "value": 30,
+       "location": "sayfa 5",
+       "sentence": "2.3 Kenar Boşlukları ve Sayfa Düzeni Yazımda sayfa kenarlarından 3 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "template": 1.5,
+     "sourceValue": 1.5,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf",
+     "evidence": [
+      {
+       "value": 1.5,
+       "location": "sayfa 6",
+       "sentence": "3 yazımında 1,5 satır aralığı kullanılmalıdır."
+      },
+      {
+       "value": 1.5,
+       "location": "sayfa 22",
+       "sentence": "Satır aralıkları 1.5 satır olarak uygulanmalıdır."
+      }
+     ]
+    }
+   ],
+   "conflicts": []
+  },
+  "currentVerification": {
+   "checkedAt": "2026-10-24T14:33:37.232Z",
+   "page": "https://fenbil.aku.edu.tr/",
+   "files": [
+    {
+     "label": "Tez Yazım Kılavuzu",
+     "url": "https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2020/12/FBE-Tez-Yazim-Kilavuzu-2020_WEB_icin-3.pdf",
+     "sha256": "2532ade9908edd81e2bab5be4011395d05e8389a71b70a179890cb60598ae690",
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/AKU_Fen_Bilimleri_Tez_Yazim_Kilavuzu_2020.pdf"
+    },
+    {
+     "label": "Tez Yazım Şablonu (Word)",
+     "url": "https://fenbil.aku.edu.tr/wp-content/uploads/sites/115/2023/12/tez-word-sablon-2020_WEB_icin-2-1.docx",
+     "sha256": "e067eb268e9e9696158f8aa9bd7c061c65cc998d3c0e7ef83a18eee05b6d7adc",
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Fen_Bilimleri_Enstitusu_Tez/AKU_FBE_Tez_Sablonu_online_2023.docx"
+    }
+   ],
+   "precedence": "Explicit official guide requirements take precedence over illustrative examples; current official forms fill gaps not specified by guide text.",
+   "decisions": [
+    "§4.2.5 prose controls abstract footer order: keywords before year/page count.",
+    "§4.1 ordered section list controls CV before optional appendices; conflicting “last page” prose remains documented."
+   ]
+  }
  },
  "placeholders": {
   "UNIVERSITY_NAME": {
@@ -1792,9 +1938,11 @@
    "blocks": [
     {
      "type": "text",
-     "value": "{{DEFENSE_YEAR}}, {{FRONT_PAGES_ROMAN}} + {{MAIN_PAGES}} sayfa",
+     "markup": "inline",
+     "value": "**Anahtar Kelimeler:** {{KEYWORDS}}",
      "style": {
-      "fontWeight": 700
+      "align": "justify",
+      "hangingIndentMm": 37.52
      }
     },
     {
@@ -1803,11 +1951,9 @@
     },
     {
      "type": "text",
-     "markup": "inline",
-     "value": "**Anahtar Kelimeler:** {{KEYWORDS}}",
+     "value": "{{DEFENSE_YEAR}}, {{FRONT_PAGES_ROMAN}} + {{MAIN_PAGES}} sayfa",
      "style": {
-      "align": "justify",
-      "hangingIndentMm": 37.52
+      "fontWeight": 700
      }
     }
    ]
@@ -1955,9 +2101,11 @@
    "blocks": [
     {
      "type": "text",
-     "value": "{{DEFENSE_YEAR}}, {{FRONT_PAGES_ROMAN}} + {{MAIN_PAGES}} pages",
+     "markup": "inline",
+     "value": "**Keywords:** {{KEYWORDS_EN}}",
      "style": {
-      "fontWeight": 700
+      "align": "justify",
+      "hangingIndentMm": 25.51
      }
     },
     {
@@ -1966,11 +2114,9 @@
     },
     {
      "type": "text",
-     "markup": "inline",
-     "value": "**Keywords:** {{KEYWORDS_EN}}",
+     "value": "{{DEFENSE_YEAR}}, {{FRONT_PAGES_ROMAN}} + {{MAIN_PAGES}} pages",
      "style": {
-      "align": "justify",
-      "hangingIndentMm": 25.51
+      "fontWeight": 700
      }
     }
    ]

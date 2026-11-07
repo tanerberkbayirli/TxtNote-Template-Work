@@ -1,7 +1,7 @@
 import { Document, Packer, PageOrientation, SectionType, TabStopType, LeaderType, VerticalAlign } from "./docx/runtime.js";
 import { groupThesisSections, resolveChromeText } from "./engine.js";
 import { thesisGroupHasPageContent } from "./pageLayout.js";
-import { indexRowStyle, indexTargetMap } from "./generatedIndex.js";
+import { indexRowStyle, indexRowIncludesPageNumber, indexTargetMap, pageHeadingRowIndex } from "./generatedIndex.js";
 import { ENGINE_DEFAULT_HEADER_DISTANCE_MM, ENGINE_DEFAULT_TAB_STOP_MM } from "./engineDefaults.js";
 import { halfPointSize, twip } from "./docx/xml.js";
 import { headingStyle, listLevels, paragraphProps, runProps, thesisHeadingStyleId } from "./docx/paragraphs.js";
@@ -25,7 +25,7 @@ export async function buildThesisDocx(model, { presentationGeometry = {}, captio
   if (sourceDocx) return sourceDocx;
   const main = model.sections.find((section) => section.type === "mainContent") || model.sections[0];
   const base = main?.rules;
-  const nativeToc = model.sections.find((section) => section.generatedIndex?.kind === "toc");
+  const nativeToc = model.sections.find((section) => section.generatedIndex?.kind === "toc" && !model.manualToc?.enabled);
   const tocRowsByAnchor = new Map();
   const tocStyleLevels = [];
   const tocNoPageLevels = new Set();
@@ -34,7 +34,7 @@ export async function buildThesisDocx(model, { presentationGeometry = {}, captio
     const overrides = tocOverrides(nativeToc);
     const sourceProfiles = (nativeToc.indexRows || []).filter((row) => row.kind === "toc" && !row.tocTitle && !overrides.has(row.anchor)).map((row) => ({
       row,
-      includePageNumber: Boolean(rule.includePageNumbers) && indexRowStyle(rule, row)?.includePageNumber !== false,
+      includePageNumber: indexRowIncludesPageNumber(rule, row),
     }));
     const noPageProfiles = [...new Map(sourceProfiles.filter((profile) => !profile.includePageNumber).map((profile) => [Number(profile.row.level || 1), profile])).values()];
     if (noPageProfiles.length > 3) throw new Error("This thesis TOC has more than three distinct no-page heading levels; Word's remaining TOC levels cannot represent them faithfully.");
@@ -44,15 +44,18 @@ export async function buildThesisDocx(model, { presentationGeometry = {}, captio
       outputLevelByProfile.set(`${sourceLevel}:page`, sourceLevel);
     }
     noPageProfiles.forEach((profile, index) => outputLevelByProfile.set(`${Number(profile.row.level || 1)}:noPage`, 9 - index));
-    const withPage = row => Boolean(rule.includePageNumbers) && indexRowStyle(rule, row)?.includePageNumber !== false;
+    const withPage = row => indexRowIncludesPageNumber(rule, row);
     const normalLevel = row => row.tocTitle ? (withPage(row) ? Number(row.level || 1) : 9) : outputLevelByProfile.get(`${Number(row.level || 1)}:${withPage(row) ? 'page' : 'noPage'}`) || Number(row.level || 1);
+    // Rows up to the one carrying the "Sayfa" heading (pageHeadingPlacement "row") are written before Word's TOC field as
+    // fixed paragraphs without TC sources: a Word field refresh would otherwise rebuild them and drop the heading.
+    const staticRows = new Set((nativeToc.indexRows || []).slice(0, pageHeadingRowIndex(nativeToc.indexRows || [], rule) + 1).map((row) => row.anchor));
     const customRows = allocateTocOverrides(nativeToc.indexRows || [], overrides, (nativeToc.indexRows || []).filter(row => !overrides.has(row.anchor)).map(normalLevel), withPage);
     for (const row of nativeToc.indexRows || []) {
       if (!row.anchor) continue;
-      const includePageNumber = Boolean(rule.includePageNumbers) && indexRowStyle(rule, row)?.includePageNumber !== false;
+      const includePageNumber = indexRowIncludesPageNumber(rule, row);
       const custom = customRows.get(row.anchor);
       const wordTocLevel = custom?.wordTocLevel || normalLevel(row);
-      tocRowsByAnchor.set(row.anchor, { ...row, includePageNumber, wordTocLevel, ...custom });
+      tocRowsByAnchor.set(row.anchor, { ...row, includePageNumber, wordTocLevel, ...custom, ...(staticRows.has(row.anchor) ? { wordStatic: true } : {}) });
       if (!custom && !row.tocTitle && row.kind === "toc") {
         const id = thesisHeadingStyleId(row.level || 1, true, !includePageNumber);
         if (!tocStyleLevels.some((entry) => entry.id === id && entry.level === wordTocLevel)) tocStyleLevels.push({ id, level: wordTocLevel });

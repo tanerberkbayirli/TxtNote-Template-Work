@@ -1,6 +1,6 @@
-import { BorderStyle, ImageRun, HeightRule, LineRuleType, Paragraph, Table, TableAnchorType, TableCell, TableLayoutType, TableRow, TextRun, WidthType, VerticalAlign } from "./runtime.js";
+import { AlignmentType, BorderStyle, ImageRun, HeightRule, LineRuleType, Paragraph, Table, TableAnchorType, TableCell, TableLayoutType, TableRow, TextDirection, TextRun, WidthType, VerticalAlign } from "./runtime.js";
 import { PX_PER_MM } from "../pageLayout.js";
-import { SPECIAL_PAGE_MARGIN_SUFFIX, specialPageRowWidths, specialPageSpacerMinMm } from "../specialPages.js";
+import { SPECIAL_PAGE_MARGIN_SUFFIX, specialPageRowWidths, specialPageSpacerMinMm, walkSpecialPage } from "../specialPages.js";
 import { NO_BORDER, alignDocx, imageBytes, plainRuns, twip } from "./xml.js";
 import { docxParagraph, spacerParagraph } from "./paragraphs.js";
 import { positionedFlowTextBoxDocx, positionedLayoutDocx } from "../layoutDocx.js";
@@ -65,7 +65,7 @@ export function specialPageDocx(nodes, context, widthMm) {
       out.push(new Paragraph({ alignment: alignDocx(node.align), ...(node.leftIndentMm || node.rightIndentMm ? { indent: { left: twip(node.leftIndentMm || 0), right: twip(node.rightIndentMm || 0) } } : {}), spacing: { before: 0, after: 0, line: twip(node.heightMm), lineRule: LineRuleType.AT_LEAST }, children: [new ImageRun({ ...image, transformation: { width: node.widthMm * PX_PER_MM, height: node.heightMm * PX_PER_MM } })] }));
       gap(node.marginBottomMm);
     } else if (node.type === "text") {
-      const baseRuns = node.runs ? node.runs.map((run) => ({ type: "text", text: run.text, bold: run.bold, ...(run.fontFamily ? { fontFamily: run.fontFamily } : {}) })) : plainRuns(node.text);
+      const baseRuns = node.runs ? node.runs.map((run) => ({ type: "text", text: run.text, bold: run.bold, ...(run.italic ? { italic: true } : {}), ...(run.underline ? { underline: true } : {}), ...(run.strike ? { strike: true } : {}), ...(run.color ? { color: run.color } : {}), ...(run.highlight ? { highlight: run.highlight } : {}), ...(run.fontSizePt ? { fontSizePt: run.fontSizePt } : {}), ...(run.fontFamily ? { fontFamily: run.fontFamily } : {}) })) : plainRuns(node.text);
       // A "\n" in template or metadata text is a forced line break inside the same paragraph (the editor renders <br>):
       // every line keeps the paragraph's alignment. A raw newline in <w:t> would be read by Word as a space.
       const runs = baseRuns.flatMap((run) => (run.type === "text" && /\n/.test(run.text)
@@ -146,8 +146,29 @@ export function specialPageDocx(nodes, context, widthMm) {
       // docx.style names the Word border; docx.sides { top, right, bottom, left } may name another style per side (thickThin / thinThick).
       const edgeOf = (side) => ({ style: BorderStyle[(docx?.sides?.[side] || docx?.style || (innerPt > 0 ? "double" : "single")).replace(/([a-z])([A-Z])/g, "$1_$2").toUpperCase()] || BorderStyle.SINGLE, size: Math.round((docx?.sizePt ?? outerPt + gapPt + innerPt) * 8), color: color.slice(1).toUpperCase() });
       const inner = { ...node, border: undefined, marginTopMm: 0, marginBottomMm: 0 };
-      const cellWidth = widthMm;
-      out.push(new Table({
+      // An aligned fixed-width frame keeps its own width in Word (the editor sizes the frame, not the column).
+      const cellWidth = Number.isFinite(node.widthMm) && node.align ? Math.min(node.widthMm, widthMm) : widthMm;
+      const alignment = Number.isFinite(node.widthMm) && node.align ? { alignment: { left: AlignmentType.LEFT, center: AlignmentType.CENTER, right: AlignmentType.RIGHT }[node.align] } : {};
+      if (node.table) {
+        // `table`: the frame is one Word table, each child group a row (minHeightMm = at-least height, verticalAlign = cell
+        // alignment, vertical text = tbRl cell) with no rules between the rows; e.g. a thesis spine.
+        out.push(new Table({
+          width: { size: twip(cellWidth), type: WidthType.DXA }, layout: TableLayoutType.FIXED, columnWidths: [twip(cellWidth)], ...alignment,
+          borders: { top: edgeOf("top"), bottom: edgeOf("bottom"), left: edgeOf("left"), right: edgeOf("right"), insideHorizontal: NO_BORDER, insideVertical: NO_BORDER },
+          rows: node.blocks.map((child) => {
+            const vertical = [...walkSpecialPage([child])].some((item) => item.type === "text" && item.style?.writingMode === "vertical-rl");
+            return new TableRow({ cantSplit: true, ...(child.minHeightMm ? { height: { value: twip(child.minHeightMm), rule: HeightRule.ATLEAST } } : {}), children: [new TableCell({
+              width: { size: twip(cellWidth), type: WidthType.DXA }, margins: { top: twip(paddingMm), bottom: twip(paddingMm), left: twip(paddingMm), right: twip(paddingMm) },
+              ...(child.verticalAlign ? { verticalAlign: { top: VerticalAlign.TOP, center: VerticalAlign.CENTER, bottom: VerticalAlign.BOTTOM }[child.verticalAlign] } : {}),
+              ...(vertical ? { textDirection: TextDirection.TOP_TO_BOTTOM_RIGHT_TO_LEFT } : {}),
+              children: specialPageDocx([{ ...child, minHeightMm: undefined, verticalAlign: undefined, marginTopMm: 0, marginBottomMm: 0 }], context, cellWidth - 2 * paddingMm),
+            })] });
+          }),
+        }));
+        gap(node.marginBottomMm);
+        continue;
+      }
+      out.push(new Table({ ...alignment,
         width: { size: twip(cellWidth), type: WidthType.DXA }, layout: TableLayoutType.FIXED, columnWidths: [twip(cellWidth)],
         borders: { top: edgeOf("top"), bottom: edgeOf("bottom"), left: edgeOf("left"), right: edgeOf("right"), insideHorizontal: NO_BORDER, insideVertical: NO_BORDER },
         rows: [new TableRow({ cantSplit: true, children: [new TableCell({ width: { size: twip(cellWidth), type: WidthType.DXA }, margins: { top: twip(paddingMm), bottom: twip(paddingMm), left: twip(paddingMm), right: twip(paddingMm) }, children: specialPageDocx([inner], context, cellWidth - 2 * paddingMm) })] })],

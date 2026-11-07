@@ -1,0 +1,566 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "usak-dhf-specialization-tr-kaynak",
+ "universityId": "usak",
+ "universityName": "Uşak Üniversitesi",
+ "instituteId": "dhf",
+ "instituteName": "Diş Hekimliği Fakültesi",
+ "degreeType": "specialization",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
+  ],
+  "guideDocumentName": "USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Dis_Hekimligi_Fakultesi_Tez/USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "ef3592bf3959c8313e1742485fdbd16598ab1bed43421bcddcd1cf1f22d65e49",
+  "evidence": {
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Dis_Hekimligi_Fakultesi_Tez/USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": 30,
+      "location": "sayfa 30",
+      "sentence": "Kenar Boşlukları ve Sayfa Düzeni Her sayfanın sol kenarında 4 cm, alt ve üst kenarlarda 3 cm, sağ kenarında 2.5 cm boşluk bırakılmalıdır."
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 30,
+    "source": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Dis_Hekimligi_Fakultesi_Tez/USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": 30,
+      "location": "sayfa 30",
+      "sentence": "Kenar Boşlukları ve Sayfa Düzeni Her sayfanın sol kenarında 4 cm, alt ve üst kenarlarda 3 cm, sağ kenarında 2.5 cm boşluk bırakılmalıdır."
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Dis_Hekimligi_Fakultesi_Tez/USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": 40,
+      "location": "sayfa 30",
+      "sentence": "Kenar Boşlukları ve Sayfa Düzeni Her sayfanın sol kenarında 4 cm, alt ve üst kenarlarda 3 cm, sağ kenarında 2.5 cm boşluk bırakılmalıdır."
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Dis_Hekimligi_Fakultesi_Tez/USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 30",
+      "sentence": "Kenar Boşlukları ve Sayfa Düzeni Her sayfanın sol kenarında 4 cm, alt ve üst kenarlarda 3 cm, sağ kenarında 2.5 cm boşluk bırakılmalıdır."
+     }
+    ]
+   },
+   "typography.body.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Dis_Hekimligi_Fakultesi_Tez/USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+    "location": "sayfa 27",
+    "passage": "25 2. BİÇİM STANDARTLARI 2.1. Kullanılacak Kağıdın Niteliği Tezin yazılacağı kağıtlar, A4 standartlarında, 21 cm x 29.7 cm boyutlarında, 70-100 gram arası birinci hamur beyaz kağıt olmalıdır. 2.2. Yazım Ortamı Tezler, IBM veya Macintosh uyumlu bilgisayarda, geliştirilmiş bir kelime işlemci paket programı (Microsoft Word, AmiPro, MacWrite, WriteNow, Nisus gibi) kullanılarak yazılmalıdır ve kaliteli çıktı veren bir bilgisayar yazıcısından kağıdın yalnızca bir yüzüne basılmalıdır. 2.3. Yazıların Niteliği Tezin ana metni içinde Times New Roman yazı tipi (12 punto) ve tezin tamamında aynı yazı tipi kullanılmalıdır. Dipnotlar, çizelge ve şekillerde, sayfaya sığdırılabilmesi amacıyla aynı yazı tipinde 10 veya daha küçük puntolar kullanılabilir. Ana metin içinde koyu, italik, koyu italik ve alt çizilmesi gelişigüzel uygulanmamalı, bilim alanının özelliklerine göre kullanılmalıdır. Tüm yazılar siyah renkte olmalıdır. Noktalama işaretlerinden sonra bir karakter boşluk verilmelidir. Kimyasal formül ve ölçüm birimlerinde alt ve üst indisler genel yazım kurallarına uygun olmalıdır (H2O, cm3 gibi). Tezde süslü ve renkli font karakterleri kullanılmamalıdır. Tez Başlığı, Özet ve Abstract sayfaları, Yüksek Öğretim Kurulu Yayın ve Dokümantasyon Dairesi Tez Merkezi Tez Veri Tabanı’nın taranabilir alanlarına yüklenmektedir. Bu nedenle bu gibi metin alanları; italik yazı tipi, tablolar, şekiller, grafikler, fizik, kimya veya matematik formüllerinin, semboller, alt veya üst simgeler (subscript, superscript), Yunan harfleri veya diğer standart olmayan simge veya karakterler içermemelidir. İmlâ kurallarında ve noktalama işaretlerinde Türk Dil Kurumu’nun (TDK) yürürlükteki en son Yazım Kılavuzu esas alınır.",
+    "decision": "Uşak Diş ana metin kuralı."
+   },
+   "typography.body.lineHeight": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Dis_Hekimligi_Fakultesi_Tez/USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": 1.5,
+      "location": "sayfa 34",
+      "sentence": "Paragraf ve Satır Aralıkları Tezin ana metni 1.5 satır aralıkla yazılmalıdır."
+     }
+    ]
+   },
+   "typography.body.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "justify",
+    "source": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Dis_Hekimligi_Fakultesi_Tez/USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": "justify",
+      "location": "sayfa 30",
+      "sentence": "Metin iki yana yaslanmış olmalıdır."
+     }
+    ]
+   },
+   "typography.footnotes.lineHeight": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 1,
+    "source": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Dis_Hekimligi_Fakultesi_Tez/USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": 1,
+      "location": "sayfa 35",
+      "sentence": "Alıntılar, dipnotlar ve kaynaklarda satırlar arasında 1 satır aralık bulunmalıdır."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Dis_Hekimligi_Fakultesi_Tez/USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "sayfa 13",
+      "sentence": "Burada ana başlıklar ve alt Başlıklar numaralandırılarak, sayfa numarası ile bu bölümde verilir."
+     },
+     {
+      "value": "bottom",
+      "location": "sayfa 36",
+      "sentence": "Sayfa Numaraları Sayfa numaraları sayfa altında sağ kenar hizasına yazılmalıdır."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "right",
+    "source": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Dis_Hekimligi_Fakultesi_Tez/USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": "right",
+      "location": "sayfa 36",
+      "sentence": "Sayfa Numaraları Sayfa numaraları sayfa altında sağ kenar hizasına yazılmalıdır."
+     }
+    ]
+   },
+   "typography.body.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Dis_Hekimligi_Fakultesi_Tez/USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+    "location": "sayfa 27",
+    "passage": "25 2. BİÇİM STANDARTLARI 2.1. Kullanılacak Kağıdın Niteliği Tezin yazılacağı kağıtlar, A4 standartlarında, 21 cm x 29.7 cm boyutlarında, 70-100 gram arası birinci hamur beyaz kağıt olmalıdır. 2.2. Yazım Ortamı Tezler, IBM veya Macintosh uyumlu bilgisayarda, geliştirilmiş bir kelime işlemci paket programı (Microsoft Word, AmiPro, MacWrite, WriteNow, Nisus gibi) kullanılarak yazılmalıdır ve kaliteli çıktı veren bir bilgisayar yazıcısından kağıdın yalnızca bir yüzüne basılmalıdır. 2.3. Yazıların Niteliği Tezin ana metni içinde Times New Roman yazı tipi (12 punto) ve tezin tamamında aynı yazı tipi kullanılmalıdır. Dipnotlar, çizelge ve şekillerde, sayfaya sığdırılabilmesi amacıyla aynı yazı tipinde 10 veya daha küçük puntolar kullanılabilir. Ana metin içinde koyu, italik, koyu italik ve alt çizilmesi gelişigüzel uygulanmamalı, bilim alanının özelliklerine göre kullanılmalıdır. Tüm yazılar siyah renkte olmalıdır. Noktalama işaretlerinden sonra bir karakter boşluk verilmelidir. Kimyasal formül ve ölçüm birimlerinde alt ve üst indisler genel yazım kurallarına uygun olmalıdır (H2O, cm3 gibi). Tezde süslü ve renkli font karakterleri kullanılmamalıdır. Tez Başlığı, Özet ve Abstract sayfaları, Yüksek Öğretim Kurulu Yayın ve Dokümantasyon Dairesi Tez Merkezi Tez Veri Tabanı’nın taranabilir alanlarına yüklenmektedir. Bu nedenle bu gibi metin alanları; italik yazı tipi, tablolar, şekiller, grafikler, fizik, kimya veya matematik formüllerinin, semboller, alt veya üst simgeler (subscript, superscript), Yunan harfleri veya diğer standart olmayan simge veya karakterler içermemelidir. İmlâ kurallarında ve noktalama işaretlerinde Türk Dil Kurumu’nun (TDK) yürürlükteki en son Yazım Kılavuzu esas alınır.",
+    "decision": "Uşak Diş ana metin kuralı."
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Uşak Üniversitesi/Dis_Hekimligi_Fakultesi_Tez/USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+    "sha256": "ef3592bf3959c8313e1742485fdbd16598ab1bed43421bcddcd1cf1f22d65e49"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.body.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.lineHeight",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
+    },
+    {
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
+    }
+   ],
+   "conflicts": [],
+   "guide": "USAK_Dis_Hekimligi_Fakultesi_Tez_Yazim_Kilavuzu.pdf",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "margins": {
+   "topMm": 30,
+   "bottomMm": 30,
+   "leftMm": 40,
+   "rightMm": 25
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "right",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "lineHeight": 1.5,
+   "align": "justify",
+   "fontSizePt": 12
+  },
+  "footnotes": {
+   "lineHeight": 1
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_NAME": {
+   "label": "Jury Member 1 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_NAME": {
+   "label": "Jury Member 2 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_NAME": {
+   "label": "Jury Member 3 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_NAME": {
+   "label": "Jury Member 4 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_NAME": {
+   "label": "Jury Member 5 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_INSTITUTION": {
+   "label": "Jury Member 1 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_INSTITUTION": {
+   "label": "Jury Member 2 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_INSTITUTION": {
+   "label": "Jury Member 3 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_INSTITUTION": {
+   "label": "Jury Member 4 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_INSTITUTION": {
+   "label": "Jury Member 5 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_NAME": {
+   "label": "Jury Member 6 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_NAME": {
+   "label": "Jury Member 7 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_INSTITUTION": {
+   "label": "Jury Member 6 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_INSTITUTION": {
+   "label": "Jury Member 7 Institution",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "preface",
+   "type": "preface",
+   "title": "ÖNSÖZ",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-figures",
+   "type": "listOfFigures",
+   "title": "ŞEKİLLER DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "ŞEKİLLER DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "TABLOLAR DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "curriculum-vitae",
+   "type": "curriculumVitae",
+   "title": "ÖZGEÇMİŞ",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

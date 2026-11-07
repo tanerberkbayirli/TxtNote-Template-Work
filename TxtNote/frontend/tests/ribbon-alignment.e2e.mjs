@@ -111,19 +111,9 @@ try {
   near(inBox.width, 60, "box alignment preserves width");
   near(inBox.textRight, narrow.x + 60, "box right aligns within the box");
   await target("alignment-frame").click({ button: "right" });
-  await page.getByRole("menuitem", { name: "Sağa hizala", exact: true }).click();
-  near((await measure("alignment-frame")).x, bounds.right - 60, "single-object alignment moves the box to the page edge");
-  await target("alignment-frame").click({ button: "right" });
-  await page.getByRole("menuitem", { name: "Ortala", exact: true }).click();
-  near((await measure("alignment-frame")).x, 105 - 30, "single-object center actually moves the box");
-  const verticalBefore = await measure("alignment-frame");
-  for (const [label, y] of [["Üste hizala", 30], ["Alta hizala", 277 - 12], ["Dikey ortala", 148.5 - 6]]) {
-    await target("alignment-frame").click({ button: "right" });
-    await page.getByRole("menuitem", { name: label, exact: true }).click();
-    near((await measure("alignment-frame")).y, y, `${label} moves the single object`);
-    await page.getByRole("tabpanel").getByRole("button", { name: "Geri al (Ctrl+Z)" }).click();
-    near((await measure("alignment-frame")).y, verticalBefore.y, "undo restores vertical placement");
-  }
+  assert.equal(await page.getByRole("menu").locator("input,select").count(), 0, "format fields stay in the ribbon/inspector");
+  assert.equal(await page.getByRole("menuitem", { name: "Sağa hizala", exact: true }).count(), 0, "alignment is not duplicated in the compact menu");
+  await page.keyboard.press("Escape");
   await choose("alignment-frame");
   const ribbon = page.getByRole("tabpanel");
   await ribbon.getByRole("button", { name: "Üstü çizili", exact: true }).click();
@@ -134,7 +124,7 @@ try {
   assert.equal(await page.locator("[data-layout-selection-box]").count(), 2);
   assert.equal(await ribbon.getByRole("button", { name: "Kalın", exact: true }).isDisabled(), true, "multi-object selection cannot format the previous body");
   await target("alignment-frame").click({ button: "right" });
-  assert.equal(await page.getByRole("menuitem", { name: "Yatay dağıt", exact: true }).isDisabled(), true, "distribution needs three objects");
+  assert.equal(await page.getByRole("menuitem", { name: "Yatay dağıt", exact: true }).count(), 0, "multi-selection keeps the compact menu");
   await page.keyboard.press("Escape");
   await choose("alignment-frame");
   assert.match(await target("alignment-frame").evaluate((node) => getComputedStyle(node).textDecorationLine), /underline/);
@@ -143,7 +133,7 @@ try {
   assert.equal(await target("alignment-frame").evaluate((node) => getComputedStyle(node).textDecorationLine), "line-through", "sidebar underline toggle preserves strike");
   await target("alignment-frame").click({ button: "right" });
   const menu = page.getByRole("menu");
-  await menu.getByRole("button", { name: "Altı çizili", exact: true }).click();
+  assert.equal(await menu.getByRole("button", { name: "Altı çizili", exact: true }).count(), 0, "font toggles stay in the upper panel");
   assert.match(await target("alignment-frame").evaluate((node) => getComputedStyle(node).textDecorationLine), /line-through/);
   await page.keyboard.press("Escape");
   await ribbon.getByRole("button", { name: "Üstü çizili", exact: true }).click();

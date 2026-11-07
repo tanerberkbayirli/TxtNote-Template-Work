@@ -4,6 +4,7 @@
  * section bodies live in note.researchData.thesis. The template is only read.
  */
 import { thesisSourceHtml } from "./sourceHtml.js";
+import { storedCitationHtml } from "./citations.js";
 import { normalizeStaticFormat } from "./staticFormat.js";
 
 export function createThesisDocument(template, selection, year = new Date().getFullYear()) {
@@ -165,7 +166,8 @@ export function setThesisTextFormat(thesis, sectionId, kind, format) {
 /** Return a new note only for editable sections; never write into a template. */
 export function updateThesisNoteSection(note, section, html) {
   if (!isThesisSectionEditable(section)) return note;
-  const content = thesisSourceHtml(html);
+  // Citation labels are presentation (citations.js): the note keeps only which source a citation points to.
+  const content = storedCitationHtml(thesisSourceHtml(html));
   if (section.type === "mainContent") {
     return note.content === content ? note : { ...note, content };
   }

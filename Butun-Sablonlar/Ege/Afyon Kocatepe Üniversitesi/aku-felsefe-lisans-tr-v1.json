@@ -117,7 +117,74 @@
    "Atıf ve kaynakça (EXPLICIT): metin içinde APA alıntı sistemi, yazar-yıl: (Turhan, 2003: 40-51); kaynakça tezin sonunda KAYNAKÇA başlığı altında yazar soyadına göre alfabetik, yalnız tezde yararlanılanlar; açıklama için dipnot kullanılabilir. Kılavuzun kaynak örnekleri 'SOYAD, Ad. (Yıl), Başlık ...' biçimindedir; liste girintisi ve punto değerleri kılavuzda kural olarak verilmemiştir (UNKNOWN).",
    "UNKNOWN (üretilmez/uydurulmaz): Kapak çerçevesi (frame) ve yatay ortalama tabanı; source-defined heading typography/numbering (levels 1–4 use generic engine fallback of inherited body font/size, bold, unnumbered, not a source requirement); table/figure caption format and position; footnote style; page-number size; appendix layout; abstract (not in guide). Decimal numbering (1. / 1.1 / 1.1.1) is not a source requirement and is not imposed by this template.",
    "Teslim/fiziksel kurallar (A4 çıktı, A5 fotokopi ve cilt, danışman ve bölüm nüshası, değerlendirme puanları) belge biçimi değildir ve uygulanmadı."
-  ]
+  ],
+  "regionalAudit": {
+   "checkedAt": "2026-10-23",
+   "status": "CORE_RECHECKED",
+   "layoutRebuilt": false,
+   "visualConformanceRechecked": false,
+   "documents": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "sha256": "54e0dc8c0cd70dc7de36e4064565f0ac9aba4a429d53d48d0eaa12c2754a724b"
+    }
+   ],
+   "checkedFields": [
+    {
+     "field": "typography.body.fontFamily",
+     "template": "Times New Roman",
+     "sourceValue": "Times New Roman",
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "evidence": [
+      {
+       "value": "Times New Roman",
+       "location": "paragraf 30",
+       "sentence": "Times New Roman fontunda,"
+      }
+     ]
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "template": 12,
+     "sourceValue": 12.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "evidence": [
+      {
+       "value": 12.0,
+       "location": "paragraf 31",
+       "sentence": "12 puntoda,"
+      }
+     ]
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "template": 1.5,
+     "sourceValue": 1.5,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "evidence": [
+      {
+       "value": 1.5,
+       "location": "paragraf 32",
+       "sentence": "1,5 satır aralığında,"
+      }
+     ]
+    },
+    {
+     "field": "typography.body.firstLineIndentMm",
+     "template": 12.5,
+     "sourceValue": 12.5,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Lisans_Bitirme_Tezi_Yazim_Kilavuzu_2019.docx",
+     "evidence": [
+      {
+       "value": 12.5,
+       "location": "paragraf 33",
+       "sentence": "1,25 cm içeriden başlayan paragraf başı,"
+      }
+     ]
+    }
+   ],
+   "conflicts": []
+  }
  },
  "sections": [
   {

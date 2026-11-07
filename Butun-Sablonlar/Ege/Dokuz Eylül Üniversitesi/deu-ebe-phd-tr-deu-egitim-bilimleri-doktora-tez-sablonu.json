@@ -1,28 +1,283 @@
 {
  "schemaVersion": 1,
- "templateVersion": "0.1.0-draft",
+ "templateVersion": "0.2.0-source-rebuild",
  "id": "deu-ebe-phd-tr-deu-egitim-bilimleri-doktora-tez-sablonu",
  "universityId": "deu",
  "universityName": "Dokuz Eylül Üniversitesi",
  "instituteId": "ebe",
- "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "instituteName": "Eğitim Bilimleri Enstitüsü",
  "degreeType": "phd",
  "language": "tr",
  "status": "generic",
  "source": {
   "type": "official",
   "documentName": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx",
-  "verifiedAt": "2026-10-07",
+  "verifiedAt": "2026-10-23",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 07d2a2e6f3153f7ab2bcc00ec818c95bb867015f5cfb8db65e4f0c3f85f4b0b8",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Şablon yönergesi (Dış Kapak): İzmir YIL",
-   "Şablon yönergesi (Dış Kapak): ……………………………………….. ANA BİLİM DALI …………………………………………. PROGRAMI DOKTORA TEZİ TEZ BAŞLIĞI TEZ YAZARININ ADI SOYADI",
-   "tables: yazı konumu kılavuzda yok, motor varsayılanı (above)",
-   "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi",
-   "Kılavuz kuralları birleştirildi: DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx (1 alan, 2 çelişki)"
+   "Şablon yönergesi (Dış Kapak): ……………………………………….. ANA BİLİM DALI …………………………………………. PROGRAMI DOKTORA TEZİ TEZ BAŞLIĞI TEZ YAZARININ ADI SOYADI"
   ],
   "guideDocumentName": "DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx",
+  "archivePath": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx",
+  "rebuildKind": "docx-template",
+  "archiveSha256": "07d2a2e6f3153f7ab2bcc00ec818c95bb867015f5cfb8db65e4f0c3f85f4b0b8",
+  "evidence": {
+   "page.margins": {
+    "value": {
+     "topMm": 40,
+     "bottomMm": 25,
+     "leftMm": 40,
+     "rightMm": 25
+    },
+    "source": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx › sectPr#3 (gövde bölümü, 220 paragraf) › w:pgMar",
+    "status": "MEASURED"
+   },
+   "page.size": {
+    "value": [
+     210,
+     297
+    ],
+    "source": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx › sectPr#3 (gövde bölümü, 220 paragraf) › w:pgSz",
+    "status": "MEASURED"
+   },
+   "page.numbering": {
+    "value": {
+     "enabled": true,
+     "position": "top",
+     "align": "right",
+     "format": "arabic",
+     "startAt": 1,
+     "restart": false
+    },
+    "source": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx › sectPr#3 (gövde bölümü, 220 paragraf) › header PAGE alanı, w:pgNumType",
+    "status": "MEASURED"
+   },
+   "page.header.distanceMm": {
+    "value": 12.51,
+    "source": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx › sectPr#3 (gövde bölümü, 220 paragraf) › w:pgMar/@w:header",
+    "status": "MEASURED"
+   },
+   "typography.body": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 11,
+     "align": "justify",
+     "lineHeight": 1.5
+    },
+    "source": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx › gövde profili: 14/25 paragraf (≥200 karakter), 3 farklı biçim",
+    "status": "MEASURED"
+   },
+   "typography.headings.1": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 14,
+     "fontWeight": 700,
+     "align": "center",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 6,
+     "spaceAfterPt": 6,
+     "textTransform": "uppercase",
+     "keepWithNext": true
+    },
+    "source": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx › 11/11 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.2": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "center",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 8,
+     "spaceAfterPt": 6,
+     "textTransform": "uppercase",
+     "keepWithNext": true
+    },
+    "source": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx › 2/3 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.3.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}.{2}.{3}"
+    },
+    "source": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.3": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 11,
+     "fontWeight": 700,
+     "align": "justify",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 6,
+     "spaceAfterPt": 6,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}"
+     },
+     "keepWithNext": true
+    },
+    "source": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx › 15/15 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "figures": {
+    "value": {
+     "label": "Şekil",
+     "position": "below",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 11,
+      "fontWeight": 400,
+      "align": "justify",
+      "lineHeight": 1.5
+     },
+     "numbering": {
+      "scope": "document",
+      "format": "{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx › 1/1 yazı; etiket sayımı {'Şekil': 1}",
+    "status": "MEASURED"
+   },
+   "typography.footnotes": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 10,
+     "lineHeight": 1,
+     "align": "justify",
+     "placement": "pageBottom"
+    },
+    "source": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx › stil DipnotMetni + settings.xml footnotePr",
+    "status": "MEASURED"
+   },
+   "sections.cover": {
+    "value": "1 blok, outerCover",
+    "source": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx › ön sayfa #0: ",
+    "status": "MEASURED"
+   },
+   "sections.declaration": {
+    "value": "7 blok, declaration",
+    "source": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx › ön sayfa #1: ETİK İLKE VE KURALLARA UYGUNLUK BEYANNAMESİ / Doktora tezi olarak sunduğum “…………",
+    "status": "MEASURED"
+   },
+   "sections.front-page-2": {
+    "value": "1 blok, custom",
+    "source": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx › ön sayfa #2: TEZ ÇALIŞMASI ORJİNALLİK RAPORU",
+    "status": "MEASURED"
+   },
+   "sections": {
+    "value": [
+     "outerCover",
+     "declaration",
+     "custom",
+     "acknowledgements",
+     "tableOfContents",
+     "listOfTables",
+     "listOfFigures",
+     "mainContent",
+     "bibliography",
+     "appendices"
+    ],
+    "source": "DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx › 8 birinci düzey başlık, 4 fiziksel bölüm",
+    "status": "MEASURED"
+   },
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": 40,
+      "location": "paragraf 81",
+      "sentence": "Kenar boşlukları üst ve soldan 4 cm, sağ ve alttan 2,5 cm seçilmelidir."
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": 25,
+      "location": "paragraf 81",
+      "sentence": "Kenar boşlukları üst ve soldan 4 cm, sağ ve alttan 2,5 cm seçilmelidir."
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": 40,
+      "location": "paragraf 81",
+      "sentence": "Kenar boşlukları üst ve soldan 4 cm, sağ ve alttan 2,5 cm seçilmelidir."
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": 25,
+      "location": "paragraf 81",
+      "sentence": "Kenar boşlukları üst ve soldan 4 cm, sağ ve alttan 2,5 cm seçilmelidir."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "top",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": "top",
+      "location": "paragraf 120",
+      "sentence": "Sayfa numaraları sağ üst köşeye yazılır."
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "right",
+    "source": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx",
+    "locations": [
+     {
+      "value": "right",
+      "location": "paragraf 120",
+      "sentence": "Sayfa numaraları sağ üst köşeye yazılır."
+     }
+    ]
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/DEU_Egitim_Bilimleri_APA7_Kaynak_Gosterme_2021.pdf",
+    "sha256": "0a61b915d5d8ec7203b030ff795277702a84fee2df4a5a925fdfdfbc4d83ec25"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/DEU_Egitim_Bilimleri_Doktora_Tez_Sablonu_2025-11-10.docx",
+    "sha256": "07d2a2e6f3153f7ab2bcc00ec818c95bb867015f5cfb8db65e4f0c3f85f4b0b8"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx",
+    "sha256": "dca4d6aca9e4d522654f2a991c4b00a0bd8916b127853f48ae8a2c84c7a09ab8"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/DEU_Egitim_Bilimleri_Yuksek_Lisans_Tez_Sablonu_2025-11-10.docx",
+    "sha256": "fa72c5eec8bb1433c15b025ce20e0583538cd22f581ce81386019f38717bc9fd"
+   }
+  ],
   "review": {
    "unknown": [
     {
@@ -30,12 +285,40 @@
      "reason": "Belgede 4. düzey başlık stili veya örneği yok"
     },
     {
-     "field": "bibliography.hangingIndentMm",
-     "reason": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi"
+     "field": "tables",
+     "reason": "Belgede örnek çizelge/tablo yazısı yok"
     },
     {
-     "field": "tables.position",
-     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
     }
    ],
    "inferred": [
@@ -80,24 +363,9 @@
      "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
     },
     {
-     "field": "tables.position",
-     "value": "above",
-     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
-    },
-    {
-     "field": "tables.style.fontSizePt",
-     "value": "11",
-     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
-    },
-    {
-     "field": "tables.numbering",
-     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
-     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
-    },
-    {
-     "field": "bibliography.hangingIndentMm",
-     "value": "0",
-     "reasoning": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi — kılavuzdan teyit edilmeli"
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
     },
     {
      "field": "typography.headings.1.numbering",
@@ -112,28 +380,14 @@
    ],
    "conflicts": [
     {
-     "field": "typography.body.fontSizePt",
-     "measured": "11",
-     "guide": "12",
-     "guideSource": "DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx › paragraf 82: “Yazı tipi Times New Roman ve metin içerisi yazı büyüklüğü 11 punto olmalıdır.”"
-    },
-    {
      "field": "typography.footnotes.fontSizePt",
      "measured": "10",
      "guide": "8",
-     "guideSource": "DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx › paragraf 178: “Belli durumlarda okuyucu için uyarı niteliğinde eklemelere gereksinim duyulduğunda sayfanın altında, metinden dipnot çizgisi ile ayrılan yazı alanında (Times Ne”"
+     "guideSource": "Butun-Sablonlar/Ege/Dokuz Eylül Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx paragraf 178"
     }
    ],
    "guide": "DEU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_2024.docx",
-   "gate": {
-    "overall": "CONFLICT",
-    "results": {
-     "PASS": 34,
-     "CONFLICT": 1
-    },
-    "checkedAt": "2026-10-22",
-    "exportTool": "engine/tools/export.mjs"
-   }
+   "gate": null
   }
  },
  "page": {
@@ -143,9 +397,9 @@
   "orientation": "portrait",
   "margins": {
    "topMm": 40,
-   "bottomMm": 25.01,
+   "bottomMm": 25,
    "leftMm": 40,
-   "rightMm": 25.01
+   "rightMm": 25
   },
   "header": {
    "heightMm": 4.87,
@@ -316,6 +570,26 @@
   "PROJECT_SUPPORT": {
    "label": "Proje desteği (varsa)",
    "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
   }
  },
  "sections": [
@@ -388,7 +662,7 @@
     },
     {
      "type": "text",
-     "value": "Doktora tezi olarak sunduğum “………………………..” adlı çalışmanın içerdiği fikri izinsiz başka bir yerden almadığımı; çalışmamın hazırlık, veri toplama, analiz ve bilgilerin sunumu olmak üzere tüm aşamalarında ve bölümlerinin yazımında bilimsel etik ilke ve kurallara uygun davrandığımı, tez yazım kurallarına uygun olarak hazırlanan bu çalışmada kullanılan her türlü kaynağa eksiksiz atıf yaptığımı ve bu kaynaklara kaynakçada yer verdiğimi, ayrıca bu çalışmanın Dokuz Eylül Üniversitesi tarafından kullanılan bilimsel intihal tespit programıyla tarandığını ve intihal içermediğini beyan ederim. Herhangi bir zamanda aksinin ortaya çıkması durumunda her türlü yasal sonuca razı olduğumu bildiririm.",
+     "value": "Doktora tezi olarak sunduğum {{THESIS_TITLE}} adlı çalışmanın içerdiği fikri izinsiz başka bir yerden almadığımı; çalışmamın hazırlık, veri toplama, analiz ve bilgilerin sunumu olmak üzere tüm aşamalarında ve bölümlerinin yazımında bilimsel etik ilke ve kurallara uygun davrandığımı, tez yazım kurallarına uygun olarak hazırlanan bu çalışmada kullanılan her türlü kaynağa eksiksiz atıf yaptığımı ve bu kaynaklara kaynakçada yer verdiğimi, ayrıca bu çalışmanın Dokuz Eylül Üniversitesi tarafından kullanılan bilimsel intihal tespit programıyla tarandığını ve intihal içermediğini beyan ederim. Herhangi bir zamanda aksinin ortaya çıkması durumunda her türlü yasal sonuca razı olduğumu bildiririm.",
      "style": {
       "align": "justify",
       "fontSizePt": 12,
@@ -415,7 +689,7 @@
     {
      "type": "metadata",
      "field": "STUDENT_NAME",
-     "fallback": "Ad SOYAD",
+     "fallback": "Öğrenci adı soyadı",
      "style": {
       "align": "right",
       "fontSizePt": 12,
@@ -427,10 +701,10 @@
   {
    "id": "front-page-2",
    "type": "custom",
-   "title": "Ön sayfa 3",
+   "title": "TEZ ÇALIŞMASI ORJİNALLİK RAPORU",
    "status": "required",
    "group": "front",
-   "mode": "static",
+   "mode": "editable",
    "tocEntry": "none",
    "overrides": {
     "page": {
@@ -445,18 +719,7 @@
      "lineHeight": 1
     }
    },
-   "blocks": [
-    {
-     "type": "text",
-     "value": "TEZ ÇALIŞMASI ORJİNALLİK RAPORU",
-     "style": {
-      "align": "center",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "lineHeight": 1.5
-     }
-    }
-   ]
+   "showTitle": true
   },
   {
    "id": "acknowledgements",
@@ -613,20 +876,6 @@
    }
   }
  ],
- "tables": {
-  "label": "Tablo",
-  "position": "above",
-  "style": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 11,
-   "align": "center"
-  },
-  "numbering": {
-   "scope": "chapter",
-   "format": "{chapter}.{n}",
-   "sequence": "arabic"
-  }
- },
  "figures": {
   "label": "Şekil",
   "position": "below",
@@ -650,8 +899,7 @@
    "fontSizePt": 11,
    "align": "left",
    "lineHeight": 1.5
-  },
-  "hangingIndentMm": 0
+  }
  },
  "toc": {
   "heading": "İÇİNDEKİLER",

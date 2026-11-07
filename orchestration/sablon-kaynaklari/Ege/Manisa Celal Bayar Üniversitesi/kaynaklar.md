@@ -33,3 +33,11 @@ Ayrıca eski `kaynaklar.md`/`metadata.json` içeriği (yalnız LEE; Tıp Fak. k�
 - Lisans bitirme tezi için fakülte düzeyinde kılavuz bulunamadı (tüm birimler taranmadı).
 - Diş Hekimliği Fakültesi sitesi (dishekimligi.mcbu.edu.tr) çözümlenemiyor (ERR_NAME_NOT_RESOLVED; dis/dishek/disfakultesi varyantları da); uzmanlık tez kılavuzu alınamadı, başka ağdan yeniden denenmeli.
 - LEE Doktora formları sayfası ve Tıp Fak. idari formları incelenmedi.
+
+## Güncellik denetimi — 2026-10-24
+Kural (kullanıcı, 24.10.2026): güncel resmî kaynak esastır; eski veya ikincil kaynak yalnız güncel kaynakta bilgi yoksa ve makulse kullanılır.
+- LEE ana sayfası yine yalnız 22.10.2025 kılavuzunu listeliyor. DOCX `JUIK221020251432` canlı sha256 `e607f8f7…38c7` = depodaki dosya (CURRENT).
+- LEE PDF `GTSM221020251445`: canlı sha256 `cb7a4a6d…055f`, 12 sayfa. Yükleme 22.10.2025, ama PDF iç tarihi 2024-02-22 (Word'den 2024'te üretilmiş). Metni DOCX ile aynı; şablon DOCX'e dayanır, PDF'ten değer alınmaz.
+- LEE "Yüksek Lisans / Doktora Tez Savunma ve Mezuniyet" (01.06.2026, sha256 `f4162625…3fb7` / `366b888f…54de`): biçim kuralı yok, tez yazım kılavuzuna gönderme yapıyor. Islak imzalı sayfa teze konmaz; ciltli tezde Taahhütname imzalı olur (şablonda onay sayfası yok, Taahhütnamede İmza satırı var).
+- Tıp Fakültesi "Tez ile İlişkili Belgeler": yine yalnız `asistantezyazimkilavuzu-43TR.pdf` (sha256 `67f08792…0883`) = depodaki dosya (CURRENT). Sayfa notu: PDF'te ıslak imza ve kişisel bilgi olmamalı (şablonda imza sayfası yok).
+- Şablon değerlerinden hiçbiri eski bir kılavuzdan gelmiyor. Öğrenci tezleri (Bölükbaşı 2025, Çıldır 2018) kaynak değil; spec kararlarına bu not eklendi. Kalan çelişkiler aynı güncel belgenin kendi içinde (kural metni ↔ örnek sayfa).

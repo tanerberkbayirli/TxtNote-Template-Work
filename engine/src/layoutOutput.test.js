@@ -6,14 +6,32 @@ import { resolveThesisTemplate } from './registry.js';
 import { compileThesisDocument, buildThesisCss, thesisWordBaselineProbes } from './engine.js';
 import { wordBaselineProbe } from './wordBaseline.js';
 import { resolveLineSpacing } from './typography.js';
-import { indexRowStyle } from './generatedIndex.js';
-import { buildThesisDocx } from './export.js';
+import { indexRowStyle, indexRowIncludesPageNumber } from './generatedIndex.js';
+import { buildThesisDocx, bookmarkName } from './export.js';
 import { presentationId } from './presentationLayout.js';
 import { allocateTocOverrides } from './docx/tocOverrides.js';
 import { twip } from './docx/xml.js';
 const W = 'http://schemas.openxmlformats.org/wordprocessingml/2006/main';
 const nodes = (root, name) => Array.from(root.getElementsByTagNameNS(W, name));
 const text = root => nodes(root, 't').map(node => node.textContent).join('');
+
+test('alignment-only overrides preserve added text typography and geometry in CSS and Word', async () => {
+  const { thesis, compile } = await setup();
+  const sectionId=compile().sections.find(section=>section.type==='mainContent').id;
+  const style={fontFamily:'Arial',fontSizePt:18,fontWeight:700,lineHeight:1.2,align:'left'};
+  thesis.layout.additions=[{id:'alignment-frame',sectionId,type:'text',text:'ALIGNMENT REGRESSION',layoutMode:'absolute',xMm:40,yMm:90,widthMm:100,heightMm:20,style}];
+  for(const align of ['center','right','left','justify','center']) {
+    thesis.layout.elements={'alignment-frame':{style:{align}}};
+    const model=compile();
+    const frame=model.sections.find(s=>s.id===sectionId).layout.find(n=>n.id==='alignment-frame');
+    assert.deepEqual(frame.style,{...model.sections.find(s=>s.id===sectionId).rules.body,...style,align});
+    assert.deepEqual([frame.xMm,frame.yMm,frame.widthMm,frame.heightMm],[40,90,100,20]);
+    assert.match(buildThesisCss(model),/font-size:18pt/);
+    const result=await output(model);
+    assert.match(result.xml,/w:ascii="Arial"/);
+    assert.match(result.xml,/w:sz w:val="36"/);
+  }
+});
 async function setup() {
   const { template } = await resolveThesisTemplate({ templateId: 'mcbu-lee-master-tr-v1' });
   const thesis = { layout: { elements: {} } };
@@ -26,6 +44,28 @@ async function output(model, options) {
   const xml = strFromU8(files['word/document.xml']);
   return { blob, files, xml, root: new DOMParser().parseFromString(xml, 'application/xml') };
 }
+
+test('authored text frames retain heading and list formatting in HTML and editable Word boxes', async () => {
+  const { thesis, compile } = await setup();
+  const sectionId = compile().sections.find(section => section.type === 'mainContent').id;
+  const frame = { type: 'text', sectionId, layoutMode: 'absolute', xMm: 40, yMm: 90, widthMm: 100, heightMm: 20,
+    style: { fontFamily: 'Arial', fontSizePt: 18, fontWeight: 700, leftIndentMm: 10 } };
+  thesis.layout.additions = [
+    { ...frame, id: 'frame-heading', headingLevel: 1, content: 'Frame heading' },
+    { ...frame, id: 'frame-list', yMm: 120, list: 'ol', content: 'First <item>\nSecond item' },
+  ];
+  const model = compile();
+  const section = model.sections.find(section => section.id === sectionId);
+  assert.match(section.prefixHtml, /role="heading" aria-level="1"/);
+  assert.match(section.prefixHtml, /<ol class="thesis-frame-list"><li data-layout-frame-line="">First &lt;item&gt;<\/li><li data-layout-frame-line="">Second item<\/li><\/ol>/);
+  const result = await output(model);
+  const boxes = nodes(result.root, 'txbxContent');
+  const heading = boxes.find(box => text(box) === 'Frame heading');
+  assert.ok(heading, 'heading stays in an editable text box');
+  assert.equal(nodes(heading, 'pStyle')[0].getAttributeNS(W, 'val'), 'Heading1');
+  const list = boxes.find(box => text(box).includes('First <item>'));
+  assert.deepEqual(nodes(list, 'p').map(text), ['1. First <item>', '2. Second item']);
+});
 test('positioned presentation heading stays one editable paragraph with its bookmark and page frame', async () => {
   const { thesis, compile } = await setup();
   const section = compile().sections.find(s => s.id === 'preface');
@@ -77,6 +117,24 @@ test('custom TOC label has a live TC source and isolated TOC style without chang
   const ordinary = nodes(styles, 'style').find(n => n.getAttributeNS(W, 'styleId') === 'TOC1');
   assert.notEqual(nodes(ordinary, 'sz')[0].getAttributeNS(W, 'val'), '32');
   assert.deepEqual(result.blob.exportIssues.fieldAudit.dangling, []);
+  assert.equal(result.blob.exportIssues.fieldAudit.unbalanced, false);
+});
+test('Word TOC omits PAGEREF for a resolved blank unnumbered target and keeps counted hidden page labels', async () => {
+  const { compile } = await setup();
+  const model = compile();
+  const toc = model.sections.find(s => s.generatedIndex?.kind === 'toc');
+  const blank = toc.indexRows.find(row => row.tocTitle && row.title === 'ÖZET');
+  const counted = toc.indexRows.find(row => row.text.includes('SOURCEHEADING'));
+  assert.ok(blank && counted, 'fixture has an ordinary heading and a special-page title');
+  Object.assign(blank, { page: '', pageResolved: true });
+  Object.assign(counted, { unnumbered: true, label: '', page: 'ii', pageResolved: true });
+  assert.equal(indexRowIncludesPageNumber(toc.generatedIndex, { ...blank, pageResolved: false }), true, 'unresolved targets keep existing field behavior');
+
+  const result = await output(model);
+  const instructions = nodes(result.root, 'instrText').map(n => n.textContent).join('\n');
+  assert.ok(!instructions.includes(`PAGEREF ${bookmarkName(blank.anchor)}`));
+  assert.ok(instructions.includes(`PAGEREF ${bookmarkName(counted.anchor)}`));
+  assert.match(instructions, /TC "ÖZET" \\f A \\l \d \\n/);
   assert.equal(result.blob.exportIssues.fieldAudit.unbalanced, false);
 });
 test('Word TOC profile capacity fails explicitly rather than overwriting another saved appearance', () => {

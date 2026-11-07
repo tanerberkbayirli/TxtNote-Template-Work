@@ -44,16 +44,18 @@ describe("AKÜ Sağlık Bilimleri template (2022 guide)", () => {
     }
     assert.equal(t.sections.find((section) => section.id === "appendices").overrides.headings["2"].pageBreakUnlessAfterHeading, true);
   });
-  it("counts the hidden front pages so ÖZET is iv and GİRİŞ restarts at 1", () => {
+  it("follows §2.6: hidden preliminaries are unnumbered, ÖZET starts at i and GİRİŞ at 1", () => {
     const m = compileThesisDocument(akuSagbilMaster, { values: { STUDENT_NAME: "A" }, sectionContent: {}, enabledSections: [] }, "T", "<h1>Bulgular</h1><p>x</p>", []);
     const num = (id) => m.sections.find((s) => s.id === id).rules.page.numbering;
     assert.equal(num("inner-cover").enabled, false);
-    assert.equal(num("inner-cover").restart, true);
+    assert.equal(num("inner-cover").restart, false);
     assert.equal(num("approval").enabled, false);
-    assert.equal(num("approval").indexLabelWhenHidden, true);
-    assert.equal(num("ethics").indexLabelWhenHidden, true);
+    assert.ok(!num("approval").indexLabelWhenHidden);
+    assert.ok(!num("ethics").indexLabelWhenHidden);
     assert.equal(num("abstract-tr").enabled, true);
     assert.equal(num("abstract-tr").format, "roman-lower");
+    assert.equal(num("abstract-tr").restart, true);
+    assert.equal(num("abstract-tr").startAt, 1);
     assert.equal(num("introduction").startAt, 1);
     const tocTitles = m.indexSources.filter((entry) => entry.kind === "toc" && entry.tocTitle).map((entry) => entry.title);
     assert.ok(tocTitles.includes("TEZ KABUL VE ONAY SAYFASI"));

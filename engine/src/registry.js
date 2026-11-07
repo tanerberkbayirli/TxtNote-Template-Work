@@ -1,5 +1,6 @@
 import generic from "./templates/generic.js";
 import { GENERATED_THESIS_TEMPLATES } from "./templates/generated/index.js";
+import { HIDDEN_TEMPLATE_IDS } from "./templates/hidden.js";
 import { withEngineDefaults } from "./engineDefaults.js";
 import { validateThesisRegistry, validateThesisTemplate } from "./validation.js";
 
@@ -42,9 +43,11 @@ export const THESIS_TEMPLATE_REGISTRY = Object.freeze([
   { id: "iyte-lee-phd-en-v1", templateVersion: "1.0.0", universityId: "iyte", universityName: "İzmir Yüksek Teknoloji Enstitüsü", instituteId: "lee", instituteName: "Lisansüstü Eğitim Enstitüsü", degreeType: "phd", language: "en", status: "official", displayName: "İYTE · Doktora (English)", selectors: {}, load: () => import("./templates/iyte.js").then(module => ({ default: module.iytePhd })) },
   { id: "iyte-lee-articles-master-en-v1", templateVersion: "1.0.0", universityId: "iyte", universityName: "İzmir Yüksek Teknoloji Enstitüsü", instituteId: "lee-articles", instituteName: "Lisansüstü Eğitim Enstitüsü · Makalelerden Tez", degreeType: "master", language: "en", status: "official", displayName: "İYTE · Makalelerden Yüksek Lisans (English)", selectors: {}, load: () => import("./templates/iyte.js").then(module => ({ default: module.iyteArticlesMaster })) },
   { id: "iyte-lee-articles-phd-en-v1", templateVersion: "1.0.0", universityId: "iyte", universityName: "İzmir Yüksek Teknoloji Enstitüsü", instituteId: "lee-articles", instituteName: "Lisansüstü Eğitim Enstitüsü · Makalelerden Tez", degreeType: "phd", language: "en", status: "official", displayName: "İYTE · Makalelerden Doktora (English)", selectors: {}, load: () => import("./templates/iyte.js").then(module => ({ default: module.iyteArticlesPhd })) },
+  { id: "ege-egitim-master-tr-v1", templateVersion: "0.2.0-source-rebuild", universityId: "ege", universityName: "Ege Üniversitesi", instituteId: "egitim-bilimleri", instituteName: "Eğitim Bilimleri Enstitüsü", degreeType: "master", language: "tr", status: "generic", displayName: "Ege Üniversitesi · Eğitim Bilimleri Enstitüsü · Yüksek Lisans · Türkçe (taslak)", selectors: {}, load: () => import("./templates/ege-egitim.js").then((module) => ({ default: module.default })) },
   { id: "iyte-eee-undergraduate-en-v1", templateVersion: "1.0.0", universityId: "iyte", universityName: "İzmir Yüksek Teknoloji Enstitüsü", instituteId: "eee", instituteName: "Elektrik-Elektronik Mühendisliği · Bitirme Projesi", degreeType: "undergraduate", language: "en", status: "official", displayName: "İYTE · EEE Lisans Bitirme Projesi (English)", selectors: {}, load: () => import("./templates/iyte.js").then(module => ({ default: module.iyteEee })) },
-  // Drafts generated from measured official sources (TxtNote/scripts/install-template-draft.mjs); status generic.
-  ...GENERATED_THESIS_TEMPLATES,
+  // Drafts generated from measured official sources (engine/tools/taslak/install-template-draft.mjs); status generic.
+  // Hidden templates (templates/hidden.js) stay on disk but are not offered.
+  ...GENERATED_THESIS_TEMPLATES.filter((entry) => !HIDDEN_TEMPLATE_IDS.has(entry.id)),
 ]);
 
 const cache = new Map();
@@ -70,7 +73,11 @@ export function findThesisTemplateDescriptor(selection, registry = THESIS_TEMPLA
 export async function resolveThesisTemplate(selection, registry = THESIS_TEMPLATE_REGISTRY) {
   const registryErrors = validateThesisRegistry(registry);
   if (registryErrors.length) return { template: generic, fallback: true, reason: registryErrors.join("; ") };
-  const descriptor = findThesisTemplateDescriptor(selection, registry);
+  // Hidden duplicates stay out of the chooser, but saved CBÜ notes must retain
+  // their original section keys rather than falling back to a generic thesis.
+  const descriptor = findThesisTemplateDescriptor(selection, registry)
+    || (registry === THESIS_TEMPLATE_REGISTRY && selection?.templateId === 'cbu-lee-master-tr-kilavuz'
+      ? GENERATED_THESIS_TEMPLATES.find(entry => entry.id === selection.templateId) : null);
   if (!descriptor) return { template: generic, fallback: true, reason: "Bu seçim için kayıtlı tez şablonu bulunamadı." };
   try {
     let template = cache.get(descriptor.id);

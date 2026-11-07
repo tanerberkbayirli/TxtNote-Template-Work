@@ -1,2260 +1,2709 @@
 {
- "schemaVersion": 1,
- "page": {
-  "size": "A4",
-  "widthMm": 210,
-  "heightMm": 297,
-  "orientation": "portrait",
-  "margins": {
-   "topMm": 25,
-   "bottomMm": 25,
-   "leftMm": 40,
-   "rightMm": 25
+  "schemaVersion": 1,
+  "page": {
+    "size": "A4",
+    "widthMm": 210,
+    "heightMm": 297,
+    "orientation": "portrait",
+    "margins": {
+      "topMm": 25,
+      "bottomMm": 25,
+      "leftMm": 40,
+      "rightMm": 25
+    },
+    "numbering": {
+      "enabled": true,
+      "position": "bottom",
+      "align": "center",
+      "format": "roman-lower",
+      "startAt": 1,
+      "restart": false,
+      "centerOnPage": true,
+      "style": {
+        "fontFamily": "Calibri",
+        "fontSizePt": 11
+      },
+      "baselineFromTopMm": 278.757,
+      "xMm": 105,
+      "widthMm": 20
+    }
   },
-  "numbering": {
-   "enabled": true,
-   "position": "bottom",
-   "align": "center",
-   "format": "roman-lower",
-   "startAt": 1,
-   "restart": false,
-   "centerOnPage": true
-  }
- },
- "tables": {
-  "label": "Tablo",
-  "position": "above",
-  "align": "center",
-  "style": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 12,
-   "align": "left",
-   "spaceAfterPt": 0,
-   "lineHeight": 1,
-   "spaceBeforePt": 0,
-   "fontWeight": 400,
-   "firstLineIndentMm": 0
-  },
-  "numbering": {
-   "scope": "document",
-   "format": "{n}",
-   "sequence": "arabic"
-  },
-  "cellStyle": {
-   "lineHeight": 1,
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 12,
-   "firstLineIndentMm": 0
-  },
-  "captionAlignment": "left",
-  "labelStyle": {
-   "fontWeight": 700
-  },
-  "labelFormat": "{label} {number}.",
-  "spacingAfterPt": 6
- },
- "figures": {
-  "label": "Şekil",
-  "position": "below",
-  "align": "center",
-  "style": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 12,
-   "align": "left",
-   "spaceAfterPt": 0,
-   "lineHeight": 1,
-   "spaceBeforePt": 0,
-   "fontWeight": 400,
-   "firstLineIndentMm": 0
-  },
-  "numbering": {
-   "scope": "document",
-   "format": "{n}",
-   "sequence": "arabic"
-  },
-  "box": {
-   "align": "center",
-   "spaceBeforePt": 12,
-   "spaceAfterPt": 12
-  },
-  "captionAlignment": "left",
-  "labelStyle": {
-   "fontWeight": 700
-  },
-  "labelFormat": "{label} {number}.",
-  "spacingBeforePt": 6
- },
- "bibliography": {
-  "heading": "KAYNAKLAR",
-  "citationStyle": "Vancouver",
-  "style": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 12,
-   "spaceAfterPt": 6,
-   "lineHeight": 1,
-   "firstLineIndentMm": 0,
-   "spaceBeforePt": 0
-  }
- },
- "toc": {
-  "heading": "İÇİNDEKİLER",
-  "levels": [
-   1,
-   2,
-   3,
-   4
-  ],
-  "showPageNumbers": true
- },
- "typography": {
-  "body": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 12,
-   "align": "justify",
-   "spaceAfterPt": 0,
-   "lineHeight": 1.5,
-   "firstLineIndentMm": 12.5,
-   "fontWeight": 400,
-   "spaceBeforePt": 0
-  },
-  "paragraph": {
-   "align": "justify",
-   "spaceAfterPt": 0,
-   "lineHeight": 1.5,
-   "firstLineIndentMm": 12.5,
-   "spaceBeforePt": 0
-  },
-  "lineSpacing": {
-   "mode": "word",
-   "singleLineEm": 1.15,
-   "baseline": "word",
-   "paragraphSpacing": "collapse"
-  },
-  "footnotes": {
-   "placement": "pageBottom",
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 12,
-   "lineHeight": 1,
-   "lineSpacing": {
-    "rule": "auto",
-    "value": 1,
-    "singleLineEm": 1.15
-   }
-  },
-  "headings": {
-   "1": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 14,
-    "fontWeight": 700,
+  "tables": {
+    "label": "Tablo",
+    "position": "above",
     "align": "center",
-    "spaceAfterPt": 12,
-    "lineHeight": 1,
-    "firstLineIndentMm": 0,
-    "pageBreakBefore": true,
-    "textTransform": "uppercase",
-    "spaceBeforePt": 0,
-    "keepWithNext": true,
-    "numbering": {
-     "enabled": true,
-     "format": "{1}.",
-     "sequence": "arabic"
-    }
-   },
-   "2": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 12,
-    "fontWeight": 700,
-    "align": "left",
-    "spaceAfterPt": 12,
-    "lineHeight": 1,
-    "firstLineIndentMm": 12.5,
-    "spaceBeforePt": 12,
-    "keepWithNext": true,
-    "numbering": {
-     "enabled": true,
-     "format": "{1}.{2}.",
-     "sequence": "arabic"
-    },
-    "textTransform": "uppercase"
-   },
-   "3": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 12,
-    "fontWeight": 700,
-    "align": "left",
-    "spaceAfterPt": 12,
-    "lineHeight": 1,
-    "firstLineIndentMm": 12.5,
-    "spaceBeforePt": 12,
-    "keepWithNext": true,
-    "numbering": {
-     "enabled": true,
-     "format": "{1}.{2}.{3}.",
-     "sequence": "arabic"
-    },
-    "textTransform": "capitalize",
-    "textTransformExceptions": [
-     "ve",
-     "veya",
-     "ile"
-    ]
-   },
-   "4": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 12,
-    "fontWeight": 700,
-    "align": "left",
-    "spaceAfterPt": 12,
-    "lineHeight": 1,
-    "firstLineIndentMm": 12.5,
-    "keepWithNext": true,
-    "spaceBeforePt": 12,
-    "numbering": {
-     "enabled": true,
-     "format": "{1}.{2}.{3}.{4}.",
-     "sequence": "arabic"
-    },
-    "textTransform": "capitalize",
-    "textTransformExceptions": [
-     "ve",
-     "veya",
-     "ile"
-    ]
-   }
-  },
-  "paragraphStyles": {
-   "tableNote": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 10,
-    "lineHeight": 1,
-    "firstLineIndentMm": 0,
-    "align": "left",
-    "spaceBeforePt": 0,
-    "spaceAfterPt": 0
-   },
-   "blockQuote": {
-    "lineHeight": 1
-   }
-  }
- },
- "validation": {
-  "KEYWORDS": {
-   "minItems": 3,
-   "separator": ",",
-   "severity": "warning",
-   "message": "Anahtar kelime sayısı 3-5 olmalıdır (§3.1.6)."
-  },
-  "KEYWORDS_EN": {
-   "minItems": 3,
-   "separator": ",",
-   "severity": "warning",
-   "message": "Key words must be 3-5 and correspond to the Turkish keywords (§3.1.6)."
-  }
- },
- "templateVersion": "1.0.0",
- "id": "afsu-dis-hekimligi-uzmanlik-tr-v1",
- "universityId": "afsu",
- "universityName": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
- "instituteId": "dhf",
- "instituteName": "Diş Hekimliği Fakültesi",
- "degreeType": "specialization",
- "language": "tr",
- "status": "official",
- "displayName": "Afyonkarahisar Sağlık Bilimleri Üniversitesi · Diş Hekimliği Fakültesi · Diş Hekimliğinde Uzmanlık Tezi",
- "source": {
-  "type": "official",
-  "url": "https://tip.afsu.edu.tr/yonergeler-2/",
-  "documentName": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf and AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf (Tıp ve Diş Hekimliği Fakülteleri Uzmanlık Tez Yazım Kılavuzu, Temmuz 2021)",
-  "revisionDate": "Temmuz 2021 (cover); PDF creation 2021-08-26 (Tıp copy) and 2021-09-21 (DHF copy)",
-  "verifiedAt": "2026-10-03",
-  "notes": [
-   "Tek kılavuz: Tıp ve Diş Hekimliği Fakülteleri ortak uzmanlık tez yazım kılavuzu (kapak: 'TIP VE DİŞ HEKİMLİĞİ FAKÜLTELERİ'). İki PDF aynı kılavuzun iki dışa aktarımıdır; gövde metni aynıdır, DHF kopyası yalnız ek örnek sayfalarını ortak ifade 'TIP/DİŞ HEKİMLİĞİ FAKÜLTESİ' ile yeniden üretmiştir. Yazı kuralları (proza) tek kümedir; iki kayıt fakülte/derece metinleri ile ÖRNEK SAYFA GEOMETRİSİ bakımından ayrışır: iki kopyanın EK 7/8/9/11/12/13 dikey ölçüleri FARKLIDIR (ÇELİŞKİ, ör. EK 7 öğrenci adı Tıp 169,78 mm / DHF 139,46 mm; EK 9 ONAY Tıp 248,81 / DHF 239,01 mm) ve her kayıt KENDİ kopyasının örneklerini izler (GEO.tip / GEO.dhf). DHF kopyasının EK 6 şeması aynı çerçevede olduğundan dış kapak iki kayıtta aynıdır (INFERRED eşleme). DHF metinleri '/' ayracının Diş Hekimliği seçeneği olarak çözümlendi (INFERRED); DHF için İngilizce fakülte adı UNKNOWN (alan boş, yazar doldurur).",
-   "Sayfa (EXPLICIT §2.2, EK 1): A4, tek yüz, üst/alt/sağ 2,5 cm, sol 4 cm; metin iki yana yaslı, ana metin 1,5 satır, her paragraf 1,25 cm girintili (EK 1 ölçümü 12,5 mm). Üst/alt bilgi uzaklığı UNKNOWN (belirtilmemiş).",
-   "Yazı (EXPLICIT §2.5): Times New Roman 12 punto; ana başlıklar yeni sayfa, 14 punto; ana ve alt başlıklar koyu. H1 büyük harf ve ortalı; H2-H4 metinle aynı hizadan (12,5 mm), başlıktan sonra ve bölüm sonu ile sonraki alt başlık arasında 12 nk (§2.7, EK 1). ÇELİŞKİ: §2.6 'her kelimenin ilk harfi büyük' der, EK 1 ve EK 13 örneklerinde H2 büyük harfle yazılmıştır: örnek uygulandı (H2 büyük harf), H3/H4 düzyazı gibi.",
-   "Başlıklar: Tez, kılavuza göre H1-H4 numaralıdır; dördüncü dereceden ileri başlıklar numarasız, içindekilerde yok, 12 punto normal, paragraf başında 1 tab içeriden, ilk kelime büyük harfli ve ':' ile devam eden satır başı başlıktır (§2.6): motor yalnız H1-H4 sunar, beşinci düzey MOTOR AÇIĞI (rapora bakın). Ön kısım başlıkları (TEŞEKKÜR, İÇİNDEKİLER, ÖZET...) örneklerde 12 punto koyu ortalı (EK 10, 11, 13), düzyazı 14 punto der (§2.5/2.7): örnek uygulandı (ÇELİŞKİ).",
-   "Sayfa numaraları (EXPLICIT §2.3, §3.1): alt kenar ortada; ön kısım (iç kapaktan girişe) küçük Roma, metin ve arka kısım Arap rakamıyla. Dış kapak ve boş sayfa numarasız (§3.1.2); iç kapak 'i', kabul/onay 'ii', teşekkür 'iii', özet 'iv', abstract 'v', içindekiler 'vi' (düzyazı). ÇELİŞKİ: §3.1 listesi ve EK 13 içindekiler örneği 'Bilimsel Etiğe Uygunluk Sayfası'nı (iç kapaktan sonra) sayar ve Roma dizisini bir kaydırır (ii etik, iii kabul...); kılavuzda bu sayfanın metni/örneği YOKTUR (EK listesinde sayfa yok): sayfa üretilmedi, numaralandırma düzyazı (§3.1.4-3.1.8) gibi. Çözülmesi gerekir.",
-   "İçindekiler (EK 13, MEASURED): başlık ortalı 12 punto koyu, sağda altı çizili 'Sayfa', noktalı kılavuz, satır adımı 24,7 pt, H2 girintisi 5,0 mm, H3 12,5 mm; liste ön kısım sayfalarını (İÇ KAPAK, BİLİMSEL ETİĞE UYGUNLUK, KABUL VE ONAY, TEŞEKKÜR, ÖZET, ABSTRACT, İÇİNDEKİLER, KISALTMALAR, TABLOLAR DİZİNİ, ŞEKİLLER DİZİNİ) ve '7.KAYNAKLAR' (numaralı) ile 'EKLER' (numarasız) satırlarını içerir. FARK (motor): EK 13'te EKLER satırının sayfa numarası yoktur, dışa aktarım ise EKLER satırına sayfa numarası yazar (motor, başlık satırı için numarasız TOC satırı seçeneği sunmaz). Başlık/Sayfa/ilk satır mesafeleri kopyaya göre ölçüldü (Tıp 7,65 + 9,41 mm; DHF 6,94 + 9,44 mm). Merkezli özel sayfa satırları sayfa merkezine (105,5 mm) ortalıdır (ölçüm).",
-   "Özet/Abstract (EXPLICIT §3.1.6-3.1.7): bir sayfayı geçmez, 1 satır aralık, 3-5 anahtar kelime (alfabetik, baş harf büyük); başlık, yazar, üniversite, anabilim dalı, yıl, danışman başlık bloğunda (EK 11/12 ölçümü). İlk satır girintisi: EK 11'de 10,5 mm ölçüldü, düzyazı/EK 1/EK 10 12,5 mm der (ÇELİŞKİ: 12,5 mm uygulandı). Anahtar kelime öncesi 'bir satır atlanarak' (düzyazı) örnekte yok (örnek uygulandı). Örnekteki özet sayfası farklı kenar boşluğundadır (39,5 mm); düzyazı kenar boşluğu uygulandı.",
-   "Kaynaklar (EXPLICIT §3.3.1, §2.7): Vancouver, metinde geçiş sırasına göre numara (parantez veya üst simge, tutarlı) — MOTOR AÇIĞI: citationStyle 'Vancouver' yalnız etikettir, motor atıfları geçiş sırasına göre numaralamaz ve kaynakçayı numaralamaz (yazar elle numaralar); dizin 1 satır aralık, kaynaklar arasında 6 nk; kaynaklar yayımlandıkları dilde. Punto ve hizalama UNKNOWN (genel 12 punto kuralı). Tablo/şekil: görsel ve açıklaması ile üst-alt metin 12 nk, açıklama–nesne 6 nk, tablo altı not 10 punto tek aralık (§2.11); tablo açıklaması üstte, şekil açıklaması altta; grafik ve resimler şekil sayılır. Dipnot/alıntı tek aralık (§2.7); dipnot punto UNKNOWN (genel 12 punto kuralı uygulandı, INFERRED).",
-   "UNKNOWN / üretilmeyenler: Bilimsel etik sayfası (metin yok), tablo kenarlık stili (EK 3 ızgara, EK 4 yalnız üst/alt çizgi), teşekkür sayfasındaki imza/tarih satırları (yazar yazar), sayfa numarası yazı tipi/boyutu, üst/alt bilgi uzaklığı, kapak ve iç kapakta dikey mesafeler (dış kapak örneği şematik çerçevedir: EXPLICIT yalnız sıra, punto, koyu, ortalı; dikey konum INFERRED). Sırt yazısı (§5.2, 12 punto, cilt sırtı) ayrı basılı çıktıdır, motor kapsamı dışı (rapor)."
-  ]
- },
- "placeholders": {
-  "THESIS_TITLE": {
-   "label": "Tezin adı",
-   "type": "text",
-   "required": true
-  },
-  "THESIS_TITLE_EN": {
-   "label": "Thesis title (English)",
-   "type": "text",
-   "required": true
-  },
-  "STUDENT_NAME": {
-   "label": "Adı SOYADI",
-   "type": "text",
-   "required": true
-  },
-  "STUDENT_NAME_EN": {
-   "label": "Student Name Surname (English)",
-   "type": "text",
-   "required": true
-  },
-  "STUDENT_TITLE": {
-   "label": "Özet sayfasında ad soyadın önündeki unvan (örnek: Araştırma Görevlisi)",
-   "type": "text",
-   "defaultValue": "Araştırma Görevlisi"
-  },
-  "DEPARTMENT_NAME": {
-   "label": "Anabilim dalı adı (yalnız adı; sonuna ‘Anabilim Dalı’ eklemeyin)",
-   "type": "text",
-   "required": true
-  },
-  "DEPARTMENT_NAME_EN": {
-   "label": "Department name (English)",
-   "type": "text",
-   "required": true
-  },
-  "FACULTY_EN": {
-   "label": "Faculty (English; the guide gives no wording for this faculty)",
-   "type": "text",
-   "required": true
-  },
-  "ADVISOR_TITLE": {
-   "label": "Danışman unvanı",
-   "type": "text",
-   "required": true
-  },
-  "ADVISOR_NAME": {
-   "label": "Danışman adı SOYADI",
-   "type": "text",
-   "required": true
-  },
-  "ADVISOR_TITLE_EN": {
-   "label": "Supervisor academic title (English)",
-   "type": "text",
-   "required": true
-  },
-  "YEAR": {
-   "label": "Yıl (kapak)",
-   "type": "number",
-   "required": true
-  },
-  "THESIS_DATE_TEXT": {
-   "label": "Özet sayfasındaki tarih (ay ve yıl; örnek: Mayıs 2021)",
-   "type": "text",
-   "required": true
-  },
-  "THESIS_DATE_EN": {
-   "label": "Date on the abstract page (month and year; example: May 2021)",
-   "type": "text",
-   "required": true
-  },
-  "DEFENSE_DATE": {
-   "label": "Tez kabul tarihi",
-   "type": "text"
-  },
-  "BAP_PROJECT_CODE": {
-   "label": "Destekleyen BAP proje kodu (kurum desteği varsa; iç kapak EK 8 düzeni)",
-   "type": "text",
-   "defaultValue": ""
-  },
-  "KEYWORDS": {
-   "label": "Anahtar kelimeler (3-5, alfabetik, virgülle)",
-   "type": "text",
-   "required": true
-  },
-  "KEYWORDS_EN": {
-   "label": "Key words (3-5, alphabetical, comma-separated)",
-   "type": "text",
-   "required": true
-  }
- },
- "equations": {
-  "numbering": {
-   "scope": "chapter",
-   "format": "({chapter}.{n})"
-  }
- },
- "sections": [
-  {
-   "id": "outer-cover",
-   "type": "outerCover",
-   "title": "DIŞ KAPAK",
-   "status": "required",
-   "group": "cover",
-   "mode": "static",
-   "tocEntry": "none",
-   "blocks": [
-    {
-     "type": "text",
-     "value": "T.C.",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 41.56254776384374,
-     "heightMm": 5.926666666666665,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "AFYONKARAHİSAR SAĞLIK BİLİMLERİ ÜNİVERSİTESİ",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 46.83983526964957,
-     "heightMm": 5.926666666666665,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "DEPARTMENT_NAME",
-     "fallback": "DİŞ HEKİMLİĞİ FAKÜLTESİ …… ANABİLİM DALI",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 52.11712277545543,
-     "heightMm": 5.926666666666665,
-     "prefix": "DİŞ HEKİMLİĞİ FAKÜLTESİ ",
-     "suffix": " ANABİLİM DALI",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0,
-      "textTransform": "uppercase"
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "THESIS_TITLE",
-     "fallback": "TEZİN ADI",
-     "layoutMode": "absolute",
-     "xMm": 33,
-     "widthMm": 145,
-     "yMm": 88.39942864942974,
-     "heightMm": 22.718888888888884,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0,
-      "textTransform": "uppercase"
-     }
-    },
-    {
-     "type": "text",
-     "value": "Hazırlayan",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 131.27643536254322,
-     "heightMm": 5.926666666666665,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "STUDENT_NAME",
-     "fallback": "Adı ve SOYADI",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 136.55372286834907,
-     "heightMm": 5.926666666666665,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "Danışman",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 178.7720229147959,
-     "heightMm": 5.926666666666665,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 184.04931042060176,
-     "heightMm": 5.997222222222222,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "{{YEAR}} –AFYONKARAHİSAR",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 263.2086230076896,
-     "heightMm": 5.997222222222222,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    }
-   ],
-   "overrides": {
-    "body": {
-     "lineHeight": 1,
-     "firstLineIndentMm": 0,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0
-    },
-    "page": {
-     "numbering": {
-      "enabled": false
-     },
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     }
-    }
-   }
-  },
-  {
-   "id": "blank-page",
-   "type": "custom",
-   "title": "BOŞ SAYFA",
-   "status": "required",
-   "group": "cover",
-   "mode": "static",
-   "tocEntry": "none",
-   "overrides": {
-    "page": {
-     "numbering": {
-      "enabled": false
-     },
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     }
-    },
-    "body": {
-     "lineHeight": 1,
-     "firstLineIndentMm": 0,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0
-    }
-   },
-   "blocks": [
-    {
-     "type": "spacer",
-     "heightMm": 1
-    }
-   ]
-  },
-  {
-   "id": "inner-cover",
-   "type": "innerCover",
-   "title": "İÇ KAPAK",
-   "status": "required",
-   "group": "cover",
-   "mode": "static",
-   "tocEntry": "title",
-   "blocks": [
-    {
-     "type": "text",
-     "value": "T.C.",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 55.39470444444444,
-     "heightMm": 5.926666666666665,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "AFYONKARAHİSAR SAĞLIK BİLİMLERİ ÜNİVERSİTESİ",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 60.26470444444444,
-     "heightMm": 5.926666666666665,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "DİŞ HEKİMLİĞİ FAKÜLTESİ",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 65.13470444444444,
-     "heightMm": 5.926666666666665,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "DEPARTMENT_NAME",
-     "fallback": "…… Anabilim Dalı",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 74.87470444444443,
-     "heightMm": 5.926666666666665,
-     "suffix": " Anabilim Dalı",
-     "visibleWhen": {
-      "noneFilled": [
-       "BAP_PROJECT_CODE"
-      ]
-     },
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "THESIS_TITLE",
-     "fallback": "TEZİN KONUSU",
-     "layoutMode": "absolute",
-     "xMm": 33,
-     "widthMm": 145,
-     "yMm": 101.68470444444445,
-     "heightMm": 19.47333333333333,
-     "visibleWhen": {
-      "noneFilled": [
-       "BAP_PROJECT_CODE"
-      ]
-     },
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0,
-      "textTransform": "uppercase"
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "STUDENT_NAME",
-     "fallback": "Adı SOYADI",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 135.75470444444446,
-     "heightMm": 5.926666666666665,
-     "visibleWhen": {
-      "noneFilled": [
-       "BAP_PROJECT_CODE"
-      ]
-     },
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "DİŞ HEKİMLİĞİNDE UZMANLIK TEZİ",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 145.49470444444444,
-     "heightMm": 5.926666666666665,
-     "visibleWhen": {
-      "noneFilled": [
-       "BAP_PROJECT_CODE"
-      ]
-     },
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "Danışman",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 169.84470444444446,
-     "heightMm": 5.926666666666665,
-     "visibleWhen": {
-      "noneFilled": [
-       "BAP_PROJECT_CODE"
-      ]
-     },
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 174.71470444444444,
-     "heightMm": 5.997222222222222,
-     "visibleWhen": {
-      "noneFilled": [
-       "BAP_PROJECT_CODE"
-      ]
-     },
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "AFYONKARAHİSAR–{{YEAR}}",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 259.89470444444447,
-     "heightMm": 5.997222222222222,
-     "visibleWhen": {
-      "noneFilled": [
-       "BAP_PROJECT_CODE"
-      ]
-     },
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "DEPARTMENT_NAME",
-     "fallback": "…… Anabilim Dalı",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 74.87470444444443,
-     "heightMm": 5.926666666666665,
-     "suffix": " Anabilim Dalı",
-     "visibleWhen": {
-      "anyFilled": [
-       "BAP_PROJECT_CODE"
-      ]
-     },
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "THESIS_TITLE",
-     "fallback": "TEZİN KONUSU",
-     "layoutMode": "absolute",
-     "xMm": 33,
-     "widthMm": 145,
-     "yMm": 113.82470444444445,
-     "heightMm": 19.47333333333333,
-     "visibleWhen": {
-      "anyFilled": [
-       "BAP_PROJECT_CODE"
-      ]
-     },
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0,
-      "textTransform": "uppercase"
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "STUDENT_NAME",
-     "fallback": "Adı SOYADI",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 147.90470444444446,
-     "heightMm": 5.926666666666665,
-     "visibleWhen": {
-      "anyFilled": [
-       "BAP_PROJECT_CODE"
-      ]
-     },
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "DİŞ HEKİMLİĞİNDE UZMANLIK TEZİ",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 157.65470444444446,
-     "heightMm": 5.926666666666665,
-     "visibleWhen": {
-      "anyFilled": [
-       "BAP_PROJECT_CODE"
-      ]
-     },
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "Danışman",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 184.44470444444445,
-     "heightMm": 5.926666666666665,
-     "visibleWhen": {
-      "anyFilled": [
-       "BAP_PROJECT_CODE"
-      ]
-     },
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 189.3147044444445,
-     "heightMm": 5.997222222222222,
-     "visibleWhen": {
-      "anyFilled": [
-       "BAP_PROJECT_CODE"
-      ]
-     },
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "Bu çalışma; Afyonkarahisar Sağlık Bilimleri Üniversitesi Bilimsel Araştırma Projeleri Birimi tarafından {{BAP_PROJECT_CODE}} kodlu proje ile desteklenmiştir.",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 230.68470444444444,
-     "heightMm": 14.11111111111111,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     },
-     "visibleWhen": {
-      "anyFilled": [
-       "BAP_PROJECT_CODE"
-      ]
-     }
-    },
-    {
-     "type": "text",
-     "value": "{{YEAR}}–AFYONKARAHİSAR",
-     "layoutMode": "absolute",
-     "xMm": 25,
-     "widthMm": 161,
-     "yMm": 262.30470444444444,
-     "heightMm": 5.997222222222222,
-     "visibleWhen": {
-      "anyFilled": [
-       "BAP_PROJECT_CODE"
-      ]
-     },
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    }
-   ],
-   "overrides": {
-    "body": {
-     "lineHeight": 1,
-     "firstLineIndentMm": 0,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0
-    },
-    "page": {
-     "numbering": {
-      "enabled": true,
-      "format": "roman-lower",
-      "startAt": 1,
-      "restart": true
-     },
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     }
-    }
-   }
-  },
-  {
-   "id": "approval",
-   "type": "approval",
-   "title": "KABUL VE ONAY SAYFASI",
-   "status": "required",
-   "group": "front",
-   "mode": "static",
-   "tocEntry": "title",
-   "blocks": [
-    {
-     "type": "spacer",
-     "heightMm": 25.11776
-    },
-    {
-     "type": "text",
-     "value": "AFYONKARAHİSAR SAĞLIK BİLİMLERİ ÜNİVERSİTESİ",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    },
-    {
-     "type": "text",
-     "value": "DİŞ HEKİMLİĞİ FAKÜLTESİ",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "DEPARTMENT_NAME",
-     "fallback": "…… ANABİLİM DALI",
-     "prefix": "",
-     "suffix": " ANABİLİM DALI",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 27.35905511811023,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1,
-      "textTransform": "uppercase"
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "THESIS_TITLE",
-     "fallback": "……..",
-     "prefix": "Tez Başlığı: ",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "align": "left",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "STUDENT_NAME",
-     "fallback": "…………….",
-     "prefix": "Tez Hazırlayan: ",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "align": "left",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "DEFENSE_DATE",
-     "fallback": "………………",
-     "prefix": "Tez Kabul Tarihi: ",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "align": "left",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "Tez Danışmanı: {{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "align": "left",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 13.837795275590555,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "İş bu çalışma jürimiz tarafından {{DEPARTMENT_NAME}} ANABİLİM DALI’NDA DİŞ HEKİMLİĞİNDE UZMANLIK TEZİ olarak kabul edilmiştir.",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "align": "justify",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 55.19999999999995,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "JÜRİ:",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "align": "left",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 41.39055118110244,
-      "firstLineIndentMm": 0
-     }
-    },
-    {
-     "type": "text",
-     "value": "Başkan",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 55.22362204724409,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    },
-    {
-     "type": "group",
-     "direction": "row",
-     "gapMm": 0,
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0
-     },
-     "blocks": [
-      {
-       "type": "group",
-       "widthPercent": 50,
-       "blocks": [
-        {
-         "type": "text",
-         "value": "Üye",
-         "style": {
-          "fontFamily": "Times New Roman",
-          "fontSizePt": 12,
-          "fontWeight": 400,
-          "align": "left",
-          "lineHeight": 1,
-          "spaceBeforePt": 0,
-          "spaceAfterPt": 0,
-          "firstLineIndentMm": 0
-         }
-        }
-       ]
-      },
-      {
-       "type": "group",
-       "widthPercent": 50,
-       "blocks": [
-        {
-         "type": "text",
-         "value": "Üye",
-         "style": {
-          "fontFamily": "Times New Roman",
-          "fontSizePt": 12,
-          "fontWeight": 400,
-          "align": "right",
-          "lineHeight": 1,
-          "spaceBeforePt": 0,
-          "spaceAfterPt": 0,
-          "firstLineIndentMm": 0
-         }
-        }
-       ]
-      }
-     ]
-    },
-    {
-     "type": "spacer",
-     "heightMm": 58.43166666666664
-    },
-    {
-     "type": "text",
-     "value": "ONAY",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    },
-    {
-     "type": "text",
-     "value": "DEKAN",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 400,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    }
-   ],
-   "overrides": {
-    "body": {
-     "lineHeight": 1,
-     "firstLineIndentMm": 0,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0
-    },
-    "page": {
-     "numbering": {
-      "enabled": true,
-      "format": "roman-lower",
-      "restart": false
-     },
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     }
-    }
-   }
-  },
-  {
-   "id": "acknowledgements",
-   "type": "acknowledgements",
-   "title": "TEŞEKKÜR",
-   "status": "optional",
-   "group": "front",
-   "mode": "editable",
-   "showTitle": true,
-   "tocEntry": "title",
-   "overrides": {
-    "page": {
-     "numbering": {
-      "format": "roman-lower",
-      "enabled": true,
-      "restart": false
-     },
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     }
-    },
-    "headings": {
-     "1": {
-      "align": "center",
-      "numbering": {
-       "enabled": false
-      },
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "lineHeight": 1,
-      "textTransform": "uppercase",
-      "pageBreakBefore": true,
-      "keepWithNext": true,
-      "firstLineIndentMm": 0,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 12,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    }
-   }
-  },
-  {
-   "id": "abstract-header",
-   "type": "abstract",
-   "title": "ÖZET",
-   "status": "required",
-   "group": "front",
-   "mode": "static",
-   "standalone": false,
-   "pageBreakBefore": true,
-   "overrides": {
-    "body": {
-     "lineHeight": 1,
-     "firstLineIndentMm": 0,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0
-    },
-    "page": {
-     "numbering": {
-      "format": "roman-lower",
-      "enabled": true,
-      "restart": false
-     },
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     }
-    }
-   },
-   "tocEntry": "title",
-   "blocks": [
-    {
-     "type": "spacer",
-     "heightMm": 19.65776
-    },
-    {
-     "type": "metadata",
-     "field": "THESIS_TITLE",
-     "fallback": "TEZİN BAŞLIĞI",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 18.8,
-      "firstLineIndentMm": 0,
-      "textTransform": "uppercase",
-      "leftIndentMm": -7,
-      "rightIndentMm": 7
-     }
-    },
-    {
-     "type": "text",
-     "value": "{{STUDENT_TITLE}} {{STUDENT_NAME}}",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 18.9,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    },
-    {
-     "type": "text",
-     "value": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    },
-    {
-     "type": "text",
-     "value": "Diş Hekimliği Fakültesi {{DEPARTMENT_NAME}} Anabilim Dalı Diş Hekimliğinde Uzmanlık Tezi",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    },
-    {
-     "type": "text",
-     "value": "{{THESIS_DATE_TEXT}}",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    },
-    {
-     "type": "text",
-     "value": "Danışman: {{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 12,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    },
-    {
-     "type": "text",
-     "value": "ÖZET",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 18.8,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    }
-   ]
-  },
-  {
-   "id": "abstract-tr",
-   "type": "abstract",
-   "title": "Özet metni",
-   "status": "required",
-   "group": "front",
-   "mode": "editable",
-   "pageBreakBefore": false,
-   "overrides": {
-    "body": {
-     "lineHeight": 1,
-     "firstLineIndentMm": 12.5,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0,
-     "fontFamily": "Times New Roman",
-     "fontSizePt": 12,
-     "fontWeight": 400,
-     "align": "justify"
-    },
-    "page": {
-     "numbering": {
-      "format": "roman-lower",
-      "enabled": true,
-      "restart": false
-     },
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     }
-    },
-    "paragraph": {
-     "lineHeight": 1,
-     "firstLineIndentMm": 12.5,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0
-    }
-   },
-   "showTitle": false
-  },
-  {
-   "id": "abstract-tr-footer",
-   "type": "abstract",
-   "title": "Anahtar kelimeler",
-   "status": "required",
-   "group": "front",
-   "mode": "static",
-   "standalone": false,
-   "pageBreakBefore": false,
-   "overrides": {
-    "body": {
-     "lineHeight": 1,
-     "firstLineIndentMm": 12.5,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0,
-     "fontFamily": "Times New Roman",
-     "fontSizePt": 12,
-     "fontWeight": 400,
-     "align": "left"
-    },
-    "page": {
-     "numbering": {
-      "format": "roman-lower",
-      "enabled": true,
-      "restart": false
-     },
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     }
-    }
-   },
-   "blocks": [
-    {
-     "type": "text",
-     "value": "**Anahtar kelimeler:** {{KEYWORDS}}",
-     "markup": "inline",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "align": "justify",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 12.5
-     }
-    }
-   ]
-  },
-  {
-   "id": "abstract-en-header",
-   "type": "englishAbstract",
-   "title": "ABSTRACT",
-   "status": "required",
-   "group": "front",
-   "mode": "static",
-   "standalone": false,
-   "pageBreakBefore": true,
-   "overrides": {
-    "body": {
-     "lineHeight": 1,
-     "firstLineIndentMm": 0,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0
-    },
-    "page": {
-     "numbering": {
-      "format": "roman-lower",
-      "enabled": true,
-      "restart": false
-     },
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     }
-    }
-   },
-   "tocEntry": "title",
-   "blocks": [
-    {
-     "type": "spacer",
-     "heightMm": 15.417759999999998
-    },
-    {
-     "type": "metadata",
-     "field": "THESIS_TITLE_EN",
-     "fallback": "TITLE OF THESIS",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 27.6,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -7,
-      "rightIndentMm": 7
-     }
-    },
-    {
-     "type": "metadata",
-     "field": "STUDENT_NAME_EN",
-     "fallback": "Student Name Surname",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    },
-    {
-     "type": "text",
-     "value": "Afyonkarahisar University of Health Sciences",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    },
-    {
-     "type": "text",
-     "value": "{{FACULTY_EN}} Department of {{DEPARTMENT_NAME_EN}} Thesis",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    },
-    {
-     "type": "text",
-     "value": "{{THESIS_DATE_EN}}",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    },
-    {
-     "type": "text",
-     "value": "Supervisor: {{ADVISOR_TITLE_EN}} {{ADVISOR_NAME}}",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 20.7,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    },
-    {
-     "type": "text",
-     "value": "ABSTRACT",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 16.8,
-      "firstLineIndentMm": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    }
-   ]
-  },
-  {
-   "id": "abstract-en",
-   "type": "englishAbstract",
-   "title": "Abstract text",
-   "status": "required",
-   "group": "front",
-   "mode": "editable",
-   "pageBreakBefore": false,
-   "overrides": {
-    "body": {
-     "lineHeight": 1,
-     "firstLineIndentMm": 12.5,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0,
-     "fontFamily": "Times New Roman",
-     "fontSizePt": 12,
-     "fontWeight": 400,
-     "align": "justify"
-    },
-    "page": {
-     "numbering": {
-      "format": "roman-lower",
-      "enabled": true,
-      "restart": false
-     },
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     }
-    },
-    "paragraph": {
-     "lineHeight": 1,
-     "firstLineIndentMm": 12.5,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0
-    }
-   },
-   "showTitle": false
-  },
-  {
-   "id": "abstract-en-footer",
-   "type": "englishAbstract",
-   "title": "Key words",
-   "status": "required",
-   "group": "front",
-   "mode": "static",
-   "standalone": false,
-   "pageBreakBefore": false,
-   "overrides": {
-    "body": {
-     "lineHeight": 1,
-     "firstLineIndentMm": 12.5,
-     "spaceBeforePt": 0,
-     "spaceAfterPt": 0,
-     "fontFamily": "Times New Roman",
-     "fontSizePt": 12,
-     "fontWeight": 400,
-     "align": "left"
-    },
-    "page": {
-     "numbering": {
-      "format": "roman-lower",
-      "enabled": true,
-      "restart": false
-     },
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     }
-    }
-   },
-   "blocks": [
-    {
-     "type": "text",
-     "value": "**Key words:** {{KEYWORDS_EN}}",
-     "markup": "inline",
-     "style": {
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "align": "justify",
-      "lineHeight": 1,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 0,
-      "firstLineIndentMm": 12.5
-     }
-    }
-   ]
-  },
-  {
-   "id": "toc",
-   "type": "tableOfContents",
-   "title": "İÇİNDEKİLER",
-   "status": "required",
-   "group": "front",
-   "mode": "generated",
-   "tocEntry": "title",
-   "generatedIndex": {
-    "kind": "toc",
-    "title": "İÇİNDEKİLER",
-    "leader": "dots",
-    "pageHeading": "Sayfa",
-    "matchHeadingTransform": true,
     "style": {
-     "align": "left",
-     "spaceAfterPt": 0,
-     "lineHeight": 1.79,
-     "spaceBeforePt": 0,
-     "fontFamily": "Times New Roman",
-     "fontSizePt": 12,
-     "firstLineIndentMm": 0
-    },
-    "pageHeadingStyle": {
-     "fontWeight": 400,
-     "fontFamily": "Times New Roman",
-     "fontSizePt": 12,
-     "decoration": "underline",
-     "align": "right",
-     "lineHeight": 1.9391
-    },
-    "levels": [
-     1,
-     2,
-     3,
-     4
-    ],
-    "includePageNumbers": true,
-    "levelStyles": {
-     "1": {
-      "leftIndentMm": 0
-     },
-     "2": {
-      "leftIndentMm": 5
-     },
-     "3": {
-      "leftIndentMm": 12.5
-     }
-    }
-   },
-   "overrides": {
-    "page": {
-     "numbering": {
-      "format": "roman-lower",
-      "enabled": true,
-      "restart": false
-     },
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     }
-    },
-    "headings": {
-     "1": {
-      "align": "center",
-      "spaceAfterPt": 5.87,
-      "lineHeight": 1,
-      "numbering": {
-       "enabled": false
-      },
-      "textTransform": "uppercase",
       "fontFamily": "Times New Roman",
       "fontSizePt": 12,
-      "fontWeight": 700,
-      "pageBreakBefore": true,
-      "keepWithNext": true,
-      "firstLineIndentMm": 0,
-      "spaceBeforePt": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    }
-   }
-  },
-  {
-   "id": "abbreviations",
-   "type": "listOfAbbreviations",
-   "title": "KISALTMALAR",
-   "status": "optional",
-   "group": "front",
-   "mode": "editable",
-   "showTitle": true,
-   "tocEntry": "title",
-   "overrides": {
-    "page": {
-     "numbering": {
-      "format": "roman-lower",
-      "enabled": true,
-      "restart": false
-     },
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     }
-    },
-    "headings": {
-     "1": {
-      "align": "center",
-      "spaceAfterPt": 12,
+      "align": "left",
+      "spaceAfterPt": 0,
       "lineHeight": 1,
-      "numbering": {
-       "enabled": false
-      },
-      "textTransform": "uppercase",
+      "spaceBeforePt": 0,
+      "fontWeight": 400,
+      "firstLineIndentMm": 0
+    },
+    "numbering": {
+      "scope": "document",
+      "format": "{n}",
+      "sequence": "arabic"
+    },
+    "cellStyle": {
+      "lineHeight": 1,
       "fontFamily": "Times New Roman",
       "fontSizePt": 12,
-      "fontWeight": 700,
-      "pageBreakBefore": true,
-      "keepWithNext": true,
-      "firstLineIndentMm": 0,
-      "spaceBeforePt": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    }
-   }
+      "firstLineIndentMm": 0
+    },
+    "captionAlignment": "left",
+    "labelStyle": {
+      "fontWeight": 700
+    },
+    "labelFormat": "{label} {number}.",
+    "spacingAfterPt": 6
   },
-  {
-   "id": "index-tables",
-   "type": "listOfTables",
-   "title": "TABLOLAR DİZİNİ",
-   "status": "required",
-   "group": "front",
-   "mode": "generated",
-   "tocEntry": "title",
-   "generatedIndex": {
-    "kind": "tables",
-    "leader": "dots",
-    "pageHeading": "Sayfa",
+  "figures": {
+    "label": "Şekil",
+    "position": "below",
+    "align": "center",
     "style": {
-     "align": "left",
-     "spaceAfterPt": 0,
-     "lineHeight": 1.79,
-     "spaceBeforePt": 0,
-     "fontFamily": "Times New Roman",
-     "fontSizePt": 12,
-     "firstLineIndentMm": 0
-    }
-   },
-   "overrides": {
-    "page": {
-     "numbering": {
-      "format": "roman-lower",
-      "enabled": true,
-      "restart": false
-     },
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     }
-    },
-    "headings": {
-     "1": {
-      "align": "center",
-      "spaceAfterPt": 12,
-      "lineHeight": 1,
-      "textTransform": "uppercase",
-      "numbering": {
-       "enabled": false
-      },
       "fontFamily": "Times New Roman",
       "fontSizePt": 12,
-      "fontWeight": 700,
-      "pageBreakBefore": true,
-      "keepWithNext": true,
-      "firstLineIndentMm": 0,
+      "align": "left",
+      "spaceAfterPt": 0,
+      "lineHeight": 1,
       "spaceBeforePt": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    }
-   }
-  },
-  {
-   "id": "index-figures",
-   "type": "listOfFigures",
-   "title": "ŞEKİLLER DİZİNİ",
-   "status": "required",
-   "group": "front",
-   "mode": "generated",
-   "tocEntry": "title",
-   "generatedIndex": {
-    "kind": "figures",
-    "leader": "dots",
-    "pageHeading": "Sayfa",
-    "style": {
-     "align": "left",
-     "spaceAfterPt": 0,
-     "lineHeight": 1.79,
-     "spaceBeforePt": 0,
-     "fontFamily": "Times New Roman",
-     "fontSizePt": 12,
-     "firstLineIndentMm": 0
-    }
-   },
-   "overrides": {
-    "page": {
-     "numbering": {
-      "format": "roman-lower",
-      "enabled": true,
-      "restart": false
-     },
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     }
+      "fontWeight": 400,
+      "firstLineIndentMm": 0
     },
-    "headings": {
-     "1": {
+    "numbering": {
+      "scope": "document",
+      "format": "{n}",
+      "sequence": "arabic"
+    },
+    "box": {
       "align": "center",
-      "spaceAfterPt": 12,
-      "lineHeight": 1,
-      "numbering": {
-       "enabled": false
-      },
-      "textTransform": "uppercase",
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 12,
-      "fontWeight": 700,
-      "pageBreakBefore": true,
-      "keepWithNext": true,
-      "firstLineIndentMm": 0,
-      "spaceBeforePt": 0,
-      "leftIndentMm": -15,
-      "rightIndentMm": -1
-     }
-    }
-   }
-  },
-  {
-   "id": "main",
-   "type": "mainContent",
-   "title": "Bölümler",
-   "status": "required",
-   "group": "body",
-   "mode": "editable",
-   "tocEntry": "headings",
-   "overrides": {
-    "page": {
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     },
-     "numbering": {
-      "enabled": true,
-      "format": "arabic",
-      "startAt": 1,
-      "restart": true
-     }
-    }
-   }
-  },
-  {
-   "id": "bibliography",
-   "type": "bibliography",
-   "title": "KAYNAKLAR",
-   "status": "required",
-   "group": "back",
-   "mode": "editable",
-   "showTitle": true,
-   "tocEntry": "title",
-   "titleNumbering": "continueH1",
-   "overrides": {
-    "page": {
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     },
-     "numbering": {
-      "enabled": true,
-      "format": "arabic",
-      "restart": false
-     }
-    }
-   }
-  },
-  {
-   "id": "appendices",
-   "type": "appendices",
-   "title": "EKLER",
-   "status": "optional",
-   "group": "back",
-   "mode": "editable",
-   "showTitle": true,
-   "tocEntry": "title",
-   "overrides": {
-    "headings": {
-     "1": {
-      "numbering": {
-       "enabled": false
-      },
-      "fontFamily": "Times New Roman",
-      "fontSizePt": 14,
-      "fontWeight": 700,
-      "align": "center",
-      "lineHeight": 1,
-      "textTransform": "uppercase",
-      "pageBreakBefore": true,
-      "keepWithNext": true,
-      "firstLineIndentMm": 0,
-      "spaceBeforePt": 0,
+      "spaceBeforePt": 12,
       "spaceAfterPt": 12
-     },
-     "2": {
+    },
+    "captionAlignment": "left",
+    "labelStyle": {
+      "fontWeight": 700
+    },
+    "labelFormat": "{label} {number}.",
+    "spacingBeforePt": 6
+  },
+  "bibliography": {
+    "heading": "KAYNAKLAR",
+    "citationStyle": "Vancouver",
+    "style": {
       "fontFamily": "Times New Roman",
       "fontSizePt": 12,
-      "fontWeight": 700,
-      "align": "left",
+      "spaceAfterPt": 6,
       "lineHeight": 1,
-      "keepWithNext": true,
       "firstLineIndentMm": 0,
-      "spaceBeforePt": 0,
-      "spaceAfterPt": 12,
-      "numbering": {
-       "enabled": true,
-       "format": "EK-{2}:",
-       "sequence": "arabic"
-      },
-      "textTransform": "none",
-      "pageBreakBefore": true,
-      "pageBreakUnlessAfterHeading": true
-     }
-    },
-    "page": {
-     "margins": {
-      "topMm": 25,
-      "bottomMm": 25,
-      "leftMm": 40,
-      "rightMm": 25
-     },
-     "numbering": {
-      "enabled": true,
-      "format": "arabic",
-      "restart": false
-     }
+      "spaceBeforePt": 0
     }
-   }
-  }
- ]
+  },
+  "toc": {
+    "heading": "İÇİNDEKİLER",
+    "levels": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "showPageNumbers": true
+  },
+  "typography": {
+    "body": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "align": "justify",
+      "spaceAfterPt": 0,
+      "lineHeight": 1.5,
+      "firstLineIndentMm": 12.5,
+      "fontWeight": 400,
+      "spaceBeforePt": 0
+    },
+    "paragraph": {
+      "align": "justify",
+      "spaceAfterPt": 0,
+      "lineHeight": 1.5,
+      "firstLineIndentMm": 12.5,
+      "spaceBeforePt": 0
+    },
+    "lineSpacing": {
+      "mode": "word",
+      "singleLineEm": 1.15,
+      "baseline": "word",
+      "paragraphSpacing": "collapse"
+    },
+    "footnotes": {
+      "placement": "pageBottom",
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "lineHeight": 1,
+      "lineSpacing": {
+        "rule": "auto",
+        "value": 1,
+        "singleLineEm": 1.15
+      }
+    },
+    "headings": {
+      "1": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 14,
+        "fontWeight": 700,
+        "align": "center",
+        "spaceAfterPt": 12,
+        "lineHeight": 1,
+        "firstLineIndentMm": 0,
+        "pageBreakBefore": true,
+        "textTransform": "uppercase",
+        "spaceBeforePt": 0,
+        "keepWithNext": true,
+        "numbering": {
+          "enabled": true,
+          "format": "{1}.",
+          "sequence": "arabic"
+        }
+      },
+      "2": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 700,
+        "align": "left",
+        "spaceAfterPt": 12,
+        "lineHeight": 1,
+        "firstLineIndentMm": 12.5,
+        "spaceBeforePt": 12,
+        "keepWithNext": true,
+        "numbering": {
+          "enabled": true,
+          "format": "{1}.{2}.",
+          "sequence": "arabic"
+        },
+        "textTransform": "uppercase"
+      },
+      "3": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 700,
+        "align": "left",
+        "spaceAfterPt": 12,
+        "lineHeight": 1,
+        "firstLineIndentMm": 12.5,
+        "spaceBeforePt": 12,
+        "keepWithNext": true,
+        "numbering": {
+          "enabled": true,
+          "format": "{1}.{2}.{3}.",
+          "sequence": "arabic"
+        },
+        "textTransform": "capitalize",
+        "textTransformExceptions": [
+          "ve",
+          "veya",
+          "ile"
+        ]
+      },
+      "4": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 12,
+        "fontWeight": 700,
+        "align": "left",
+        "spaceAfterPt": 12,
+        "lineHeight": 1,
+        "firstLineIndentMm": 12.5,
+        "keepWithNext": true,
+        "spaceBeforePt": 12,
+        "numbering": {
+          "enabled": true,
+          "format": "{1}.{2}.{3}.{4}.",
+          "sequence": "arabic"
+        },
+        "textTransform": "capitalize",
+        "textTransformExceptions": [
+          "ve",
+          "veya",
+          "ile"
+        ]
+      }
+    },
+    "paragraphStyles": {
+      "tableNote": {
+        "fontFamily": "Times New Roman",
+        "fontSizePt": 10,
+        "lineHeight": 1,
+        "firstLineIndentMm": 0,
+        "align": "left",
+        "spaceBeforePt": 0,
+        "spaceAfterPt": 0
+      },
+      "blockQuote": {
+        "lineHeight": 1
+      }
+    }
+  },
+  "validation": {
+    "KEYWORDS": {
+      "minItems": 3,
+      "separator": ",",
+      "severity": "warning",
+      "message": "Anahtar kelime sayısı 3-5 olmalıdır (§3.1.6).",
+      "maxItems": 5,
+      "alphabetical": true,
+      "locale": "tr"
+    },
+    "KEYWORDS_EN": {
+      "minItems": 3,
+      "separator": ",",
+      "severity": "warning",
+      "message": "Key words must be 3-5 and correspond to the Turkish keywords (§3.1.6).",
+      "maxItems": 5,
+      "alphabetical": true,
+      "locale": "en"
+    },
+    "main": {
+      "headingSequence": [
+        "GİRİŞ",
+        "GENEL BİLGİLER",
+        "GEREÇ VE YÖNTEM",
+        "BULGULAR",
+        "TARTIŞMA",
+        "SONUÇ VE ÖNERİLER"
+      ],
+      "headingLevel": 1,
+      "severity": "warning"
+    }
+  },
+  "templateVersion": "1.0.0",
+  "id": "afsu-dis-hekimligi-uzmanlik-tr-v1",
+  "universityId": "afsu",
+  "universityName": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+  "instituteId": "dhf",
+  "instituteName": "Diş Hekimliği Fakültesi",
+  "degreeType": "specialization",
+  "language": "tr",
+  "status": "official",
+  "displayName": "Afyonkarahisar Sağlık Bilimleri Üniversitesi · Diş Hekimliği Fakültesi · Diş Hekimliğinde Uzmanlık Tezi",
+  "source": {
+    "type": "official",
+    "url": "https://tip.afsu.edu.tr/yonergeler-2/",
+    "documentName": "AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf and AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf (Tıp ve Diş Hekimliği Fakülteleri Uzmanlık Tez Yazım Kılavuzu, Temmuz 2021)",
+    "revisionDate": "Temmuz 2021 (cover); PDF creation 2021-08-26 (Tıp copy) and 2021-09-21 (DHF copy)",
+    "verifiedAt": "2026-10-25",
+    "notes": [
+      "Tek kılavuz: Tıp ve Diş Hekimliği Fakülteleri ortak uzmanlık tez yazım kılavuzu (kapak: 'TIP VE DİŞ HEKİMLİĞİ FAKÜLTELERİ'). İki PDF aynı kılavuzun iki dışa aktarımıdır; gövde metni aynıdır, DHF kopyası yalnız ek örnek sayfalarını ortak ifade 'TIP/DİŞ HEKİMLİĞİ FAKÜLTESİ' ile yeniden üretmiştir. Yazı kuralları (proza) tek kümedir; iki kayıt fakülte/derece metinleri ile ÖRNEK SAYFA GEOMETRİSİ bakımından ayrışır: iki kopyanın EK 7/8/9/11/12/13 dikey ölçüleri FARKLIDIR (ÇELİŞKİ, ör. EK 7 öğrenci adı Tıp 169,78 mm / DHF 139,46 mm; EK 9 ONAY Tıp 248,81 / DHF 239,01 mm) ve her kayıt KENDİ kopyasının örneklerini izler (GEO.tip / GEO.dhf). DHF kopyasının EK 6 şeması aynı çerçevede olduğundan dış kapak iki kayıtta aynıdır (INFERRED eşleme). DHF metinleri '/' ayracının Diş Hekimliği seçeneği olarak çözümlendi (INFERRED); DHF için İngilizce fakülte adı UNKNOWN (alan boş, yazar doldurur).",
+      "Sayfa (EXPLICIT §2.2, EK 1): A4, tek yüz, üst/alt/sağ 2,5 cm, sol 4 cm; metin iki yana yaslı, ana metin 1,5 satır, her paragraf 1,25 cm girintili (EK 1 ölçümü 12,5 mm). Üst/alt bilgi uzaklığı UNKNOWN (belirtilmemiş).",
+      "Yazı (EXPLICIT §2.5): Times New Roman 12 punto; ana başlıklar yeni sayfa, 14 punto; ana ve alt başlıklar koyu. H1 büyük harf ve ortalı; H2-H4 metinle aynı hizadan (12,5 mm), başlıktan sonra ve bölüm sonu ile sonraki alt başlık arasında 12 nk (§2.7, EK 1). ÇELİŞKİ: §2.6 'her kelimenin ilk harfi büyük' der, EK 1 ve EK 13 örneklerinde H2 büyük harfle yazılmıştır: örnek uygulandı (H2 büyük harf), H3/H4 düzyazı gibi.",
+      "Başlıklar: Tez, kılavuza göre H1-H4 numaralıdır; dördüncü dereceden ileri başlıklar numarasız, içindekilerde yok, 12 punto normal, paragraf başında 1 tab içeriden, ilk kelime büyük harfli ve ':' ile devam eden satır başı başlıktır (§2.6): motor yalnız H1-H4 sunar, beşinci düzey MOTOR AÇIĞI (rapora bakın). Ön kısım başlıkları (TEŞEKKÜR, İÇİNDEKİLER, ÖZET...) örneklerde 12 punto koyu ortalı (EK 10, 11, 13), düzyazı 14 punto der (§2.5/2.7): örnek uygulandı (ÇELİŞKİ).",
+      "Sayfa numaraları (EXPLICIT §2.3, §3.1): alt kenar ortada; ön kısım (iç kapaktan girişe) küçük Roma, metin ve arka kısım Arap rakamıyla. Dış kapak ve boş sayfa numarasız (§3.1.2); iç kapak 'i', kabul/onay 'ii', teşekkür 'iii', özet 'iv', abstract 'v', içindekiler 'vi' (düzyazı). ÇELİŞKİ: §3.1 listesi ve EK 13 içindekiler örneği 'Bilimsel Etiğe Uygunluk Sayfası'nı (iç kapaktan sonra) sayar ve Roma dizisini bir kaydırır (ii etik, iii kabul...); kılavuzda bu sayfanın metni/örneği YOKTUR (EK listesinde sayfa yok): sayfa üretilmedi, numaralandırma düzyazı (§3.1.4-3.1.8) gibi. Çözülmesi gerekir.",
+      "İçindekiler (EK 13, MEASURED): başlık ortalı 12 punto koyu, sağda altı çizili 'Sayfa', noktalı kılavuz, satır adımı 24,7 pt, H2 girintisi 5,0 mm, H3 12,5 mm; liste ön kısım sayfalarını (İÇ KAPAK, BİLİMSEL ETİĞE UYGUNLUK, KABUL VE ONAY, TEŞEKKÜR, ÖZET, ABSTRACT, İÇİNDEKİLER, KISALTMALAR, TABLOLAR DİZİNİ, ŞEKİLLER DİZİNİ) ve '7.KAYNAKLAR' (numaralı) ile 'EKLER' (numarasız) satırlarını içerir. FARK (motor): EK 13'te EKLER satırının sayfa numarası yoktur, dışa aktarım ise EKLER satırına sayfa numarası yazar (motor, başlık satırı için numarasız TOC satırı seçeneği sunmaz). Başlık/Sayfa/ilk satır mesafeleri kopyaya göre ölçüldü (Tıp 7,65 + 9,41 mm; DHF 6,94 + 9,44 mm). Merkezli özel sayfa satırları sayfa merkezine (105,5 mm) ortalıdır (ölçüm).",
+      "Özet/Abstract (EXPLICIT §3.1.6-3.1.7): bir sayfayı geçmez, 1 satır aralık, 3-5 anahtar kelime (alfabetik, baş harf büyük); başlık, yazar, üniversite, anabilim dalı, yıl, danışman başlık bloğunda (EK 11/12 ölçümü). İlk satır girintisi: EK 11'de 10,5 mm ölçüldü, düzyazı/EK 1/EK 10 12,5 mm der (ÇELİŞKİ: 12,5 mm uygulandı). Anahtar kelime öncesi 'bir satır atlanarak' (düzyazı) örnekte yok (örnek uygulandı). Örnekteki özet sayfası farklı kenar boşluğundadır (39,5 mm); düzyazı kenar boşluğu uygulandı.",
+      "Kaynaklar (EXPLICIT §3.3.1, §2.7): Vancouver, metinde geçiş sırasına göre numara (parantez veya üst simge, tutarlı) — MOTOR AÇIĞI: citationStyle 'Vancouver' yalnız etikettir, motor atıfları geçiş sırasına göre numaralamaz ve kaynakçayı numaralamaz (yazar elle numaralar); dizin 1 satır aralık, kaynaklar arasında 6 nk; kaynaklar yayımlandıkları dilde. Punto ve hizalama UNKNOWN (genel 12 punto kuralı). Tablo/şekil: görsel ve açıklaması ile üst-alt metin 12 nk, açıklama–nesne 6 nk, tablo altı not 10 punto tek aralık (§2.11); tablo açıklaması üstte, şekil açıklaması altta; grafik ve resimler şekil sayılır. Dipnot/alıntı tek aralık (§2.7); dipnot punto UNKNOWN (genel 12 punto kuralı uygulandı, INFERRED).",
+      "UNKNOWN / üretilmeyenler: Bilimsel etik sayfası (metin yok), tablo kenarlık stili (EK 3 ızgara, EK 4 yalnız üst/alt çizgi), teşekkür sayfasındaki imza/tarih satırları (yazar yazar), sayfa numarası yazı tipi/boyutu, üst/alt bilgi uzaklığı, kapak ve iç kapakta dikey mesafeler (dış kapak örneği şematik çerçevedir: EXPLICIT yalnız sıra, punto, koyu, ortalı; dikey konum INFERRED). Sırt yazısı (§5.2, 12 punto, cilt sırtı) ayrı basılı çıktıdır, motor kapsamı dışı (rapor)."
+    ],
+    "regionalAudit": {
+      "checkedAt": "2026-10-23",
+      "status": "CORE_RECHECKED",
+      "layoutRebuilt": false,
+      "visualConformanceRechecked": false,
+      "documents": [
+        {
+          "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+          "sha256": "26df7eddaa04f296cdd56c5bef77254c6f59d9355bb3b47906370eddce193ca8"
+        },
+        {
+          "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+          "sha256": "9003829e8ce2ce6bb184027f7a3d1225303c8bdf21ef296902b6696caf4f3cf0"
+        }
+      ],
+      "checkedFields": [
+        {
+          "field": "page.margins.topMm",
+          "template": 25,
+          "sourceValue": 25,
+          "source": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+          "evidence": [
+            {
+              "value": 25,
+              "location": "sayfa 4",
+              "sentence": "Sayfa Düzeni Sayfanın üst, alt ve sağ kenarlarından 2,5 cm, sol kenarından 4 cm boşluk bulunmalıdır."
+            },
+            {
+              "value": 25,
+              "location": "sayfa 4",
+              "sentence": "Her sayfanın sol kenarında 4 cm, alt, üst ve sağ kenarında ise 2,5 cm boşluk bulunmalıdır."
+            }
+          ]
+        },
+        {
+          "field": "page.margins.bottomMm",
+          "template": 25,
+          "sourceValue": 25,
+          "source": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+          "evidence": [
+            {
+              "value": 25,
+              "location": "sayfa 4",
+              "sentence": "Sayfa Düzeni Sayfanın üst, alt ve sağ kenarlarından 2,5 cm, sol kenarından 4 cm boşluk bulunmalıdır."
+            },
+            {
+              "value": 25,
+              "location": "sayfa 4",
+              "sentence": "Her sayfanın sol kenarında 4 cm, alt, üst ve sağ kenarında ise 2,5 cm boşluk bulunmalıdır."
+            }
+          ]
+        },
+        {
+          "field": "page.margins.rightMm",
+          "template": 25,
+          "sourceValue": 25,
+          "source": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+          "evidence": [
+            {
+              "value": 25,
+              "location": "sayfa 4",
+              "sentence": "Sayfa Düzeni Sayfanın üst, alt ve sağ kenarlarından 2,5 cm, sol kenarından 4 cm boşluk bulunmalıdır."
+            },
+            {
+              "value": 25,
+              "location": "sayfa 4",
+              "sentence": "Her sayfanın sol kenarında 4 cm, alt, üst ve sağ kenarında ise 2,5 cm boşluk bulunmalıdır."
+            }
+          ]
+        },
+        {
+          "field": "page.margins.leftMm",
+          "template": 40,
+          "sourceValue": 40,
+          "source": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+          "evidence": [
+            {
+              "value": 40,
+              "location": "sayfa 4",
+              "sentence": "Sayfa Düzeni Sayfanın üst, alt ve sağ kenarlarından 2,5 cm, sol kenarından 4 cm boşluk bulunmalıdır."
+            },
+            {
+              "value": 40,
+              "location": "sayfa 4",
+              "sentence": "Her sayfanın sol kenarında 4 cm, alt, üst ve sağ kenarında ise 2,5 cm boşluk bulunmalıdır."
+            }
+          ]
+        },
+        {
+          "field": "typography.body.lineHeight",
+          "template": 1.5,
+          "sourceValue": 1.5,
+          "source": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+          "evidence": [
+            {
+              "value": 1.5,
+              "location": "sayfa 4",
+              "sentence": "Paragraflar arasında da satır aralığı 1,5 satır olmalı ancak, her yeni paragraf 1,25 cm girinti ile başlamalıdır."
+            },
+            {
+              "value": 1.5,
+              "location": "sayfa 6",
+              "sentence": "Satır Aralığı Ana metinde satır araları 1,5 satır olmalıdır (EK 1)."
+            }
+          ]
+        },
+        {
+          "field": "typography.body.firstLineIndentMm",
+          "template": 12.5,
+          "sourceValue": 12.5,
+          "source": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+          "evidence": [
+            {
+              "value": 12.5,
+              "location": "sayfa 4",
+              "sentence": "Paragraflar arasında da satır aralığı 1,5 satır olmalı ancak, her yeni paragraf 1,25 cm girinti ile başlamalıdır."
+            },
+            {
+              "value": 12.5,
+              "location": "sayfa 6",
+              "sentence": "Her yeni paragraf 1,25 cm içeriden başlamalıdır."
+            }
+          ]
+        },
+        {
+          "field": "typography.body.fontFamily",
+          "template": "Times New Roman",
+          "sourceValue": "Times New Roman",
+          "source": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+          "evidence": [
+            {
+              "value": "Times New Roman",
+              "location": "sayfa 5",
+              "sentence": "Yazı Özellikleri (Yazı Tipi ve Harf Büyüklüğü) Yazı tipi Times New Roman ve 12 punto yazı büyüklüğünde olmalıdır."
+            }
+          ]
+        },
+        {
+          "field": "page.margins.topMm",
+          "template": 25,
+          "sourceValue": 25,
+          "source": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+          "evidence": [
+            {
+              "value": 25,
+              "location": "sayfa 4",
+              "sentence": "Sayfa Düzeni Sayfanın üst, alt ve sağ kenarlarından 2,5 cm, sol kenarından 4 cm boşluk bulunmalıdır."
+            },
+            {
+              "value": 25,
+              "location": "sayfa 4",
+              "sentence": "Her sayfanın sol kenarında 4 cm, alt, üst ve sağ kenarında ise 2,5 cm boşluk bulunmalıdır."
+            }
+          ]
+        },
+        {
+          "field": "page.margins.bottomMm",
+          "template": 25,
+          "sourceValue": 25,
+          "source": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+          "evidence": [
+            {
+              "value": 25,
+              "location": "sayfa 4",
+              "sentence": "Sayfa Düzeni Sayfanın üst, alt ve sağ kenarlarından 2,5 cm, sol kenarından 4 cm boşluk bulunmalıdır."
+            },
+            {
+              "value": 25,
+              "location": "sayfa 4",
+              "sentence": "Her sayfanın sol kenarında 4 cm, alt, üst ve sağ kenarında ise 2,5 cm boşluk bulunmalıdır."
+            }
+          ]
+        },
+        {
+          "field": "page.margins.rightMm",
+          "template": 25,
+          "sourceValue": 25,
+          "source": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+          "evidence": [
+            {
+              "value": 25,
+              "location": "sayfa 4",
+              "sentence": "Sayfa Düzeni Sayfanın üst, alt ve sağ kenarlarından 2,5 cm, sol kenarından 4 cm boşluk bulunmalıdır."
+            },
+            {
+              "value": 25,
+              "location": "sayfa 4",
+              "sentence": "Her sayfanın sol kenarında 4 cm, alt, üst ve sağ kenarında ise 2,5 cm boşluk bulunmalıdır."
+            }
+          ]
+        },
+        {
+          "field": "page.margins.leftMm",
+          "template": 40,
+          "sourceValue": 40,
+          "source": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+          "evidence": [
+            {
+              "value": 40,
+              "location": "sayfa 4",
+              "sentence": "Sayfa Düzeni Sayfanın üst, alt ve sağ kenarlarından 2,5 cm, sol kenarından 4 cm boşluk bulunmalıdır."
+            },
+            {
+              "value": 40,
+              "location": "sayfa 4",
+              "sentence": "Her sayfanın sol kenarında 4 cm, alt, üst ve sağ kenarında ise 2,5 cm boşluk bulunmalıdır."
+            }
+          ]
+        },
+        {
+          "field": "typography.body.lineHeight",
+          "template": 1.5,
+          "sourceValue": 1.5,
+          "source": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+          "evidence": [
+            {
+              "value": 1.5,
+              "location": "sayfa 4",
+              "sentence": "Paragraflar arasında da satır aralığı 1,5 satır olmalı ancak, her yeni paragraf 1,25 cm girinti ile başlamalıdır."
+            },
+            {
+              "value": 1.5,
+              "location": "sayfa 6",
+              "sentence": "Satır Aralığı Ana metinde satır araları 1,5 satır olmalıdır (EK 1)."
+            },
+            {
+              "value": 1.5,
+              "location": "sayfa 16",
+              "sentence": "1.5 satır aralığı 2,5 cm"
+            }
+          ]
+        },
+        {
+          "field": "typography.body.firstLineIndentMm",
+          "template": 12.5,
+          "sourceValue": 12.5,
+          "source": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+          "evidence": [
+            {
+              "value": 12.5,
+              "location": "sayfa 4",
+              "sentence": "Paragraflar arasında da satır aralığı 1,5 satır olmalı ancak, her yeni paragraf 1,25 cm girinti ile başlamalıdır."
+            },
+            {
+              "value": 12.5,
+              "location": "sayfa 6",
+              "sentence": "Her yeni paragraf 1,25 cm içeriden başlamalıdır."
+            }
+          ]
+        },
+        {
+          "field": "typography.body.fontFamily",
+          "template": "Times New Roman",
+          "sourceValue": "Times New Roman",
+          "source": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf",
+          "evidence": [
+            {
+              "value": "Times New Roman",
+              "location": "sayfa 5",
+              "sentence": "Yazı Özellikleri (Yazı Tipi ve Harf Büyüklüğü) Yazı tipi Times New Roman ve 12 punto yazı büyüklüğünde olmalıdır."
+            }
+          ]
+        }
+      ],
+      "conflicts": []
+    },
+    "currentSourceVerification": {
+      "checkedAt": "2026-10-25",
+      "method": "Live official-page links, downloads and SHA-256 comparison with retained originals",
+      "documents": [
+        {
+          "url": "https://dhf.afsu.edu.tr/wp-content/uploads/sites/3/2021/09/Tez-Yazım-Kılavuzu.pdf",
+          "sha256": "26df7eddaa04f296cdd56c5bef77254c6f59d9355bb3b47906370eddce193ca8",
+          "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Dis_Hekimligi_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf"
+        },
+        {
+          "url": "https://tip.afsu.edu.tr/wp-content/uploads/sites/2/2021/08/AFYONKARAHİSAR-SAĞLIK-BİLİMLERİ-ÜNİVERSİTESİ-TIP-VE-DİŞ-HEKİMLİĞİ-FAKÜLTELERİ-UZMANLIK-TEZ-YAZIM-KILAVUZU.pdf",
+          "sha256": "9003829e8ce2ce6bb184027f7a3d1225303c8bdf21ef296902b6696caf4f3cf0",
+          "path": "Butun-Sablonlar/Ege/Afyonkarahisar Sağlık Bilimleri Üniversitesi/Tip_Dis_Hekimligi_Uzmanlik_Tezi/AFSU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu_2021.pdf"
+        }
+      ]
+    },
+    "visualCoverReview": {
+      "checkedAt": "2026-10-25",
+      "physicalPage": 21,
+      "baselineMm": [
+        54.236,
+        59.104,
+        63.973,
+        102.93,
+        137.008,
+        141.877,
+        175.962,
+        180.83,
+        258.734
+      ],
+      "note": "Each faculty uses its own official guide sample geometry. Frame and point-size annotations are explanatory, not printed cover content. Title remains the explicitly labelled 14 pt."
+    }
+  },
+  "placeholders": {
+    "THESIS_TITLE": {
+      "label": "Tezin adı",
+      "type": "text",
+      "required": true
+    },
+    "THESIS_TITLE_EN": {
+      "label": "Thesis title (English)",
+      "type": "text",
+      "required": true
+    },
+    "STUDENT_NAME": {
+      "label": "Adı SOYADI",
+      "type": "text",
+      "required": true
+    },
+    "STUDENT_NAME_EN": {
+      "label": "Student Name Surname (English)",
+      "type": "text",
+      "required": true
+    },
+    "STUDENT_TITLE": {
+      "label": "Özet sayfasında ad soyadın önündeki unvan (örnek: Araştırma Görevlisi)",
+      "type": "text",
+      "defaultValue": "Araştırma Görevlisi"
+    },
+    "DEPARTMENT_NAME": {
+      "label": "Anabilim dalı adı (yalnız adı; sonuna ‘Anabilim Dalı’ eklemeyin)",
+      "type": "text",
+      "required": true
+    },
+    "DEPARTMENT_NAME_EN": {
+      "label": "Department name (English)",
+      "type": "text",
+      "required": true
+    },
+    "FACULTY_EN": {
+      "label": "Faculty (English; the guide gives no wording for this faculty)",
+      "type": "text",
+      "required": true
+    },
+    "ADVISOR_TITLE": {
+      "label": "Danışman unvanı",
+      "type": "text",
+      "required": true
+    },
+    "ADVISOR_NAME": {
+      "label": "Danışman adı SOYADI",
+      "type": "text",
+      "required": true
+    },
+    "ADVISOR_TITLE_EN": {
+      "label": "Supervisor academic title (English)",
+      "type": "text",
+      "required": true
+    },
+    "YEAR": {
+      "label": "Yıl (kapak)",
+      "type": "number",
+      "required": true
+    },
+    "THESIS_DATE_TEXT": {
+      "label": "Özet sayfasındaki tarih (ay ve yıl; örnek: Mayıs 2021)",
+      "type": "text",
+      "required": true
+    },
+    "THESIS_DATE_EN": {
+      "label": "Date on the abstract page (month and year; example: May 2021)",
+      "type": "text",
+      "required": true
+    },
+    "DEFENSE_DATE": {
+      "label": "Tez kabul tarihi",
+      "type": "text"
+    },
+    "BAP_PROJECT_CODE": {
+      "label": "Destekleyen BAP proje kodu (kurum desteği varsa; iç kapak EK 8 düzeni)",
+      "type": "text",
+      "defaultValue": ""
+    },
+    "KEYWORDS": {
+      "label": "Anahtar kelimeler (3-5, alfabetik, virgülle)",
+      "type": "text",
+      "required": true
+    },
+    "KEYWORDS_EN": {
+      "label": "Key words (3-5, alphabetical, comma-separated)",
+      "type": "text",
+      "required": true
+    }
+  },
+  "equations": {
+    "numbering": {
+      "scope": "chapter",
+      "format": "({chapter}.{n})"
+    }
+  },
+  "sections": [
+    {
+      "id": "outer-cover",
+      "type": "outerCover",
+      "title": "DIŞ KAPAK",
+      "status": "required",
+      "group": "cover",
+      "mode": "static",
+      "tocEntry": "none",
+      "blocks": [
+        {
+          "type": "text",
+          "value": "T.C.",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 50.28378645833333,
+          "heightMm": 5.926666666666665,
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "wordBaseline": true,
+          "id": "outer-cover-source-1"
+        },
+        {
+          "type": "text",
+          "value": "AFYONKARAHİSAR SAĞLIK BİLİMLERİ ÜNİVERSİTESİ",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 55.15178645833333,
+          "heightMm": 5.926666666666665,
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "wordBaseline": true,
+          "id": "outer-cover-source-2"
+        },
+        {
+          "type": "metadata",
+          "field": "DEPARTMENT_NAME",
+          "fallback": "DİŞ HEKİMLİĞİ FAKÜLTESİ …… ANABİLİM DALI",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 60.02078645833333,
+          "heightMm": 5.926666666666665,
+          "prefix": "DİŞ HEKİMLİĞİ FAKÜLTESİ ",
+          "suffix": " ANABİLİM DALI",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0,
+            "textTransform": "uppercase"
+          },
+          "wordBaseline": true,
+          "id": "outer-cover-source-3",
+          "skipSuffixIfMatches": "ana\\s*b[iı]l[iı]m\\s+dalı\\s*$"
+        },
+        {
+          "type": "metadata",
+          "field": "THESIS_TITLE",
+          "fallback": "TEZİN ADI",
+          "layoutMode": "absolute",
+          "xMm": 33,
+          "widthMm": 145,
+          "yMm": 98.31908420138889,
+          "heightMm": 22.718888888888884,
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 14,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0,
+            "textTransform": "uppercase"
+          },
+          "wordBaseline": true,
+          "id": "outer-cover-source-4"
+        },
+        {
+          "type": "text",
+          "value": "Hazırlayan",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 133.05578645833333,
+          "heightMm": 5.926666666666665,
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "wordBaseline": true,
+          "id": "outer-cover-source-5"
+        },
+        {
+          "type": "metadata",
+          "field": "STUDENT_NAME",
+          "fallback": "Adı ve SOYADI",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 137.92478645833333,
+          "heightMm": 5.926666666666665,
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "wordBaseline": true,
+          "id": "outer-cover-source-6"
+        },
+        {
+          "type": "text",
+          "value": "Danışman",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 172.0097864583333,
+          "heightMm": 5.926666666666665,
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "wordBaseline": true,
+          "id": "outer-cover-source-7"
+        },
+        {
+          "type": "text",
+          "value": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 176.87778645833333,
+          "heightMm": 5.997222222222222,
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "wordBaseline": true,
+          "id": "outer-cover-source-8"
+        },
+        {
+          "type": "text",
+          "value": "{{YEAR}} –AFYONKARAHİSAR",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 254.7817864583333,
+          "heightMm": 5.997222222222222,
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "wordBaseline": true,
+          "id": "outer-cover-source-9"
+        }
+      ],
+      "overrides": {
+        "body": {
+          "lineHeight": 1,
+          "firstLineIndentMm": 0,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0
+        },
+        "page": {
+          "numbering": {
+            "enabled": false
+          },
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          }
+        }
+      }
+    },
+    {
+      "id": "blank-page",
+      "type": "custom",
+      "title": "BOŞ SAYFA",
+      "status": "required",
+      "group": "cover",
+      "mode": "static",
+      "tocEntry": "none",
+      "overrides": {
+        "page": {
+          "numbering": {
+            "enabled": false
+          },
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          }
+        },
+        "body": {
+          "lineHeight": 1,
+          "firstLineIndentMm": 0,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0
+        }
+      },
+      "blocks": [
+        {
+          "type": "spacer",
+          "heightMm": 1
+        }
+      ]
+    },
+    {
+      "id": "inner-cover",
+      "type": "innerCover",
+      "title": "İÇ KAPAK",
+      "status": "required",
+      "group": "cover",
+      "mode": "static",
+      "tocEntry": "title",
+      "blocks": [
+        {
+          "type": "text",
+          "value": "T.C.",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 55.39470444444444,
+          "heightMm": 5.926666666666665,
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "visibleWhen": {
+            "noneFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "value": "AFYONKARAHİSAR SAĞLIK BİLİMLERİ ÜNİVERSİTESİ",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 60.26470444444444,
+          "heightMm": 5.926666666666665,
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "visibleWhen": {
+            "noneFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "value": "DİŞ HEKİMLİĞİ FAKÜLTESİ",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 65.13470444444444,
+          "heightMm": 5.926666666666665,
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "visibleWhen": {
+            "noneFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          }
+        },
+        {
+          "type": "metadata",
+          "field": "DEPARTMENT_NAME",
+          "fallback": "…… Anabilim Dalı",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 74.87470444444443,
+          "heightMm": 5.926666666666665,
+          "suffix": " Anabilim Dalı",
+          "visibleWhen": {
+            "noneFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "skipSuffixIfMatches": "ana\\s*b[iı]l[iı]m\\s+dalı\\s*$"
+        },
+        {
+          "type": "metadata",
+          "field": "THESIS_TITLE",
+          "fallback": "TEZİN KONUSU",
+          "layoutMode": "absolute",
+          "xMm": 33,
+          "widthMm": 145,
+          "yMm": 101.68470444444445,
+          "heightMm": 19.47333333333333,
+          "visibleWhen": {
+            "noneFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0,
+            "textTransform": "uppercase"
+          }
+        },
+        {
+          "type": "metadata",
+          "field": "STUDENT_NAME",
+          "fallback": "Adı SOYADI",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 135.75470444444446,
+          "heightMm": 5.926666666666665,
+          "visibleWhen": {
+            "noneFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          }
+        },
+        {
+          "type": "text",
+          "value": "DİŞ HEKİMLİĞİNDE UZMANLIK TEZİ",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 145.49470444444444,
+          "heightMm": 5.926666666666665,
+          "visibleWhen": {
+            "noneFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          }
+        },
+        {
+          "type": "text",
+          "value": "Danışman",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 169.84470444444446,
+          "heightMm": 5.926666666666665,
+          "visibleWhen": {
+            "noneFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          }
+        },
+        {
+          "type": "text",
+          "value": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 174.71470444444444,
+          "heightMm": 5.997222222222222,
+          "visibleWhen": {
+            "noneFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          }
+        },
+        {
+          "type": "text",
+          "value": "AFYONKARAHİSAR–{{YEAR}}",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 259.89470444444447,
+          "heightMm": 5.997222222222222,
+          "visibleWhen": {
+            "noneFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          }
+        },
+        {
+          "type": "metadata",
+          "field": "DEPARTMENT_NAME",
+          "fallback": "…… Anabilim Dalı",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 74.62578645833334,
+          "heightMm": 5.926666666666665,
+          "suffix": " Anabilim Dalı",
+          "visibleWhen": {
+            "anyFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "skipSuffixIfMatches": "ana\\s*b[iı]l[iı]m\\s+dalı\\s*$",
+          "wordBaseline": true
+        },
+        {
+          "type": "metadata",
+          "field": "THESIS_TITLE",
+          "fallback": "TEZİN KONUSU",
+          "layoutMode": "absolute",
+          "xMm": 33,
+          "widthMm": 145,
+          "yMm": 113.58278645833333,
+          "heightMm": 19.47333333333333,
+          "visibleWhen": {
+            "anyFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0,
+            "textTransform": "uppercase"
+          },
+          "wordBaseline": true
+        },
+        {
+          "type": "metadata",
+          "field": "STUDENT_NAME",
+          "fallback": "Adı SOYADI",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 147.66078645833332,
+          "heightMm": 5.926666666666665,
+          "visibleWhen": {
+            "anyFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "wordBaseline": true
+        },
+        {
+          "type": "text",
+          "value": "DİŞ HEKİMLİĞİNDE UZMANLIK TEZİ",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 157.40478645833332,
+          "heightMm": 5.926666666666665,
+          "visibleWhen": {
+            "anyFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "wordBaseline": true
+        },
+        {
+          "type": "text",
+          "value": "Danışman",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 184.20178645833332,
+          "heightMm": 5.926666666666665,
+          "visibleWhen": {
+            "anyFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "wordBaseline": true
+        },
+        {
+          "type": "text",
+          "value": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 189.0697864583333,
+          "heightMm": 5.997222222222222,
+          "visibleWhen": {
+            "anyFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "wordBaseline": true
+        },
+        {
+          "type": "text",
+          "value": "Bu çalışma; Afyonkarahisar Sağlık Bilimleri Üniversitesi Bilimsel Araştırma Projeleri Birimi tarafından {{BAP_PROJECT_CODE}} kodlu proje ile desteklenmiştir.",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 230.44078645833332,
+          "heightMm": 14.11111111111111,
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "visibleWhen": {
+            "anyFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "wordBaseline": true
+        },
+        {
+          "type": "text",
+          "value": "{{YEAR}}–AFYONKARAHİSAR",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 262.06178645833336,
+          "heightMm": 5.997222222222222,
+          "visibleWhen": {
+            "anyFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "wordBaseline": true
+        },
+        {
+          "type": "text",
+          "value": "T.C.",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 55.15178645833333,
+          "heightMm": 5.926666666666665,
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "visibleWhen": {
+            "anyFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "id": "bap-source-header-1",
+          "wordBaseline": true
+        },
+        {
+          "type": "text",
+          "value": "AFYONKARAHİSAR SAĞLIK BİLİMLERİ ÜNİVERSİTESİ",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 60.02078645833333,
+          "heightMm": 5.926666666666665,
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "visibleWhen": {
+            "anyFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "id": "bap-source-header-2",
+          "wordBaseline": true
+        },
+        {
+          "type": "text",
+          "value": "DİŞ HEKİMLİĞİ FAKÜLTESİ",
+          "layoutMode": "absolute",
+          "xMm": 25,
+          "widthMm": 161,
+          "yMm": 64.88878645833333,
+          "heightMm": 5.926666666666665,
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          },
+          "visibleWhen": {
+            "anyFilled": [
+              "BAP_PROJECT_CODE"
+            ]
+          },
+          "id": "bap-source-header-3",
+          "wordBaseline": true
+        }
+      ],
+      "overrides": {
+        "body": {
+          "lineHeight": 1,
+          "firstLineIndentMm": 0,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0
+        },
+        "page": {
+          "numbering": {
+            "enabled": true,
+            "format": "roman-lower",
+            "startAt": 1,
+            "restart": true
+          },
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          }
+        }
+      }
+    },
+    {
+      "id": "approval",
+      "type": "approval",
+      "title": "KABUL VE ONAY SAYFASI",
+      "status": "required",
+      "group": "front",
+      "mode": "static",
+      "tocEntry": "title",
+      "blocks": [
+        {
+          "type": "spacer",
+          "heightMm": 25.11776
+        },
+        {
+          "type": "text",
+          "value": "AFYONKARAHİSAR SAĞLIK BİLİMLERİ ÜNİVERSİTESİ",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        },
+        {
+          "type": "text",
+          "value": "DİŞ HEKİMLİĞİ FAKÜLTESİ",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        },
+        {
+          "type": "metadata",
+          "field": "DEPARTMENT_NAME",
+          "fallback": "…… ANABİLİM DALI",
+          "prefix": "",
+          "suffix": " ANABİLİM DALI",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 27.35905511811023,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1,
+            "textTransform": "uppercase"
+          },
+          "skipSuffixIfMatches": "ana\\s*b[iı]l[iı]m\\s+dalı\\s*$"
+        },
+        {
+          "type": "metadata",
+          "field": "THESIS_TITLE",
+          "fallback": "……..",
+          "prefix": "Tez Başlığı: ",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 400,
+            "align": "left",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          }
+        },
+        {
+          "type": "metadata",
+          "field": "STUDENT_NAME",
+          "fallback": "…………….",
+          "prefix": "Tez Hazırlayan: ",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 400,
+            "align": "left",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          }
+        },
+        {
+          "type": "metadata",
+          "field": "DEFENSE_DATE",
+          "fallback": "………………",
+          "prefix": "Tez Kabul Tarihi: ",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 400,
+            "align": "left",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0
+          }
+        },
+        {
+          "type": "text",
+          "value": "Tez Danışmanı: {{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 400,
+            "align": "left",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 13.837795275590555,
+            "firstLineIndentMm": 0
+          }
+        },
+        {
+          "type": "text",
+          "value": "İş bu çalışma jürimiz tarafından {{DEPARTMENT_NAME}} ANABİLİM DALI’NDA DİŞ HEKİMLİĞİNDE UZMANLIK TEZİ olarak kabul edilmiştir.",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 400,
+            "align": "justify",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 55.19999999999995,
+            "firstLineIndentMm": 0
+          }
+        },
+        {
+          "type": "text",
+          "value": "JÜRİ:",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 400,
+            "align": "left",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 41.39055118110244,
+            "firstLineIndentMm": 0
+          }
+        },
+        {
+          "type": "text",
+          "value": "Başkan",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 400,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 55.22362204724409,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        },
+        {
+          "type": "group",
+          "direction": "row",
+          "gapMm": 0,
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0
+          },
+          "blocks": [
+            {
+              "type": "group",
+              "widthPercent": 50,
+              "blocks": [
+                {
+                  "type": "text",
+                  "value": "Üye",
+                  "style": {
+                    "fontFamily": "Times New Roman",
+                    "fontSizePt": 12,
+                    "fontWeight": 400,
+                    "align": "left",
+                    "lineHeight": 1,
+                    "spaceBeforePt": 0,
+                    "spaceAfterPt": 0,
+                    "firstLineIndentMm": 0
+                  }
+                }
+              ]
+            },
+            {
+              "type": "group",
+              "widthPercent": 50,
+              "blocks": [
+                {
+                  "type": "text",
+                  "value": "Üye",
+                  "style": {
+                    "fontFamily": "Times New Roman",
+                    "fontSizePt": 12,
+                    "fontWeight": 400,
+                    "align": "right",
+                    "lineHeight": 1,
+                    "spaceBeforePt": 0,
+                    "spaceAfterPt": 0,
+                    "firstLineIndentMm": 0
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "spacer",
+          "heightMm": 58.43166666666664
+        },
+        {
+          "type": "text",
+          "value": "ONAY",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 400,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        },
+        {
+          "type": "text",
+          "value": "DEKAN",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 400,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        }
+      ],
+      "overrides": {
+        "body": {
+          "lineHeight": 1,
+          "firstLineIndentMm": 0,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0
+        },
+        "page": {
+          "numbering": {
+            "enabled": true,
+            "format": "roman-lower",
+            "restart": false
+          },
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          }
+        }
+      }
+    },
+    {
+      "id": "acknowledgements",
+      "type": "acknowledgements",
+      "title": "TEŞEKKÜR",
+      "status": "optional",
+      "group": "front",
+      "mode": "editable",
+      "showTitle": true,
+      "tocEntry": "title",
+      "overrides": {
+        "page": {
+          "numbering": {
+            "format": "roman-lower",
+            "enabled": true,
+            "restart": false
+          },
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          }
+        },
+        "headings": {
+          "1": {
+            "align": "center",
+            "numbering": {
+              "enabled": false
+            },
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "lineHeight": 1,
+            "textTransform": "uppercase",
+            "pageBreakBefore": true,
+            "keepWithNext": true,
+            "firstLineIndentMm": 0,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 12,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        }
+      },
+      "maxPages": 1
+    },
+    {
+      "id": "abstract-header",
+      "type": "abstract",
+      "title": "ÖZET",
+      "status": "required",
+      "group": "front",
+      "mode": "static",
+      "standalone": false,
+      "pageBreakBefore": true,
+      "overrides": {
+        "body": {
+          "lineHeight": 1,
+          "firstLineIndentMm": 0,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0
+        },
+        "page": {
+          "numbering": {
+            "format": "roman-lower",
+            "enabled": true,
+            "restart": false
+          },
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          }
+        }
+      },
+      "tocEntry": "title",
+      "blocks": [
+        {
+          "type": "spacer",
+          "heightMm": 19.65776
+        },
+        {
+          "type": "metadata",
+          "field": "THESIS_TITLE",
+          "fallback": "TEZİN BAŞLIĞI",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 18.8,
+            "firstLineIndentMm": 0,
+            "textTransform": "uppercase",
+            "leftIndentMm": -7,
+            "rightIndentMm": 7
+          }
+        },
+        {
+          "type": "text",
+          "value": "{{STUDENT_TITLE}} {{STUDENT_NAME}}",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 18.9,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        },
+        {
+          "type": "text",
+          "value": "Afyonkarahisar Sağlık Bilimleri Üniversitesi",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        },
+        {
+          "type": "text",
+          "value": "Diş Hekimliği Fakültesi {{DEPARTMENT_NAME}} Anabilim Dalı Diş Hekimliğinde Uzmanlık Tezi",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        },
+        {
+          "type": "text",
+          "value": "{{THESIS_DATE_TEXT}}",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        },
+        {
+          "type": "text",
+          "value": "Danışman: {{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 12,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        },
+        {
+          "type": "text",
+          "value": "ÖZET",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 18.8,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        }
+      ],
+      "maxPages": 1
+    },
+    {
+      "id": "abstract-tr",
+      "type": "abstract",
+      "title": "Özet metni",
+      "status": "required",
+      "group": "front",
+      "mode": "editable",
+      "pageBreakBefore": false,
+      "overrides": {
+        "body": {
+          "lineHeight": 1,
+          "firstLineIndentMm": 12.5,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0,
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 400,
+          "align": "justify"
+        },
+        "page": {
+          "numbering": {
+            "format": "roman-lower",
+            "enabled": true,
+            "restart": false
+          },
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          }
+        },
+        "paragraph": {
+          "lineHeight": 1,
+          "firstLineIndentMm": 12.5,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0
+        }
+      },
+      "showTitle": false
+    },
+    {
+      "id": "abstract-tr-footer",
+      "type": "abstract",
+      "title": "Anahtar kelimeler",
+      "status": "required",
+      "group": "front",
+      "mode": "static",
+      "standalone": false,
+      "pageBreakBefore": false,
+      "overrides": {
+        "body": {
+          "lineHeight": 1,
+          "firstLineIndentMm": 12.5,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0,
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 400,
+          "align": "left"
+        },
+        "page": {
+          "numbering": {
+            "format": "roman-lower",
+            "enabled": true,
+            "restart": false
+          },
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          }
+        }
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "value": "**Anahtar kelimeler:** {{KEYWORDS}}",
+          "markup": "inline",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "align": "justify",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 12.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "abstract-en-header",
+      "type": "englishAbstract",
+      "title": "ABSTRACT",
+      "status": "required",
+      "group": "front",
+      "mode": "static",
+      "standalone": false,
+      "pageBreakBefore": true,
+      "overrides": {
+        "body": {
+          "lineHeight": 1,
+          "firstLineIndentMm": 0,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0
+        },
+        "page": {
+          "numbering": {
+            "format": "roman-lower",
+            "enabled": true,
+            "restart": false
+          },
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          }
+        }
+      },
+      "tocEntry": "title",
+      "blocks": [
+        {
+          "type": "spacer",
+          "heightMm": 15.417759999999998
+        },
+        {
+          "type": "metadata",
+          "field": "THESIS_TITLE_EN",
+          "fallback": "TITLE OF THESIS",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 27.6,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -7,
+            "rightIndentMm": 7
+          }
+        },
+        {
+          "type": "metadata",
+          "field": "STUDENT_NAME_EN",
+          "fallback": "Student Name Surname",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        },
+        {
+          "type": "text",
+          "value": "Afyonkarahisar University of Health Sciences",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        },
+        {
+          "type": "text",
+          "value": "{{FACULTY_EN}} Department of {{DEPARTMENT_NAME_EN}} Thesis",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        },
+        {
+          "type": "text",
+          "value": "{{THESIS_DATE_EN}}",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        },
+        {
+          "type": "text",
+          "value": "Supervisor: {{ADVISOR_TITLE_EN}} {{ADVISOR_NAME}}",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 20.7,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        },
+        {
+          "type": "text",
+          "value": "ABSTRACT",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 16.8,
+            "firstLineIndentMm": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        }
+      ],
+      "maxPages": 1
+    },
+    {
+      "id": "abstract-en",
+      "type": "englishAbstract",
+      "title": "Abstract text",
+      "status": "required",
+      "group": "front",
+      "mode": "editable",
+      "pageBreakBefore": false,
+      "overrides": {
+        "body": {
+          "lineHeight": 1,
+          "firstLineIndentMm": 12.5,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0,
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 400,
+          "align": "justify"
+        },
+        "page": {
+          "numbering": {
+            "format": "roman-lower",
+            "enabled": true,
+            "restart": false
+          },
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          }
+        },
+        "paragraph": {
+          "lineHeight": 1,
+          "firstLineIndentMm": 12.5,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0
+        }
+      },
+      "showTitle": false
+    },
+    {
+      "id": "abstract-en-footer",
+      "type": "englishAbstract",
+      "title": "Key words",
+      "status": "required",
+      "group": "front",
+      "mode": "static",
+      "standalone": false,
+      "pageBreakBefore": false,
+      "overrides": {
+        "body": {
+          "lineHeight": 1,
+          "firstLineIndentMm": 12.5,
+          "spaceBeforePt": 0,
+          "spaceAfterPt": 0,
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "fontWeight": 400,
+          "align": "left"
+        },
+        "page": {
+          "numbering": {
+            "format": "roman-lower",
+            "enabled": true,
+            "restart": false
+          },
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          }
+        }
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "value": "**Key words:** {{KEYWORDS_EN}}",
+          "markup": "inline",
+          "style": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "align": "justify",
+            "lineHeight": 1,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 0,
+            "firstLineIndentMm": 12.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "toc",
+      "type": "tableOfContents",
+      "title": "İÇİNDEKİLER",
+      "status": "required",
+      "group": "front",
+      "mode": "generated",
+      "tocEntry": "title",
+      "generatedIndex": {
+        "kind": "toc",
+        "title": "İÇİNDEKİLER",
+        "leader": "dots",
+        "pageHeading": "Sayfa",
+        "matchHeadingTransform": true,
+        "style": {
+          "align": "left",
+          "spaceAfterPt": 0,
+          "lineHeight": 1.79,
+          "spaceBeforePt": 0,
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "firstLineIndentMm": 0
+        },
+        "pageHeadingStyle": {
+          "fontWeight": 400,
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "decoration": "underline",
+          "align": "right",
+          "lineHeight": 1.9391
+        },
+        "levels": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "includePageNumbers": true,
+        "levelStyles": {
+          "1": {
+            "leftIndentMm": 0
+          },
+          "2": {
+            "leftIndentMm": 5
+          },
+          "3": {
+            "leftIndentMm": 12.5
+          }
+        }
+      },
+      "overrides": {
+        "page": {
+          "numbering": {
+            "format": "roman-lower",
+            "enabled": true,
+            "restart": false
+          },
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          }
+        },
+        "headings": {
+          "1": {
+            "align": "center",
+            "spaceAfterPt": 5.87,
+            "lineHeight": 1,
+            "numbering": {
+              "enabled": false
+            },
+            "textTransform": "uppercase",
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "pageBreakBefore": true,
+            "keepWithNext": true,
+            "firstLineIndentMm": 0,
+            "spaceBeforePt": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        }
+      }
+    },
+    {
+      "id": "abbreviations",
+      "type": "listOfAbbreviations",
+      "title": "KISALTMALAR",
+      "status": "optional",
+      "group": "front",
+      "mode": "editable",
+      "showTitle": true,
+      "tocEntry": "title",
+      "overrides": {
+        "page": {
+          "numbering": {
+            "format": "roman-lower",
+            "enabled": true,
+            "restart": false
+          },
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          }
+        },
+        "headings": {
+          "1": {
+            "align": "center",
+            "spaceAfterPt": 12,
+            "lineHeight": 1,
+            "numbering": {
+              "enabled": false
+            },
+            "textTransform": "uppercase",
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "pageBreakBefore": true,
+            "keepWithNext": true,
+            "firstLineIndentMm": 0,
+            "spaceBeforePt": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        }
+      }
+    },
+    {
+      "id": "index-tables",
+      "type": "listOfTables",
+      "title": "TABLOLAR DİZİNİ",
+      "status": "required",
+      "group": "front",
+      "mode": "generated",
+      "tocEntry": "title",
+      "generatedIndex": {
+        "kind": "tables",
+        "leader": "dots",
+        "pageHeading": "Sayfa",
+        "style": {
+          "align": "left",
+          "spaceAfterPt": 0,
+          "lineHeight": 1.79,
+          "spaceBeforePt": 0,
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "firstLineIndentMm": 0
+        }
+      },
+      "overrides": {
+        "page": {
+          "numbering": {
+            "format": "roman-lower",
+            "enabled": true,
+            "restart": false
+          },
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          }
+        },
+        "headings": {
+          "1": {
+            "align": "center",
+            "spaceAfterPt": 12,
+            "lineHeight": 1,
+            "textTransform": "uppercase",
+            "numbering": {
+              "enabled": false
+            },
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "pageBreakBefore": true,
+            "keepWithNext": true,
+            "firstLineIndentMm": 0,
+            "spaceBeforePt": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        }
+      }
+    },
+    {
+      "id": "index-figures",
+      "type": "listOfFigures",
+      "title": "ŞEKİLLER DİZİNİ",
+      "status": "required",
+      "group": "front",
+      "mode": "generated",
+      "tocEntry": "title",
+      "generatedIndex": {
+        "kind": "figures",
+        "leader": "dots",
+        "pageHeading": "Sayfa",
+        "style": {
+          "align": "left",
+          "spaceAfterPt": 0,
+          "lineHeight": 1.79,
+          "spaceBeforePt": 0,
+          "fontFamily": "Times New Roman",
+          "fontSizePt": 12,
+          "firstLineIndentMm": 0
+        }
+      },
+      "overrides": {
+        "page": {
+          "numbering": {
+            "format": "roman-lower",
+            "enabled": true,
+            "restart": false
+          },
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          }
+        },
+        "headings": {
+          "1": {
+            "align": "center",
+            "spaceAfterPt": 12,
+            "lineHeight": 1,
+            "numbering": {
+              "enabled": false
+            },
+            "textTransform": "uppercase",
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "pageBreakBefore": true,
+            "keepWithNext": true,
+            "firstLineIndentMm": 0,
+            "spaceBeforePt": 0,
+            "leftIndentMm": -15,
+            "rightIndentMm": -1
+          }
+        }
+      }
+    },
+    {
+      "id": "main",
+      "type": "mainContent",
+      "title": "Bölümler",
+      "status": "required",
+      "group": "body",
+      "mode": "editable",
+      "tocEntry": "headings",
+      "overrides": {
+        "page": {
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          },
+          "numbering": {
+            "enabled": true,
+            "format": "arabic",
+            "startAt": 1,
+            "restart": true
+          }
+        }
+      }
+    },
+    {
+      "id": "bibliography",
+      "type": "bibliography",
+      "title": "KAYNAKLAR",
+      "status": "required",
+      "group": "back",
+      "mode": "editable",
+      "showTitle": true,
+      "tocEntry": "title",
+      "titleNumbering": "continueH1",
+      "overrides": {
+        "page": {
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          },
+          "numbering": {
+            "enabled": true,
+            "format": "arabic",
+            "restart": false
+          }
+        }
+      }
+    },
+    {
+      "id": "appendices",
+      "type": "appendices",
+      "title": "EKLER",
+      "status": "optional",
+      "group": "back",
+      "mode": "editable",
+      "showTitle": true,
+      "tocEntry": "title",
+      "overrides": {
+        "headings": {
+          "1": {
+            "numbering": {
+              "enabled": false
+            },
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 14,
+            "fontWeight": 700,
+            "align": "center",
+            "lineHeight": 1,
+            "textTransform": "uppercase",
+            "pageBreakBefore": true,
+            "keepWithNext": true,
+            "firstLineIndentMm": 0,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 12
+          },
+          "2": {
+            "fontFamily": "Times New Roman",
+            "fontSizePt": 12,
+            "fontWeight": 700,
+            "align": "left",
+            "lineHeight": 1,
+            "keepWithNext": true,
+            "firstLineIndentMm": 0,
+            "spaceBeforePt": 0,
+            "spaceAfterPt": 12,
+            "numbering": {
+              "enabled": true,
+              "format": "EK-{2}:",
+              "sequence": "arabic"
+            },
+            "textTransform": "none",
+            "pageBreakBefore": true,
+            "pageBreakUnlessAfterHeading": true
+          }
+        },
+        "page": {
+          "margins": {
+            "topMm": 25,
+            "bottomMm": 25,
+            "leftMm": 40,
+            "rightMm": 25
+          },
+          "numbering": {
+            "enabled": true,
+            "format": "arabic",
+            "restart": false
+          }
+        }
+      }
+    }
+  ]
 }

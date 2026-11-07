@@ -1,0 +1,1515 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "ikc-sagbe-master-tr-kaynak-fbf6f6",
+ "universityId": "ikc",
+ "universityName": "İzmir Kâtip Çelebi Üniversitesi",
+ "instituteId": "sagbe",
+ "instituteName": "Sağlık Bilimleri Enstitüsü",
+ "degreeType": "master",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Taslak docx-spec-to-template.py ile üretildi; SHA-256 b1ca6af41574af2f6c5447e28b569118e7e396a2902bf9c2c5868d74f4b97592",
+   "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz"
+  ],
+  "guideDocumentName": "IKCU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/IKCU_Saglik_Bilimleri_Tez_Sablonu.docx",
+  "rebuildKind": "docx-template",
+  "archiveSha256": "b1ca6af41574af2f6c5447e28b569118e7e396a2902bf9c2c5868d74f4b97592",
+  "evidence": {
+   "page.margins": {
+    "value": {
+     "topMm": 25,
+     "bottomMm": 25,
+     "leftMm": 40,
+     "rightMm": 25
+    },
+    "source": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx › sectPr#11 (gövde bölümü, 11 paragraf) › w:pgMar",
+    "status": "MEASURED"
+   },
+   "page.size": {
+    "value": [
+     210,
+     297
+    ],
+    "source": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx › sectPr#11 (gövde bölümü, 11 paragraf) › w:pgSz",
+    "status": "MEASURED"
+   },
+   "page.numbering": {
+    "value": {
+     "enabled": true,
+     "position": "bottom",
+     "align": "right",
+     "format": "arabic",
+     "startAt": 1,
+     "restart": false
+    },
+    "source": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx › sectPr#11 (gövde bölümü, 11 paragraf) › footer PAGE alanı, w:pgNumType",
+    "status": "MEASURED"
+   },
+   "page.footer.distanceMm": {
+    "value": 12.51,
+    "source": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx › sectPr#11 (gövde bölümü, 11 paragraf) › w:pgMar/@w:footer",
+    "status": "MEASURED"
+   },
+   "typography.body": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "justify",
+     "lineHeight": 1.5
+    },
+    "source": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx › gövde profili: 13/17 paragraf (≥200 karakter), 5 farklı biçim",
+    "status": "MEASURED"
+   },
+   "typography.headings.1.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}."
+    },
+    "source": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.1": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "center",
+     "lineHeight": 1.5,
+     "spaceAfterPt": 12,
+     "textTransform": "uppercase",
+     "numbering": {
+      "enabled": true,
+      "format": "{1}."
+     },
+     "keepWithNext": true
+    },
+    "source": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx › 18/18 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.2.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}.{2}."
+    },
+    "source": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.2": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "justify",
+     "lineHeight": 1.5,
+     "spaceAfterPt": 6,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}."
+     },
+     "keepWithNext": true
+    },
+    "source": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx › 13/13 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "figures": {
+    "value": {
+     "label": "Şekil",
+     "position": "below",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "justify",
+      "lineHeight": 1.5
+     },
+     "numbering": {
+      "scope": "document",
+      "format": "{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx › 3/3 yazı; etiket sayımı {'Şekil': 3, 'Tablo': 3}",
+    "status": "MEASURED"
+   },
+   "sections.cover": {
+    "value": "17 blok, outerCover",
+    "source": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx › ön sayfa #0: T.C. / İZMİR KÂTİP ÇELEBİ ÜNİVERSİTESİ / SAĞLIK BİLİMLERİ ENSTİTÜSÜ / ….. (İLGİL",
+    "status": "MEASURED"
+   },
+   "sections.inner-cover": {
+    "value": "18 blok, innerCover",
+    "source": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx › ön sayfa #1: T.C. / İZMİR KÂTİP ÇELEBİ ÜNİVERSİTESİ / SAĞLIK BİLİMLERİ ENSTİTÜSÜ / ….. (İLGİL",
+    "status": "MEASURED"
+   },
+   "sections.approval": {
+    "value": "25 blok, approval",
+    "source": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx › ön sayfa #2: KABUL VE ONAY SAYFASI / Sağlık Bilimleri Enstitü Müdürlüğüne; / İzmir Kâtip Çele",
+    "status": "MEASURED"
+   },
+   "sections.approval-2": {
+    "value": "7 blok, approval",
+    "source": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx › ön sayfa #3: YAYIMLAMA VE FİKRİ MÜLKİYET HAKLARI BEYANI / Enstitü tarafından onaylanan lisans",
+    "status": "MEASURED"
+   },
+   "sections.declaration": {
+    "value": "7 blok, declaration",
+    "source": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx › ön sayfa #4: ETİK BEYAN / Bu çalışmadaki bütün bilgi ve belgeleri akademik kurallar çerçevesi",
+    "status": "MEASURED"
+   },
+   "sections": {
+    "value": [
+     "outerCover",
+     "innerCover",
+     "approval",
+     "approval",
+     "declaration",
+     "acknowledgements",
+     "abstract",
+     "englishAbstract",
+     "listOfAbbreviations",
+     "listOfFigures",
+     "listOfTables",
+     "mainContent",
+     "bibliography",
+     "appendices",
+     "curriculumVitae"
+    ],
+    "source": "IKCU_Saglik_Bilimleri_Tez_Sablonu.docx › 12 birinci düzey başlık, 20 fiziksel bölüm",
+    "status": "MEASURED"
+   },
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/IKCU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 5",
+      "sentence": "Sayfa Düzeni ve Kenar Boşlukları Her sayfanın sol kenarında 4 cm, alt ve üst kenarlarda 2,5 cm, sağ kenarında 2,5 cm boşluk bırakılmalıdır."
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/IKCU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 5",
+      "sentence": "Sayfa Düzeni ve Kenar Boşlukları Her sayfanın sol kenarında 4 cm, alt ve üst kenarlarda 2,5 cm, sağ kenarında 2,5 cm boşluk bırakılmalıdır."
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/IKCU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": 40,
+      "location": "sayfa 5",
+      "sentence": "Sayfa Düzeni ve Kenar Boşlukları Her sayfanın sol kenarında 4 cm, alt ve üst kenarlarda 2,5 cm, sağ kenarında 2,5 cm boşluk bırakılmalıdır."
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/IKCU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": 25,
+      "location": "sayfa 5",
+      "sentence": "Sayfa Düzeni ve Kenar Boşlukları Her sayfanın sol kenarında 4 cm, alt ve üst kenarlarda 2,5 cm, sağ kenarında 2,5 cm boşluk bırakılmalıdır."
+     }
+    ]
+   },
+   "typography.footnotes.fontSizePt": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/IKCU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": 12,
+      "location": "sayfa 5",
+      "sentence": "Dipnotlar, tablo, çizelge ve şekillerde, sayfaya sığdırılabilmesi amacıyla aynı yazı tipinde 10 veya daha küçük puntolar kullanılabilir, sayfaya sığma problemi yoksa 12 punto ile yazılabilir."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/IKCU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "sayfa 6",
+      "sentence": "Sayfa Numaralandırma Sayfa numaraları sayfanın orta alt kısmına yazılmalıdır."
+     }
+    ]
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/IKCU_Saglik_Bilimleri_Tez_Sablonu.docx",
+    "sha256": "b1ca6af41574af2f6c5447e28b569118e7e396a2902bf9c2c5868d74f4b97592"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/IKCU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+    "sha256": "417f293ca9b544edeed641c273d198ade97ac1a0e4bd26f33e617ab8d1d33815"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "typography.headings.3",
+     "reason": "Belgede 3. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "typography.headings.4",
+     "reason": "Belgede 4. düzey başlık stili veya örneği yok"
+    },
+    {
+     "field": "tables",
+     "reason": "Belgede örnek çizelge/tablo yazısı yok"
+    },
+    {
+     "field": "figures.extraLabels",
+     "reason": "Belgede birden çok etiket var: {'Şekil': 3, 'Tablo': 3}; motor şekil/tablo dışında ayrı dizin (ör. Resim) tutmuyor"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.fontSizePt",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.footer.heightMm",
+     "value": "4.06",
+     "reasoning": "Sayfa numarası yazısı 10.0 pt × 1,15 satır"
+    },
+    {
+     "field": "typography.body",
+     "value": "{\"fontFamily\":\"Times New Roman\",\"fontSizePt\":12,\"align\":\"justify\",\"lineHeight\":1.5}",
+     "reasoning": "Uzun paragrafların en sık biçimi alındı (13/17 paragraf (≥200 karakter)); diğer 4 varyant doğrudan biçimlendirme"
+    },
+    {
+     "field": "typography.headings.1.textTransform",
+     "value": "uppercase",
+     "reasoning": "18 başlığın tamamı büyük harf"
+    },
+    {
+     "field": "sections.cover.DEPARTMENT_NAME",
+     "value": "….. (İLGİLİ ANABİLİM DALININ ADI) ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: cover › “….. (İLGİLİ ANABİLİM DALININ ADI) ANABİL”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.inner-cover.DEPARTMENT_NAME",
+     "value": "….. (İLGİLİ ANABİLİM DALININ ADI) ANABİLİM DALI",
+     "reasoning": "Yer tutucu satır: inner-cover › “….. (İLGİLİ ANABİLİM DALININ ADI) ANABİL”"
+    },
+    {
+     "field": "sections.inner-cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: inner-cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.inner-cover.THESIS_TITLE",
+     "value": "TEZ BAŞLIĞI",
+     "reasoning": "Yer tutucu satır: inner-cover › “TEZ BAŞLIĞI”"
+    },
+    {
+     "field": "sections.approval-2.STUDENT_NAME",
+     "value": "Adı Soyadı",
+     "reasoning": "Yer tutucu satır: approval-2 › “Adı Soyadı”"
+    },
+    {
+     "field": "sections.declaration.STUDENT_NAME",
+     "value": "Adı Soyadı",
+     "reasoning": "Yer tutucu satır: declaration › “Adı Soyadı”"
+    },
+    {
+     "field": "typography.lineSpacing",
+     "value": "{\"mode\":\"word\",\"singleLineEm\":1.15}",
+     "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
+    },
+    {
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
+    }
+   ],
+   "conflicts": [
+    {
+     "field": "page.numbering.align",
+     "measured": "right",
+     "guide": "center",
+     "guideSource": "Butun-Sablonlar/Ege/İzmir Kâtip Çelebi Üniversitesi/Saglik_Bilimleri_Enstitusu_Tez/IKCU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf sayfa 6"
+    }
+   ],
+   "guide": "IKCU_Saglik_Bilimleri_Tez_Yazim_Kilavuzu.pdf",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "orientation": "portrait",
+  "margins": {
+   "topMm": 25,
+   "bottomMm": 25,
+   "leftMm": 40,
+   "rightMm": 25
+  },
+  "header": {
+   "heightMm": 0,
+   "distanceMm": 12.51,
+   "content": "",
+   "firstPage": "same"
+  },
+  "footer": {
+   "heightMm": 4.06,
+   "distanceMm": 12.51,
+   "content": "",
+   "firstPage": "same"
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "right",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "justify",
+   "lineHeight": 1.5
+  },
+  "paragraph": {
+   "firstLineIndentMm": 12.51,
+   "spaceAfterPt": 6
+  },
+  "headings": {
+   "1": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "center",
+    "lineHeight": 1.5,
+    "spaceAfterPt": 12,
+    "textTransform": "uppercase",
+    "numbering": {
+     "enabled": true,
+     "format": "{1}."
+    },
+    "keepWithNext": true
+   },
+   "2": {
+    "fontFamily": "Times New Roman",
+    "fontSizePt": 12,
+    "fontWeight": 700,
+    "align": "justify",
+    "lineHeight": 1.5,
+    "spaceAfterPt": 6,
+    "numbering": {
+     "enabled": true,
+     "format": "{1}.{2}."
+    },
+    "keepWithNext": true
+   }
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.15,
+   "baseline": "word"
+  },
+  "footnotes": {
+   "fontSizePt": 12
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_NAME": {
+   "label": "Jury Member 1 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_NAME": {
+   "label": "Jury Member 2 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_NAME": {
+   "label": "Jury Member 3 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_NAME": {
+   "label": "Jury Member 4 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_NAME": {
+   "label": "Jury Member 5 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_INSTITUTION": {
+   "label": "Jury Member 1 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_INSTITUTION": {
+   "label": "Jury Member 2 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_INSTITUTION": {
+   "label": "Jury Member 3 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_INSTITUTION": {
+   "label": "Jury Member 4 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_INSTITUTION": {
+   "label": "Jury Member 5 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_NAME": {
+   "label": "Jury Member 6 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_NAME": {
+   "label": "Jury Member 7 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_INSTITUTION": {
+   "label": "Jury Member 6 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_INSTITUTION": {
+   "label": "Jury Member 7 Institution",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "cover",
+   "type": "outerCover",
+   "title": "Dış Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "image",
+     "source": "data:image/png;base64,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",
+     "widthMm": 52.26,
+     "heightMm": 29.19,
+     "align": "center"
+    },
+    {
+     "type": "text",
+     "value": "T.C.",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "İZMİR KÂTİP ÇELEBİ ÜNİVERSİTESİ",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "SAĞLIK BİLİMLERİ ENSTİTÜSÜ",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "DEPARTMENT_NAME",
+     "fallback": "Anabilim dalı",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "textTransform": "uppercase"
+     },
+     "suffix": " ANABİLİM DALI"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 25.82
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "fallback": "Tez başlığı",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "fallback": "Tez başlığı",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 19.37
+    },
+    {
+     "type": "metadata",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     },
+     "field": "STUDENT_NAME",
+     "fallback": "Öğrenci adı soyadı"
+    },
+    {
+     "type": "text",
+     "value": "ORCID ID: 0000-0000-0000-0000",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "YÜKSEK LİSANS TEZİ/DOKTORA TEZİ",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 25.82
+    },
+    {
+     "type": "text",
+     "value": "DANIŞMAN",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "UNVAN ADI SOYADI",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 32.28
+    },
+    {
+     "type": "text",
+     "value": "İZMİR-2023 (Tezin sunulduğu yıl yazılmalı)",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "inner-cover",
+   "type": "innerCover",
+   "title": "İç Kapak",
+   "status": "required",
+   "group": "cover",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "T.C.",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "İZMİR KÂTİP ÇELEBİ ÜNİVERSİTESİ",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "SAĞLIK BİLİMLERİ ENSTİTÜSÜ",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "DEPARTMENT_NAME",
+     "fallback": "Anabilim dalı",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "textTransform": "uppercase"
+     },
+     "suffix": " ANABİLİM DALI"
+    },
+    {
+     "type": "spacer",
+     "heightMm": 25.82
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "fallback": "Tez başlığı",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "THESIS_TITLE",
+     "fallback": "Tez başlığı",
+     "style": {
+      "align": "center",
+      "fontSizePt": 14,
+      "fontWeight": 700,
+      "lineHeight": 1.5,
+      "textTransform": "uppercase"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 32.28
+    },
+    {
+     "type": "metadata",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     },
+     "field": "STUDENT_NAME",
+     "fallback": "Öğrenci adı soyadı"
+    },
+    {
+     "type": "text",
+     "value": "ORCID ID: 0000-0000-0000-0000",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "YÜKSEK LİSANS TEZİ/DOKTORA TEZİ",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 25.82
+    },
+    {
+     "type": "text",
+     "value": "DANIŞMAN",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "UNVAN ADI SOYADI",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 19.37
+    },
+    {
+     "type": "text",
+     "value": "Bu tez çalışması, Türkiye Bilimsel ve Teknolojik Araştırma Kurumu (TÜBİTAK) Araştırma Destek Programları Başkanlığı Destek Programı 1002-Hızlı Destek kapsamında … proje numarası ile desteklenmiştir. (Proje kapsamında desteklendiyse buna benzer bir ifade bu kısma eklenmelidir.)",
+     "style": {
+      "align": "center"
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 25.82
+    },
+    {
+     "type": "text",
+     "value": "{{CITY}}-{{YEAR}}",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "approval",
+   "type": "approval",
+   "title": "Onay Sayfası",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "KABUL VE ONAY SAYFASI",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "spaceAfterPt": 12,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 6.46
+    },
+    {
+     "type": "text",
+     "value": "Sağlık Bilimleri Enstitü Müdürlüğüne;",
+     "style": {
+      "align": "left",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "İzmir Kâtip Çelebi Üniversitesi Sağlık Bilimleri Enstitüsü ............................ Programında ............................ tarafından yürütülmüş olan {{THESIS_TITLE}} başlıklı bu çalışma, aşağıdaki jüri tarafından ............................ Tezi olarak kabul edilmiştir.",
+     "style": {
+      "align": "left",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 6.46
+    },
+    {
+     "type": "text",
+     "value": "Tez Savunma Tarihi: .... / .... / .......",
+     "style": {
+      "align": "right",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 12.91
+    },
+    {
+     "type": "text",
+     "value": "Tez Danışmanı :..................................................................................................",
+     "style": {
+      "align": "left",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "*(Unvanı, Adı Soyadı) (ORCID) (Üniversite) (İMZA)",
+     "style": {
+      "align": "left",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Üye :…...............................................................................................",
+     "style": {
+      "align": "left",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "*(Unvanı, Adı Soyadı) (ORCID) (Üniversite) (İMZA)",
+     "style": {
+      "align": "left",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Üye :…...............................................................................................",
+     "style": {
+      "align": "left",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "*(Unvanı, Adı Soyadı) (ORCID) (Üniversite) (İMZA)",
+     "style": {
+      "align": "left",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Üye :…...............................................................................................",
+     "style": {
+      "align": "left",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "*(Unvanı, Adı Soyadı) (ORCID) (Üniversite) (İMZA)",
+     "style": {
+      "align": "left",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Üye :…...............................................................................................",
+     "style": {
+      "align": "left",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "*(Unvanı, Adı Soyadı) (ORCID) (Üniversite) (İMZA)",
+     "style": {
+      "align": "left",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 12.91
+    },
+    {
+     "type": "text",
+     "value": "ONAY: Bu ………………… tezi, Enstitü Yönetim Kurulu’nca belirlenen yukarıdaki jüri üyeleri tarafından uygun görülmüş ve kabul edilmiştir.",
+     "style": {
+      "align": "left",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 6.46
+    },
+    {
+     "type": "text",
+     "value": "(İMZA)",
+     "style": {
+      "align": "right",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "(Unvanı, Adı Soyadı)",
+     "style": {
+      "align": "right",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "Enstitü Müdürü",
+     "style": {
+      "align": "right",
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 19.37
+    },
+    {
+     "type": "text",
+     "value": "* (Unvanı, Adı Soyadı) (Üniversite) (İMZA) kısımları silinerek ilgili öğretim üyelerine ait bilgiler bilgisayar ortamında yazılarak imzalatılmalıdır.",
+     "style": {
+      "align": "left",
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "approval-2",
+   "type": "approval",
+   "title": "Onay Sayfası",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "YAYIMLAMA VE FİKRİ MÜLKİYET HAKLARI BEYANI",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "spaceAfterPt": 12,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 6.46
+    },
+    {
+     "type": "text",
+     "value": "Enstitü tarafından onaylanan lisansüstü tezimin/raporumun tamamını veya herhangi bir kısmını, basılı (kağıt) ve elektronik formatta arşivleme ve dünya çapında erişime açılabilir ve bir kısmı veya tamamının fotokopisi alınabilir şekilde kullanıma açma iznini İzmir Kâtip Çelebi Üniversitesi’ne verdiğimi bildiririm. Bu izinle Üniversiteye verilen kullanım hakları dışındaki tüm fikri mülkiyet haklarım bende kalacak, tezimin tamamının ya da bir bölümünün gelecekteki çalışmalarda (makale, kitap, lisans ve patent vb.) kullanım hakları bana ait olacaktır. Tezin kendi orijinal çalışmam olduğunu, başkalarının haklarını ihlal etmediğimi ve tezimin tek yetkili sahibi olduğumu beyan ve taahhüt ederim. Tezimde yer alan telif hakkı bulunan ve sahiplerinden yazılı izin alınarak kullanılması zorunlu metinlerin yazılı izin alınarak kullandığımı ve istenildiğinde suretlerini Üniversiteye teslim etmeyi taahhüt ederim.",
+     "style": {
+      "align": "justify",
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 17.14
+    },
+    {
+     "type": "text",
+     "value": "…./…./….",
+     "style": {
+      "align": "right",
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "İmza",
+     "style": {
+      "align": "right",
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NAME",
+     "fallback": "Öğrenci adı soyadı",
+     "style": {
+      "align": "right",
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "declaration",
+   "type": "declaration",
+   "title": "Etik Beyan",
+   "status": "required",
+   "group": "front",
+   "mode": "static",
+   "tocEntry": "none",
+   "overrides": {
+    "page": {
+     "numbering": {
+      "enabled": false
+     }
+    },
+    "body": {
+     "firstLineIndentMm": 0,
+     "spaceBeforePt": 0,
+     "spaceAfterPt": 0,
+     "lineHeight": 1
+    }
+   },
+   "blocks": [
+    {
+     "type": "text",
+     "value": "ETİK BEYAN",
+     "style": {
+      "align": "center",
+      "fontWeight": 700,
+      "spaceAfterPt": 12,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 6.46
+    },
+    {
+     "type": "text",
+     "value": "Bu çalışmadaki bütün bilgi ve belgeleri akademik kurallar çerçevesinde elde ettiğimi, görsel, işitsel ve yazılı tüm bilgi ve sonuçları bilimsel ahlak kurallarına uygun olarak sunduğumu, kullandığım verilerde herhangi bir tahrifat yapmadığımı, yararlandığım kaynaklara bilimsel normlara uygun olarak atıfta bulunduğumu, tezimin kaynak gösterilen durumlar dışında özgün olduğunu, {{THESIS_TITLE}} başlıklı çalışmamın, Tez Danışmanım ……………………………………… danışmanlığında tarafımdan üretildiğini ve İzmir Kâtip Çelebi Üniversitesi Sağlık Bilimleri Enstitüsü Tez Yazım Kılavuzuna göre yazıldığını beyan ederim.",
+     "style": {
+      "align": "justify",
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "spacer",
+     "heightMm": 17.14
+    },
+    {
+     "type": "text",
+     "value": "…./…./….",
+     "style": {
+      "align": "right",
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "text",
+     "value": "İmza",
+     "style": {
+      "align": "right",
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    },
+    {
+     "type": "metadata",
+     "field": "STUDENT_NAME",
+     "fallback": "Öğrenci adı soyadı",
+     "style": {
+      "align": "right",
+      "spaceAfterPt": 6,
+      "lineHeight": 1.5
+     }
+    }
+   ]
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR",
+   "status": "required",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-figures",
+   "type": "listOfFigures",
+   "title": "ŞEKİLLER",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "ŞEKİLLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR",
+   "status": "required",
+   "group": "front",
+   "mode": "generated",
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "TABLOLAR",
+    "includePageNumbers": true,
+    "leader": "dots"
+   },
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "roman-lower"
+     }
+    }
+   }
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "GİRİŞ",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false,
+   "overrides": {
+    "page": {
+     "numbering": {
+      "format": "arabic",
+      "startAt": 1,
+      "restart": true
+     }
+    }
+   }
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "required",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "curriculum-vitae",
+   "type": "curriculumVitae",
+   "title": "ÖZGEÇMİŞ",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "figures": {
+  "label": "Şekil",
+  "position": "below",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "fontWeight": 700,
+   "align": "justify",
+   "lineHeight": 1.5
+  },
+  "numbering": {
+   "scope": "document",
+   "format": "{n}",
+   "sequence": "arabic"
+  }
+ },
+ "bibliography": {
+  "heading": "KAYNAKLAR",
+  "style": {
+   "fontFamily": "Times New Roman",
+   "fontSizePt": 12,
+   "align": "left",
+   "lineHeight": 1.5
+  }
+ },
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2
+  ],
+  "showPageNumbers": true
+ }
+}

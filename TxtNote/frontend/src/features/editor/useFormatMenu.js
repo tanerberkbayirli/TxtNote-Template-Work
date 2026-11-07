@@ -3,7 +3,7 @@
  * Shared by the note body and the title so a pick only changes that attribute.
  */
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { DEFAULT_FORMAT } from "../../config/format";
 import {
   applyFormatAtCursor,
@@ -11,9 +11,9 @@ import {
   captureSelection,
   expandRangeForStyleToggle,
   isRangeInRoot,
-  readFormatFromRange,
+  readRenderedFormatFromRange,
 } from "../../lib/richText";
-import { applyAlignToRange, readAlignFromRange } from "../../lib/richTextAlign";
+import { applyAlignToRange } from "../../lib/richTextAlign";
 
 /** Academic and thesis bodies keep the selection after a format so marks can be stacked (B then I). */
 const keepsSelection = (root) => root.classList.contains("academic-body") || root.classList.contains("thesis-content");
@@ -22,20 +22,6 @@ const listFromRange = (range, root) => {
   const element = start?.nodeType === 3 ? start.parentElement : start;
   const list = element?.closest?.('ul,ol');
   return list && root?.contains(list) ? list.tagName.toLowerCase() : null;
-};
-
-const computeSizeFromStart = (range, root) => {
-  if (!range || !root) return undefined;
-  const startNode = range.startContainer;
-  const el = startNode.nodeType === 3 ? startNode.parentElement : startNode;
-  if (!el) return undefined;
-  const style = window.getComputedStyle(el);
-  const pxStr = style.fontSize || "";
-  const px = parseFloat(pxStr);
-  if (isNaN(px)) return undefined;
-  const scale = parseFloat(window.getComputedStyle(root).transform?.match(/scale\(([\d.]+)\)/)?.[1] || "1");
-  const pt = (px / scale) / (96 / 72);
-  return Math.round(pt * 2) / 2;
 };
 
 export const useFormatMenu = (rootRef, emitChange) => {
@@ -68,9 +54,8 @@ export const useFormatMenu = (rootRef, emitChange) => {
     const rememberSelection = () => {
       const { range, hadSelection } = captureSelection(root);
       if (!range) return;
-      const sizeComputedPt = !readFormatFromRange(range).sizePt ? computeSizeFromStart(range, root) : undefined;
       const block = computeBlock(range);
-      setActiveFormat({ ...readFormatFromRange(range), align: readAlignFromRange(range, root), sizeComputedPt, block, list: listFromRange(range, root) });
+      setActiveFormat({ ...readRenderedFormatFromRange(range, root), block, list: listFromRange(range, root) });
       savedRangeRef.current = range.cloneRange();
       hadSelectionRef.current = hadSelection;
       if (hadSelection) lastNonCollapsedRangeRef.current = range;
@@ -92,12 +77,21 @@ export const useFormatMenu = (rootRef, emitChange) => {
   const formatFromRange = useCallback((range) => {
     const root = rootRef.current;
     return {
-      ...readFormatFromRange(range),
-      align: readAlignFromRange(range, root),
+      ...readRenderedFormatFromRange(range, root),
       block: computeBlock(range),
       list: listFromRange(range, root),
     };
   }, [rootRef, computeBlock]);
+
+  // A heading/style change can leave the caret at the same position. Refresh
+  // after CSS/DOM updates as well as selectionchange, without publishing loops.
+  useLayoutEffect(() => {
+    const root = rootRef.current;
+    const { range } = root ? captureSelection(root) : {};
+    if (!range) return;
+    const next = formatFromRange(range);
+    setActiveFormat(current => JSON.stringify(current) === JSON.stringify(next) ? current : next);
+  });
 
   const closeMenu = useCallback(() => {
     setMenu((state) => (state.isOpen ? { ...state, isOpen: false } : state));
@@ -128,8 +122,7 @@ export const useFormatMenu = (rootRef, emitChange) => {
       if (sel?.rangeCount) {
         const next = sel.getRangeAt(0);
         rememberSelectionState(next, !sel.isCollapsed);
-        const sizeComputedPt = !readFormatFromRange(next).sizePt ? computeSizeFromStart(next, rootRef.current) : undefined;
-        setActiveFormat({ ...formatFromRange(next), sizeComputedPt });
+        setActiveFormat(formatFromRange(next));
       }
 
       lastNonCollapsedRangeRef.current = null;
@@ -165,8 +158,7 @@ export const useFormatMenu = (rootRef, emitChange) => {
       if (sel?.rangeCount) {
         const next = sel.getRangeAt(0);
         rememberSelectionState(next, !sel.isCollapsed);
-        const sizeComputedPt = !readFormatFromRange(next).sizePt ? computeSizeFromStart(next, rootRef.current) : undefined;
-        setActiveFormat({ ...formatFromRange(next), sizeComputedPt });
+        setActiveFormat(formatFromRange(next));
       }
 
       lastNonCollapsedRangeRef.current = null;
@@ -227,14 +219,14 @@ export const useFormatMenu = (rootRef, emitChange) => {
         hadSelection = live.hadSelection;
       }
 
-      let format = readFormatFromRange(range);
+      let format = readRenderedFormatFromRange(range, root);
 
       if (!hadSelection) {
         const expanded = expandRangeForStyleToggle(range, root, style);
         if (expanded && !expanded.collapsed) {
           range = expanded;
           hadSelection = true;
-          format = readFormatFromRange(range);
+          format = readRenderedFormatFromRange(range, root);
         }
       }
 
@@ -361,6 +353,12 @@ export const useFormatMenu = (rootRef, emitChange) => {
     if (range) rememberSelectionState(range, hadSelection);
   }, [rememberSelectionState, rootRef]);
 
+  /** The remembered caret inside the root, without focusing it or touching the live selection (previews while a side panel has focus). */
+  const peekRange = useCallback(() => {
+    const range = savedRangeRef.current;
+    return range && isRangeInRoot(range, rootRef.current) ? range : null;
+  }, [rootRef]);
+
   const rememberAll = useCallback(() => {
     const root = rootRef.current;
     if (!root) return;
@@ -404,6 +402,7 @@ export const useFormatMenu = (rootRef, emitChange) => {
     handleMouseUp,
     rememberAll,
     rememberLiveSelection,
+    peekRange,
     withRange,
   };
 };

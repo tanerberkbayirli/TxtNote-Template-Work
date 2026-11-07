@@ -1,0 +1,555 @@
+{
+ "schemaVersion": 1,
+ "templateVersion": "0.2.0-source-rebuild",
+ "id": "pau-dhf-specialization-tr-kaynak",
+ "universityId": "pau",
+ "universityName": "Pamukkale Üniversitesi",
+ "instituteId": "dhf",
+ "instituteName": "Diş Hekimliği Fakültesi",
+ "degreeType": "specialization",
+ "language": "tr",
+ "status": "generic",
+ "source": {
+  "type": "official",
+  "documentName": "PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+  "verifiedAt": "2026-10-23",
+  "notes": [
+   "Kaynak metninden üretilen taslak; özgün kapak geometrisi ve tam sayfa sırası doğrulanmadı."
+  ],
+  "guideDocumentName": "PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+  "archivePath": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+  "rebuildKind": "guide-rules",
+  "archiveSha256": "1c04bab92475088a88b61f750e0016d2c5ac6996e9a3a5b168dd6e61534f9679",
+  "evidence": {
+   "page.margins.topMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+    "locations": [
+     {
+      "value": 25,
+      "location": "paragraf 64",
+      "sentence": "Yazımda, her sayfanın sol kenarından 4 cm, alt ve üst kenarlarında 2,5 cm; sağ kenarında ise 2,5 cm boşluk bulunmalıdır."
+     }
+    ]
+   },
+   "page.margins.bottomMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+    "locations": [
+     {
+      "value": 25,
+      "location": "paragraf 64",
+      "sentence": "Yazımda, her sayfanın sol kenarından 4 cm, alt ve üst kenarlarında 2,5 cm; sağ kenarında ise 2,5 cm boşluk bulunmalıdır."
+     }
+    ]
+   },
+   "page.margins.leftMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 40,
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+    "locations": [
+     {
+      "value": 40,
+      "location": "paragraf 64",
+      "sentence": "Yazımda, her sayfanın sol kenarından 4 cm, alt ve üst kenarlarında 2,5 cm; sağ kenarında ise 2,5 cm boşluk bulunmalıdır."
+     }
+    ]
+   },
+   "page.margins.rightMm": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 25,
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+    "locations": [
+     {
+      "value": 25,
+      "location": "paragraf 64",
+      "sentence": "Yazımda, her sayfanın sol kenarından 4 cm, alt ve üst kenarlarında 2,5 cm; sağ kenarında ise 2,5 cm boşluk bulunmalıdır."
+     }
+    ]
+   },
+   "typography.body.fontSizePt": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+    "location": "paragraf 66",
+    "passage": "Tezler bilgisayarda hazırlanmalı ve kağıdın yalnızca bir yüzüne yazılmalıdır. Tezin tümünde (Tablo içi yazılar dahil) Times New Roman yazı formatı kullanılmalı ve yazı boyutu belirtilen istisnalar haricinde ana metin için 12 punto, şekil altı, tablo üstü ve tablo/şekil altı açıklayıcı dipnotlar için ise 10 punto olmalıdır (Örnek: Ek 2).",
+    "decision": "PAÜ Diş ana metni; 16 punto kapak boyutudur."
+   },
+   "typography.body.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "justify",
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+    "locations": [
+     {
+      "value": "justify",
+      "location": "paragraf 71",
+      "sentence": "Tezler, yazım düzenini korumak amacı ile iki yana yaslı metin şeklinde yazılmalıdır."
+     }
+    ]
+   },
+   "typography.footnotes.lineHeight": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": 2,
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+    "locations": [
+     {
+      "value": 2,
+      "location": "paragraf 95",
+      "sentence": "Dipnotlar, sayfa içindeki ana metinden, 2 satır aralığı bırakıldıktan sonra, soldan sağa sayfanın ortasına kadar çizilen sürekli bir çizgi ile ayrılmalı, satırlar arasında tek satır aralığı ve yazı karakteri boyutu 9 punto olmalıdır."
+     }
+    ]
+   },
+   "page.numbering.position": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "bottom",
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+    "locations": [
+     {
+      "value": "bottom",
+      "location": "paragraf 82",
+      "sentence": "Sayfa numaraları, sayfanın sağ alt kısmına 11 punto Times New Roman yazı karakteri ile yazılmalı;"
+     }
+    ]
+   },
+   "page.numbering.align": {
+    "status": "EXTRACTED_CANDIDATE",
+    "value": "right",
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+    "locations": [
+     {
+      "value": "right",
+      "location": "paragraf 82",
+      "sentence": "Sayfa numaraları, sayfanın sağ alt kısmına 11 punto Times New Roman yazı karakteri ile yazılmalı;"
+     }
+    ]
+   },
+   "typography.body.fontFamily": {
+    "status": "REVIEWED_SOURCE",
+    "value": "Times New Roman",
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+    "location": "paragraf 66",
+    "passage": "Tezler bilgisayarda hazırlanmalı ve kağıdın yalnızca bir yüzüne yazılmalıdır. Tezin tümünde (Tablo içi yazılar dahil) Times New Roman yazı formatı kullanılmalı ve yazı boyutu belirtilen istisnalar haricinde ana metin için 12 punto, şekil altı, tablo üstü ve tablo/şekil altı açıklayıcı dipnotlar için ise 10 punto olmalıdır (Örnek: Ek 2).",
+    "decision": "PAÜ Diş ana metni; 16 punto kapak boyutudur."
+   },
+   "typography.paragraph.firstLineIndentMm": {
+    "status": "REVIEWED_SOURCE",
+    "value": 12,
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+    "location": "paragraf 76",
+    "passage": "Tez metninin yazımında, paragrafın ilk satırı 1,2 cm içeriden başlamalı ve satır aralığı 1,5 olmalı; tablo, şekil açıklamaları ve dipnotlar için ise 1 tam satır aralığı kullanılmalıdır. Metin sayfanın iki tarafına da hizalanmış olarak yazılmalıdır. Ana bölümler yeni bir sayfada başlamalıdır.",
+    "decision": "Diş kılavuzundaki girinti 1,2 cm; 1,25 cm varsayılmadı."
+   },
+   "typography.body.lineHeight": {
+    "status": "REVIEWED_SOURCE",
+    "value": 1.5,
+    "source": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+    "location": "paragraf 76",
+    "passage": "Tez metninin yazımında, paragrafın ilk satırı 1,2 cm içeriden başlamalı ve satır aralığı 1,5 olmalı; tablo, şekil açıklamaları ve dipnotlar için ise 1 tam satır aralığı kullanılmalıdır. Metin sayfanın iki tarafına da hizalanmış olarak yazılmalıdır. Ana bölümler yeni bir sayfada başlamalıdır.",
+    "decision": "Diş kılavuzundaki girinti 1,2 cm; 1,25 cm varsayılmadı."
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Pamukkale Üniversitesi/Dis_Hekimligi_Fakultesi_Uzmanlik_Tezi/PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+    "sha256": "1c04bab92475088a88b61f750e0016d2c5ac6996e9a3a5b168dd6e61534f9679"
+   }
+  ],
+  "review": {
+   "unknown": [
+    {
+     "field": "sections",
+     "reason": "Kılavuzdaki ön ve arka sayfalar ile kapak düzeni ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.margins.topMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.leftMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.margins.rightMm",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.body.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "typography.footnotes.lineHeight",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.position",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "page.numbering.align",
+     "reason": "Metinden otomatik çıkarılan aday; bağlamıyla birlikte doğrulanmalı."
+    },
+    {
+     "field": "sections.orderAndRequirement",
+     "reason": "Bölüm adları bu kaynakta var; isteğe bağlı sunulan bölümlerin kesin sırası ve zorunluluğu ayrıca doğrulanmalı."
+    },
+    {
+     "field": "typography.headings",
+     "reason": "Başlık düzeni kaynakta doğrulanmadı; uygulamanın genel başlık biçimi kullanılır."
+    },
+    {
+     "field": "tables",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    },
+    {
+     "field": "bibliography",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
+    }
+   ],
+   "inferred": [
+    {
+     "field": "page.size",
+     "value": "A4",
+     "reasoning": "Çalışma taslağı; kaynakta A4 ifadesi ayrıca doğrulanmalı."
+    },
+    {
+     "field": "page.numbering",
+     "value": "arabic / bottom / right",
+     "reasoning": "Kaynağın belirtmediği özellikler çalışma taslağı varsayılanıdır."
+    },
+    {
+     "field": "toc",
+     "value": "1,2,3",
+     "reasoning": "Motorun içindekiler varsayılanı; resmî dizin düzeni değildir."
+    }
+   ],
+   "conflicts": [],
+   "guide": "PAU_Dis_Hekimligi_Uzmanlik_Tez_Yazim_Kilavuzu.docx",
+   "gate": null
+  }
+ },
+ "page": {
+  "size": "A4",
+  "widthMm": 210,
+  "heightMm": 297,
+  "margins": {
+   "topMm": 25,
+   "bottomMm": 25,
+   "leftMm": 40,
+   "rightMm": 25
+  },
+  "numbering": {
+   "enabled": true,
+   "position": "bottom",
+   "align": "right",
+   "format": "arabic",
+   "startAt": 1,
+   "restart": false
+  }
+ },
+ "typography": {
+  "body": {
+   "fontSizePt": 12,
+   "align": "justify",
+   "fontFamily": "Times New Roman",
+   "lineHeight": 1.5
+  },
+  "footnotes": {
+   "lineHeight": 2
+  },
+  "paragraph": {
+   "firstLineIndentMm": 12
+  }
+ },
+ "placeholders": {
+  "UNIVERSITY_NAME": {
+   "label": "Üniversite",
+   "type": "text",
+   "required": true
+  },
+  "INSTITUTE_NAME": {
+   "label": "Enstitü",
+   "type": "text"
+  },
+  "DEPARTMENT_NAME": {
+   "label": "Anabilim dalı",
+   "type": "text"
+  },
+  "PROGRAM_NAME": {
+   "label": "Program",
+   "type": "text"
+  },
+  "THESIS_TITLE": {
+   "label": "Tez başlığı",
+   "type": "text",
+   "required": true
+  },
+  "THESIS_TITLE_EN": {
+   "label": "İngilizce başlık",
+   "type": "text"
+  },
+  "STUDENT_NAME": {
+   "label": "Öğrenci",
+   "type": "text",
+   "required": true
+  },
+  "STUDENT_NUMBER": {
+   "label": "Öğrenci numarası",
+   "type": "text"
+  },
+  "ADVISOR_TITLE": {
+   "label": "Danışman unvanı",
+   "type": "text"
+  },
+  "ADVISOR_NAME": {
+   "label": "Danışman",
+   "type": "text"
+  },
+  "CO_ADVISOR_TITLE": {
+   "label": "İkinci danışman unvanı",
+   "type": "text"
+  },
+  "CO_ADVISOR_NAME": {
+   "label": "İkinci danışman",
+   "type": "text"
+  },
+  "DEGREE_TYPE": {
+   "label": "Tez türü",
+   "type": "text"
+  },
+  "CITY": {
+   "label": "Şehir",
+   "type": "text"
+  },
+  "YEAR": {
+   "label": "Yıl",
+   "type": "number"
+  },
+  "DATE": {
+   "label": "Tarih",
+   "type": "date"
+  },
+  "TOTAL_PAGES": {
+   "label": "Sayfa sayısı",
+   "type": "number",
+   "derived": "totalPages"
+  },
+  "PROJECT_SUPPORT": {
+   "label": "Proje desteği (varsa)",
+   "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_NAME": {
+   "label": "Jury Member 1 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_NAME": {
+   "label": "Jury Member 2 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_NAME": {
+   "label": "Jury Member 3 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_NAME": {
+   "label": "Jury Member 4 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_NAME": {
+   "label": "Jury Member 5 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_INSTITUTION": {
+   "label": "Jury Member 1 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_INSTITUTION": {
+   "label": "Jury Member 2 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_INSTITUTION": {
+   "label": "Jury Member 3 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_INSTITUTION": {
+   "label": "Jury Member 4 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_INSTITUTION": {
+   "label": "Jury Member 5 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_NAME": {
+   "label": "Jury Member 6 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_NAME": {
+   "label": "Jury Member 7 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_INSTITUTION": {
+   "label": "Jury Member 6 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_INSTITUTION": {
+   "label": "Jury Member 7 Institution",
+   "type": "text"
+  }
+ },
+ "sections": [
+  {
+   "id": "abstract",
+   "type": "abstract",
+   "title": "ÖZET",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "english-abstract",
+   "type": "englishAbstract",
+   "title": "ABSTRACT",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "acknowledgements",
+   "type": "acknowledgements",
+   "title": "TEŞEKKÜR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "table-of-contents",
+   "type": "tableOfContents",
+   "title": "İÇİNDEKİLER",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "toc",
+    "title": "İÇİNDEKİLER",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-figures",
+   "type": "listOfFigures",
+   "title": "ŞEKİLLER DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "figures",
+    "title": "ŞEKİLLER DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-tables",
+   "type": "listOfTables",
+   "title": "TABLOLAR DİZİNİ",
+   "status": "optional",
+   "group": "front",
+   "mode": "generated",
+   "showTitle": true,
+   "generatedIndex": {
+    "kind": "tables",
+    "title": "TABLOLAR DİZİNİ",
+    "includePageNumbers": true,
+    "leader": "dots"
+   }
+  },
+  {
+   "id": "list-of-abbreviations",
+   "type": "listOfAbbreviations",
+   "title": "SİMGELER VE KISALTMALAR",
+   "status": "optional",
+   "group": "front",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "main-content",
+   "type": "mainContent",
+   "title": "Ana metin",
+   "status": "required",
+   "group": "body",
+   "mode": "editable",
+   "showTitle": false
+  },
+  {
+   "id": "bibliography",
+   "type": "bibliography",
+   "title": "KAYNAKLAR",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "appendices",
+   "type": "appendices",
+   "title": "EKLER",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  },
+  {
+   "id": "curriculum-vitae",
+   "type": "curriculumVitae",
+   "title": "ÖZGEÇMİŞ",
+   "status": "optional",
+   "group": "back",
+   "mode": "editable",
+   "showTitle": true
+  }
+ ],
+ "toc": {
+  "heading": "İÇİNDEKİLER",
+  "levels": [
+   1,
+   2,
+   3
+  ],
+  "showPageNumbers": true
+ }
+}

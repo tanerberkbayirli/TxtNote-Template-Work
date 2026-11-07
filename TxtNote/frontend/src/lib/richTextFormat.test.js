@@ -3,6 +3,14 @@ import { describe, it } from "node:test";
 import { DEFAULT_FORMAT, formatClassName, mergeFormatClassName, parsePartialFormat } from "../config/format.js";
 
 describe("persistent rich-text formatting classes", () => {
+  it("persists an explicit normal weight/style without introducing a size or colour", () => {
+    const tokens = mergeFormatClassName("", { bold: false, italic: false });
+    assert.deepEqual(parsePartialFormat(tokens), { bold: false, italic: false });
+    assert.doesNotMatch(tokens, /fmt-(?:size|pt|color)-/);
+    const toggled = mergeFormatClassName(tokens, { bold: true });
+    assert.equal(parsePartialFormat(toggled).bold, true);
+    assert.doesNotMatch(toggled, /fmt-not-bold/);
+  });
   it("round-trips highlight swatches alongside size, color and emphasis", () => {
     const classes = formatClassName({ ...DEFAULT_FORMAT, size: "pt14", color: "blue", highlight: "yellow", bold: true });
     assert.equal(parsePartialFormat(classes).highlight, "yellow");

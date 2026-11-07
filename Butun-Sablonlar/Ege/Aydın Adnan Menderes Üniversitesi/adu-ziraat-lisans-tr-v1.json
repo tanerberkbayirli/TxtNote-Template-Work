@@ -152,6 +152,12 @@
      "sequence": "arabic"
     }
    }
+  },
+  "lineSpacing": {
+   "mode": "word",
+   "singleLineEm": 1.14990234375,
+   "baseline": "word",
+   "paragraphSpacing": "additive"
   }
  },
  "templateVersion": "1.0.0",
@@ -171,8 +177,122 @@
    "¶330 says five centered uppercase institution/faculty/department lines, followed by year/program/thesis number; sample ¶463-466 and official.pdf physical page 30 supply the five-line structure (¶464 wraps across university and faculty lines).",
    "¶330 prose says single line spacing for the top block; official sample embedded XML/PDF has measured line pitch about 6.94 mm for 12 pt (EXPLICIT prose vs MEASURED sample conflict). Following the user source-priority ruling, implement the official example's measured structure and retain both values in the spec.",
    "¶338 requires a 16 pt bold centered uppercase title after three blank 12 pt lines; sample ¶472 is three rendered lines. ¶344 requires 12 pt TNR double-spaced name/degree/advisor/city/year content.",
-   "¶432-433 gives two ethics declaration variants, depending on whether the thesis derives from the author's publication. The appendix sample provides the non-publication declaration text (¶497, 501-509). ¶434 requires an odd-numbered page; physical recto interpretation is INFERRED."
-  ]
+   "¶432-433 gives two ethics declaration variants, depending on whether the thesis derives from the author's publication. The appendix sample provides the non-publication declaration text (¶497, 501-509). ¶434 requires an odd-numbered page; physical recto interpretation is INFERRED.",
+   "2026-10-25: gövde satır aralığı Word modeline (1,5 satır = 1,5 × 1,15 em) alındı; önceki düzende 1,5 satır 18 pt (12 pt × 1,5) çıkıyordu, kılavuzun Word çıktısında 20,7 pt. Kapak boşlukları official.pdf taban çizgilerinden yeniden hesaplandı."
+  ],
+  "regionalAudit": {
+   "checkedAt": "2026-10-23",
+   "status": "CORE_RECHECKED",
+   "layoutRebuilt": false,
+   "visualConformanceRechecked": false,
+   "documents": [
+    {
+     "path": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Ziraat_Fakultesi_Lisans_Tezi/ADU_Ziraat_Lisans_Tez_Yazim_Kilavuzu_2025.docx",
+     "sha256": "fd3200df8f7bd80f02e676542802501dbe5af98ce6cde83e4baab5b58e430f91"
+    }
+   ],
+   "checkedFields": [
+    {
+     "field": "typography.body.fontFamily",
+     "template": "Times New Roman",
+     "sourceValue": "Times New Roman",
+     "source": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Ziraat_Fakultesi_Lisans_Tezi/ADU_Ziraat_Lisans_Tez_Yazim_Kilavuzu_2025.docx",
+     "evidence": [
+      {
+       "value": "Times New Roman",
+       "location": "paragraf 126",
+       "sentence": "Tezin metin bölümde yer alan yazılar, Times New Roman karakteri, 12 punto ve siyah renkte yazılmalıdır."
+      },
+      {
+       "value": "Times New Roman",
+       "location": "paragraf 330",
+       "sentence": "Kapağın üst kenarından ortalanarak beş satır halinde, 1 satır aralıkla, 12 punto Times New Roman kullanılarak, büyük harflerle, “T.C."
+      },
+      {
+       "value": "Times New Roman",
+       "location": "paragraf 345",
+       "sentence": "Dış kapağın sırt kısmında adayın adı, programın adı ve yılı yer almalıdır (12 punto Times New Roman)."
+      }
+     ]
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "template": 12,
+     "sourceValue": 12,
+     "source": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Ziraat_Fakultesi_Lisans_Tezi/ADU_Ziraat_Lisans_Tez_Yazim_Kilavuzu_2025.docx",
+     "evidence": [
+      {
+       "value": 12,
+       "location": "paragraf 126",
+       "sentence": "Tezin metin bölümde yer alan yazılar, Times New Roman karakteri, 12 punto ve siyah renkte yazılmalıdır."
+      },
+      {
+       "value": 12,
+       "location": "paragraf 330",
+       "sentence": "Kapağın üst kenarından ortalanarak beş satır halinde, 1 satır aralıkla, 12 punto Times New Roman kullanılarak, büyük harflerle, “T.C."
+      },
+      {
+       "value": 12,
+       "location": "paragraf 345",
+       "sentence": "Dış kapağın sırt kısmında adayın adı, programın adı ve yılı yer almalıdır (12 punto Times New Roman)."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.topMm",
+     "template": 30,
+     "sourceValue": 30,
+     "source": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Ziraat_Fakultesi_Lisans_Tezi/ADU_Ziraat_Lisans_Tez_Yazim_Kilavuzu_2025.docx",
+     "evidence": [
+      {
+       "value": 30,
+       "location": "paragraf 142",
+       "sentence": "Her sayfanın sol ve sağ kenarlarında 3,0 cm üst kenarlarında 3,0 cm ve alt kenarında 2,0 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "template": 20,
+     "sourceValue": 20,
+     "source": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Ziraat_Fakultesi_Lisans_Tezi/ADU_Ziraat_Lisans_Tez_Yazim_Kilavuzu_2025.docx",
+     "evidence": [
+      {
+       "value": 20,
+       "location": "paragraf 142",
+       "sentence": "Her sayfanın sol ve sağ kenarlarında 3,0 cm üst kenarlarında 3,0 cm ve alt kenarında 2,0 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.leftMm",
+     "template": 30,
+     "sourceValue": 30,
+     "source": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Ziraat_Fakultesi_Lisans_Tezi/ADU_Ziraat_Lisans_Tez_Yazim_Kilavuzu_2025.docx",
+     "evidence": [
+      {
+       "value": 30,
+       "location": "paragraf 142",
+       "sentence": "Her sayfanın sol ve sağ kenarlarında 3,0 cm üst kenarlarında 3,0 cm ve alt kenarında 2,0 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.rightMm",
+     "template": 30,
+     "sourceValue": 30,
+     "source": "Butun-Sablonlar/Ege/Aydın Adnan Menderes Üniversitesi/Ziraat_Fakultesi_Lisans_Tezi/ADU_Ziraat_Lisans_Tez_Yazim_Kilavuzu_2025.docx",
+     "evidence": [
+      {
+       "value": 30,
+       "location": "paragraf 142",
+       "sentence": "Her sayfanın sol ve sağ kenarlarında 3,0 cm üst kenarlarında 3,0 cm ve alt kenarında 2,0 cm boşluk bırakılmalıdır."
+      }
+     ]
+    }
+   ],
+   "conflicts": []
+  }
  },
  "placeholders": {
   "UNIVERSITY_NAME": {
@@ -271,7 +391,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 2.794666666666667
+     "heightMm": 1.76
     },
     {
      "type": "text",
@@ -288,7 +408,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 2.7086666666666677
+     "heightMm": 2.08
     },
     {
      "type": "text",
@@ -305,7 +425,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 2.794666666666667
+     "heightMm": 2.15
     },
     {
      "type": "metadata",
@@ -323,7 +443,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 2.7936666666666676
+     "heightMm": 2.15
     },
     {
      "type": "metadata",
@@ -341,7 +461,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 30.945666666666664
+     "heightMm": 30.43
     },
     {
      "type": "metadata",
@@ -352,14 +472,14 @@
       "fontSizePt": 16,
       "fontWeight": 700,
       "align": "center",
-      "lineHeight": 1.15,
+      "lineHeight": 1,
       "spaceBeforePt": 0,
       "spaceAfterPt": 0
      }
     },
     {
      "type": "spacer",
-     "heightMm": 21.802888888888898
+     "heightMm": 23.66
     },
     {
      "type": "metadata",
@@ -378,10 +498,6 @@
      }
     },
     {
-     "type": "spacer",
-     "heightMm": 0.9803333333333377
-    },
-    {
      "type": "text",
      "value": "LİSANS TEZİ",
      "style": {
@@ -398,7 +514,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 19.939333333333312
+     "heightMm": 18.38
     },
     {
      "type": "text",
@@ -415,10 +531,6 @@
      }
     },
     {
-     "type": "spacer",
-     "heightMm": 0.9313333333333311
-    },
-    {
      "type": "text",
      "value": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
      "style": {
@@ -433,7 +545,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 20.361333333333352
+     "heightMm": 18.2
     },
     {
      "type": "metadata",
@@ -444,7 +556,7 @@
       "fontSizePt": 12,
       "fontWeight": 400,
       "align": "left",
-      "lineHeight": 1.725,
+      "lineHeight": 1.5,
       "spaceBeforePt": 0,
       "spaceAfterPt": 0,
       "leftIndentMm": 0
@@ -456,7 +568,7 @@
      "fallback": "AYDIN - YIL",
      "layoutMode": "absolute",
      "xMm": 30,
-     "yMm": 247.75876000000002,
+     "yMm": 247.24,
      "widthMm": 150,
      "heightMm": 6.35,
      "style": {
@@ -512,7 +624,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 2.794666666666667
+     "heightMm": 1.76
     },
     {
      "type": "text",
@@ -529,7 +641,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 2.7086666666666677
+     "heightMm": 2.08
     },
     {
      "type": "text",
@@ -546,7 +658,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 2.794666666666667
+     "heightMm": 2.15
     },
     {
      "type": "metadata",
@@ -564,7 +676,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 2.7936666666666676
+     "heightMm": 2.15
     },
     {
      "type": "metadata",
@@ -582,7 +694,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 30.945666666666664
+     "heightMm": 30.43
     },
     {
      "type": "metadata",
@@ -593,14 +705,14 @@
       "fontSizePt": 16,
       "fontWeight": 700,
       "align": "center",
-      "lineHeight": 1.15,
+      "lineHeight": 1,
       "spaceBeforePt": 0,
       "spaceAfterPt": 0
      }
     },
     {
      "type": "spacer",
-     "heightMm": 21.802888888888898
+     "heightMm": 23.66
     },
     {
      "type": "metadata",
@@ -619,10 +731,6 @@
      }
     },
     {
-     "type": "spacer",
-     "heightMm": 0.9803333333333377
-    },
-    {
      "type": "text",
      "value": "LİSANS TEZİ",
      "style": {
@@ -639,7 +747,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 19.939333333333312
+     "heightMm": 18.38
     },
     {
      "type": "text",
@@ -656,10 +764,6 @@
      }
     },
     {
-     "type": "spacer",
-     "heightMm": 0.9313333333333311
-    },
-    {
      "type": "text",
      "value": "{{ADVISOR_TITLE}} {{ADVISOR_NAME}}",
      "style": {
@@ -674,7 +778,7 @@
     },
     {
      "type": "spacer",
-     "heightMm": 20.361333333333352
+     "heightMm": 18.2
     },
     {
      "type": "metadata",
@@ -685,7 +789,7 @@
       "fontSizePt": 12,
       "fontWeight": 400,
       "align": "left",
-      "lineHeight": 1.725,
+      "lineHeight": 1.5,
       "spaceBeforePt": 0,
       "spaceAfterPt": 0,
       "leftIndentMm": 0
@@ -697,7 +801,7 @@
      "fallback": "AYDIN - YIL",
      "layoutMode": "absolute",
      "xMm": 30,
-     "yMm": 247.75876000000002,
+     "yMm": 247.24,
      "widthMm": 150,
      "heightMm": 6.35,
      "style": {

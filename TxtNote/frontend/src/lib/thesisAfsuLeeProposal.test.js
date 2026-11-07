@@ -34,7 +34,7 @@ describe("AFSÜ LEE tez önerisi (afsu-lee-proposal-{master,phd}-tr-v1)", () => 
 
   it("keeps the source outline and cover example values", () => {
     const ids = afsuLeeProposalPhd.sections.map((section) => section.id);
-    assert.deepEqual(ids, ["cover", "purpose-scope", "general-information", "method", "success-criteria", "originality", "impact", "facilities", "schedule", "other-projects", "ethics-permits", "budget"]);
+    assert.deepEqual(ids, ["cover", "purpose-scope", "general-information", "method", "success-criteria", "originality", "impact", "facilities", "schedule", "other-projects", "ethics-permits", "budget", "bibliography"]);
     const model = compileThesisDocument(afsuLeeProposalPhd, { values: { DEPARTMENT_NAME: "Fizyoterapi", THESIS_YEAR: "2026" } }, "Test", "<p>Metin</p>");
     const texts = [...walkSpecialPage(model.sections.find((section) => section.id === "cover").layout)].filter((node) => node.type === "text");
     assert.ok(texts.some((node) => node.text === "Fizyoterapi ANABİLİM DALI"));

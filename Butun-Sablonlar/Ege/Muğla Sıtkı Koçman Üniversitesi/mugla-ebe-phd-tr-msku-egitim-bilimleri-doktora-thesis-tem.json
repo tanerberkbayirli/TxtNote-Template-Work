@@ -1,37 +1,248 @@
 {
  "schemaVersion": 1,
- "templateVersion": "0.1.0-draft",
+ "templateVersion": "0.2.0-source-rebuild",
  "id": "mugla-ebe-phd-tr-msku-egitim-bilimleri-doktora-thesis-tem",
  "universityId": "mugla",
  "universityName": "Muğla Sıtkı Koçman Üniversitesi",
  "instituteId": "ebe",
- "instituteName": "Lisansüstü Eğitim Enstitüsü",
+ "instituteName": "Eğitim Bilimleri Enstitüsü",
  "degreeType": "phd",
- "language": "tr",
+ "language": "en",
  "status": "generic",
  "source": {
   "type": "official",
   "documentName": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx",
-  "verifiedAt": "2026-10-07",
+  "verifiedAt": "2026-10-23",
   "notes": [
    "Taslak docx-spec-to-template.py ile üretildi; SHA-256 a6f8bcc57d515d100930dadca2c8cad9510e7212eaec57fa5c0c4a96f3d0b20e",
    "UNKNOWN alanlar kılavuzdan tamamlanmadan PASS sayılmaz",
    "Şablon yönergesi (Ön sayfa 3): Wet signed version of the Jury Approval Page will be used in hard copies of the thesis. Wet signatures should not be included in the digital version of the thesis. Delete this comment box.",
-   "Şablon yönergesi (Etik Beyan): Wet signed version of the Ethics Statement page will be used in hard copies of the thesis. Wet signature should not be included in the digital version of the thesis; only Name and SURNAME information ",
-   "figures: yazı konumu kılavuzda yok, motor varsayılanı (below)",
-   "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi",
-   "Kılavuz kuralları birleştirildi: MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf (1 alan, 1 çelişki)"
+   "Şablon yönergesi (Etik Beyan): Wet signed version of the Ethics Statement page will be used in hard copies of the thesis. Wet signature should not be included in the digital version of the thesis; only Name and SURNAME information "
   ],
   "guideDocumentName": "MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf",
+  "archivePath": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx",
+  "rebuildKind": "docx-template",
+  "archiveSha256": "a6f8bcc57d515d100930dadca2c8cad9510e7212eaec57fa5c0c4a96f3d0b20e",
+  "evidence": {
+   "page.margins": {
+    "value": {
+     "topMm": 25.01,
+     "bottomMm": 25.01,
+     "leftMm": 35.01,
+     "rightMm": 25.01
+    },
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › sectPr#3 (gövde bölümü, 24 paragraf) › w:pgMar",
+    "status": "MEASURED"
+   },
+   "page.size": {
+    "value": [
+     210,
+     297
+    ],
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › sectPr#3 (gövde bölümü, 24 paragraf) › w:pgSz",
+    "status": "MEASURED"
+   },
+   "page.numbering": {
+    "value": {
+     "enabled": true,
+     "position": "top",
+     "align": "right",
+     "format": "arabic",
+     "startAt": 1,
+     "restart": false
+    },
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › sectPr#3 (gövde bölümü, 24 paragraf) › header PAGE alanı, w:pgNumType",
+    "status": "MEASURED"
+   },
+   "page.header.distanceMm": {
+    "value": 12.51,
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › sectPr#3 (gövde bölümü, 24 paragraf) › w:pgMar/@w:header",
+    "status": "MEASURED"
+   },
+   "typography.body": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "align": "justify",
+     "lineHeight": 1.5
+    },
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › gövde profili: 39/60 paragraf (≥200 karakter), 8 farklı biçim",
+    "status": "MEASURED"
+   },
+   "typography.headings.1": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 14,
+     "fontWeight": 700,
+     "align": "center",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 60,
+     "spaceAfterPt": 36,
+     "keepWithNext": true
+    },
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › 19/22 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.2.numbering": {
+    "value": {
+     "enabled": true,
+     "format": "{1}.{2}"
+    },
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › numbering.xml lvlText",
+    "status": "MEASURED"
+   },
+   "typography.headings.2": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "justify",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 36,
+     "spaceAfterPt": 24,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}"
+     },
+     "keepWithNext": true
+    },
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › 27/31 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "typography.headings.3": {
+    "value": {
+     "fontFamily": "Times New Roman",
+     "fontSizePt": 12,
+     "fontWeight": 700,
+     "align": "justify",
+     "lineHeight": 1.5,
+     "spaceBeforePt": 24,
+     "spaceAfterPt": 18,
+     "numbering": {
+      "enabled": true,
+      "format": "{1}.{2}.{3}",
+      "suffix": "."
+     },
+     "keepWithNext": true
+    },
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › 2/2 başlık paragrafı",
+    "status": "MEASURED"
+   },
+   "tables.position": {
+    "value": "above",
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › 1 üstte / 0 altta",
+    "status": "MEASURED"
+   },
+   "tables": {
+    "value": {
+     "label": "Table",
+     "position": "above",
+     "style": {
+      "fontFamily": "Times New Roman",
+      "fontSizePt": 12,
+      "fontWeight": 700,
+      "align": "justify",
+      "lineHeight": 1.5
+     },
+     "numbering": {
+      "scope": "document",
+      "format": "{n}",
+      "sequence": "arabic"
+     }
+    },
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › 1/1 yazı; etiket sayımı {'Table': 1}",
+    "status": "MEASURED"
+   },
+   "sections.cover": {
+    "value": "16 blok, outerCover",
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › ön sayfa #0: THE REPUBLIC OF TURKEY / MUĞLA SITKI KOÇMAN UNIVERSITY / INSTITUTE OF EDUCATION ",
+    "status": "MEASURED"
+   },
+   "sections.inner-cover": {
+    "value": "20 blok, innerCover",
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › ön sayfa #1: THE REPUBLIC OF TURKEY / MUĞLA SITKI KOÇMAN UNIVERSITY / INSTITUTE OF EDUCATION ",
+    "status": "MEASURED"
+   },
+   "sections.front-page-2": {
+    "value": "13 blok, custom",
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › ön sayfa #2: JURY CONFIRMATION PAGE / This dissertation with the title of “………………………” written",
+    "status": "MEASURED"
+   },
+   "sections.declaration": {
+    "value": "36 blok, declaration",
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › ön sayfa #3: ETHICAL DECLARATION TEXT / I hereby declare that in my MA thesis/PhD dissertatio",
+    "status": "MEASURED"
+   },
+   "sections.declaration-2": {
+    "value": "41 blok, declaration",
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › ön sayfa #4: DECLARATION TEXT / (Social Contribution / Sustainable Development) / The Social ",
+    "status": "MEASURED"
+   },
+   "sections": {
+    "value": [
+     "outerCover",
+     "innerCover",
+     "custom",
+     "declaration",
+     "declaration",
+     "englishAbstract",
+     "abstract",
+     "acknowledgements",
+     "tableOfContents",
+     "listOfTables",
+     "listOfFigures",
+     "listOfAbbreviations",
+     "mainContent",
+     "bibliography",
+     "appendices"
+    ],
+    "source": "MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx › 11 birinci düzey başlık, 10 fiziksel bölüm",
+    "status": "MEASURED"
+   }
+  },
+  "relatedDocuments": [
+   {
+    "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/MSKU_Egitim_Bilimleri_Doktora_Tez_Sablonu_TR_2025-10-06.docx",
+    "sha256": "90de2de307361d2d24b8d91a152dade095bc9afdefa20ee7ea3602199681ad3d"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/MSKU_Egitim_Bilimleri_Doktora_Thesis_Template_EN_2025-10-06.docx",
+    "sha256": "a6f8bcc57d515d100930dadca2c8cad9510e7212eaec57fa5c0c4a96f3d0b20e"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf",
+    "sha256": "f05ad92cdddf7c896708ab824fe5524a7837e79f432164ff657faff4e59e0a9d"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_TR.pdf",
+    "sha256": "59dc3526bc63ef751b9820268f46ea286e9c3351d476895d4adddbb7075cba23"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/MSKU_Egitim_Bilimleri_Yuksek_Lisans_Tez_Sablonu_TR_2025-10-06.docx",
+    "sha256": "5afb598c78e6f9d573ab6af6bcaee0a1ea631b1b10c5bede9eaf4071810e20a0"
+   },
+   {
+    "path": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/MSKU_Egitim_Bilimleri_Yuksek_Lisans_Thesis_Template_EN_2025-10-06.docx",
+    "sha256": "3ab752c1e1e8cc2d147307a28ca7aaaf9ddb4167bcdd74418aa5c015d038eff6"
+   }
+  ],
   "review": {
    "unknown": [
     {
-     "field": "bibliography.hangingIndentMm",
-     "reason": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi"
+     "field": "typography.headings.4",
+     "reason": "Balk4 stili var ama kullanılmamış; Word varsayılanı üniversite kuralı sayılmadı, kılavuzdan doğrulanmalı"
     },
     {
-     "field": "figures.position",
-     "reason": "Kılavuz belirtmiyor; motor varsayılanı uygulandı (şekil altı / tablo üstü)"
+     "field": "figures",
+     "reason": "Belgede örnek şekil yazısı yok"
+    },
+    {
+     "field": "bibliography.hangingIndentMm",
+     "reason": "Kaynakça girintisi belgede stil olarak tanımlı değil"
+    },
+    {
+     "field": "figures",
+     "reason": "Bu özellik bu taslakta kaynak kuralı olarak belirlenmedi; uygulama varsayılanı kullanılır."
     }
    ],
    "inferred": [
@@ -96,32 +307,12 @@
      "reasoning": "Word 'n satır' aralığı; Times New Roman tek satırı 1.15 em (TNR değeri MCBÜ PDF'inde ölçüldü, diğerleri yazı tipi metriğinden)"
     },
     {
-     "field": "figures.position",
-     "value": "below",
-     "reasoning": "Kılavuzda konum cümlesi bulunamadı; motor varsayılanı kullanıldı — kılavuzdan teyit edilmeli"
-    },
-    {
-     "field": "figures.style.fontSizePt",
-     "value": "12",
-     "reasoning": "Kılavuz şekil/tablo yazısı puntosunu belirtmiyor; gövde puntosu kullanıldı"
-    },
-    {
-     "field": "figures.numbering",
-     "value": "{\"scope\":\"chapter\",\"format\":\"{chapter}.{n}\",\"sequence\":\"arabic\"}",
-     "reasoning": "Bölüm bazlı numaralandırma varsayıldı; kılavuzdan teyit edilmeli"
-    },
-    {
-     "field": "bibliography.hangingIndentMm",
-     "value": "0",
-     "reasoning": "Kılavuz kaynakça asılı girintisi belirtmiyor; 0 mm kabul edildi — kılavuzdan teyit edilmeli"
+     "field": "sections.metadata",
+     "value": "kaynak örnekleri yer tutucuya dönüştürüldü",
+     "reasoning": "Örnek öğrenci, tez adı, danışman ve tarih yeni tezin gerçek bilgileri değildir; düzenlenebilir alanlara çevrildi."
     },
     {
      "field": "typography.headings.1.numbering",
-     "value": "numarasız",
-     "reasoning": "Kaynak bu başlık düzeyi için numara biçimi belirtmiyor (Word'de numaralandırması olmayan başlık stili numarasızdır); motor yedeği yalnız düzeyin kendi sayacını yazıp numaraları tekrar ettireceği için numarasız kaydedildi."
-    },
-    {
-     "field": "typography.headings.4.numbering",
      "value": "numarasız",
      "reasoning": "Kaynak bu başlık düzeyi için numara biçimi belirtmiyor (Word'de numaralandırması olmayan başlık stili numarasızdır); motor yedeği yalnız düzeyin kendi sayacını yazıp numaraları tekrar ettireceği için numarasız kaydedildi."
     }
@@ -131,19 +322,11 @@
      "field": "page.numbering.align",
      "measured": "right",
      "guide": "center",
-     "guideSource": "MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf › sayfa 15: “On the starting pages up to the introduction section, the numbers should be placed centered at the bottom of the page, and the page numbers from the introductio”"
+     "guideSource": "Butun-Sablonlar/Ege/Muğla Sıtkı Koçman Üniversitesi/Egitim_Bilimleri_Enstitusu_Tez/MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf sayfa 15"
     }
    ],
    "guide": "MSKU_Egitim_Bilimleri_Tez_Yazim_Kilavuzu_EN.pdf",
-   "gate": {
-    "overall": "CONFLICT",
-    "results": {
-     "PASS": 29,
-     "CONFLICT": 1
-    },
-    "checkedAt": "2026-10-22",
-    "exportTool": "engine/tools/export.mjs"
-   }
+   "gate": null
   }
  },
  "page": {
@@ -233,21 +416,6 @@
      "suffix": "."
     },
     "keepWithNext": true
-   },
-   "4": {
-    "fontFamily": "Times New Roman",
-    "fontSizePt": 12,
-    "fontWeight": 700,
-    "align": "justify",
-    "lineHeight": 1.5,
-    "spaceBeforePt": 18,
-    "spaceAfterPt": 18,
-    "keepWithNext": true,
-    "numbering": {
-     "enabled": false,
-     "format": "{1}.{2}.{3}.{4}",
-     "sequence": "arabic"
-    }
    }
   },
   "lineSpacing": {
@@ -332,6 +500,82 @@
   "PROJECT_SUPPORT": {
    "label": "Proje desteği (varsa)",
    "type": "text"
+  },
+  "MONTH_YEAR": {
+   "label": "Month and year",
+   "type": "text"
+  },
+  "DEFENSE_DATE": {
+   "label": "Defense date",
+   "type": "date"
+  },
+  "JURY_MEMBER_NAME": {
+   "label": "Jüri üyesi",
+   "type": "text"
+  },
+  "INSTITUTE_DIRECTOR_NAME": {
+   "label": "Enstitü müdürü",
+   "type": "text"
+  },
+  "ORCID": {
+   "label": "ORCID",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_NAME": {
+   "label": "Jury Member 1 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_NAME": {
+   "label": "Jury Member 2 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_NAME": {
+   "label": "Jury Member 3 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_NAME": {
+   "label": "Jury Member 4 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_NAME": {
+   "label": "Jury Member 5 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_1_INSTITUTION": {
+   "label": "Jury Member 1 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_2_INSTITUTION": {
+   "label": "Jury Member 2 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_3_INSTITUTION": {
+   "label": "Jury Member 3 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_4_INSTITUTION": {
+   "label": "Jury Member 4 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_5_INSTITUTION": {
+   "label": "Jury Member 5 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_NAME": {
+   "label": "Jury Member 6 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_NAME": {
+   "label": "Jury Member 7 Name",
+   "type": "text"
+  },
+  "JURY_MEMBER_6_INSTITUTION": {
+   "label": "Jury Member 6 Institution",
+   "type": "text"
+  },
+  "JURY_MEMBER_7_INSTITUTION": {
+   "label": "Jury Member 7 Institution",
+   "type": "text"
   }
  },
  "sections": [
@@ -399,19 +643,21 @@
      }
     },
     {
-     "type": "text",
-     "value": "DEPARTMENT OF ……………………",
+     "type": "metadata",
      "style": {
       "align": "center",
       "fontSizePt": 14,
       "fontWeight": 700,
       "lineHeight": 1.15
-     }
+     },
+     "field": "DEPARTMENT_NAME",
+     "fallback": "Department",
+     "prefix": "DEPARTMENT OF "
     },
     {
      "type": "metadata",
      "field": "PROGRAM_NAME",
-     "fallback": "…………… PROGRAM",
+     "fallback": "Program",
      "style": {
       "align": "center",
       "fontSizePt": 14,
@@ -427,7 +673,7 @@
     {
      "type": "metadata",
      "field": "THESIS_TITLE",
-     "fallback": "TITLE OF THE THESIS",
+     "fallback": "Thesis title",
      "style": {
       "align": "center",
       "fontSizePt": 14,
@@ -441,14 +687,15 @@
      "heightMm": 39.19
     },
     {
-     "type": "text",
-     "value": "NAME AND SURNAME OF THE WRITER",
+     "type": "metadata",
      "style": {
       "align": "center",
       "fontSizePt": 14,
       "fontWeight": 700,
       "lineHeight": 1.15
-     }
+     },
+     "field": "STUDENT_NAME",
+     "fallback": "Student name"
     },
     {
      "type": "spacer",
@@ -543,19 +790,21 @@
      }
     },
     {
-     "type": "text",
-     "value": "DEPARTMENT OF ……………………",
+     "type": "metadata",
      "style": {
       "align": "center",
       "fontSizePt": 14,
       "fontWeight": 700,
       "lineHeight": 1.15
-     }
+     },
+     "field": "DEPARTMENT_NAME",
+     "fallback": "Department",
+     "prefix": "DEPARTMENT OF "
     },
     {
      "type": "metadata",
      "field": "PROGRAM_NAME",
-     "fallback": "…………… PROGRAM",
+     "fallback": "Program",
      "style": {
       "align": "center",
       "fontSizePt": 14,
@@ -571,7 +820,7 @@
     {
      "type": "metadata",
      "field": "THESIS_TITLE",
-     "fallback": "TITLE OF THE THESIS",
+     "fallback": "Thesis title",
      "style": {
       "align": "center",
       "fontSizePt": 14,
@@ -585,14 +834,15 @@
      "heightMm": 16.8
     },
     {
-     "type": "text",
-     "value": "NAME AND SURNAME OF THE WRITER",
+     "type": "metadata",
      "style": {
       "align": "center",
       "fontSizePt": 14,
       "fontWeight": 700,
       "lineHeight": 1.15
-     }
+     },
+     "field": "STUDENT_NAME",
+     "fallback": "Student name"
     },
     {
      "type": "text",
@@ -619,24 +869,26 @@
      }
     },
     {
-     "type": "text",
-     "value": "ACADEMIC TITLE, NAME AND SURNAME",
+     "type": "metadata",
      "style": {
       "align": "center",
       "fontSizePt": 14,
       "fontWeight": 700,
       "lineHeight": 1.15
-     }
+     },
+     "field": "ADVISOR_NAME",
+     "fallback": "Advisor name"
     },
     {
-     "type": "text",
-     "value": "ACADEMIC TITLE, NAME AND SURNAME",
+     "type": "metadata",
      "style": {
       "align": "center",
       "fontSizePt": 14,
       "fontWeight": 700,
       "lineHeight": 1.15
-     }
+     },
+     "field": "ADVISOR_NAME",
+     "fallback": "Advisor name"
     },
     {
      "type": "text",
@@ -690,8 +942,8 @@
   },
   {
    "id": "front-page-2",
-   "type": "custom",
-   "title": "Ön sayfa 3",
+   "type": "approval",
+   "title": "Approval",
    "status": "required",
    "group": "front",
    "mode": "static",
@@ -723,7 +975,7 @@
     },
     {
      "type": "text",
-     "value": "This dissertation with the title of “………………………” written by ………………………………………… accepted as a Doctoral Dissertation in the Department of ……………………, and ………………………. Program by unanimous vote / a majority of votes. (Just choose one. After editing, delete the explanation in the parentheses.)",
+     "value": "This dissertation with the title of {{THESIS_TITLE}} written by ………………………………………… accepted as a Doctoral Dissertation in the Department of ……………………, and ………………………. Program by unanimous vote / a majority of votes. (Just choose one. After editing, delete the explanation in the parentheses.)",
      "style": {
       "align": "justify",
       "spaceAfterPt": 6,
@@ -738,20 +990,23 @@
      "type": "group",
      "blocks": [
       {
-       "type": "text",
-       "value": "Academic Title, Name and SURNAME",
+       "type": "metadata",
        "style": {
         "align": "center",
         "fontSizePt": 11
-       }
+       },
+       "field": "ADVISOR_NAME",
+       "fallback": "Advisor name"
       },
       {
-       "type": "text",
-       "value": "Department of …………",
+       "type": "metadata",
        "style": {
         "align": "center",
         "fontSizePt": 11
-       }
+       },
+       "field": "DEPARTMENT_NAME",
+       "fallback": "Department",
+       "prefix": "DEPARTMENT OF "
       },
       {
        "type": "text",
@@ -772,20 +1027,23 @@
        "type": "group",
        "blocks": [
         {
-         "type": "text",
-         "value": "Academic Title, Name and SURNAME",
+         "type": "metadata",
          "style": {
           "align": "center",
           "fontSizePt": 11
-         }
+         },
+         "field": "ADVISOR_NAME",
+         "fallback": "Advisor name"
         },
         {
-         "type": "text",
-         "value": "Department of …………",
+         "type": "metadata",
          "style": {
           "align": "center",
           "fontSizePt": 11
-         }
+         },
+         "field": "DEPARTMENT_NAME",
+         "fallback": "Department",
+         "prefix": "DEPARTMENT OF "
         },
         {
          "type": "text",
@@ -802,20 +1060,23 @@
        "type": "group",
        "blocks": [
         {
-         "type": "text",
-         "value": "Academic Title, Name and SURNAME",
+         "type": "metadata",
          "style": {
           "align": "center",
           "fontSizePt": 11
-         }
+         },
+         "field": "ADVISOR_NAME",
+         "fallback": "Advisor name"
         },
         {
-         "type": "text",
-         "value": "Department of …………",
+         "type": "metadata",
          "style": {
           "align": "center",
           "fontSizePt": 11
-         }
+         },
+         "field": "DEPARTMENT_NAME",
+         "fallback": "Department",
+         "prefix": "DEPARTMENT OF "
         },
         {
          "type": "text",
@@ -838,20 +1099,23 @@
        "type": "group",
        "blocks": [
         {
-         "type": "text",
-         "value": "Academic Title, Name and SURNAME",
+         "type": "metadata",
          "style": {
           "align": "center",
           "fontSizePt": 11
-         }
+         },
+         "field": "ADVISOR_NAME",
+         "fallback": "Advisor name"
         },
         {
-         "type": "text",
-         "value": "Department of …………",
+         "type": "metadata",
          "style": {
           "align": "center",
           "fontSizePt": 11
-         }
+         },
+         "field": "DEPARTMENT_NAME",
+         "fallback": "Department",
+         "prefix": "DEPARTMENT OF "
         },
         {
          "type": "text",
@@ -868,20 +1132,23 @@
        "type": "group",
        "blocks": [
         {
-         "type": "text",
-         "value": "Academic Title, Name and SURNAME",
+         "type": "metadata",
          "style": {
           "align": "center",
           "fontSizePt": 11
-         }
+         },
+         "field": "ADVISOR_NAME",
+         "fallback": "Advisor name"
         },
         {
-         "type": "text",
-         "value": "Department of …………",
+         "type": "metadata",
          "style": {
           "align": "center",
           "fontSizePt": 11
-         }
+         },
+         "field": "DEPARTMENT_NAME",
+         "fallback": "Department",
+         "prefix": "DEPARTMENT OF "
         },
         {
          "type": "text",
@@ -927,12 +1194,13 @@
      "heightMm": 20.25
     },
     {
-     "type": "text",
-     "value": "Academic Title, Name and SURNAME",
+     "type": "metadata",
      "style": {
       "align": "center",
       "lineHeight": 1.5
-     }
+     },
+     "field": "ADVISOR_NAME",
+     "fallback": "Advisor name"
     },
     {
      "type": "text",
@@ -980,7 +1248,7 @@
     },
     {
      "type": "text",
-     "value": "I hereby declare that in my MA thesis/PhD dissertation, which I wrote through my own research and which was written in accordance with the Muğla Sıtkı Koçman University ………..Institute’s Thesis/Dissertation Writing Rules, with the title “………………………………………”",
+     "value": "I hereby declare that in my MA thesis/PhD dissertation, which I wrote through my own research and which was written in accordance with the Muğla Sıtkı Koçman University ………..Institute’s Thesis/Dissertation Writing Rules, with the title {{THESIS_TITLE}}",
      "style": {
       "align": "justify",
       "fontSizePt": 11
@@ -1591,12 +1859,13 @@
      }
     },
     {
-     "type": "text",
-     "value": "Student's Name SURNAME",
+     "type": "metadata",
      "style": {
       "align": "left",
       "fontSizePt": 10
-     }
+     },
+     "field": "STUDENT_NAME",
+     "fallback": "Student name"
     },
     {
      "type": "text",
@@ -2540,12 +2809,13 @@
      }
     },
     {
-     "type": "text",
-     "value": "Student's Name SURNAME",
+     "type": "metadata",
      "style": {
       "align": "justify",
       "fontSizePt": 10
-     }
+     },
+     "field": "STUDENT_NAME",
+     "fallback": "Student name"
     }
    ]
   },
@@ -2612,8 +2882,7 @@
     "levels": [
      1,
      2,
-     3,
-     4
+     3
     ]
    },
    "overrides": {
@@ -2742,20 +3011,6 @@
    "sequence": "arabic"
   }
  },
- "figures": {
-  "label": "Şekil",
-  "position": "below",
-  "style": {
-   "fontFamily": "Times New Roman",
-   "fontSizePt": 12,
-   "align": "center"
-  },
-  "numbering": {
-   "scope": "chapter",
-   "format": "{chapter}.{n}",
-   "sequence": "arabic"
-  }
- },
  "bibliography": {
   "heading": "REFERENCES",
   "style": {
@@ -2763,16 +3018,14 @@
    "fontSizePt": 12,
    "align": "left",
    "lineHeight": 1.5
-  },
-  "hangingIndentMm": 0
+  }
  },
  "toc": {
   "heading": "CONTENTS",
   "levels": [
    1,
    2,
-   3,
-   4
+   3
   ],
   "showPageNumbers": true
  }

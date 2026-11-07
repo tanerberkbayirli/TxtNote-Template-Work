@@ -113,7 +113,74 @@
    "Sayfa numarası (EXPLICIT; metin lisans kılavuzuyla aynı): 'önsözden itibaren' 1'den, altta ortada, başka işaret yok. Seminerde Önsöz tanımlı değildir; kapak numarasızdır ve ilk sayfadan sonraki ilk sayfa 1 olur (INFERRED; kapak startAt 0). Numara boyutu UNKNOWN.",
    "Atıf/kaynakça (EXPLICIT): APA alıntı sistemi (yazar-yıl), kaynakçada yazar soyadına göre alfabetik KAYNAKÇA; dipnot açıklama için. Liste girintisi/punto UNKNOWN.",
    "UNKNOWN (üretilmez): Kapak çerçevesi ve yatay ortalama tabanı, heading typography/numbering, table/figure caption format/position, footnote style, page-number size, appendix layout. Levels 1–3 use generic engine fallback (body font/size, bold, unnumbered); source gives no seminar TOC depth and this configuration does not assert a source-required hierarchy. Sunum ve değerlendirme puanları belge biçimi değildir."
-  ]
+  ],
+  "regionalAudit": {
+   "checkedAt": "2026-10-23",
+   "status": "CORE_RECHECKED",
+   "layoutRebuilt": false,
+   "visualConformanceRechecked": false,
+   "documents": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+     "sha256": "03eec8c6c07da6a830329cc1fd8ba84448db53c5cd4731e0a0b30b41c8f6be78"
+    }
+   ],
+   "checkedFields": [
+    {
+     "field": "typography.body.fontFamily",
+     "template": "Times New Roman",
+     "sourceValue": "Times New Roman",
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+     "evidence": [
+      {
+       "value": "Times New Roman",
+       "location": "paragraf 33",
+       "sentence": "Times New Roman fontunda,"
+      }
+     ]
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "template": 12,
+     "sourceValue": 12.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+     "evidence": [
+      {
+       "value": 12.0,
+       "location": "paragraf 34",
+       "sentence": "12 puntoda,"
+      }
+     ]
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "template": 1.5,
+     "sourceValue": 1.5,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+     "evidence": [
+      {
+       "value": 1.5,
+       "location": "paragraf 35",
+       "sentence": "1,5 satır aralığında,"
+      }
+     ]
+    },
+    {
+     "field": "typography.body.firstLineIndentMm",
+     "template": 12.5,
+     "sourceValue": 12.5,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/Felsefe_Bolumu_Tez_ve_Seminer/AKU_Felsefe_Seminer_Hazirlama_Kilavuzu_2019.docx",
+     "evidence": [
+      {
+       "value": 12.5,
+       "location": "paragraf 36",
+       "sentence": "1,25 cm içeriden başlayan paragraf başı,"
+      }
+     ]
+    }
+   ],
+   "conflicts": []
+  }
  },
  "sections": [
   {

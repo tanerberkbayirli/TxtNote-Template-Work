@@ -15,16 +15,19 @@ export default function FontSizeBox({ activeFormat, remember, keep, invoke, disa
   const [draft, setDraft] = useState(null);
   const [invalid, setInvalid] = useState(false);
   const cancelBlurCommit = useRef(false);
-  const currentSizePt = activeFormat?.sizePt ?? activeFormat?.sizeComputedPt;
+  const dirty = useRef(false);
+  const currentSizePt = activeFormat?.sizeMixed ? undefined : activeFormat?.sizePt ?? activeFormat?.sizeComputedPt;
   const shown = draft ?? (currentSizePt ? String(currentSizePt) : "");
 
   const apply = (size) => {
     if (size !== currentSizePt) invoke("applySize", size);
     setDraft(null);
+    dirty.current = false;
     setInvalid(false);
   };
   const commit = () => {
     if (draft === null) return;
+    if (!dirty.current) { setDraft(null); return; }
     const size = parseSize(draft);
     if (size === null) {
       setInvalid(true);
@@ -45,16 +48,17 @@ export default function FontSizeBox({ activeFormat, remember, keep, invoke, disa
             aria-label="Yazı boyutu (pt)"
             title="Yazı boyutu (pt)"
             aria-invalid={invalid}
-            placeholder="pt"
+            placeholder={activeFormat?.sizeMixed ? "Karışık" : "pt"}
             value={shown}
             disabled={disabled}
             onMouseDown={remember}
             onFocus={(event) => {
               cancelBlurCommit.current = false;
+              dirty.current = false;
               setDraft(shown);
               event.target.select();
             }}
-            onChange={(event) => setDraft(event.target.value)}
+            onChange={(event) => { dirty.current = true; setDraft(event.target.value); }}
             onBlur={() => {
               if (cancelBlurCommit.current) cancelBlurCommit.current = false;
               else commit();

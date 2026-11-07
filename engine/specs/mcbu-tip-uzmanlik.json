@@ -27,7 +27,7 @@
  "sourcePriority": [
   {
    "path": "Butun-Sablonlar/Ege/Manisa Celal Bayar Üniversitesi/Tip_Fakultesi_Uzmanlik_Tezi/MCBU_Tip_Fakultesi_Uzmanlik_Tez_Yazim_Kilavuzu.pdf",
-   "why": "only source; prose rules (pp.2-4) are the requirements, Ek-1/Ek-2 examples (pp.4-6) give the cover and contents/reference geometry, the guide's own body pages are not a rule source"
+   "why": "only source; prose rules (pp.2-4) are the requirements, Ek-1/Ek-2 examples (pp.4-6) give the cover and contents/reference geometry, the guide's own body pages are not a rule source; BASLA kural 3b (kullanıcı kararı 2026-10-24): aynı kılavuz içinde açık yazılmış kural metni örnek sayfadan önce gelir; örnek sayfa yalnız kural metninin söylemediği yerde kullanılır."
   }
  ],
  "variants": [
@@ -357,7 +357,7 @@
      "quote": "Sayfa numaraları sayfanın alt orta bölümüne eklenmelidir."
     }
    ],
-   "notes": "CONFLICT with the same paragraph's example 'üst sağa yazılan 2 sayısı' (top right); general rule 'alt orta' implemented."
+   "notes": "CONFLICT with the same paragraph's example 'üst sağa yazılan 2 sayısı' (top right); general rule 'alt orta' implemented. Explicit rule sentence 'alt orta bölümüne eklenmelidir' wins over the illustrative 'Örneğin' sentence (BASLA kural 3b (kullanıcı kararı 2026-10-24): aynı kılavuz içinde açık yazılmış kural metni örnek sayfadan önce gelir; örnek sayfa yalnız kural metninin söylemediği yerde kullanılır.)"
   },
   {
    "key": "pagination.align",
@@ -986,7 +986,7 @@
      "quote": "büyük harflerle ve 14 punto arial yazı karakterinde tezin başlığı yazılmalıdır"
     }
    ],
-   "notes": "CONFLICT: the Ek-1 example title is 12 pt (MEASURED)."
+   "notes": "Ek-1 example title is 12 pt (MEASURED); explicit prose wins (BASLA kural 3b (kullanıcı kararı 2026-10-24): aynı kılavuz içinde açık yazılmış kural metni örnek sayfadan önce gelir; örnek sayfa yalnız kural metninin söylemediği yerde kullanılır.)"
   },
   {
    "key": "cover.universityFontSizePt",
@@ -1833,7 +1833,7 @@
      "value": "'... girişin ikinci sayfasının üst sağa yazılan 2 sayısı ile başlar'"
     }
    ],
-   "decision": "RESOLVED 2026-10-15: bottom centre per general rule §1.4, corroborated by published Çöldür 2018 thesis physical pp.9/10/20/50. Contradictory top-right sentence retained; only position inferred, chapter-first omission rule unchanged.",
+   "decision": "RESOLVED 2026-10-15: bottom centre per general rule §1.4, corroborated by published Çöldür 2018 thesis physical pp.9/10/20/50. Contradictory top-right sentence retained; only position inferred, chapter-first omission rule unchanged. Source audit 2026-10-24 (user rule: the current official source is the reference; an older or secondary source only where the current one is silent and the value is reasonable): live official file re-hashed and identical, no newer guide published; the value above rests on the current guide alone, the published student thesis is not a reference.",
    "needsConfirmation": false
   },
   {
@@ -1850,7 +1850,7 @@
      "value": "12 pt"
     }
    ],
-   "decision": "RESOLVED 2026-10-15: 14 pt per explicit §II prose, corroborated by Çöldür 2018 cover title measured 14.04 pt. Guide Ek-1 12 pt remains counter-evidence; existing 14 pt application retained.",
+   "decision": "RESOLVED 2026-10-15: 14 pt per explicit §II prose, corroborated by Çöldür 2018 cover title measured 14.04 pt. Guide Ek-1 12 pt remains counter-evidence; existing 14 pt application retained. Source audit 2026-10-24 (user rule: the current official source is the reference; an older or secondary source only where the current one is silent and the value is reasonable): live official file re-hashed and identical, no newer guide published; the value above rests on the current guide alone, the published student thesis is not a reference.",
    "needsConfirmation": false
   },
   {
@@ -1867,7 +1867,7 @@
      "value": "gaps 47.25 / 43.56 / 38.35 mm = 6.5 / 6.0 / 5.3 lines of 7.3 mm (12 pt x 1.5)"
     }
    ],
-   "decision": "'satır' is not a defined unit; the example's measured gaps (which agree to within one line, exactly 6.0 for title->UZMANLIK) are used.",
+   "decision": "RESOLVED 2026-10-24 per BASLA kural 3b (kullanıcı kararı 2026-10-24): aynı kılavuz içinde açık yazılmış kural metni örnek sayfadan önce gelir; örnek sayfa yalnız kural metninin söylemediği yerde kullanılır. Prose §II applied, 1 satır = Arial 12 pt at 1.5 lines = 7.302 mm baseline to baseline (the example's title->UZMANLIK gap 43.56 mm = 5.97 such lines confirms the unit): title 6 lines below the first cover line, UZMANLIK TEZİ 6 lines below the title, advisor block 4 lines below the researcher. Ek-1 gaps (47.25 / 43.56 / 38.35 mm) are counter-evidence only. Previous decision (example gaps) withdrawn.",
    "needsConfirmation": false
   },
   {
@@ -1884,7 +1884,7 @@
      "value": "Manisa, Yıl baseline 247.82 mm = 41.49 mm below the advisor, 49 mm above the sheet bottom"
     }
    ],
-   "decision": "Example gap kept (cover ends ~237 mm from the top with a 30 mm top margin).",
+   "decision": "RESOLVED 2026-10-24 per BASLA kural 3b (kullanıcı kararı 2026-10-24): aynı kılavuz içinde açık yazılmış kural metni örnek sayfadan önce gelir; örnek sayfa yalnız kural metninin söylemediği yerde kullanılır. Prose 'Sayfanın en altına' applied: 'Manisa, Yıl' sits on the last single line of the text area (baseline ~265.6-266.1 mm with a 30 mm bottom margin). The Ek-1 position (41.49 mm below the advisor) is counter-evidence only.",
    "needsConfirmation": false
   },
   {

@@ -140,14 +140,20 @@ async function main() {
   await tab("Başvurular").click();
   await page.getByRole("button", { name: "Kaynakları ve atıfları yönet", exact: true }).click();
   await page.getByRole("button", { name: "Kaynak ekle", exact: true }).click();
-  await page.getByLabel("Yeni kaynakça kaydı").fill("Doe, J. (2024). Citation fixture.");
+  await page.getByLabel("Yazarlar", { exact: true }).fill("Doe, John");
+  await page.getByLabel("Yıl", { exact: true }).fill("2024");
+  await page.getByLabel("Başlık", { exact: true }).fill("Citation fixture");
   await page.getByRole("button", { name: "Kaynağı kaydet", exact: true }).click();
   await body().click();
   await tab("Başvurular").click();
+  await page.getByRole("button", { name: "Kaynakları ve atıfları yönet", exact: true }).click();
   await page.getByRole("button", { name: "Atıf yap", exact: true }).click();
-  await page.getByLabel("Metin içi atıf metni").fill("(Doe, 2024)");
-  await page.getByRole("button", { name: "Atfı metne ekle", exact: true }).click();
-  assert.match(await page.evaluate(() => window.thesisTest.getDoc().content), /\(Doe, 2024\)/, "source panel inserts the requested inline citation");
+  await page.getByLabel("Atıf sayfası", { exact: true }).fill("12");
+  await page.getByRole("button", { name: "Atfı ekle", exact: true }).click();
+  // The note stores only which source is cited (citations.js); the label is drawn from the pool and the template's mode.
+  assert.match(await page.evaluate(() => window.thesisTest.getDoc().content), /class="thesis-cite"[^>]*data-cite-id="src_[^"]+"[^>]*data-cite-locator="12"/, "source panel inserts a linked citation");
+  await page.waitForFunction(() => /Doe, 2024, s\. 12/.test([...document.querySelectorAll(".rich-text-body .thesis-cite")].map((node) => node.textContent + (node.getAttribute("data-fn-text") || "")).join(" ")));
+  await page.waitForFunction(() => /Doe, J\. \(2024\)\. Citation fixture\./.test(document.querySelector('[data-thesis-source-id]')?.textContent || ""));
   await page.getByRole("button", { name: "Çalışma panelini kapat", exact: true }).click();
   await tab("Ekle").click();
   const staticTitle = page.locator('[data-thesis-static-root] [data-thesis-text="title"]').first();
@@ -162,7 +168,8 @@ async function main() {
     await tab("Başvurular").click();
     assert.equal(await page.getByRole("button", { name: "Dipnot ekle", exact: true }).isDisabled(), true, "footnotes are disabled for a static text target");
     await page.getByRole("button", { name: "Kaynakları ve atıfları yönet", exact: true }).click();
-    assert.equal(await page.getByRole("button", { name: "Atfı metne ekle", exact: true }).isDisabled(), true, "bibliography insertion is disabled for a static text target");
+    await page.getByRole("button", { name: "Atıf yap", exact: true }).click();
+    assert.equal(await page.getByRole("button", { name: "Atfı ekle", exact: true }).isDisabled(), true, "citation insertion is disabled for a static text target");
   await body().click();
 
   await tab("Görünüm").click();

@@ -293,7 +293,122 @@
    "Dipnot yazı tipi boyutu kaynaklarda UNKNOWN (şablonda Dipnot stili yok, Normal stili boyut vermez): motor alanı için Times New Roman 10 pt tek satır kullanıldı (kaynak dışı, NOT_SPECIFIED). Bitirme tezi benzerlik üst sınırı %30 ve baskı (tek yüz, 70-100 g/m², Word'den yazdırma, spiral cilt) fiziksel/gönderim kuralıdır, belge içeriği değildir.",
    "Widow/orphan denetimi kılavuzda zorunlu (tek satır sayfa başında/sonunda kalmaz), şablonun Normal stilinde kapalıdır: kılavuz uygulanır. Şablonun tek/çift sayfa bölüm sonları boş sayfa üretmez (her sonraki bölüm numarayı 1'den başlatır). Yatay sayfa desteklenmez.",
    "Kapak mutlak konumları üretim yazılımına bağlıdır (Word'ün 1,5 aralıklı resim satırının yüksekliği doğrulanamadı: UNKNOWN); kapak kontrolleri göreli (aralıklar, ortalama, yazı tipi, mühür kutuları) yapılmalıdır. Çok satırlı tez başlığı, kapakta kendi paragrafının 1,5 aralığıyla dizilir; şablondaki '(Devam)' örnek satırı ayrı tek aralıklı bir paragraftır, kural olarak alınmadı."
-  ]
+  ],
+  "regionalAudit": {
+   "checkedAt": "2026-10-23",
+   "status": "CORE_RECHECKED",
+   "layoutRebuilt": false,
+   "visualConformanceRechecked": false,
+   "documents": [
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/MBG_Lisans_Bitirme_Tezi/AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+     "sha256": "b631d3c7a4bb87a27256b7ad10448dc42dab7d6d09fd4a5e15183b54707d5079"
+    },
+    {
+     "path": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/MBG_Lisans_Bitirme_Tezi/AKU_MBG_Lisans_Bitirme_Tezi_Sablonu_2025.docx",
+     "sha256": "33432d858c5601679297e1935cb2f60f3bb3d6b72e39397e22a62775d351dd76"
+    }
+   ],
+   "checkedFields": [
+    {
+     "field": "typography.body.fontFamily",
+     "template": "Times New Roman",
+     "sourceValue": "Times New Roman",
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/MBG_Lisans_Bitirme_Tezi/AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+     "evidence": [
+      {
+       "value": "Times New Roman",
+       "location": "sayfa 4",
+       "sentence": "Bitirme tezindeki tüm metinler için yazı karakteri “Times New Roman” olup, kullanılacak karakter büyüklüğü “İç Kapak” hariç tezin tamamında 12 punto olmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "typography.body.fontSizePt",
+     "template": 12,
+     "sourceValue": 12.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/MBG_Lisans_Bitirme_Tezi/AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+     "evidence": [
+      {
+       "value": 12.0,
+       "location": "sayfa 4",
+       "sentence": "Bitirme tezindeki tüm metinler için yazı karakteri “Times New Roman” olup, kullanılacak karakter büyüklüğü “İç Kapak” hariç tezin tamamında 12 punto olmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.topMm",
+     "template": 30,
+     "sourceValue": 30.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/MBG_Lisans_Bitirme_Tezi/AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+     "evidence": [
+      {
+       "value": 30.0,
+       "location": "sayfa 4",
+       "sentence": "2.3 Kenar Boşlukları ve Sayfa Düzeni Yazımda sayfa kenarlarından 3 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.bottomMm",
+     "template": 30,
+     "sourceValue": 30.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/MBG_Lisans_Bitirme_Tezi/AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+     "evidence": [
+      {
+       "value": 30.0,
+       "location": "sayfa 4",
+       "sentence": "2.3 Kenar Boşlukları ve Sayfa Düzeni Yazımda sayfa kenarlarından 3 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.leftMm",
+     "template": 30,
+     "sourceValue": 30.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/MBG_Lisans_Bitirme_Tezi/AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+     "evidence": [
+      {
+       "value": 30.0,
+       "location": "sayfa 4",
+       "sentence": "2.3 Kenar Boşlukları ve Sayfa Düzeni Yazımda sayfa kenarlarından 3 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "page.margins.rightMm",
+     "template": 30,
+     "sourceValue": 30.0,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/MBG_Lisans_Bitirme_Tezi/AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+     "evidence": [
+      {
+       "value": 30.0,
+       "location": "sayfa 4",
+       "sentence": "2.3 Kenar Boşlukları ve Sayfa Düzeni Yazımda sayfa kenarlarından 3 cm boşluk bırakılmalıdır."
+      }
+     ]
+    },
+    {
+     "field": "typography.body.lineHeight",
+     "template": 1.5,
+     "sourceValue": 1.5,
+     "source": "Butun-Sablonlar/Ege/Afyon Kocatepe Üniversitesi/MBG_Lisans_Bitirme_Tezi/AKU_MBG_Lisans_Bitirme_Tezi_Kilavuzu_2025.pdf",
+     "evidence": [
+      {
+       "value": 1.5,
+       "location": "sayfa 5",
+       "sentence": "3 yazımında 1,5 satır aralığı kullanılmalıdır."
+      },
+      {
+       "value": 1.5,
+       "location": "sayfa 17",
+       "sentence": "Satır aralıkları 1.5 satır olarak uygulanmalıdır."
+      }
+     ]
+    }
+   ],
+   "conflicts": []
+  }
  },
  "placeholders": {
   "THESIS_TITLE": {

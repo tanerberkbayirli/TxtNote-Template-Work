@@ -8,6 +8,19 @@ export function contentRuleIssues(field, rule, html) {
   const issue = (code, actual, message, expected) => issues.push({ code, field, actual, expected, message });
   const source = String(html || "");
   const visible = plainThesisText(source);
+  if (rule.pattern && visible && !new RegExp(rule.pattern, 'iu').test(visible)) {
+    issue('pattern', visible, rule.message || `${field}: alanın biçimini kontrol edin.`, rule.pattern);
+  }
+  if (rule.minHeadings !== undefined) {
+    const level = rule.headingLevel || 1;
+    const headings = [...source.matchAll(new RegExp(`<h${level}\\b[^>]*>[\\s\\S]*?<\\/h${level}>`, 'gi'))].length;
+    if (headings < rule.minHeadings) issue('minHeadings', headings, rule.message || `${field}: ana bölüm başlıklarını oluşturun.`, rule.minHeadings);
+  }
+  if (rule.minWords !== undefined) {
+    const prose = plainThesisText(source.replace(/<\/(?:p|div|li|h[1-6])>|<br\b[^>]*>/gi, " ")).trim();
+    const words = prose ? prose.split(/\s+/u).length : 0;
+    if (words < rule.minWords) issue("minWords", words, rule.message || `${field}: en az ${rule.minWords} kelime gerekli (${words}).`, rule.minWords);
+  }
   if (rule.headingSequence) {
     const level = rule.headingLevel || 1;
     const headings = [...source.matchAll(new RegExp(`<h${level}\\b[^>]*>([\\s\\S]*?)<\\/h${level}>`, "gi"))].map(match => normalizedHeading(match[1]));
